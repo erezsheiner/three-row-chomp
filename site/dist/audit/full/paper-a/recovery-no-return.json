@@ -1,0 +1,51 @@
+{
+  "paperIndex": 46,
+  "id": "recovery-no-return",
+  "original": {
+    "title": "No return to a column after a value departs",
+    "status": "paper-reviewed",
+    "statement": "In a positive-MEX/COPY history, once a value departs from one column, it cannot return to that column. A recovery at another column is a fresh-column MEX event; a value present at or below its row index freezes forever.",
+    "assumptions": [
+      "Full positive-MEX/COPY history; row injectivity for recovery. No UnitDip assumption."
+    ],
+    "sourcePath": "projects/sentence-miner-20261001/runs/firsthand-recovery-coalescence-20261008/PROOF-NOTES.txt",
+    "sourceLine": 25,
+    "sha256": "3f7b62d9e7dab587c69b8345a161ffd01383e4c2ccb6b959c3ae6eb698fc8cf4"
+  },
+  "exactAuditedStatement": "In a full positive-MEX/COPY triangular history, once value v leaves column c after row s, it never returns there. With row injectivity, a recovery of v at another host at transition q is a fresh-column MEX event with q<=v. If v<=s is present at row s, it persists forever.",
+  "hypotheses": [
+    "Explicit full-history journal V(t, c)={F(r, min(r, c)):r<t}.",
+    "COPY iff old value<t, otherwise positive MEX of V and strict current prefix. Row injectivity needed for host-recovery conclusion."
+  ],
+  "proofDependencyMap": [],
+  "independentDerivationAndChecks": [
+    "Assume a return and choose least t>s+1. COPY would preserve previous value which is not v, while MEX has v in V from row s because c<=s. Both branches contradict a return; induction not needed beyond least finite counterexample.",
+    "At recovery d!=c, row injectivity makes old hostc unique and current F(q, c)!=v. If d<q, old F(q-1, d)!=v so COPY cannot produce v; newborn q also MEX. Hence v absent from entire V(q, d), proving no earlier award in existing part of column. If v<q then old c would COPY v, contradiction; so q<=v.",
+    "If v<=s, at next row v<s+1 so COPY preserves it, and induction covers all later rows. No UnitDip, canonical reach, owner-map injectivity, or restriction on movement direction was used.",
+    "The additional relay/nonmerging R4/R5 claims in the source have stronger absent-root/endpoint guards and are separate catalogue records; none is needed for R1-R3. No finite counterexample log is used as a proof."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\sentence-miner-20261001\\runs\\firsthand-recovery-coalescence-20261008\\PROOF-NOTES.txt",
+      "sha256": "3f7b62d9e7dab587c69b8345a161ffd01383e4c2ccb6b959c3ae6eb698fc8cf4"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\3b64cfdf12afb1854e97.json",
+      "sha256": "3b64cfdf12afb1854e97e17ea942152266a03da07b43d6b73dcca0da0aadfb4d"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#recovery-no-return",
+    "proofTextSha256": "3f7b62d9e7dab587c69b8345a161ffd01383e4c2ccb6b959c3ae6eb698fc8cf4",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": false,
+  "sharedCanonicalFoundationReview": null,
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish; parent integrates the independent audit and corrections."
+}

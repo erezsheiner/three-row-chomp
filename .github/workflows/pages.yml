@@ -1,0 +1,36 @@
+name: Publish research library to GitHub Pages
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Require completed scientific audit
+        run: python3 scripts/check_release_gate.py
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Export exact approved website
+        run: python3 scripts/export_approved_site.py --destination "$RUNNER_TEMP/chomp-approved-site"
+      - name: Upload approved static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/chomp-approved-site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

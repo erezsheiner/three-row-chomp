@@ -1,0 +1,416 @@
+import R54EventEThirdDipBoundarySaturation
+import R54EventEFourthEdgeTrichotomy
+
+set_option autoImplicit false
+set_option maxHeartbeats 800000
+
+namespace ChompLean
+
+/-!
+R55: two genuine reductions of the remaining propagated Event-E atoms.
+
+First, a fourth-edge packet hit after the no-third-dip branch is not an
+anonymous later dip.  UnitDip and the fact that the hit value is below `z`
+force the exact delayed descent
+
+    d(s+3) = z,   d(s+4) = z-1.
+
+The diagonal lower bound then buys one additional unit of defect slack.
+In particular this whole hit branch is absent on the first still-open face
+`s-delta-4=2`.
+
+Second, the four-prefix propagation cannot continue as an unbounded menu.
+Every individual four-prefix value either is (or becomes) a completed row
+start, hence is permanent, or has a first loss edge no later than the row
+whose index is the value itself.  Since every such value is below `z`, this
+is a finite induction horizon internal to the existing certificate.
+
+Finally, the third-dip band hit gets an exact source-slot order constraint:
+if both named high packet columns lie to the left of its `z-1` host, two
+extra source values improve the host lower bound by one.
+-/
+
+private theorem r55_nodup_lower_with_two_high
+    {m x y : Nat}
+    (hmx : m <= x) (hmy : m <= y) (hxy : x ≠ y) :
+    ((List.range' 1 (m - 1)) ++ [x, y]).Nodup := by
+  apply List.nodup_append.mpr
+  refine ⟨List.nodup_range' 1, ?_, ?_⟩
+  · simp [hxy]
+  · intro a ha b hb hab
+    have haRange := List.mem_range'_1.mp ha
+    simp at hb
+    rcases hb with rfl | rfl <;> omega
+
+/-- A high MEX cell which has two distinct source values at or above its
+output needs two slots in addition to the complete lower interval. -/
+theorem high_cell_two_high_sources_capacity
+    (M : RecurrenceModel) {q r m x y : Nat}
+    (hrq : r <= q) (hqm : q < m) (hout : M.f q r = m)
+    (hx : B M.f q r x) (hy : B M.f q r y)
+    (hmx : m <= x) (hmy : m <= y) (hxy : x ≠ y) :
+    (m - 1) + 2 <= q + r := by
+  let xs := (List.range' 1 (m - 1)) ++ [x, y]
+  have hnd : xs.Nodup := by
+    dsimp [xs]
+    exact r55_nodup_lower_with_two_high hmx hmy hxy
+  have hsub : xs ⊆ BValueList M.f q r := by
+    intro v hv
+    apply mem_BValueList_iff.mpr
+    rcases List.mem_append.mp hv with hvLower | hvHigh
+    · have hvRange := List.mem_range'_1.mp hvLower
+      exact M.mex_no_skip hrq (by rw [hout]; exact hqm) (by omega) (by
+        rw [hout]
+        omega)
+    · simp at hvHigh
+      rcases hvHigh with rfl | rfl
+      · exact hx
+      · exact hy
+  have hcap := nodup_subset_length_le hnd hsub
+  rw [length_BValueList] at hcap
+  simp only [xs, List.length_append, List.length_range',
+    List.length_cons] at hcap
+  omega
+
+/-- The exact extra-slot order forced on the third-dip packet hit. -/
+theorem eventE_third_dip_band_hit_source_order
+    {s delta z c b0 : Nat}
+    (hcross : EventECrossEdgeSurvivorCertificate s delta z c b0)
+    (hhit : EventEThirdDipBandHitCompressedCertificate
+      s delta z c b0)
+    (hsum : (z + 1) + delta = 2 * s) :
+    exists g,
+      g ∈ EventEThirdMissingBandSlots s delta c b0 /\
+      gameF s g = z - 1 /\
+      (g < c \/ g < b0 \/ s - delta - 1 <= g) := by
+  rcases hhit with
+    ⟨_hpen, hstair, _hlast, _hweighted, _hfour,
+      g, _b1, _b2, hgMissing, _hb1, _hb2,
+      hgValue, _hhost1, _hhost2, _hgb1, _hb1b2, _hgb2⟩
+  refine ⟨g, hgMissing, hgValue, ?_⟩
+  by_cases hgc : g < c
+  · exact Or.inl hgc
+  by_cases hgb : g < b0
+  · exact Or.inr (Or.inl hgb)
+  right
+  right
+  have hgTriple : g ∈ EventETriplePrefixBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgMissing).1
+  have hgSurv : g ∈ EventESurvivingBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgTriple).1
+  have hgSlots : g ∈ EventEDefectBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgSurv).1
+  have hbase := hcross.1.1.1
+  rcases hbase with
+    ⟨hc, hb0, hcNe, hSucc, hBase,
+      _hslotsNodup, _hslotsLen, hslotsProps, _hweak⟩
+  have hgData := hslotsProps g hgSlots
+  have hgLt : g < s := hgData.1
+  have hcg : c < g := by omega
+  have hb0g : b0 < g := by omega
+  have hpHigh : s < z - 1 := by
+    have hdiag3 := hstair.2.2.2.2.1
+    have hgt := gameRecurrenceModel.diagonal_gt (s + 3)
+    change s + 3 < gameF (s + 3) (s + 3) at hgt
+    omega
+  have hCsucc : C gameF s g (z + 1) :=
+    ⟨c, hcg, hSucc⟩
+  have hCbase : C gameF s g z :=
+    ⟨b0, hb0g, hBase⟩
+  have hcap := high_cell_two_high_sources_capacity
+    gameRecurrenceModel (q := s) (r := g) (m := z - 1)
+      (x := z) (y := z + 1)
+      (Nat.le_of_lt hgLt) hpHigh hgValue
+      (Or.inr hCbase) (Or.inr hCsucc)
+      (by omega) (by omega) (by omega)
+  omega
+
+/-- Exact normal form of a fourth-edge hit following the no-third-dip
+branch.  Besides the delayed diagonal identities it records four literal
+prehosts of `z-1` and the stronger defect gap `delta+7 <= s`. -/
+def EventEFourthDipExactDelayedHitCertificate
+    (s delta z c b0 : Nat) : Prop :=
+  EventEFourthDipPacketHitCertificate s delta z c b0 /\
+  gameF (s + 3) (s + 3) = z /\
+  gameF (s + 4) (s + 4) = z - 1 /\
+  delta + 7 <= s /\
+  exists g b1 b2 b3,
+    g ∈ EventEFourthMissingBandSlots s delta c b0 /\
+    b1 < s + 1 /\ b2 < s + 2 /\ b3 < s + 3 /\
+    gameF s g = z - 1 /\
+    gameF (s + 1) b1 = z - 1 /\
+    gameF (s + 2) b2 = z - 1 /\
+    gameF (s + 3) b3 = z - 1 /\
+    g ≠ b1 /\ g ≠ b2 /\ g ≠ b3 /\
+    b1 ≠ b2 /\ b1 ≠ b3 /\ b2 ≠ b3
+
+theorem gameF_nonmax_eventE_fourth_dip_hit_exact_delayed
+    (hU : UnitDip gameRecurrenceModel) {s c b0 : Nat}
+    (hres : NonmaxMarginEventECrossEdgeResidual s)
+    (hcross : EventECrossEdgeSurvivorCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0)
+    (hcert : EventENonDipSharedOwnerSaturationCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0)
+    (hhit : EventEFourthDipPacketHitCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0) :
+    EventEFourthDipExactDelayedHitCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0 := by
+  classical
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  change NonmaxMarginEventECrossEdgeResidual s at hres
+  change EventECrossEdgeSurvivorCertificate s delta z c b0 at hcross
+  change EventENonDipSharedOwnerSaturationCertificate
+    s delta z c b0 at hcert
+  change EventEFourthDipPacketHitCertificate s delta z c b0 at hhit
+  have hresData := hres
+  change MarginEventECounterexample s /\
+      EventEDefectPacketInvariant s d delta z /\
+      delta + 5 <= s /\
+      exists ce be, EventECrossEdgeSurvivorCertificate s delta z ce be
+    at hresData
+  rcases hresData with ⟨hEvent, hInv, _hnonmax, _hexists⟩
+  rcases hEvent with ⟨_hdip0, _hmargin, hdip1⟩
+  have hsum : d + delta = 2 * s := hInv.2.2.1
+  have hzDiag : z + 1 = d := hInv.2.2.2.1
+  have hunit1 := hU (s + 1) hdip1
+  change gameF (s + 2) (s + 2) + 1 = d at hunit1
+  have hdiag2 : gameF (s + 2) (s + 2) = z := by omega
+  have hnondip : Not
+      (gameF (s + 3) (s + 3) < gameF (s + 2) (s + 2)) :=
+    hcert.1.1
+  have hdip3 := hhit.1
+  have hunit3 := hU (s + 3) hdip3
+  change gameF (s + 4) (s + 4) + 1 =
+    gameF (s + 3) (s + 3) at hunit3
+  rcases hhit.2.2.2 with ⟨g, hgMissing, hgValue⟩
+  have hgFour : g ∈ EventEFourPrefixBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgMissing).1
+  have hgTriple : g ∈ EventETriplePrefixBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgFour).1
+  have hgSurv : g ∈ EventESurvivingBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgTriple).1
+  have hgSlots : g ∈ EventEDefectBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgSurv).1
+  have hbase := hcross.1.1.1
+  rcases hbase with
+    ⟨_hc, _hb0, _hcNe, _hSucc, _hBase,
+      _hslotsNodup, _hslotsLen, hslotsProps, _hweak⟩
+  have hbelow : gameF s g < z := by
+    have htransition := (hslotsProps g hgSlots).2.2.2
+    simpa [EventELowerTransition] using htransition.2.1
+  have hdiag4Below : gameF (s + 4) (s + 4) < z := by
+    rw [← hgValue]
+    exact hbelow
+  have hdiag3 : gameF (s + 3) (s + 3) = z := by omega
+  have hdiag4 : gameF (s + 4) (s + 4) = z - 1 := by omega
+  have hgt4 := gameRecurrenceModel.diagonal_gt (s + 4)
+  change s + 4 < gameF (s + 4) (s + 4) at hgt4
+  have hgap : delta + 7 <= s := by omega
+
+  have hrow1 : gameF s g ∈ StrictRowPrefixValues gameF (s + 1) := by
+    have hf := (List.mem_filter.mp hgSurv).2
+    simpa [EventESurvivingBandSlots] using hf
+  have hrow2 : gameF s g ∈ StrictRowPrefixValues gameF (s + 2) := by
+    have hf := (List.mem_filter.mp hgTriple).2
+    simpa [EventETriplePrefixBandSlots] using hf
+  have hrow3 : gameF s g ∈ StrictRowPrefixValues gameF (s + 3) := by
+    have hf := (List.mem_filter.mp hgFour).2
+    simpa [EventEFourPrefixBandSlots] using hf
+  rcases mem_strictRowPrefixValues_iff_C.mp hrow1 with ⟨b1, hb1, hhost1⟩
+  rcases mem_strictRowPrefixValues_iff_C.mp hrow2 with ⟨b2, hb2, hhost2⟩
+  rcases mem_strictRowPrefixValues_iff_C.mp hrow3 with ⟨b3, hb3, hhost3⟩
+  have hpHigh : s + 4 < z - 1 := by omega
+  have hgb1 : g ≠ b1 := by
+    intro heq
+    subst b1
+    exact encoding_same_lower_no_repeat game_encodes
+      (s := g) (t₁ := s) (t₂ := s + 1) (p := z - 1)
+      (hslotsProps g hgSlots).1 (by omega) (by omega)
+      (hgValue.trans hdiag4) ((hhost1.trans hgValue).trans hdiag4)
+  have hgb2 : g ≠ b2 := by
+    intro heq
+    subst b2
+    exact encoding_same_lower_no_repeat game_encodes
+      (s := g) (t₁ := s) (t₂ := s + 2) (p := z - 1)
+      (hslotsProps g hgSlots).1 (by omega) (by omega)
+      (hgValue.trans hdiag4) ((hhost2.trans hgValue).trans hdiag4)
+  have hgb3 : g ≠ b3 := by
+    intro heq
+    subst b3
+    exact encoding_same_lower_no_repeat game_encodes
+      (s := g) (t₁ := s) (t₂ := s + 3) (p := z - 1)
+      (hslotsProps g hgSlots).1 (by omega) (by omega)
+      (hgValue.trans hdiag4) ((hhost3.trans hgValue).trans hdiag4)
+  have hb12 : b1 ≠ b2 := by
+    intro heq
+    subst b2
+    exact encoding_same_lower_no_repeat game_encodes
+      (s := b1) (t₁ := s + 1) (t₂ := s + 2) (p := z - 1)
+      hb1 (by omega) (by omega)
+      ((hhost1.trans hgValue).trans hdiag4)
+      ((hhost2.trans hgValue).trans hdiag4)
+  have hb13 : b1 ≠ b3 := by
+    intro heq
+    subst b3
+    exact encoding_same_lower_no_repeat game_encodes
+      (s := b1) (t₁ := s + 1) (t₂ := s + 3) (p := z - 1)
+      hb1 (by omega) (by omega)
+      ((hhost1.trans hgValue).trans hdiag4)
+      ((hhost3.trans hgValue).trans hdiag4)
+  have hb23 : b2 ≠ b3 := by
+    intro heq
+    subst b3
+    exact encoding_same_lower_no_repeat game_encodes
+      (s := b2) (t₁ := s + 2) (t₂ := s + 3) (p := z - 1)
+      hb2 (by omega) (by omega)
+      ((hhost2.trans hgValue).trans hdiag4)
+      ((hhost3.trans hgValue).trans hdiag4)
+  change EventEFourthDipExactDelayedHitCertificate s delta z c b0
+  exact ⟨hhit, hdiag3, hdiag4, hgap,
+    g, b1, b2, b3, hgMissing, hb1, hb2, hb3,
+    hgValue.trans hdiag4, (hhost1.trans hgValue).trans hdiag4,
+    (hhost2.trans hgValue).trans hdiag4,
+    (hhost3.trans hgValue).trans hdiag4,
+    hgb1, hgb2, hgb3, hb12, hb13, hb23⟩
+
+/-- The fourth-dip hit atom is completely absent on the first remaining
+defect face `ell=2`. -/
+theorem gameF_no_nonmax_eventE_fourth_dip_hit_at_slack_two
+    (hU : UnitDip gameRecurrenceModel) {s c b0 : Nat}
+    (hres : NonmaxMarginEventECrossEdgeResidual s)
+    (hcross : EventECrossEdgeSurvivorCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0)
+    (hcert : EventENonDipSharedOwnerSaturationCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0)
+    (hell : s - (2 * s - gameF (s + 1) (s + 1)) - 4 = 2) :
+    Not (EventEFourthDipPacketHitCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0) := by
+  intro hhit
+  have hexact := gameF_nonmax_eventE_fourth_dip_hit_exact_delayed
+    hU hres hcross hcert hhit
+  have hgap := hexact.2.2.2.1
+  have hnonmax := hres.2.2.1
+  omega
+
+/-- On `ell=2` the old fourth-edge trichotomy is now a dichotomy: only the
+extra-forbidden branch or the no-fourth-dip five-prefix branch remains. -/
+theorem gameF_nonmax_eventE_slack_two_fourth_edge_dichotomy
+    (hU : UnitDip gameRecurrenceModel) {s c b0 : Nat}
+    (hres : NonmaxMarginEventECrossEdgeResidual s)
+    (hcross : EventECrossEdgeSurvivorCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0)
+    (hcert : EventENonDipSharedOwnerSaturationCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0)
+    (hell : s - (2 * s - gameF (s + 1) (s + 1)) - 4 = 2) :
+    EventEFourthDipExtraForbiddenCertificate
+        s (2 * s - gameF (s + 1) (s + 1))
+          (gameF (s + 1) (s + 1) - 1) c b0 \/
+    EventENoFourthDipFivePrefixSharedOwnerCertificate
+        s (2 * s - gameF (s + 1) (s + 1))
+          (gameF (s + 1) (s + 1) - 1) c b0 := by
+  have htri := gameF_nonmax_eventE_fourth_edge_trichotomy
+    hU hres hcross hcert
+  rcases htri with hhit | hextra | hnondip
+  · exact False.elim
+      (gameF_no_nonmax_eventE_fourth_dip_hit_at_slack_two
+        hU hres hcross hcert hell hhit)
+  · exact Or.inl hextra
+  · exact Or.inr hnondip
+
+private theorem r55_finite_chain_first_loss
+    (P : Nat -> Prop) (a n : Nat) (hstart : P a) :
+    P (a + n) \/
+      exists k, k < n /\ P (a + k) /\ Not (P (a + k + 1)) := by
+  induction n with
+  | zero =>
+      left
+      simpa using hstart
+  | succ n ih =>
+      rcases ih with hlast | ⟨k, hk, hPk, hloss⟩
+      · by_cases hnext : P (a + n + 1)
+        · left
+          simpa [Nat.add_assoc] using hnext
+        · right
+          exact ⟨n, by omega, hlast, by simpa [Nat.add_assoc] using hnext⟩
+      · right
+        exact ⟨k, by omega, hPk, hloss⟩
+
+/-- Finite fate of one four-prefix value: permanent completed row start, or
+an exact first loss edge before `z`. -/
+def EventEFourPrefixFiniteFate
+    (s z g : Nat) : Prop :=
+  (exists p r,
+    p = gameF s g /\ r < p /\ gameF p r = p /\
+    forall t, p < t -> C gameF t t p) \/
+  (exists t,
+    s + 4 <= t /\ t <= gameF s g /\ t < z /\
+    gameF s g ∈ StrictRowPrefixValues gameF (t - 1) /\
+    gameF s g ∉ StrictRowPrefixValues gameF t)
+
+/-- Prefix-induction closure for all fourth/fifth/etc. descendants.  There
+is no infinite propagation atom hidden behind `Q4`: each value resolves
+strictly before row `z`. -/
+theorem eventE_four_prefix_value_finite_fate
+    {s delta z c b0 g : Nat}
+    (hcross : EventECrossEdgeSurvivorCertificate s delta z c b0)
+    (hg : g ∈ EventEFourPrefixBandSlots s delta c b0) :
+    EventEFourPrefixFiniteFate s z g := by
+  classical
+  have hnormal := gameF_eventE_four_prefix_value_rowstart_or_high
+    hcross hg
+  rcases hnormal with hstart | hhigh
+  · left
+    rcases hstart with ⟨p, r, hp, _hpBound, hr, hrow, hperm⟩
+    exact ⟨p, r, hp, hr, hrow, hperm⟩
+  · let p := gameF s g
+    have hpLower : s + 4 <= p := hhigh.1
+    have hpUpper : p < z := hhigh.2
+    have hPstart : p ∈ StrictRowPrefixValues gameF (s + 3) := by
+      have hf := (List.mem_filter.mp hg).2
+      simpa [p, EventEFourPrefixBandSlots] using hf
+    have hle : s + 3 <= p := by omega
+    have hend : s + 3 + (p - (s + 3)) = p := by omega
+    have hchain := r55_finite_chain_first_loss
+      (fun t => p ∈ StrictRowPrefixValues gameF t)
+      (s + 3) (p - (s + 3)) hPstart
+    rcases hchain with hfinal | ⟨k, hk, hpresent, habsent⟩
+    · have hpPrefix : p ∈ StrictRowPrefixValues gameF p := by
+        simpa only [hend] using hfinal
+      rcases mem_strictRowPrefixValues_iff_C.mp hpPrefix with
+        ⟨r, hr, hrow⟩
+      left
+      refine ⟨p, r, rfl, hr, hrow, ?_⟩
+      intro t hpt
+      apply (rowstart_hosted_iff_below_diagonal
+        gameRecurrenceModel hr hrow).2
+      have hdiag := gameRecurrenceModel.diagonal_gt t
+      omega
+    · right
+      let t := s + 3 + k + 1
+      refine ⟨t, by dsimp [t]; omega, by dsimp [t]; omega,
+        by dsimp [t]; omega, ?_, ?_⟩
+      · have htPred : t - 1 = s + 3 + k := by
+          omega
+        rw [htPred]
+        exact hpresent
+      · simpa [t, Nat.add_assoc] using habsent
+
+#print axioms high_cell_two_high_sources_capacity
+#print axioms eventE_third_dip_band_hit_source_order
+#print axioms gameF_nonmax_eventE_fourth_dip_hit_exact_delayed
+#print axioms gameF_no_nonmax_eventE_fourth_dip_hit_at_slack_two
+#print axioms gameF_nonmax_eventE_slack_two_fourth_edge_dichotomy
+#print axioms eventE_four_prefix_value_finite_fate
+
+end ChompLean

@@ -1,0 +1,1756 @@
+{
+  "module": "R198CausalMiddleCohortPullback",
+  "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+  "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+  "declarationCount": 111,
+  "theoremDeclarationCount": 99,
+  "proofValuedDeclarationCount": 99,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.ActualNonblockerSublevelVisible",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 535,
+      "typePretty": "(T R : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ActualRangeOwnerMidpointCutoffFrom",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 25,
+      "typePretty": "(base margin : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.PastDiagonalThrough",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 32,
+      "typePretty": "(r v : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_add_pastDiagonalCount_le",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 181,
+      "typePretty": "∀ (r v : Nat),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (ChompLean.gameFBlockerCountThrough\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameFPastDiagonalBelowCount r v))\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_add_pastDiagonalCount_le._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r v : Nat)\n  (hpartition :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (x : Nat) =>\n              @Decidable.decide (ChompLean.S ChompLean.gameF x)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF x)))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (x : Nat) =>\n              @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))\n                (@instDecidableNot (ChompLean.S ChompLean.gameF x)\n                  (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n      (@List.length.{0} Nat\n        (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hpastLe :\n    @LE.le.{0} Nat instLENat\n      (@List.length.{0} Nat\n        (@List.filter.{0} Nat\n          (fun (x : Nat) =>\n            @Decidable.decide (ChompLean.PastDiagonalThrough r x)\n              (Classical.propDecidable (ChompLean.PastDiagonalThrough r x)))\n          (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@List.length.{0} Nat\n        (@List.filter.{0} Nat\n          (fun (x : Nat) =>\n            @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))\n              (@instDecidableNot (ChompLean.S ChompLean.gameF x)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))\n          (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n  (hlen :\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@List.length.{0} Nat\n            (@List.filter.{0} Nat\n              (fun (k : Nat) =>\n                @Decidable.decide (ChompLean.S ChompLean.gameF k)\n                  (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))\n              (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n          (@List.length.{0} Nat\n            (@List.filter.{0} Nat\n              (fun (k : Nat) =>\n                @Decidable.decide (ChompLean.PastDiagonalThrough r k)\n                  (Classical.propDecidable (ChompLean.PastDiagonalThrough r k)))\n              (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_sublevel",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 248,
+      "typePretty": "∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r)\n  (hupper :\n    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)),\n  @Eq.{1} Nat\n    (ChompLean.gameFBlockerCountThrough\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (ChompLean.causalBlockerCountAt r v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_sublevel._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v : Nat} (k : Nat)\n  (hkrange :\n    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)\n      (@LT.lt.{0} Nat instLTNat k\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat k v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_sublevel._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v : Nat} (k : Nat)\n  (hkrange :\n    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)\n      (@LT.lt.{0} Nat instLTNat k\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_sublevel._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v : Nat}\n  (hpartition :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (x : Nat) =>\n              @Decidable.decide (ChompLean.S ChompLean.gameF x)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF x)))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (x : Nat) =>\n              @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))\n                (@instDecidableNot (ChompLean.S ChompLean.gameF x)\n                  (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n      (@List.length.{0} Nat\n        (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hcomplement :\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (@List.filter.{0} Nat\n          (fun (k : Nat) =>\n            @Decidable.decide (Not (ChompLean.S ChompLean.gameF k))\n              (@instDecidableNot (ChompLean.S ChompLean.gameF k)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF k))))\n          (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@List.length.{0} Nat\n        (@List.filter.{0} Nat\n          (fun (k : Nat) =>\n            @Decidable.decide (ChompLean.PastDiagonalThrough r k)\n              (Classical.propDecidable (ChompLean.PastDiagonalThrough r k)))\n          (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n  (hlen :\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@Eq.{1} Nat\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (k : Nat) =>\n              @Decidable.decide (ChompLean.S ChompLean.gameF k)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@List.length.{0} Nat\n            (@List.filter.{0} Nat\n              (fun (k : Nat) =>\n                @Decidable.decide (ChompLean.PastDiagonalThrough r k)\n                  (Classical.propDecidable (ChompLean.PastDiagonalThrough r k)))\n              (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visibility",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 543,
+      "typePretty": "∀ {T R v : Nat} (hvisible : ChompLean.ActualNonblockerSublevelVisible T R)\n  (hupper : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R),\n  @Eq.{1} Nat\n    (ChompLean.gameFBlockerCountThrough\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (ChompLean.causalBlockerCountAt T v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visibility._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {R v : Nat} (k : Nat)\n  (hkrange :\n    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)\n      (@LT.lt.{0} Nat instLTNat k\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat k v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visibility._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {R v : Nat} (k : Nat)\n  (hkrange :\n    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)\n      (@LT.lt.{0} Nat instLTNat k\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visibility._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T R v : Nat}\n  (hpartition :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (x : Nat) =>\n              @Decidable.decide (ChompLean.S ChompLean.gameF x)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF x)))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (x : Nat) =>\n              @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))\n                (@instDecidableNot (ChompLean.S ChompLean.gameF x)\n                  (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n      (@List.length.{0} Nat\n        (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hcomplement :\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (@List.filter.{0} Nat\n          (fun (k : Nat) =>\n            @Decidable.decide (Not (ChompLean.S ChompLean.gameF k))\n              (@instDecidableNot (ChompLean.S ChompLean.gameF k)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF k))))\n          (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@List.length.{0} Nat\n        (@List.filter.{0} Nat\n          (fun (k : Nat) =>\n            @Decidable.decide (ChompLean.PastDiagonalThrough T k)\n              (Classical.propDecidable (ChompLean.PastDiagonalThrough T k)))\n          (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n  (hlen :\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@Eq.{1} Nat\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (k : Nat) =>\n              @Decidable.decide (ChompLean.S ChompLean.gameF k)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@List.length.{0} Nat\n            (@List.filter.{0} Nat\n              (fun (k : Nat) =>\n                @Decidable.decide (ChompLean.PastDiagonalThrough T k)\n                  (Classical.propDecidable (ChompLean.PastDiagonalThrough T k)))\n              (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visible_sublevel",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 408,
+      "typePretty": "∀ {base margin center K T v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hreach :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))\n  (hTBase : @LE.le.{0} Nat instLENat base T)\n  (hupper :\n    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),\n  @Eq.{1} Nat\n    (ChompLean.gameFBlockerCountThrough\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (ChompLean.causalBlockerCountAt T v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visible_sublevel._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin center K T v : Nat} (k : Nat)\n  (hkrange :\n    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)\n      (@LT.lt.{0} Nat instLTNat k\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat k v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visible_sublevel._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin center K T v : Nat} (k : Nat)\n  (hkrange :\n    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)\n      (@LT.lt.{0} Nat instLTNat k\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visible_sublevel._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin center K T v : Nat}\n  (hpartition :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (x : Nat) =>\n              @Decidable.decide (ChompLean.S ChompLean.gameF x)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF x)))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (x : Nat) =>\n              @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))\n                (@instDecidableNot (ChompLean.S ChompLean.gameF x)\n                  (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n      (@List.length.{0} Nat\n        (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hcomplement :\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (@List.filter.{0} Nat\n          (fun (k : Nat) =>\n            @Decidable.decide (Not (ChompLean.S ChompLean.gameF k))\n              (@instDecidableNot (ChompLean.S ChompLean.gameF k)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF k))))\n          (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@List.length.{0} Nat\n        (@List.filter.{0} Nat\n          (fun (k : Nat) =>\n            @Decidable.decide (ChompLean.PastDiagonalThrough T k)\n              (Classical.propDecidable (ChompLean.PastDiagonalThrough T k)))\n          (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n  (hlen :\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@Eq.{1} Nat\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (k : Nat) =>\n              @Decidable.decide (ChompLean.S ChompLean.gameF k)\n                (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))\n            (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@List.length.{0} Nat\n            (@List.filter.{0} Nat\n              (fun (k : Nat) =>\n                @Decidable.decide (ChompLean.PastDiagonalThrough T k)\n                  (Classical.propDecidable (ChompLean.PastDiagonalThrough T k)))\n              (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_le_causalBlockerCountAt",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 200,
+      "typePretty": "∀ (r v : Nat),\n  @LE.le.{0} Nat instLENat\n    (ChompLean.gameFBlockerCountThrough\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (ChompLean.causalBlockerCountAt r v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerCount_le_causalBlockerCountAt._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r v : Nat)\n  (h :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (ChompLean.gameFBlockerCountThrough\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (ChompLean.gameFPastDiagonalBelowCount r v))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (ChompLean.gameFBlockerCountThrough\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (ChompLean.gameFPastDiagonalBelowCount r v))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMiddleCohortList_earlyLag_K10_causal_of_floorPlus_AFloor",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 693,
+      "typePretty": "∀ {u L : Nat} (hLu : @LE.le.{0} Nat instLENat L u)\n  (hL :\n    Or (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))\n      (Or (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))\n        (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))))\n  (hRight :\n    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 25) (instOfNatNat (nat_lit 25)))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))\n  (hAFloor :\n    ∀ {v : Nat},\n      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26))) v →\n        @LE.le.{0} Nat instLENat v\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n              (ChompLean.gameFBlockerCountThrough\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hFloorPlus :\n    ∀ {a k : Nat},\n      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))) a →\n        @Eq.{1} Nat (ChompLean.gameF a a) k →\n          @LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) a)\n              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  And\n    (@Eq.{1} (List.{0} Nat)\n      (ChompLean.actualBlockerMiddleCohortList (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n      (ChompLean.causalBlockerMiddleCohortListFrom\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))\n    (@LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n      u)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMiddleCohortList_eq_causal",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 341,
+      "typePretty": "∀ {base margin K r : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r),\n  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList r K) (ChompLean.causalBlockerMiddleCohortList r K)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMiddleCohortList_eq_causalFrom",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 496,
+      "typePretty": "∀ {base margin center K T : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hreach :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))\n  (hTBase : @LE.le.{0} Nat instLENat base T),\n  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList center K)\n    (ChompLean.causalBlockerMiddleCohortListFrom T center K)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMiddleCohortList_eq_causalFrom_of_visibility",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 614,
+      "typePretty": "∀ {T center K : Nat}\n  (hvisible :\n    ChompLean.ActualNonblockerSublevelVisible T\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),\n  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList center K)\n    (ChompLean.causalBlockerMiddleCohortListFrom T center K)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMiddleCohortList_eq_causalFrom_rightEdge",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 512,
+      "typePretty": "∀ {base center K : Nat}\n  (hownerLeMidpoint :\n    ChompLean.ActualRangeOwnerMidpointCutoffFrom base (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (hbase : @LE.le.{0} Nat instLENat base (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),\n  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList center K)\n    (ChompLean.causalBlockerMiddleCohortListFrom\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K) center K)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMiddleCohortList_eq_causalFrom_rightEdge._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base center K : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)\n          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMiddleCohortList_eq_causalFrom_rightEdge_of_floorPlus_AFloor",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 678,
+      "typePretty": "∀ {center K : Nat}\n  (hRight :\n    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 25) (instOfNatNat (nat_lit 25)))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))\n  (hAFloor :\n    ∀ {v : Nat},\n      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26))) v →\n        @LE.le.{0} Nat instLENat v\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n              (ChompLean.gameFBlockerCountThrough\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hFloorPlus :\n    ∀ {a k : Nat},\n      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))) a →\n        @Eq.{1} Nat (ChompLean.gameF a a) k →\n          @LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) a)\n              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList center K)\n    (ChompLean.causalBlockerMiddleCohortListFrom\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K) center K)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMiddleCohortList_eq_causal_of_cutoff16_K10",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 745,
+      "typePretty": "∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 131) (instOfNatNat (nat_lit 131))) r)\n  (hcut16 :\n    ChompLean.ActualRangeOwnerMidpointCutoffFrom (@OfNat.ofNat.{0} Nat (nat_lit 131) (instOfNatNat (nat_lit 131)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))),\n  @Eq.{1} (List.{0} Nat)\n    (ChompLean.actualBlockerMiddleCohortList r (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n    (ChompLean.causalBlockerMiddleCohortList r (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMiddleCohortList_eq_causal_of_cutoff16_K10._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_band_iff_causal",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 310,
+      "typePretty": "∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r),\n  Iff\n    (And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n        (ChompLean.actualBlockerMidpoint v))\n      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))\n    (And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n        (ChompLean.causalBlockerMidpointAt r v))\n      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_band_iff_causal._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v : Nat}\n  (hband :\n    And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n        (ChompLean.actualBlockerMidpoint v))\n      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))\n  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n          (ChompLean.causalBlockerMidpointAt r v))\n        (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_band_iff_causal._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v : Nat}\n  (hband :\n    And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n        (ChompLean.causalBlockerMidpointAt r v))\n      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))\n  (hactualUpper :\n    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))\n  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n          (ChompLean.actualBlockerMidpoint v))\n        (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_band_iff_causal_of_visibility",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 594,
+      "typePretty": "∀ {T center K v : Nat}\n  (hvisible :\n    ChompLean.ActualNonblockerSublevelVisible T\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),\n  Iff\n    (And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n        (ChompLean.actualBlockerMidpoint v))\n      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))\n    (And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n        (ChompLean.causalBlockerMidpointAt T v))\n      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_band_iff_causal_of_visibility._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T center K v : Nat}\n  (hband :\n    And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n        (ChompLean.actualBlockerMidpoint v))\n      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))\n  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n          (ChompLean.causalBlockerMidpointAt T v))\n        (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_band_iff_causal_of_visibility._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T center K v : Nat}\n  (hband :\n    And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n        (ChompLean.causalBlockerMidpointAt T v))\n      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))\n  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n          (ChompLean.actualBlockerMidpoint v))\n        (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_eq_causalBlockerMidpointAt_of_sublevel",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 278,
+      "typePretty": "∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r)\n  (hupper :\n    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)),\n  @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_eq_causal_of_visibility",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 570,
+      "typePretty": "∀ {T R v : Nat} (hvisible : ChompLean.ActualNonblockerSublevelVisible T R)\n  (hupper : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R),\n  @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_eq_causal_of_visible_sublevel",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 436,
+      "typePretty": "∀ {base margin center K T v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hreach :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))\n  (hTBase : @LE.le.{0} Nat instLENat base T)\n  (hupper :\n    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),\n  @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_eq_past_add_futurePacket",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 151,
+      "typePretty": "∀ {r v : Nat}\n  (hrv :\n    @LE.le.{0} Nat instLENat r\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v)\n    (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v (ChompLean.gameFBlockerCountThrough r))\n        (ChompLean.gameFFutureBlockerCount r\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_eq_past_add_futurePacket._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r v : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough r)\n            (ChompLean.gameFFutureBlockerCount r\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v (ChompLean.gameFBlockerCountThrough r))\n          (ChompLean.gameFFutureBlockerCount r\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_le_causalBlockerMidpointAt",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 207,
+      "typePretty": "∀ (r v : Nat), @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_sublevel_iff_causal",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 290,
+      "typePretty": "∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r),\n  Iff\n    (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))\n    (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_sublevel_iff_causal._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v : Nat}\n  (hcausal :\n    @LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))\n  (hle : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)),\n  Not\n      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_sublevel_iff_causal_of_visibility",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 580,
+      "typePretty": "∀ {T R v : Nat} (hvisible : ChompLean.ActualNonblockerSublevelVisible T R),\n  Iff (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R)\n    (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v) R)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_sublevel_iff_causal_of_visibility._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T R v : Nat} (hcausal : @LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v) R)\n  (hle : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),\n  Not (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_visible_band_iff_causal",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 465,
+      "typePretty": "∀ {base margin center K T v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hreach :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))\n  (hTBase : @LE.le.{0} Nat instLENat base T),\n  Iff\n    (And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n        (ChompLean.actualBlockerMidpoint v))\n      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))\n    (And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n        (ChompLean.causalBlockerMidpointAt T v))\n      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_visible_band_iff_causal._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin center K T v : Nat}\n  (hband :\n    And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n        (ChompLean.actualBlockerMidpoint v))\n      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))\n  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n          (ChompLean.causalBlockerMidpointAt T v))\n        (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_visible_band_iff_causal._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin center K T v : Nat}\n  (hband :\n    And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n        (ChompLean.causalBlockerMidpointAt T v))\n      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))\n  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)\n          (ChompLean.actualBlockerMidpoint v))\n        (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_visible_sublevel_iff_causal",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 449,
+      "typePretty": "∀ {base margin center K T v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hreach :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))\n  (hTBase : @LE.le.{0} Nat instLENat base T),\n  Iff\n    (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))\n    (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualBlockerMidpoint_visible_sublevel_iff_causal._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin center K T v : Nat}\n  (hcausal :\n    @LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))\n  (hle : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),\n  Not\n      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 641,
+      "typePretty": "∀ {T : Nat} (hT : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 25) (instOfNatNat (nat_lit 25))) T)\n  (hAFloor :\n    ∀ {v : Nat},\n      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26))) v →\n        @LE.le.{0} Nat instLENat v\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n              (ChompLean.gameFBlockerCountThrough\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hFloorPlus :\n    ∀ {a k : Nat},\n      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))) a →\n        @Eq.{1} Nat (ChompLean.gameF a a) k →\n          @LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) a)\n              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  ChompLean.ActualNonblockerSublevelVisible T T",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T v k : Nat} (a : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n          (ChompLean.gameFBlockerCountThrough\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n                (ChompLean.gameFBlockerCountThrough\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T v k : Nat} (hupper : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) T) (a : Nat)\n  (hag : @LE.le.{0} Nat instLENat a (ChompLean.actualBlockerMidpoint v)), Not (@LE.le.{0} Nat instLENat a T) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T : Nat} (hT : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 25) (instOfNatNat (nat_lit 25))) T)\n  {v k : Nat} (hkv : @LT.lt.{0} Nat instLTNat k v) (a : Nat) (hak : @LT.lt.{0} Nat instLTNat a k)\n  (ha : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)\n  (hv : Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26))) v)),\n  Not (@LE.le.{0} Nat instLENat a T) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor._proof_1_4",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T v k : Nat} (a : Nat) (haT : @LE.le.{0} Nat instLENat a T),\n  Not\n      (@LT.lt.{0} Nat instLTNat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualNonblockerSublevelVisible_of_lowerOwnerCovered",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 627,
+      "typePretty": "∀ {T R : Nat}\n  (howners :\n    ∀ {v : Nat}, @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R → ChompLean.LowerOwnerCoveredBy v T),\n  ChompLean.ActualNonblockerSublevelVisible T R",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.actualNonblockerSublevelVisible_of_lowerOwnerCovered._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T R v k : Nat} (a : Nat) (haT : @LE.le.{0} Nat instLENat a T),\n  Not\n      (@LT.lt.{0} Nat instLTNat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.causalBlockerCountAt",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 48,
+      "typePretty": "(r v : Nat) → Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.causalBlockerMiddleCohortList",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 332,
+      "typePretty": "(r K : Nat) → List.{0} Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.causalBlockerMiddleCohortListFrom",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 487,
+      "typePretty": "(T center K : Nat) → List.{0} Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.causalBlockerMiddleCohortList_length_le",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 357,
+      "typePretty": "∀ {base margin K r : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r),\n  @LE.le.{0} Nat instLENat (@List.length.{0} Nat (ChompLean.causalBlockerMiddleCohortList r K))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) K)\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.causalBlockerMiddleCohortList_length_le_42_of_cutoff16",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 756,
+      "typePretty": "∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 131) (instOfNatNat (nat_lit 131))) r)\n  (hcut16 :\n    ChompLean.ActualRangeOwnerMidpointCutoffFrom (@OfNat.ofNat.{0} Nat (nat_lit 131) (instOfNatNat (nat_lit 131)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))),\n  @LE.le.{0} Nat instLENat\n    (@List.length.{0} Nat\n      (ChompLean.causalBlockerMiddleCohortList r (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))\n    (@OfNat.ofNat.{0} Nat (nat_lit 42) (instOfNatNat (nat_lit 42)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.causalBlockerMiddleCohortList_length_le_42_of_cutoff16._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.causalBlockerMidpointAt",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 52,
+      "typePretty": "(r v : Nat) → Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_band_not_determined_by_unitIncrement_prefix",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 804,
+      "typePretty": "∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r),\n  have v : Nat :=\n    @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)));\n  have center : Nat :=\n    @HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)));\n  And\n    (And\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (ChompLean.countMidpoint (fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v))\n      (@LE.le.{0} Nat instLENat\n        (ChompLean.countMidpoint (fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n    (Not\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r) v))\n        (@LE.le.{0} Nat instLENat\n          (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r) v)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_band_not_determined_by_unitIncrement_prefix._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_band_not_determined_by_unitIncrement_prefix._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n  (hg0 :\n    @Eq.{1} Nat\n      (ChompLean.countMidpoint (fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      r)\n  (hg1 :\n    @Eq.{1} Nat\n      (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (ChompLean.countMidpoint (fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@LE.le.{0} Nat instLENat\n          (ChompLean.countMidpoint (fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_band_not_determined_by_unitIncrement_prefix._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n  (hg0 :\n    @Eq.{1} Nat\n      (ChompLean.countMidpoint (fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      r)\n  (hg1 :\n    @Eq.{1} Nat\n      (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hband :\n    And\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@LE.le.{0} Nat instLENat\n        (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 782,
+      "typePretty": "∀ {r : Nat} (hr : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r),\n  And (ChompLean.UnitIncrement01 fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n    (And (ChompLean.UnitIncrement01 (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r))\n      (And\n        (∀ (n : Nat),\n          @LE.le.{0} Nat instLENat n r →\n            @Eq.{1} Nat ((fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n)\n              (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r n))\n        (And\n          (@Eq.{1} Nat\n            (ChompLean.countMidpoint (fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            r)\n          (@Eq.{1} Nat\n            (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat} (n : Nat) (hnr : @LE.le.{0} Nat instLENat n r), @LT.lt.{0} Nat instLTNat r n → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix._proof_1_4",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat} (hr : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r),\n  Not\n      (@LT.lt.{0} Nat instLTNat r\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix._proof_1_5",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameFBlockerCountThrough_eq_past_add_futurePacket",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 132,
+      "typePretty": "∀ {r n : Nat} (hrn : @LE.le.{0} Nat instLENat r n),\n  @Eq.{1} Nat (ChompLean.gameFBlockerCountThrough n)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough r)\n      (ChompLean.gameFFutureBlockerCount r n))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameFFutureBlockerCount",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 129,
+      "typePretty": "(r n : Nat) → Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameFFutureBlockerCount.eq_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r n : Nat),\n  @Eq.{1} Nat (ChompLean.gameFFutureBlockerCount r n)\n    (@List.length.{0} Nat (ChompLean.gameFFutureBlockersBetweenList r n))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameFFutureBlockersBetweenList",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 122,
+      "typePretty": "(r n : Nat) → List.{0} Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameFFutureBlockersBetweenList.eq_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r n : Nat),\n  @Eq.{1} (List.{0} Nat) (ChompLean.gameFFutureBlockersBetweenList r n)\n    (@List.filter.{0} Nat\n      (fun (k : Nat) =>\n        @Decidable.decide (ChompLean.S ChompLean.gameF k) (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))\n      (List.range'\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameFPastDiagonalBelowCount",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 45,
+      "typePretty": "(r v : Nat) → Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameFPastDiagonalBelowCount.eq_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r v : Nat),\n  @Eq.{1} Nat (ChompLean.gameFPastDiagonalBelowCount r v)\n    (@List.length.{0} Nat (ChompLean.gameFPastDiagonalBelowList r v))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameFPastDiagonalBelowList",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 36,
+      "typePretty": "(r v : Nat) → List.{0} Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameFPastDiagonalBelowList.eq_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r v : Nat),\n  @Eq.{1} (List.{0} Nat) (ChompLean.gameFPastDiagonalBelowList r v)\n    (@List.filter.{0} Nat\n      (fun (k : Nat) =>\n        @Decidable.decide (ChompLean.PastDiagonalThrough r k)\n          (Classical.propDecidable (ChompLean.PastDiagonalThrough r k)))\n      (List.range' (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_blocker_iff_no_diagonal_owner",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 105,
+      "typePretty": "∀ {v : Nat} (hv : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v),\n  Iff (ChompLean.S ChompLean.gameF v) (Not (@Exists.{1} Nat fun (a : Nat) => @Eq.{1} Nat (ChompLean.gameF a a) v))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_middle_cohort_blocker_iff_not_pastDiagonal",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 715,
+      "typePretty": "∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r)\n  (hvpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)\n  (hcohort :\n    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n      (ChompLean.actualBlockerMiddleCohortList r K) v),\n  Iff (ChompLean.S ChompLean.gameF v) (Not (ChompLean.PastDiagonalThrough r v))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_middle_cohort_blocker_iff_not_pastDiagonal._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v : Nat} (hK : @LE.le.{0} Nat instLENat K margin)\n  (hband :\n    And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n        (ChompLean.actualBlockerMidpoint v))\n      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))\n  (a : Nat)\n  (hmargin :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a margin)\n      (ChompLean.actualBlockerMidpoint v)),\n  Not (@LE.le.{0} Nat instLENat a r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_middle_cohort_blocker_iff_not_pastDiagonal._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v : Nat} (hrBase : @LE.le.{0} Nat instLENat base r) (a : Nat)\n  (ha : @Eq.{1} Nat (ChompLean.gameF a a) v) (hvBase : Not (@LE.le.{0} Nat instLENat base v))\n  (hav : @LT.lt.{0} Nat instLTNat a v), Not (@LE.le.{0} Nat instLENat a r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_middle_cohort_blocker_iff_not_pastDiagonal._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v : Nat} (a : Nat) (hownerLe : @LE.le.{0} Nat instLENat a r),\n  Not\n      (@LT.lt.{0} Nat instLTNat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_sublevel",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 216,
+      "typePretty": "∀ {base margin K r v k : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r)\n  (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (hkv : @LT.lt.{0} Nat instLTNat k v)\n  (hupper :\n    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)),\n  Iff (Not (ChompLean.S ChompLean.gameF k)) (ChompLean.PastDiagonalThrough r k)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_sublevel._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v k : Nat} (hK : @LE.le.{0} Nat instLENat K margin)\n  (hupper :\n    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))\n  (a : Nat)\n  (hmargin :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a margin)\n      (ChompLean.actualBlockerMidpoint k))\n  (hmono : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint k) (ChompLean.actualBlockerMidpoint v)),\n  Not (@LE.le.{0} Nat instLENat a r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_sublevel._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v k : Nat} (hrBase : @LE.le.{0} Nat instLENat base r) (a : Nat) (_hak : @LT.lt.{0} Nat instLTNat a k)\n  (ha : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)\n  (hkBase : Not (@LE.le.{0} Nat instLENat base k)), Not (@LE.le.{0} Nat instLENat a r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_sublevel._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin K r v k : Nat} (a : Nat) (har : @LE.le.{0} Nat instLENat a r),\n  Not\n      (@LT.lt.{0} Nat instLTNat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_visible_sublevel",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 379,
+      "typePretty": "∀ {base margin center K T v k : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)\n  (hreach :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))\n  (hTBase : @LE.le.{0} Nat instLENat base T)\n  (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (hkv : @LT.lt.{0} Nat instLTNat k v)\n  (hupper :\n    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),\n  Iff (Not (ChompLean.S ChompLean.gameF k)) (ChompLean.PastDiagonalThrough T k)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_visible_sublevel._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin center K T v k : Nat}\n  (hreach :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))\n  (hupper :\n    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))\n  (a : Nat)\n  (hmargin :\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a margin)\n      (ChompLean.actualBlockerMidpoint k))\n  (hmono : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint k) (ChompLean.actualBlockerMidpoint v)),\n  Not (@LE.le.{0} Nat instLENat a T) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_visible_sublevel._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin center K T v k : Nat} (hTBase : @LE.le.{0} Nat instLENat base T) (a : Nat)\n  (_hak : @LT.lt.{0} Nat instLTNat a k)\n  (ha : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)\n  (hkBase : Not (@LE.le.{0} Nat instLENat base k)), Not (@LE.le.{0} Nat instLENat a T) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_visible_sublevel._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {base margin center K T v k : Nat} (a : Nat) (haT : @LE.le.{0} Nat instLENat a T),\n  Not\n      (@LT.lt.{0} Nat instLTNat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lag13_18_20_K10_visible_horizon_before_target",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 523,
+      "typePretty": "∀ {u L : Nat} (hLu : @LE.le.{0} Nat instLENat L u)\n  (hL :\n    Or (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))\n      (Or (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))\n        (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))),\n  @LT.lt.{0} Nat instLTNat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n      (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n    u",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lag13_18_20_K10_visible_horizon_before_target._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u : Nat} (hLu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))) u),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n        u) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lag13_18_20_K10_visible_horizon_before_target._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u : Nat} (hLu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))) u),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n        u) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lag13_18_20_K10_visible_horizon_before_target._proof_1_3",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u : Nat} (hLu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))) u),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n        u) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.middle_cohort_futurePacket_horizon",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 164,
+      "typePretty": "∀ {r K v : Nat}\n  (hcohort :\n    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n      (ChompLean.actualBlockerMiddleCohortList r K) v),\n  @LE.le.{0} Nat instLENat\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.middle_cohort_futurePacket_horizon._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r K v : Nat}\n  (hindex :\n    @LT.lt.{0} Nat instLTNat v\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastDiagonalThrough_not_blocker",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 174,
+      "typePretty": "∀ {r v : Nat} (hpast : ChompLean.PastDiagonalThrough r v), Not (ChompLean.S ChompLean.gameF v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 766,
+      "typePretty": "(r n : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount.eq_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r n : Nat),\n  @Eq.{1} Nat (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r n)\n    (@ite.{1} Nat (@LT.lt.{0} Nat instLTNat r n) (Nat.decLt r n)\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))",
+      "axioms": [],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount_unitIncrement01",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 769,
+      "typePretty": "∀ (r : Nat), ChompLean.UnitIncrement01 (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount_unitIncrement01._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r n : Nat) (hn : @LT.lt.{0} Nat instLTNat r n),\n  Not\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_decide_partition_length",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 56,
+      "typePretty": "∀ {alpha : Type} (P : alpha → Prop) [inst : @DecidablePred.{1} alpha P] (xs : List.{0} alpha),\n  @Eq.{1} Nat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (P x) (inst x)) xs))\n      (@List.length.{0} alpha\n        (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (Not (P x)) (@instDecidableNot (P x) (inst x)))\n          xs)))\n    (@List.length.{0} alpha xs)",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_decide_partition_length._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {alpha : Type} (P : alpha → Prop) [inst : @DecidablePred.{1} alpha P] (xs : List.{0} alpha)\n  (ih :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (P x) (inst x)) xs))\n        (@List.length.{0} alpha\n          (@List.filter.{0} alpha (fun (x : alpha) => Bool.not (@Decidable.decide (P x) (inst x))) xs)))\n      (@List.length.{0} alpha xs)),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (P x) (inst x)) xs))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@List.length.{0} alpha\n            (@List.filter.{0} alpha (fun (x : alpha) => Bool.not (@Decidable.decide (P x) (inst x))) xs)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} alpha xs)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_decide_partition_length._proof_1_2",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {alpha : Type} (P : alpha → Prop) [inst : @DecidablePred.{1} alpha P] (xs : List.{0} alpha)\n  (ih :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (P x) (inst x)) xs))\n        (@List.length.{0} alpha\n          (@List.filter.{0} alpha (fun (x : alpha) => Bool.not (@Decidable.decide (P x) (inst x))) xs)))\n      (@List.length.{0} alpha xs)),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (P x) (inst x)) xs))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@List.length.{0} alpha\n              (@List.filter.{0} alpha (fun (x : alpha) => Bool.not (@Decidable.decide (P x) (inst x))) xs))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} alpha xs)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_length_eq_of_iff_on",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 82,
+      "typePretty": "∀ {alpha : Type} (P Q : alpha → Prop) [inst : @DecidablePred.{1} alpha P] [inst_1 : @DecidablePred.{1} alpha Q]\n  (xs : List.{0} alpha)\n  (hiff :\n    ∀ (x : alpha),\n      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x → Iff (P x) (Q x)),\n  @Eq.{1} Nat (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (P x) (inst x)) xs))\n    (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (Q x) (inst_1 x)) xs))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_length_le_filter_of_imp",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 67,
+      "typePretty": "∀ {alpha : Type} (P Q : alpha → Prop) [inst : @DecidablePred.{1} alpha P] [inst_1 : @DecidablePred.{1} alpha Q]\n  (himp : ∀ (x : alpha), P x → Q x) (xs : List.{0} alpha),\n  @LE.le.{0} Nat instLENat\n    (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (P x) (inst x)) xs))\n    (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (Q x) (inst_1 x)) xs))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_length_le_filter_of_imp._proof_1_1",
+      "module": "R198CausalMiddleCohortPullback",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {alpha : Type} (P Q : alpha → Prop) [inst : @DecidablePred.{1} alpha P] [inst_1 : @DecidablePred.{1} alpha Q]\n  (xs : List.{0} alpha)\n  (ih :\n    @LE.le.{0} Nat instLENat\n      (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (P x) (inst x)) xs))\n      (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (Q x) (inst_1 x)) xs))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (P x) (inst x)) xs))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) => @Decidable.decide (Q x) (inst_1 x)) xs))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c",
+      "sourcePath": "lean/core/R198CausalMiddleCohortPullback.lean",
+      "universeParameters": []
+    }
+  ]
+}

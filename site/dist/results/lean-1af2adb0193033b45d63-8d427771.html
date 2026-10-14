@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R16 Lane Persistence · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R16 Lane Persistence</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R16LanePersistence.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R16LanePersistence.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R16LanePersistence.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 23 declarations</summary><ul class="declarations"><li><code>ChompLean.adjacent_lane_handoff_enters_R_of_weak_depth</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e z : Nat}
+  (hnext :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      z)
+  (hdepth : @LE.le.{0} Nat instLENat e r)
+  (ht :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      t),
+  ChompLean.R f t
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    z</pre></li><li><code>ChompLean.adjacent_lane_handoff_enters_R_of_weak_depth._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e z : Nat} (hdepth : @LE.le.{0} Nat instLENat e r),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.adjacent_lane_handoff_enters_colTail</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e z : Nat} (_hold : @Eq.{1} Nat (f r e) z)
+  (hnext :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      z)
+  (hdepth : @LT.lt.{0} Nat instLTNat e r)
+  (ht :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      t),
+  ChompLean.ColTail f t
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    z</pre></li><li><code>ChompLean.adjacent_lane_handoff_enters_colTail._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e z : Nat} (hdepth : @LT.lt.{0} Nat instLTNat e r),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.adjacent_lane_handoff_enters_successor_source</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e z : Nat} (hold : @Eq.{1} Nat (f r e) z)
+  (hnext :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      z)
+  (hdepth : @LT.lt.{0} Nat instLTNat e r)
+  (ht :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      t),
+  ChompLean.B f t
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    z</pre></li><li><code>ChompLean.adjacent_lane_handoff_prevents_source_loss</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e z : Nat} (hpark : ChompLean.ParkedOnly f t e z) (hold : @Eq.{1} Nat (f r e) z)
+  (hnext :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      z)
+  (hdepth : @LT.lt.{0} Nat instLTNat e r)
+  (ht :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      t),
+  And (ChompLean.B f t e z)
+    (ChompLean.B f t
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      z)</pre></li><li><code>ChompLean.depth_one_handoff_to_range_owner_closure</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat} (hpark : ChompLean.ParkedOnly f t e z)
+  (hold :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)
+      z)
+  (hhandoff :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      z)
+  (howner :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      z)
+  (ht :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t),
+  And (ChompLean.B f t e z)
+    (And
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        z)
+      (∀ {q : Nat},
+        @LE.le.{0} Nat instLENat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            q →
+          ChompLean.B f t q z))</pre></li><li><code>ChompLean.depth_one_handoff_to_range_owner_closure._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat e
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.laneDepthCounter</code><pre class="prose">(a b : Nat) → Nat</pre></li><li><code>ChompLean.laneDepthCounter.eq_1</code><pre class="prose">∀ (a b : Nat),
+  @Eq.{1} Nat (ChompLean.laneDepthCounter a b)
+    (@ite.{1} Nat
+      (Or
+        (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+      (@instDecidableOr
+        (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+        (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))</pre></li><li><code>ChompLean.laneDepthCounter_not_colTail</code><pre class="prose">Not
+  (ChompLean.ColTail ChompLean.laneDepthCounter (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))</pre></li><li><code>ChompLean.laneDepthCounter_not_colTail._proof_1_1</code><pre class="prose">∀ (a : Nat) (ha3 : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+  (h2a : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) a), False</pre></li><li><code>ChompLean.laneDepthCounter_two_hostings</code><pre class="prose">And
+  (@Eq.{1} Nat
+    (ChompLean.laneDepthCounter (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+  (@Eq.{1} Nat
+    (ChompLean.laneDepthCounter (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))</pre></li><li><code>ChompLean.lane_handoff_enters_colTail_general</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e g z : Nat} (_hold : @Eq.{1} Nat (f r e) z)
+  (hnext :
+    @Eq.{1} Nat
+      (f (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r g)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e g))
+      z)
+  (hdepth : @LT.lt.{0} Nat instLTNat e r)
+  (ht : @LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r g) t),
+  ChompLean.ColTail f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e g) z</pre></li><li><code>ChompLean.lane_handoff_without_positive_depth_is_false</code><pre class="prose">And
+  (@Eq.{1} Nat
+    (ChompLean.laneDepthCounter (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+  (And
+    (@Eq.{1} Nat
+      (ChompLean.laneDepthCounter
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+    (And
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (Not
+        (ChompLean.ColTail ChompLean.laneDepthCounter (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))))</pre></li><li><code>ChompLean.lane_handoff_without_positive_depth_is_false._proof_1_1</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →
+  False</pre></li><li><code>ChompLean.lane_host_enters_R_general_of_weak_depth</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e g z : Nat}
+  (hhost :
+    @Eq.{1} Nat
+      (f (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r g)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e g))
+      z)
+  (hdepth : @LE.le.{0} Nat instLENat e r)
+  (ht : @LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r g) t),
+  ChompLean.R f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e g) z</pre></li><li><code>ChompLean.lane_host_enters_R_general_of_weak_depth._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e g z : Nat} (hdepth : @LE.le.{0} Nat instLENat e r),
+  Not
+      (@LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e g)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r g)) →
+    False</pre></li><li><code>ChompLean.lane_host_enters_colTail_general</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e g z : Nat}
+  (hhost :
+    @Eq.{1} Nat
+      (f (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r g)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e g))
+      z)
+  (hdepth : @LT.lt.{0} Nat instLTNat e r)
+  (ht : @LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r g) t),
+  ChompLean.ColTail f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e g) z</pre></li><li><code>ChompLean.lane_host_enters_colTail_general._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t r e g z : Nat} (hdepth : @LT.lt.{0} Nat instLTNat e r),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e g)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r g)) →
+    False</pre></li><li><code>ChompLean.next_range_owner_closes_all_later_sources</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat}
+  (howner :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      z)
+  (ht :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t)
+  {q : Nat},
+  @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      q →
+    ChompLean.B f t q z</pre></li><li><code>ChompLean.next_range_owner_enters_diagPrefix</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat}
+  (howner :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      z)
+  (ht :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t),
+  ChompLean.DiagPrefix f t
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    z</pre></li><li><code>ChompLean.next_range_owner_persists_diagPrefix</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e q z : Nat}
+  (howner :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      z)
+  (ht :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t)
+  (hq :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      q),
+  ChompLean.DiagPrefix f t q z</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R16LanePersistence.lean:1</p><p>SHA-256: <code class="path">1af2adb0193033b45d6398084854964ffebc7070a521c92634ee374fad0432e1</code></p></section><p><a href="../index.html#id=lean-1af2adb0193033b45d63">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

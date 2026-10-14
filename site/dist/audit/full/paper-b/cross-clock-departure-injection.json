@@ -1,0 +1,42 @@
+{
+  "schema": "independent-paper-audit-v1",
+  "recordIndex": 47,
+  "id": "cross-clock-departure-injection",
+  "originalTitle": "Cross-clock injection into original departure events",
+  "originalStatement": "Distinct original roots with certified same-transition absent-root relays inject into their endpoint old payload and original endpoint column, across all clocks. For a fixed payload y, the number of such roots is at most the number of relay-eligible departure columns, hence at most y−2.",
+  "originalStatus": "conditional",
+  "originalHypotheses": [
+    "One fixed full history; distinct original roots with exact absent-root guards and certified rising relay endpoints. Does not prove relay existence or capacity one."
+  ],
+  "sourceWorkspace": "ThreeRowChompAug",
+  "sourcePath": "projects/sentence-miner-20261001/runs/firsthand-recovery-coalescence-20261008/PROOF-NOTES.txt",
+  "sourceLine": 74,
+  "sourceSHA256": "3f7b62d9e7dab587c69b8345a161ffd01383e4c2ccb6b959c3ae6eb698fc8cf4",
+  "sourceAttachment": "papers/originals/3f7b62d9e7dab587c69b.txt",
+  "independence": "Proof reconstructed from primary arguments and explicit definitions. Earlier source status/review assertions were not treated as proof. The author previously collected these sources; the present derivations and finite/exact-algebra checks are new independent audit work.",
+  "verdict": "accepted",
+  "detailedDerivation": [
+    "A departing value v cannot return to the same column: choose a first return, COPY would retain a different previous value, while MEX forbids the earlier v already in that column’s full history.",
+    "At one clock, exact leftward relay maps have indegree/outdegree≤1 by old/new row injectivity. Two paths meeting would imply one root lies on the other path, but the earlier path then emits that root’s old value in the new retained prefix, contradicting root absence. Distinct absent roots therefore have distinct rise endpoints.",
+    "Charge an original root to(endpoint old value y, endpoint column c). Equal-clock equality contradicts distinct endpoints. If clocksq1<q2 share the same key, the rise atq1 is a departure of y, forbidding y at rowq2−1 by no-return.",
+    "A rise cannot be COPY, so its old valuey≥q. Leftward relays from strict old-core hosts havec≤q−3≤y−3. For fixed y there are at mosty−2 nonnegative such columns, proving the restricted count bound.",
+    "Different histories require a source identifier in the key. Actual relay existence, exact absence guards and earlier replacement absence are not proved by this accounting. The optional min(y−2,r) refinement needs the separate row-start-owner theorem; it is not part of the headline injection."
+  ],
+  "proofDependencyMap": [
+    {
+      "dependency": "Explicit full-history COPY/MEX and fixed-row injectivity are stated hypotheses.",
+      "auditScope": "Independently derived here unless explicitly assigned to the shared exact canonical-foundation/kernel audit."
+    },
+    {
+      "dependency": "R1 no-return and R4 same-clock nonmerging independently reconstructed, not accepted from prior Lean label.",
+      "auditScope": "Independently derived here unless explicitly assigned to the shared exact canonical-foundation/kernel audit."
+    }
+  ],
+  "boundaryAndQuantifierChecks": [],
+  "defects": [],
+  "exactCorrection": null,
+  "canonicalAdmission": "Shared foundational game/recurrence/declaration dependencies must be discharged by the root audit before public admission. Missing named higher theorem is unresolved when explicitly identified; no vague bank/review label fills it.",
+  "newResearchExecuted": false,
+  "sharedFoundationEvidence": "../CANONICAL-FOUNDATIONS.md",
+  "sharedFoundationStatus": "Mathematical bridge independently reconstructed by root; final exact-source kernel authentication is separately required where applicable."
+}

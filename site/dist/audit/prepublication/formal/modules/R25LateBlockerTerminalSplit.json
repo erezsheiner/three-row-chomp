@@ -1,0 +1,227 @@
+{
+  "module": "R25LateBlockerTerminalSplit",
+  "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+  "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+  "declarationCount": 14,
+  "theoremDeclarationCount": 14,
+  "proofValuedDeclarationCount": 14,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.missing_completed_rowstart_forces_future_freeze",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 103,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c z r : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z)\n  (hmissingBackstop :\n    Not\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        c z))\n  (hmissingCompleted :\n    Not\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        z)),\n  And\n    (@LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      r)\n    (@LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      z)",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_completed_rowstart_forces_future_freeze._proof_1_1",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c z r : Nat}\n  (hrt :\n    Not\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_late_rowstart_prefreeze_or_current_host",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 59,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t c z r : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z)\n  (hmissing : Not (ChompLean.B (ChompLean.RecurrenceModel.f M) t c z)),\n  Or (@LE.le.{0} Nat instLENat t r)\n    (@Exists.{1} Nat fun (b : Nat) =>\n      And (@LE.le.{0} Nat instLENat c b)\n        (And (@LE.le.{0} Nat instLENat b r)\n          (And (@LT.lt.{0} Nat instLTNat b t) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M t b) z))))",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_late_rowstart_prefreeze_or_current_host._proof_1_1",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t c z r : Nat} (hrt : Not (@LT.lt.{0} Nat instLTNat r t)),\n  Not (@LE.le.{0} Nat instLENat t r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_late_rowstart_terminal_or_q_left_return_or_beyond_q",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 120,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c q z : Nat} (hqz : @LT.lt.{0} Nat instLTNat q z)\n  (hmissing :\n    Not\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        c z))\n  (hlate :\n    @Exists.{1} Nat fun (r : Nat) =>\n      And (@LE.le.{0} Nat instLENat c r)\n        (And (@LT.lt.{0} Nat instLTNat r z) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z))),\n  Or\n    (And\n      (Or\n        (@Eq.{1} Nat\n          (ChompLean.RecurrenceModel.f M\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            c)\n          z)\n        (Or\n          (@Eq.{1} Nat\n            (ChompLean.RecurrenceModel.f M\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            z)\n          (@Eq.{1} Nat\n            (ChompLean.RecurrenceModel.f M\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n            z)))\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        z))\n    (Or\n      (@Exists.{1} Nat fun (r : Nat) =>\n        And\n          (@LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            r)\n          (And (@LT.lt.{0} Nat instLTNat r q)\n            (And (@LT.lt.{0} Nat instLTNat r z)\n              (And (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z)\n                (ChompLean.C (ChompLean.RecurrenceModel.f M) q r z)))))\n      (@Exists.{1} Nat fun (r : Nat) =>\n        And\n          (@LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            r)\n          (And (@LE.le.{0} Nat instLENat q r)\n            (And (@LT.lt.{0} Nat instLTNat r z) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z)))))",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_late_rowstart_terminal_or_q_left_return_or_beyond_q._proof_1_1",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c q z : Nat} (r : Nat)\n  (hrt :\n    Not\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_late_rowstart_terminal_or_q_left_return_or_beyond_q._proof_1_2",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c q z : Nat} (r : Nat) (hrq : Not (@LT.lt.{0} Nat instLTNat r q)),\n  Not (@LE.le.{0} Nat instLENat q r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_rowstart_freeze_before_current_has_terminal_emission",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 27,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t c z r : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hrt : @LT.lt.{0} Nat instLTNat r t) (hrz : @LT.lt.{0} Nat instLTNat r z)\n  (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z)\n  (hmissing : Not (ChompLean.B (ChompLean.RecurrenceModel.f M) t c z)),\n  @Exists.{1} Nat fun (b : Nat) =>\n    And (@LE.le.{0} Nat instLENat c b)\n      (And (@LE.le.{0} Nat instLENat b r)\n        (And (@LT.lt.{0} Nat instLTNat b t) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M t b) z)))",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_rowstart_freeze_before_current_has_terminal_emission._proof_1_1",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t c z r : Nat} (b : Nat) (hbc : Not (@LT.lt.{0} Nat instLTNat b c)),\n  Not (@LE.le.{0} Nat instLENat c b) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_rowstart_freeze_before_current_has_terminal_emission._proof_1_2",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t c z r : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat z\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.missing_rowstart_freeze_before_current_has_terminal_emission._proof_1_3",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t c z r : Nat} (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z)\n  (htz : Not (@LT.lt.{0} Nat instLTNat t z))\n  (hconst :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t z))\n        r)\n      (ChompLean.RecurrenceModel.f M z r)),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t z))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.near_late_blocker_is_served_in_terminal_three",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 74,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c z r : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hrt :\n    @LT.lt.{0} Nat instLTNat r\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z)\n  (hmissing :\n    Not\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        c z)),\n  And\n    (Or\n      (@Eq.{1} Nat\n        (ChompLean.RecurrenceModel.f M\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          c)\n        z)\n      (Or\n        (@Eq.{1} Nat\n          (ChompLean.RecurrenceModel.f M\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          z)\n        (@Eq.{1} Nat\n          (ChompLean.RecurrenceModel.f M\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          z)))\n    (ChompLean.B (ChompLean.RecurrenceModel.f M)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      z)",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.near_late_blocker_is_served_in_terminal_three._proof_1_1",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c z r : Nat} (b : Nat) (hcb : @LE.le.{0} Nat instLENat c b)\n  (hbt :\n    @LT.lt.{0} Nat instLTNat b\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  Not\n      (Or (@Eq.{1} Nat b c)\n        (Or\n          (@Eq.{1} Nat b\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@Eq.{1} Nat b\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rescue_unserved_late_blocker_terminal_split_of_rm2",
+      "module": "R25LateBlockerTerminalSplit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 158,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {e L u z : Nat}\n  (hL : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) L)\n  (hmexEntry :\n    ChompLean.IsMex\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        e)\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        e))\n  (honeEntry :\n    ∀ (y z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →\n        @LT.lt.{0} Nat instLTNat y u →\n          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n            @LT.lt.{0} Nat instLTNat z u →\n              Not\n                  (ChompLean.B (ChompLean.RecurrenceModel.f M)\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                    e y) →\n                Not\n                    (ChompLean.B (ChompLean.RecurrenceModel.f M)\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                      e z) →\n                  @Eq.{1} Nat y z)\n  (hmexOne :\n    ChompLean.IsMex\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hmexTwo :\n    ChompLean.IsMex\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))\n  (hEntryLossCapTwo :\n    ∀ (x y z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x →\n        @LT.lt.{0} Nat instLTNat x u →\n          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →\n            @LT.lt.{0} Nat instLTNat y u →\n              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n                @LT.lt.{0} Nat instLTNat z u →\n                  ChompLean.B (ChompLean.RecurrenceModel.f M)\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                      e x →\n                    Not\n                        (ChompLean.B (ChompLean.RecurrenceModel.f M)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                          x) →\n                      ChompLean.B (ChompLean.RecurrenceModel.f M)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                          e y →\n                        Not\n                            (ChompLean.B (ChompLean.RecurrenceModel.f M)\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                              y) →\n                          ChompLean.B (ChompLean.RecurrenceModel.f M)\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                              e z →\n                            Not\n                                (ChompLean.B (ChompLean.RecurrenceModel.f M)\n                                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                                  z) →\n                              Or (@Eq.{1} Nat x y) (Or (@Eq.{1} Nat x z) (@Eq.{1} Nat y z)))\n  (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)\n  (hzu : @LT.lt.{0} Nat instLTNat z u)\n  (hzMissingOne :\n    Not\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        z))\n  (hzMissingTwo :\n    Not\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        z))\n  (hNotServed :\n    @Ne.{1} Nat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (huSeat :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n  (hPrevDiagonalAbove :\n    @LT.lt.{0} Nat instLTNat u\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hzMissingBackstop :\n    Not\n      (ChompLean.B (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L) z))\n  (hRM2 : ChompLean.TwoStepDiagonalRecordLaw M),\n  have q : Nat :=\n    ChompLean.RecurrenceModel.f M\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))));\n  And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)\n    (And (@LT.lt.{0} Nat instLTNat q z)\n      (And\n        (ChompLean.B (ChompLean.RecurrenceModel.f M)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          q)\n        (And\n          (Not\n            (ChompLean.B (ChompLean.RecurrenceModel.f M)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n              q))\n          (And\n            (ChompLean.B (ChompLean.RecurrenceModel.f M)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L) q)\n            (Or\n              (And\n                (Or\n                  (@Eq.{1} Nat\n                    (ChompLean.RecurrenceModel.f M\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L))\n                    z)\n                  (Or\n                    (@Eq.{1} Nat\n                      (ChompLean.RecurrenceModel.f M\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                      z)\n                    (@Eq.{1} Nat\n                      (ChompLean.RecurrenceModel.f M\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                      z)))\n                (ChompLean.B (ChompLean.RecurrenceModel.f M)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                  z))\n              (Or\n                (@Exists.{1} Nat fun (r : Nat) =>\n                  And\n                    (@LE.le.{0} Nat instLENat\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                      r)\n                    (And (@LT.lt.{0} Nat instLTNat r q)\n                      (And (@LT.lt.{0} Nat instLTNat r z)\n                        (And (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z)\n                          (ChompLean.C (ChompLean.RecurrenceModel.f M) q r z)))))\n                (@Exists.{1} Nat fun (r : Nat) =>\n                  And\n                    (@LE.le.{0} Nat instLENat\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e L)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                      r)\n                    (And (@LE.le.{0} Nat instLENat q r)\n                      (And (@LT.lt.{0} Nat instLTNat r z) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z))))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "70adbe092d903786d4b91d588e1101abcb6fa8db3ded8cdab630d77449742739",
+      "sourcePath": "lean/core/R25LateBlockerTerminalSplit.lean",
+      "universeParameters": []
+    }
+  ]
+}

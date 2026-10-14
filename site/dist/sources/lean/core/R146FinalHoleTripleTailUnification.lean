@@ -1,0 +1,604 @@
+import R144NoCriticalFinalHoleLateFreeze
+import R144TwoRowTripleCapCounterframe
+import TopTwoSourceExpansion
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+R146: exact interface audit between the R141/R144 final-hole route and the
+R143/R144 three-tail route.
+
+The separating packet aligns both constructions at the same critical
+coordinates.  The very same two-row tail-preservation/no-cap packet is
+compatible with an exact owner-(t-2) final-hole DROP frame and with an exact
+owner-(t-2) PERSIST frame.  Therefore this tail-preservation/no-cap interface does not determine the final-hole branch: the same tail packet is compatible with both DROP and PERSIST.
+
+The positive residue is a generic three-channel source-allocation defect.
+For an exact MEX source it is equivalent, with no slack, to the output being
+below a chosen cutoff.  At cutoff `v+1` it is precisely TRIPLE-CAP; after the
+final hole has been inserted, at cutoff `v` it kills the bad diagonal.
+-/
+
+/-! ## The common source-allocation atom -/
+
+def ThreeChannelSource
+    (D T P : Nat -> Prop) (z : Nat) : Prop := D z \/ T z \/ P z
+
+/-- A low obligation has no allocation in any of the three source channels.
+This is the one-label (and therefore weakest) Hall defect. -/
+def SourceAllocationHallDefect
+    (bound : Nat) (D T P : Nat -> Prop) : Prop :=
+  exists z, 0 < z /\ z < bound /\ Not (D z) /\ Not (T z) /\ Not (P z)
+
+/-- Exact source-side normal form of an output cap. -/
+theorem isMex_below_iff_allocationHallDefect
+    {bound x : Nat} {D T P : Nat -> Prop}
+    (hmex : IsMex (ThreeChannelSource D T P) x) :
+    x < bound <-> SourceAllocationHallDefect bound D T P := by
+  constructor
+  · intro hxb
+    refine ⟨x, hmex.1, hxb, ?_, ?_, ?_⟩
+    · intro hD
+      exact hmex.2.1 (Or.inl hD)
+    · intro hT
+      exact hmex.2.1 (Or.inr (Or.inl hT))
+    · intro hP
+      exact hmex.2.1 (Or.inr (Or.inr hP))
+  · rintro ⟨z, hz, hzb, hD, hT, hP⟩
+    by_cases hzx : z < x
+    · have hs := hmex.2.2 z hz hzx
+      rcases hs with hs | hs | hs
+      · exact False.elim (hD hs)
+      · exact False.elim (hT hs)
+      · exact False.elim (hP hs)
+    · omega
+
+def TripleAllocationHallDefect
+    (v : Nat)
+    (D0 T0 P0 D1 T1 P1 D2 T2 P2 : Nat -> Prop) : Prop :=
+  SourceAllocationHallDefect (v + 1) D0 T0 P0 \/
+  SourceAllocationHallDefect (v + 1) D1 T1 P1 \/
+  SourceAllocationHallDefect (v + 1) D2 T2 P2
+
+/-- For three exact MEX cells, the common Hall atom is exactly the ordinary
+three-cell output cap. -/
+theorem tripleAllocationHallDefect_iff_cap
+    {v x0 x1 x2 : Nat}
+    {D0 T0 P0 D1 T1 P1 D2 T2 P2 : Nat -> Prop}
+    (h0 : IsMex (ThreeChannelSource D0 T0 P0) x0)
+    (h1 : IsMex (ThreeChannelSource D1 T1 P1) x1)
+    (h2 : IsMex (ThreeChannelSource D2 T2 P2) x2) :
+    TripleAllocationHallDefect v D0 T0 P0 D1 T1 P1 D2 T2 P2 <->
+      x0 <= v \/ x1 <= v \/ x2 <= v := by
+  constructor
+  · rintro (h | h | h)
+    · left
+      have := (isMex_below_iff_allocationHallDefect h0).2 h
+      omega
+    · right; left
+      have := (isMex_below_iff_allocationHallDefect h1).2 h
+      omega
+    · right; right
+      have := (isMex_below_iff_allocationHallDefect h2).2 h
+      omega
+  · rintro (h | h | h)
+    · left
+      apply (isMex_below_iff_allocationHallDefect h0).1
+      omega
+    · right; left
+      apply (isMex_below_iff_allocationHallDefect h1).1
+      omega
+    · right; right
+      apply (isMex_below_iff_allocationHallDefect h2).1
+      omega
+
+/-- Explicit common reduction.  A postfill defect at the final source OR a
+three-tail defect closes the bad branch, assuming only the stated MEX,
+lower-bound, and bad-value-membership hypotheses. -/
+theorem final_or_triple_allocationHallDefect_closes
+    {v q x0 x1 x2 : Nat} {S : Nat -> Prop}
+    {D0 T0 P0 D1 T1 P1 D2 T2 P2 : Nat -> Prop}
+    (hdiag : IsMex (fun z => S z \/ z = q) v)
+    (h0 : IsMex (ThreeChannelSource D0 T0 P0) x0)
+    (h1 : IsMex (ThreeChannelSource D1 T1 P1) x1)
+    (h2 : IsMex (ThreeChannelSource D2 T2 P2) x2)
+    (hl0 : v <= x0) (hl1 : v <= x1) (hl2 : v <= x2)
+    (hv0 : ThreeChannelSource D0 T0 P0 v)
+    (hv1 : ThreeChannelSource D1 T1 P1 v)
+    (hv2 : ThreeChannelSource D2 T2 P2 v)
+    (hHall :
+      SourceAllocationHallDefect v S (fun _ => False) (fun z => z = q) \/
+      TripleAllocationHallDefect v D0 T0 P0 D1 T1 P1 D2 T2 P2) :
+    False := by
+  rcases hHall with hFinal | hTriple
+  · have hmex : IsMex
+        (ThreeChannelSource S (fun _ => False) (fun z => z = q)) v := by
+      simpa [ThreeChannelSource, IsMex] using hdiag
+    have hvv : v < v :=
+      (isMex_below_iff_allocationHallDefect hmex).2 hFinal
+    omega
+  · have hcap := (tripleAllocationHallDefect_iff_cap h0 h1 h2).1 hTriple
+    have hhit := r143_three_lower_bounds_and_cap_force_hit hl0 hl1 hl2 hcap
+    rcases hhit with hhit | hhit | hhit
+    · subst x0
+      exact h0.2.1 hv0
+    · subst x1
+      exact h1.2.1 hv1
+    · subst x2
+      exact h2.2.1 hv2
+
+/-- The literal R143 diagonal/tail/prefix decomposition turns the common
+atom into an exact cap for an actual Brouwer source. -/
+theorem r146_actual_midpoint_defect_iff_cap
+    (f : Nat -> Nat -> Nat) {q c x v : Nat}
+    (hcq : c <= q) (hmex : IsMex (B f q c) x) :
+    x < v + 1 <->
+      SourceAllocationHallDefect (v + 1)
+        (R143DiagBelow f c)
+        (R143VerticalTail f q c)
+        (R143RowPrefix f q c) := by
+  have hsource : forall z,
+      B f q c z <-> ThreeChannelSource
+        (R143DiagBelow f c)
+        (R143VerticalTail f q c)
+        (R143RowPrefix f q c) z := by
+    intro z
+    simpa [ThreeChannelSource] using r143_source_split f q c z hcq
+  have hmex' : IsMex
+      (ThreeChannelSource
+        (R143DiagBelow f c)
+        (R143VerticalTail f q c)
+        (R143RowPrefix f q c)) x := by
+    refine ⟨hmex.1, ?_, ?_⟩
+    · intro hs
+      exact hmex.2.1 ((hsource x).2 hs)
+    · intro z hz hzx
+      exact (hsource z).1 (hmex.2.2 z hz hzx)
+  exact isMex_below_iff_allocationHallDefect hmex'
+
+/-- In the final-hole route, the V1 source is followed by insertion of q.
+A Hall defect below v after that insertion contradicts diagonal MEX v. -/
+theorem finalPostfillHallDefect_kills_bad_diagonal
+    {v q : Nat} {S : Nat -> Prop}
+    (hdiag : IsMex (fun z => S z \/ z = q) v)
+    (hdef : SourceAllocationHallDefect v S (fun _ => False) (fun z => z = q)) :
+    False := by
+  have hmex : IsMex
+      (ThreeChannelSource S (fun _ => False) (fun z => z = q)) v := by
+    simpa [ThreeChannelSource, IsMex] using hdiag
+  have hvv : v < v :=
+    (isMex_below_iff_allocationHallDefect hmex).2 hdef
+  omega
+
+/-- A second V1-source hole strictly between q and v is exactly enough to
+produce the postfill Hall defect. -/
+theorem secondFinalHole_yields_postfill_HallDefect
+    {v q z : Nat} {S : Nat -> Prop}
+    (hq : 0 < q) (hqz : q < z) (hzv : z < v) (hz : Not (S z)) :
+    SourceAllocationHallDefect v S (fun _ => False) (fun w => w = q) := by
+  refine ⟨z, by omega, hzv, hz, ?_, ?_⟩
+  · simp
+  · omega
+
+/-- With V1 MEX q, a postfill Hall defect below v is neither more nor less
+than a second V1-source hole strictly between q and v. -/
+theorem postfillHallDefect_iff_secondFinalHole
+    {v q : Nat} {S : Nat -> Prop}
+    (hV1 : IsMex S q) :
+    SourceAllocationHallDefect v S (fun _ => False) (fun w => w = q) <->
+      exists z, q < z /\ z < v /\ Not (S z) := by
+  constructor
+  · rintro ⟨z, hz, hzv, hS, _hFalse, hzq⟩
+    refine ⟨z, ?_, hzv, hS⟩
+    by_cases hlt : z < q
+    · exact False.elim (hS (hV1.2.2 z hz hlt))
+    · have hqz : q <= z := Nat.le_of_not_gt hlt
+      omega
+  · rintro ⟨z, hqz, hzv, hS⟩
+    exact secondFinalHole_yields_postfill_HallDefect hV1.1 hqz hzv hS
+
+/-- The exact source transition at the end of a row: the diagonal source is
+the V1 source with only the V1 output inserted. -/
+theorem r146_final_diagonal_source_insert
+    {f : Nat -> Nat -> Nat} {t p : Nat} (ht : 2 <= t) :
+    B f t t p <-> B f t (t - 1) p \/ f t (t - 1) = p := by
+  have h2 : t - 2 + 2 = t := by omega
+  have h1 : t - 2 + 1 = t - 1 := by omega
+  simpa [h2, h1] using
+    (source_at_diagonal (f := f) (r := t - 2) (p := p))
+
+/-- Consequently the bad diagonal is a perfect one-hole fill: once q is
+inserted, no second V1-source hole may remain strictly between q and v. -/
+theorem badDiagonal_finalV1_has_no_second_hole
+    {f : Nat -> Nat -> Nat} {t q v : Nat}
+    (ht : 2 <= t) (hqval : f t (t - 1) = q)
+    (hV1 : IsMex (B f t (t - 1)) q)
+    (hdiag : IsMex (B f t t) v) :
+    Not (exists z, q < z /\ z < v /\ Not (B f t (t - 1) z)) := by
+  have hdiag' : IsMex (fun z => B f t (t - 1) z \/ z = q) v := by
+    refine ⟨hdiag.1, ?_, ?_⟩
+    · intro hs
+      apply hdiag.2.1
+      apply (r146_final_diagonal_source_insert ht).2
+      rcases hs with hs | hs
+      · exact Or.inl hs
+      · exact Or.inr (by simpa [hs] using hqval)
+    · intro z hz hzv
+      have hs := (r146_final_diagonal_source_insert ht).1
+        (hdiag.2.2 z hz hzv)
+      rcases hs with hs | hs
+      · exact Or.inl hs
+      · exact Or.inr (by omega)
+  intro hsecond
+  have hdef := (postfillHallDefect_iff_secondFinalHole hV1).2 hsecond
+  exact finalPostfillHallDefect_kills_bad_diagonal hdiag' hdef
+
+/-! ## Aligned final-hole / three-tail separating frame -/
+
+def r146FY (m : Nat) : Nat := 10 * m + 7
+def r146FPersistX (m : Nat) : Nat := 10 * m + 8
+def r146FQ (m : Nat) : Nat := 10 * m + 10
+def r146FL (m : Nat) : Nat := 10 * m + 13
+
+/-- The complete owner-(t-2) final-hole interface at the R143 critical
+value. -/
+def R146FinalFrame (m x : Nat) : Prop :=
+  IsMex (PrevSource x (r146FL m)) x /\
+  IsMex (fun z => PrevSource x (r146FL m) z \/ z = x) (r146FL m) /\
+  CrossingCore (r143V m) (r146FY m) (r146FQ m) (r146FL m)
+    (r146FL m + 1) /\
+  IsMex
+    (fun z => CrossingCore (r143V m) (r146FY m) (r146FQ m)
+      (r146FL m) z \/ z = x)
+    (r146FY m) /\
+  IsMex
+    (fun z => CrossingCore (r143V m) (r146FY m) (r146FQ m)
+      (r146FL m) z \/ z = r146FL m \/ z = r146FY m)
+    (r146FQ m) /\
+  IsMex
+    (fun z => CrossingCore (r143V m) (r146FY m) (r146FQ m)
+      (r146FL m) z \/ z = r146FL m \/ z = r146FY m \/ z = r146FQ m)
+    (r143V m)
+
+theorem r146_aligned_final_coordinates (m : Nat) :
+    r146FY m < r146FPersistX m /\
+    r146FPersistX m < r146FQ m /\
+    r146FQ m < r146FL m /\
+    r146FL m + 2 = r143V m /\
+    r143T m < r146FQ m := by
+  simp [r146FY, r146FPersistX, r146FQ, r146FL, r143V, r143T]
+  omega
+
+/-- The two interfaces are not adjacent: their row and column separations
+grow linearly with m. -/
+theorem r146_final_tail_interface_separation (m : Nat) :
+    r143C0 m = (r143T m - 1) + m /\
+    r143Q m = r143T m + (4 * m + 3) := by
+  simp [r143C0, r143G, r143T, r143Q, r143V]
+  omega
+
+theorem r146_aligned_drop_final_frame (m : Nat) :
+    R146FinalFrame m (r146FQ m) := by
+  have hframe := owner_two_bad_crossing_frame
+    (x := r146FQ m) (y := r146FY m) (q := r146FQ m) (l := r146FL m)
+    (by simp [r146FQ])
+    (by simp [r146FQ, r146FL])
+    (by simp [r146FQ, r146FY])
+    (by simp [r146FY])
+    (by simp [r146FY, r146FQ])
+    (by simp [r146FQ, r146FL])
+  simpa [R146FinalFrame, r146FL, r143V] using hframe
+
+theorem r146_aligned_persist_final_frame (m : Nat) :
+    R146FinalFrame m (r146FPersistX m) := by
+  have hframe := owner_two_bad_crossing_frame
+    (x := r146FPersistX m) (y := r146FY m)
+    (q := r146FQ m) (l := r146FL m)
+    (by simp [r146FPersistX])
+    (by simp [r146FPersistX, r146FL])
+    (by simp [r146FPersistX, r146FY])
+    (by simp [r146FY])
+    (by simp [r146FY, r146FQ])
+    (by simp [r146FQ, r146FL])
+  simpa [R146FinalFrame, r146FL, r143V] using hframe
+
+theorem r146_drop_and_persist_are_genuinely_distinct (m : Nat) :
+    r146FQ m = r146FQ m /\
+    Not (CrossingCore (r143V m) (r146FY m) (r146FQ m) (r146FL m)
+      (r146FQ m)) /\
+    r146FPersistX m ≠ r146FQ m /\
+    CrossingCore (r143V m) (r146FY m) (r146FQ m) (r146FL m)
+      (r146FPersistX m) := by
+  have hdrop := crossingCore_drop_or_persist
+    (bound := r143V m) (x := r146FQ m) (y := r146FY m)
+    (q := r146FQ m) (l := r146FL m)
+    (by simp [r146FQ])
+    (by simp [r146FQ, r146FL])
+    (by simp [r146FQ, r146FY])
+    (by simp [r146FL, r143V])
+  have hpersist := crossingCore_drop_or_persist
+    (bound := r143V m) (x := r146FPersistX m) (y := r146FY m)
+    (q := r146FQ m) (l := r146FL m)
+    (by simp [r146FPersistX])
+    (by simp [r146FPersistX, r146FL])
+    (by simp [r146FPersistX, r146FY])
+    (by simp [r146FL, r143V])
+  refine ⟨rfl, hdrop.1 rfl, ?_, ?_⟩
+  · simp [r146FPersistX, r146FQ]
+  · exact hpersist.2 (by simp [r146FPersistX, r146FQ])
+
+/-- Strong separation: at the same critical value and rows, the exact
+two-row three-tail no-cap packet coexists with both final-hole branches.
+Thus the tail interface cannot select DROP versus PERSIST, and either
+final-hole branch is compatible with complete low-tail preservation. -/
+theorem r146_two_row_tail_no_cap_coexists_with_drop_and_persist
+    (m : Nat) (hm : 4 <= m) :
+    R146FinalFrame m (r146FQ m) /\
+    R146FinalFrame m (r146FPersistX m) /\
+    (IsMex (R144LowerSource0 m) (r144L0 m) /\
+      IsMex (R144LowerSource1 m) (r144L1 m) /\
+      IsMex (R144LowerSource2 m) (r144L2 m) /\
+      IsMex (R144UpperSource0 m) (r144U0 m) /\
+      IsMex (R144UpperSource1 m) (r144U1 m) /\
+      IsMex (R144UpperSource2 m) (r144U2 m)) /\
+    Not (r144U0 m <= r143V m \/
+      r144U1 m <= r143V m \/ r144U2 m <= r143V m) := by
+  have hrows := r144_two_row_mex_packet m hm
+  have hpack := r144_two_target_rows_injective_and_upper_no_cap m
+  have hnocap := hpack.2.2.2.2.2.2.2.2.2
+  exact ⟨r146_aligned_drop_final_frame m,
+    r146_aligned_persist_final_frame m,
+    hrows,
+    hnocap⟩
+
+/-! ## Stronger shared A_k allocation frame suggested after R144 -/
+
+def r146SharedG (k : Nat) : Nat := 7 * k + 2
+def r146SharedC0 (k : Nat) : Nat := 7 * k
+
+def r146EarlyBlocker (i : Nat) : Nat := 2 * i
+def r146EarlyFreeze (i : Nat) : Nat := i
+def r146LateBlocker (k j : Nat) : Nat := 4 * k + 3 * j + 1
+def r146LateRank (k j : Nat) : Nat := 2 * k + j
+/-- Base late schedule, used only before the final blocker. -/
+def r146LateFreeze (k j : Nat) : Nat := 2 * k + 2 * j
+/-- The final blocker is the future V1 hole itself.  R141 chronology forces
+its freeze column to be at least t; choose the sharp value t. -/
+def r146FinalFreeze (k : Nat) : Nat := FrameT k
+
+theorem r146_shared_critical_midpoint_coordinates (k : Nat) (hk : 4 <= k) :
+    2 * r146SharedG k = FrameV k + FrameA k /\
+    r146SharedC0 k = r146SharedG k - 2 /\
+    FrameT k < r146SharedC0 k /\
+    FrameQ k = FrameV k - 3 := by
+  simp [r146SharedG, r146SharedC0, FrameV, FrameA, FrameT, FrameQ]
+  omega
+
+theorem r146_early_is_frameBlocker
+    {k i : Nat} (hi : 1 <= i) (hik : i <= 2 * k) :
+    FrameBlocker k (r146EarlyBlocker i) := by
+  unfold FrameBlocker r146EarlyBlocker
+  have hn : 2 * i <= 4 * k := by omega
+  have hp : 2 * i - 1 <= 4 * k := by omega
+  have hpred : 2 * i - 1 = 2 * (i - 1) + 1 := by omega
+  simp only [FrameCount, if_pos hn, if_pos hp]
+  rw [show (2 * i) / 2 = i by omega]
+  rw [hpred]
+  omega
+
+theorem r146_late_is_frameBlocker
+    {k j : Nat} (hj : 1 <= j) (hjk : j <= 2 * k) :
+    FrameBlocker k (r146LateBlocker k j) := by
+  unfold FrameBlocker r146LateBlocker
+  have hn : Not (4 * k + 3 * j + 1 <= 4 * k) := by omega
+  have hp : Not (4 * k + 3 * j <= 4 * k) := by omega
+  have hpred : 4 * k + 3 * j + 1 - 1 = 4 * k + 3 * j := by omega
+  rw [hpred]
+  simp only [FrameCount, if_neg hn, if_neg hp]
+  rw [show 4 * k + 3 * j + 1 - 4 * k - 1 = 3 * j by omega]
+  rw [show (3 * j) / 3 = j by omega]
+  rw [show 4 * k + 3 * j - 4 * k - 1 = 3 * j - 1 by omega]
+  rw [show (3 * j - 1) / 3 = j - 1 by omega]
+  simp [Nat.min_eq_left hjk]
+  omega
+
+theorem r146_early_freeze_rails
+    {k i : Nat} (hi : 1 <= i) (hik : i <= 2 * k) :
+    r146EarlyFreeze i < r146EarlyBlocker i /\
+    (r146EarlyBlocker i - 1) / 2 <= r146EarlyFreeze i /\
+    r146EarlyFreeze i <= 2 * i + 1 /\
+    r146EarlyFreeze i <= 5 * k := by
+  simp [r146EarlyFreeze, r146EarlyBlocker]
+  omega
+
+theorem r146_late_freeze_rails
+    {k j : Nat} (hj : 1 <= j) (hjk : j <= 2 * k) :
+    r146LateFreeze k j < r146LateBlocker k j /\
+    (r146LateBlocker k j - 1) / 2 <= r146LateFreeze k j /\
+    r146LateFreeze k j <= 2 * r146LateRank k j + 1 /\
+    r146LateFreeze k j <= 6 * k := by
+  simp [r146LateFreeze, r146LateBlocker, r146LateRank]
+  omega
+
+/-- For every nonfinal late blocker the base freeze column is exactly one
+before the birth/record row `b-rank`; hence it satisfies the diagonal
+deadline.  The final blocker uses `r146FinalFreeze` instead. -/
+theorem r146_late_freeze_is_birth_row_minus_one
+    (k j : Nat) :
+    r146LateFreeze k j + 1 = r146LateBlocker k j - r146LateRank k j := by
+  simp [r146LateFreeze, r146LateBlocker, r146LateRank]
+  omega
+
+theorem r146_late_freeze_strict
+    {k i j : Nat} (hij : i < j) :
+    r146LateFreeze k i < r146LateFreeze k j := by
+  simp [r146LateFreeze]
+  omega
+
+theorem r146_freeze_schedule_boundary_and_deadline
+    (k : Nat) (hk : 4 <= k) :
+    r146EarlyFreeze (2 * k) < r146LateFreeze k 1 /\
+    r146LateFreeze k (2 * k - 1) < r146FinalFreeze k /\
+    r146FinalFreeze k = FrameT k /\
+    r146FinalFreeze k < r146SharedC0 k := by
+  simp [r146EarlyFreeze, r146LateFreeze, r146FinalFreeze,
+    r146SharedC0, FrameT]
+  omega
+
+/-- The corrected final placement simultaneously satisfies the V1
+chronology lower bound, the scalar rails, the diagonal deadline, strict
+order after the penultimate late blocker, and the midpoint-prefix bound. -/
+theorem r146_final_freeze_compatibility
+    (k : Nat) (hk : 4 <= k) :
+    FrameT k <= r146FinalFreeze k /\
+    r146FinalFreeze k < FrameQ k /\
+    (FrameQ k - 1) / 2 <= r146FinalFreeze k /\
+    r146FinalFreeze k <= 2 * (4 * k) + 1 /\
+    FrameQ k - 4 * k <= r146FinalFreeze k + 1 /\
+    r146LateFreeze k (2 * k - 1) < r146FinalFreeze k /\
+    r146FinalFreeze k < r146SharedC0 k := by
+  simp [r146FinalFreeze, r146LateFreeze, FrameT, FrameQ, r146SharedC0]
+  omega
+
+def R146RangeAllocation (k p : Nat) : Prop :=
+  0 < p /\ p <= FrameV k /\ Not (FrameBlocker k p)
+
+def R146BlockerAllocation (k p : Nat) : Prop :=
+  0 < p /\ p <= FrameV k /\ FrameBlocker k p
+
+def R146SharedS0 (k p : Nat) : Prop :=
+  R146RangeAllocation k p \/ R146BlockerAllocation k p
+
+def R146SharedS1 (k p : Nat) : Prop :=
+  R146SharedS0 k p \/ p = FrameV k + 1
+
+def R146SharedS2 (k p : Nat) : Prop :=
+  R146SharedS1 k p \/ p = FrameV k + 2
+
+theorem r146_shared_range_blocker_cover (k p : Nat) :
+    R146SharedS0 k p <-> 0 < p /\ p <= FrameV k := by
+  constructor
+  · rintro (h | h)
+    · exact ⟨h.1, h.2.1⟩
+    · exact ⟨h.1, h.2.1⟩
+  · intro h
+    by_cases hB : FrameBlocker k p
+    · exact Or.inr ⟨h.1, h.2, hB⟩
+    · exact Or.inl ⟨h.1, h.2, hB⟩
+
+theorem r146_shared_three_tail_mex_packet (k : Nat) :
+    IsMex (R146SharedS0 k) (FrameV k + 1) /\
+    IsMex (R146SharedS1 k) (FrameV k + 2) /\
+    IsMex (R146SharedS2 k) (FrameV k + 3) /\
+    Not ((FrameV k + 1 <= FrameV k) \/
+      (FrameV k + 2 <= FrameV k) \/ (FrameV k + 3 <= FrameV k)) := by
+  have h0 : IsMex (R146SharedS0 k) (FrameV k + 1) := by
+    refine ⟨by omega, ?_, ?_⟩
+    · intro hs
+      have h := (r146_shared_range_blocker_cover k _).1 hs
+      omega
+    · intro p hp hlt
+      exact (r146_shared_range_blocker_cover k p).2 ⟨hp, by omega⟩
+  have h1 : IsMex (R146SharedS1 k) (FrameV k + 2) := by
+    refine ⟨by omega, ?_, ?_⟩
+    · rintro (hs | hs)
+      · have h := (r146_shared_range_blocker_cover k _).1 hs
+        omega
+      · omega
+    · intro p hp hlt
+      by_cases hpv : p <= FrameV k
+      · exact Or.inl ((r146_shared_range_blocker_cover k p).2 ⟨hp, hpv⟩)
+      · exact Or.inr (by omega)
+  have h2 : IsMex (R146SharedS2 k) (FrameV k + 3) := by
+    refine ⟨by omega, ?_, ?_⟩
+    · rintro (hs | hs)
+      · rcases hs with hs | hs
+        · have h := (r146_shared_range_blocker_cover k _).1 hs
+          omega
+        · omega
+      · omega
+    · intro p hp hlt
+      by_cases hpv : p <= FrameV k
+      · exact Or.inl (Or.inl
+          ((r146_shared_range_blocker_cover k p).2 ⟨hp, hpv⟩))
+      · by_cases hp1 : p = FrameV k + 1
+        · exact Or.inl (Or.inr hp1)
+        · exact Or.inr (by omega)
+  exact ⟨h0, h1, h2, by simp⟩
+
+theorem r146_shared_range_count_fits_before_midpoint
+    (k : Nat) (hk : 1 <= k) :
+    FrameV k - FrameCount k (FrameV k) = FrameT k + 1 /\
+    FrameT k < r146SharedC0 k + 3 := by
+  have hcount : FrameCount k (FrameV k) = 4 * k := by
+    change FrameCount k (10 * k + 4) = 4 * k
+    rw [frame_v_is_range k hk, frameCount_at_final_prefix k hk]
+  rw [hcount]
+  simp [FrameV, FrameT, r146SharedC0]
+  omega
+
+/-- Same-k unified interface counterframe: the R141 exact DROP final hole,
+the corrected chronology/deadline-compatible late freeze schedule, and a fully saturated
+three-tail source packet coexist.  The early rank-to-column assignment is
+only an interface allocation; it does not reconstruct the fixed-column-2
+anchor of the full game. -/
+theorem r146_Ak_drop_and_saturated_tail_unified_frame
+    (k : Nat) (hk : 4 <= k) :
+    FrameBlocker k (FrameY k) /\
+    FrameBlocker k (FrameQ k) /\
+    r146FinalFreeze k < r146SharedC0 k /\
+    (IsMex (R146SharedS0 k) (FrameV k + 1) /\
+      IsMex (R146SharedS1 k) (FrameV k + 2) /\
+      IsMex (R146SharedS2 k) (FrameV k + 3)) /\
+    IsMex (PrevSource (FrameQ k) (FrameL k)) (FrameQ k) /\
+    IsMex
+      (fun z => PrevSource (FrameQ k) (FrameL k) z \/ z = FrameQ k)
+      (FrameL k) /\
+    CrossingCore (FrameL k + 2) (FrameY k) (FrameQ k) (FrameL k)
+      (FrameL k + 1) /\
+    IsMex
+      (fun z => CrossingCore (FrameL k + 2) (FrameY k) (FrameQ k)
+        (FrameL k) z \/ z = FrameQ k)
+      (FrameY k) /\
+    IsMex
+      (fun z => CrossingCore (FrameL k + 2) (FrameY k) (FrameQ k)
+        (FrameL k) z \/ z = FrameL k \/ z = FrameY k)
+      (FrameQ k) /\
+    IsMex
+      (fun z => CrossingCore (FrameL k + 2) (FrameY k) (FrameQ k)
+        (FrameL k) z \/ z = FrameL k \/ z = FrameY k \/ z = FrameQ k)
+      (FrameL k + 2) := by
+  have htail := r146_shared_three_tail_mex_packet k
+  have hfinal := parametric_owner_two_drop_frame k (by omega)
+  have hdeadline := r146_freeze_schedule_boundary_and_deadline k hk
+  exact ⟨frame_y_is_blocker k (by omega),
+    frame_q_is_blocker k (by omega),
+    hdeadline.2.2.2,
+    ⟨htail.1, htail.2.1, htail.2.2.1⟩,
+    hfinal.2.2.2.1,
+    hfinal.2.2.2.2.1,
+    hfinal.2.2.2.2.2.1,
+    hfinal.2.2.2.2.2.2.1,
+    hfinal.2.2.2.2.2.2.2.1,
+    hfinal.2.2.2.2.2.2.2.2⟩
+
+#print axioms isMex_below_iff_allocationHallDefect
+#print axioms tripleAllocationHallDefect_iff_cap
+#print axioms final_or_triple_allocationHallDefect_closes
+#print axioms r146_actual_midpoint_defect_iff_cap
+#print axioms finalPostfillHallDefect_kills_bad_diagonal
+#print axioms postfillHallDefect_iff_secondFinalHole
+#print axioms r146_final_diagonal_source_insert
+#print axioms badDiagonal_finalV1_has_no_second_hole
+#print axioms r146_final_tail_interface_separation
+#print axioms r146_two_row_tail_no_cap_coexists_with_drop_and_persist
+#print axioms r146_early_is_frameBlocker
+#print axioms r146_late_is_frameBlocker
+#print axioms r146_late_freeze_rails
+#print axioms r146_late_freeze_is_birth_row_minus_one
+#print axioms r146_final_freeze_compatibility
+#print axioms r146_Ak_drop_and_saturated_tail_unified_frame
+
+end ChompLean

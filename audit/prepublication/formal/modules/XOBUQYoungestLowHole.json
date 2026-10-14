@@ -1,0 +1,1069 @@
+{
+  "module": "XOBUQYoungestLowHole",
+  "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+  "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+  "declarationCount": 75,
+  "theoremDeclarationCount": 60,
+  "proofValuedDeclarationCount": 62,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.OBUQ.Anchored",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 66,
+      "typePretty": "(Q : ChompLean.OBUQ.QState) → Prop",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "inductive",
+      "isProof": false,
+      "sourceLine": 315,
+      "typePretty": "(l s c : Nat → Nat) → (s0 : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.bit",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 317,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (self : ChompLean.OBUQ.LowHoleSaw l s c s0) (n : Nat),\n  Or (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n    (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.casesOn",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 315,
+      "typePretty": "{l s c : Nat → Nat} →\n  {s0 : Nat} →\n    {motive : (t : ChompLean.OBUQ.LowHoleSaw l s c s0) → Sort u} →\n      (t : ChompLean.OBUQ.LowHoleSaw l s c s0) →\n        (mk :\n            (init : @Eq.{1} Nat (s (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) s0) →\n              (bit :\n                  ∀ (n : Nat),\n                    Or (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n                      (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n                (size_step :\n                    ∀ (n : Nat),\n                      @Eq.{1} Nat\n                        (s\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (s n) (c n))) →\n                  (low_le_size : ∀ (n : Nat), @LE.le.{0} Nat instLENat (l n) (s n)) →\n                    (low_pos_of_no_recharge :\n                        ∀ (n : Nat),\n                          @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n                            @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                              (l n)) →\n                      (low_drain :\n                          ∀ (n : Nat),\n                            @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n                              @Eq.{1} Nat\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                  (l\n                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                                (l n)) →\n                        motive\n                          (@ChompLean.OBUQ.LowHoleSaw.mk l s c s0 init bit size_step low_le_size low_pos_of_no_recharge\n                            low_drain)) →\n          motive t",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.init",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 316,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (self : ChompLean.OBUQ.LowHoleSaw l s c s0),\n  @Eq.{1} Nat (s (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) s0",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.low_drain",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 321,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (self : ChompLean.OBUQ.LowHoleSaw l s c s0) (n : Nat),\n  @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (l\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (l n)",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.low_le_size",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 319,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (self : ChompLean.OBUQ.LowHoleSaw l s c s0) (n : Nat),\n  @LE.le.{0} Nat instLENat (l n) (s n)",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.low_pos_of_no_recharge",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 320,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (self : ChompLean.OBUQ.LowHoleSaw l s c s0) (n : Nat),\n  @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (l n)",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.mk",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "constructor",
+      "isProof": true,
+      "sourceLine": 315,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat}\n  (init : @Eq.{1} Nat (s (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) s0)\n  (bit :\n    ∀ (n : Nat),\n      Or (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (size_step :\n    ∀ (n : Nat),\n      @Eq.{1} Nat\n        (s\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (s n) (c n)))\n  (low_le_size : ∀ (n : Nat), @LE.le.{0} Nat instLENat (l n) (s n))\n  (low_pos_of_no_recharge :\n    ∀ (n : Nat),\n      @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (l n))\n  (low_drain :\n    ∀ (n : Nat),\n      @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n        @Eq.{1} Nat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (l\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (l n)),\n  ChompLean.OBUQ.LowHoleSaw l s c s0",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.mk._flat_ctor",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat}\n  (init : @Eq.{1} Nat (s (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) s0)\n  (bit :\n    ∀ (n : Nat),\n      Or (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (size_step :\n    ∀ (n : Nat),\n      @Eq.{1} Nat\n        (s\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (s n) (c n)))\n  (low_le_size : ∀ (n : Nat), @LE.le.{0} Nat instLENat (l n) (s n))\n  (low_pos_of_no_recharge :\n    ∀ (n : Nat),\n      @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (l n))\n  (low_drain :\n    ∀ (n : Nat),\n      @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n        @Eq.{1} Nat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (l\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (l n)),\n  ChompLean.OBUQ.LowHoleSaw l s c s0",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.rec",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "recursor",
+      "isProof": false,
+      "sourceLine": 315,
+      "typePretty": "{l s c : Nat → Nat} →\n  {s0 : Nat} →\n    {motive : (t : ChompLean.OBUQ.LowHoleSaw l s c s0) → Sort u} →\n      (mk :\n          (init : @Eq.{1} Nat (s (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) s0) →\n            (bit :\n                ∀ (n : Nat),\n                  Or (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n                    (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n              (size_step :\n                  ∀ (n : Nat),\n                    @Eq.{1} Nat\n                      (s\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (s n) (c n))) →\n                (low_le_size : ∀ (n : Nat), @LE.le.{0} Nat instLENat (l n) (s n)) →\n                  (low_pos_of_no_recharge :\n                      ∀ (n : Nat),\n                        @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n                          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                            (l n)) →\n                    (low_drain :\n                        ∀ (n : Nat),\n                          @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n                            @Eq.{1} Nat\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                (l\n                                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                              (l n)) →\n                      motive\n                        (@ChompLean.OBUQ.LowHoleSaw.mk l s c s0 init bit size_step low_le_size low_pos_of_no_recharge\n                          low_drain)) →\n        (t : ChompLean.OBUQ.LowHoleSaw l s c s0) → motive t",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.recOn",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 315,
+      "typePretty": "{l s c : Nat → Nat} →\n  {s0 : Nat} →\n    {motive : (t : ChompLean.OBUQ.LowHoleSaw l s c s0) → Sort u} →\n      (t : ChompLean.OBUQ.LowHoleSaw l s c s0) →\n        (mk :\n            (init : @Eq.{1} Nat (s (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) s0) →\n              (bit :\n                  ∀ (n : Nat),\n                    Or (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n                      (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n                (size_step :\n                    ∀ (n : Nat),\n                      @Eq.{1} Nat\n                        (s\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (s n) (c n))) →\n                  (low_le_size : ∀ (n : Nat), @LE.le.{0} Nat instLENat (l n) (s n)) →\n                    (low_pos_of_no_recharge :\n                        ∀ (n : Nat),\n                          @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n                            @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                              (l n)) →\n                      (low_drain :\n                          ∀ (n : Nat),\n                            @Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →\n                              @Eq.{1} Nat\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                  (l\n                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                                (l n)) →\n                        motive\n                          (@ChompLean.OBUQ.LowHoleSaw.mk l s c s0 init bit size_step low_le_size low_pos_of_no_recharge\n                            low_drain)) →\n          motive t",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.OBUQ.LowHoleSaw.size_step",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 318,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (self : ChompLean.OBUQ.LowHoleSaw l s c s0) (n : Nat),\n  @Eq.{1} Nat\n    (s\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (s n) (c n))",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_nonempty",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 69,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.Anchored Q),\n  @Ne.{1} (List.{0} (List.{0} Nat)) (ChompLean.OBUQ.QState.queues Q) (@List.nil.{0} (List.{0} Nat))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_output_gt_youngest_service",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 87,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.Anchored Q) (U : List.{0} Nat),\n  @Exists.{1} Nat fun (y : Nat) => @LT.lt.{0} Nat instLTNat y (ChompLean.OBUQ.qOutput U Q)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_output_ne_privateMex",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 143,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.Anchored Q) (U : List.{0} Nat),\n  @Ne.{1} Nat (ChompLean.OBUQ.qOutput U Q) (ChompLean.OBUQ.queueMex (ChompLean.OBUQ.QState.diagonal Q))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_output_pos",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 100,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.Anchored Q) (U : List.{0} Nat),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.OBUQ.qOutput U Q)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_output_pos._proof_1_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (U : List.{0} Nat) (y : Nat)\n  (hy : @LT.lt.{0} Nat instLTNat y (ChompLean.OBUQ.qOutput U Q)),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (ChompLean.OBUQ.qOutput U Q)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_preserved",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 105,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.Anchored Q) (U : List.{0} Nat),\n  ChompLean.OBUQ.Anchored (ChompLean.OBUQ.qStep U Q)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_privateMex_drain",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 176,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.Anchored Q) (U : List.{0} Nat)\n  (hL :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (ChompLean.OBUQ.queueMex (ChompLean.OBUQ.QState.diagonal Q))),\n  @Eq.{1} Nat (ChompLean.OBUQ.queueMex (ChompLean.OBUQ.QState.diagonal (ChompLean.OBUQ.qStep U Q)))\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n      (ChompLean.OBUQ.queueMex (ChompLean.OBUQ.QState.diagonal Q))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_privateMex_mem_diagonal_input",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 117,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.Anchored Q) (U : List.{0} Nat),\n  @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U\n      (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n        (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.QState.diagonal Q)\n        (ChompLean.OBUQ.ScanResult.outputs\n          (ChompLean.OBUQ.scanQueues U (@List.nil.{0} Nat) (ChompLean.OBUQ.QState.queues Q)))))\n    (ChompLean.OBUQ.queueMex (ChompLean.OBUQ.QState.diagonal Q))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_scan_output_normal_form",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 77,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.Anchored Q) (U : List.{0} Nat),\n  @Exists.{1} (List.{0} Nat) fun (R : List.{0} Nat) =>\n    @Eq.{1} (List.{0} Nat)\n      (ChompLean.OBUQ.ScanResult.outputs\n        (ChompLean.OBUQ.scanQueues U (@List.nil.{0} Nat) (ChompLean.OBUQ.QState.queues Q)))\n      (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n        (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R\n        (@List.cons.{0} Nat\n          (ChompLean.OBUQ.queueMex\n            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U\n              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.QState.diagonal Q)\n                R)))\n          (@List.nil.{0} Nat)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_youngestCard_recharge",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 295,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.Anchored Q)\n  (hG : @List.Nodup.{0} Nat (ChompLean.OBUQ.QState.diagonal Q)) (U : List.{0} Nat),\n  @Eq.{1} Nat (@List.length.{0} Nat (ChompLean.OBUQ.QState.diagonal (ChompLean.OBUQ.qStep U Q)))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@List.length.{0} Nat (ChompLean.OBUQ.QState.diagonal Q))\n      (@ite.{1} Nat\n        (@Eq.{1} Nat (ChompLean.OBUQ.queueMex (ChompLean.OBUQ.QState.diagonal Q))\n          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (instDecidableEqNat (ChompLean.OBUQ.queueMex (ChompLean.OBUQ.QState.diagonal Q))\n          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.anchored_youngest_nodup_preserved",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 287,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (hG : @List.Nodup.{0} Nat (ChompLean.OBUQ.QState.diagonal Q)) (U : List.{0} Nat),\n  @List.Nodup.{0} Nat (ChompLean.OBUQ.QState.diagonal (ChompLean.OBUQ.qStep U Q))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_count_partition",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 334,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (h : ChompLean.OBUQ.LowHoleSaw l s c s0) (n : Nat),\n  @Eq.{1} Nat n\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n      (ChompLean.OBUQ.noRechargeCount c n))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_count_partition._proof_1_7",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c : Nat → Nat} (n : Nat)\n  (ih :\n    @Eq.{1} Nat n\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n        (ChompLean.OBUQ.noRechargeCount c n))),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.noRechargeCount c n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_count_partition._proof_1_8",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c : Nat → Nat} (n : Nat)\n  (ih :\n    @Eq.{1} Nat n\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n        (ChompLean.OBUQ.noRechargeCount c n))),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (ChompLean.OBUQ.noRechargeCount c n))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_doubled_recharge_bound",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 379,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (h : ChompLean.OBUQ.LowHoleSaw l s c s0) (n : Nat),\n  @LE.le.{0} Nat instLENat\n    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) n)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.OBUQ.rechargeCount c n))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          s0))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.OBUQ.rechargeCount c n)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_doubled_recharge_bound._proof_1_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {l c : Nat → Nat} {s0 : Nat} (n : Nat)\n  (hp :\n    @Eq.{1} Nat n\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n        (ChompLean.OBUQ.noRechargeCount c n)))\n  (hc :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.OBUQ.noRechargeCount c n))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (l n)))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          s0)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.OBUQ.rechargeCount c n)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) n)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.OBUQ.rechargeCount c n))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              s0))\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.OBUQ.rechargeCount c n)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_exact_credit",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 352,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (h : ChompLean.OBUQ.LowHoleSaw l s c s0) (n : Nat),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.OBUQ.noRechargeCount c n))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (l n)))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        s0)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.OBUQ.rechargeCount c n)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_exact_credit._proof_1_7",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {l : Nat → Nat} {s0 : Nat}\n  (hl : @LE.le.{0} Nat instLENat (l (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) s0),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (l (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            s0)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_exact_credit._proof_1_8",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {l c : Nat → Nat} {s0 : Nat} (n : Nat)\n  (ih :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.OBUQ.noRechargeCount c n))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (l n)))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          s0)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.OBUQ.rechargeCount c n)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n  (hd :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (l\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (l n)),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.noRechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (l\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            s0)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.OBUQ.rechargeCount c n)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_exact_credit._proof_1_9",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (n : Nat)\n  (ih :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.OBUQ.noRechargeCount c n))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (l n)))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          s0)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.OBUQ.rechargeCount c n)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n  (hl :\n    @LE.le.{0} Nat instLENat\n      (l\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s0\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hform :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          s0)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            s0)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.OBUQ.rechargeCount c n)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s0 (ChompLean.OBUQ.rechargeCount c n))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.OBUQ.noRechargeCount c n))\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (l\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            s0)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_size_eq",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 323,
+      "typePretty": "∀ {l s c : Nat → Nat} {s0 : Nat} (h : ChompLean.OBUQ.LowHoleSaw l s c s0) (n : Nat),\n  @Eq.{1} Nat (s n)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s0 (ChompLean.OBUQ.rechargeCount c n))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.lowHoleSaw_size_eq._proof_1_4",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s c : Nat → Nat} {s0 : Nat} (n : Nat),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s0 (ChompLean.OBUQ.rechargeCount c n)) (c n))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s0\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n) (c n)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.noRechargeCount",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 311,
+      "typePretty": "(c : Nat → Nat) → Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.noRechargeCount._sunfold",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(c : Nat → Nat) → Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.noRechargeCount._unsafe_rec",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(c : Nat → Nat) → Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.noRechargeCount.eq_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (c : Nat → Nat),\n  @Eq.{1} Nat (ChompLean.OBUQ.noRechargeCount c (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n    (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.noRechargeCount.eq_2",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (c : Nat → Nat) (n : Nat),\n  @Eq.{1} Nat (ChompLean.OBUQ.noRechargeCount c (Nat.succ n))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.noRechargeCount c n)\n      (@ite.{1} Nat (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (instDecidableEqNat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.noRechargeCount.eq_def",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (c : Nat → Nat) (x : Nat),\n  @Eq.{1} Nat (ChompLean.OBUQ.noRechargeCount c x)\n    (ChompLean.OBUQ.rechargeCount.match_1.{1} (fun (x : Nat) => Nat) x\n      (fun (_ : Unit) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) fun (n : Nat) =>\n      @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.noRechargeCount c n)\n        (@ite.{1} Nat (@Eq.{1} Nat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n          (instDecidableEqNat (c n) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.privateMex_update_of_pos",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 154,
+      "typePretty": "∀ {G : List.{0} Nat} {d : Nat}\n  (hL :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.OBUQ.queueMex G))\n  (hne : @Ne.{1} Nat d (ChompLean.OBUQ.queueMex G)),\n  @Eq.{1} Nat (ChompLean.OBUQ.queueMex (ChompLean.OBUQ.updateQueue G d))\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.queueMex G)\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.privateMex_update_of_pos._proof_1_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {G : List.{0} Nat}\n  (hL :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.OBUQ.queueMex G)),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.queueMex G)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (ChompLean.OBUQ.queueMex G)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.privateMex_update_of_pos._proof_1_2",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {G : List.{0} Nat} {d : Nat}\n  (hL :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.OBUQ.queueMex G))\n  (hd : @Ne.{1} Nat d (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (heq :\n    @Eq.{1} Nat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.queueMex G)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) d\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@Eq.{1} Nat d (ChompLean.OBUQ.queueMex G)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.privateMex_update_of_pos._proof_1_3",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {G : List.{0} Nat}\n  (hL :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.OBUQ.queueMex G))\n  (j : Nat)\n  (hj :\n    @LT.lt.{0} Nat instLTNat j\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.queueMex G)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (ChompLean.OBUQ.queueMex G)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.qOutput.eq_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (U : List.{0} Nat) (Q : ChompLean.OBUQ.QState),\n  @Eq.{1} Nat (ChompLean.OBUQ.qOutput U Q)\n    (ChompLean.OBUQ.queueMex\n      (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n        (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U\n        (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n          (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.QState.diagonal Q)\n          (ChompLean.OBUQ.ScanResult.outputs\n            (ChompLean.OBUQ.scanQueues U (@List.nil.{0} Nat) (ChompLean.OBUQ.QState.queues Q))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.qOutput_absent_diagonal",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 275,
+      "typePretty": "∀ {Q : ChompLean.OBUQ.QState} (U : List.{0} Nat),\n  Not\n    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.QState.diagonal Q)\n      (ChompLean.OBUQ.qOutput U Q))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.qOutput_absent_diagonal._simp_1_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {α : Type u_1} {a : α} {s t : List.{u_1} α},\n  @Eq.{1} Prop\n    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)\n      (@HAppend.hAppend.{u_1, u_1, u_1} (List.{u_1} α) (List.{u_1} α) (List.{u_1} α)\n        (@instHAppendOfAppend.{u_1} (List.{u_1} α) (@List.instAppend.{u_1} α)) s t)\n      a)\n    (Or (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) s a)\n      (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) t a))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.OBUQ.qStep.eq_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (U : List.{0} Nat) (Q : ChompLean.OBUQ.QState),\n  @Eq.{1} ChompLean.OBUQ.QState (ChompLean.OBUQ.qStep U Q)\n    (ChompLean.OBUQ.QState.mk\n      (@HAppend.hAppend.{0, 0, 0} (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat))\n        (@instHAppendOfAppend.{0} (List.{0} (List.{0} Nat)) (@List.instAppend.{0} (List.{0} Nat)))\n        (ChompLean.OBUQ.ScanResult.survivors\n          (ChompLean.OBUQ.scanQueues U (@List.nil.{0} Nat) (ChompLean.OBUQ.QState.queues Q)))\n        (@ite.{1} (List.{0} (List.{0} Nat))\n          (@Eq.{1} Nat\n            (ChompLean.OBUQ.queueMex\n              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U\n                (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                  (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))\n                  (ChompLean.OBUQ.QState.diagonal Q)\n                  (ChompLean.OBUQ.ScanResult.outputs\n                    (ChompLean.OBUQ.scanQueues U (@List.nil.{0} Nat) (ChompLean.OBUQ.QState.queues Q))))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n          (instDecidableEqNat\n            (ChompLean.OBUQ.queueMex\n              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U\n                (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                  (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))\n                  (ChompLean.OBUQ.QState.diagonal Q)\n                  (ChompLean.OBUQ.ScanResult.outputs\n                    (ChompLean.OBUQ.scanQueues U (@List.nil.{0} Nat) (ChompLean.OBUQ.QState.queues Q))))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n          (@List.nil.{0} (List.{0} Nat))\n          (@List.cons.{0} (List.{0} Nat)\n            (ChompLean.OBUQ.updateQueue (ChompLean.OBUQ.QState.diagonal Q)\n              (ChompLean.OBUQ.queueMex\n                (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                  (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U\n                  (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                    (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))\n                    (ChompLean.OBUQ.QState.diagonal Q)\n                    (ChompLean.OBUQ.ScanResult.outputs\n                      (ChompLean.OBUQ.scanQueues U (@List.nil.{0} Nat) (ChompLean.OBUQ.QState.queues Q)))))))\n            (@List.nil.{0} (List.{0} Nat)))))\n      (ChompLean.OBUQ.updateQueue (ChompLean.OBUQ.QState.diagonal Q)\n        (ChompLean.OBUQ.queueMex\n          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U\n            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.QState.diagonal Q)\n              (ChompLean.OBUQ.ScanResult.outputs\n                (ChompLean.OBUQ.scanQueues U (@List.nil.{0} Nat) (ChompLean.OBUQ.QState.queues Q))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.queueMex_append_self_gt",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 35,
+      "typePretty": "∀ (xs : List.{0} Nat),\n  @LT.lt.{0} Nat instLTNat (ChompLean.OBUQ.queueMex xs)\n    (ChompLean.OBUQ.queueMex\n      (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n        (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) xs\n        (@List.cons.{0} Nat (ChompLean.OBUQ.queueMex xs) (@List.nil.{0} Nat))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.queueMex_append_self_gt._proof_1_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (xs : List.{0} Nat)\n  (hne :\n    Not\n      (@Eq.{1} Nat\n        (ChompLean.OBUQ.queueMex\n          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) xs\n            (@List.cons.{0} Nat (ChompLean.OBUQ.queueMex xs) (@List.nil.{0} Nat))))\n        (ChompLean.OBUQ.queueMex xs)))\n  (hnlt :\n    Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.OBUQ.queueMex\n          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) xs\n            (@List.cons.{0} Nat (ChompLean.OBUQ.queueMex xs) (@List.nil.{0} Nat))))\n        (ChompLean.OBUQ.queueMex xs))),\n  Not\n      (@LT.lt.{0} Nat instLTNat (ChompLean.OBUQ.queueMex xs)\n        (ChompLean.OBUQ.queueMex\n          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) xs\n            (@List.cons.{0} Nat (ChompLean.OBUQ.queueMex xs) (@List.nil.{0} Nat))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.queueMex_eq_of_spec",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 23,
+      "typePretty": "∀ {xs : List.{0} Nat} {m : Nat}\n  (habsent : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs m))\n  (hlower :\n    ∀ (k : Nat),\n      @LT.lt.{0} Nat instLTNat k m → @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs k),\n  @Eq.{1} Nat (ChompLean.OBUQ.queueMex xs) m",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.rechargeCount",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 307,
+      "typePretty": "(c : Nat → Nat) → Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.rechargeCount._sunfold",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(c : Nat → Nat) → Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.rechargeCount._unsafe_rec",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(c : Nat → Nat) → Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.rechargeCount.eq_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (c : Nat → Nat),\n  @Eq.{1} Nat (ChompLean.OBUQ.rechargeCount c (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n    (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.rechargeCount.eq_2",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (c : Nat → Nat) (n : Nat),\n  @Eq.{1} Nat (ChompLean.OBUQ.rechargeCount c (Nat.succ n))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n) (c n))",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.rechargeCount.eq_def",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (c : Nat → Nat) (x : Nat),\n  @Eq.{1} Nat (ChompLean.OBUQ.rechargeCount c x)\n    (ChompLean.OBUQ.rechargeCount.match_1.{1} (fun (x : Nat) => Nat) x\n      (fun (_ : Unit) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) fun (n : Nat) =>\n      @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.rechargeCount c n) (c n))",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.rechargeCount.match_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : Nat → Sort u_1) →\n  (x : Nat) →\n    (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) →\n      (h_2 : (n : Nat) → motive (Nat.succ n)) → motive x",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.OBUQ.recharge_credit_succ",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 345,
+      "typePretty": "∀ (r s0 : Nat),\n  @Eq.{1} Nat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        s0)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          s0)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) r\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s0 r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.recharge_credit_succ._proof_1_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r s0 : Nat),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n                s0)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                s0))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              s0))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) r r)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) r))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) r\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n                s0)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                s0))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) r r)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) s0)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.scanQueues_outputs_append",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 51,
+      "typePretty": "∀ (U R q : List.{0} Nat) (pre : List.{0} (List.{0} Nat)),\n  @Eq.{1} (List.{0} Nat)\n    (ChompLean.OBUQ.ScanResult.outputs\n      (ChompLean.OBUQ.scanQueues U R\n        (@HAppend.hAppend.{0, 0, 0} (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat))\n          (@instHAppendOfAppend.{0} (List.{0} (List.{0} Nat)) (@List.instAppend.{0} (List.{0} Nat))) pre\n          (@List.cons.{0} (List.{0} Nat) q (@List.nil.{0} (List.{0} Nat))))))\n    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))\n      (ChompLean.OBUQ.ScanResult.outputs (ChompLean.OBUQ.scanQueues U R pre))\n      (@List.cons.{0} Nat\n        (ChompLean.OBUQ.queueMex\n          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U\n            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q\n              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R\n                (ChompLean.OBUQ.ScanResult.outputs (ChompLean.OBUQ.scanQueues U R pre))))))\n        (@List.nil.{0} Nat)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.shiftQueue_length_of_zero_absent",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 217,
+      "typePretty": "∀ {G : List.{0} Nat}\n  (hzero :\n    Not\n      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) G\n        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))),\n  @Eq.{1} Nat (@List.length.{0} Nat (ChompLean.OBUQ.shiftQueue G)) (@List.length.{0} Nat G)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.shiftQueue_length_of_zero_mem",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 230,
+      "typePretty": "∀ {G : List.{0} Nat} (hG : @List.Nodup.{0} Nat G)\n  (hzero :\n    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) G\n      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),\n  @Eq.{1} Nat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@List.length.{0} Nat (ChompLean.OBUQ.shiftQueue G))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    (@List.length.{0} Nat G)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.shiftQueue_length_of_zero_mem._proof_1_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (G : List.{0} Nat) (hlen : @Eq.{1} Nat (@List.length.{0} Nat (ChompLean.OBUQ.shiftQueue G)) (@List.length.{0} Nat G)),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@List.length.{0} Nat (ChompLean.OBUQ.shiftQueue G))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat G)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.shiftQueue_length_of_zero_mem._proof_1_2",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (G : List.{0} Nat)\n  (hlen :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} Nat (ChompLean.OBUQ.shiftQueue G))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@List.length.{0} Nat G)),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@List.length.{0} Nat (ChompLean.OBUQ.shiftQueue G))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat G)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.shiftQueue_nodup",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 183,
+      "typePretty": "∀ {G : List.{0} Nat} (hG : @List.Nodup.{0} Nat G), @List.Nodup.{0} Nat (ChompLean.OBUQ.shiftQueue G)",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.updateQueue_length_recharge",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 249,
+      "typePretty": "∀ {G : List.{0} Nat} {d : Nat} (hG : @List.Nodup.{0} Nat G)\n  (hdpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) d),\n  @Eq.{1} Nat (@List.length.{0} Nat (ChompLean.OBUQ.updateQueue G d))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat G)\n      (@ite.{1} Nat\n        (@Eq.{1} Nat (ChompLean.OBUQ.queueMex G) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (instDecidableEqNat (ChompLean.OBUQ.queueMex G) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.updateQueue_length_recharge._proof_1_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {d : Nat} (k : Nat) (hk : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.updateQueue_nodup",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 201,
+      "typePretty": "∀ {G : List.{0} Nat} {d : Nat} (hG : @List.Nodup.{0} Nat G)\n  (hd : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) G d)),\n  @List.Nodup.{0} Nat (ChompLean.OBUQ.updateQueue G d)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.updateQueue_nodup._proof_1_2",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {d : Nat} (hd0 : Not (@Eq.{1} Nat d (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))) (a : Nat)\n  (heq :\n    @Eq.{1} Nat a\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) d\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        d) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.OBUQ.updateQueue_nodup._simp_1_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {α : Type u_1} {a b : α},\n  @Eq.{1} Prop\n    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)\n      (@List.cons.{u_1} α b (@List.nil.{u_1} α)) a)\n    (@Eq.{u_1 + 1} α a b)",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.XOBUQYoungestLowHole.0.ChompLean.OBUQ.rechargeCount.match_1.eq_1",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (motive : Nat → Sort u_1) (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (h_2 : (n : Nat) → motive (Nat.succ n)),\n  @Eq.{u_1} (motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n    (ChompLean.OBUQ.rechargeCount.match_1.{u_1} motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) h_1\n      h_2)\n    (h_1 Unit.unit)",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.XOBUQYoungestLowHole.0.ChompLean.OBUQ.rechargeCount.match_1.eq_2",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (motive : Nat → Sort u_1) (n : Nat)\n  (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (h_2 : (n : Nat) → motive (Nat.succ n)),\n  @Eq.{u_1} (motive (Nat.succ n)) (ChompLean.OBUQ.rechargeCount.match_1.{u_1} motive (Nat.succ n) h_1 h_2) (h_2 n)",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.XOBUQYoungestLowHole.0.ChompLean.OBUQ.rechargeCount.match_1.splitter",
+      "module": "XOBUQYoungestLowHole",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : Nat → Sort u_1) →\n  (x : Nat) →\n    (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) →\n      (h_2 : (n : Nat) → motive (Nat.succ n)) → motive x",
+      "axioms": [],
+      "sourceSha256": "3d87d3662fd0cccf1c417bf84e4e1726ae4496201353adfd123addb8a6900544",
+      "sourcePath": "lean/core/XOBUQYoungestLowHole.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    }
+  ]
+}

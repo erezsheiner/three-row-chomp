@@ -1,0 +1,143 @@
+{
+  "module": "CeilingTopTwoMexAudit",
+  "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+  "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+  "declarationCount": 9,
+  "theoremDeclarationCount": 9,
+  "proofValuedDeclarationCount": 9,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.ceiling_least_hole_of_mex",
+      "module": "CeilingTopTwoMexAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 58,
+      "typePretty": "∀ {S : Nat → Prop} {m : Nat} (hm : ChompLean.IsMex S m),\n  And (Not (S m))\n    (∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        Not (S z) → @LE.le.{0} Nat instLENat m z)",
+      "axioms": [],
+      "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+      "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ceiling_top_two_mex_branches",
+      "module": "CeilingTopTwoMexAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 7,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) (hdiag : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a))\n  (r : Nat),\n  And\n    (ChompLean.IsMex\n      (ChompLean.B f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n    (And\n      (ChompLean.IsMex\n        (ChompLean.B f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        (f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))\n      (Or\n        (And\n          (@LT.lt.{0} Nat instLTNat\n            (f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              r)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          (@Eq.{1} Nat\n            (f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n              r)\n            (f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              r)))\n        (And\n          (@LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              r))\n          (ChompLean.IsMex\n            (ChompLean.B f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n              r)\n            (f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n              r)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+      "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ceiling_top_two_mex_branches._proof_1_1",
+      "module": "CeilingTopTwoMexAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+      "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ceiling_top_two_mex_branches._proof_1_2",
+      "module": "CeilingTopTwoMexAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (r : Nat),\n  Not\n      (@Eq.{1} Nat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+      "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ceiling_top_two_mex_branches._proof_1_3",
+      "module": "CeilingTopTwoMexAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (r : Nat)\n  (hd :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hsmall :\n    @LT.lt.{0} Nat instLTNat\n      (f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+      "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ceiling_top_two_mex_branches._proof_1_4",
+      "module": "CeilingTopTwoMexAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (r : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+      "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ceiling_top_two_mex_branches._proof_1_5",
+      "module": "CeilingTopTwoMexAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (r : Nat),\n  And\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@LT.lt.{0} Nat instLTNat\n        (f\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+      "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ceiling_top_two_mex_branches._proof_1_6",
+      "module": "CeilingTopTwoMexAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (r : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+      "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ceiling_top_two_mex_branches._proof_1_7",
+      "module": "CeilingTopTwoMexAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (r : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2ec77366489498cb7836ee824c0cc31b9a6d20c6dd350696e5840b6d66817c23",
+      "sourcePath": "lean/core/CeilingTopTwoMexAudit.lean",
+      "universeParameters": []
+    }
+  ]
+}

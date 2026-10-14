@@ -1,0 +1,11 @@
+--- before/ChompLean/Proof.lean
++++ after/ChompLean/Proof.lean
+@@ -771,7 +771,7 @@
+       exact (M.diagonal_general_no_attack (by omega) ht'q ha_eq).elim
+     · rw [show min a r = r from by omega] at ha_eq
+       exact ⟨a, by omega, ha_lt, ha_eq⟩
+-  -- The placement map injects the interval `(r, q+1]` into `(r, q)` — impossible.
++  -- The placement map injects the interval `(r, q]` into `(r, q)` — impossible.
+   let place : Nat -> Nat := fun t' =>
+     if h : r < t' ∧ t' ≤ q then Classical.choose (placement t' h.1 h.2) else 0
+   have place_spec : ∀ {t'}, r < t' -> t' ≤ q ->

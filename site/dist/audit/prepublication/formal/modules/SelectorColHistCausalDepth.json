@@ -1,0 +1,950 @@
+{
+  "module": "SelectorColHistCausalDepth",
+  "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+  "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+  "declarationCount": 61,
+  "theoremDeclarationCount": 61,
+  "proofValuedDeclarationCount": 61,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.colHistPred_add_two_iff_of_new_rows_absent",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 159,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {top c z : Nat} (hrow0 : @LE.le.{0} Nat instLENat c top → @Ne.{1} Nat (f top c) z)\n  (hrow1 :\n    @LE.le.{0} Nat instLENat c\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) top\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n      @Ne.{1} Nat\n        (f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) top\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c)\n        z),\n  Iff\n    (ChompLean.ColHistPred f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) top\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      c z)\n    (ChompLean.ColHistPred f top c z)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.colHistPred_add_two_iff_of_new_rows_absent._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {top : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) top\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) top\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.colHistPred_succ_iff",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 140,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {top c z : Nat},\n  Iff\n    (ChompLean.ColHistPred f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) top\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c z)\n    (Or (ChompLean.ColHistPred f top c z) (And (@LE.le.{0} Nat instLENat c top) (@Eq.{1} Nat (f top c) z)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.colHistPred_succ_iff._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {top c z : Nat} (a : Nat)\n  (hatop :\n    @LT.lt.{0} Nat instLTNat a\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) top\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (haold : Not (@LT.lt.{0} Nat instLTNat a top)), Not (@Eq.{1} Nat a top) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.colHistPred_succ_iff._proof_1_2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {top c z : Nat} (a : Nat) (hatop : @LT.lt.{0} Nat instLTNat a top),\n  Not\n      (@LT.lt.{0} Nat instLTNat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) top\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.colHistPred_succ_iff._proof_1_3",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {top c z : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat top\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) top\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col1_rail",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 67,
+      "typePretty": "∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q),\n  @Eq.{1} Nat (ChompLean.gameF q (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col1_rail._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col1_rail._proof_1_2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col1_rail._proof_1_3",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        q) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 82,
+      "typePretty": "∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q),\n  @Eq.{1} Nat (ChompLean.gameF q (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (h2q : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        q) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_10",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q)\n  (hvalue :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_11",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_12",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_13",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_14",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q k : Nat) (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (hk1 : Not (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hk2 : Not (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hk3 : Not (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_15",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q k : Nat) (hk4 : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_16",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q k : Nat)\n  (hklt :\n    @LT.lt.{0} Nat instLTNat k\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hk4 : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        q) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_17",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q k : Nat) (hk4 : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n  (ha2 :\n    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        k) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (h2q : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_3",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (h2q : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q)\n  (hcarry :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      q)\n  (hprev :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_4",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_5",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q)\n  (hvalue : @Eq.{1} Nat q (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_6",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q a : Nat) (ha0 : Not (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))\n  (ha1 : Not (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_7",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q a : Nat) (haq : @LT.lt.{0} Nat instLTNat a q)\n  (hvalue :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_8",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q b : Nat) (hb2 : @LT.lt.{0} Nat instLTNat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))),\n  Not\n      (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col2_rail._proof_1_9",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat)\n  (hvalue :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_colHist_causal_depth_three",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 211,
+      "typePretty": "∀ {q c : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q)\n  (hc : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) c),\n  Iff\n    (ChompLean.ColHistPred ChompLean.gameF\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n    (Or\n      (ChompLean.ColHistPred ChompLean.gameF q c\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n      (And (@LE.le.{0} Nat instLENat c q)\n        (@Eq.{1} Nat (ChompLean.gameF q c)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_colHist_causal_depth_three._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_colHist_causal_depth_three._proof_1_2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_colHist_drop_newest_two",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 196,
+      "typePretty": "∀ {q c : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q)\n  (hc : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) c),\n  Iff\n    (ChompLean.ColHistPred ChompLean.gameF\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n    (ChompLean.ColHistPred ChompLean.gameF q c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_colHist_drop_newest_two._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c : Nat} (hc : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) c)\n  (hcol : @Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_colHist_drop_newest_two._proof_1_2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c : Nat} (hc : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) c)\n  (hcol : @Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_one_host_only_col0",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 178,
+      "typePretty": "∀ {q c : Nat}\n  (hcq :\n    @LE.le.{0} Nat instLENat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  @Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_one_host_only_col0._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c : Nat}\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hzero :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_host_only_col2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 188,
+      "typePretty": "∀ {q c : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q)\n  (hcq : @LE.le.{0} Nat instLENat c q)\n  (hhost :\n    @Eq.{1} Nat (ChompLean.gameF q c)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  @Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_one_one",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 22,
+      "typePretty": "@Eq.{1} Nat\n  (ChompLean.gameF (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_one_one._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_one_one._proof_1_2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "And\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_one_one._proof_1_3",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_one_one._proof_1_4",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))),\n  Not (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_one_one._proof_1_5",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hvalue :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_one_one._proof_1_6",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (hklt : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))),\n  Not\n      (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_one_one._proof_1_7",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_selector_window_drop_newest_two",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 247,
+      "typePretty": "∀ {v g : Nat} (hv : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) v)\n  (hg :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  And\n    (Iff\n      (ChompLean.ColHistPred ChompLean.gameF v\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        v)\n      (ChompLean.ColHistPred ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        v))\n    (And\n      (Iff (ChompLean.ColHistPred ChompLean.gameF v g v)\n        (ChompLean.ColHistPred ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          g v))\n      (Iff\n        (ChompLean.ColHistPred ChompLean.gameF v\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          v)\n        (ChompLean.ColHistPred ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          v)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_selector_window_drop_newest_two._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g : Nat} (hv : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) v),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_selector_window_drop_newest_two._proof_1_2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g : Nat} (hv : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) v),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        v) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_selector_window_drop_newest_two._proof_1_3",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g : Nat} (hv : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) v)\n  (hg :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hsum :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      v),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) g) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_selector_window_drop_newest_two._proof_1_4",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g : Nat} (hv : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) v)\n  (hg :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hsum :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      v),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_three_adjacent_colHist_causal_depth_three",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 229,
+      "typePretty": "∀ {q left : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q)\n  (hleft : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) left),\n  And\n    (Iff\n      (ChompLean.ColHistPred ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        left\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n      (Or\n        (ChompLean.ColHistPred ChompLean.gameF q left\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n        (And (@LE.le.{0} Nat instLENat left q)\n          (@Eq.{1} Nat (ChompLean.gameF q left)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))))\n    (And\n      (Iff\n        (ChompLean.ColHistPred ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n        (Or\n          (ChompLean.ColHistPred ChompLean.gameF q\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n          (And\n            (@LE.le.{0} Nat instLENat\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              q)\n            (@Eq.{1} Nat\n              (ChompLean.gameF q\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))))\n      (Iff\n        (ChompLean.ColHistPred ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n        (Or\n          (ChompLean.ColHistPred ChompLean.gameF q\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n          (And\n            (@LE.le.{0} Nat instLENat\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n              q)\n            (@Eq.{1} Nat\n              (ChompLean.gameF q\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_three_adjacent_colHist_causal_depth_three._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q left : Nat} (hleft : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) left),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_three_adjacent_colHist_causal_depth_three._proof_1_2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q left : Nat} (hleft : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) left),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) left\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_one",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 44,
+      "typePretty": "@Eq.{1} Nat\n  (ChompLean.gameF (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_one._proof_1_1",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_one._proof_1_2",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "And\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_one._proof_1_3",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_one._proof_1_4",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))),\n  Not\n      (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_one._proof_1_5",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))),\n  Not (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_one._proof_1_6",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hvalue :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_one._proof_1_7",
+      "module": "SelectorColHistCausalDepth",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (hklt : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))),\n  Not (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "673a8bb4caa41b8003684f422e556941cd46b4f91ec209d5ad625e05b74d689e",
+      "sourcePath": "lean/core/SelectorColHistCausalDepth.lean",
+      "universeParameters": []
+    }
+  ]
+}

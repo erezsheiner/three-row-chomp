@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exact multilevel Pell rigidity on every finite frontier · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../document.css"><link rel="stylesheet" href="../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../index.html">Search</a><a href="../../browse.html">Browse all</a><a href="../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="exact-multilevel-pell-rigidity-on-every-finite-frontier">Exact multilevel Pell rigidity on every finite frontier</h1><p><strong>Statement.</strong> For an exact three-child Pell window recursion with finite globally attained maxima b_j, fixed orientationσ, and a maximizing root at n, the sum of oriented leaf gaps in a complete decomposition to scales k, k-1 equals Lambda_(n, k)=sum_{ell=k}^{n-1}q_(n-ell-1)S_ell. The stated finite frontier/ray corollaries hold with their positive-capacity guards.</p>
+<h2 id="complete-proof-and-definitions">Complete proof and definitions</h2><ul>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/PELL-RECURRENCES.html">Ordering error, Pell windows and conditional discrepancy consumers</a></li>
+</ul>
+<p>The argument below and the linked full derivations form the reviewed proof. All stated hypotheses remain part of the result.</p>
+<h2 id="hypotheses-and-scope">Hypotheses and scope</h2><ul>
+<li>n&gt;k&gt;=1; q_-1=0, q_0=1; W_(j+1)(s)=W_j(s)+W_j(s+q_j)+W_(j-1)(s+2q_j).</li>
+<li>b_j=max_s|W_j(s)|; for integer word discrepancies suprema are attained because range at fixed length finite.</li>
+<li>Ray theorem requires b_(k-1),..., b_n&gt;0and D=sum_{ell=k}^{n-1}S_ell/b_ell&lt;1.</li>
+</ul>
+<h2 id="argument">Argument</h2><ol>
+<li><p>Define Gσ(m, s)=b_m-σW_m(s)&gt;=0. Sum of child capacities is b_m+S_(m-1), while defects sum W_m; hence G(parent)+S=sum G(children). Each frontier expansion adds exactly its S, proving the general finite frontier identity by induction.</p>
+</li>
+<li><p>Complete silver-tree internal-node counts are q_(n-ell-1) at slack scale ell; check base n=k+1:(2leaves k,1leaf k-1,1internal). The 2,1 recursion propagates these and the leaf counts q_(n-k), q_(n-k-1). A maximizing aligned root has G0, proving the formula.</p>
+</li>
+<li><p>Every descendant subtree leaf set is a subset of the fixed root leaf set; nonnegativity gives G(v)+Lambda_(m, k)&lt;=Lambda_(n, k). This is scoped to that tree. G=shortfall+2opposite-sign mass yields both unsigned identities; absolute-value telescope cancels internal defects.</p>
+</li>
+<li><p>Pell product bounds q_a q_c&lt;=q_(a+c+1), proved by induction in the positive 2,1 recursion, yield Lambda&lt;=D*C_(n, k), where the zero-slack capacity C=q_(n-k)b_k+q_(n-k-1)b_(k-1). Thus b_n=C-Lambda&gt;=(1-D)C.</p>
+</li>
+<li><p>Normalized child gaps capacity-average to(g_parent+alpha)/(1+alpha), alpha=S_(m-1)/b_m. Choose a child with minimum ratio. Its1-g is at least(1-g_parent)/(1+alpha). D&lt;1givesb_(ell+1)&gt;b_ell and alpha_ell&lt;=S_ell/b_ell. Products or1-product&lt;=sum give every selected gap&lt;=D and positive aligned defect.</p>
+</li>
+<li><p>For integer b, S with summable capped slack, eventually delta&lt;1. Either b stays0, or once positive it stays positive and increases, and tail relative-slack sums tend0; this yields arbitrarily long finite near-rigid rays. No infinite ray in the original word follows: starts may drift. Counterframe/scalar stress claims are not premises for the identity or finite-ray theorem.</p>
+</li>
+</ol>
+<h2 id="review-and-supporting-evidence">Review and supporting evidence</h2><ul>
+<li>Historical original-claim verdict: accepted.</li>
+<li>This statement was independently audited on paper. The audit did not produce a new Lean formalization of the derived statement; its listed formal dependencies have separate verification receipts.</li>
+<li><a href="../../audit/prepublication/papers/PAPER-REVIEW.json">Renewed statement and proof-completeness review</a></li>
+<li><a href="../../audit/full/paper-a/pell-multilevel-rigidity.json">Full independent audit and original-claim verdict</a></li>
+<li><a href="../../audit/full/CANONICAL-FOUNDATIONS.html">Shared canonical foundation and exact Lean bridges</a></li>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Full proof and definitions: Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/PELL-RECURRENCES.html">Full proof and definitions: Ordering error, Pell windows and conditional discrepancy consumers</a></li>
+</ul>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

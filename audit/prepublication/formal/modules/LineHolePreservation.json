@@ -1,0 +1,755 @@
+{
+  "module": "LineHolePreservation",
+  "sourcePath": "lean/core/LineHolePreservation.lean",
+  "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+  "declarationCount": 50,
+  "theoremDeclarationCount": 49,
+  "proofValuedDeclarationCount": 49,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.PrefixGuardRay",
+      "module": "LineHolePreservation",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 23,
+      "typePretty": "(f : Nat → Nat → Nat) → (q c lo : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_le_positive_hole",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 154,
+      "typePretty": "∀ {S : Nat → Prop} {m x : Nat}\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxhole : Not (S x)) (hmex : ChompLean.IsMex S m), @LE.le.{0} Nat instLENat m x",
+      "axioms": [],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_line_step_covered_iff_replacement_prefix",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 238,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y))\n  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)),\n  Iff\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)\n    (ChompLean.C f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_line_step_covered_iff_replacement_prefix_min",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 201,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y))\n  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)),\n  Iff\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)\n    (ChompLean.C f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_line_step_hole_iff_replacement_prefix_hole",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 250,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y))\n  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)),\n  Iff\n    (Not\n      (ChompLean.B f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))\n    (Not\n      (ChompLean.C f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_line_step_hole_iff_replacement_prefix_hole_min",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 226,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y))\n  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)),\n  Iff\n    (Not\n      (ChompLean.B f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))\n    (Not\n      (ChompLean.C f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_lower_hole_forbids_submitter",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 143,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat}\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x))\n  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)), @Ne.{1} Nat (f r c) y",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_lower_hole_forbids_submitter._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hxy : @LT.lt.{0} Nat instLTNat x y) (hout : @Eq.{1} Nat (f r c) y),\n  Not (@LT.lt.{0} Nat instLTNat x (f r c)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_preserves_staircase_above_floor",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 280,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))\n  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c))\n  (hprefix :\n    ∀ (y : Nat),\n      @LT.lt.{0} Nat instLTNat lo y →\n        @LE.le.{0} Nat instLENat y hi →\n          Not\n            (ChompLean.C f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              c y))\n  (y : Nat),\n  @LT.lt.{0} Nat instLTNat lo y →\n    @LE.le.{0} Nat instLENat y hi →\n      Not\n        (ChompLean.B f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_staircase_step_covered_iff_replacement_prefix",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 262,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))\n  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)) (y : Nat),\n  @LT.lt.{0} Nat instLTNat lo y →\n    @LE.le.{0} Nat instLENat y hi →\n      Iff\n        (ChompLean.B f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c y)\n        (ChompLean.C f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_staircase_step_covered_iff_replacement_prefix._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo hi : Nat} (y : Nat), Not (@LE.le.{0} Nat instLENat lo lo) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_staircase_step_covered_iff_replacement_prefix._proof_1_2",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo hi : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y) (hyhi : @LE.le.{0} Nat instLENat y hi),\n  Not (@LE.le.{0} Nat instLENat lo hi) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_staircase_step_covered_iff_replacement_prefix._proof_1_3",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo hi : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y), Not (@LE.le.{0} Nat instLENat lo y) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.next_row_history_expansion",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 32,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r),\n  Iff\n    (ChompLean.R f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)\n    (Or (ChompLean.R f r c y) (@Eq.{1} Nat (f r c) y))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.next_row_history_expansion._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c y : Nat} (a : Nat)\n  (ha :\n    @LT.lt.{0} Nat instLTNat a\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (har : Not (@LT.lt.{0} Nat instLTNat a r)), Not (@Eq.{1} Nat a r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.next_row_history_expansion._proof_1_2",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c y : Nat} (a : Nat) (har : @LT.lt.{0} Nat instLTNat a r),\n  Not\n      (@LT.lt.{0} Nat instLTNat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.next_row_history_expansion._proof_1_3",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c y : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.next_row_hole_iff_three_exclusions",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 79,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r),\n  Iff\n    (Not\n      (ChompLean.B f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))\n    (And (Not (ChompLean.R f r c y))\n      (And (@Ne.{1} Nat (f r c) y)\n        (Not\n          (ChompLean.C f\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            c y))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.next_row_source_expansion",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 52,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r),\n  Iff\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)\n    (Or (ChompLean.R f r c y)\n      (Or (@Eq.{1} Nat (f r c) y)\n        (ChompLean.C f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c y)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.old_hole_next_covered_iff_submitter_or_prefix",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 123,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r) (hyold : Not (ChompLean.B f r c y)),\n  Iff\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)\n    (Or (@Eq.{1} Nat (f r c) y)\n      (ChompLean.C f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.old_hole_next_hole_iff_submitter_and_prefix",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 104,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r) (hyold : Not (ChompLean.B f r c y)),\n  Iff\n    (Not\n      (ChompLean.B f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))\n    (And (@Ne.{1} Nat (f r c) y)\n      (Not\n        (ChompLean.C f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c y)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_cap_kills_values_above_floor",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 295,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo : Nat}\n  (hcap :\n    ∀ (b : Nat),\n      @LT.lt.{0} Nat instLTNat b c →\n        @LE.le.{0} Nat instLENat\n          (f\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            b)\n          lo)\n  (y : Nat),\n  @LT.lt.{0} Nat instLTNat lo y →\n    Not\n      (ChompLean.C f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_cap_kills_values_above_floor._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y) (b : Nat)\n  (hby :\n    @Eq.{1} Nat\n      (f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        b)\n      y)\n  (hble :\n    @LE.le.{0} Nat instLENat\n      (f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        b)\n      lo),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_cap_preserves_next_line_value",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 325,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hlohole : Not (ChompLean.B f r c lo))\n  (hnextOldHole :\n    Not\n      (ChompLean.B f r c\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c))\n  (hcap :\n    ∀ (b : Nat),\n      @LT.lt.{0} Nat instLTNat b c →\n        @LE.le.{0} Nat instLENat\n          (f\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            b)\n          lo),\n  Not\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_cap_preserves_next_line_value._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat lo\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_cap_preserves_staircase",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 308,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hcr : @LE.le.{0} Nat instLENat c r)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))\n  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c))\n  (hcap :\n    ∀ (b : Nat),\n      @LT.lt.{0} Nat instLTNat b c →\n        @LE.le.{0} Nat instLENat\n          (f\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            b)\n          lo)\n  (y : Nat),\n  @LT.lt.{0} Nat instLTNat lo y →\n    @LE.le.{0} Nat instLENat y hi →\n      Not\n        (ChompLean.B f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_guard_ray_implies_prefix_cap",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 184,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q c lo : Nat} (hrec : ChompLean.BrouwerRecurrence f)\n  (hcq :\n    @LE.le.{0} Nat instLENat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hqlo : @LE.le.{0} Nat instLENat q lo)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hray : ChompLean.PrefixGuardRay f q c lo) (b : Nat),\n  @LT.lt.{0} Nat instLTNat b c → @LE.le.{0} Nat instLENat (f q b) lo",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_guard_ray_implies_prefix_cap._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c lo : Nat}\n  (hcq :\n    @LE.le.{0} Nat instLENat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (b : Nat) (hbc : @LT.lt.{0} Nat instLTNat b c), Not (@LE.le.{0} Nat instLENat b q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_guard_ray_preserves_next_line_value",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 510,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hnextRowLe :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      lo)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hlohole : Not (ChompLean.B f r c lo))\n  (hnextOldHole :\n    Not\n      (ChompLean.B f r c\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hray :\n    ChompLean.PrefixGuardRay f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c lo),\n  Not\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_guard_ray_preserves_next_line_value._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo : Nat} (hcr : @LE.le.{0} Nat instLENat c r),\n  Not\n      (@LE.le.{0} Nat instLENat c\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_guard_ray_preserves_staircase",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 487,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hnextRowLe :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      lo)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))\n  (hray :\n    ChompLean.PrefixGuardRay f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c lo)\n  (y : Nat),\n  @LT.lt.{0} Nat instLTNat lo y →\n    @LE.le.{0} Nat instLENat y hi →\n      Not\n        (ChompLean.B f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_guard_ray_preserves_staircase._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo : Nat} (hcr : @LE.le.{0} Nat instLENat c r),\n  Not\n      (@LE.le.{0} Nat instLENat c\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_guard_hole_bounds_cell",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 165,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q b lo : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hbq : @LE.le.{0} Nat instLENat b q)\n  (hqlo : @LE.le.{0} Nat instLENat q lo)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hguard : Not (ChompLean.B f q b lo)), @LE.le.{0} Nat instLENat (f q b) lo",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_guard_hole_bounds_cell._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q b lo : Nat} (hqlo : @LE.le.{0} Nat instLENat q lo)\n  (hcopy :\n    And (@LT.lt.{0} Nat instLTNat b q)\n      (@LT.lt.{0} Nat instLTNat\n        (f\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          b)\n        q))\n  (hout :\n    @Eq.{1} Nat (f q b)\n      (f\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        b)),\n  Not (@LE.le.{0} Nat instLENat (f q b) lo) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_line_step_covered_iff_replacement_prefix",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 412,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y)),\n  Iff\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)\n    (ChompLean.C f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_line_step_covered_iff_replacement_prefix_min",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 375,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y)),\n  Iff\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)\n    (ChompLean.C f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_line_step_hole_iff_replacement_prefix_hole",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 428,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y)),\n  Iff\n    (Not\n      (ChompLean.B f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))\n    (Not\n      (ChompLean.C f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_line_step_hole_iff_replacement_prefix_hole_min",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 400,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y)),\n  Iff\n    (Not\n      (ChompLean.B f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))\n    (Not\n      (ChompLean.C f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_lower_hole_and_history_gap_forbid_submitter",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 339,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y)),\n  @Ne.{1} Nat (f r c) y",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_lower_hole_and_history_gap_forbid_submitter._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat}\n  (hout :\n    @Eq.{1} Nat (f r c)\n      (f\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c))\n  (hry : @Eq.{1} Nat (f r c) y),\n  Not\n      (@Eq.{1} Nat\n        (f\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c)\n        y) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_lower_hole_and_history_gap_forbid_submitter._proof_1_2",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat}\n  (hcopy :\n    And (@LT.lt.{0} Nat instLTNat c r)\n      (@LT.lt.{0} Nat instLTNat\n        (f\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c)\n        r))\n  (hout :\n    @Eq.{1} Nat (f r c)\n      (f\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c))\n  (hry : @Eq.{1} Nat (f r c) y),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_lower_hole_and_history_gap_forbid_submitter._proof_1_3",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat}\n  (hcopy :\n    And (@LT.lt.{0} Nat instLTNat c r)\n      (@LT.lt.{0} Nat instLTNat\n        (f\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c)\n        r))\n  (hout :\n    @Eq.{1} Nat (f r c)\n      (f\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c))\n  (hry : @Eq.{1} Nat (f r c) y),\n  Not\n      (@LE.le.{0} Nat instLENat c\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_prefix_cap_preserves_next_line_value",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 473,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hlohole : Not (ChompLean.B f r c lo))\n  (hnextOldHole :\n    Not\n      (ChompLean.B f r c\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hcap :\n    ∀ (b : Nat),\n      @LT.lt.{0} Nat instLTNat b c →\n        @LE.le.{0} Nat instLENat\n          (f\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            b)\n          lo),\n  Not\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_prefix_cap_preserves_next_line_value._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat lo\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_prefix_cap_preserves_staircase",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 453,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)\n  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))\n  (hcap :\n    ∀ (b : Nat),\n      @LT.lt.{0} Nat instLTNat b c →\n        @LE.le.{0} Nat instLENat\n          (f\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            b)\n          lo)\n  (y : Nat),\n  @LT.lt.{0} Nat instLTNat lo y →\n    @LE.le.{0} Nat instLENat y hi →\n      Not\n        (ChompLean.B f\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_prefix_cap_preserves_staircase._proof_1_1",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo hi : Nat} (y : Nat), Not (@LE.le.{0} Nat instLENat lo lo) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_prefix_cap_preserves_staircase._proof_1_2",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo hi : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y) (hyhi : @LE.le.{0} Nat instLENat y hi),\n  Not (@LE.le.{0} Nat instLENat lo hi) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_prefix_cap_preserves_staircase._proof_1_3",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r c lo hi : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y), Not (@LE.le.{0} Nat instLENat lo y) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_preserves_next_line_hole",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 440,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y))\n  (hreplacement :\n    Not\n      (ChompLean.C f\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c y)),\n  Not\n    (ChompLean.B f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_two_old_holes_forbid_submitter",
+      "module": "LineHolePreservation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 363,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)\n  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)\n  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y)),\n  @Ne.{1} Nat (f r c) y",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a",
+      "sourcePath": "lean/core/LineHolePreservation.lean",
+      "universeParameters": []
+    }
+  ]
+}

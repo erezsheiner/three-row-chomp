@@ -1,0 +1,836 @@
+{
+  "module": "R56VCatchGate",
+  "sourcePath": "lean/core/R56VCatchGate.lean",
+  "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+  "declarationCount": 55,
+  "theoremDeclarationCount": 52,
+  "proofValuedDeclarationCount": 52,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.ColumnHistoryValue",
+      "module": "R56VCatchGate",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 28,
+      "typePretty": "(M : ChompLean.RecurrenceModel) → (q u b : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.DeepBeyondLastTwoColumnHistories",
+      "module": "R56VCatchGate",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 33,
+      "typePretty": "(M : ChompLean.RecurrenceModel) → (t u : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.PastHostColumn",
+      "module": "R56VCatchGate",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 24,
+      "typePretty": "(M : ChompLean.RecurrenceModel) → (q u b : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_one_history_exact",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 146,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),\n  Iff\n    (ChompLean.ColumnHistoryValue M\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      u\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (Or\n      (@Eq.{1} Nat\n        (ChompLean.RecurrenceModel.f M\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        u)\n      (@Eq.{1} Nat\n        (ChompLean.RecurrenceModel.f M t\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        u))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_one_history_exact._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t) (a : Nat)\n  (hlow :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      a)\n  (hhigh :\n    @LT.lt.{0} Nat instLTNat a\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (Or\n        (@Eq.{1} Nat a\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@Eq.{1} Nat a t)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_one_history_exact._proof_1_2",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_one_history_exact._proof_1_3",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_one_history_exact._proof_1_4",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_two_history_exact",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 164,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Iff\n    (ChompLean.ColumnHistoryValue M\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      u\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n    (Or\n      (@Eq.{1} Nat\n        (ChompLean.RecurrenceModel.f M\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        u)\n      (Or\n        (@Eq.{1} Nat\n          (ChompLean.RecurrenceModel.f M\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          u)\n        (@Eq.{1} Nat\n          (ChompLean.RecurrenceModel.f M t\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          u)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_two_history_exact._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t) (a : Nat)\n  (hlow :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      a)\n  (hhigh :\n    @LT.lt.{0} Nat instLTNat a\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (Or\n        (@Eq.{1} Nat a\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        (Or\n          (@Eq.{1} Nat a\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@Eq.{1} Nat a t))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_two_history_exact._proof_1_2",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_two_history_exact._proof_1_3",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_two_history_exact._proof_1_4",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_two_history_exact._proof_1_5",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.column_t_sub_two_history_exact._proof_1_6",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.deep_not_columnHistory_t_sub_one",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 220,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),\n  Not\n    (ChompLean.ColumnHistoryValue M\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      u\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.deep_not_columnHistory_t_sub_one._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t : Nat} (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.deep_not_columnHistory_t_sub_two",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 232,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),\n  Not\n    (ChompLean.ColumnHistoryValue M\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      u\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.deep_not_pastHostColumn_last_two",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 245,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),\n  And\n    (Not\n      (ChompLean.PastHostColumn M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n    (Not\n      (ChompLean.PastHostColumn M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.diagonal_vCatch_gate",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 134,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q b : Nat} (hbq : @LT.lt.{0} Nat instLTNat b q)\n  (hhigher : @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q q) (ChompLean.RecurrenceModel.f M q b)),\n  ChompLean.PastHostColumn M q (ChompLean.RecurrenceModel.f M q q) b",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.diagonal_vCatch_gate._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q b : Nat} (a : Nat) (haq : @LT.lt.{0} Nat instLTNat a q) (haqEq : @Eq.{1} Nat a q),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.diagonal_vCatch_last_two_columns_below",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 297,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (hdeep :\n    ChompLean.DeepBeyondLastTwoColumnHistories M t\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  And\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.diagonal_vCatch_last_two_columns_below._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t : Nat} (a : Nat)\n  (ha :\n    @LT.lt.{0} Nat instLTNat a\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (haEq :\n    @Eq.{1} Nat a\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.left_history_of_higher_left_column_of_row_le",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 43,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)\n  (hbc : @LT.lt.{0} Nat instLTNat b c) (hqu : @LE.le.{0} Nat instLENat q u)\n  (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)\n  (hhigher : @LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b))\n  (hnotPast : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a q → @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u),\n  @Exists.{1} Nat fun (a : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat b a)\n      (And (@LT.lt.{0} Nat instLTNat a q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M a b) u))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)\n  (hindex : @LT.lt.{0} Nat instLTNat c u),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_2",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)\n  (hbc : @LT.lt.{0} Nat instLTNat b c), Not (@LE.le.{0} Nat instLENat b q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_3",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hqu : @LE.le.{0} Nat instLENat q u)\n  (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)\n  (hhigher : @LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b)),\n  Not (@LT.lt.{0} Nat instLTNat q (ChompLean.RecurrenceModel.f M q b)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_4",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (a : Nat) (hab : Not (@LE.le.{0} Nat instLENat a b)),\n  Not (@LT.lt.{0} Nat instLTNat b a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_5",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (a : Nat) (hab : Not (@LE.le.{0} Nat instLENat a b)),\n  Not (@LE.le.{0} Nat instLENat b a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_6",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)\n  (hbc : @LT.lt.{0} Nat instLTNat b c) (r : Nat) (hrb : @LT.lt.{0} Nat instLTNat r b),\n  Not (@LE.le.{0} Nat instLENat r q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_7",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hbc : @LT.lt.{0} Nat instLTNat b c) (r : Nat)\n  (hrb : @LT.lt.{0} Nat instLTNat r b) (hrc : @Eq.{1} Nat r c), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_of_vCatch_higher",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 89,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)\n  (hbc : @LT.lt.{0} Nat instLTNat b c) (hqu : @LE.le.{0} Nat instLENat q u)\n  (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)\n  (hhigher : @LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b))\n  (hnotPast : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a q → @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u),\n  ChompLean.PastHostColumn M q u b",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_one_exact",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 187,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),\n  Iff\n    (ChompLean.PastHostColumn M\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      u\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (@Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f M t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_one_exact._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t) (a : Nat)\n  (hlow :\n    @LT.lt.{0} Nat instLTNat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      a)\n  (hhigh :\n    @LT.lt.{0} Nat instLTNat a\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@Eq.{1} Nat a t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_one_exact._proof_1_2",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_one_exact._proof_1_3",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_two_exact",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 201,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Iff\n    (ChompLean.PastHostColumn M\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      u\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n    (Or\n      (@Eq.{1} Nat\n        (ChompLean.RecurrenceModel.f M\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        u)\n      (@Eq.{1} Nat\n        (ChompLean.RecurrenceModel.f M t\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        u))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_two_exact._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t) (a : Nat)\n  (hlow :\n    @LT.lt.{0} Nat instLTNat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      a)\n  (hhigh :\n    @LT.lt.{0} Nat instLTNat a\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (Or\n        (@Eq.{1} Nat a\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@Eq.{1} Nat a t)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_two_exact._proof_1_2",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_two_exact._proof_1_3",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_two_exact._proof_1_4",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pastHostColumn_t_sub_two_exact._proof_1_5",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_at_V1_last_two_columns_below",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 285,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        t)\n      u)\n  (hnotPast :\n    ∀ (a : Nat),\n      @LT.lt.{0} Nat instLTNat a\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n        @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u)\n  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),\n  And\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      u)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_below_of_not_pastHostColumn",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 98,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)\n  (hbc : @LT.lt.{0} Nat instLTNat b c) (hqu : @LE.le.{0} Nat instLENat q u)\n  (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)\n  (hnotPast : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a q → @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u)\n  (hnoHost : Not (ChompLean.PastHostColumn M q u b)), @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q b) u",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_below_of_not_pastHostColumn._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)\n  (hbc : @LT.lt.{0} Nat instLTNat b c), Not (@LE.le.{0} Nat instLENat b q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_below_of_not_pastHostColumn._proof_1_2",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hbc : @LT.lt.{0} Nat instLTNat b c) (hbcEq : @Eq.{1} Nat b c), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_below_of_not_pastHostColumn._proof_1_3",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)\n  (hnotHigher : Not (@LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b)))\n  (hne : @Ne.{1} Nat (ChompLean.RecurrenceModel.f M q b) u),\n  Not (@LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q b) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_gate",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 76,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q u c : Nat} (hcq : @LE.le.{0} Nat instLENat c q)\n  (hqu : @LE.le.{0} Nat instLENat q u) (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)\n  (hnotPast : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a q → @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u) (b : Nat),\n  @LT.lt.{0} Nat instLTNat b c →\n    @LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b) → ChompLean.PastHostColumn M q u b",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_gate_at_V1_host",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 120,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat}\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        t)\n      u)\n  (hnotPast :\n    ∀ (a : Nat),\n      @LT.lt.{0} Nat instLTNat a\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n        @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u)\n  (b : Nat),\n  @LT.lt.{0} Nat instLTNat b t →\n    @LT.lt.{0} Nat instLTNat u\n        (ChompLean.RecurrenceModel.f M\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          b) →\n      ChompLean.PastHostColumn M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u b",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_gate_at_V1_host._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_gate_at_V1_host._proof_1_2",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u : Nat} (hindex : @LT.lt.{0} Nat instLTNat t u),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_last_two_columns_below",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 262,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u c : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (htc : @LE.le.{0} Nat instLENat t c)\n  (hcq :\n    @LE.le.{0} Nat instLENat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c)\n      u)\n  (hnotPast :\n    ∀ (a : Nat),\n      @LT.lt.{0} Nat instLTNat a\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n        @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u)\n  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),\n  And\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      u)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_last_two_columns_below._proof_1_1",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u c : Nat} (htc : @LE.le.{0} Nat instLENat t c)\n  (hcq :\n    @LE.le.{0} Nat instLENat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hindex : @LT.lt.{0} Nat instLTNat c u),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_last_two_columns_below._proof_1_2",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u c : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (htc : @LE.le.{0} Nat instLENat t c)\n  (hcq :\n    @LE.le.{0} Nat instLENat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.vCatch_last_two_columns_below._proof_1_3",
+      "module": "R56VCatchGate",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t u c : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (htc : @LE.le.{0} Nat instLENat t c)\n  (hcq :\n    @LE.le.{0} Nat instLENat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        c) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710",
+      "sourcePath": "lean/core/R56VCatchGate.lean",
+      "universeParameters": []
+    }
+  ]
+}

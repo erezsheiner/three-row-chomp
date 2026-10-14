@@ -1,0 +1,2113 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R19 Penultimate Capacity · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R19 Penultimate Capacity</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R19PenultimateCapacity.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R19PenultimateCapacity.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R19PenultimateCapacity.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 121 declarations</summary><ul class="declarations"><li><code>ChompLean.L3UpperIdentity</code><pre class="prose">(f : Nat → Nat → Nat) → (e z : Nat) → Prop</pre></li><li><code>ChompLean.final_fresh_or_diagonal_holes_close</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat}
+  (het :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      t)
+  (hholes :
+    ∀ (z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z u →
+          Not (ChompLean.B f t e z) →
+            Or (@Eq.{1} Nat z (f t e))
+              (@Eq.{1} Nat z
+                (f
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+  (hseal :
+    ∀ (z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z u →
+          ChompLean.B f t e z →
+            ChompLean.B f t
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              z)
+  (z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+    @LT.lt.{0} Nat instLTNat z u →
+      ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        z</pre></li><li><code>ChompLean.l3_backstop_of_upper_identity_and_capacity</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat}
+  (het :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t)
+  (hmexEntry : ChompLean.IsMex (ChompLean.B f t e) (f t e))
+  (honeEntry :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → Not (ChompLean.B f t e y) → Not (ChompLean.B f t e z) → @Eq.{1} Nat y z)
+  (hmexOne :
+    ChompLean.IsMex
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hmexTwo :
+    ChompLean.IsMex
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+  (hUpperIdentity :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y z →
+          @LT.lt.{0} Nat instLTNat z u →
+            ChompLean.B f t e y →
+              Not
+                  (ChompLean.B f t
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    y) →
+                ChompLean.B f t e z →
+                  Not
+                      (ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        z) →
+                    ChompLean.L3UpperIdentity f e z)
+  (hPosOneSingle :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u →
+              ChompLean.B f t
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  y →
+                Not
+                    (ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                      y) →
+                  ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      z →
+                    Not
+                        (ChompLean.B f t
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                          z) →
+                      @Eq.{1} Nat y z)
+  (hRiderExcludesNewLoss :
+    ∀ (old new : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) old →
+        @LT.lt.{0} Nat instLTNat old u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) new →
+            @LT.lt.{0} Nat instLTNat new u →
+              @Eq.{1} Nat old
+                  (f
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    e) →
+                Not
+                    (ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      old) →
+                  Not
+                      (ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                        old) →
+                    ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        new →
+                      Not
+                          (ChompLean.B f t
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                            new) →
+                        False)
+  (hLastSeal :
+    ∀ (z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z u →
+          ChompLean.B f t
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              z →
+            ChompLean.B f t
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              z)
+  (z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+    @LT.lt.{0} Nat instLTNat z u →
+      ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        z</pre></li><li><code>ChompLean.l3_backstop_of_upper_identity_and_final_escape</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat}
+  (het :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t)
+  (hetFinal :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      t)
+  (hmexEntry : ChompLean.IsMex (ChompLean.B f t e) (f t e))
+  (honeEntry :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → Not (ChompLean.B f t e y) → Not (ChompLean.B f t e z) → @Eq.{1} Nat y z)
+  (hmexOne :
+    ChompLean.IsMex
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hmexTwo :
+    ChompLean.IsMex
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+  (hUpperIdentity :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y z →
+          @LT.lt.{0} Nat instLTNat z u →
+            ChompLean.B f t e y →
+              Not
+                  (ChompLean.B f t
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    y) →
+                ChompLean.B f t e z →
+                  Not
+                      (ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        z) →
+                    ChompLean.L3UpperIdentity f e z)
+  (hPosOneSingle :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u →
+              ChompLean.B f t
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  y →
+                Not
+                    (ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                      y) →
+                  ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      z →
+                    Not
+                        (ChompLean.B f t
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                          z) →
+                      @Eq.{1} Nat y z)
+  (hRiderMixedFinalEscape :
+    ∀ (old new : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) old →
+        @LT.lt.{0} Nat instLTNat old u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) new →
+            @LT.lt.{0} Nat instLTNat new u →
+              @Eq.{1} Nat old
+                  (f
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    e) →
+                Not
+                    (ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      old) →
+                  Not
+                      (ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                        old) →
+                    ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        new →
+                      Not
+                          (ChompLean.B f t
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                            new) →
+                        Or
+                          (And
+                            (@Eq.{1} Nat old
+                              (f t
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+                            (@Eq.{1} Nat new
+                              (f
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))
+                          (And
+                            (@Eq.{1} Nat old
+                              (f
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))
+                            (@Eq.{1} Nat new
+                              (f t
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))))
+  (hLastSeal :
+    ∀ (z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z u →
+          ChompLean.B f t
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              z →
+            ChompLean.B f t
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              z)
+  (z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+    @LT.lt.{0} Nat instLTNat z u →
+      ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        z</pre></li><li><code>ChompLean.lost_then_diag_at_next_source_iff_next_diagonal</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat}
+  (hlost :
+    Not
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        z)),
+  Iff
+    (ChompLean.DiagPrefix f t
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      z)
+    (And
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        t)
+      (@Eq.{1} Nat
+        (f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+        z))</pre></li><li><code>ChompLean.lost_then_diag_at_next_source_iff_next_diagonal._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat} (a : Nat)
+  (h :
+    Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        a)),
+  Not
+      (@LE.le.{0} Nat instLENat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.lost_then_diag_at_next_source_iff_next_diagonal._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat} (a : Nat)
+  (hae :
+    @LE.le.{0} Nat instLENat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+  (hge :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      a),
+  Not
+      (@Eq.{1} Nat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal</code><pre class="prose">∀ {S T : Nat → Prop} {u m d : Nat} (hmex : ChompLean.IsMex T m)
+  (hPersistentSingle :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → Not (S y) → Not (T y) → Not (S z) → Not (T z) → @Eq.{1} Nat y z)
+  (hNewLossSingle :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → S y → Not (T y) → S z → Not (T z) → @Eq.{1} Nat y z)
+  (hMixedLargerDiagonal :
+    ∀ (old new : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) old →
+        @LT.lt.{0} Nat instLTNat old u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) new →
+            @LT.lt.{0} Nat instLTNat new u →
+              Not (S old) →
+                Not (T old) →
+                  S new →
+                    Not (T new) →
+                      And (@LT.lt.{0} Nat instLTNat old new → @Eq.{1} Nat new d)
+                        (@LT.lt.{0} Nat instLTNat new old → @Eq.{1} Nat old d))
+  (old new : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) old →
+    @LT.lt.{0} Nat instLTNat old u →
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) new →
+        @LT.lt.{0} Nat instLTNat new u →
+          Not (S old) →
+            Not (T old) →
+              S new →
+                Not (T new) →
+                  Or (And (@Eq.{1} Nat old m) (@Eq.{1} Nat new d)) (And (@Eq.{1} Nat old d) (@Eq.{1} Nat new m))</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_1</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (h : Not (@LE.le.{0} Nat instLENat m old)), Not (@LT.lt.{0} Nat instLTNat old m) → False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_10</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (hnlt : @LT.lt.{0} Nat instLTNat new old) (holdd : @Eq.{1} Nat old d)
+  (hmlt : @LT.lt.{0} Nat instLTNat m new) (hmo : @Eq.{1} Nat m old), False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_2</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (hnewu : @LT.lt.{0} Nat instLTNat new u) (holt : @LT.lt.{0} Nat instLTNat old new)
+  (hnewd : @Eq.{1} Nat new d) (hmle : @LE.le.{0} Nat instLENat m old), Not (@LT.lt.{0} Nat instLTNat m u) → False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_3</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (hmle : @LE.le.{0} Nat instLENat m old) (heq : Not (@Eq.{1} Nat old m)),
+  Not (@LT.lt.{0} Nat instLTNat m old) → False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_4</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (holt : @LT.lt.{0} Nat instLTNat old new) (hnewd : @Eq.{1} Nat new d)
+  (hmlt : @LT.lt.{0} Nat instLTNat m old) (hmn : @Eq.{1} Nat m new), False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_5</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (hmlt : @LT.lt.{0} Nat instLTNat m old) (hmo : @Eq.{1} Nat m old), False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_6</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (h : Not (@LE.le.{0} Nat instLENat m new)), Not (@LT.lt.{0} Nat instLTNat new m) → False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_7</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (hnewu : @LT.lt.{0} Nat instLTNat new u) (hmle : @LE.le.{0} Nat instLENat m new),
+  Not (@LT.lt.{0} Nat instLTNat m u) → False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_8</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (hmle : @LE.le.{0} Nat instLENat m new) (heq : Not (@Eq.{1} Nat new m)),
+  Not (@LT.lt.{0} Nat instLTNat m new) → False</pre></li><li><code>ChompLean.mixed_mex_diagonal_pair_of_larger_is_diagonal._proof_1_9</code><pre class="prose">∀ {u m d : Nat} (old new : Nat) (hmlt : @LT.lt.{0} Nat instLTNat m new) (hmn : @Eq.{1} Nat m new), False</pre></li><li><code>ChompLean.next_source_holes_in_mex_or_diag_of_escape</code><pre class="prose">∀ {S T : Nat → Prop} {u m d : Nat} (hmex : ChompLean.IsMex T m)
+  (hPersistentSingle :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → Not (S y) → Not (T y) → Not (S z) → Not (T z) → @Eq.{1} Nat y z)
+  (hNewLossSingle :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → S y → Not (T y) → S z → Not (T z) → @Eq.{1} Nat y z)
+  (hMixedEscape :
+    ∀ (old new : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) old →
+        @LT.lt.{0} Nat instLTNat old u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) new →
+            @LT.lt.{0} Nat instLTNat new u →
+              Not (S old) →
+                Not (T old) →
+                  S new →
+                    Not (T new) →
+                      Or (And (@Eq.{1} Nat old m) (@Eq.{1} Nat new d)) (And (@Eq.{1} Nat old d) (@Eq.{1} Nat new m)))
+  (z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+    @LT.lt.{0} Nat instLTNat z u → Not (T z) → Or (@Eq.{1} Nat z m) (@Eq.{1} Nat z d)</pre></li><li><code>ChompLean.next_source_holes_in_mex_or_diag_of_escape._proof_1_1</code><pre class="prose">∀ {u m : Nat} (z : Nat) (h : Not (@LE.le.{0} Nat instLENat m z)), Not (@LT.lt.{0} Nat instLTNat z m) → False</pre></li><li><code>ChompLean.next_source_holes_in_mex_or_diag_of_escape._proof_1_2</code><pre class="prose">∀ {u m : Nat} (z : Nat) (hzu : @LT.lt.{0} Nat instLTNat z u) (hmle : @LE.le.{0} Nat instLENat m z),
+  Not (@LT.lt.{0} Nat instLTNat m u) → False</pre></li><li><code>ChompLean.next_source_one_hole_of_two_provenance_caps</code><pre class="prose">∀ {S T : Nat → Prop} {u : Nat}
+  (hPersistentSingle :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → Not (S y) → Not (T y) → Not (S z) → Not (T z) → @Eq.{1} Nat y z)
+  (hNewLossSingle :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → S y → Not (T y) → S z → Not (T z) → @Eq.{1} Nat y z)
+  (hNoMix :
+    ∀ (old new : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) old →
+        @LT.lt.{0} Nat instLTNat old u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) new →
+            @LT.lt.{0} Nat instLTNat new u → Not (S old) → Not (T old) → S new → Not (T new) → False)
+  (y z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+    @LT.lt.{0} Nat instLTNat y u →
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z u → Not (T y) → Not (T z) → @Eq.{1} Nat y z</pre></li><li><code>ChompLean.pairwise_upper_identity_of_entry_loss_cap_two</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat}
+  (hEntryLossCapTwo :
+    ∀ (x y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x →
+        @LT.lt.{0} Nat instLTNat x u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+            @LT.lt.{0} Nat instLTNat y u →
+              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+                @LT.lt.{0} Nat instLTNat z u →
+                  ChompLean.B f t e x →
+                    Not
+                        (ChompLean.B f t
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                          x) →
+                      ChompLean.B f t e y →
+                        Not
+                            (ChompLean.B f t
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              y) →
+                          ChompLean.B f t e z →
+                            Not
+                                (ChompLean.B f t
+                                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                  z) →
+                              Or (@Eq.{1} Nat x y) (Or (@Eq.{1} Nat x z) (@Eq.{1} Nat y z)))
+  (hExactDoubleUpperIdentity :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y z →
+          @LT.lt.{0} Nat instLTNat z u →
+            ChompLean.B f t e y →
+              Not
+                  (ChompLean.B f t
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    y) →
+                ChompLean.B f t e z →
+                  Not
+                      (ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        z) →
+                    (∀ (w : Nat),
+                        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) w →
+                          @LT.lt.{0} Nat instLTNat w u →
+                            ChompLean.B f t e w →
+                              Not
+                                  (ChompLean.B f t
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                    w) →
+                                Or (@Eq.{1} Nat w y) (@Eq.{1} Nat w z)) →
+                      ChompLean.L3UpperIdentity f e z)
+  (y z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+    @LT.lt.{0} Nat instLTNat y z →
+      @LT.lt.{0} Nat instLTNat z u →
+        ChompLean.B f t e y →
+          Not
+              (ChompLean.B f t
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                y) →
+            ChompLean.B f t e z →
+              Not
+                  (ChompLean.B f t
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    z) →
+                ChompLean.L3UpperIdentity f e z</pre></li><li><code>ChompLean.pairwise_upper_identity_of_entry_loss_cap_two._proof_1_1</code><pre class="prose">∀ {u : Nat} (y z : Nat) (hyz : @LT.lt.{0} Nat instLTNat y z) (hzu : @LT.lt.{0} Nat instLTNat z u) (w : Nat),
+  Not (@LT.lt.{0} Nat instLTNat y u) → False</pre></li><li><code>ChompLean.pairwise_upper_identity_of_entry_loss_cap_two._proof_1_2</code><pre class="prose">∀ {u : Nat} (y z : Nat) (hy : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y)
+  (hyz : @LT.lt.{0} Nat instLTNat y z) (w : Nat),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) → False</pre></li><li><code>ChompLean.pairwise_upper_identity_of_entry_loss_cap_two._proof_1_3</code><pre class="prose">∀ {u : Nat} (y z : Nat) (hyz : @LT.lt.{0} Nat instLTNat y z) (w : Nat) (h : @Eq.{1} Nat y z), False</pre></li><li><code>ChompLean.penultimate_one_hole_of_l3_upper_identity</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat}
+  (het :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t)
+  (hmexEntry : ChompLean.IsMex (ChompLean.B f t e) (f t e))
+  (honeEntry :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → Not (ChompLean.B f t e y) → Not (ChompLean.B f t e z) → @Eq.{1} Nat y z)
+  (hmexOne :
+    ChompLean.IsMex
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hUpperIdentity :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y z →
+          @LT.lt.{0} Nat instLTNat z u →
+            ChompLean.B f t e y →
+              Not
+                  (ChompLean.B f t
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    y) →
+                ChompLean.B f t e z →
+                  Not
+                      (ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        z) →
+                    ChompLean.L3UpperIdentity f e z)
+  (hPosOneSingle :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u →
+              ChompLean.B f t
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  y →
+                Not
+                    (ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                      y) →
+                  ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      z →
+                    Not
+                        (ChompLean.B f t
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                          z) →
+                      @Eq.{1} Nat y z)
+  (hRiderExcludesNewLoss :
+    ∀ (old new : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) old →
+        @LT.lt.{0} Nat instLTNat old u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) new →
+            @LT.lt.{0} Nat instLTNat new u →
+              @Eq.{1} Nat old
+                  (f
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    e) →
+                Not
+                    (ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      old) →
+                  Not
+                      (ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                        old) →
+                    ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        new →
+                      Not
+                          (ChompLean.B f t
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                            new) →
+                        False)
+  (y z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+    @LT.lt.{0} Nat instLTNat y u →
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z u →
+          Not
+              (ChompLean.B f t
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                y) →
+            Not
+                (ChompLean.B f t
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                  z) →
+              @Eq.{1} Nat y z</pre></li><li><code>ChompLean.persistent_hole_has_lower_mex_hole</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat}
+  (hmex :
+    ChompLean.IsMex
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hmissingOne :
+    Not
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        z))
+  (hmissingTwo :
+    Not
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        z)),
+  And
+    (@LT.lt.{0} Nat instLTNat
+      (f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      z)
+    (And
+      (Not
+        (ChompLean.B f t
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (f t
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (f t
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))</pre></li><li><code>ChompLean.persistent_hole_is_old_rider_of_pairwise_upper_identity</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u z : Nat}
+  (het :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t)
+  (hmexEntry : ChompLean.IsMex (ChompLean.B f t e) (f t e))
+  (honeEntry :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → Not (ChompLean.B f t e y) → Not (ChompLean.B f t e z) → @Eq.{1} Nat y z)
+  (hmexOne :
+    ChompLean.IsMex
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hUpperIdentity :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y z →
+          @LT.lt.{0} Nat instLTNat z u →
+            ChompLean.B f t e y →
+              Not
+                  (ChompLean.B f t
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    y) →
+                ChompLean.B f t e z →
+                  Not
+                      (ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        z) →
+                    ChompLean.L3UpperIdentity f e z)
+  (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hzu : @LT.lt.{0} Nat instLTNat z u)
+  (hmissingOne :
+    Not
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        z))
+  (hmissingTwo :
+    Not
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        z)),
+  @Eq.{1} Nat z
+    (f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      e)</pre></li><li><code>ChompLean.persistent_hole_is_old_rider_of_pairwise_upper_identity._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u z : Nat} (hzu : @LT.lt.{0} Nat instLTNat z u)
+  (hlower :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        (f t
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        z)
+      (And
+        (Not
+          (ChompLean.B f t
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (f t
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+        (ChompLean.B f t
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (f t
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (f t
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        u) →
+    False</pre></li><li><code>ChompLean.persistent_holes_unique_of_pairwise_upper_identity</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat}
+  (het :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t)
+  (hmexEntry : ChompLean.IsMex (ChompLean.B f t e) (f t e))
+  (honeEntry :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → Not (ChompLean.B f t e y) → Not (ChompLean.B f t e z) → @Eq.{1} Nat y z)
+  (hmexOne :
+    ChompLean.IsMex
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hUpperIdentity :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y z →
+          @LT.lt.{0} Nat instLTNat z u →
+            ChompLean.B f t e y →
+              Not
+                  (ChompLean.B f t
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    y) →
+                ChompLean.B f t e z →
+                  Not
+                      (ChompLean.B f t
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        z) →
+                    ChompLean.L3UpperIdentity f e z)
+  (y z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+    @LT.lt.{0} Nat instLTNat y u →
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z u →
+          Not
+              (ChompLean.B f t
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                y) →
+            Not
+                (ChompLean.B f t
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                  y) →
+              Not
+                  (ChompLean.B f t
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    z) →
+                Not
+                    (ChompLean.B f t
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                      z) →
+                  @Eq.{1} Nat y z</pre></li><li><code>ChompLean.persistent_holes_unique_of_pairwise_upper_identity._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat} (y z : Nat)
+  (hyr :
+    @Eq.{1} Nat y
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e))
+  (hzr :
+    @Eq.{1} Nat z
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)),
+  Not (@Eq.{1} Nat y z) → False</pre></li><li><code>ChompLean.successor_hole_was_entry_loss</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u z : Nat} (hmex : ChompLean.IsMex (ChompLean.B f t e) (f t e))
+  (hone :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u → Not (ChompLean.B f t e y) → Not (ChompLean.B f t e z) → @Eq.{1} Nat y z)
+  (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hzu : @LT.lt.{0} Nat instLTNat z u)
+  (hmissingNext :
+    Not
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        z)),
+  And (ChompLean.B f t e z)
+    (Not
+      (ChompLean.B f t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        z))</pre></li><li><code>ChompLean.upperIdentityMixCounter</code><pre class="prose">(a b : Nat) → Nat</pre></li><li><code>ChompLean.upperIdentityMixCounter.eq_1</code><pre class="prose">∀ (a b : Nat),
+  @Eq.{1} Nat (ChompLean.upperIdentityMixCounter a b)
+    (@ite.{1} Nat
+      (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+      (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@ite.{1} Nat
+        (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+        (@ite.{1} Nat
+          (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+          (@ite.{1} Nat
+            (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+            (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+            (@ite.{1} Nat
+              (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+              (@ite.{1} Nat
+                (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+                (@ite.{1} Nat
+                  (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                    (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                  (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                    (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                    (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                  (@ite.{1} Nat
+                    (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                      (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                    (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                      (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                      (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                    (@ite.{1} Nat
+                      (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                      (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                        (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+                      (@ite.{1} Nat
+                        (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                        (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                          (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                          (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                        (@ite.{1} Nat
+                          (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                            (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                          (@instDecidableAnd
+                            (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                            (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                            (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                            (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                          (@ite.{1} Nat
+                            (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                              (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                            (@instDecidableAnd
+                              (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                              (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                              (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                              (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                            (@ite.{1} Nat
+                              (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                                (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                              (@instDecidableAnd
+                                (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                                (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                                (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                                (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+                              (@ite.{1} Nat
+                                (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                                  (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                                (@instDecidableAnd
+                                  (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                                  (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                                  (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                                  (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                                (@ite.{1} Nat
+                                  (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                                    (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                                  (@instDecidableAnd
+                                    (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                                    (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                                    (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                                    (instDecidableEqNat b
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+                                  (@ite.{1} Nat
+                                    (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                                      (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                                    (@instDecidableAnd
+                                      (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                                      (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                                      (instDecidableEqNat a
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                                      (instDecidableEqNat b
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))
+                                    (@ite.{1} Nat
+                                      (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                      (@instDecidableAnd
+                                        (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                        (instDecidableEqNat a
+                                          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                        (instDecidableEqNat b
+                                          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                                      (@ite.{1} Nat
+                                        (And
+                                          (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                                          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                        (@instDecidableAnd
+                                          (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                                          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                          (instDecidableEqNat a
+                                            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                                          (instDecidableEqNat b
+                                            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+                                        (@ite.{1} Nat
+                                          (And
+                                            (@Eq.{1} Nat a
+                                              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                                            (@Eq.{1} Nat b
+                                              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                          (@instDecidableAnd
+                                            (@Eq.{1} Nat a
+                                              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                                            (@Eq.{1} Nat b
+                                              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                            (instDecidableEqNat a
+                                              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                                            (instDecidableEqNat b
+                                              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+                                          (@ite.{1} Nat
+                                            (And
+                                              (@Eq.{1} Nat a
+                                                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                                              (@Eq.{1} Nat b
+                                                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                            (@instDecidableAnd
+                                              (@Eq.{1} Nat a
+                                                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                                              (@Eq.{1} Nat b
+                                                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                              (instDecidableEqNat a
+                                                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                                              (instDecidableEqNat b
+                                                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                            (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))
+                                            (@ite.{1} Nat
+                                              (And
+                                                (@Eq.{1} Nat a
+                                                  (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                                                (@Eq.{1} Nat b
+                                                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                              (@instDecidableAnd
+                                                (@Eq.{1} Nat a
+                                                  (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                                                (@Eq.{1} Nat b
+                                                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                                                (instDecidableEqNat a
+                                                  (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                                                (instDecidableEqNat b
+                                                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                                              (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11)))
+                                              (@OfNat.ofNat.{0} Nat (nat_lit 0)
+                                                (instOfNatNat (nat_lit 0))))))))))))))))))))))))</pre></li><li><code>ChompLean.upperIdentityMix_entry_mex</code><pre class="prose">ChompLean.IsMex
+  (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+  (ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.upperIdentityMix_entry_mex._proof_1_2</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>ChompLean.upperIdentityMix_entry_mex._proof_1_3</code><pre class="prose">Or
+    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+    (Or
+      (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (Or
+        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (Or
+          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+          (Or
+            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+            (Or
+              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+              (Or
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))))))) →
+  False</pre></li><li><code>ChompLean.upperIdentityMix_entry_mex._proof_1_4</code><pre class="prose">∀ (z : Nat) (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hlt : @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>ChompLean.upperIdentityMix_entry_saturated</code><pre class="prose">∀ (y z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+    @LT.lt.{0} Nat instLTNat y (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+          Not
+              (ChompLean.B ChompLean.upperIdentityMixCounter
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) y) →
+            Not
+                (ChompLean.B ChompLean.upperIdentityMixCounter
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z) →
+              @Eq.{1} Nat y z</pre></li><li><code>ChompLean.upperIdentityMix_entry_saturated._proof_1_1</code><pre class="prose">∀ (y z : Nat) (hy : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y)
+  (hyu : @LT.lt.{0} Nat instLTNat y (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+  (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hzu : @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+  (hzMissing :
+    Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))))))))),
+  Not (@Eq.{1} Nat y z) → False</pre></li><li><code>ChompLean.upperIdentityMix_pairwise_upper_identity</code><pre class="prose">∀ (y z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+    @LT.lt.{0} Nat instLTNat y z →
+      @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+        ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) y →
+          Not
+              (ChompLean.B ChompLean.upperIdentityMixCounter
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) y) →
+            ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z →
+              Not
+                  (ChompLean.B ChompLean.upperIdentityMixCounter
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) z) →
+                ChompLean.L3UpperIdentity ChompLean.upperIdentityMixCounter
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z</pre></li><li><code>ChompLean.upperIdentityMix_pairwise_upper_identity._proof_1_1</code><pre class="prose">∀ (y z : Nat) (hy : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y)
+  (hyz : @LT.lt.{0} Nat instLTNat y z)
+  (hzu : @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+  (hyLost :
+    Not
+      (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))))
+  (hzCurrent :
+    Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))))))))
+  (hzLost :
+    Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))))))))))),
+  Not (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) → False</pre></li><li><code>ChompLean.upperIdentityMix_penultimate_has_two_holes</code><pre class="prose">And
+  (Not
+    (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))))
+  (And
+    (Not
+      (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))
+    (@Ne.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))</pre></li><li><code>ChompLean.upperIdentityMix_penultimate_has_two_holes._proof_1_1</code><pre class="prose">Not
+    (And
+      (Not
+        (Or
+          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+          (Or
+            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (Or
+              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              (Or
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                (Or
+                  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                  (Or
+                    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                    (Or
+                      (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                      (Or
+                        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                        (Or
+                          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                            (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                            (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))))
+      (And
+        (Not
+          (Or
+            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+            (Or
+              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (Or
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (Or
+                  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  (Or
+                    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                    (Or
+                      (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                      (Or
+                        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                        (Or
+                          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                            (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                          (Or
+                            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                              (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                              (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))))
+        (@Ne.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))) →
+  False</pre></li><li><code>ChompLean.upperIdentityMix_penultimate_mex</code><pre class="prose">ChompLean.IsMex
+  (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+  (ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))</pre></li><li><code>ChompLean.upperIdentityMix_penultimate_mex._proof_1_2</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))) →
+  False</pre></li><li><code>ChompLean.upperIdentityMix_penultimate_mex._proof_1_3</code><pre class="prose">Or
+    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+    (Or
+      (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (Or
+        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (Or
+          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+          (Or
+            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+            (Or
+              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+              (Or
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                (Or
+                  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                  (Or
+                    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11)))))))))))) →
+  False</pre></li><li><code>ChompLean.upperIdentityMix_penultimate_mex._proof_1_4</code><pre class="prose">∀ (z : Nat) (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hlt : @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>ChompLean.upperIdentityMix_position_one_mex</code><pre class="prose">ChompLean.IsMex
+  (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+  (ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.upperIdentityMix_position_one_mex._proof_1_2</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →
+  False</pre></li><li><code>ChompLean.upperIdentityMix_position_one_mex._proof_1_3</code><pre class="prose">Or
+    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+    (Or
+      (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (Or
+        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (Or
+          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+          (Or
+            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+            (Or
+              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+              (Or
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                (Or
+                  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))))))))) →
+  False</pre></li><li><code>ChompLean.upperIdentityMix_position_one_mex._proof_1_4</code><pre class="prose">∀ (z : Nat) (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hlt : @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li><li><code>ChompLean.upperIdentityMix_position_one_single_loss</code><pre class="prose">∀ (y z : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+    @LT.lt.{0} Nat instLTNat y (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+          ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) y →
+            Not
+                (ChompLean.B ChompLean.upperIdentityMixCounter
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) y) →
+              ChompLean.B ChompLean.upperIdentityMixCounter
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) z →
+                Not
+                    (ChompLean.B ChompLean.upperIdentityMixCounter
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) z) →
+                  @Eq.{1} Nat y z</pre></li><li><code>ChompLean.upperIdentityMix_position_one_single_loss._proof_1_1</code><pre class="prose">∀ (y z : Nat) (hy : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y)
+  (hyu : @LT.lt.{0} Nat instLTNat y (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+  (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hzu : @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+  (hyCurrent :
+    Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+              (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                    (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))))))))))
+  (hyLost :
+    Not
+      (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))))
+  (hzCurrent :
+    Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))))))))))
+  (hzLost :
+    Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11)))))))))))))),
+  Not (@Eq.{1} Nat y z) → False</pre></li><li><code>ChompLean.upperIdentityMix_rider_and_new_loss_coexist</code><pre class="prose">And
+  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+    (ChompLean.upperIdentityMixCounter
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (And
+    (Not
+      (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))
+    (And
+      (Not
+        (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))
+      (And
+        (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (Not
+          (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))))))</pre></li><li><code>ChompLean.upperIdentityMix_rider_and_new_loss_coexist._proof_1_2</code><pre class="prose">Not
+    (And
+      (Not
+        (Or
+          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+          (Or
+            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (Or
+              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              (Or
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                (Or
+                  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                  (Or
+                    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (Or
+                      (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                      (Or
+                        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))))
+      (And
+        (Not
+          (Or
+            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+            (Or
+              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (Or
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (Or
+                  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  (Or
+                    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                    (Or
+                      (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                      (Or
+                        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                        (Or
+                          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                            (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                          (Or
+                            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                              (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                              (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))))
+        (And
+          (Or
+            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+            (Or
+              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (Or
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (Or
+                  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  (Or
+                    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                    (Or
+                      (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                      (Or
+                        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                        (Or
+                          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                            (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                            (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))))))))))
+          (Not
+            (Or
+              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+              (Or
+                (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (Or
+                  (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                  (Or
+                    (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                    (Or
+                      (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                      (Or
+                        (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                        (Or
+                          (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                          (Or
+                            (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                              (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                            (Or
+                              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                                (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                              (@Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                                (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))))))) →
+  False</pre></li><li><code>ChompLean.upper_identity_does_not_force_penultimate_one_hole</code><pre class="prose">And
+  (ChompLean.IsMex
+    (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (And
+    (ChompLean.IsMex
+      (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (And
+      (ChompLean.IsMex
+        (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        (ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+      (And
+        (∀ (y z : Nat),
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+            @LT.lt.{0} Nat instLTNat y (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+                @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+                  Not
+                      (ChompLean.B ChompLean.upperIdentityMixCounter
+                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) y) →
+                    Not
+                        (ChompLean.B ChompLean.upperIdentityMixCounter
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z) →
+                      @Eq.{1} Nat y z)
+        (And
+          (∀ (y z : Nat),
+            @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+              @LT.lt.{0} Nat instLTNat y z →
+                @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+                  ChompLean.B ChompLean.upperIdentityMixCounter
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) y →
+                    Not
+                        (ChompLean.B ChompLean.upperIdentityMixCounter
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) y) →
+                      ChompLean.B ChompLean.upperIdentityMixCounter
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z →
+                        Not
+                            (ChompLean.B ChompLean.upperIdentityMixCounter
+                              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) z) →
+                          ChompLean.L3UpperIdentity ChompLean.upperIdentityMixCounter
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z)
+          (And
+            (∀ (y z : Nat),
+              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+                @LT.lt.{0} Nat instLTNat y (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+                  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+                    @LT.lt.{0} Nat instLTNat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) →
+                      ChompLean.B ChompLean.upperIdentityMixCounter
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) y →
+                        Not
+                            (ChompLean.B ChompLean.upperIdentityMixCounter
+                              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) y) →
+                          ChompLean.B ChompLean.upperIdentityMixCounter
+                              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) z →
+                            Not
+                                (ChompLean.B ChompLean.upperIdentityMixCounter
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) z) →
+                              @Eq.{1} Nat y z)
+            (And
+              (Not
+                (ChompLean.B ChompLean.upperIdentityMixCounter
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))))
+              (And
+                (Not
+                  (ChompLean.B ChompLean.upperIdentityMixCounter
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))
+                (@Ne.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))))))))</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff</code><pre class="prose">∀ {z : Nat},
+  Iff
+    (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z)
+    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))))))))</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_1</code><pre class="prose">∀ {z : Nat} (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))),
+  Not
+      (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_10</code><pre class="prose">∀ {z : Nat} (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))),
+  Not (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) → False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_11</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_12</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_13</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_14</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_15</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_16</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_17</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_18</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_19</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_3</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_4</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_5</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_6</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_7</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_8</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_one_iff._proof_1_9</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff</code><pre class="prose">∀ {z : Nat},
+  Iff
+    (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) z)
+    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11)))))))))))))</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_1</code><pre class="prose">∀ {z : Nat} (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))),
+  Not
+      (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_10</code><pre class="prose">∀ {z : Nat} (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))),
+  Not
+      (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_11</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_12</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_13</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_14</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_15</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_16</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_17</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_18</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_19</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_20</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_21</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_22</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_23</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_3</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_4</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_5</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_6</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_7</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_8</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_three_iff._proof_1_9</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                        (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff</code><pre class="prose">∀ {z : Nat},
+  Iff
+    (ChompLean.B ChompLean.upperIdentityMixCounter (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) z)
+    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                    (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))))))))))</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_1</code><pre class="prose">∀ {z : Nat} (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))),
+  Not
+      (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_10</code><pre class="prose">∀ {z : Nat} (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))),
+  Not
+      (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_11</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_12</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_13</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_14</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_15</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_16</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_17</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_18</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_19</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_20</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_21</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+  False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_3</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_4</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_5</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_6</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_7</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_8</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li><li><code>_private.R19PenultimateCapacity.0.ChompLean.upperIdentityMix_source_two_iff._proof_1_9</code><pre class="prose">∀ {z : Nat} (hval : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) z),
+  Not
+      (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (Or (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (@Eq.{1} Nat z (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))))))))) →
+    False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R19PenultimateCapacity.lean:1</p><p>SHA-256: <code class="path">4430a72ce46543a11ba86232de4bbcd1c9c8f26d75ff9bc68f88c11de5389753</code></p></section><p><a href="../index.html#id=lean-4430a72ce46543a11ba8">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

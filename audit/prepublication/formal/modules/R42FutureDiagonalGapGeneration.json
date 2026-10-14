@@ -1,0 +1,405 @@
+{
+  "module": "R42FutureDiagonalGapGeneration",
+  "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+  "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+  "declarationCount": 25,
+  "theoremDeclarationCount": 25,
+  "proofValuedDeclarationCount": 25,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.game_futurePrehost_many_high_rows_force_shifted_host",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 121,
+      "typePretty": "∀ {q a x : Nat} {xs : List.{0} Nat} (hloss : ChompLean.FutureDiagonalPrehostLoss ChompLean.gameRecurrenceModel q a x)\n  (hxs : @List.Nodup.{0} Nat xs)\n  (hrows :\n    ∀ (r : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r →\n        And (@LT.lt.{0} Nat instLTNat q r)\n          (And (@LT.lt.{0} Nat instLTNat r a) (@LT.lt.{0} Nat instLTNat x (ChompLean.gameF r r))))\n  (hmany : @LE.le.{0} Nat instLENat q (@List.length.{0} Nat xs)),\n  @Exists.{1} Nat fun (r : Nat) =>\n    @Exists.{1} Nat fun (b : Nat) =>\n      And (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n        (And (@LE.le.{0} Nat instLENat q b)\n          (And (@LT.lt.{0} Nat instLTNat b r)\n            (And (@Eq.{1} Nat (ChompLean.gameF r b) x) (Not (ChompLean.C ChompLean.gameF r q x)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_futurePrehost_many_high_rows_force_shifted_host._proof_1_1",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} {xs : List.{0} Nat} (this : @LT.lt.{0} Nat instLTNat q q), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_futurePrehost_many_high_rows_force_shifted_host._proof_1_2",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} {xs : List.{0} Nat} (hmany : @LE.le.{0} Nat instLENat q (@List.length.{0} Nat xs))\n  (hcap :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat xs)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      q),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_futurePrehost_many_high_rows_force_shifted_host._proof_1_3",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q a x : Nat} {xs : List.{0} Nat} (r b : Nat) (h : Not (@LE.le.{0} Nat instLENat q b)),\n  Not (@LT.lt.{0} Nat instLTNat b q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_diagonal_prefix_host_capacity",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 46,
+      "typePretty": "∀ {c a x : Nat} {xs : List.{0} Nat} (haOwner : @Eq.{1} Nat (ChompLean.gameF a a) x) (hxs : @List.Nodup.{0} Nat xs)\n  (hrows :\n    ∀ (r : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r →\n        And (@LE.le.{0} Nat instLENat c r) (And (@LT.lt.{0} Nat instLTNat r a) (ChompLean.C ChompLean.gameF r c x))),\n  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs) c",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_diagonal_prefix_host_capacity._proof_1_1",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c a x : Nat} {xs : List.{0} Nat}\n  (hex :\n    ∀ (r : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r →\n        @Exists.{1} Nat fun (b : Nat) =>\n          And (@LT.lt.{0} Nat instLTNat b c) (And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF r b) x)))\n  (hax : @LT.lt.{0} Nat instLTNat a x) (r₁ r₂ : Nat)\n  (h₁ :\n    And\n      (@LT.lt.{0} Nat instLTNat\n        ((fun (r : Nat) =>\n            @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                Nat.instLawfulBEq r xs)\n              (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                @Classical.choose.{1} Nat\n                  (fun (x_1 : Nat) =>\n                    And (@LT.lt.{0} Nat instLTNat x_1 c)\n                      (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                  (hex r hr))\n              fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          r₁)\n        c)\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          ((fun (r : Nat) =>\n              @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                  Nat.instLawfulBEq r xs)\n                (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                  @Classical.choose.{1} Nat\n                    (fun (x_1 : Nat) =>\n                      And (@LT.lt.{0} Nat instLTNat x_1 c)\n                        (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                    (hex r hr))\n                fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            r₁)\n          r₁)\n        (@Eq.{1} Nat\n          (ChompLean.gameF r₁\n            ((fun (r : Nat) =>\n                @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n                  (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                    Nat.instLawfulBEq r xs)\n                  (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                    @Classical.choose.{1} Nat\n                      (fun (x_1 : Nat) =>\n                        And (@LT.lt.{0} Nat instLTNat x_1 c)\n                          (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                      (hex r hr))\n                  fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n                  @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n              r₁))\n          x)))\n  (h₂ :\n    And\n      (@LT.lt.{0} Nat instLTNat\n        ((fun (r : Nat) =>\n            @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                Nat.instLawfulBEq r xs)\n              (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                @Classical.choose.{1} Nat\n                  (fun (x_1 : Nat) =>\n                    And (@LT.lt.{0} Nat instLTNat x_1 c)\n                      (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                  (hex r hr))\n              fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          r₂)\n        c)\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          ((fun (r : Nat) =>\n              @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                  Nat.instLawfulBEq r xs)\n                (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                  @Classical.choose.{1} Nat\n                    (fun (x_1 : Nat) =>\n                      And (@LT.lt.{0} Nat instLTNat x_1 c)\n                        (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                    (hex r hr))\n                fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            r₂)\n          r₂)\n        (@Eq.{1} Nat\n          (ChompLean.gameF r₂\n            ((fun (r : Nat) =>\n                @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n                  (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                    Nat.instLawfulBEq r xs)\n                  (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                    @Classical.choose.{1} Nat\n                      (fun (x_1 : Nat) =>\n                        And (@LT.lt.{0} Nat instLTNat x_1 c)\n                          (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                      (hex r hr))\n                  fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n                  @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n              r₂))\n          x)))\n  (hd₂ :\n    And (@LE.le.{0} Nat instLENat c r₂) (And (@LT.lt.{0} Nat instLTNat r₂ a) (ChompLean.C ChompLean.gameF r₂ c x))),\n  Not (@LT.lt.{0} Nat instLTNat r₂ x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_diagonal_prefix_host_capacity._proof_1_2",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c a x : Nat} {xs : List.{0} Nat}\n  (hex :\n    ∀ (r : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r →\n        @Exists.{1} Nat fun (b : Nat) =>\n          And (@LT.lt.{0} Nat instLTNat b c) (And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF r b) x)))\n  (r₁ r₂ : Nat) (hrs : Not (@Eq.{1} Nat r₁ r₂)) (hlt : Not (@LT.lt.{0} Nat instLTNat r₁ r₂)),\n  Not (@LT.lt.{0} Nat instLTNat r₂ r₁) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_diagonal_prefix_host_capacity._proof_1_3",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c a x : Nat} {xs : List.{0} Nat}\n  (hex :\n    ∀ (r : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r →\n        @Exists.{1} Nat fun (b : Nat) =>\n          And (@LT.lt.{0} Nat instLTNat b c) (And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF r b) x)))\n  (hax : @LT.lt.{0} Nat instLTNat a x) (r₁ r₂ : Nat)\n  (h₁ :\n    And\n      (@LT.lt.{0} Nat instLTNat\n        ((fun (r : Nat) =>\n            @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                Nat.instLawfulBEq r xs)\n              (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                @Classical.choose.{1} Nat\n                  (fun (x_1 : Nat) =>\n                    And (@LT.lt.{0} Nat instLTNat x_1 c)\n                      (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                  (hex r hr))\n              fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          r₁)\n        c)\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          ((fun (r : Nat) =>\n              @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                  Nat.instLawfulBEq r xs)\n                (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                  @Classical.choose.{1} Nat\n                    (fun (x_1 : Nat) =>\n                      And (@LT.lt.{0} Nat instLTNat x_1 c)\n                        (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                    (hex r hr))\n                fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            r₁)\n          r₁)\n        (@Eq.{1} Nat\n          (ChompLean.gameF r₁\n            ((fun (r : Nat) =>\n                @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n                  (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                    Nat.instLawfulBEq r xs)\n                  (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                    @Classical.choose.{1} Nat\n                      (fun (x_1 : Nat) =>\n                        And (@LT.lt.{0} Nat instLTNat x_1 c)\n                          (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                      (hex r hr))\n                  fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n                  @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n              r₁))\n          x)))\n  (h₂ :\n    And\n      (@LT.lt.{0} Nat instLTNat\n        ((fun (r : Nat) =>\n            @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                Nat.instLawfulBEq r xs)\n              (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                @Classical.choose.{1} Nat\n                  (fun (x_1 : Nat) =>\n                    And (@LT.lt.{0} Nat instLTNat x_1 c)\n                      (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                  (hex r hr))\n              fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          r₂)\n        c)\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          ((fun (r : Nat) =>\n              @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                  Nat.instLawfulBEq r xs)\n                (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                  @Classical.choose.{1} Nat\n                    (fun (x_1 : Nat) =>\n                      And (@LT.lt.{0} Nat instLTNat x_1 c)\n                        (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                    (hex r hr))\n                fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            r₂)\n          r₂)\n        (@Eq.{1} Nat\n          (ChompLean.gameF r₂\n            ((fun (r : Nat) =>\n                @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n                  (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                    Nat.instLawfulBEq r xs)\n                  (fun (hr : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r) =>\n                    @Classical.choose.{1} Nat\n                      (fun (x_1 : Nat) =>\n                        And (@LT.lt.{0} Nat instLTNat x_1 c)\n                          (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF r x_1) x)))\n                      (hex r hr))\n                  fun (hr : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)) =>\n                  @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n              r₂))\n          x)))\n  (hd₁ :\n    And (@LE.le.{0} Nat instLENat c r₁) (And (@LT.lt.{0} Nat instLTNat r₁ a) (ChompLean.C ChompLean.gameF r₁ c x))),\n  Not (@LT.lt.{0} Nat instLTNat r₁ x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 210,
+      "typePretty": "∀ {s : Nat} (hFuture : ChompLean.DipFirstGapFutureDiagonalLoss ChompLean.gameRecurrenceModel s),\n  @Exists.{1} Nat fun (a : Nat) =>\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        a)\n      (And\n        (@LE.le.{0} Nat instLENat a\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (And (@Eq.{1} Nat (ChompLean.gameF a a) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n          (Or\n            (@LE.le.{0} Nat instLENat a\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s s)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (Or\n              (@Exists.{1} Nat fun (r : Nat) =>\n                And\n                  (@LT.lt.{0} Nat instLTNat\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    r)\n                  (And (@LT.lt.{0} Nat instLTNat r a)\n                    (@LT.lt.{0} Nat instLTNat (ChompLean.gameF r r)\n                      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))))\n              (@Exists.{1} Nat fun (r : Nat) =>\n                @Exists.{1} Nat fun (b : Nat) =>\n                  And\n                    (@LT.lt.{0} Nat instLTNat\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                      r)\n                    (And (@LT.lt.{0} Nat instLTNat r a)\n                      (And (@LE.le.{0} Nat instLENat s b)\n                        (And (@LT.lt.{0} Nat instLTNat b r)\n                          (And\n                            (@Eq.{1} Nat (ChompLean.gameF r b) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n                            (Not\n                              (ChompLean.C ChompLean.gameF r s\n                                (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))))))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host._proof_1_1",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (a : Nat)\n  (hband :\n    And (@LT.lt.{0} Nat instLTNat s a)\n      (And\n        (@LT.lt.{0} Nat instLTNat a\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel s s)))),\n  Not\n      (@LE.le.{0} Nat instLENat a\n        (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host._proof_1_2",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (a : Nat)\n  (ha :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      a),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        a) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host._proof_1_3",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (a r : Nat) (hra : @LT.lt.{0} Nat instLTNat r a) (hidx : @Eq.{1} Nat r a), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host._proof_1_4",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (a r : Nat)\n  (hle : @GE.ge.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) (ChompLean.gameF r r))\n  (hne : @Ne.{1} Nat (ChompLean.gameF r r) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)),\n  Not (@LT.lt.{0} Nat instLTNat (ChompLean.gameF r r) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host._proof_1_5",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (a r : Nat)\n  (hrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        r)\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a s)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))),\n  Not (@LT.lt.{0} Nat instLTNat s r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host._proof_1_6",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (a : Nat)\n  (ha :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      a)\n  (r : Nat)\n  (hrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        r)\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a s)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))),\n  Not (@LT.lt.{0} Nat instLTNat r a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host._proof_1_7",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (a r : Nat)\n  (hrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        r)\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a s)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host._proof_1_8",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (a : Nat)\n  (ha :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      a)\n  (hnear :\n    Not\n      (@LE.le.{0} Nat instLENat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s s)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LE.le.{0} Nat instLENat s\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a s)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_near_owner_or_tail_downcross_or_shifted_host._proof_1_9",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (a r b : Nat)\n  (hrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        r)\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a s)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_long_futurePrehost_high_interval_forces_shifted_host",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 180,
+      "typePretty": "∀ {q a x : Nat} (hloss : ChompLean.FutureDiagonalPrehostLoss ChompLean.gameRecurrenceModel q a x)\n  (hlong :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q q)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      a)\n  (hhigh :\n    ∀ (r : Nat),\n      @LT.lt.{0} Nat instLTNat q r → @LT.lt.{0} Nat instLTNat r a → @LT.lt.{0} Nat instLTNat x (ChompLean.gameF r r)),\n  @Exists.{1} Nat fun (r : Nat) =>\n    @Exists.{1} Nat fun (b : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat q r)\n        (And (@LT.lt.{0} Nat instLTNat r a)\n          (And (@LE.le.{0} Nat instLENat q b)\n            (And (@LT.lt.{0} Nat instLTNat b r)\n              (And (@Eq.{1} Nat (ChompLean.gameF r b) x) (Not (ChompLean.C ChompLean.gameF r q x))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_long_futurePrehost_high_interval_forces_shifted_host._proof_1_1",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q a : Nat} (r : Nat)\n  (hrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        r)\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat q r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_long_futurePrehost_high_interval_forces_shifted_host._proof_1_2",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q a : Nat} (r : Nat)\n  (hrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        r)\n      (@LT.lt.{0} Nat instLTNat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat r a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_long_futurePrehost_high_interval_forces_shifted_host._proof_1_3",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q a : Nat}\n  (hlong :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q q)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      a),\n  Not\n      (@LE.le.{0} Nat instLENat q\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_many_preowner_rows_force_prefix_gap",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 100,
+      "typePretty": "∀ {c a x : Nat} {xs : List.{0} Nat} (haOwner : @Eq.{1} Nat (ChompLean.gameF a a) x) (hxs : @List.Nodup.{0} Nat xs)\n  (hrows :\n    ∀ (r : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r →\n        And (@LE.le.{0} Nat instLENat c r) (@LT.lt.{0} Nat instLTNat r a))\n  (hmany : @LT.lt.{0} Nat instLTNat c (@List.length.{0} Nat xs)),\n  @Exists.{1} Nat fun (r : Nat) =>\n    And (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs r)\n      (Not (ChompLean.C ChompLean.gameF r c x))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_many_preowner_rows_force_prefix_gap._proof_1_1",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c a x : Nat} {xs : List.{0} Nat} (hmany : @LT.lt.{0} Nat instLTNat c (@List.length.{0} Nat xs))\n  (hcap : @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs) c), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R42FutureDiagonalGapGeneration.0.ChompLean.r42_nodup_map_of_injective_on",
+      "module": "R42FutureDiagonalGapGeneration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 21,
+      "typePretty": "∀ {alpha beta : Type} [inst : BEq.{0} alpha] [@LawfulBEq.{0} alpha inst] [inst : BEq.{0} beta]\n  [@LawfulBEq.{0} beta inst] (f : alpha → beta) (xs : List.{0} alpha) (hxs : @List.Nodup.{0} alpha xs)\n  (hinj :\n    ∀ (x : alpha),\n      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x →\n        ∀ (y : alpha),\n          @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs y →\n            @Eq.{1} beta (f x) (f y) → @Eq.{1} alpha x y),\n  @List.Nodup.{0} beta (@List.map.{0, 0} alpha beta f xs)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "7025317814ff18bb100a369298684dc8f7c1174eb75a65af1e63073c7e2c14a8",
+      "sourcePath": "lean/core/R42FutureDiagonalGapGeneration.lean",
+      "universeParameters": []
+    }
+  ]
+}

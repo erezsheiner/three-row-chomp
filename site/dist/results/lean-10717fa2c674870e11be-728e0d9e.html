@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SJS implementation and initial-state lemmas · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>SJS implementation and initial-state lemmas</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/SJSDiagonalDictionary.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/SJSDiagonalDictionary.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/SJSDiagonalDictionary.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a> <a href="../audit/full/paper-b/FINAL-AMENDMENT-REVIEW.json">Historical 13 October evidence: Independent review of corrected source prose</a> <a href="../audit/full/lean/MAIN-CLAIM-MAPPING.md">Historical 13 October evidence: Exact mathematical correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Finite evaluations are computational evidence only; no general implementation-equivalence theorem is claimed.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 99 declarations</summary><ul class="declarations"><li><code>ChompLean.SJS.AgreeAbove</code><pre class="prose">(q : Nat) → (l₁ l₂ : List.{0} Nat) → Prop</pre></li><li><code>ChompLean.SJS.AgreeAbove.append</code><pre class="prose">∀ {q : Nat} {a₁ a₂ b₁ b₂ : List.{0} Nat} (ha : ChompLean.SJS.AgreeAbove q a₁ a₂)
+  (hb : ChompLean.SJS.AgreeAbove q b₁ b₂),
+  ChompLean.SJS.AgreeAbove q
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) a₁ b₁)
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) a₂ b₂)</pre></li><li><code>ChompLean.SJS.AgreeAbove.append._simp_1_1</code><pre class="prose">∀ {α : Type u_1} {a : α} {s t : List.{u_1} α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)
+      (@HAppend.hAppend.{u_1, u_1, u_1} (List.{u_1} α) (List.{u_1} α) (List.{u_1} α)
+        (@instHAppendOfAppend.{u_1} (List.{u_1} α) (@List.instAppend.{u_1} α)) s t)
+      a)
+    (Or (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) s a)
+      (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) t a))</pre></li><li><code>ChompLean.SJS.AgreeAbove.cons</code><pre class="prose">∀ {q : Nat} {l₁ l₂ : List.{0} Nat} (x : Nat) (h : ChompLean.SJS.AgreeAbove q l₁ l₂),
+  ChompLean.SJS.AgreeAbove q (@List.cons.{0} Nat x l₁) (@List.cons.{0} Nat x l₂)</pre></li><li><code>ChompLean.SJS.AgreeAbove.cons._simp_1_1</code><pre class="prose">∀ {α : Type u_1} {b : α} {l : List.{u_1} α} {a : α},
+  @Eq.{1} Prop (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.cons.{u_1} α b l) a)
+    (Or (@Eq.{u_1 + 1} α a b) (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) l a))</pre></li><li><code>ChompLean.SJS.AgreeAbove.mono</code><pre class="prose">∀ {q q&#x27; : Nat} {l₁ l₂ : List.{0} Nat} (h : ChompLean.SJS.AgreeAbove q l₁ l₂) (hq : @LE.le.{0} Nat instLENat q q&#x27;),
+  ChompLean.SJS.AgreeAbove q&#x27; l₁ l₂</pre></li><li><code>ChompLean.SJS.AgreeAbove.refl</code><pre class="prose">∀ (q : Nat) (l : List.{0} Nat), ChompLean.SJS.AgreeAbove q l l</pre></li><li><code>ChompLean.SJS.AgreeAbove.symm</code><pre class="prose">∀ {q : Nat} {l₁ l₂ : List.{0} Nat} (h : ChompLean.SJS.AgreeAbove q l₁ l₂), ChompLean.SJS.AgreeAbove q l₂ l₁</pre></li><li><code>ChompLean.SJS.AgreeAbove.trans</code><pre class="prose">∀ {q : Nat} {l₁ l₂ l₃ : List.{0} Nat} (h₁ : ChompLean.SJS.AgreeAbove q l₁ l₂) (h₂ : ChompLean.SJS.AgreeAbove q l₂ l₃),
+  ChompLean.SJS.AgreeAbove q l₁ l₃</pre></li><li><code>ChompLean.SJS.Journal</code><pre class="prose">Type</pre></li><li><code>ChompLean.SJS.State</code><pre class="prose">Type</pre></li><li><code>ChompLean.SJS.State.J</code><pre class="prose">(self : ChompLean.SJS.State) → List.{0} ChompLean.SJS.Journal</pre></li><li><code>ChompLean.SJS.State._sizeOf_1</code><pre class="prose">(t : ChompLean.SJS.State) → Nat</pre></li><li><code>ChompLean.SJS.State._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.SJS.State</pre></li><li><code>ChompLean.SJS.State.casesOn</code><pre class="prose">{motive : (t : ChompLean.SJS.State) → Sort u} →
+  (t : ChompLean.SJS.State) →
+    (mk : (q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → motive (ChompLean.SJS.State.mk q J)) → motive t</pre></li><li><code>ChompLean.SJS.State.ctorIdx</code><pre class="prose">ChompLean.SJS.State → Nat</pre></li><li><code>ChompLean.SJS.State.mk</code><pre class="prose">(q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → ChompLean.SJS.State</pre></li><li><code>ChompLean.SJS.State.mk._flat_ctor</code><pre class="prose">(q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → ChompLean.SJS.State</pre></li><li><code>ChompLean.SJS.State.mk.inj</code><pre class="prose">∀ {q : Nat} {J : List.{0} ChompLean.SJS.Journal} {q_1 : Nat} {J_1 : List.{0} ChompLean.SJS.Journal},
+  @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.State.mk q J) (ChompLean.SJS.State.mk q_1 J_1) →
+    And (@Eq.{1} Nat q q_1) (@Eq.{1} (List.{0} ChompLean.SJS.Journal) J J_1)</pre></li><li><code>ChompLean.SJS.State.mk.injEq</code><pre class="prose">∀ (q : Nat) (J : List.{0} ChompLean.SJS.Journal) (q_1 : Nat) (J_1 : List.{0} ChompLean.SJS.Journal),
+  @Eq.{1} Prop (@Eq.{1} ChompLean.SJS.State (ChompLean.SJS.State.mk q J) (ChompLean.SJS.State.mk q_1 J_1))
+    (And (@Eq.{1} Nat q q_1) (@Eq.{1} (List.{0} ChompLean.SJS.Journal) J J_1))</pre></li><li><code>ChompLean.SJS.State.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {q : Nat} →
+    {J : List.{0} ChompLean.SJS.Journal} →
+      {q&#x27; : Nat} →
+        {J&#x27; : List.{0} ChompLean.SJS.Journal} →
+          (eq : @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.State.mk q J) (ChompLean.SJS.State.mk q&#x27; J&#x27;)) →
+            (k : (q_eq : @Eq.{1} Nat q q&#x27;) → (J_eq : @Eq.{1} (List.{0} ChompLean.SJS.Journal) J J&#x27;) → P) → P</pre></li><li><code>ChompLean.SJS.State.mk.sizeOf_spec</code><pre class="prose">∀ (q : Nat) (J : List.{0} ChompLean.SJS.Journal),
+  @Eq.{1} Nat (@SizeOf.sizeOf.{1} ChompLean.SJS.State ChompLean.SJS.State._sizeOf_inst (ChompLean.SJS.State.mk q J))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) (@SizeOf.sizeOf.{1} Nat instSizeOfNat q))
+      (@SizeOf.sizeOf.{1} (List.{0} ChompLean.SJS.Journal)
+        (@List._sizeOf_inst.{0} ChompLean.SJS.Journal (@List._sizeOf_inst.{0} Nat instSizeOfNat)) J))</pre></li><li><code>ChompLean.SJS.State.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.SJS.State} →
+    (eq : @Eq.{1} ChompLean.SJS.State t t&#x27;) → ChompLean.SJS.State.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.SJS.State.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.SJS.State) → Sort u</pre></li><li><code>ChompLean.SJS.State.q</code><pre class="prose">(self : ChompLean.SJS.State) → Nat</pre></li><li><code>ChompLean.SJS.State.rec</code><pre class="prose">{motive : (t : ChompLean.SJS.State) → Sort u} →
+  (mk : (q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → motive (ChompLean.SJS.State.mk q J)) →
+    (t : ChompLean.SJS.State) → motive t</pre></li><li><code>ChompLean.SJS.State.recOn</code><pre class="prose">{motive : (t : ChompLean.SJS.State) → Sort u} →
+  (t : ChompLean.SJS.State) →
+    (mk : (q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → motive (ChompLean.SJS.State.mk q J)) → motive t</pre></li><li><code>ChompLean.SJS.awards</code><pre class="prose">(q : Nat) → (Js : List.{0} ChompLean.SJS.Journal) → List.{0} Nat</pre></li><li><code>ChompLean.SJS.dOf</code><pre class="prose">(s : ChompLean.SJS.State) → Nat</pre></li><li><code>ChompLean.SJS.dayBound</code><pre class="prose">List.{0} Nat → Nat</pre></li><li><code>ChompLean.SJS.dayBound._sunfold</code><pre class="prose">List.{0} Nat → Nat</pre></li><li><code>ChompLean.SJS.dayBound._unsafe_rec</code><pre class="prose">List.{0} Nat → Nat</pre></li><li><code>ChompLean.SJS.dayBound.match_1</code><pre class="prose">(motive : List.{0} Nat → Sort u_1) →
+  (x : List.{0} Nat) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} Nat)) →
+      (h_2 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat x xs)) → motive x</pre></li><li><code>ChompLean.SJS.dword</code><pre class="prose">(q : Nat) → Nat</pre></li><li><code>ChompLean.SJS.dword_one</code><pre class="prose">@Eq.{1} Nat (ChompLean.SJS.dword (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))</pre></li><li><code>ChompLean.SJS.dword_zero</code><pre class="prose">@Eq.{1} Nat (ChompLean.SJS.dword (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))</pre></li><li><code>ChompLean.SJS.hasDay</code><pre class="prose">List.{0} Nat → Nat → Bool</pre></li><li><code>ChompLean.SJS.hasDay._sunfold</code><pre class="prose">List.{0} Nat → Nat → Bool</pre></li><li><code>ChompLean.SJS.hasDay._unsafe_rec</code><pre class="prose">List.{0} Nat → Nat → Bool</pre></li><li><code>ChompLean.SJS.hasDay.eq_1</code><pre class="prose">∀ (x : Nat), @Eq.{1} Bool (ChompLean.SJS.hasDay (@List.nil.{0} Nat) x) Bool.false</pre></li><li><code>ChompLean.SJS.hasDay.eq_2</code><pre class="prose">∀ (x x_2 : Nat) (xs : List.{0} Nat),
+  @Eq.{1} Bool (ChompLean.SJS.hasDay (@List.cons.{0} Nat x_2 xs) x)
+    (Bool.or (@BEq.beq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat) x_2 x) (ChompLean.SJS.hasDay xs x))</pre></li><li><code>ChompLean.SJS.hasDay.eq_def</code><pre class="prose">∀ (x : List.{0} Nat) (x_1 : Nat),
+  @Eq.{1} Bool (ChompLean.SJS.hasDay x x_1)
+    (ChompLean.SJS.hasDay.match_1.{1} (fun (x : List.{0} Nat) (x_2 : Nat) =&gt; Bool) x x_1 (fun (x : Nat) =&gt; Bool.false)
+      fun (x : Nat) (xs : List.{0} Nat) (k : Nat) =&gt;
+      Bool.or (@BEq.beq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat) x k) (ChompLean.SJS.hasDay xs k))</pre></li><li><code>ChompLean.SJS.hasDay.match_1</code><pre class="prose">(motive : List.{0} Nat → Nat → Sort u_1) →
+  (x : List.{0} Nat) →
+    (x_1 : Nat) →
+      (h_1 : (x : Nat) → motive (@List.nil.{0} Nat) x) →
+        (h_2 : (x : Nat) → (xs : List.{0} Nat) → (k : Nat) → motive (@List.cons.{0} Nat x xs) k) → motive x x_1</pre></li><li><code>ChompLean.SJS.hasDay_iff</code><pre class="prose">∀ (l : List.{0} Nat) (k : Nat),
+  Iff (@Eq.{1} Bool (ChompLean.SJS.hasDay l k) Bool.true)
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l k)</pre></li><li><code>ChompLean.SJS.lastJ</code><pre class="prose">List.{0} ChompLean.SJS.Journal → ChompLean.SJS.Journal</pre></li><li><code>ChompLean.SJS.lastJ._sparseCasesOn_1</code><pre class="prose">{α : Type u} →
+  {motive : (t : List.{u} α) → Sort u_1} →
+    (t : List.{u} α) →
+      (nil : motive (@List.nil.{u} α)) → ((h : Nat.hasNotBit (nat_lit 1) (@List.ctorIdx.{u} α t)) → motive t) → motive t</pre></li><li><code>ChompLean.SJS.lastJ._sunfold</code><pre class="prose">List.{0} ChompLean.SJS.Journal → ChompLean.SJS.Journal</pre></li><li><code>ChompLean.SJS.lastJ._unsafe_rec</code><pre class="prose">List.{0} ChompLean.SJS.Journal → ChompLean.SJS.Journal</pre></li><li><code>ChompLean.SJS.lastJ.match_1</code><pre class="prose">(motive : List.{0} ChompLean.SJS.Journal → Sort u_1) →
+  (x : List.{0} ChompLean.SJS.Journal) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.SJS.Journal)) →
+      (h_2 :
+          (g : ChompLean.SJS.Journal) →
+            motive (@List.cons.{0} ChompLean.SJS.Journal g (@List.nil.{0} ChompLean.SJS.Journal))) →
+        (h_3 :
+            (head : ChompLean.SJS.Journal) →
+              (gs : List.{0} ChompLean.SJS.Journal) → motive (@List.cons.{0} ChompLean.SJS.Journal head gs)) →
+          motive x</pre></li><li><code>ChompLean.SJS.le_dayBound</code><pre class="prose">∀ {l : List.{0} Nat} {x : Nat} (h : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l x),
+  @LE.le.{0} Nat instLENat x (ChompLean.SJS.dayBound l)</pre></li><li><code>ChompLean.SJS.mexGE</code><pre class="prose">(q : Nat) → (l : List.{0} Nat) → Nat</pre></li><li><code>ChompLean.SJS.mexGE_congr</code><pre class="prose">∀ {q : Nat} {l₁ l₂ : List.{0} Nat} (h : ChompLean.SJS.AgreeAbove q l₁ l₂),
+  @Eq.{1} Nat (ChompLean.SJS.mexGE q l₁) (ChompLean.SJS.mexGE q l₂)</pre></li><li><code>ChompLean.SJS.mexGE_ge</code><pre class="prose">∀ (q : Nat) (l : List.{0} Nat), @LE.le.{0} Nat instLENat q (ChompLean.SJS.mexGE q l)</pre></li><li><code>ChompLean.SJS.mexGE_min</code><pre class="prose">∀ (q : Nat) (l : List.{0} Nat) (j : Nat),
+  @LE.le.{0} Nat instLENat q j →
+    @LT.lt.{0} Nat instLTNat j (ChompLean.SJS.mexGE q l) →
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l j</pre></li><li><code>ChompLean.SJS.mexGE_not_mem</code><pre class="prose">∀ (q : Nat) (l : List.{0} Nat),
+  Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l (ChompLean.SJS.mexGE q l))</pre></li><li><code>ChompLean.SJS.mexGE_not_mem._proof_1_1</code><pre class="prose">∀ (q : Nat) (l : List.{0} Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.SJS.dayBound l)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.SJS.mexGE_unique</code><pre class="prose">∀ {q : Nat} {l : List.{0} Nat} {v : Nat} (h1 : @LE.le.{0} Nat instLENat q v)
+  (h2 : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l v))
+  (h3 :
+    ∀ (j : Nat),
+      @LE.le.{0} Nat instLENat q j →
+        @LT.lt.{0} Nat instLTNat j v → @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l j),
+  @Eq.{1} Nat (ChompLean.SJS.mexGE q l) v</pre></li><li><code>ChompLean.SJS.mexGEaux</code><pre class="prose">(l : List.{0} Nat) → Nat → Nat → Nat</pre></li><li><code>ChompLean.SJS.mexGEaux._sunfold</code><pre class="prose">(l : List.{0} Nat) → Nat → Nat → Nat</pre></li><li><code>ChompLean.SJS.mexGEaux._unsafe_rec</code><pre class="prose">(l : List.{0} Nat) → Nat → Nat → Nat</pre></li><li><code>ChompLean.SJS.mexGEaux.eq_1</code><pre class="prose">∀ (l : List.{0} Nat) (x : Nat),
+  @Eq.{1} Nat (ChompLean.SJS.mexGEaux l (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x) x</pre></li><li><code>ChompLean.SJS.mexGEaux.eq_2</code><pre class="prose">∀ (l : List.{0} Nat) (x fuel : Nat),
+  @Eq.{1} Nat (ChompLean.SJS.mexGEaux l (Nat.succ fuel) x)
+    (@ite.{1} Nat (@Eq.{1} Bool (ChompLean.SJS.hasDay l x) Bool.true)
+      (instDecidableEqBool (ChompLean.SJS.hasDay l x) Bool.true)
+      (ChompLean.SJS.mexGEaux l fuel
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      x)</pre></li><li><code>ChompLean.SJS.mexGEaux.eq_def</code><pre class="prose">∀ (l : List.{0} Nat) (x x_1 : Nat),
+  @Eq.{1} Nat (ChompLean.SJS.mexGEaux l x x_1)
+    (ChompLean.SJS.mexGEaux.match_1.{1} (fun (x x_2 : Nat) =&gt; Nat) x x_1 (fun (k : Nat) =&gt; k) fun (fuel k : Nat) =&gt;
+      @ite.{1} Nat (@Eq.{1} Bool (ChompLean.SJS.hasDay l k) Bool.true)
+        (instDecidableEqBool (ChompLean.SJS.hasDay l k) Bool.true)
+        (ChompLean.SJS.mexGEaux l fuel
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        k)</pre></li><li><code>ChompLean.SJS.mexGEaux.match_1</code><pre class="prose">(motive : Nat → Nat → Sort u_1) →
+  (x x_1 : Nat) →
+    (h_1 : (k : Nat) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) →
+      (h_2 : (fuel k : Nat) → motive (Nat.succ fuel) k) → motive x x_1</pre></li><li><code>ChompLean.SJS.mexGEaux_ge</code><pre class="prose">∀ (l : List.{0} Nat) (fuel k : Nat), @LE.le.{0} Nat instLENat k (ChompLean.SJS.mexGEaux l fuel k)</pre></li><li><code>ChompLean.SJS.mexGEaux_ge._proof_1_4</code><pre class="prose">∀ (l : List.{0} Nat) (n k : Nat)
+  (this :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.SJS.mexGEaux l n
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LE.le.{0} Nat instLENat k
+        (ChompLean.SJS.mexGEaux l n
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.SJS.mexGEaux_min</code><pre class="prose">∀ (l : List.{0} Nat) (fuel k j : Nat),
+  @LE.le.{0} Nat instLENat k j →
+    @LT.lt.{0} Nat instLTNat j (ChompLean.SJS.mexGEaux l fuel k) →
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l j</pre></li><li><code>ChompLean.SJS.mexGEaux_min._proof_1_4</code><pre class="prose">∀ (k j : Nat) (h1 : @LE.le.{0} Nat instLENat k j) (h2 : @LT.lt.{0} Nat instLTNat j k), False</pre></li><li><code>ChompLean.SJS.mexGEaux_min._proof_1_5</code><pre class="prose">∀ (l : List.{0} Nat) (n k j : Nat) (h1 : @LE.le.{0} Nat instLENat k j) (hjk : Not (@Eq.{1} Nat j k)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        j) →
+    False</pre></li><li><code>ChompLean.SJS.mexGEaux_not_mem</code><pre class="prose">∀ (l : List.{0} Nat) (fuel k : Nat)
+  (hf :
+    @LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k fuel)),
+  Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l (ChompLean.SJS.mexGEaux l fuel k))</pre></li><li><code>ChompLean.SJS.mexGEaux_not_mem._proof_1_4</code><pre class="prose">∀ (l : List.{0} Nat) (k : Nat)
+  (hf :
+    @LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+  (hb : @LE.le.{0} Nat instLENat k (ChompLean.SJS.dayBound l)), False</pre></li><li><code>ChompLean.SJS.mexGEaux_not_mem._proof_1_5</code><pre class="prose">∀ (l : List.{0} Nat) (n k : Nat)
+  (hf :
+    @LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          n)) →
+    False</pre></li><li><code>ChompLean.SJS.not_mem_of_hasDay_false</code><pre class="prose">∀ {l : List.{0} Nat} {k : Nat} (h : @Eq.{1} Bool (ChompLean.SJS.hasDay l k) Bool.false),
+  Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l k)</pre></li><li><code>ChompLean.SJS.scan</code><pre class="prose">(q : Nat) → List.{0} ChompLean.SJS.Journal → List.{0} Nat → List.{0} (Prod.{0, 0} ChompLean.SJS.Journal Nat)</pre></li><li><code>ChompLean.SJS.scan._sunfold</code><pre class="prose">(q : Nat) → List.{0} ChompLean.SJS.Journal → List.{0} Nat → List.{0} (Prod.{0, 0} ChompLean.SJS.Journal Nat)</pre></li><li><code>ChompLean.SJS.scan._unsafe_rec</code><pre class="prose">(q : Nat) → List.{0} ChompLean.SJS.Journal → List.{0} Nat → List.{0} (Prod.{0, 0} ChompLean.SJS.Journal Nat)</pre></li><li><code>ChompLean.SJS.scan.match_1</code><pre class="prose">(motive : List.{0} ChompLean.SJS.Journal → List.{0} Nat → Sort u_1) →
+  (x : List.{0} ChompLean.SJS.Journal) →
+    (x_1 : List.{0} Nat) →
+      (h_1 : (x : List.{0} Nat) → motive (@List.nil.{0} ChompLean.SJS.Journal) x) →
+        (h_2 :
+            (g : ChompLean.SJS.Journal) →
+              (gs : List.{0} ChompLean.SJS.Journal) →
+                (served : List.{0} Nat) → motive (@List.cons.{0} ChompLean.SJS.Journal g gs) served) →
+          motive x x_1</pre></li><li><code>ChompLean.SJS.seed</code><pre class="prose">ChompLean.SJS.State</pre></li><li><code>ChompLean.SJS.state</code><pre class="prose">Nat → ChompLean.SJS.State</pre></li><li><code>ChompLean.SJS.state._sunfold</code><pre class="prose">Nat → ChompLean.SJS.State</pre></li><li><code>ChompLean.SJS.state._unsafe_rec</code><pre class="prose">Nat → ChompLean.SJS.State</pre></li><li><code>ChompLean.SJS.state.eq_1</code><pre class="prose">@Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  ChompLean.SJS.seed</pre></li><li><code>ChompLean.SJS.state.eq_2</code><pre class="prose">∀ (n : Nat), @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state (Nat.succ n)) (ChompLean.SJS.step (ChompLean.SJS.state n))</pre></li><li><code>ChompLean.SJS.state.eq_def</code><pre class="prose">∀ (x : Nat),
+  @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state x)
+    (ChompLean.SJS.state.match_1.{1} (fun (x : Nat) =&gt; ChompLean.SJS.State) x (fun (_ : Unit) =&gt; ChompLean.SJS.seed)
+      fun (n : Nat) =&gt; ChompLean.SJS.step (ChompLean.SJS.state n))</pre></li><li><code>ChompLean.SJS.state.match_1</code><pre class="prose">(motive : Nat → Sort u_1) →
+  (x : Nat) →
+    (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) →
+      (h_2 : (n : Nat) → motive (Nat.succ n)) → motive x</pre></li><li><code>ChompLean.SJS.state_one</code><pre class="prose">@Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+  (ChompLean.SJS.State.mk (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+    (@List.cons.{0} ChompLean.SJS.Journal
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) (@List.nil.{0} Nat))
+      (@List.nil.{0} ChompLean.SJS.Journal)))</pre></li><li><code>ChompLean.SJS.state_q</code><pre class="prose">∀ (n : Nat), @Eq.{1} Nat (ChompLean.SJS.State.q (ChompLean.SJS.state n)) n</pre></li><li><code>ChompLean.SJS.state_zero</code><pre class="prose">@Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  (ChompLean.SJS.State.mk (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+    (@List.cons.{0} ChompLean.SJS.Journal (@List.nil.{0} Nat) (@List.nil.{0} ChompLean.SJS.Journal)))</pre></li><li><code>ChompLean.SJS.step</code><pre class="prose">(s : ChompLean.SJS.State) → ChompLean.SJS.State</pre></li><li><code>ChompLean.SJS.step.eq_1</code><pre class="prose">∀ (s : ChompLean.SJS.State),
+  @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.step s)
+    (ChompLean.SJS.State.mk
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.SJS.State.q s)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HAppend.hAppend.{0, 0, 0} (List.{0} ChompLean.SJS.Journal) (List.{0} (List.{0} Nat))
+        (List.{0} ChompLean.SJS.Journal)
+        (@instHAppendOfAppend.{0} (List.{0} ChompLean.SJS.Journal) (@List.instAppend.{0} ChompLean.SJS.Journal))
+        (@List.map.{0, 0} (Prod.{0, 0} ChompLean.SJS.Journal Nat) ChompLean.SJS.Journal
+          (@Prod.fst.{0, 0} ChompLean.SJS.Journal Nat)
+          (@List.filter.{0} (Prod.{0, 0} ChompLean.SJS.Journal Nat)
+            (fun (p : Prod.{0, 0} ChompLean.SJS.Journal Nat) =&gt;
+              Bool.not
+                (@BEq.beq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                  (@Prod.snd.{0, 0} ChompLean.SJS.Journal Nat p) (ChompLean.SJS.State.q s)))
+            (ChompLean.SJS.scan (ChompLean.SJS.State.q s) (ChompLean.SJS.State.J s) (@List.nil.{0} Nat))))
+        (@List.cons.{0} (List.{0} Nat)
+          (@List.cons.{0} Nat (ChompLean.SJS.dOf s)
+            (@List.filter.{0} Nat
+              (fun (x : Nat) =&gt;
+                @Decidable.decide (@LT.lt.{0} Nat instLTNat (ChompLean.SJS.State.q s) x)
+                  (Nat.decLt (ChompLean.SJS.State.q s) x))
+              (ChompLean.SJS.lastJ (ChompLean.SJS.State.J s))))
+          (@List.nil.{0} (List.{0} Nat)))))</pre></li><li><code>_private.SJSDiagonalDictionary.0.ChompLean.SJS.hasDay.match_1.eq_1</code><pre class="prose">∀ (motive : List.{0} Nat → Nat → Sort u_1) (x : Nat) (h_1 : (x : Nat) → motive (@List.nil.{0} Nat) x)
+  (h_2 : (x : Nat) → (xs : List.{0} Nat) → (k : Nat) → motive (@List.cons.{0} Nat x xs) k),
+  @Eq.{u_1} (motive (@List.nil.{0} Nat) x) (ChompLean.SJS.hasDay.match_1.{u_1} motive (@List.nil.{0} Nat) x h_1 h_2)
+    (h_1 x)</pre></li><li><code>_private.SJSDiagonalDictionary.0.ChompLean.SJS.hasDay.match_1.eq_2</code><pre class="prose">∀ (motive : List.{0} Nat → Nat → Sort u_1) (x : Nat) (xs : List.{0} Nat) (k : Nat)
+  (h_1 : (x : Nat) → motive (@List.nil.{0} Nat) x)
+  (h_2 : (x : Nat) → (xs : List.{0} Nat) → (k : Nat) → motive (@List.cons.{0} Nat x xs) k),
+  @Eq.{u_1} (motive (@List.cons.{0} Nat x xs) k)
+    (ChompLean.SJS.hasDay.match_1.{u_1} motive (@List.cons.{0} Nat x xs) k h_1 h_2) (h_2 x xs k)</pre></li><li><code>_private.SJSDiagonalDictionary.0.ChompLean.SJS.hasDay.match_1.splitter</code><pre class="prose">(motive : List.{0} Nat → Nat → Sort u_1) →
+  (x : List.{0} Nat) →
+    (x_1 : Nat) →
+      (h_1 : (x : Nat) → motive (@List.nil.{0} Nat) x) →
+        (h_2 : (x : Nat) → (xs : List.{0} Nat) → (k : Nat) → motive (@List.cons.{0} Nat x xs) k) → motive x x_1</pre></li><li><code>_private.SJSDiagonalDictionary.0.ChompLean.SJS.mexGEaux.match_1.eq_1</code><pre class="prose">∀ (motive : Nat → Nat → Sort u_1) (k : Nat)
+  (h_1 : (k : Nat) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+  (h_2 : (fuel k : Nat) → motive (Nat.succ fuel) k),
+  @Eq.{u_1} (motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+    (ChompLean.SJS.mexGEaux.match_1.{u_1} motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k h_1
+      h_2)
+    (h_1 k)</pre></li><li><code>_private.SJSDiagonalDictionary.0.ChompLean.SJS.mexGEaux.match_1.eq_2</code><pre class="prose">∀ (motive : Nat → Nat → Sort u_1) (fuel k : Nat)
+  (h_1 : (k : Nat) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+  (h_2 : (fuel k : Nat) → motive (Nat.succ fuel) k),
+  @Eq.{u_1} (motive (Nat.succ fuel) k) (ChompLean.SJS.mexGEaux.match_1.{u_1} motive (Nat.succ fuel) k h_1 h_2)
+    (h_2 fuel k)</pre></li><li><code>_private.SJSDiagonalDictionary.0.ChompLean.SJS.mexGEaux.match_1.splitter</code><pre class="prose">(motive : Nat → Nat → Sort u_1) →
+  (x x_1 : Nat) →
+    (h_1 : (k : Nat) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) →
+      (h_2 : (fuel k : Nat) → motive (Nat.succ fuel) k) → motive x x_1</pre></li><li><code>_private.SJSDiagonalDictionary.0.ChompLean.SJS.state.match_1.eq_1</code><pre class="prose">∀ (motive : Nat → Sort u_1) (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  (h_2 : (n : Nat) → motive (Nat.succ n)),
+  @Eq.{u_1} (motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+    (ChompLean.SJS.state.match_1.{u_1} motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) h_1 h_2)
+    (h_1 Unit.unit)</pre></li><li><code>_private.SJSDiagonalDictionary.0.ChompLean.SJS.state.match_1.eq_2</code><pre class="prose">∀ (motive : Nat → Sort u_1) (n : Nat)
+  (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  (h_2 : (n : Nat) → motive (Nat.succ n)),
+  @Eq.{u_1} (motive (Nat.succ n)) (ChompLean.SJS.state.match_1.{u_1} motive (Nat.succ n) h_1 h_2) (h_2 n)</pre></li><li><code>_private.SJSDiagonalDictionary.0.ChompLean.SJS.state.match_1.splitter</code><pre class="prose">(motive : Nat → Sort u_1) →
+  (x : Nat) →
+    (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) →
+      (h_2 : (n : Nat) → motive (Nat.succ n)) → motive x</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/SJSDiagonalDictionary.lean:1</p><p>SHA-256: <code class="path">a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf</code></p></section><p><a href="../index.html#id=lean-10717fa2c674870e11be">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

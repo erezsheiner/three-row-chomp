@@ -1,0 +1,47 @@
+{
+  "paperIndex": 42,
+  "id": "two-owner-response-content",
+  "original": {
+    "title": "Two-owner MEX response has an exact carrier normal form",
+    "status": "paper-proof",
+    "statement": "x=min(ℕ∖(S∪A∩B)); y=min{t>x:t∉S and E_AB(x,t)}.",
+    "assumptions": [
+      "Arbitrary finite journals A,B and incoming set S over the nonnegative integers.",
+      "Two ordered MEX emissions; this is an algebraic interface statement."
+    ],
+    "sourcePath": "projects/central-first-exit/work/STRUCTURAL-ALGEBRA-20260923-008/algebra/PROOFS.md",
+    "sourceLine": 28,
+    "sha256": "e0095145496f6622bc0b7b43aba560e5657b2caaa71aebe549c16f34a6084fa8"
+  },
+  "exactAuditedStatement": "For arbitrary finite A, B, S subset N0, u=mex(A union S), v=mex(B union S union{u}). With I=A intersect B and E(x, y)=[x notin A, y not inB]or[x in A minus B, y notin A], sorted outputs x<y satisfy x=mex(S union I), y=min{t>x:t notinS, E(x, t)}. Equality of E is exactly equality of carrier response in all finite contexts.",
+  "hypotheses": [
+    "Zero-based MEX; finite journal/context sets; outputs distinct."
+  ],
+  "proofDependencyMap": [],
+  "independentDerivationAndChecks": [
+    "Every label below x is either in S or banned by both owners. If x notin A, first owner takes x; the second takes first later label outside B union S. If x in A, then x notin B and first owner takes first later label outside A union S; second take x. These are exactly the two clauses of E.",
+    "Finite bans ensure existence of y. The description is also lexicographically first edge outsideS. Therefore equal E implies equal responses.",
+    "Conversely if E and E prime differ at(x, y), choose S={0,..., y}minus{x, y}. The pair accepting the edge emits exactly{x, y}; the other cannot emit this pair by the already proved normal form. Thus responses differ. E recovers I because x notin I iff E(x, z) for all sufficiently large z, so no additional hidden coordinate is needed.",
+    "This concerns current carrier response only. It does not claim private journal updates agree or canonical state compression."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\central-first-exit\\work\\STRUCTURAL-ALGEBRA-20260923-008\\algebra\\PROOFS.md",
+      "sha256": "e0095145496f6622bc0b7b43aba560e5657b2caaa71aebe549c16f34a6084fa8"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#two-owner-response-content",
+    "proofTextSha256": "e0095145496f6622bc0b7b43aba560e5657b2caaa71aebe549c16f34a6084fa8",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": false,
+  "sharedCanonicalFoundationReview": null,
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish; parent integrates the independent audit and corrections."
+}

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R47 Reusable Prefix Backfill Charge · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R47 Reusable Prefix Backfill Charge</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R47ReusablePrefixBackfillCharge.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R47ReusablePrefixBackfillCharge.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R47ReusablePrefixBackfillCharge.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 19 declarations</summary><ul class="declarations"><li><code>ChompLean.PrefixBackfillValues</code><pre class="prose">(old new : List.{0} Nat) → List.{0} Nat</pre></li><li><code>ChompLean.PrefixBackfillValues.eq_1</code><pre class="prose">∀ (old new : List.{0} Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.PrefixBackfillValues old new)
+    (@List.filter.{0} Nat
+      (fun (v : Nat) =&gt;
+        Bool.not
+          (@Decidable.decide (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) old v)
+            (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+              Nat.instLawfulBEq v old)))
+      new)</pre></li><li><code>ChompLean.PrefixCarryValues</code><pre class="prose">(old new : List.{0} Nat) → List.{0} Nat</pre></li><li><code>ChompLean.PrefixCarryValues.eq_1</code><pre class="prose">∀ (old new : List.{0} Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.PrefixCarryValues old new)
+    (@List.filter.{0} Nat
+      (fun (v : Nat) =&gt;
+        @Decidable.decide (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) old v)
+          (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+            Nat.instLawfulBEq v old))
+      new)</pre></li><li><code>ChompLean.StrictRowPrefixValues</code><pre class="prose">(f : Nat → Nat → Nat) → (q : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.StrictRowPrefixValues.eq_1</code><pre class="prose">∀ (f : Nat → Nat → Nat) (q : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.StrictRowPrefixValues f q)
+    (@List.map.{0, 0} Nat Nat (fun (b : Nat) =&gt; f q b) (List.range q))</pre></li><li><code>ChompLean.adjacent_dip_backfill_has_past_diagonal_owner</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q v : Nat}
+  (hdip :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.RecurrenceModel.f M q q))
+  (hvBackfill :
+    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q)
+        (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      v),
+  @Exists.{1} Nat fun (i : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat i q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M i i) v)</pre></li><li><code>ChompLean.adjacent_dip_backfill_has_past_diagonal_owner._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q v : Nat} (b : Nat)
+  (hvalue :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        b)
+      v)
+  (hgt : @LT.lt.{0} Nat instLTNat b v),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v) → False</pre></li><li><code>ChompLean.adjacent_dip_backfill_has_past_diagonal_owner._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q v : Nat}
+  (hdip :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.RecurrenceModel.f M q q))
+  (b : Nat)
+  (hvLeNext :
+    @LE.le.{0} Nat instLENat v
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not (@LT.lt.{0} Nat instLTNat v (ChompLean.RecurrenceModel.f M q q)) → False</pre></li><li><code>ChompLean.adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q : Nat} {forbidden : List.{0} Nat}
+  (hdip :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.RecurrenceModel.f M q q))
+  (hforbidden : @List.Nodup.{0} Nat forbidden)
+  (hsub :
+    @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) forbidden
+      (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q))
+  (hmissing :
+    ∀ (v : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) forbidden v →
+        Not
+          (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+            (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            v)),
+  have backfills : List.{0} Nat :=
+    ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q)
+      (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))));
+  And
+    (@LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@List.length.{0} Nat backfills))
+    (And (@List.Nodup.{0} Nat backfills)
+      (∀ (v : Nat),
+        @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) backfills v →
+          @Exists.{1} Nat fun (i : Nat) =&gt;
+            And (@LT.lt.{0} Nat instLTNat i q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M i i) v)))</pre></li><li><code>ChompLean.mem_strictRowPrefixValues_iff_C</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q v : Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.StrictRowPrefixValues f q) v)
+    (ChompLean.C f q q v)</pre></li><li><code>ChompLean.old_diagonal_mex_backfill_has_past_owner</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q v : Nat}
+  (hvPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+  (hvBelow : @LT.lt.{0} Nat instLTNat v (ChompLean.RecurrenceModel.f M q q))
+  (hvNotOld :
+    Not
+      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+        (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q) v)),
+  @Exists.{1} Nat fun (i : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat i q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M i i) v)</pre></li><li><code>ChompLean.prefix_columns_k_reserved_force_k_succ_backfills</code><pre class="prose">∀ {n : Nat} {oldValue newValue : Nat → Nat} {reserved : List.{0} Nat}
+  (holdInjective :
+    ∀ (c₁ : Nat),
+      @LT.lt.{0} Nat instLTNat c₁ n →
+        ∀ (c₂ : Nat), @LT.lt.{0} Nat instLTNat c₂ n → @Eq.{1} Nat (oldValue c₁) (oldValue c₂) → @Eq.{1} Nat c₁ c₂)
+  (hnewInjective :
+    ∀ (b₁ : Nat),
+      @LT.lt.{0} Nat instLTNat b₁
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+        ∀ (b₂ : Nat),
+          @LT.lt.{0} Nat instLTNat b₂
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+            @Eq.{1} Nat (newValue b₁) (newValue b₂) → @Eq.{1} Nat b₁ b₂)
+  (hreservedNodup : @List.Nodup.{0} Nat reserved)
+  (hreservedRange : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) reserved (List.range n))
+  (hreservedMissing :
+    ∀ (c : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) reserved c →
+        ∀ (b : Nat),
+          @LT.lt.{0} Nat instLTNat b
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+            @Ne.{1} Nat (newValue b) (oldValue c)),
+  @LE.le.{0} Nat instLENat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat reserved)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (@List.length.{0} Nat
+      (ChompLean.PrefixBackfillValues (@List.map.{0, 0} Nat Nat oldValue (List.range n))
+        (@List.map.{0, 0} Nat Nat newValue
+          (List.range
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))</pre></li><li><code>ChompLean.prefix_exchange_forbidden_balance</code><pre class="prose">∀ {old new forbidden : List.{0} Nat} (hnew : @List.Nodup.{0} Nat new) (hforbidden : @List.Nodup.{0} Nat forbidden)
+  (hsub : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) forbidden old)
+  (hmissing :
+    ∀ (v : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) forbidden v →
+        Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) new v)),
+  @LE.le.{0} Nat instLENat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)
+      (@List.length.{0} Nat new))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)
+      (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new)))</pre></li><li><code>ChompLean.prefix_exchange_forbidden_balance._proof_1_3</code><pre class="prose">∀ {old new forbidden : List.{0} Nat}
+  (hcarryCap :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)
+        (@List.length.{0} Nat (ChompLean.PrefixCarryValues old new)))
+      (@List.length.{0} Nat old))
+  (hpartition :
+    @Eq.{1} Nat (@List.length.{0} Nat new)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} Nat (ChompLean.PrefixCarryValues old new))
+        (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new)))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)
+          (@List.length.{0} Nat new))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)
+          (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new)))) →
+    False</pre></li><li><code>ChompLean.prefix_exchange_k_forbidden_force_k_succ_backfills</code><pre class="prose">∀ {old new forbidden : List.{0} Nat} (hnew : @List.Nodup.{0} Nat new) (hforbidden : @List.Nodup.{0} Nat forbidden)
+  (hsub : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) forbidden old)
+  (hmissing :
+    ∀ (v : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) forbidden v →
+        Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) new v))
+  (hgrowth :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@List.length.{0} Nat new)),
+  @LE.le.{0} Nat instLENat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new))</pre></li><li><code>ChompLean.prefix_exchange_k_forbidden_force_k_succ_backfills._proof_1_1</code><pre class="prose">∀ {old new forbidden : List.{0} Nat}
+  (hgrowth :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@List.length.{0} Nat new))
+  (hbalance :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)
+        (@List.length.{0} Nat new))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)
+        (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new)))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new))) →
+    False</pre></li><li><code>ChompLean.strictRowPrefixValues_nodup</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) (q : Nat),
+  @List.Nodup.{0} Nat (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q)</pre></li><li><code>_private.R47ReusablePrefixBackfillCharge.0.ChompLean.r47_nodup_map_of_injective_on</code><pre class="prose">∀ (f : Nat → Nat) (xs : List.{0} Nat) (hxs : @List.Nodup.{0} Nat xs)
+  (hinj :
+    ∀ (x : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →
+        ∀ (y : Nat),
+          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs y →
+            @Eq.{1} Nat (f x) (f y) → @Eq.{1} Nat x y),
+  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat f xs)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R47ReusablePrefixBackfillCharge.lean:1</p><p>SHA-256: <code class="path">fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3</code></p></section><p><a href="../index.html#id=lean-fbd747f439ef88da4438">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

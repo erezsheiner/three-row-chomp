@@ -1,0 +1,119 @@
+{
+  "module": "R17RollingDebt",
+  "sourcePath": "lean/core/R17RollingDebt.lean",
+  "sourceSha256": "a7b47e13143545f598b6cbf12409b66fe2ea61df5299b0424bb80bee420d2f66",
+  "declarationCount": 7,
+  "theoremDeclarationCount": 7,
+  "proofValuedDeclarationCount": 7,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.rolling_B_window_closure",
+      "module": "R17RollingDebt",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 68,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t lo n u : Nat}\n  (hn : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) n)\n  (hbase :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u →\n          Not (ChompLean.B f t lo z) →\n            ChompLean.B f t\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              z)\n  (hrecover :\n    ∀ (k z : Nat),\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          n →\n        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n          @LT.lt.{0} Nat instLTNat z u →\n            ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k) z →\n              Not\n                  (ChompLean.B f t\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                    z) →\n                ChompLean.B f t\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                  z)\n  (hlast :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u →\n          ChompLean.B f t\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              z →\n            ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo n) z)\n  (z : Nat),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n    @LT.lt.{0} Nat instLTNat z u →\n      ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo n) z",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a7b47e13143545f598b6cbf12409b66fe2ea61df5299b0424bb80bee420d2f66",
+      "sourcePath": "lean/core/R17RollingDebt.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rolling_B_window_closure_of_death_dichotomy",
+      "module": "R17RollingDebt",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 86,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t lo n u : Nat}\n  (hn : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) n)\n  (hbase :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u →\n          Not (ChompLean.B f t lo z) →\n            ChompLean.B f t\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              z)\n  (hdeath :\n    ∀ (k z : Nat),\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          n →\n        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n          @LT.lt.{0} Nat instLTNat z u →\n            ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k) z →\n              Not\n                  (ChompLean.B f t\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                    z) →\n                Or\n                  (@Eq.{1} Nat\n                    (f t\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                    z)\n                  (And\n                    (@LT.lt.{0} Nat instLTNat\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                      t)\n                    (@Eq.{1} Nat\n                      (f\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                      z)))\n  (hlast :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u →\n          ChompLean.B f t\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              z →\n            ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo n) z)\n  (z : Nat),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n    @LT.lt.{0} Nat instLTNat z u →\n      ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo n) z",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a7b47e13143545f598b6cbf12409b66fe2ea61df5299b0424bb80bee420d2f66",
+      "sourcePath": "lean/core/R17RollingDebt.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rolling_B_window_closure_of_death_dichotomy._proof_1_1",
+      "module": "R17RollingDebt",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {lo n u : Nat} (k z : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a7b47e13143545f598b6cbf12409b66fe2ea61df5299b0424bb80bee420d2f66",
+      "sourcePath": "lean/core/R17RollingDebt.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rolling_debt_closure",
+      "module": "R17RollingDebt",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 21,
+      "typePretty": "∀ {S : Nat → Nat → Prop} {n u : Nat}\n  (hn : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) n)\n  (hbase :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u →\n          Not (S (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) →\n            S (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z)\n  (hrecover :\n    ∀ (k z : Nat),\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          n →\n        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n          @LT.lt.{0} Nat instLTNat z u →\n            S k z →\n              Not\n                  (S\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    z) →\n                S\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                  z)\n  (hlast :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u →\n          S\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              z →\n            S n z)\n  (z : Nat),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n    @LT.lt.{0} Nat instLTNat z u → S n z",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a7b47e13143545f598b6cbf12409b66fe2ea61df5299b0424bb80bee420d2f66",
+      "sourcePath": "lean/core/R17RollingDebt.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rolling_debt_closure._proof_1_1",
+      "module": "R17RollingDebt",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {n u : Nat} (k : Nat)\n  (hk :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      n)\n  (z : Nat), Not (@LT.lt.{0} Nat instLTNat k n) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a7b47e13143545f598b6cbf12409b66fe2ea61df5299b0424bb80bee420d2f66",
+      "sourcePath": "lean/core/R17RollingDebt.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rolling_debt_closure._proof_1_2",
+      "module": "R17RollingDebt",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {n u : Nat} (k : Nat)\n  (hk :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      n)\n  (z : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        n) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a7b47e13143545f598b6cbf12409b66fe2ea61df5299b0424bb80bee420d2f66",
+      "sourcePath": "lean/core/R17RollingDebt.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rolling_debt_closure._proof_1_3",
+      "module": "R17RollingDebt",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {n u : Nat} (hn : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) n) (z : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        n) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a7b47e13143545f598b6cbf12409b66fe2ea61df5299b0424bb80bee420d2f66",
+      "sourcePath": "lean/core/R17RollingDebt.lean",
+      "universeParameters": []
+    }
+  ]
+}

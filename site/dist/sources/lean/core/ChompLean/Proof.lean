@@ -1,0 +1,971 @@
+import ChompLean.Encoding
+import ChompLean.FiniteInterval
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+This file formalizes the recurrence-level core of the three-row Chomp
+argument.
+
+The structure `RecurrenceModel` packages the recurrence facts and elementary
+"no two P-positions attack each other" consequences used by the paper proof.
+From these hypotheses, Lean checks the row-start propagation argument, the
+disjointness of diagonal values and row starts, and the final uniqueness of
+the opening move.
+-/
+
+def C (f : Nat -> Nat -> Nat) (q r p : Nat) : Prop :=
+  ∃ b, b < r ∧ f q b = p
+
+def R (f : Nat -> Nat -> Nat) (q r p : Nat) : Prop :=
+  ∃ a, a < q ∧ f a (min a r) = p
+
+def B (f : Nat -> Nat -> Nat) (q r p : Nat) : Prop :=
+  R f q r p ∨ C f q r p
+
+def IsMex (S : Nat -> Prop) (m : Nat) : Prop :=
+  0 < m ∧ ¬ S m ∧ ∀ k, 0 < k -> k < m -> S k
+
+def BrouwerRecurrence (f : Nat -> Nat -> Nat) : Prop :=
+  (∀ {q r}, r < q -> f (q - 1) r < q -> f q r = f (q - 1) r) ∧
+  (∀ {q r}, r <= q ->
+    ¬ (r < q ∧ f (q - 1) r < q) -> IsMex (B f q r) (f q r))
+
+def BrouwerMexBranch (f : Nat -> Nat -> Nat) : Prop :=
+  ∀ {q r}, r <= q ->
+    ¬ (r < q ∧ f (q - 1) r < q) -> IsMex (B f q r) (f q r)
+
+def BrouwerLowerBlocked (f : Nat -> Nat -> Nat) : Prop :=
+  ∀ {q r k}, r <= q ->
+    ¬ (r < q ∧ f (q - 1) r < q) ->
+    0 < k -> k < f q r -> B f q r k
+
+theorem first_branch_of_encoding {f : Nat -> Nat -> Nat}
+    (hf : Encodes f) (hcomplete : CompleteEncoding f) :
+    ∀ {q r}, r < q -> f (q - 1) r < q -> f q r = f (q - 1) r := by
+  intro q r hrq hlt
+  let k := f (q - 1) r
+  have hr_le_pred : r <= q - 1 := by omega
+  have hrk : r < k := by
+    dsimp [k]
+    exact encoded_gt hf hr_le_pred
+  have hkq : k < q := by
+    simpa [k] using hlt
+  have hP : IsP (rowStartPos k r (Nat.le_of_lt hrk)) := by
+    rcases hf hr_le_pred with hdiag | hrow
+    · rcases hdiag with ⟨_h_rk, _h_kq, hPdiag⟩
+      simpa [k] using hPdiag
+    · rcases hrow with ⟨_h_rk, h_pred_le_k, _h_rpred, hProw⟩
+      have hk_eq : k = q - 1 := by omega
+      simpa [k, hk_eq, rowStartPos, mkPos] using hProw
+  exact hcomplete.1 hrk hkq hP
+
+theorem recurrence_of_encoding_and_mex {f : Nat -> Nat -> Nat}
+    (hf : Encodes f) (hcomplete : CompleteEncoding f)
+    (hmex : BrouwerMexBranch f) :
+    BrouwerRecurrence f :=
+  ⟨first_branch_of_encoding hf hcomplete, hmex⟩
+
+theorem not_first_implies_ge_of_encoding {f : Nat -> Nat -> Nat}
+    (hf : Encodes f) (hcomplete : CompleteEncoding f) :
+    ∀ {q r}, r <= q ->
+      ¬ (r < q ∧ f (q - 1) r < q) -> q <= f q r := by
+  intro q r hrq hnot
+  by_cases hlt : f q r < q
+  · have hrlt : r < q := by
+      have hrf := encoded_gt hf hrq
+      omega
+    have hP : IsP (rowStartPos (f q r) r (Nat.le_of_lt (encoded_gt hf hrq))) :=
+      encoded_isP_of_lt hf hrq hlt
+    have hprev_eq : f (q - 1) r = f q r := by
+      by_cases hp_lt_pred : f q r < q - 1
+      · exact hcomplete.1 (encoded_gt hf hrq) hp_lt_pred hP
+      · have hp_eq_pred : f q r = q - 1 := by omega
+        have hP' :
+            IsP (mkPos (f q r) (q - 1) r (by omega) (by omega)) := by
+          simpa [hp_eq_pred, rowStartPos, mkPos] using hP
+        exact hcomplete.2 (by omega) (by omega) hP'
+    exact False.elim (hnot ⟨hrlt, by rw [hprev_eq]; exact hlt⟩)
+  · exact Nat.le_of_not_gt hlt
+
+theorem encoded_ge_not_blocked {f : Nat -> Nat -> Nat}
+    (hf : Encodes f) {q r : Nat} (hrq : r <= q)
+    (hge : q <= f q r) :
+    ¬ B f q r (f q r) := by
+  intro hb
+  let p := f q r
+  have hPsrc : IsP (mkPos p q r (by simpa [p] using hge) hrq) := by
+    dsimp [p]
+    exact encoded_isP_of_ge hf hrq hge
+  cases hb with
+  | inl hR =>
+      rcases hR with ⟨a, haq, hfa⟩
+      have hamin_le_a : Nat.min a r <= a := Nat.min_le_left a r
+      have hPtgt :
+          IsP (mkPos p a (Nat.min a r) (by omega) hamin_le_a) := by
+        dsimp [p]
+        simpa [hfa] using
+          (encoded_isP_of_ge hf hamin_le_a (by rw [hfa]; omega))
+      have hmove :
+          Move (mkPos p q r (by simpa [p] using hge) hrq)
+            (mkPos p a (Nat.min a r) (by omega) hamin_le_a) := by
+        simpa [p] using
+          (move_second_to_min (p := p) (q := q) (a := a) (r := r)
+            hrq (by simpa [p] using hge) haq)
+      exact (isP_no_move_to_P hPsrc hmove) hPtgt
+
+  | inr hC =>
+      rcases hC with ⟨b, hbr, hfb⟩
+      have hbq : b <= q := by omega
+      have hPtgt : IsP (mkPos p q b (by simpa [p] using hge) hbq) := by
+        dsimp [p]
+        simpa [hfb] using
+          (encoded_isP_of_ge hf hbq (by rw [hfb]; omega))
+      have hmove :
+          Move (mkPos p q r (by simpa [p] using hge) hrq)
+            (mkPos p q b (by simpa [p] using hge) hbq) := by
+        simpa [p, mkPos, Pos.thirdCut] using
+          (Move.third (mkPos p q r (by simpa [p] using hge) hrq) b hbr)
+      exact (isP_no_move_to_P hPsrc hmove) hPtgt
+
+theorem mex_branch_of_encoding_and_lower {f : Nat -> Nat -> Nat}
+    (hf : Encodes f) (hcomplete : CompleteEncoding f)
+    (hlower : BrouwerLowerBlocked f) :
+    BrouwerMexBranch f := by
+  intro q r hrq hnotfirst
+  refine ⟨?_, ?_, ?_⟩
+  · have hrf := encoded_gt hf hrq
+    omega
+  · exact encoded_ge_not_blocked hf hrq
+      (not_first_implies_ge_of_encoding hf hcomplete hrq hnotfirst)
+  · intro k hk0 hklt
+    exact hlower hrq hnotfirst hk0 hklt
+
+def IntervalBlocking (f : Nat -> Nat -> Nat) : Prop :=
+  ∀ {r q p},
+    r < q ->
+    q < p ->
+    ¬ C f q r p ->
+    (∀ t, q < t -> t < p -> C f t r p) ->
+    ∀ k, q < k -> k < p -> C f q r k
+
+theorem recurrence_constant_step {f : Nat -> Nat -> Nat}
+    (hrec : BrouwerRecurrence f) :
+    ∀ {q r}, r < q -> f q r < q + 1 -> f (q + 1) r = f q r := by
+  intro q r hrq hsmall
+  have hbranch := hrec.1 (q := q + 1) (r := r) (by omega) (by simpa using hsmall)
+  simpa using hbranch
+
+theorem recurrence_mex_no_skip {f : Nat -> Nat -> Nat}
+    (hrec : BrouwerRecurrence f) :
+    ∀ {q r k}, r <= q -> q < f q r -> 0 < k -> k < f q r -> B f q r k := by
+  intro q r k hrq hlarge hk0 hklt
+  have hnotfirst : ¬ (r < q ∧ f (q - 1) r < q) := by
+    intro hfirst
+    rcases hfirst with ⟨hrlt, hprev⟩
+    have heq := hrec.1 hrlt hprev
+    omega
+  have hmex := hrec.2 hrq hnotfirst
+  exact hmex.2.2 k hk0 hklt
+
+theorem recurrence_mex_absent {f : Nat -> Nat -> Nat}
+    (hrec : BrouwerRecurrence f) :
+    ∀ {q r}, r <= q -> q < f q r -> ¬ B f q r (f q r) := by
+  intro q r hrq hlarge
+  have hnotfirst : ¬ (r < q ∧ f (q - 1) r < q) := by
+    intro hfirst
+    rcases hfirst with ⟨hrlt, hprev⟩
+    have heq := hrec.1 hrlt hprev
+    omega
+  have hmex := hrec.2 hrq hnotfirst
+  exact hmex.2.1
+
+theorem rightmost_hole_of_interval {f : Nat -> Nat -> Nat}
+    (hrec : BrouwerRecurrence f) (hib : IntervalBlocking f) :
+    ∀ {r q p},
+      r < q ->
+      q < p ->
+      ¬ C f q r p ->
+      (∀ t, q < t -> t < p -> C f t r p) ->
+      q < f q r ->
+      p <= f q r := by
+  intro r q p hrq hqp hnotC hall hlarge
+  by_cases hle : p <= f q r
+  · exact hle
+  have hlt : f q r < p := Nat.lt_of_not_ge hle
+  have hC : C f q r (f q r) :=
+    hib hrq hqp hnotC hall (f q r) hlarge hlt
+  have hnotB : ¬ B f q r (f q r) :=
+    recurrence_mex_absent hrec (by omega) hlarge
+  exact False.elim (hnotB (Or.inr hC))
+
+theorem interval_blocking_of_encoding {f : Nat -> Nat -> Nat}
+    (hf : Encodes f) (hcomplete : CompleteEncoding f) :
+    IntervalBlocking f := by
+  intro r q p hrq hqp hnotC hall k hqk hkp
+  classical
+  let sOf : Nat -> Nat :=
+    fun t =>
+      if h : q < t ∧ t < p then
+        Classical.choose (hall t h.1 h.2)
+      else
+        0
+  have sOf_spec :
+      ∀ {t}, q < t -> t < p -> sOf t < r ∧ f t (sOf t) = p := by
+    intro t hqt htp
+    have hmem := hall t hqt htp
+    dsimp [sOf]
+    rw [dif_pos ⟨hqt, htp⟩]
+    exact Classical.choose_spec hmem
+  let g : Nat -> Nat := fun t => f q (sOf t)
+  have hmap :
+      ∀ t, q < t -> t < p -> q < g t ∧ g t < p := by
+    intro t hqt htp
+    have hs := sOf_spec hqt htp
+    exact interval_reply_bounds hf hcomplete hs.1 hrq hqt htp hs.2 hnotC
+  have hinj :
+      ∀ t₁ t₂, q < t₁ -> t₁ < p -> q < t₂ -> t₂ < p ->
+        g t₁ = g t₂ -> t₁ = t₂ := by
+    intro t₁ t₂ hqt₁ ht₁p hqt₂ ht₂p hg
+    have hs₁ := sOf_spec hqt₁ ht₁p
+    have hs₂ := sOf_spec hqt₂ ht₂p
+    have hs_eq : sOf t₁ = sOf t₂ := by
+      exact encoding_fixed_q_injective hf (by omega) (by omega) hg
+    by_cases hlt : t₁ < t₂
+    · exact False.elim
+        (encoding_same_lower_no_repeat hf
+          (s := sOf t₁) (t₁ := t₁) (t₂ := t₂) (p := p)
+          (by omega) hlt ht₂p hs₁.2 (by simpa [hs_eq] using hs₂.2))
+    by_cases hgt : t₂ < t₁
+    · exact False.elim
+        (encoding_same_lower_no_repeat hf
+          (s := sOf t₂) (t₁ := t₂) (t₂ := t₁) (p := p)
+          (by omega) hgt ht₁p hs₂.2 (by simpa [hs_eq.symm] using hs₁.2))
+    omega
+  rcases interval_inj_surj hqp g hmap hinj k hqk hkp with ⟨t, hqt, htp, hgt⟩
+  refine ⟨sOf t, ?_, ?_⟩
+  · exact (sOf_spec hqt htp).1
+  · exact hgt
+
+theorem second_cut_P_blocks {f : Nat -> Nat -> Nat}
+    (hcomplete : CompleteEncoding f)
+    {p q r a : Nat} (hqp : q <= p) (haq : a < q)
+    (hP : IsP (mkPos p a (Nat.min a r) (by omega) (Nat.min_le_left a r))) :
+    R f q r p := by
+  refine ⟨a, haq, ?_⟩
+  exact hcomplete.2 (p := p) (q := a) (r := Nat.min a r)
+    (by omega) (Nat.min_le_left a r) hP
+
+theorem third_cut_P_blocks {f : Nat -> Nat -> Nat}
+    (hcomplete : CompleteEncoding f)
+    {p q r b : Nat} (hqp : q <= p) (hrq : r <= q) (hbr : b < r)
+    (hP : IsP (mkPos p q b hqp (by omega))) :
+    C f q r p := by
+  refine ⟨b, hbr, ?_⟩
+  exact hcomplete.2 (p := p) (q := q) (r := b) hqp (by omega) hP
+
+theorem not_blocked_no_second_cut_P {f : Nat -> Nat -> Nat}
+    (hcomplete : CompleteEncoding f)
+    {p q r a : Nat} (hqp : q <= p)
+    (hnotB : ¬ B f q r p) (haq : a < q) :
+    ¬ IsP (mkPos p a (Nat.min a r) (by omega) (Nat.min_le_left a r)) := by
+  intro hP
+  exact hnotB (Or.inl (second_cut_P_blocks hcomplete hqp haq hP))
+
+theorem not_blocked_no_third_cut_P {f : Nat -> Nat -> Nat}
+    (hcomplete : CompleteEncoding f)
+    {p q r b : Nat} (hqp : q <= p) (hrq : r <= q)
+    (hnotB : ¬ B f q r p) (hbr : b < r) :
+    ¬ IsP (mkPos p q b hqp (by omega)) := by
+  intro hP
+  exact hnotB (Or.inr (third_cut_P_blocks hcomplete hqp hrq hbr hP))
+
+theorem lower_blocked_of_encoding {f : Nat -> Nat -> Nat}
+    (hf : Encodes f) (hcomplete : CompleteEncoding f) :
+    BrouwerLowerBlocked f := by
+  intro q r k hrq hnotfirst hk0 hklt
+  classical
+  by_cases hB : B f q r k
+  · exact hB
+  have hnotB : ¬ B f q r k := hB
+  by_cases hkq : q <= k
+  · let x := mkPos k q r hkq hrq
+    have hxP : IsP x := by
+      apply isP_of_no_cut_replies x hk0
+      · intro a ha0 hak haP
+        have hak_k : a < k := by
+          simpa [x, mkPos] using hak
+        have henc : EncodedPosition q r a :=
+          first_cut_P_encodes hrq hkq ha0 hak_k (by simpa [x] using haP)
+        have heq : f q r = a := encodedPosition_unique (hf hrq) henc
+        omega
+      · intro a ha haP
+        have haq : a < q := by
+          simpa [x, mkPos] using ha
+        have hak_le : a <= k := by omega
+        have htarget :
+            IsP (mkPos k a (Nat.min a r) hak_le
+              (Nat.min_le_left a r)) := by
+          simpa [x, mkPos, Pos.secondCut] using haP
+        exact hnotB
+          (Or.inl (second_cut_P_blocks hcomplete hkq haq htarget))
+      · intro b hb hbP
+        have hbr : b < r := by
+          simpa [x, mkPos] using hb
+        have hbq : b <= q := by omega
+        have htarget : IsP (mkPos k q b hkq hbq) := by
+          simpa [x, mkPos, Pos.thirdCut] using hbP
+        exact hnotB
+          (Or.inr (third_cut_P_blocks hcomplete hkq hrq hbr htarget))
+    have hf_eq : f q r = k :=
+      hcomplete.2 hkq hrq (by simpa [x] using hxP)
+    omega
+  · have hkltq : k < q := Nat.lt_of_not_ge hkq
+    by_cases hrk : r < k
+    · let x := rowStartPos k r (Nat.le_of_lt hrk)
+      have hxP : IsP x := by
+        apply isP_of_no_cut_replies x hk0
+        · intro a ha0 hak haP
+          have hak_k : a < k := by
+            simpa [x, rowStartPos, mkPos] using hak
+          by_cases hra : r < a
+          · have hrowP : IsP (rowStartPos a r (Nat.le_of_lt hra)) := by
+              have hak_le : a <= k := Nat.le_of_lt hak_k
+              have hra_le : r <= a := Nat.le_of_lt hra
+              simpa [x, rowStartPos, mkPos, Pos.firstCut,
+                Nat.min_eq_left hak_le, Nat.min_eq_right hra_le] using haP
+            have hprev : f (q - 1) r = a :=
+              hcomplete.1 (p := a) (q := q - 1) (r := r)
+                hra (by omega) hrowP
+            exact hnotfirst ⟨by omega, by rw [hprev]; omega⟩
+          · have har : a <= r := Nat.le_of_not_gt hra
+            have hrect : IsP (rectanglePos a) := by
+              have hak_le : a <= k := Nat.le_of_lt hak_k
+              simpa [x, rowStartPos, rectanglePos, lowerSquarePos, mkPos,
+                Pos.firstCut, Nat.min_eq_left hak_le, Nat.min_eq_left har]
+                using haP
+            exact (rectangle_not_isP a ha0) hrect
+        · intro a ha haP
+          have hak : a < k := by
+            simpa [x, rowStartPos, mkPos] using ha
+          have htarget :
+              IsP (mkPos k a (Nat.min a r) (by omega)
+                (Nat.min_le_left a r)) := by
+            simpa [x, rowStartPos, mkPos, Pos.secondCut] using haP
+          have hfa : f a (Nat.min a r) = k :=
+            hcomplete.2 (p := k) (q := a) (r := Nat.min a r)
+              (by omega) (Nat.min_le_left a r) htarget
+          exact hnotB (Or.inl ⟨a, by omega, hfa⟩)
+        · intro b hb hbP
+          have hbr : b < r := by
+            simpa [x, rowStartPos, mkPos] using hb
+          have hrowP : IsP (rowStartPos k b (by omega)) := by
+            simpa [x, rowStartPos, mkPos, Pos.thirdCut] using hbP
+          have hfqb : f q b = k :=
+            hcomplete.1 (p := k) (q := q) (r := b)
+              (by omega) hkltq hrowP
+          exact hnotB (Or.inr ⟨b, hbr, hfqb⟩)
+      have hf_eq : f q r = k :=
+        hcomplete.1 (p := k) (q := q) (r := r) hrk hkltq
+          (by simpa [x] using hxP)
+      omega
+    · have hkr : k <= r := Nat.le_of_not_gt hrk
+      let x := rectanglePos k
+      have hxP : IsP x := by
+        apply isP_of_no_cut_replies x hk0
+        · intro a ha0 hak haP
+          have hrect : IsP (rectanglePos a) := by
+            have hak_le : a <= k := Nat.le_of_lt hak
+            simpa [x, rectanglePos, lowerSquarePos, mkPos, Pos.firstCut,
+              Nat.min_eq_left hak_le] using haP
+          exact (rectangle_not_isP a ha0) hrect
+        · intro a ha haP
+          have hak : a < k := by
+            simpa [x, rectanglePos, lowerSquarePos, mkPos] using ha
+          have htarget : IsP (lowerSquarePos k a (by omega)) := by
+            have hak_le : a <= k := Nat.le_of_lt hak
+            simpa [x, rectanglePos, lowerSquarePos, mkPos, Pos.secondCut,
+              Nat.min_eq_left hak_le] using haP
+          have hfaa : f a a = k :=
+            hcomplete.2 (p := k) (q := a) (r := a)
+              (by omega) (Nat.le_refl a)
+              (by simpa [lowerSquarePos] using htarget)
+          have hR : R f q r k := by
+            refine ⟨a, by omega, ?_⟩
+            have har : a <= r := by omega
+            have hmin : Nat.min a r = a := Nat.min_eq_left har
+            simpa [hmin] using hfaa
+          exact hnotB (Or.inl hR)
+        · intro b hb hbP
+          have hbk : b < k := by
+            simpa [x, rectanglePos, lowerSquarePos, mkPos] using hb
+          have hrowP : IsP (rowStartPos k b (by omega)) := by
+            simpa [x, rectanglePos, rowStartPos, lowerSquarePos, mkPos,
+              Pos.thirdCut] using hbP
+          have hfqb : f q b = k :=
+            hcomplete.1 (p := k) (q := q) (r := b)
+              (by omega) hkltq hrowP
+          exact hnotB (Or.inr ⟨b, by omega, hfqb⟩)
+      exact False.elim ((rectangle_not_isP k hk0) (by simpa [x] using hxP))
+
+def D (f : Nat -> Nat -> Nat) (p : Nat) : Prop :=
+  ∃ a, f a a = p
+
+def S (f : Nat -> Nat -> Nat) (p : Nat) : Prop :=
+  ∃ r, r < p ∧ f p r = p
+
+theorem encoding_rowstart_not_R {f : Nat -> Nat -> Nat} (hf : Encodes f) :
+    ∀ {p r q}, f p r = p -> r < p -> q < p -> ¬ R f q r p := by
+  intro p r q hstart hrp hqp hR
+  rcases hR with ⟨a, haq, hfa⟩
+  have hap : a < p := by omega
+  have hPsrc : IsP (rowStartPos p r (Nat.le_of_lt hrp)) := by
+    simpa [rowStartPos, hstart] using
+      (encoded_isP_of_ge hf (Nat.le_of_lt hrp)
+        (by rw [hstart]; exact Nat.le_refl p))
+  have hPtgt :
+      IsP (mkPos p a (Nat.min a r) (by omega) (Nat.min_le_left a r)) := by
+    simpa [hfa] using
+      (encoded_isP_of_ge hf (Nat.min_le_left a r) (by rw [hfa]; omega))
+  have hmove :
+      Move (rowStartPos p r (Nat.le_of_lt hrp))
+        (mkPos p a (Nat.min a r) (by omega) (Nat.min_le_left a r)) := by
+    simpa [rowStartPos] using
+      (move_second_to_min (p := p) (q := p) (a := a) (r := r)
+        (Nat.le_of_lt hrp) (Nat.le_refl p) hap)
+  exact (isP_no_move_to_P hPsrc hmove) hPtgt
+
+inductive OpeningMove where
+  | toDiagonal (a : Nat)
+  | toRowStart (r : Nat)
+deriving DecidableEq
+
+structure RecurrenceModel where
+  f : Nat -> Nat -> Nat
+
+  /-- Distinct third-row cuts in the same first two rows encode distinct values. -/
+  fixed_q_injective :
+    ∀ {q b₁ b₂}, b₁ ≤ q -> b₂ ≤ q -> f q b₁ = f q b₂ -> b₁ = b₂
+
+  /-- Diagonal values lie to the right of their diagonal index. -/
+  diagonal_gt : ∀ a, a < f a a
+
+  /-- Every encoded value exceeds its lower index: `f q r > r` for `r ≤ q`. -/
+  value_gt_index : ∀ {q r}, r ≤ q -> r < f q r
+
+  /--
+  A diagonal P-position cannot share its value with a strictly higher-index
+  general position: if `i < s ≤ q` then `f i i ≠ f q s`.  This is the
+  non-attack fact behind the diagonal-maximality lemma.
+  -/
+  diagonal_general_no_attack :
+    ∀ {i s q}, i < s -> s ≤ q -> f i i = f q s -> False
+
+  /-- Two different diagonal P-positions cannot share the same encoded value. -/
+  diagonal_no_attack :
+    ∀ {a b p}, a < b -> b < p -> f a a = p -> f b b = p -> False
+
+  /--
+  If a row-start P-position `[p,p,r]` exists, then it cannot attack a diagonal
+  P-position `[p,a,a]` with `a ≤ r`.
+  -/
+  rowstart_diagonal_attack :
+    ∀ {p r a}, f p r = p -> r < p -> f a a = p -> a ≤ r -> False
+
+  /-- A row-start P-position `[p,p,r]` cannot attack `[p,q,r]`. -/
+  rowstart_no_middle :
+    ∀ {p r q}, f p r = p -> r < q -> q < p -> f q r ≠ p
+
+  /-- The constant branch of the Brouwer recurrence. -/
+  constant_step :
+    ∀ {q r}, r < q -> f q r < q + 1 -> f (q + 1) r = f q r
+
+  /-- A mex cell contains every positive value below its mex. -/
+  mex_no_skip :
+    ∀ {q r k}, r <= q -> q < f q r -> 0 < k -> k < f q r -> B f q r k
+
+  /-- The rightmost-hole principle proved from interval blocking. -/
+  rightmost_hole :
+    ∀ {r q p},
+      r < q ->
+      q < p ->
+      ¬ C f q r p ->
+      (∀ t, q < t -> t < p -> C f t r p) ->
+      q < f q r ->
+      p ≤ f q r
+
+  /-- Row-start values are absent from the second-row blocked set to their left. -/
+  rowstart_not_R :
+    ∀ {p r q}, f p r = p -> r < p -> q < p -> ¬ R f q r p
+
+  /--
+  Strategy stealing and the encoding of P-positions imply that every positive
+  rectangle chooses either a diagonal move or a row-start move.
+  -/
+  opening_cover :
+    ∀ {p}, 0 < p ->
+      (∃ a, a < p ∧ f a a = p) ∨
+      (∃ r, r < p ∧ f p r = p)
+
+noncomputable def gameF : Nat -> Nat -> Nat :=
+  encodedValue encoded_exists_from_game
+
+theorem game_encodes : Encodes gameF :=
+  encodedValue_encodes encoded_exists_from_game
+
+theorem game_complete : CompleteEncoding gameF :=
+  encodedValue_complete encoded_exists_from_game
+
+theorem game_lower_blocked : BrouwerLowerBlocked gameF :=
+  lower_blocked_of_encoding game_encodes game_complete
+
+noncomputable
+def gameRecurrenceModel : RecurrenceModel where
+  f := gameF
+  fixed_q_injective := encoding_fixed_q_injective game_encodes
+  diagonal_gt := fun a => encoded_gt game_encodes (Nat.le_refl a)
+  value_gt_index := encoded_gt game_encodes
+  diagonal_general_no_attack := encoding_diagonal_general_no_attack game_encodes
+  diagonal_no_attack := encoding_diagonal_no_attack game_encodes
+  rowstart_diagonal_attack := encoding_rowstart_diagonal_attack game_encodes
+  rowstart_no_middle := encoding_rowstart_no_middle game_encodes
+  constant_step :=
+    recurrence_constant_step
+      (recurrence_of_encoding_and_mex game_encodes game_complete
+        (mex_branch_of_encoding_and_lower game_encodes game_complete
+          game_lower_blocked))
+  mex_no_skip :=
+    recurrence_mex_no_skip
+      (recurrence_of_encoding_and_mex game_encodes game_complete
+        (mex_branch_of_encoding_and_lower game_encodes game_complete
+          game_lower_blocked))
+  rightmost_hole :=
+    rightmost_hole_of_interval
+      (recurrence_of_encoding_and_mex game_encodes game_complete
+        (mex_branch_of_encoding_and_lower game_encodes game_complete
+          game_lower_blocked))
+      (interval_blocking_of_encoding game_encodes game_complete)
+  rowstart_not_R := encoding_rowstart_not_R game_encodes
+  opening_cover := opening_cover_of_complete game_complete
+
+def Wins (M : RecurrenceModel) (n : Nat) : OpeningMove -> Prop
+  | OpeningMove.toDiagonal a => a < n ∧ M.f a a = n
+  | OpeningMove.toRowStart r => r < n ∧ M.f n r = n
+
+def ActualWins (n : Nat) : OpeningMove -> Prop
+  | OpeningMove.toDiagonal a =>
+      ∃ h : a < n, IsP (lowerSquarePos n a (Nat.le_of_lt h))
+  | OpeningMove.toRowStart r =>
+      ∃ h : r < n, IsP (rowStartPos n r (Nat.le_of_lt h))
+
+theorem actualWins_iff_wins {n : Nat} :
+    ∀ m, ActualWins n m ↔ Wins gameRecurrenceModel n m
+  | OpeningMove.toDiagonal a => by
+      constructor
+      · intro h
+        rcases h with ⟨ha, hP⟩
+        have hfaa : gameF a a = n :=
+          game_complete.2 (p := n) (q := a) (r := a)
+            (Nat.le_of_lt ha) (Nat.le_refl a)
+            (by simpa [lowerSquarePos] using hP)
+        exact ⟨ha, hfaa⟩
+      · intro h
+        rcases h with ⟨ha, hfaa⟩
+        change gameF a a = n at hfaa
+        refine ⟨ha, ?_⟩
+        have hP :
+            IsP (mkPos (gameF a a) a a
+              (by rw [hfaa]; exact Nat.le_of_lt ha) (Nat.le_refl a)) :=
+          encoded_isP_of_ge game_encodes (Nat.le_refl a)
+            (by rw [hfaa]; exact Nat.le_of_lt ha)
+        simpa [lowerSquarePos, hfaa] using hP
+  | OpeningMove.toRowStart r => by
+      constructor
+      · intro h
+        rcases h with ⟨hr, hP⟩
+        have hfnr : gameF n r = n :=
+          game_complete.2 (p := n) (q := n) (r := r)
+            (Nat.le_refl n) (Nat.le_of_lt hr)
+            (by simpa [rowStartPos] using hP)
+        exact ⟨hr, hfnr⟩
+      · intro h
+        rcases h with ⟨hr, hfnr⟩
+        change gameF n r = n at hfnr
+        refine ⟨hr, ?_⟩
+        have hP :
+            IsP (mkPos (gameF n r) n r
+              (by rw [hfnr]; exact Nat.le_refl n) (Nat.le_of_lt hr)) :=
+          encoded_isP_of_ge game_encodes (Nat.le_of_lt hr)
+            (by rw [hfnr]; exact Nat.le_refl n)
+        simpa [rowStartPos, hfnr] using hP
+
+theorem constant_from
+    (M : RecurrenceModel) {q r : Nat}
+    (hrq : r < q) (hsmall : M.f q r < q + 1) :
+    ∀ d, M.f (q + d) r = M.f q r := by
+  intro d
+  induction d with
+  | zero =>
+      simp
+  | succ d ih =>
+      have hidx : q + Nat.succ d = (q + d) + 1 := by omega
+      rw [hidx]
+      have hstep : M.f ((q + d) + 1) r = M.f (q + d) r := by
+        exact M.constant_step (by omega) (by rw [ih]; omega)
+      exact hstep.trans ih
+
+theorem rowStartPropagation
+    (M : RecurrenceModel) {p r : Nat}
+    (hstart : M.f p r = p) (hrp : r < p) :
+    ∀ {q}, r < q -> q < p -> C M.f q r p := by
+  classical
+  let P : Nat -> Prop :=
+    fun d => ∀ q, p - q = d -> r < q -> q < p -> C M.f q r p
+  have hP : ∀ d, P d := by
+    intro d
+    induction d using Nat.strongRecOn with
+    | ind d ih =>
+        intro q hd hrq hqp
+        by_cases hCqr : C M.f q r p
+        · exact hCqr
+        have hnotC : ¬ C M.f q r p := hCqr
+        have hall : ∀ t, q < t -> t < p -> C M.f t r p := by
+          intro t hqt htp
+          have hdt : p - t < d := by omega
+          exact ih (p - t) hdt t rfl (by omega) htp
+        have hlarge : q < M.f q r := by
+          by_cases hgt : q < M.f q r
+          · exact hgt
+          have hle : M.f q r ≤ q := Nat.le_of_not_gt hgt
+          have hsmall : M.f q r < q + 1 := by omega
+          have hp_eq :
+              p = M.f q r := by
+            have hpidx : q + (p - q) = p := by omega
+            have hconst := constant_from M hrq hsmall (p - q)
+            rw [hpidx] at hconst
+            exact hstart.symm.trans hconst
+          omega
+        have hp_le_f : p ≤ M.f q r :=
+          M.rightmost_hole hrq hqp hnotC hall hlarge
+        have hnotB : ¬ B M.f q r p := by
+          intro hb
+          cases hb with
+          | inl hR =>
+              exact (M.rowstart_not_R hstart hrp hqp) hR
+          | inr hC =>
+              exact hnotC hC
+        have hf_le_p : M.f q r ≤ p := by
+          by_cases hle : M.f q r ≤ p
+          · exact hle
+          have hplt : p < M.f q r := Nat.lt_of_not_ge hle
+          have hp_pos : 0 < p := by omega
+          exact False.elim (hnotB (M.mex_no_skip (by omega) hlarge hp_pos hplt))
+        have hf_eq : M.f q r = p := Nat.le_antisymm hf_le_p hp_le_f
+        exact False.elim ((M.rowstart_no_middle hstart hrq hqp) hf_eq)
+  intro q hrq hqp
+  exact hP (p - q) q rfl hrq hqp
+
+theorem diagonal_injective
+    (M : RecurrenceModel) {a b : Nat}
+    (h : M.f a a = M.f b b) :
+    a = b := by
+  classical
+  by_cases hab : a = b
+  · exact hab
+  by_cases hle : a ≤ b
+  · have hlt : a < b := by omega
+    exact False.elim
+      (M.diagonal_no_attack hlt (M.diagonal_gt b) h rfl)
+  · have hlt : b < a := Nat.lt_of_not_ge hle
+    exact False.elim
+      (M.diagonal_no_attack hlt (M.diagonal_gt a) h.symm rfl)
+
+/--
+A finite range `{0, …, q}` of natural-number values has a maximizing index.
+-/
+theorem exists_max_index (g : Nat -> Nat) (q : Nat) :
+    ∃ r, r ≤ q ∧ ∀ s, s ≤ q -> g s ≤ g r := by
+  induction q with
+  | zero =>
+      refine ⟨0, Nat.le_refl 0, ?_⟩
+      intro s hs
+      have hs0 : s = 0 := by omega
+      subst hs0
+      exact Nat.le_refl _
+  | succ q ih =>
+      rcases ih with ⟨r0, hr0_le, hr0_max⟩
+      by_cases hcmp : g r0 ≤ g (q + 1)
+      · refine ⟨q + 1, Nat.le_refl _, ?_⟩
+        intro s hs
+        by_cases hsq : s ≤ q
+        · exact Nat.le_trans (hr0_max s hsq) hcmp
+        · have hse : s = q + 1 := by omega
+          subst hse
+          exact Nat.le_refl _
+      · refine ⟨r0, by omega, ?_⟩
+        intro s hs
+        by_cases hsq : s ≤ q
+        · exact hr0_max s hsq
+        · have hse : s = q + 1 := by omega
+          subst hse
+          omega
+
+/--
+Lemma 4.1 (Maximum at the diagonal for fixed `q`).  For every `q`, the
+diagonal value `f q q` is the largest among `f q 0, f q 1, …, f q q`;
+equivalently, `f q s ≤ f q q` for all `s ≤ q`.
+
+(The paper's "in particular `f q q > q`" is `M.diagonal_gt q`.)
+
+Proof sketch following the paper: if some `f q s` exceeded `f q q`, the
+maximizing index `r` would satisfy `r < q` and `f q r > q`, so `(q, r)` is a
+mex cell.  Each of the `q - r` values `f q (r+1), …, f q q` then lands in the
+blocked set `B q r`, avoids `C q r` (fixed-`q` injectivity) and the diagonal
+values `f t t` with `t ≤ r` (`diagonal_general_no_attack`), hence occurs as
+`f t r` for some `r < t < q`.  That injects a `(q - r)`-element set into a
+`(q - r - 1)`-element one, which is impossible.
+-/
+theorem diagonalMaximal
+    (M : RecurrenceModel) {q s : Nat} (hsq : s ≤ q) :
+    M.f q s ≤ M.f q q := by
+  classical
+  apply Nat.le_of_not_gt
+  intro hlt0
+  obtain ⟨r, hr_le, hr_max⟩ := exists_max_index (fun b => M.f q b) q
+  have hr_ge_s : M.f q s ≤ M.f q r := hr_max s hsq
+  have hr_gt_qq : M.f q q < M.f q r := by omega
+  have hr_lt_q : r < q := by
+    have hne : r ≠ q := by
+      intro h; subst h; omega
+    omega
+  have hqq_gt : q < M.f q q := M.diagonal_gt q
+  have hr_large : q < M.f q r := by omega
+  have hrq' : r ≤ q := by omega
+  -- Each higher-index value `f q t'` is realized as `f u r` for some `r < u < q`.
+  have placement : ∀ t', r < t' -> t' ≤ q ->
+      ∃ u, r < u ∧ u < q ∧ M.f u r = M.f q t' := by
+    intro t' hrt' ht'q
+    have hv_pos : 0 < M.f q t' := by
+      have hgt := M.value_gt_index ht'q
+      omega
+    have hv_le : M.f q t' ≤ M.f q r := hr_max t' ht'q
+    have hv_ne : M.f q t' ≠ M.f q r := by
+      intro he
+      have : t' = r := M.fixed_q_injective ht'q hr_le he
+      omega
+    have hv_lt : M.f q t' < M.f q r := by omega
+    have hB : B M.f q r (M.f q t') := M.mex_no_skip hrq' hr_large hv_pos hv_lt
+    have hR : R M.f q r (M.f q t') := by
+      cases hB with
+      | inl hR => exact hR
+      | inr hC =>
+          rcases hC with ⟨b, hbr, hfb⟩
+          have hbq : b ≤ q := by omega
+          have hbt : b = t' := M.fixed_q_injective hbq ht'q hfb
+          omega
+    rcases hR with ⟨a, ha_lt, ha_eq⟩
+    by_cases har : a ≤ r
+    · rw [show min a r = a from by omega] at ha_eq
+      exact (M.diagonal_general_no_attack (by omega) ht'q ha_eq).elim
+    · rw [show min a r = r from by omega] at ha_eq
+      exact ⟨a, by omega, ha_lt, ha_eq⟩
+  -- The placement map injects the interval `(r, q]` into `(r, q)` — impossible.
+  let place : Nat -> Nat := fun t' =>
+    if h : r < t' ∧ t' ≤ q then Classical.choose (placement t' h.1 h.2) else 0
+  have place_spec : ∀ {t'}, r < t' -> t' ≤ q ->
+      r < place t' ∧ place t' < q ∧ M.f (place t') r = M.f q t' := by
+    intro t' hrt' ht'q
+    have hmem := placement t' hrt' ht'q
+    dsimp [place]
+    rw [dif_pos ⟨hrt', ht'q⟩]
+    exact Classical.choose_spec hmem
+  have hmap : ∀ x, r < x -> x < q + 1 -> r < place x ∧ place x < q + 1 := by
+    intro x hrx hxq1
+    have hxq : x ≤ q := by omega
+    obtain ⟨h1, h2, _⟩ := place_spec hrx hxq
+    exact ⟨h1, by omega⟩
+  have hinj : ∀ x y, r < x -> x < q + 1 -> r < y -> y < q + 1 ->
+      place x = place y -> x = y := by
+    intro x y hrx hxq1 hry hyq1 hpe
+    have hxq : x ≤ q := by omega
+    have hyq : y ≤ q := by omega
+    obtain ⟨_, _, hex⟩ := place_spec hrx hxq
+    obtain ⟨_, _, hey⟩ := place_spec hry hyq
+    have h1 : M.f q x = M.f q y := by rw [← hex, ← hey, hpe]
+    exact M.fixed_q_injective hxq hyq h1
+  have hrq1 : r < q + 1 := by omega
+  obtain ⟨x, hrx, hxq1, hpx⟩ :=
+    interval_inj_surj hrq1 place hmap hinj q hr_lt_q (by omega)
+  have hxq : x ≤ q := by omega
+  obtain ⟨_, hb, _⟩ := place_spec hrx hxq
+  omega
+
+/-- Lemma 4.1 for the actual game encoding `gameF`. -/
+theorem game_diagonal_maximal {q s : Nat} (hsq : s ≤ q) :
+    gameF q s ≤ gameF q q :=
+  diagonalMaximal gameRecurrenceModel hsq
+
+theorem disjoint_D_S
+    (M : RecurrenceModel) {p : Nat}
+    (hpD : D M.f p) (hpS : S M.f p) :
+    False := by
+  rcases hpD with ⟨a, hdiag⟩
+  rcases hpS with ⟨r, hrp, hstart⟩
+  have hap : a < p := by
+    rw [← hdiag]
+    exact M.diagonal_gt a
+  by_cases har : a ≤ r
+  · exact M.rowstart_diagonal_attack hstart hrp hdiag har
+  · have hra : r < a := Nat.lt_of_not_ge har
+    have hC : C M.f a r p :=
+      rowStartPropagation M hstart hrp hra hap
+    rcases hC with ⟨b, hbr, hfb⟩
+    have hba : b = a :=
+      M.fixed_q_injective (by omega) (Nat.le_refl a) (hfb.trans hdiag.symm)
+    omega
+
+theorem uniqueWinningOpening
+    (M : RecurrenceModel) {n : Nat} (hn : 0 < n) :
+    ∃ m, Wins M n m ∧ ∀ m', Wins M n m' -> m' = m := by
+  classical
+  cases M.opening_cover hn with
+  | inl hD =>
+      rcases hD with ⟨a, ha_lt, ha_eq⟩
+      refine ⟨OpeningMove.toDiagonal a, ⟨ha_lt, ha_eq⟩, ?_⟩
+      intro m' hm'
+      cases m' with
+      | toDiagonal b =>
+          rcases hm' with ⟨_hb_lt, hb_eq⟩
+          have hba : b = a :=
+            diagonal_injective M (hb_eq.trans ha_eq.symm)
+          cases hba
+          rfl
+      | toRowStart r =>
+          rcases hm' with ⟨hr_lt, hr_eq⟩
+          exact False.elim
+            (disjoint_D_S M ⟨a, ha_eq⟩ ⟨r, hr_lt, hr_eq⟩)
+  | inr hS =>
+      rcases hS with ⟨r, hr_lt, hr_eq⟩
+      refine ⟨OpeningMove.toRowStart r, ⟨hr_lt, hr_eq⟩, ?_⟩
+      intro m' hm'
+      cases m' with
+      | toDiagonal a =>
+          rcases hm' with ⟨ha_lt, ha_eq⟩
+          exact False.elim
+            (disjoint_D_S M ⟨a, ha_eq⟩ ⟨r, hr_lt, hr_eq⟩)
+      | toRowStart s =>
+          rcases hm' with ⟨hs_lt, hs_eq⟩
+          have hsr : s = r :=
+            M.fixed_q_injective (by omega) (by omega) (hs_eq.trans hr_eq.symm)
+          cases hsr
+          rfl
+
+theorem uniqueWinningOpeningGame {n : Nat} (hn : 0 < n) :
+    ∃ m, Wins gameRecurrenceModel n m ∧
+      ∀ m', Wins gameRecurrenceModel n m' -> m' = m :=
+  uniqueWinningOpening gameRecurrenceModel hn
+
+theorem uniqueActualWinningOpening {n : Nat} (hn : 0 < n) :
+    ∃ m, ActualWins n m ∧ ∀ m', ActualWins n m' -> m' = m := by
+  rcases uniqueWinningOpeningGame hn with ⟨m, hm, huniq⟩
+  refine ⟨m, (actualWins_iff_wins m).2 hm, ?_⟩
+  intro m' hm'
+  exact huniq m' ((actualWins_iff_wins m').1 hm')
+
+theorem uniqueActualWinningTarget {n : Nat} (hn : 0 < n) :
+    ∃ y, Move (rectanglePos n) y ∧ IsP y ∧
+      ∀ y', Move (rectanglePos n) y' -> IsP y' -> y' = y := by
+  rcases uniqueActualWinningOpening hn with ⟨m, hm, huniq⟩
+  cases m with
+  | toDiagonal a =>
+      rcases hm with ⟨ha, hP⟩
+      let y := lowerSquarePos n a (Nat.le_of_lt ha)
+      have hyMove : Move (rectanglePos n) y := by
+        have hmove :
+            Move (rectanglePos n)
+              (Pos.secondCut (rectanglePos n) a (Nat.le_of_lt ha)) :=
+          Move.second (rectanglePos n) a ha
+        simpa [y, rectanglePos, lowerSquarePos, mkPos, Pos.secondCut,
+          Nat.min_eq_left (Nat.le_of_lt ha)] using hmove
+      refine ⟨y, hyMove, hP, ?_⟩
+      intro y' hy' hyP'
+      cases hy' with
+      | first u hu0 hu =>
+          have hun : u < n := by
+            simpa [rectanglePos, lowerSquarePos, mkPos] using hu
+          have hrect : IsP (rectanglePos u) := by
+            have hun_le : u <= n := Nat.le_of_lt hun
+            simpa [rectanglePos, lowerSquarePos, mkPos, Pos.firstCut,
+              Nat.min_eq_left hun_le] using hyP'
+          exact False.elim ((rectangle_not_isP u hu0) hrect)
+      | second b hb =>
+          have hb_lt : b < n := by
+            simpa [rectanglePos, lowerSquarePos, mkPos] using hb
+          have hbP : IsP (lowerSquarePos n b (Nat.le_of_lt hb_lt)) := by
+            simpa [rectanglePos, lowerSquarePos, mkPos, Pos.secondCut,
+              Nat.min_eq_left (Nat.le_of_lt hb_lt)] using hyP'
+          have hbeq : OpeningMove.toDiagonal b = OpeningMove.toDiagonal a :=
+            huniq (OpeningMove.toDiagonal b) ⟨hb_lt, hbP⟩
+          cases hbeq
+          apply Pos.ext <;>
+            simp [y, rectanglePos, lowerSquarePos, mkPos, Pos.secondCut,
+              Nat.min_eq_left (Nat.le_of_lt ha)]
+      | third b hb =>
+          have hb_lt : b < n := by
+            simpa [rectanglePos, lowerSquarePos, mkPos] using hb
+          have hbP : IsP (rowStartPos n b (Nat.le_of_lt hb_lt)) := by
+            simpa [rectanglePos, rowStartPos, lowerSquarePos, mkPos,
+              Pos.thirdCut] using hyP'
+          have hbad : OpeningMove.toRowStart b = OpeningMove.toDiagonal a :=
+            huniq (OpeningMove.toRowStart b) ⟨hb_lt, hbP⟩
+          cases hbad
+  | toRowStart r =>
+      rcases hm with ⟨hr, hP⟩
+      let y := rowStartPos n r (Nat.le_of_lt hr)
+      have hyMove : Move (rectanglePos n) y := by
+        have hmove :
+            Move (rectanglePos n)
+              (Pos.thirdCut (rectanglePos n) r (Nat.le_of_lt hr)) :=
+          Move.third (rectanglePos n) r hr
+        simpa [y, rectanglePos, rowStartPos, lowerSquarePos, mkPos,
+          Pos.thirdCut] using hmove
+      refine ⟨y, hyMove, hP, ?_⟩
+      intro y' hy' hyP'
+      cases hy' with
+      | first u hu0 hu =>
+          have hun : u < n := by
+            simpa [rectanglePos, lowerSquarePos, mkPos] using hu
+          have hrect : IsP (rectanglePos u) := by
+            have hun_le : u <= n := Nat.le_of_lt hun
+            simpa [rectanglePos, lowerSquarePos, mkPos, Pos.firstCut,
+              Nat.min_eq_left hun_le] using hyP'
+          exact False.elim ((rectangle_not_isP u hu0) hrect)
+      | second b hb =>
+          have hb_lt : b < n := by
+            simpa [rectanglePos, lowerSquarePos, mkPos] using hb
+          have hbP : IsP (lowerSquarePos n b (Nat.le_of_lt hb_lt)) := by
+            simpa [rectanglePos, lowerSquarePos, mkPos, Pos.secondCut,
+              Nat.min_eq_left (Nat.le_of_lt hb_lt)] using hyP'
+          have hbad : OpeningMove.toDiagonal b = OpeningMove.toRowStart r :=
+            huniq (OpeningMove.toDiagonal b) ⟨hb_lt, hbP⟩
+          cases hbad
+      | third b hb =>
+          have hb_lt : b < n := by
+            simpa [rectanglePos, lowerSquarePos, mkPos] using hb
+          have hbP : IsP (rowStartPos n b (Nat.le_of_lt hb_lt)) := by
+            simpa [rectanglePos, rowStartPos, lowerSquarePos, mkPos,
+              Pos.thirdCut] using hyP'
+          have hbeq : OpeningMove.toRowStart b = OpeningMove.toRowStart r :=
+            huniq (OpeningMove.toRowStart b) ⟨hb_lt, hbP⟩
+          cases hbeq
+          apply Pos.ext <;>
+            simp [y, rectanglePos, rowStartPos, lowerSquarePos, mkPos,
+              Pos.thirdCut]
+
+theorem uniqueActualWinningTarget_checked : UniqueActualWinningTargetClaim := by
+  intro n hn
+  exact uniqueActualWinningTarget hn
+
+end ChompLean

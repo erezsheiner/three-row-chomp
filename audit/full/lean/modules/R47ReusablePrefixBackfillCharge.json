@@ -1,0 +1,296 @@
+{
+  "module": "R47ReusablePrefixBackfillCharge",
+  "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+  "declarationCount": 19,
+  "theoremDeclarationCount": 16,
+  "proofValuedDeclarationCount": 16,
+  "scope": "All serialized module declarations including private/generated auxiliaries. These are declaration counts, not counts of independent mathematical results.",
+  "declarations": [
+    {
+      "name": "ChompLean.PrefixBackfillValues.eq_1",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (old new : List.{0} Nat),\n  @Eq.{1} (List.{0} Nat) (ChompLean.PrefixBackfillValues old new)\n    (@List.filter.{0} Nat\n      (fun (v : Nat) =>\n        Bool.not\n          (@Decidable.decide (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) old v)\n            (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n              Nat.instLawfulBEq v old)))\n      new)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.PrefixCarryValues.eq_1",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (old new : List.{0} Nat),\n  @Eq.{1} (List.{0} Nat) (ChompLean.PrefixCarryValues old new)\n    (@List.filter.{0} Nat\n      (fun (v : Nat) =>\n        @Decidable.decide (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) old v)\n          (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n            Nat.instLawfulBEq v old))\n      new)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.StrictRowPrefixValues.eq_1",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (f : Nat → Nat → Nat) (q : Nat),\n  @Eq.{1} (List.{0} Nat) (ChompLean.StrictRowPrefixValues f q)\n    (@List.map.{0, 0} Nat Nat (fun (b : Nat) => f q b) (List.range q))",
+      "axioms": [],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.adjacent_dip_backfill_has_past_diagonal_owner._proof_1_2",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q v : Nat} (b : Nat)\n  (hvalue :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        b)\n      v)\n  (hgt : @LT.lt.{0} Nat instLTNat b v),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.adjacent_dip_backfill_has_past_diagonal_owner._proof_1_3",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q v : Nat}\n  (hdip :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.RecurrenceModel.f M q q))\n  (b : Nat)\n  (hvLeNext :\n    @LE.le.{0} Nat instLENat v\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not (@LT.lt.{0} Nat instLTNat v (ChompLean.RecurrenceModel.f M q q)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_exchange_forbidden_balance._proof_1_3",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {old new forbidden : List.{0} Nat}\n  (hcarryCap :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)\n        (@List.length.{0} Nat (ChompLean.PrefixCarryValues old new)))\n      (@List.length.{0} Nat old))\n  (hpartition :\n    @Eq.{1} Nat (@List.length.{0} Nat new)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} Nat (ChompLean.PrefixCarryValues old new))\n        (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new)))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)\n          (@List.length.{0} Nat new))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)\n          (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_exchange_k_forbidden_force_k_succ_backfills._proof_1_1",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {old new forbidden : List.{0} Nat}\n  (hgrowth :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@List.length.{0} Nat new))\n  (hbalance :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)\n        (@List.length.{0} Nat new))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)\n        (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new)))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.PrefixCarryValues",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 24,
+      "typePretty": "(old new : List.{0} Nat) → List.{0} Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.PrefixBackfillValues",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 28,
+      "typePretty": "(old new : List.{0} Nat) → List.{0} Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_exchange_forbidden_balance",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 32,
+      "typePretty": "∀ {old new forbidden : List.{0} Nat} (hnew : @List.Nodup.{0} Nat new) (hforbidden : @List.Nodup.{0} Nat forbidden)\n  (hsub : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) forbidden old)\n  (hmissing :\n    ∀ (v : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) forbidden v →\n        Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) new v)),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)\n      (@List.length.{0} Nat new))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)\n      (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_exchange_k_forbidden_force_k_succ_backfills",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 71,
+      "typePretty": "∀ {old new forbidden : List.{0} Nat} (hnew : @List.Nodup.{0} Nat new) (hforbidden : @List.Nodup.{0} Nat forbidden)\n  (hsub : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) forbidden old)\n  (hmissing :\n    ∀ (v : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) forbidden v →\n        Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) new v))\n  (hgrowth :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat old)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@List.length.{0} Nat new)),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    (@List.length.{0} Nat (ChompLean.PrefixBackfillValues old new))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.StrictRowPrefixValues",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 85,
+      "typePretty": "(f : Nat → Nat → Nat) → (q : Nat) → List.{0} Nat",
+      "axioms": [],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mem_strictRowPrefixValues_iff_C",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 89,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q v : Nat},\n  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.StrictRowPrefixValues f q) v)\n    (ChompLean.C f q q v)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R47ReusablePrefixBackfillCharge.0.ChompLean.r47_nodup_map_of_injective_on",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 101,
+      "typePretty": "∀ (f : Nat → Nat) (xs : List.{0} Nat) (hxs : @List.Nodup.{0} Nat xs)\n  (hinj :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →\n        ∀ (y : Nat),\n          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs y →\n            @Eq.{1} Nat (f x) (f y) → @Eq.{1} Nat x y),\n  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat f xs)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.prefix_columns_k_reserved_force_k_succ_backfills",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 124,
+      "typePretty": "∀ {n : Nat} {oldValue newValue : Nat → Nat} {reserved : List.{0} Nat}\n  (holdInjective :\n    ∀ (c₁ : Nat),\n      @LT.lt.{0} Nat instLTNat c₁ n →\n        ∀ (c₂ : Nat), @LT.lt.{0} Nat instLTNat c₂ n → @Eq.{1} Nat (oldValue c₁) (oldValue c₂) → @Eq.{1} Nat c₁ c₂)\n  (hnewInjective :\n    ∀ (b₁ : Nat),\n      @LT.lt.{0} Nat instLTNat b₁\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n        ∀ (b₂ : Nat),\n          @LT.lt.{0} Nat instLTNat b₂\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n            @Eq.{1} Nat (newValue b₁) (newValue b₂) → @Eq.{1} Nat b₁ b₂)\n  (hreservedNodup : @List.Nodup.{0} Nat reserved)\n  (hreservedRange : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) reserved (List.range n))\n  (hreservedMissing :\n    ∀ (c : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) reserved c →\n        ∀ (b : Nat),\n          @LT.lt.{0} Nat instLTNat b\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n            @Ne.{1} Nat (newValue b) (oldValue c)),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat reserved)\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    (@List.length.{0} Nat\n      (ChompLean.PrefixBackfillValues (@List.map.{0, 0} Nat Nat oldValue (List.range n))\n        (@List.map.{0, 0} Nat Nat newValue\n          (List.range\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.strictRowPrefixValues_nodup",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 177,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) (q : Nat),\n  @List.Nodup.{0} Nat (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.old_diagonal_mex_backfill_has_past_owner",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 188,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q v : Nat}\n  (hvPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)\n  (hvBelow : @LT.lt.{0} Nat instLTNat v (ChompLean.RecurrenceModel.f M q q))\n  (hvNotOld :\n    Not\n      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n        (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q) v)),\n  @Exists.{1} Nat fun (i : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat i q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M i i) v)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.adjacent_dip_backfill_has_past_diagonal_owner",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 210,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q v : Nat}\n  (hdip :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.RecurrenceModel.f M q q))\n  (hvBackfill :\n    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q)\n        (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      v),\n  @Exists.{1} Nat fun (i : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat i q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M i i) v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills",
+      "module": "R47ReusablePrefixBackfillCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 243,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q : Nat} {forbidden : List.{0} Nat}\n  (hdip :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.RecurrenceModel.f M q q))\n  (hforbidden : @List.Nodup.{0} Nat forbidden)\n  (hsub :\n    @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) forbidden\n      (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q))\n  (hmissing :\n    ∀ (v : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) forbidden v →\n        Not\n          (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n            (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            v)),\n  have backfills : List.{0} Nat :=\n    ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M) q)\n      (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))));\n  And\n    (@LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@List.length.{0} Nat backfills))\n    (And (@List.Nodup.{0} Nat backfills)\n      (∀ (v : Nat),\n        @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) backfills v →\n          @Exists.{1} Nat fun (i : Nat) =>\n            And (@LT.lt.{0} Nat instLTNat i q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M i i) v)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fbd747f439ef88da44389352d78247dd1d109be0f2d949e92b16dcf4cde598c3",
+      "sourcePath": "lean/core/R47ReusablePrefixBackfillCharge.lean",
+      "universeParameters": []
+    }
+  ],
+  "fullExpressionTrees": "audit/full/lean/declarations.jsonl"
+}

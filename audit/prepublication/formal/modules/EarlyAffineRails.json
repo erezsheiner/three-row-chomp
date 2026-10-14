@@ -1,0 +1,2133 @@
+{
+  "module": "EarlyAffineRails",
+  "sourcePath": "lean/core/EarlyAffineRails.lean",
+  "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+  "declarationCount": 139,
+  "theoremDeclarationCount": 139,
+  "proofValuedDeclarationCount": 139,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 16,
+      "typePretty": "∀ {c t d : Nat} (hct : @LE.le.{0} Nat instLENat c t)\n  (hd : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) d)\n  (hbaseNC :\n    Not\n      (And (@LT.lt.{0} Nat instLTNat c t)\n        (@LT.lt.{0} Nat instLTNat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            c)\n          t)))\n  (hearly :\n    ∀ (a : Nat),\n      @LT.lt.{0} Nat instLTNat a t →\n        @LT.lt.{0} Nat instLTNat (ChompLean.gameF a (@Min.min.{0} Nat instMinNat a c))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t d))\n  (hprefix :\n    ∀ (q : Nat),\n      @LE.le.{0} Nat instLENat t q →\n        ∀ (b : Nat),\n          @LT.lt.{0} Nat instLTNat b c →\n            @LT.lt.{0} Nat instLTNat (ChompLean.gameF q b)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d))\n  (hlow :\n    ∀ (q : Nat),\n      @LE.le.{0} Nat instLENat t q →\n        ∀ (k : Nat),\n          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →\n            @LT.lt.{0} Nat instLTNat k (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t d) →\n              ChompLean.B ChompLean.gameF q c k)\n  (q : Nat),\n  @LE.le.{0} Nat instLENat t q →\n    @Eq.{1} Nat (ChompLean.gameF q c) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_1",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (hct : @LE.le.{0} Nat instLENat c t) (q : Nat) (htq : @LE.le.{0} Nat instLENat t q),\n  Not (@LE.le.{0} Nat instLENat c q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_10",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (q b : Nat)\n  (hsmall :\n    @LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_11",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (hct : @LE.le.{0} Nat instLENat c t) (q k : Nat)\n  (hklow : Not (@LT.lt.{0} Nat instLTNat k (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t d))),\n  Not (@LE.le.{0} Nat instLENat d k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_12",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (q k : Nat)\n  (hklow : Not (@LT.lt.{0} Nat instLTNat k (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t d)))\n  (hdk : @LE.le.{0} Nat instLENat d k),\n  Not (@LE.le.{0} Nat instLENat t (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k d)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_13",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (q k : Nat)\n  (hklt : @LT.lt.{0} Nat instLTNat k (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d))\n  (hdk : @LE.le.{0} Nat instLENat d k),\n  Not (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k d) q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_14",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (hct : @LE.le.{0} Nat instLENat c t) (q k : Nat)\n  (hta : @LE.le.{0} Nat instLENat t (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k d)),\n  Not (@LE.le.{0} Nat instLENat c (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k d)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_15",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (q k : Nat) (hdk : @LE.le.{0} Nat instLENat d k)\n  (hia :\n    @Eq.{1} Nat (ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k d) c)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k d) d)),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k d) d)\n        k) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_2",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (q : Nat) (htq : @LE.le.{0} Nat instLENat t q)\n  (hcarry :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c)\n      q)\n  (hqt : Not (@Eq.{1} Nat q t)),\n  Not\n      (@LE.le.{0} Nat instLENat t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_3",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (q : Nat)\n  (hcarry :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c)\n      q),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        q) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_4",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (hd : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) d)\n  (q : Nat) (htq : @LE.le.{0} Nat instLENat t q)\n  (hcarry :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        d)\n      q)\n  (hqt : Not (@Eq.{1} Nat q t))\n  (hiprev :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        d)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_5",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (hd : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) d)\n  (q : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_6",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (q : Nat) (htq : @LE.le.{0} Nat instLENat t q) (a : Nat)\n  (hsmall :\n    @LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t d)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_7",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (q a : Nat) (hat : Not (@LT.lt.{0} Nat instLTNat a t)), Not (@LE.le.{0} Nat instLENat t a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_8",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (hct : @LE.le.{0} Nat instLENat c t) (q a : Nat) (hat : Not (@LT.lt.{0} Nat instLTNat a t)),\n  Not (@LE.le.{0} Nat instLENat c a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_affine_fixed_column_of_source_frame._proof_1_9",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t d : Nat} (q a : Nat) (haq : @LT.lt.{0} Nat instLTNat a q)\n  (hvalue :\n    @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a d)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 214,
+      "typePretty": "∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) q),\n  @Eq.{1} Nat (ChompLean.gameF q (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_1",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_10",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_11",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_12",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_13",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_14",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_15",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_16",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_17",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row k : Nat)\n  (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (hklt :\n    @LT.lt.{0} Nat instLTNat k\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  Not\n      (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n              (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))\n                  (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n                    (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                      (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))\n                        (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n                          (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))\n                            (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))))\n                              (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))\n                                (@Eq.{1} Nat k\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14))))))))))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_18",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_19",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_2",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_20",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_21",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_22",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_23",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_24",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_25",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_26",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_27",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_28",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_29",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_3",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat},\n  And\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_30",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_31",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_4",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))),\n  Not\n      (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n                (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                  (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))\n                    (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n                      (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                        (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_5",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row b : Nat)\n  (hb : @LT.lt.{0} Nat instLTNat b (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),\n  Not\n      (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n                (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                  (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_6",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_7",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) row) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_8",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat)\n  (hrow : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) row),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_col7_rail._proof_1_9",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (row : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 117,
+      "typePretty": "@Eq.{1} Nat\n  (ChompLean.gameF (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n  (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_1",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_10",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_11",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_12",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_13",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_14",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_15",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (hklt : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))),\n  Not\n      (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n              (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))\n                  (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n                    (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                      (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))\n                        (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n                          (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))\n                            (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))))\n                              (@Eq.{1} Nat k\n                                (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))))))))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_16",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_17",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_18",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_19",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_2",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "And\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_20",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_21",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_22",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_23",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_24",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_25",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_26",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_27",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_28",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_3",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_4",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))),\n  Not\n      (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n                (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                  (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))\n                    (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_5",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),\n  Not\n      (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n                (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                  (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_6",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_7",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_8",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eight_seven._proof_1_9",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 166,
+      "typePretty": "@Eq.{1} Nat\n  (ChompLean.gameF (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n  (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_1",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_10",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_11",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_12",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_13",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_14",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_15",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (hklt : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))),\n  Not\n      (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n              (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))\n                  (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n                    (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                      (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))\n                        (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n                          (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11)))))))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_16",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_17",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_18",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_19",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_2",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "And\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_20",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_21",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_22",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_23",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_24",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_25",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_26",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_3",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_4",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))),\n  Not\n      (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n                (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                  (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))\n                    (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n                      (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_5",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),\n  Not\n      (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n                (Or (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                  (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_6",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_7",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_8",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nine_seven._proof_1_9",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_no_q_sub_two_terminal_burn_of_midpoint",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 329,
+      "typePretty": "∀ {q r g : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))) q)\n  (hra :\n    @LE.le.{0} Nat instLENat r\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (hmid :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) g))\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_no_q_sub_two_terminal_burn_of_midpoint._proof_1_1",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q r g : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))) q)\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (hmid :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) g))\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hr : @Eq.{1} Nat r (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_q_sub_two_terminal_burn_pins_eight",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 306,
+      "typePretty": "∀ {q r : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))) q)\n  (hra :\n    @LE.le.{0} Nat instLENat r\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  @Eq.{1} Nat r (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_q_sub_two_terminal_burn_pins_eight._proof_1_1",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_q_sub_two_terminal_burn_pins_eight._proof_1_2",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))) q)\n  (hburn :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_q_sub_two_terminal_burn_pins_eight._proof_1_3",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q r : Nat} (hr0 : Not (@Eq.{1} Nat r (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_q_sub_two_terminal_burn_pins_eight._proof_1_4",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q r : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))) q)\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_q_sub_two_terminal_burn_pins_eight._proof_1_5",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q r : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))) q)\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hrail :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_q_sub_two_terminal_burn_pins_eight._proof_1_6",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q r : Nat}\n  (hrow :\n    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hrail :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 71,
+      "typePretty": "@Eq.{1} Nat\n  (ChompLean.gameF (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n  (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_1",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_10",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_11",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_12",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_13",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_14",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (hklt : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))),\n  Not\n      (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n              (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))\n                  (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n                    (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                      (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))\n                        (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n                          (Or (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))\n                            (@Eq.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))))))))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_15",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_16",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_17",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_18",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_19",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_2",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "And\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_20",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_21",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_3",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_4",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),\n  Not\n      (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n                (Or (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n                  (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_5",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_6",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_7",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_8",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀\n  (hval :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_seven_seven._proof_1_9",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_burn_column_of_same_row_host",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 269,
+      "typePretty": "∀ {a r v c : Nat} (hrpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r)\n  (hra : @LE.le.{0} Nat instLENat r a) (hca : @LE.le.{0} Nat instLENat c a)\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF a\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      v)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF a c) v),\n  @Eq.{1} Nat r\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_burn_column_of_same_row_host._proof_1_1",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a r v c : Nat} (hrpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r)\n  (hra : @LE.le.{0} Nat instLENat r a),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        a) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_burn_column_of_same_row_host._proof_1_2",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a r v c : Nat} (hrpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r)\n  (heq :\n    @Eq.{1} Nat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c),\n  Not\n      (@Eq.{1} Nat r\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_burn_killed_by_next_column",
+      "module": "EarlyAffineRails",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 284,
+      "typePretty": "∀ {a r v c w : Nat} (hrpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r)\n  (hra : @LE.le.{0} Nat instLENat r a) (hca : @LE.le.{0} Nat instLENat c a)\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF a\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      v)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF a c) v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hnext :\n    @Eq.{1} Nat\n      (ChompLean.gameF v\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      w)\n  (hvw : Not (@Eq.{1} Nat v w)), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3a09e13d1d93ff5baced17f37deb7355f3d6393f22f3ccb5bac851718851aab7",
+      "sourcePath": "lean/core/EarlyAffineRails.lean",
+      "universeParameters": []
+    }
+  ]
+}

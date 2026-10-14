@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R146 Final Hole Triple Tail Unification · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R146 Final Hole Triple Tail Unification</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R146FinalHoleTripleTailUnification.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R146FinalHoleTripleTailUnification.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R146FinalHoleTripleTailUnification.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a> <a href="../audit/full/paper-a/FINAL-AMENDMENT-REVIEW.json">Historical 13 October evidence: Independent review of corrected source prose</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 111 declarations</summary><ul class="declarations"><li><code>ChompLean.IsMex.eq_1</code><pre class="prose">∀ (S : Nat → Prop) (m : Nat),
+  @Eq.{1} Prop (ChompLean.IsMex S m)
+    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m)
+      (And (Not (S m))
+        (∀ (k : Nat),
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+            @LT.lt.{0} Nat instLTNat k m → S k)))</pre></li><li><code>ChompLean.R146BlockerAllocation</code><pre class="prose">(k p : Nat) → Prop</pre></li><li><code>ChompLean.R146FinalFrame</code><pre class="prose">(m x : Nat) → Prop</pre></li><li><code>ChompLean.R146FinalFrame.eq_1</code><pre class="prose">∀ (m x : Nat),
+  @Eq.{1} Prop (ChompLean.R146FinalFrame m x)
+    (And (ChompLean.IsMex (ChompLean.PrevSource x (ChompLean.r146FL m)) x)
+      (And
+        (ChompLean.IsMex (fun (z : Nat) =&gt; Or (ChompLean.PrevSource x (ChompLean.r146FL m) z) (@Eq.{1} Nat z x))
+          (ChompLean.r146FL m))
+        (And
+          (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m) (ChompLean.r146FL m)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146FL m)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (And
+            (ChompLean.IsMex
+              (fun (z : Nat) =&gt;
+                Or
+                  (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m)
+                    (ChompLean.r146FL m) z)
+                  (@Eq.{1} Nat z x))
+              (ChompLean.r146FY m))
+            (And
+              (ChompLean.IsMex
+                (fun (z : Nat) =&gt;
+                  Or
+                    (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m)
+                      (ChompLean.r146FL m) z)
+                    (Or (@Eq.{1} Nat z (ChompLean.r146FL m)) (@Eq.{1} Nat z (ChompLean.r146FY m))))
+                (ChompLean.r146FQ m))
+              (ChompLean.IsMex
+                (fun (z : Nat) =&gt;
+                  Or
+                    (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m)
+                      (ChompLean.r146FL m) z)
+                    (Or (@Eq.{1} Nat z (ChompLean.r146FL m))
+                      (Or (@Eq.{1} Nat z (ChompLean.r146FY m)) (@Eq.{1} Nat z (ChompLean.r146FQ m)))))
+                (ChompLean.r143V m)))))))</pre></li><li><code>ChompLean.R146RangeAllocation</code><pre class="prose">(k p : Nat) → Prop</pre></li><li><code>ChompLean.R146SharedS0</code><pre class="prose">(k p : Nat) → Prop</pre></li><li><code>ChompLean.R146SharedS1</code><pre class="prose">(k p : Nat) → Prop</pre></li><li><code>ChompLean.R146SharedS2</code><pre class="prose">(k p : Nat) → Prop</pre></li><li><code>ChompLean.SourceAllocationHallDefect</code><pre class="prose">(bound : Nat) → (D T P : Nat → Prop) → Prop</pre></li><li><code>ChompLean.ThreeChannelSource</code><pre class="prose">(D T P : Nat → Prop) → (z : Nat) → Prop</pre></li><li><code>ChompLean.ThreeChannelSource.eq_1</code><pre class="prose">∀ (D T P : Nat → Prop) (z : Nat), @Eq.{1} Prop (ChompLean.ThreeChannelSource D T P z) (Or (D z) (Or (T z) (P z)))</pre></li><li><code>ChompLean.TripleAllocationHallDefect</code><pre class="prose">(v : Nat) → (D0 T0 P0 D1 T1 P1 D2 T2 P2 : Nat → Prop) → Prop</pre></li><li><code>ChompLean.badDiagonal_finalV1_has_no_second_hole</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t q v : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (hqval :
+    @Eq.{1} Nat
+      (f t
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      q)
+  (hV1 :
+    ChompLean.IsMex
+      (ChompLean.B f t
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      q)
+  (hdiag : ChompLean.IsMex (ChompLean.B f t t) v),
+  Not
+    (@Exists.{1} Nat fun (z : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat q z)
+        (And (@LT.lt.{0} Nat instLTNat z v)
+          (Not
+            (ChompLean.B f t
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              z))))</pre></li><li><code>ChompLean.badDiagonal_finalV1_has_no_second_hole._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t q v : Nat}
+  (hqval :
+    @Eq.{1} Nat
+      (f t
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      q)
+  (z : Nat)
+  (hs :
+    @Eq.{1} Nat
+      (f t
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      z),
+  Not (@Eq.{1} Nat z q) → False</pre></li><li><code>ChompLean.finalPostfillHallDefect_kills_bad_diagonal</code><pre class="prose">∀ {v q : Nat} {S : Nat → Prop} (hdiag : ChompLean.IsMex (fun (z : Nat) =&gt; Or (S z) (@Eq.{1} Nat z q)) v)
+  (hdef : ChompLean.SourceAllocationHallDefect v S (fun (x : Nat) =&gt; False) fun (z : Nat) =&gt; @Eq.{1} Nat z q), False</pre></li><li><code>ChompLean.finalPostfillHallDefect_kills_bad_diagonal._proof_1_3</code><pre class="prose">∀ {v : Nat} (hvv : @LT.lt.{0} Nat instLTNat v v), False</pre></li><li><code>ChompLean.final_or_triple_allocationHallDefect_closes</code><pre class="prose">∀ {v q x0 x1 x2 : Nat} {S D0 T0 P0 D1 T1 P1 D2 T2 P2 : Nat → Prop}
+  (hdiag : ChompLean.IsMex (fun (z : Nat) =&gt; Or (S z) (@Eq.{1} Nat z q)) v)
+  (h0 : ChompLean.IsMex (ChompLean.ThreeChannelSource D0 T0 P0) x0)
+  (h1 : ChompLean.IsMex (ChompLean.ThreeChannelSource D1 T1 P1) x1)
+  (h2 : ChompLean.IsMex (ChompLean.ThreeChannelSource D2 T2 P2) x2) (hl0 : @LE.le.{0} Nat instLENat v x0)
+  (hl1 : @LE.le.{0} Nat instLENat v x1) (hl2 : @LE.le.{0} Nat instLENat v x2)
+  (hv0 : ChompLean.ThreeChannelSource D0 T0 P0 v) (hv1 : ChompLean.ThreeChannelSource D1 T1 P1 v)
+  (hv2 : ChompLean.ThreeChannelSource D2 T2 P2 v)
+  (hHall :
+    Or (ChompLean.SourceAllocationHallDefect v S (fun (x : Nat) =&gt; False) fun (z : Nat) =&gt; @Eq.{1} Nat z q)
+      (ChompLean.TripleAllocationHallDefect v D0 T0 P0 D1 T1 P1 D2 T2 P2)),
+  False</pre></li><li><code>ChompLean.final_or_triple_allocationHallDefect_closes._proof_1_3</code><pre class="prose">∀ {v x0 x1 x2 : Nat} (hvv : @LT.lt.{0} Nat instLTNat v v), False</pre></li><li><code>ChompLean.isMex_below_iff_allocationHallDefect</code><pre class="prose">∀ {bound x : Nat} {D T P : Nat → Prop} (hmex : ChompLean.IsMex (ChompLean.ThreeChannelSource D T P) x),
+  Iff (@LT.lt.{0} Nat instLTNat x bound) (ChompLean.SourceAllocationHallDefect bound D T P)</pre></li><li><code>ChompLean.isMex_below_iff_allocationHallDefect._proof_1_1</code><pre class="prose">∀ {bound x : Nat} (z : Nat) (hzb : @LT.lt.{0} Nat instLTNat z bound) (hzx : Not (@LT.lt.{0} Nat instLTNat z x)),
+  Not (@LT.lt.{0} Nat instLTNat x bound) → False</pre></li><li><code>ChompLean.postfillHallDefect_iff_secondFinalHole</code><pre class="prose">∀ {v q : Nat} {S : Nat → Prop} (hV1 : ChompLean.IsMex S q),
+  Iff (ChompLean.SourceAllocationHallDefect v S (fun (x : Nat) =&gt; False) fun (w : Nat) =&gt; @Eq.{1} Nat w q)
+    (@Exists.{1} Nat fun (z : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat q z) (And (@LT.lt.{0} Nat instLTNat z v) (Not (S z))))</pre></li><li><code>ChompLean.postfillHallDefect_iff_secondFinalHole._proof_1_1</code><pre class="prose">∀ {v q : Nat} (z : Nat) (hzq : Not ((fun (w : Nat) =&gt; @Eq.{1} Nat w q) z)) (hlt : Not (@LT.lt.{0} Nat instLTNat z q)),
+  Not (@LT.lt.{0} Nat instLTNat q z) → False</pre></li><li><code>ChompLean.r146EarlyBlocker</code><pre class="prose">(i : Nat) → Nat</pre></li><li><code>ChompLean.r146EarlyBlocker.eq_1</code><pre class="prose">∀ (i : Nat),
+  @Eq.{1} Nat (ChompLean.r146EarlyBlocker i)
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)</pre></li><li><code>ChompLean.r146EarlyFreeze</code><pre class="prose">(i : Nat) → Nat</pre></li><li><code>ChompLean.r146EarlyFreeze.eq_1</code><pre class="prose">∀ (i : Nat), @Eq.{1} Nat (ChompLean.r146EarlyFreeze i) i</pre></li><li><code>ChompLean.r146FL</code><pre class="prose">(m : Nat) → Nat</pre></li><li><code>ChompLean.r146FL.eq_1</code><pre class="prose">∀ (m : Nat),
+  @Eq.{1} Nat (ChompLean.r146FL m)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)
+      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))</pre></li><li><code>ChompLean.r146FPersistX</code><pre class="prose">(m : Nat) → Nat</pre></li><li><code>ChompLean.r146FPersistX.eq_1</code><pre class="prose">∀ (m : Nat),
+  @Eq.{1} Nat (ChompLean.r146FPersistX m)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))</pre></li><li><code>ChompLean.r146FQ</code><pre class="prose">(m : Nat) → Nat</pre></li><li><code>ChompLean.r146FQ.eq_1</code><pre class="prose">∀ (m : Nat),
+  @Eq.{1} Nat (ChompLean.r146FQ m)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)
+      (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))</pre></li><li><code>ChompLean.r146FY</code><pre class="prose">(m : Nat) → Nat</pre></li><li><code>ChompLean.r146FY.eq_1</code><pre class="prose">∀ (m : Nat),
+  @Eq.{1} Nat (ChompLean.r146FY m)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)
+      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))</pre></li><li><code>ChompLean.r146FinalFreeze</code><pre class="prose">(k : Nat) → Nat</pre></li><li><code>ChompLean.r146FinalFreeze.eq_1</code><pre class="prose">∀ (k : Nat), @Eq.{1} Nat (ChompLean.r146FinalFreeze k) (ChompLean.FrameT k)</pre></li><li><code>ChompLean.r146LateBlocker</code><pre class="prose">(k j : Nat) → Nat</pre></li><li><code>ChompLean.r146LateBlocker.eq_1</code><pre class="prose">∀ (k j : Nat),
+  @Eq.{1} Nat (ChompLean.r146LateBlocker k j)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.r146LateFreeze</code><pre class="prose">(k j : Nat) → Nat</pre></li><li><code>ChompLean.r146LateFreeze.eq_1</code><pre class="prose">∀ (k j : Nat),
+  @Eq.{1} Nat (ChompLean.r146LateFreeze k j)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))</pre></li><li><code>ChompLean.r146LateRank</code><pre class="prose">(k j : Nat) → Nat</pre></li><li><code>ChompLean.r146LateRank.eq_1</code><pre class="prose">∀ (k j : Nat),
+  @Eq.{1} Nat (ChompLean.r146LateRank k j)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+      j)</pre></li><li><code>ChompLean.r146SharedC0</code><pre class="prose">(k : Nat) → Nat</pre></li><li><code>ChompLean.r146SharedC0.eq_1</code><pre class="prose">∀ (k : Nat),
+  @Eq.{1} Nat (ChompLean.r146SharedC0 k)
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k)</pre></li><li><code>ChompLean.r146SharedG</code><pre class="prose">(k : Nat) → Nat</pre></li><li><code>ChompLean.r146SharedG.eq_1</code><pre class="prose">∀ (k : Nat),
+  @Eq.{1} Nat (ChompLean.r146SharedG k)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.r146_Ak_drop_and_saturated_tail_unified_frame</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),
+  And (ChompLean.FrameBlocker k (ChompLean.FrameY k))
+    (And (ChompLean.FrameBlocker k (ChompLean.FrameQ k))
+      (And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FinalFreeze k) (ChompLean.r146SharedC0 k))
+        (And
+          (And
+            (ChompLean.IsMex (ChompLean.R146SharedS0 k)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (And
+              (ChompLean.IsMex (ChompLean.R146SharedS1 k)
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+              (ChompLean.IsMex (ChompLean.R146SharedS2 k)
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))
+          (And (ChompLean.IsMex (ChompLean.PrevSource (ChompLean.FrameQ k) (ChompLean.FrameL k)) (ChompLean.FrameQ k))
+            (And
+              (ChompLean.IsMex
+                (fun (z : Nat) =&gt;
+                  Or (ChompLean.PrevSource (ChompLean.FrameQ k) (ChompLean.FrameL k) z)
+                    (@Eq.{1} Nat z (ChompLean.FrameQ k)))
+                (ChompLean.FrameL k))
+              (And
+                (ChompLean.CrossingCore
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                  (ChompLean.FrameY k) (ChompLean.FrameQ k) (ChompLean.FrameL k)
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                (And
+                  (ChompLean.IsMex
+                    (fun (z : Nat) =&gt;
+                      Or
+                        (ChompLean.CrossingCore
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)
+                            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                          (ChompLean.FrameY k) (ChompLean.FrameQ k) (ChompLean.FrameL k) z)
+                        (@Eq.{1} Nat z (ChompLean.FrameQ k)))
+                    (ChompLean.FrameY k))
+                  (And
+                    (ChompLean.IsMex
+                      (fun (z : Nat) =&gt;
+                        Or
+                          (ChompLean.CrossingCore
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)
+                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                            (ChompLean.FrameY k) (ChompLean.FrameQ k) (ChompLean.FrameL k) z)
+                          (Or (@Eq.{1} Nat z (ChompLean.FrameL k)) (@Eq.{1} Nat z (ChompLean.FrameY k))))
+                      (ChompLean.FrameQ k))
+                    (ChompLean.IsMex
+                      (fun (z : Nat) =&gt;
+                        Or
+                          (ChompLean.CrossingCore
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)
+                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                            (ChompLean.FrameY k) (ChompLean.FrameQ k) (ChompLean.FrameL k) z)
+                          (Or (@Eq.{1} Nat z (ChompLean.FrameL k))
+                            (Or (@Eq.{1} Nat z (ChompLean.FrameY k)) (@Eq.{1} Nat z (ChompLean.FrameQ k)))))
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)
+                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))))))))))</pre></li><li><code>ChompLean.r146_Ak_drop_and_saturated_tail_unified_frame._proof_1_1</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k) → False</pre></li><li><code>ChompLean.r146_Ak_drop_and_saturated_tail_unified_frame._proof_1_2</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k) → False</pre></li><li><code>ChompLean.r146_actual_midpoint_defect_iff_cap</code><pre class="prose">∀ (f : Nat → Nat → Nat) {q c x v : Nat} (hcq : @LE.le.{0} Nat instLENat c q)
+  (hmex : ChompLean.IsMex (ChompLean.B f q c) x),
+  Iff
+    (@LT.lt.{0} Nat instLTNat x
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (ChompLean.SourceAllocationHallDefect
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.R143DiagBelow f c) (ChompLean.R143VerticalTail f q c) (ChompLean.R143RowPrefix f q c))</pre></li><li><code>ChompLean.r146_aligned_drop_final_frame</code><pre class="prose">∀ (m : Nat), ChompLean.R146FinalFrame m (ChompLean.r146FQ m)</pre></li><li><code>ChompLean.r146_aligned_final_coordinates</code><pre class="prose">∀ (m : Nat),
+  And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FY m) (ChompLean.r146FPersistX m))
+    (And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FPersistX m) (ChompLean.r146FQ m))
+      (And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FQ m) (ChompLean.r146FL m))
+        (And
+          (@Eq.{1} Nat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146FL m)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (ChompLean.r143V m))
+          (@LT.lt.{0} Nat instLTNat (ChompLean.r143T m) (ChompLean.r146FQ m)))))</pre></li><li><code>ChompLean.r146_aligned_final_coordinates._proof_1_5</code><pre class="prose">∀ (m : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) m)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.r146_aligned_persist_final_frame</code><pre class="prose">∀ (m : Nat), ChompLean.R146FinalFrame m (ChompLean.r146FPersistX m)</pre></li><li><code>ChompLean.r146_drop_and_persist_are_genuinely_distinct</code><pre class="prose">∀ (m : Nat),
+  And (@Eq.{1} Nat (ChompLean.r146FQ m) (ChompLean.r146FQ m))
+    (And
+      (Not
+        (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m) (ChompLean.r146FL m)
+          (ChompLean.r146FQ m)))
+      (And (@Ne.{1} Nat (ChompLean.r146FPersistX m) (ChompLean.r146FQ m))
+        (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m) (ChompLean.r146FL m)
+          (ChompLean.r146FPersistX m))))</pre></li><li><code>ChompLean.r146_early_freeze_rails</code><pre class="prose">∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i)
+  (hik :
+    @LE.le.{0} Nat instLENat i
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  And (@LT.lt.{0} Nat instLTNat (ChompLean.r146EarlyFreeze i) (ChompLean.r146EarlyBlocker i))
+    (And
+      (@LE.le.{0} Nat instLENat
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r146EarlyBlocker i)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (ChompLean.r146EarlyFreeze i))
+      (And
+        (@LE.le.{0} Nat instLENat (ChompLean.r146EarlyFreeze i)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@LE.le.{0} Nat instLENat (ChompLean.r146EarlyFreeze i)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) k))))</pre></li><li><code>ChompLean.r146_early_freeze_rails._proof_1_3</code><pre class="prose">∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i)
+  (hik :
+    @LE.le.{0} Nat instLENat i
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat i
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i))
+        (And
+          (@LE.le.{0} Nat instLENat
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            i)
+          (And
+            (@LE.le.{0} Nat instLENat i
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@LE.le.{0} Nat instLENat i
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) k))))) →
+    False</pre></li><li><code>ChompLean.r146_early_is_frameBlocker</code><pre class="prose">∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i)
+  (hik :
+    @LE.le.{0} Nat instLENat i
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  ChompLean.FrameBlocker k (ChompLean.r146EarlyBlocker i)</pre></li><li><code>ChompLean.r146_early_is_frameBlocker._proof_1_1</code><pre class="prose">∀ {k i : Nat}
+  (hik :
+    @LE.le.{0} Nat instLENat i
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)) →
+    False</pre></li><li><code>ChompLean.r146_early_is_frameBlocker._proof_1_2</code><pre class="prose">∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i)
+  (hik :
+    @LE.le.{0} Nat instLENat i
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)) →
+    False</pre></li><li><code>ChompLean.r146_early_is_frameBlocker._proof_1_3</code><pre class="prose">∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) i
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.r146_early_is_frameBlocker._proof_1_4</code><pre class="prose">∀ {k i : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        i) →
+    False</pre></li><li><code>ChompLean.r146_early_is_frameBlocker._proof_1_5</code><pre class="prose">∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i),
+  Not
+      (@Eq.{1} Nat i
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) i
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.r146_final_diagonal_source_insert</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t p : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Iff (ChompLean.B f t t p)
+    (Or
+      (ChompLean.B f t
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        p)
+      (@Eq.{1} Nat
+        (f t
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        p))</pre></li><li><code>ChompLean.r146_final_diagonal_source_insert._proof_1_1</code><pre class="prose">∀ {t : Nat} (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        t) →
+    False</pre></li><li><code>ChompLean.r146_final_diagonal_source_insert._proof_1_2</code><pre class="prose">∀ {t : Nat} (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (h2 :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.r146_final_freeze_compatibility</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),
+  And (@LE.le.{0} Nat instLENat (ChompLean.FrameT k) (ChompLean.r146FinalFreeze k))
+    (And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FinalFreeze k) (ChompLean.FrameQ k))
+      (And
+        (@LE.le.{0} Nat instLENat
+          (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.FrameQ k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (ChompLean.r146FinalFreeze k))
+        (And
+          (@LE.le.{0} Nat instLENat (ChompLean.r146FinalFreeze k)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (And
+            (@LE.le.{0} Nat instLENat
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.FrameQ k)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146FinalFreeze k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (And
+              (@LT.lt.{0} Nat instLTNat
+                (ChompLean.r146LateFreeze k
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                (ChompLean.r146FinalFreeze k))
+              (@LT.lt.{0} Nat instLTNat (ChompLean.r146FinalFreeze k) (ChompLean.r146SharedC0 k)))))))</pre></li><li><code>ChompLean.r146_final_freeze_compatibility._proof_1_4</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (And
+          (@LE.le.{0} Nat instLENat
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+          (And
+            (@LE.le.{0} Nat instLENat
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)))
+            (And
+              (@LE.le.{0} Nat instLENat
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                        (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)))
+              (And
+                (@LT.lt.{0} Nat instLTNat
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                (@LT.lt.{0} Nat instLTNat
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k))))))) →
+    False</pre></li><li><code>ChompLean.r146_final_tail_interface_separation</code><pre class="prose">∀ (m : Nat),
+  And
+    (@Eq.{1} Nat (ChompLean.r143C0 m)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r143T m)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        m))
+    (@Eq.{1} Nat (ChompLean.r143Q m)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r143T m)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) m)
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))</pre></li><li><code>ChompLean.r146_final_tail_interface_separation._proof_1_1</code><pre class="prose">∀ (m : Nat),
+  Not
+      (And
+        (@Eq.{1} Nat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) m)
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) m)
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            m))
+        (@Eq.{1} Nat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)
+            (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) m)
+              (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) m)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))) →
+    False</pre></li><li><code>ChompLean.r146_freeze_schedule_boundary_and_deadline</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),
+  And
+    (@LT.lt.{0} Nat instLTNat
+      (ChompLean.r146EarlyFreeze
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k))
+      (ChompLean.r146LateFreeze k (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (And
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.r146LateFreeze k
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (ChompLean.r146FinalFreeze k))
+      (And (@Eq.{1} Nat (ChompLean.r146FinalFreeze k) (ChompLean.FrameT k))
+        (@LT.lt.{0} Nat instLTNat (ChompLean.r146FinalFreeze k) (ChompLean.r146SharedC0 k))))</pre></li><li><code>ChompLean.r146_freeze_schedule_boundary_and_deadline._proof_1_5</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+        (@LT.lt.{0} Nat instLTNat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k))) →
+    False</pre></li><li><code>ChompLean.r146_late_freeze_is_birth_row_minus_one</code><pre class="prose">∀ (k j : Nat),
+  @Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146LateFreeze k j)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r146LateBlocker k j)
+      (ChompLean.r146LateRank k j))</pre></li><li><code>ChompLean.r146_late_freeze_is_birth_row_minus_one._proof_1_4</code><pre class="prose">∀ (k j : Nat),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+            j))) →
+    False</pre></li><li><code>ChompLean.r146_late_freeze_rails</code><pre class="prose">∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)
+  (hjk :
+    @LE.le.{0} Nat instLENat j
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  And (@LT.lt.{0} Nat instLTNat (ChompLean.r146LateFreeze k j) (ChompLean.r146LateBlocker k j))
+    (And
+      (@LE.le.{0} Nat instLENat
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r146LateBlocker k j)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (ChompLean.r146LateFreeze k j))
+      (And
+        (@LE.le.{0} Nat instLENat (ChompLean.r146LateFreeze k j)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.r146LateRank k j))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@LE.le.{0} Nat instLENat (ChompLean.r146LateFreeze k j)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k))))</pre></li><li><code>ChompLean.r146_late_freeze_rails._proof_1_4</code><pre class="prose">∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)
+  (hjk :
+    @LE.le.{0} Nat instLENat j
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (And
+          (@LE.le.{0} Nat instLENat
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j)))
+          (And
+            (@LE.le.{0} Nat instLENat
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                    j))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@LE.le.{0} Nat instLENat
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k))))) →
+    False</pre></li><li><code>ChompLean.r146_late_freeze_strict</code><pre class="prose">∀ {k i j : Nat} (hij : @LT.lt.{0} Nat instLTNat i j),
+  @LT.lt.{0} Nat instLTNat (ChompLean.r146LateFreeze k i) (ChompLean.r146LateFreeze k j)</pre></li><li><code>ChompLean.r146_late_is_frameBlocker</code><pre class="prose">∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)
+  (hjk :
+    @LE.le.{0} Nat instLENat j
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  ChompLean.FrameBlocker k (ChompLean.r146LateBlocker k j)</pre></li><li><code>ChompLean.r146_late_is_frameBlocker._proof_1_1</code><pre class="prose">∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j),
+  @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k) →
+    False</pre></li><li><code>ChompLean.r146_late_is_frameBlocker._proof_1_2</code><pre class="prose">∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)
+  (hn :
+    Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))),
+  @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k) →
+    False</pre></li><li><code>ChompLean.r146_late_is_frameBlocker._proof_1_3</code><pre class="prose">∀ {k j : Nat}
+  (hjk :
+    @LE.le.{0} Nat instLENat j
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k))
+  (hp :
+    Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))) →
+    False</pre></li><li><code>ChompLean.r146_late_is_frameBlocker._proof_1_4</code><pre class="prose">∀ {k j : Nat}
+  (hp :
+    Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)) →
+    False</pre></li><li><code>ChompLean.r146_late_is_frameBlocker._proof_1_5</code><pre class="prose">∀ {k j : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        j) →
+    False</pre></li><li><code>ChompLean.r146_late_is_frameBlocker._proof_1_6</code><pre class="prose">∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)
+  (hp :
+    Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.r146_late_is_frameBlocker._proof_1_7</code><pre class="prose">∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j),
+  Not
+      (@Eq.{1} Nat
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) j
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.r146_late_is_frameBlocker._proof_1_8</code><pre class="prose">∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)
+  (hjk :
+    @LE.le.{0} Nat instLENat j
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+          j)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+            (@Min.min.{0} Nat instMinNat
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) j
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.r146_shared_critical_midpoint_coordinates</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),
+  And
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.r146SharedG k))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k) (ChompLean.FrameA k)))
+    (And
+      (@Eq.{1} Nat (ChompLean.r146SharedC0 k)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r146SharedG k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (And (@LT.lt.{0} Nat instLTNat (ChompLean.FrameT k) (ChompLean.r146SharedC0 k))
+        (@Eq.{1} Nat (ChompLean.FrameQ k)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.FrameV k)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))</pre></li><li><code>ChompLean.r146_shared_critical_midpoint_coordinates._proof_1_3</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),
+  Not
+      (And
+        (@Eq.{1} Nat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)))
+        (@LT.lt.{0} Nat instLTNat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k))) →
+    False</pre></li><li><code>ChompLean.r146_shared_range_blocker_cover</code><pre class="prose">∀ (k p : Nat),
+  Iff (ChompLean.R146SharedS0 k p)
+    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)
+      (@LE.le.{0} Nat instLENat p (ChompLean.FrameV k)))</pre></li><li><code>ChompLean.r146_shared_range_count_fits_before_midpoint</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k),
+  And
+    (@Eq.{1} Nat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.FrameV k)
+        (ChompLean.FrameCount k (ChompLean.FrameV k)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameT k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (@LT.lt.{0} Nat instLTNat (ChompLean.FrameT k)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146SharedC0 k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))</pre></li><li><code>ChompLean.r146_shared_range_count_fits_before_midpoint._proof_1_2</code><pre class="prose">∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k),
+  Not
+      (And
+        (@Eq.{1} Nat
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@LT.lt.{0} Nat instLTNat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k))) →
+    False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet</code><pre class="prose">∀ (k : Nat),
+  And
+    (ChompLean.IsMex (ChompLean.R146SharedS0 k)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (And
+      (ChompLean.IsMex (ChompLean.R146SharedS1 k)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (And
+        (ChompLean.IsMex (ChompLean.R146SharedS2 k)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+        (Not
+          (Or
+            (@LE.le.{0} Nat instLENat
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (ChompLean.FrameV k))
+            (Or
+              (@LE.le.{0} Nat instLENat
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (ChompLean.FrameV k))
+              (@LE.le.{0} Nat instLENat
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                (ChompLean.FrameV k)))))))</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_1</code><pre class="prose">∀ (k : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_10</code><pre class="prose">∀ (k : Nat)
+  (hs :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_11</code><pre class="prose">∀ (k : Nat)
+  (hs :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),
+  False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_12</code><pre class="prose">∀ (k p : Nat)
+  (hlt :
+    @LT.lt.{0} Nat instLTNat p
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+  (hpv : Not (@LE.le.{0} Nat instLENat p (ChompLean.FrameV k)))
+  (hp1 :
+    Not
+      (@Eq.{1} Nat p
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@Eq.{1} Nat p
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_2</code><pre class="prose">∀ (k : Nat)
+  (h :
+    And
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.FrameV k))),
+  False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_3</code><pre class="prose">∀ (k p : Nat)
+  (hlt :
+    @LT.lt.{0} Nat instLTNat p
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LE.le.{0} Nat instLENat p (ChompLean.FrameV k)) → False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_4</code><pre class="prose">∀ (k : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_5</code><pre class="prose">∀ (k : Nat)
+  (h :
+    And
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (ChompLean.FrameV k))),
+  False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_6</code><pre class="prose">∀ (k : Nat)
+  (hs :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_7</code><pre class="prose">∀ (k p : Nat)
+  (hlt :
+    @LT.lt.{0} Nat instLTNat p
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+  (hpv : Not (@LE.le.{0} Nat instLENat p (ChompLean.FrameV k))),
+  Not
+      (@Eq.{1} Nat p
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_8</code><pre class="prose">∀ (k : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))) →
+    False</pre></li><li><code>ChompLean.r146_shared_three_tail_mex_packet._proof_1_9</code><pre class="prose">∀ (k : Nat)
+  (h :
+    And
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        (ChompLean.FrameV k))),
+  False</pre></li><li><code>ChompLean.r146_two_row_tail_no_cap_coexists_with_drop_and_persist</code><pre class="prose">∀ (m : Nat) (hm : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) m),
+  And (ChompLean.R146FinalFrame m (ChompLean.r146FQ m))
+    (And (ChompLean.R146FinalFrame m (ChompLean.r146FPersistX m))
+      (And
+        (And (ChompLean.IsMex (ChompLean.R144LowerSource0 m) (ChompLean.r144L0 m))
+          (And (ChompLean.IsMex (ChompLean.R144LowerSource1 m) (ChompLean.r144L1 m))
+            (And (ChompLean.IsMex (ChompLean.R144LowerSource2 m) (ChompLean.r144L2 m))
+              (And (ChompLean.IsMex (ChompLean.R144UpperSource0 m) (ChompLean.r144U0 m))
+                (And (ChompLean.IsMex (ChompLean.R144UpperSource1 m) (ChompLean.r144U1 m))
+                  (ChompLean.IsMex (ChompLean.R144UpperSource2 m) (ChompLean.r144U2 m)))))))
+        (Not
+          (Or (@LE.le.{0} Nat instLENat (ChompLean.r144U0 m) (ChompLean.r143V m))
+            (Or (@LE.le.{0} Nat instLENat (ChompLean.r144U1 m) (ChompLean.r143V m))
+              (@LE.le.{0} Nat instLENat (ChompLean.r144U2 m) (ChompLean.r143V m)))))))</pre></li><li><code>ChompLean.secondFinalHole_yields_postfill_HallDefect</code><pre class="prose">∀ {v q z : Nat} {S : Nat → Prop}
+  (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)
+  (hqz : @LT.lt.{0} Nat instLTNat q z) (hzv : @LT.lt.{0} Nat instLTNat z v) (hz : Not (S z)),
+  ChompLean.SourceAllocationHallDefect v S (fun (x : Nat) =&gt; False) fun (w : Nat) =&gt; @Eq.{1} Nat w q</pre></li><li><code>ChompLean.secondFinalHole_yields_postfill_HallDefect._proof_1_1</code><pre class="prose">∀ {v q z : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)
+  (hqz : @LT.lt.{0} Nat instLTNat q z),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) → False</pre></li><li><code>ChompLean.secondFinalHole_yields_postfill_HallDefect._proof_1_2</code><pre class="prose">∀ {v q z : Nat} (hqz : @LT.lt.{0} Nat instLTNat q z), @Eq.{1} Nat z q → False</pre></li><li><code>ChompLean.tripleAllocationHallDefect_iff_cap</code><pre class="prose">∀ {v x0 x1 x2 : Nat} {D0 T0 P0 D1 T1 P1 D2 T2 P2 : Nat → Prop}
+  (h0 : ChompLean.IsMex (ChompLean.ThreeChannelSource D0 T0 P0) x0)
+  (h1 : ChompLean.IsMex (ChompLean.ThreeChannelSource D1 T1 P1) x1)
+  (h2 : ChompLean.IsMex (ChompLean.ThreeChannelSource D2 T2 P2) x2),
+  Iff (ChompLean.TripleAllocationHallDefect v D0 T0 P0 D1 T1 P1 D2 T2 P2)
+    (Or (@LE.le.{0} Nat instLENat x0 v) (Or (@LE.le.{0} Nat instLENat x1 v) (@LE.le.{0} Nat instLENat x2 v)))</pre></li><li><code>ChompLean.tripleAllocationHallDefect_iff_cap._proof_1_1</code><pre class="prose">∀ {v x0 : Nat}
+  (this :
+    @LT.lt.{0} Nat instLTNat x0
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LE.le.{0} Nat instLENat x0 v) → False</pre></li><li><code>ChompLean.tripleAllocationHallDefect_iff_cap._proof_1_2</code><pre class="prose">∀ {v x0 : Nat} (h : @LE.le.{0} Nat instLENat x0 v),
+  Not
+      (@LT.lt.{0} Nat instLTNat x0
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R146FinalHoleTripleTailUnification.lean:1</p><p>SHA-256: <code class="path">33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4</code></p></section><p><a href="../index.html#id=lean-223470d106b0597d645a">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

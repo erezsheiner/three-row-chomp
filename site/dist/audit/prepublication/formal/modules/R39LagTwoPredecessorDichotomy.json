@@ -1,0 +1,431 @@
+{
+  "module": "R39LagTwoPredecessorDichotomy",
+  "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+  "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+  "declarationCount": 27,
+  "theoremDeclarationCount": 27,
+  "proofValuedDeclarationCount": 27,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_forces_two_ride_of_unitDip",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 97,
+      "typePretty": "∀ (hU : ChompLean.UnitDip ChompLean.gameRecurrenceModel) {a x : Nat}\n  (hPrev :\n    @Eq.{1} Nat (ChompLean.gameF a a)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      x),\n  @Exists.{1} Nat fun (b₀ : Nat) =>\n    @Exists.{1} Nat fun (b₁ : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat b₀ a)\n        (And\n          (@LT.lt.{0} Nat instLTNat b₁\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (And (@Ne.{1} Nat b₀ b₁)\n            (And (@Eq.{1} Nat (ChompLean.gameF a b₀) x)\n              (And\n                (@Eq.{1} Nat\n                  (ChompLean.gameF\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    b₁)\n                  x)\n                (@Eq.{1} Nat\n                  (ChompLean.gameF\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                  x)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_forces_two_ride_of_unitDip._proof_1_1",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat}\n  (hPrev :\n    @Eq.{1} Nat (ChompLean.gameF a a)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      x)\n  (hgap :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.gameF a a)),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (ChompLean.gameF a a)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 20,
+      "typePretty": "∀ {a x : Nat}\n  (hPrev :\n    @Eq.{1} Nat (ChompLean.gameF a a)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      x),\n  Or (@LT.lt.{0} Nat instLTNat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel a) (ChompLean.gameF a a))\n    (@Exists.{1} Nat fun (b₀ : Nat) =>\n      @Exists.{1} Nat fun (b₁ : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat b₀ a)\n          (And\n            (@LT.lt.{0} Nat instLTNat b₁\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (And (@Ne.{1} Nat b₀ b₁)\n              (And (@Eq.{1} Nat (ChompLean.gameF a b₀) x)\n                (And\n                  (@Eq.{1} Nat\n                    (ChompLean.gameF\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                      b₁)\n                    x)\n                  (And\n                    (@Eq.{1} Nat\n                      (ChompLean.gameF\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                      x)\n                    (Not\n                      (ChompLean.B ChompLean.gameF\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                        x))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride._proof_1_1",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat}\n  (hOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      x)\n  (hgt :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      x),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride._proof_1_2",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat}\n  (hPrev :\n    @Eq.{1} Nat (ChompLean.gameF a a)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@LT.lt.{0} Nat instLTNat x (ChompLean.gameF a a)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride._proof_1_3",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat} (i : Nat) (hia : @LT.lt.{0} Nat instLTNat i a) (hmin : @Eq.{1} Nat (@Min.min.{0} Nat instMinNat i a) i)\n  (hidx :\n    @Eq.{1} Nat i\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride._proof_1_4",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat}\n  (hOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      x)\n  (b₀ : Nat) (hhost₀ : @Eq.{1} Nat (ChompLean.gameF a b₀) x)\n  (hmidLow :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      x),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride._proof_1_5",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat} (b₀ : Nat)\n  (hidx :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride._proof_1_6",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat}\n  (hOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      x)\n  (b₀ : Nat) (hhost₀ : @Eq.{1} Nat (ChompLean.gameF a b₀) x)\n  (hmidLow :\n    Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        x))\n  (hmidNe :\n    @Ne.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      x),\n  Not\n      (@LT.lt.{0} Nat instLTNat x\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride._proof_1_7",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat} (b₀ i : Nat)\n  (hi :\n    @LT.lt.{0} Nat instLTNat i\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hmin :\n    @Eq.{1} Nat\n      (@Min.min.{0} Nat instMinNat i\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      i)\n  (hidx :\n    @Eq.{1} Nat i\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride._proof_1_8",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat}\n  (hOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      x)\n  (b₀ : Nat) (hhost₀ : @Eq.{1} Nat (ChompLean.gameF a b₀) x) (b₁ : Nat)\n  (hhost₁ :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        b₁)\n      x)\n  (hgt :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      x),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        x) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag_two_predecessor_is_nonunit_dip_or_two_ride._proof_1_9",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a x : Nat} (b₀ : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_no_lag_two_diagonal_predecessor_of_unitDip_noTwoRide",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 126,
+      "typePretty": "∀ (hU : ChompLean.UnitDip ChompLean.gameRecurrenceModel) (hNoRide : ChompLean.NoTwoRideThenDiagonalEmit ChompLean.gameF)\n  (a : Nat),\n  @Ne.{1} Nat (ChompLean.gameF a a)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 141,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) (hU : ChompLean.UnitDip M), ChompLean.NoDelayedDiagonalPredecessor M",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_1",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat}\n  (hat :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      t),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_10",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat}\n  (hsum :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      t),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_11",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat}\n  (hfinal : @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M t t) (ChompLean.RecurrenceModel.f M t t)), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_2",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat}\n  (hlow' :\n    @LE.le.{0} Nat instLENat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.RecurrenceModel.f M t t)),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.RecurrenceModel.f M\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.RecurrenceModel.f M t t)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_3",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat}\n  (hEq :\n    @Eq.{1} Nat (ChompLean.RecurrenceModel.f M a a)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.RecurrenceModel.f M t t)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hunitRaw :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (ChompLean.RecurrenceModel.f M\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.RecurrenceModel.f M a a)),\n  Not\n      (@Eq.{1} Nat\n        (ChompLean.RecurrenceModel.f M\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (ChompLean.RecurrenceModel.f M t t)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_4",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat}\n  (hat :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      t)\n  (hidx :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      t),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_5",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat} (n : Nat)\n  (hle :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      t),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          n)\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_6",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat} (n : Nat)\n  (hprev :\n    @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M t t)\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          n)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          n)))\n  (hnextLow' :\n    @LE.le.{0} Nat instLENat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.RecurrenceModel.f M t t)),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.RecurrenceModel.f M\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (ChompLean.RecurrenceModel.f M\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            n)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            n))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_7",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat} (n : Nat)\n  (hprev :\n    @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M t t)\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          n)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          n)))\n  (hnextLow' :\n    @LE.le.{0} Nat instLENat\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.RecurrenceModel.f M t t))\n  (hunitRaw :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (ChompLean.RecurrenceModel.f M\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          n)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          n))),\n  Not\n      (@Eq.{1} Nat\n        (ChompLean.RecurrenceModel.f M\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            n)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            n))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.RecurrenceModel.f M t t)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_8",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat} (n : Nat)\n  (hidx :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        n)\n      a),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noDelayedDiagonalPredecessor_of_unitDip._proof_1_9",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {a t : Nat}\n  (hat :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      t),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepRecordLaw_of_noDelayed_noFuture_noLate_marginEvent",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 230,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) (hNoDelay : ChompLean.NoDelayedDiagonalPredecessor M)\n  (hNoRest :\n    ∀ (s : Nat),\n      And (Not (ChompLean.DipFirstGapFutureDiagonalLoss M s)) (Not (ChompLean.DipFirstGapLateBlockerLoss M s)))\n  (hMarginEvent : ChompLean.MarginNoConsecutiveDips M), ChompLean.TwoStepDiagonalRecordLaw M",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.unitDip_iff_noDelayed_and_noFutureOrLate",
+      "module": "R39LagTwoPredecessorDichotomy",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 209,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel),\n  Iff (ChompLean.UnitDip M)\n    (And (ChompLean.NoDelayedDiagonalPredecessor M)\n      (∀ (s : Nat),\n        And (Not (ChompLean.DipFirstGapFutureDiagonalLoss M s)) (Not (ChompLean.DipFirstGapLateBlockerLoss M s))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3981e25a33aeccf9258f4469ed724ca455dccb907ecc28400826edb47b208105",
+      "sourcePath": "lean/core/R39LagTwoPredecessorDichotomy.lean",
+      "universeParameters": []
+    }
+  ]
+}

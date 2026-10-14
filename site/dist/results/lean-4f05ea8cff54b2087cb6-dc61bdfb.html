@@ -1,0 +1,1415 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XOrdered Blocker Union Quotient · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>XOrdered Blocker Union Quotient</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/XOrderedBlockerUnionQuotient.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/XOrderedBlockerUnionQuotient.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/XOrderedBlockerUnionQuotient.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 365 declarations</summary><ul class="declarations"><li><code>ChompLean.OBUQ.FrontScanResult</code><pre class="prose">Type</pre></li><li><code>ChompLean.OBUQ.FrontScanResult._sizeOf_1</code><pre class="prose">(t : ChompLean.OBUQ.FrontScanResult) → Nat</pre></li><li><code>ChompLean.OBUQ.FrontScanResult._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.OBUQ.FrontScanResult</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.casesOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.FrontScanResult) → Sort u} →
+  (t : ChompLean.OBUQ.FrontScanResult) →
+    (mk :
+        (outputs : List.{0} Nat) →
+          (survivors : List.{0} ChompLean.OBUQ.LiveRecord) →
+            motive (ChompLean.OBUQ.FrontScanResult.mk outputs survivors)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.ctorIdx</code><pre class="prose">ChompLean.OBUQ.FrontScanResult → Nat</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.mk</code><pre class="prose">(outputs : List.{0} Nat) → (survivors : List.{0} ChompLean.OBUQ.LiveRecord) → ChompLean.OBUQ.FrontScanResult</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.mk._flat_ctor</code><pre class="prose">(outputs : List.{0} Nat) → (survivors : List.{0} ChompLean.OBUQ.LiveRecord) → ChompLean.OBUQ.FrontScanResult</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.mk.inj</code><pre class="prose">∀ {outputs : List.{0} Nat} {survivors : List.{0} ChompLean.OBUQ.LiveRecord} {outputs_1 : List.{0} Nat}
+  {survivors_1 : List.{0} ChompLean.OBUQ.LiveRecord},
+  @Eq.{1} ChompLean.OBUQ.FrontScanResult (ChompLean.OBUQ.FrontScanResult.mk outputs survivors)
+      (ChompLean.OBUQ.FrontScanResult.mk outputs_1 survivors_1) →
+    And (@Eq.{1} (List.{0} Nat) outputs outputs_1) (@Eq.{1} (List.{0} ChompLean.OBUQ.LiveRecord) survivors survivors_1)</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.mk.injEq</code><pre class="prose">∀ (outputs : List.{0} Nat) (survivors : List.{0} ChompLean.OBUQ.LiveRecord) (outputs_1 : List.{0} Nat)
+  (survivors_1 : List.{0} ChompLean.OBUQ.LiveRecord),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OBUQ.FrontScanResult (ChompLean.OBUQ.FrontScanResult.mk outputs survivors)
+      (ChompLean.OBUQ.FrontScanResult.mk outputs_1 survivors_1))
+    (And (@Eq.{1} (List.{0} Nat) outputs outputs_1)
+      (@Eq.{1} (List.{0} ChompLean.OBUQ.LiveRecord) survivors survivors_1))</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {outputs : List.{0} Nat} →
+    {survivors : List.{0} ChompLean.OBUQ.LiveRecord} →
+      {outputs&#x27; : List.{0} Nat} →
+        {survivors&#x27; : List.{0} ChompLean.OBUQ.LiveRecord} →
+          (eq :
+              @Eq.{1} ChompLean.OBUQ.FrontScanResult (ChompLean.OBUQ.FrontScanResult.mk outputs survivors)
+                (ChompLean.OBUQ.FrontScanResult.mk outputs&#x27; survivors&#x27;)) →
+            (k :
+                (outputs_eq : @Eq.{1} (List.{0} Nat) outputs outputs&#x27;) →
+                  (survivors_eq : @Eq.{1} (List.{0} ChompLean.OBUQ.LiveRecord) survivors survivors&#x27;) → P) →
+              P</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.mk.sizeOf_spec</code><pre class="prose">∀ (outputs : List.{0} Nat) (survivors : List.{0} ChompLean.OBUQ.LiveRecord),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OBUQ.FrontScanResult ChompLean.OBUQ.FrontScanResult._sizeOf_inst
+      (ChompLean.OBUQ.FrontScanResult.mk outputs survivors))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@SizeOf.sizeOf.{1} (List.{0} Nat) (@List._sizeOf_inst.{0} Nat instSizeOfNat) outputs))
+      (@SizeOf.sizeOf.{1} (List.{0} ChompLean.OBUQ.LiveRecord)
+        (@List._sizeOf_inst.{0} ChompLean.OBUQ.LiveRecord ChompLean.OBUQ.LiveRecord._sizeOf_inst) survivors))</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.OBUQ.FrontScanResult} →
+    (eq : @Eq.{1} ChompLean.OBUQ.FrontScanResult t t&#x27;) → ChompLean.OBUQ.FrontScanResult.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.OBUQ.FrontScanResult) → Sort u</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.outputs</code><pre class="prose">(self : ChompLean.OBUQ.FrontScanResult) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.rec</code><pre class="prose">{motive : (t : ChompLean.OBUQ.FrontScanResult) → Sort u} →
+  (mk :
+      (outputs : List.{0} Nat) →
+        (survivors : List.{0} ChompLean.OBUQ.LiveRecord) →
+          motive (ChompLean.OBUQ.FrontScanResult.mk outputs survivors)) →
+    (t : ChompLean.OBUQ.FrontScanResult) → motive t</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.recOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.FrontScanResult) → Sort u} →
+  (t : ChompLean.OBUQ.FrontScanResult) →
+    (mk :
+        (outputs : List.{0} Nat) →
+          (survivors : List.{0} ChompLean.OBUQ.LiveRecord) →
+            motive (ChompLean.OBUQ.FrontScanResult.mk outputs survivors)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.FrontScanResult.survivors</code><pre class="prose">(self : ChompLean.OBUQ.FrontScanResult) → List.{0} ChompLean.OBUQ.LiveRecord</pre></li><li><code>ChompLean.OBUQ.Frontier</code><pre class="prose">Type</pre></li><li><code>ChompLean.OBUQ.Frontier._sizeOf_1</code><pre class="prose">(t : ChompLean.OBUQ.Frontier) → Nat</pre></li><li><code>ChompLean.OBUQ.Frontier._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.OBUQ.Frontier</pre></li><li><code>ChompLean.OBUQ.Frontier.casesOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.Frontier) → Sort u} →
+  (t : ChompLean.OBUQ.Frontier) →
+    (mk :
+        (live : List.{0} ChompLean.OBUQ.LiveRecord) →
+          (high : List.{0} ChompLean.OBUQ.HighRecord) → motive (ChompLean.OBUQ.Frontier.mk live high)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.Frontier.ctorIdx</code><pre class="prose">ChompLean.OBUQ.Frontier → Nat</pre></li><li><code>ChompLean.OBUQ.Frontier.high</code><pre class="prose">(self : ChompLean.OBUQ.Frontier) → List.{0} ChompLean.OBUQ.HighRecord</pre></li><li><code>ChompLean.OBUQ.Frontier.live</code><pre class="prose">(self : ChompLean.OBUQ.Frontier) → List.{0} ChompLean.OBUQ.LiveRecord</pre></li><li><code>ChompLean.OBUQ.Frontier.mk</code><pre class="prose">(live : List.{0} ChompLean.OBUQ.LiveRecord) → (high : List.{0} ChompLean.OBUQ.HighRecord) → ChompLean.OBUQ.Frontier</pre></li><li><code>ChompLean.OBUQ.Frontier.mk._flat_ctor</code><pre class="prose">(live : List.{0} ChompLean.OBUQ.LiveRecord) → (high : List.{0} ChompLean.OBUQ.HighRecord) → ChompLean.OBUQ.Frontier</pre></li><li><code>ChompLean.OBUQ.Frontier.mk.inj</code><pre class="prose">∀ {live : List.{0} ChompLean.OBUQ.LiveRecord} {high : List.{0} ChompLean.OBUQ.HighRecord}
+  {live_1 : List.{0} ChompLean.OBUQ.LiveRecord} {high_1 : List.{0} ChompLean.OBUQ.HighRecord},
+  @Eq.{1} ChompLean.OBUQ.Frontier (ChompLean.OBUQ.Frontier.mk live high) (ChompLean.OBUQ.Frontier.mk live_1 high_1) →
+    And (@Eq.{1} (List.{0} ChompLean.OBUQ.LiveRecord) live live_1)
+      (@Eq.{1} (List.{0} ChompLean.OBUQ.HighRecord) high high_1)</pre></li><li><code>ChompLean.OBUQ.Frontier.mk.injEq</code><pre class="prose">∀ (live : List.{0} ChompLean.OBUQ.LiveRecord) (high : List.{0} ChompLean.OBUQ.HighRecord)
+  (live_1 : List.{0} ChompLean.OBUQ.LiveRecord) (high_1 : List.{0} ChompLean.OBUQ.HighRecord),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OBUQ.Frontier (ChompLean.OBUQ.Frontier.mk live high) (ChompLean.OBUQ.Frontier.mk live_1 high_1))
+    (And (@Eq.{1} (List.{0} ChompLean.OBUQ.LiveRecord) live live_1)
+      (@Eq.{1} (List.{0} ChompLean.OBUQ.HighRecord) high high_1))</pre></li><li><code>ChompLean.OBUQ.Frontier.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {live : List.{0} ChompLean.OBUQ.LiveRecord} →
+    {high : List.{0} ChompLean.OBUQ.HighRecord} →
+      {live&#x27; : List.{0} ChompLean.OBUQ.LiveRecord} →
+        {high&#x27; : List.{0} ChompLean.OBUQ.HighRecord} →
+          (eq :
+              @Eq.{1} ChompLean.OBUQ.Frontier (ChompLean.OBUQ.Frontier.mk live high)
+                (ChompLean.OBUQ.Frontier.mk live&#x27; high&#x27;)) →
+            (k :
+                (live_eq : @Eq.{1} (List.{0} ChompLean.OBUQ.LiveRecord) live live&#x27;) →
+                  (high_eq : @Eq.{1} (List.{0} ChompLean.OBUQ.HighRecord) high high&#x27;) → P) →
+              P</pre></li><li><code>ChompLean.OBUQ.Frontier.mk.sizeOf_spec</code><pre class="prose">∀ (live : List.{0} ChompLean.OBUQ.LiveRecord) (high : List.{0} ChompLean.OBUQ.HighRecord),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OBUQ.Frontier ChompLean.OBUQ.Frontier._sizeOf_inst
+      (ChompLean.OBUQ.Frontier.mk live high))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@SizeOf.sizeOf.{1} (List.{0} ChompLean.OBUQ.LiveRecord)
+          (@List._sizeOf_inst.{0} ChompLean.OBUQ.LiveRecord ChompLean.OBUQ.LiveRecord._sizeOf_inst) live))
+      (@SizeOf.sizeOf.{1} (List.{0} ChompLean.OBUQ.HighRecord)
+        (@List._sizeOf_inst.{0} ChompLean.OBUQ.HighRecord ChompLean.OBUQ.HighRecord._sizeOf_inst) high))</pre></li><li><code>ChompLean.OBUQ.Frontier.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.OBUQ.Frontier} →
+    (eq : @Eq.{1} ChompLean.OBUQ.Frontier t t&#x27;) → ChompLean.OBUQ.Frontier.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.OBUQ.Frontier.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.OBUQ.Frontier) → Sort u</pre></li><li><code>ChompLean.OBUQ.Frontier.rec</code><pre class="prose">{motive : (t : ChompLean.OBUQ.Frontier) → Sort u} →
+  (mk :
+      (live : List.{0} ChompLean.OBUQ.LiveRecord) →
+        (high : List.{0} ChompLean.OBUQ.HighRecord) → motive (ChompLean.OBUQ.Frontier.mk live high)) →
+    (t : ChompLean.OBUQ.Frontier) → motive t</pre></li><li><code>ChompLean.OBUQ.Frontier.recOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.Frontier) → Sort u} →
+  (t : ChompLean.OBUQ.Frontier) →
+    (mk :
+        (live : List.{0} ChompLean.OBUQ.LiveRecord) →
+          (high : List.{0} ChompLean.OBUQ.HighRecord) → motive (ChompLean.OBUQ.Frontier.mk live high)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult</code><pre class="prose">Type</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult._sizeOf_1</code><pre class="prose">(t : ChompLean.OBUQ.FrontierRunResult) → Nat</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.OBUQ.FrontierRunResult</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.casesOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.FrontierRunResult) → Sort u} →
+  (t : ChompLean.OBUQ.FrontierRunResult) →
+    (mk :
+        (outputs : List.{0} Nat) →
+          (state : ChompLean.OBUQ.Frontier) → motive (ChompLean.OBUQ.FrontierRunResult.mk outputs state)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.ctorIdx</code><pre class="prose">ChompLean.OBUQ.FrontierRunResult → Nat</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.mk</code><pre class="prose">(outputs : List.{0} Nat) → (state : ChompLean.OBUQ.Frontier) → ChompLean.OBUQ.FrontierRunResult</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.mk._flat_ctor</code><pre class="prose">(outputs : List.{0} Nat) → (state : ChompLean.OBUQ.Frontier) → ChompLean.OBUQ.FrontierRunResult</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.mk.inj</code><pre class="prose">∀ {outputs : List.{0} Nat} {state : ChompLean.OBUQ.Frontier} {outputs_1 : List.{0} Nat}
+  {state_1 : ChompLean.OBUQ.Frontier},
+  @Eq.{1} ChompLean.OBUQ.FrontierRunResult (ChompLean.OBUQ.FrontierRunResult.mk outputs state)
+      (ChompLean.OBUQ.FrontierRunResult.mk outputs_1 state_1) →
+    And (@Eq.{1} (List.{0} Nat) outputs outputs_1) (@Eq.{1} ChompLean.OBUQ.Frontier state state_1)</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.mk.injEq</code><pre class="prose">∀ (outputs : List.{0} Nat) (state : ChompLean.OBUQ.Frontier) (outputs_1 : List.{0} Nat)
+  (state_1 : ChompLean.OBUQ.Frontier),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OBUQ.FrontierRunResult (ChompLean.OBUQ.FrontierRunResult.mk outputs state)
+      (ChompLean.OBUQ.FrontierRunResult.mk outputs_1 state_1))
+    (And (@Eq.{1} (List.{0} Nat) outputs outputs_1) (@Eq.{1} ChompLean.OBUQ.Frontier state state_1))</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {outputs : List.{0} Nat} →
+    {state : ChompLean.OBUQ.Frontier} →
+      {outputs&#x27; : List.{0} Nat} →
+        {state&#x27; : ChompLean.OBUQ.Frontier} →
+          (eq :
+              @Eq.{1} ChompLean.OBUQ.FrontierRunResult (ChompLean.OBUQ.FrontierRunResult.mk outputs state)
+                (ChompLean.OBUQ.FrontierRunResult.mk outputs&#x27; state&#x27;)) →
+            (k :
+                (outputs_eq : @Eq.{1} (List.{0} Nat) outputs outputs&#x27;) →
+                  (state_eq : @Eq.{1} ChompLean.OBUQ.Frontier state state&#x27;) → P) →
+              P</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.mk.sizeOf_spec</code><pre class="prose">∀ (outputs : List.{0} Nat) (state : ChompLean.OBUQ.Frontier),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OBUQ.FrontierRunResult ChompLean.OBUQ.FrontierRunResult._sizeOf_inst
+      (ChompLean.OBUQ.FrontierRunResult.mk outputs state))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@SizeOf.sizeOf.{1} (List.{0} Nat) (@List._sizeOf_inst.{0} Nat instSizeOfNat) outputs))
+      (@SizeOf.sizeOf.{1} ChompLean.OBUQ.Frontier ChompLean.OBUQ.Frontier._sizeOf_inst state))</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.OBUQ.FrontierRunResult} →
+    (eq : @Eq.{1} ChompLean.OBUQ.FrontierRunResult t t&#x27;) → ChompLean.OBUQ.FrontierRunResult.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.OBUQ.FrontierRunResult) → Sort u</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.outputs</code><pre class="prose">(self : ChompLean.OBUQ.FrontierRunResult) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.rec</code><pre class="prose">{motive : (t : ChompLean.OBUQ.FrontierRunResult) → Sort u} →
+  (mk :
+      (outputs : List.{0} Nat) →
+        (state : ChompLean.OBUQ.Frontier) → motive (ChompLean.OBUQ.FrontierRunResult.mk outputs state)) →
+    (t : ChompLean.OBUQ.FrontierRunResult) → motive t</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.recOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.FrontierRunResult) → Sort u} →
+  (t : ChompLean.OBUQ.FrontierRunResult) →
+    (mk :
+        (outputs : List.{0} Nat) →
+          (state : ChompLean.OBUQ.Frontier) → motive (ChompLean.OBUQ.FrontierRunResult.mk outputs state)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.FrontierRunResult.state</code><pre class="prose">(self : ChompLean.OBUQ.FrontierRunResult) → ChompLean.OBUQ.Frontier</pre></li><li><code>ChompLean.OBUQ.HighAgesPositive</code><pre class="prose">(Z : ChompLean.OBUQ.Frontier) → Prop</pre></li><li><code>ChompLean.OBUQ.HighRecord</code><pre class="prose">Type</pre></li><li><code>ChompLean.OBUQ.HighRecord._sizeOf_1</code><pre class="prose">(t : ChompLean.OBUQ.HighRecord) → Nat</pre></li><li><code>ChompLean.OBUQ.HighRecord._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.OBUQ.HighRecord</pre></li><li><code>ChompLean.OBUQ.HighRecord.age</code><pre class="prose">(self : ChompLean.OBUQ.HighRecord) → Nat</pre></li><li><code>ChompLean.OBUQ.HighRecord.casesOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.HighRecord) → Sort u} →
+  (t : ChompLean.OBUQ.HighRecord) →
+    (mk : (age excess : Nat) → motive (ChompLean.OBUQ.HighRecord.mk age excess)) → motive t</pre></li><li><code>ChompLean.OBUQ.HighRecord.ctorIdx</code><pre class="prose">ChompLean.OBUQ.HighRecord → Nat</pre></li><li><code>ChompLean.OBUQ.HighRecord.excess</code><pre class="prose">(self : ChompLean.OBUQ.HighRecord) → Nat</pre></li><li><code>ChompLean.OBUQ.HighRecord.mk</code><pre class="prose">(age excess : Nat) → ChompLean.OBUQ.HighRecord</pre></li><li><code>ChompLean.OBUQ.HighRecord.mk._flat_ctor</code><pre class="prose">(age excess : Nat) → ChompLean.OBUQ.HighRecord</pre></li><li><code>ChompLean.OBUQ.HighRecord.mk.inj</code><pre class="prose">∀ {age excess age_1 excess_1 : Nat},
+  @Eq.{1} ChompLean.OBUQ.HighRecord (ChompLean.OBUQ.HighRecord.mk age excess)
+      (ChompLean.OBUQ.HighRecord.mk age_1 excess_1) →
+    And (@Eq.{1} Nat age age_1) (@Eq.{1} Nat excess excess_1)</pre></li><li><code>ChompLean.OBUQ.HighRecord.mk.injEq</code><pre class="prose">∀ (age excess age_1 excess_1 : Nat),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OBUQ.HighRecord (ChompLean.OBUQ.HighRecord.mk age excess)
+      (ChompLean.OBUQ.HighRecord.mk age_1 excess_1))
+    (And (@Eq.{1} Nat age age_1) (@Eq.{1} Nat excess excess_1))</pre></li><li><code>ChompLean.OBUQ.HighRecord.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {age excess age&#x27; excess&#x27; : Nat} →
+    (eq :
+        @Eq.{1} ChompLean.OBUQ.HighRecord (ChompLean.OBUQ.HighRecord.mk age excess)
+          (ChompLean.OBUQ.HighRecord.mk age&#x27; excess&#x27;)) →
+      (k : (age_eq : @Eq.{1} Nat age age&#x27;) → (excess_eq : @Eq.{1} Nat excess excess&#x27;) → P) → P</pre></li><li><code>ChompLean.OBUQ.HighRecord.mk.sizeOf_spec</code><pre class="prose">∀ (age excess : Nat),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OBUQ.HighRecord ChompLean.OBUQ.HighRecord._sizeOf_inst
+      (ChompLean.OBUQ.HighRecord.mk age excess))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) (@SizeOf.sizeOf.{1} Nat instSizeOfNat age))
+      (@SizeOf.sizeOf.{1} Nat instSizeOfNat excess))</pre></li><li><code>ChompLean.OBUQ.HighRecord.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.OBUQ.HighRecord} →
+    (eq : @Eq.{1} ChompLean.OBUQ.HighRecord t t&#x27;) → ChompLean.OBUQ.HighRecord.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.OBUQ.HighRecord.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.OBUQ.HighRecord) → Sort u</pre></li><li><code>ChompLean.OBUQ.HighRecord.rec</code><pre class="prose">{motive : (t : ChompLean.OBUQ.HighRecord) → Sort u} →
+  (mk : (age excess : Nat) → motive (ChompLean.OBUQ.HighRecord.mk age excess)) →
+    (t : ChompLean.OBUQ.HighRecord) → motive t</pre></li><li><code>ChompLean.OBUQ.HighRecord.recOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.HighRecord) → Sort u} →
+  (t : ChompLean.OBUQ.HighRecord) →
+    (mk : (age excess : Nat) → motive (ChompLean.OBUQ.HighRecord.mk age excess)) → motive t</pre></li><li><code>ChompLean.OBUQ.LiveRecord</code><pre class="prose">Type</pre></li><li><code>ChompLean.OBUQ.LiveRecord._sizeOf_1</code><pre class="prose">(t : ChompLean.OBUQ.LiveRecord) → Nat</pre></li><li><code>ChompLean.OBUQ.LiveRecord._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.OBUQ.LiveRecord</pre></li><li><code>ChompLean.OBUQ.LiveRecord.age</code><pre class="prose">(self : ChompLean.OBUQ.LiveRecord) → Nat</pre></li><li><code>ChompLean.OBUQ.LiveRecord.casesOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.LiveRecord) → Sort u} →
+  (t : ChompLean.OBUQ.LiveRecord) →
+    (mk : (age : Nat) → (column : List.{0} Nat) → motive (ChompLean.OBUQ.LiveRecord.mk age column)) → motive t</pre></li><li><code>ChompLean.OBUQ.LiveRecord.column</code><pre class="prose">(self : ChompLean.OBUQ.LiveRecord) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.LiveRecord.ctorIdx</code><pre class="prose">ChompLean.OBUQ.LiveRecord → Nat</pre></li><li><code>ChompLean.OBUQ.LiveRecord.mk</code><pre class="prose">(age : Nat) → (column : List.{0} Nat) → ChompLean.OBUQ.LiveRecord</pre></li><li><code>ChompLean.OBUQ.LiveRecord.mk._flat_ctor</code><pre class="prose">(age : Nat) → (column : List.{0} Nat) → ChompLean.OBUQ.LiveRecord</pre></li><li><code>ChompLean.OBUQ.LiveRecord.mk.inj</code><pre class="prose">∀ {age : Nat} {column : List.{0} Nat} {age_1 : Nat} {column_1 : List.{0} Nat},
+  @Eq.{1} ChompLean.OBUQ.LiveRecord (ChompLean.OBUQ.LiveRecord.mk age column)
+      (ChompLean.OBUQ.LiveRecord.mk age_1 column_1) →
+    And (@Eq.{1} Nat age age_1) (@Eq.{1} (List.{0} Nat) column column_1)</pre></li><li><code>ChompLean.OBUQ.LiveRecord.mk.injEq</code><pre class="prose">∀ (age : Nat) (column : List.{0} Nat) (age_1 : Nat) (column_1 : List.{0} Nat),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OBUQ.LiveRecord (ChompLean.OBUQ.LiveRecord.mk age column)
+      (ChompLean.OBUQ.LiveRecord.mk age_1 column_1))
+    (And (@Eq.{1} Nat age age_1) (@Eq.{1} (List.{0} Nat) column column_1))</pre></li><li><code>ChompLean.OBUQ.LiveRecord.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {age : Nat} →
+    {column : List.{0} Nat} →
+      {age&#x27; : Nat} →
+        {column&#x27; : List.{0} Nat} →
+          (eq :
+              @Eq.{1} ChompLean.OBUQ.LiveRecord (ChompLean.OBUQ.LiveRecord.mk age column)
+                (ChompLean.OBUQ.LiveRecord.mk age&#x27; column&#x27;)) →
+            (k : (age_eq : @Eq.{1} Nat age age&#x27;) → (column_eq : @Eq.{1} (List.{0} Nat) column column&#x27;) → P) → P</pre></li><li><code>ChompLean.OBUQ.LiveRecord.mk.sizeOf_spec</code><pre class="prose">∀ (age : Nat) (column : List.{0} Nat),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OBUQ.LiveRecord ChompLean.OBUQ.LiveRecord._sizeOf_inst
+      (ChompLean.OBUQ.LiveRecord.mk age column))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) (@SizeOf.sizeOf.{1} Nat instSizeOfNat age))
+      (@SizeOf.sizeOf.{1} (List.{0} Nat) (@List._sizeOf_inst.{0} Nat instSizeOfNat) column))</pre></li><li><code>ChompLean.OBUQ.LiveRecord.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.OBUQ.LiveRecord} →
+    (eq : @Eq.{1} ChompLean.OBUQ.LiveRecord t t&#x27;) → ChompLean.OBUQ.LiveRecord.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.OBUQ.LiveRecord.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.OBUQ.LiveRecord) → Sort u</pre></li><li><code>ChompLean.OBUQ.LiveRecord.rec</code><pre class="prose">{motive : (t : ChompLean.OBUQ.LiveRecord) → Sort u} →
+  (mk : (age : Nat) → (column : List.{0} Nat) → motive (ChompLean.OBUQ.LiveRecord.mk age column)) →
+    (t : ChompLean.OBUQ.LiveRecord) → motive t</pre></li><li><code>ChompLean.OBUQ.LiveRecord.recOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.LiveRecord) → Sort u} →
+  (t : ChompLean.OBUQ.LiveRecord) →
+    (mk : (age : Nat) → (column : List.{0} Nat) → motive (ChompLean.OBUQ.LiveRecord.mk age column)) → motive t</pre></li><li><code>ChompLean.OBUQ.MemEq</code><pre class="prose">(xs ys : List.{0} Nat) → Prop</pre></li><li><code>ChompLean.OBUQ.QEq</code><pre class="prose">(Q Q&#x27; : ChompLean.OBUQ.QState) → Prop</pre></li><li><code>ChompLean.OBUQ.QRunResult</code><pre class="prose">Type</pre></li><li><code>ChompLean.OBUQ.QRunResult._sizeOf_1</code><pre class="prose">(t : ChompLean.OBUQ.QRunResult) → Nat</pre></li><li><code>ChompLean.OBUQ.QRunResult._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.OBUQ.QRunResult</pre></li><li><code>ChompLean.OBUQ.QRunResult.casesOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.QRunResult) → Sort u} →
+  (t : ChompLean.OBUQ.QRunResult) →
+    (mk :
+        (outputs : List.{0} Nat) →
+          (state : ChompLean.OBUQ.QState) → motive (ChompLean.OBUQ.QRunResult.mk outputs state)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.QRunResult.ctorIdx</code><pre class="prose">ChompLean.OBUQ.QRunResult → Nat</pre></li><li><code>ChompLean.OBUQ.QRunResult.mk</code><pre class="prose">(outputs : List.{0} Nat) → (state : ChompLean.OBUQ.QState) → ChompLean.OBUQ.QRunResult</pre></li><li><code>ChompLean.OBUQ.QRunResult.mk._flat_ctor</code><pre class="prose">(outputs : List.{0} Nat) → (state : ChompLean.OBUQ.QState) → ChompLean.OBUQ.QRunResult</pre></li><li><code>ChompLean.OBUQ.QRunResult.mk.inj</code><pre class="prose">∀ {outputs : List.{0} Nat} {state : ChompLean.OBUQ.QState} {outputs_1 : List.{0} Nat} {state_1 : ChompLean.OBUQ.QState},
+  @Eq.{1} ChompLean.OBUQ.QRunResult (ChompLean.OBUQ.QRunResult.mk outputs state)
+      (ChompLean.OBUQ.QRunResult.mk outputs_1 state_1) →
+    And (@Eq.{1} (List.{0} Nat) outputs outputs_1) (@Eq.{1} ChompLean.OBUQ.QState state state_1)</pre></li><li><code>ChompLean.OBUQ.QRunResult.mk.injEq</code><pre class="prose">∀ (outputs : List.{0} Nat) (state : ChompLean.OBUQ.QState) (outputs_1 : List.{0} Nat) (state_1 : ChompLean.OBUQ.QState),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OBUQ.QRunResult (ChompLean.OBUQ.QRunResult.mk outputs state)
+      (ChompLean.OBUQ.QRunResult.mk outputs_1 state_1))
+    (And (@Eq.{1} (List.{0} Nat) outputs outputs_1) (@Eq.{1} ChompLean.OBUQ.QState state state_1))</pre></li><li><code>ChompLean.OBUQ.QRunResult.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {outputs : List.{0} Nat} →
+    {state : ChompLean.OBUQ.QState} →
+      {outputs&#x27; : List.{0} Nat} →
+        {state&#x27; : ChompLean.OBUQ.QState} →
+          (eq :
+              @Eq.{1} ChompLean.OBUQ.QRunResult (ChompLean.OBUQ.QRunResult.mk outputs state)
+                (ChompLean.OBUQ.QRunResult.mk outputs&#x27; state&#x27;)) →
+            (k :
+                (outputs_eq : @Eq.{1} (List.{0} Nat) outputs outputs&#x27;) →
+                  (state_eq : @Eq.{1} ChompLean.OBUQ.QState state state&#x27;) → P) →
+              P</pre></li><li><code>ChompLean.OBUQ.QRunResult.mk.sizeOf_spec</code><pre class="prose">∀ (outputs : List.{0} Nat) (state : ChompLean.OBUQ.QState),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OBUQ.QRunResult ChompLean.OBUQ.QRunResult._sizeOf_inst
+      (ChompLean.OBUQ.QRunResult.mk outputs state))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@SizeOf.sizeOf.{1} (List.{0} Nat) (@List._sizeOf_inst.{0} Nat instSizeOfNat) outputs))
+      (@SizeOf.sizeOf.{1} ChompLean.OBUQ.QState ChompLean.OBUQ.QState._sizeOf_inst state))</pre></li><li><code>ChompLean.OBUQ.QRunResult.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.OBUQ.QRunResult} →
+    (eq : @Eq.{1} ChompLean.OBUQ.QRunResult t t&#x27;) → ChompLean.OBUQ.QRunResult.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.OBUQ.QRunResult.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.OBUQ.QRunResult) → Sort u</pre></li><li><code>ChompLean.OBUQ.QRunResult.outputs</code><pre class="prose">(self : ChompLean.OBUQ.QRunResult) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.QRunResult.rec</code><pre class="prose">{motive : (t : ChompLean.OBUQ.QRunResult) → Sort u} →
+  (mk :
+      (outputs : List.{0} Nat) →
+        (state : ChompLean.OBUQ.QState) → motive (ChompLean.OBUQ.QRunResult.mk outputs state)) →
+    (t : ChompLean.OBUQ.QRunResult) → motive t</pre></li><li><code>ChompLean.OBUQ.QRunResult.recOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.QRunResult) → Sort u} →
+  (t : ChompLean.OBUQ.QRunResult) →
+    (mk :
+        (outputs : List.{0} Nat) →
+          (state : ChompLean.OBUQ.QState) → motive (ChompLean.OBUQ.QRunResult.mk outputs state)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.QRunResult.state</code><pre class="prose">(self : ChompLean.OBUQ.QRunResult) → ChompLean.OBUQ.QState</pre></li><li><code>ChompLean.OBUQ.QState</code><pre class="prose">Type</pre></li><li><code>ChompLean.OBUQ.QState._sizeOf_1</code><pre class="prose">(t : ChompLean.OBUQ.QState) → Nat</pre></li><li><code>ChompLean.OBUQ.QState._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.OBUQ.QState</pre></li><li><code>ChompLean.OBUQ.QState.casesOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.QState) → Sort u} →
+  (t : ChompLean.OBUQ.QState) →
+    (mk :
+        (queues : List.{0} (List.{0} Nat)) →
+          (diagonal : List.{0} Nat) → motive (ChompLean.OBUQ.QState.mk queues diagonal)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.QState.ctorIdx</code><pre class="prose">ChompLean.OBUQ.QState → Nat</pre></li><li><code>ChompLean.OBUQ.QState.diagonal</code><pre class="prose">(self : ChompLean.OBUQ.QState) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.QState.mk</code><pre class="prose">(queues : List.{0} (List.{0} Nat)) → (diagonal : List.{0} Nat) → ChompLean.OBUQ.QState</pre></li><li><code>ChompLean.OBUQ.QState.mk._flat_ctor</code><pre class="prose">(queues : List.{0} (List.{0} Nat)) → (diagonal : List.{0} Nat) → ChompLean.OBUQ.QState</pre></li><li><code>ChompLean.OBUQ.QState.mk.inj</code><pre class="prose">∀ {queues : List.{0} (List.{0} Nat)} {diagonal : List.{0} Nat} {queues_1 : List.{0} (List.{0} Nat)}
+  {diagonal_1 : List.{0} Nat},
+  @Eq.{1} ChompLean.OBUQ.QState (ChompLean.OBUQ.QState.mk queues diagonal)
+      (ChompLean.OBUQ.QState.mk queues_1 diagonal_1) →
+    And (@Eq.{1} (List.{0} (List.{0} Nat)) queues queues_1) (@Eq.{1} (List.{0} Nat) diagonal diagonal_1)</pre></li><li><code>ChompLean.OBUQ.QState.mk.injEq</code><pre class="prose">∀ (queues : List.{0} (List.{0} Nat)) (diagonal : List.{0} Nat) (queues_1 : List.{0} (List.{0} Nat))
+  (diagonal_1 : List.{0} Nat),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OBUQ.QState (ChompLean.OBUQ.QState.mk queues diagonal)
+      (ChompLean.OBUQ.QState.mk queues_1 diagonal_1))
+    (And (@Eq.{1} (List.{0} (List.{0} Nat)) queues queues_1) (@Eq.{1} (List.{0} Nat) diagonal diagonal_1))</pre></li><li><code>ChompLean.OBUQ.QState.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {queues : List.{0} (List.{0} Nat)} →
+    {diagonal : List.{0} Nat} →
+      {queues&#x27; : List.{0} (List.{0} Nat)} →
+        {diagonal&#x27; : List.{0} Nat} →
+          (eq :
+              @Eq.{1} ChompLean.OBUQ.QState (ChompLean.OBUQ.QState.mk queues diagonal)
+                (ChompLean.OBUQ.QState.mk queues&#x27; diagonal&#x27;)) →
+            (k :
+                (queues_eq : @Eq.{1} (List.{0} (List.{0} Nat)) queues queues&#x27;) →
+                  (diagonal_eq : @Eq.{1} (List.{0} Nat) diagonal diagonal&#x27;) → P) →
+              P</pre></li><li><code>ChompLean.OBUQ.QState.mk.sizeOf_spec</code><pre class="prose">∀ (queues : List.{0} (List.{0} Nat)) (diagonal : List.{0} Nat),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OBUQ.QState ChompLean.OBUQ.QState._sizeOf_inst
+      (ChompLean.OBUQ.QState.mk queues diagonal))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@SizeOf.sizeOf.{1} (List.{0} (List.{0} Nat))
+          (@List._sizeOf_inst.{0} (List.{0} Nat) (@List._sizeOf_inst.{0} Nat instSizeOfNat)) queues))
+      (@SizeOf.sizeOf.{1} (List.{0} Nat) (@List._sizeOf_inst.{0} Nat instSizeOfNat) diagonal))</pre></li><li><code>ChompLean.OBUQ.QState.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.OBUQ.QState} →
+    (eq : @Eq.{1} ChompLean.OBUQ.QState t t&#x27;) → ChompLean.OBUQ.QState.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.OBUQ.QState.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.OBUQ.QState) → Sort u</pre></li><li><code>ChompLean.OBUQ.QState.queues</code><pre class="prose">(self : ChompLean.OBUQ.QState) → List.{0} (List.{0} Nat)</pre></li><li><code>ChompLean.OBUQ.QState.rec</code><pre class="prose">{motive : (t : ChompLean.OBUQ.QState) → Sort u} →
+  (mk :
+      (queues : List.{0} (List.{0} Nat)) →
+        (diagonal : List.{0} Nat) → motive (ChompLean.OBUQ.QState.mk queues diagonal)) →
+    (t : ChompLean.OBUQ.QState) → motive t</pre></li><li><code>ChompLean.OBUQ.QState.recOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.QState) → Sort u} →
+  (t : ChompLean.OBUQ.QState) →
+    (mk :
+        (queues : List.{0} (List.{0} Nat)) →
+          (diagonal : List.{0} Nat) → motive (ChompLean.OBUQ.QState.mk queues diagonal)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.ScanResult</code><pre class="prose">Type</pre></li><li><code>ChompLean.OBUQ.ScanResult._sizeOf_1</code><pre class="prose">(t : ChompLean.OBUQ.ScanResult) → Nat</pre></li><li><code>ChompLean.OBUQ.ScanResult._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.OBUQ.ScanResult</pre></li><li><code>ChompLean.OBUQ.ScanResult.casesOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.ScanResult) → Sort u} →
+  (t : ChompLean.OBUQ.ScanResult) →
+    (mk :
+        (outputs : List.{0} Nat) →
+          (survivors : List.{0} (List.{0} Nat)) → motive (ChompLean.OBUQ.ScanResult.mk outputs survivors)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.ScanResult.ctorIdx</code><pre class="prose">ChompLean.OBUQ.ScanResult → Nat</pre></li><li><code>ChompLean.OBUQ.ScanResult.mk</code><pre class="prose">(outputs : List.{0} Nat) → (survivors : List.{0} (List.{0} Nat)) → ChompLean.OBUQ.ScanResult</pre></li><li><code>ChompLean.OBUQ.ScanResult.mk._flat_ctor</code><pre class="prose">(outputs : List.{0} Nat) → (survivors : List.{0} (List.{0} Nat)) → ChompLean.OBUQ.ScanResult</pre></li><li><code>ChompLean.OBUQ.ScanResult.mk.inj</code><pre class="prose">∀ {outputs : List.{0} Nat} {survivors : List.{0} (List.{0} Nat)} {outputs_1 : List.{0} Nat}
+  {survivors_1 : List.{0} (List.{0} Nat)},
+  @Eq.{1} ChompLean.OBUQ.ScanResult (ChompLean.OBUQ.ScanResult.mk outputs survivors)
+      (ChompLean.OBUQ.ScanResult.mk outputs_1 survivors_1) →
+    And (@Eq.{1} (List.{0} Nat) outputs outputs_1) (@Eq.{1} (List.{0} (List.{0} Nat)) survivors survivors_1)</pre></li><li><code>ChompLean.OBUQ.ScanResult.mk.injEq</code><pre class="prose">∀ (outputs : List.{0} Nat) (survivors : List.{0} (List.{0} Nat)) (outputs_1 : List.{0} Nat)
+  (survivors_1 : List.{0} (List.{0} Nat)),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OBUQ.ScanResult (ChompLean.OBUQ.ScanResult.mk outputs survivors)
+      (ChompLean.OBUQ.ScanResult.mk outputs_1 survivors_1))
+    (And (@Eq.{1} (List.{0} Nat) outputs outputs_1) (@Eq.{1} (List.{0} (List.{0} Nat)) survivors survivors_1))</pre></li><li><code>ChompLean.OBUQ.ScanResult.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {outputs : List.{0} Nat} →
+    {survivors : List.{0} (List.{0} Nat)} →
+      {outputs&#x27; : List.{0} Nat} →
+        {survivors&#x27; : List.{0} (List.{0} Nat)} →
+          (eq :
+              @Eq.{1} ChompLean.OBUQ.ScanResult (ChompLean.OBUQ.ScanResult.mk outputs survivors)
+                (ChompLean.OBUQ.ScanResult.mk outputs&#x27; survivors&#x27;)) →
+            (k :
+                (outputs_eq : @Eq.{1} (List.{0} Nat) outputs outputs&#x27;) →
+                  (survivors_eq : @Eq.{1} (List.{0} (List.{0} Nat)) survivors survivors&#x27;) → P) →
+              P</pre></li><li><code>ChompLean.OBUQ.ScanResult.mk.sizeOf_spec</code><pre class="prose">∀ (outputs : List.{0} Nat) (survivors : List.{0} (List.{0} Nat)),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OBUQ.ScanResult ChompLean.OBUQ.ScanResult._sizeOf_inst
+      (ChompLean.OBUQ.ScanResult.mk outputs survivors))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@SizeOf.sizeOf.{1} (List.{0} Nat) (@List._sizeOf_inst.{0} Nat instSizeOfNat) outputs))
+      (@SizeOf.sizeOf.{1} (List.{0} (List.{0} Nat))
+        (@List._sizeOf_inst.{0} (List.{0} Nat) (@List._sizeOf_inst.{0} Nat instSizeOfNat)) survivors))</pre></li><li><code>ChompLean.OBUQ.ScanResult.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.OBUQ.ScanResult} →
+    (eq : @Eq.{1} ChompLean.OBUQ.ScanResult t t&#x27;) → ChompLean.OBUQ.ScanResult.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.OBUQ.ScanResult.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.OBUQ.ScanResult) → Sort u</pre></li><li><code>ChompLean.OBUQ.ScanResult.outputs</code><pre class="prose">(self : ChompLean.OBUQ.ScanResult) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.ScanResult.rec</code><pre class="prose">{motive : (t : ChompLean.OBUQ.ScanResult) → Sort u} →
+  (mk :
+      (outputs : List.{0} Nat) →
+        (survivors : List.{0} (List.{0} Nat)) → motive (ChompLean.OBUQ.ScanResult.mk outputs survivors)) →
+    (t : ChompLean.OBUQ.ScanResult) → motive t</pre></li><li><code>ChompLean.OBUQ.ScanResult.recOn</code><pre class="prose">{motive : (t : ChompLean.OBUQ.ScanResult) → Sort u} →
+  (t : ChompLean.OBUQ.ScanResult) →
+    (mk :
+        (outputs : List.{0} Nat) →
+          (survivors : List.{0} (List.{0} Nat)) → motive (ChompLean.OBUQ.ScanResult.mk outputs survivors)) →
+      motive t</pre></li><li><code>ChompLean.OBUQ.ScanResult.survivors</code><pre class="prose">(self : ChompLean.OBUQ.ScanResult) → List.{0} (List.{0} Nat)</pre></li><li><code>ChompLean.OBUQ.WordEq</code><pre class="prose">List.{0} (List.{0} Nat) → List.{0} (List.{0} Nat) → Prop</pre></li><li><code>ChompLean.OBUQ.WordEq.below</code><pre class="prose">{motive : (a a_1 : List.{0} (List.{0} Nat)) → (t : ChompLean.OBUQ.WordEq a a_1) → Prop} →
+  {a a_1 : List.{0} (List.{0} Nat)} → (t : ChompLean.OBUQ.WordEq a a_1) → Prop</pre></li><li><code>ChompLean.OBUQ.WordEq.below.casesOn</code><pre class="prose">∀ {motive : (a a_1 : List.{0} (List.{0} Nat)) → (t : ChompLean.OBUQ.WordEq a a_1) → Prop}
+  {motive_1 :
+    {a a_1 : List.{0} (List.{0} Nat)} →
+      (t : ChompLean.OBUQ.WordEq a a_1) → (t : @ChompLean.OBUQ.WordEq.below motive a a_1 t) → Prop}
+  {a a_1 : List.{0} (List.{0} Nat)} {t : ChompLean.OBUQ.WordEq a a_1}
+  (t_1 : @ChompLean.OBUQ.WordEq.below motive a a_1 t)
+  (nil :
+    @motive_1 (@List.nil.{0} (List.{0} Nat)) (@List.nil.{0} (List.{0} Nat)) ChompLean.OBUQ.WordEq.nil
+      (@ChompLean.OBUQ.WordEq.below.nil motive))
+  (cons :
+    ∀ {q q&#x27; : List.{0} Nat} {qs qs&#x27; : List.{0} (List.{0} Nat)} (a : ChompLean.OBUQ.MemEq q q&#x27;)
+      (a_2 : ChompLean.OBUQ.WordEq qs qs&#x27;) (ih : @ChompLean.OBUQ.WordEq.below motive qs qs&#x27; a_2)
+      (a_ih : motive qs qs&#x27; a_2),
+      @motive_1 (@List.cons.{0} (List.{0} Nat) q qs) (@List.cons.{0} (List.{0} Nat) q&#x27; qs&#x27;)
+        (@ChompLean.OBUQ.WordEq.cons q q&#x27; qs qs&#x27; a a_2)
+        (@ChompLean.OBUQ.WordEq.below.cons motive q q&#x27; qs qs&#x27; a a_2 ih a_ih)),
+  @motive_1 a a_1 t t_1</pre></li><li><code>ChompLean.OBUQ.WordEq.below.cons</code><pre class="prose">∀ {motive : (a a_1 : List.{0} (List.{0} Nat)) → (t : ChompLean.OBUQ.WordEq a a_1) → Prop} {q q&#x27; : List.{0} Nat}
+  {qs qs&#x27; : List.{0} (List.{0} Nat)} (a : ChompLean.OBUQ.MemEq q q&#x27;) (a_1 : ChompLean.OBUQ.WordEq qs qs&#x27;),
+  @ChompLean.OBUQ.WordEq.below motive qs qs&#x27; a_1 →
+    motive qs qs&#x27; a_1 →
+      @ChompLean.OBUQ.WordEq.below motive (@List.cons.{0} (List.{0} Nat) q qs) (@List.cons.{0} (List.{0} Nat) q&#x27; qs&#x27;)
+        (@ChompLean.OBUQ.WordEq.cons q q&#x27; qs qs&#x27; a a_1)</pre></li><li><code>ChompLean.OBUQ.WordEq.below.nil</code><pre class="prose">∀ {motive : (a a_1 : List.{0} (List.{0} Nat)) → (t : ChompLean.OBUQ.WordEq a a_1) → Prop},
+  @ChompLean.OBUQ.WordEq.below motive (@List.nil.{0} (List.{0} Nat)) (@List.nil.{0} (List.{0} Nat))
+    ChompLean.OBUQ.WordEq.nil</pre></li><li><code>ChompLean.OBUQ.WordEq.below.rec</code><pre class="prose">∀ {motive : (a a_1 : List.{0} (List.{0} Nat)) → (t : ChompLean.OBUQ.WordEq a a_1) → Prop}
+  {motive_1 :
+    {a a_1 : List.{0} (List.{0} Nat)} →
+      (t : ChompLean.OBUQ.WordEq a a_1) → (t : @ChompLean.OBUQ.WordEq.below motive a a_1 t) → Prop}
+  (nil :
+    @motive_1 (@List.nil.{0} (List.{0} Nat)) (@List.nil.{0} (List.{0} Nat)) ChompLean.OBUQ.WordEq.nil
+      (@ChompLean.OBUQ.WordEq.below.nil motive))
+  (cons :
+    ∀ {q q&#x27; : List.{0} Nat} {qs qs&#x27; : List.{0} (List.{0} Nat)} (a : ChompLean.OBUQ.MemEq q q&#x27;)
+      (a_1 : ChompLean.OBUQ.WordEq qs qs&#x27;) (ih : @ChompLean.OBUQ.WordEq.below motive qs qs&#x27; a_1)
+      (a_ih : motive qs qs&#x27; a_1),
+      @motive_1 qs qs&#x27; a_1 ih →
+        @motive_1 (@List.cons.{0} (List.{0} Nat) q qs) (@List.cons.{0} (List.{0} Nat) q&#x27; qs&#x27;)
+          (@ChompLean.OBUQ.WordEq.cons q q&#x27; qs qs&#x27; a a_1)
+          (@ChompLean.OBUQ.WordEq.below.cons motive q q&#x27; qs qs&#x27; a a_1 ih a_ih))
+  {a a_1 : List.{0} (List.{0} Nat)} {t : ChompLean.OBUQ.WordEq a a_1}
+  (t_1 : @ChompLean.OBUQ.WordEq.below motive a a_1 t), @motive_1 a a_1 t t_1</pre></li><li><code>ChompLean.OBUQ.WordEq.brecOn</code><pre class="prose">∀ {motive : (a a_1 : List.{0} (List.{0} Nat)) → (t : ChompLean.OBUQ.WordEq a a_1) → Prop}
+  {a a_1 : List.{0} (List.{0} Nat)} (t : ChompLean.OBUQ.WordEq a a_1)
+  (F_1 :
+    ∀ (a a_2 : List.{0} (List.{0} Nat)) (t : ChompLean.OBUQ.WordEq a a_2),
+      @ChompLean.OBUQ.WordEq.below motive a a_2 t → motive a a_2 t),
+  motive a a_1 t</pre></li><li><code>ChompLean.OBUQ.WordEq.casesOn</code><pre class="prose">∀ {motive : (a a_1 : List.{0} (List.{0} Nat)) → (t : ChompLean.OBUQ.WordEq a a_1) → Prop}
+  {a a_1 : List.{0} (List.{0} Nat)} (t : ChompLean.OBUQ.WordEq a a_1)
+  (nil : motive (@List.nil.{0} (List.{0} Nat)) (@List.nil.{0} (List.{0} Nat)) ChompLean.OBUQ.WordEq.nil)
+  (cons :
+    ∀ {q q&#x27; : List.{0} Nat} {qs qs&#x27; : List.{0} (List.{0} Nat)} (a : ChompLean.OBUQ.MemEq q q&#x27;)
+      (a_2 : ChompLean.OBUQ.WordEq qs qs&#x27;),
+      motive (@List.cons.{0} (List.{0} Nat) q qs) (@List.cons.{0} (List.{0} Nat) q&#x27; qs&#x27;)
+        (@ChompLean.OBUQ.WordEq.cons q q&#x27; qs qs&#x27; a a_2)),
+  motive a a_1 t</pre></li><li><code>ChompLean.OBUQ.WordEq.cons</code><pre class="prose">∀ {q q&#x27; : List.{0} Nat} {qs qs&#x27; : List.{0} (List.{0} Nat)},
+  ChompLean.OBUQ.MemEq q q&#x27; →
+    ChompLean.OBUQ.WordEq qs qs&#x27; →
+      ChompLean.OBUQ.WordEq (@List.cons.{0} (List.{0} Nat) q qs) (@List.cons.{0} (List.{0} Nat) q&#x27; qs&#x27;)</pre></li><li><code>ChompLean.OBUQ.WordEq.nil</code><pre class="prose">ChompLean.OBUQ.WordEq (@List.nil.{0} (List.{0} Nat)) (@List.nil.{0} (List.{0} Nat))</pre></li><li><code>ChompLean.OBUQ.WordEq.rec</code><pre class="prose">∀ {motive : (a a_1 : List.{0} (List.{0} Nat)) → (t : ChompLean.OBUQ.WordEq a a_1) → Prop}
+  (nil : motive (@List.nil.{0} (List.{0} Nat)) (@List.nil.{0} (List.{0} Nat)) ChompLean.OBUQ.WordEq.nil)
+  (cons :
+    ∀ {q q&#x27; : List.{0} Nat} {qs qs&#x27; : List.{0} (List.{0} Nat)} (a : ChompLean.OBUQ.MemEq q q&#x27;)
+      (a_1 : ChompLean.OBUQ.WordEq qs qs&#x27;),
+      motive qs qs&#x27; a_1 →
+        motive (@List.cons.{0} (List.{0} Nat) q qs) (@List.cons.{0} (List.{0} Nat) q&#x27; qs&#x27;)
+          (@ChompLean.OBUQ.WordEq.cons q q&#x27; qs qs&#x27; a a_1))
+  {a a_1 : List.{0} (List.{0} Nat)} (t : ChompLean.OBUQ.WordEq a a_1), motive a a_1 t</pre></li><li><code>ChompLean.OBUQ.WordEq.recOn</code><pre class="prose">∀ {motive : (a a_1 : List.{0} (List.{0} Nat)) → (t : ChompLean.OBUQ.WordEq a a_1) → Prop}
+  {a a_1 : List.{0} (List.{0} Nat)} (t : ChompLean.OBUQ.WordEq a a_1)
+  (nil : motive (@List.nil.{0} (List.{0} Nat)) (@List.nil.{0} (List.{0} Nat)) ChompLean.OBUQ.WordEq.nil)
+  (cons :
+    ∀ {q q&#x27; : List.{0} Nat} {qs qs&#x27; : List.{0} (List.{0} Nat)} (a : ChompLean.OBUQ.MemEq q q&#x27;)
+      (a_2 : ChompLean.OBUQ.WordEq qs qs&#x27;),
+      motive qs qs&#x27; a_2 →
+        motive (@List.cons.{0} (List.{0} Nat) q qs) (@List.cons.{0} (List.{0} Nat) q&#x27; qs&#x27;)
+          (@ChompLean.OBUQ.WordEq.cons q q&#x27; qs qs&#x27; a a_2)),
+  motive a a_1 t</pre></li><li><code>ChompLean.OBUQ.frontierOutput</code><pre class="prose">(U : List.{0} Nat) → (Z : ChompLean.OBUQ.Frontier) → Nat</pre></li><li><code>ChompLean.OBUQ.frontierOutput_eq_qOutput</code><pre class="prose">∀ (U : List.{0} Nat) (Z : ChompLean.OBUQ.Frontier),
+  @Eq.{1} Nat (ChompLean.OBUQ.frontierOutput U Z) (ChompLean.OBUQ.qOutput U (ChompLean.OBUQ.projectFrontier Z))</pre></li><li><code>ChompLean.OBUQ.frontierProject_step_qEq</code><pre class="prose">∀ (U : List.{0} Nat) (Z : ChompLean.OBUQ.Frontier) (hpos : ChompLean.OBUQ.HighAgesPositive Z),
+  ChompLean.OBUQ.QEq (ChompLean.OBUQ.projectFrontier (ChompLean.OBUQ.frontierStep U Z))
+    (ChompLean.OBUQ.qStep U (ChompLean.OBUQ.projectFrontier Z))</pre></li><li><code>ChompLean.OBUQ.frontierRun</code><pre class="prose">List.{0} (List.{0} Nat) → ChompLean.OBUQ.Frontier → ChompLean.OBUQ.FrontierRunResult</pre></li><li><code>ChompLean.OBUQ.frontierRun._sunfold</code><pre class="prose">List.{0} (List.{0} Nat) → ChompLean.OBUQ.Frontier → ChompLean.OBUQ.FrontierRunResult</pre></li><li><code>ChompLean.OBUQ.frontierRun._unsafe_rec</code><pre class="prose">List.{0} (List.{0} Nat) → ChompLean.OBUQ.Frontier → ChompLean.OBUQ.FrontierRunResult</pre></li><li><code>ChompLean.OBUQ.frontierRun.eq_1</code><pre class="prose">∀ (x : ChompLean.OBUQ.Frontier),
+  @Eq.{1} ChompLean.OBUQ.FrontierRunResult (ChompLean.OBUQ.frontierRun (@List.nil.{0} (List.{0} Nat)) x)
+    (ChompLean.OBUQ.FrontierRunResult.mk (@List.nil.{0} Nat) x)</pre></li><li><code>ChompLean.OBUQ.frontierRun.eq_2</code><pre class="prose">∀ (x : ChompLean.OBUQ.Frontier) (U : List.{0} Nat) (Us : List.{0} (List.{0} Nat)),
+  @Eq.{1} ChompLean.OBUQ.FrontierRunResult (ChompLean.OBUQ.frontierRun (@List.cons.{0} (List.{0} Nat) U Us) x)
+    (ChompLean.OBUQ.FrontierRunResult.mk
+      (@List.cons.{0} Nat (ChompLean.OBUQ.frontierOutput U x)
+        (ChompLean.OBUQ.FrontierRunResult.outputs (ChompLean.OBUQ.frontierRun Us (ChompLean.OBUQ.frontierStep U x))))
+      (ChompLean.OBUQ.FrontierRunResult.state (ChompLean.OBUQ.frontierRun Us (ChompLean.OBUQ.frontierStep U x))))</pre></li><li><code>ChompLean.OBUQ.frontierRun.eq_def</code><pre class="prose">∀ (x : List.{0} (List.{0} Nat)) (x_1 : ChompLean.OBUQ.Frontier),
+  @Eq.{1} ChompLean.OBUQ.FrontierRunResult (ChompLean.OBUQ.frontierRun x x_1)
+    (ChompLean.OBUQ.frontierRun.match_1.{1}
+      (fun (x : List.{0} (List.{0} Nat)) (x_2 : ChompLean.OBUQ.Frontier) =&gt; ChompLean.OBUQ.FrontierRunResult) x x_1
+      (fun (Z : ChompLean.OBUQ.Frontier) =&gt; ChompLean.OBUQ.FrontierRunResult.mk (@List.nil.{0} Nat) Z)
+      fun (U : List.{0} Nat) (Us : List.{0} (List.{0} Nat)) (Z : ChompLean.OBUQ.Frontier) =&gt;
+      have tail : ChompLean.OBUQ.FrontierRunResult := ChompLean.OBUQ.frontierRun Us (ChompLean.OBUQ.frontierStep U Z);
+      ChompLean.OBUQ.FrontierRunResult.mk
+        (@List.cons.{0} Nat (ChompLean.OBUQ.frontierOutput U Z) (ChompLean.OBUQ.FrontierRunResult.outputs tail))
+        (ChompLean.OBUQ.FrontierRunResult.state tail))</pre></li><li><code>ChompLean.OBUQ.frontierRun.match_1</code><pre class="prose">(motive : List.{0} (List.{0} Nat) → ChompLean.OBUQ.Frontier → Sort u_1) →
+  (x : List.{0} (List.{0} Nat)) →
+    (x_1 : ChompLean.OBUQ.Frontier) →
+      (h_1 : (Z : ChompLean.OBUQ.Frontier) → motive (@List.nil.{0} (List.{0} Nat)) Z) →
+        (h_2 :
+            (U : List.{0} Nat) →
+              (Us : List.{0} (List.{0} Nat)) →
+                (Z : ChompLean.OBUQ.Frontier) → motive (@List.cons.{0} (List.{0} Nat) U Us) Z) →
+          motive x x_1</pre></li><li><code>ChompLean.OBUQ.frontierRun_project</code><pre class="prose">∀ (forcing : List.{0} (List.{0} Nat)) (Z : ChompLean.OBUQ.Frontier) (hpos : ChompLean.OBUQ.HighAgesPositive Z),
+  And
+    (@Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.FrontierRunResult.outputs (ChompLean.OBUQ.frontierRun forcing Z))
+      (ChompLean.OBUQ.QRunResult.outputs (ChompLean.OBUQ.qRun forcing (ChompLean.OBUQ.projectFrontier Z))))
+    (ChompLean.OBUQ.QEq
+      (ChompLean.OBUQ.projectFrontier (ChompLean.OBUQ.FrontierRunResult.state (ChompLean.OBUQ.frontierRun forcing Z)))
+      (ChompLean.OBUQ.QRunResult.state (ChompLean.OBUQ.qRun forcing (ChompLean.OBUQ.projectFrontier Z))))</pre></li><li><code>ChompLean.OBUQ.frontierStep</code><pre class="prose">(U : List.{0} Nat) → (Z : ChompLean.OBUQ.Frontier) → ChompLean.OBUQ.Frontier</pre></li><li><code>ChompLean.OBUQ.frontier_future_congruence</code><pre class="prose">∀ {Z W : ChompLean.OBUQ.Frontier} (hZ : ChompLean.OBUQ.HighAgesPositive Z) (hW : ChompLean.OBUQ.HighAgesPositive W)
+  (hproj : ChompLean.OBUQ.QEq (ChompLean.OBUQ.projectFrontier Z) (ChompLean.OBUQ.projectFrontier W))
+  (forcing : List.{0} (List.{0} Nat)),
+  And
+    (@Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.FrontierRunResult.outputs (ChompLean.OBUQ.frontierRun forcing Z))
+      (ChompLean.OBUQ.FrontierRunResult.outputs (ChompLean.OBUQ.frontierRun forcing W)))
+    (ChompLean.OBUQ.QEq
+      (ChompLean.OBUQ.projectFrontier (ChompLean.OBUQ.FrontierRunResult.state (ChompLean.OBUQ.frontierRun forcing Z)))
+      (ChompLean.OBUQ.projectFrontier (ChompLean.OBUQ.FrontierRunResult.state (ChompLean.OBUQ.frontierRun forcing W))))</pre></li><li><code>ChompLean.OBUQ.highAgesPositive_frontierStep</code><pre class="prose">∀ (U : List.{0} Nat) (Z : ChompLean.OBUQ.Frontier), ChompLean.OBUQ.HighAgesPositive (ChompLean.OBUQ.frontierStep U Z)</pre></li><li><code>ChompLean.OBUQ.highAgesPositive_updateHigh</code><pre class="prose">∀ {H : List.{0} ChompLean.OBUQ.HighRecord} {k : Nat} (r : ChompLean.OBUQ.HighRecord),
+  @Membership.mem.{0, 0} ChompLean.OBUQ.HighRecord (List.{0} ChompLean.OBUQ.HighRecord)
+      (@List.instMembership.{0} ChompLean.OBUQ.HighRecord) (ChompLean.OBUQ.updateHigh H k) r →
+    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (ChompLean.OBUQ.HighRecord.age r)</pre></li><li><code>ChompLean.OBUQ.highAgesPositive_updateHigh._proof_1_1</code><pre class="prose">∀ (h : ChompLean.OBUQ.HighRecord),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.HighRecord.age h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.highAgesPositive_updateHigh._proof_1_2</code><pre class="prose">Not
+    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+  False</pre></li><li><code>ChompLean.OBUQ.highValues</code><pre class="prose">List.{0} ChompLean.OBUQ.HighRecord → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.highValues._sunfold</code><pre class="prose">List.{0} ChompLean.OBUQ.HighRecord → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.highValues._unsafe_rec</code><pre class="prose">List.{0} ChompLean.OBUQ.HighRecord → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.highValues.eq_1</code><pre class="prose">@Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.highValues (@List.nil.{0} ChompLean.OBUQ.HighRecord)) (@List.nil.{0} Nat)</pre></li><li><code>ChompLean.OBUQ.highValues.eq_2</code><pre class="prose">∀ (h : ChompLean.OBUQ.HighRecord) (hs : List.{0} ChompLean.OBUQ.HighRecord),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.highValues (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs))
+    (@List.cons.{0} Nat (ChompLean.OBUQ.HighRecord.excess h) (ChompLean.OBUQ.highValues hs))</pre></li><li><code>ChompLean.OBUQ.highValues.eq_def</code><pre class="prose">∀ (x : List.{0} ChompLean.OBUQ.HighRecord),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.highValues x)
+    (ChompLean.OBUQ.highValues.match_1.{1} (fun (x : List.{0} ChompLean.OBUQ.HighRecord) =&gt; List.{0} Nat) x
+      (fun (_ : Unit) =&gt; @List.nil.{0} Nat)
+      fun (h : ChompLean.OBUQ.HighRecord) (hs : List.{0} ChompLean.OBUQ.HighRecord) =&gt;
+      @List.cons.{0} Nat (ChompLean.OBUQ.HighRecord.excess h) (ChompLean.OBUQ.highValues hs))</pre></li><li><code>ChompLean.OBUQ.highValues.match_1</code><pre class="prose">(motive : List.{0} ChompLean.OBUQ.HighRecord → Sort u_1) →
+  (x : List.{0} ChompLean.OBUQ.HighRecord) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.OBUQ.HighRecord)) →
+      (h_2 :
+          (h : ChompLean.OBUQ.HighRecord) →
+            (hs : List.{0} ChompLean.OBUQ.HighRecord) → motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs)) →
+        motive x</pre></li><li><code>ChompLean.OBUQ.highValues_shiftHigh_memEq</code><pre class="prose">∀ (H : List.{0} ChompLean.OBUQ.HighRecord),
+  ChompLean.OBUQ.MemEq (ChompLean.OBUQ.highValues (ChompLean.OBUQ.shiftHigh H))
+    (ChompLean.OBUQ.shiftQueue (ChompLean.OBUQ.highValues H))</pre></li><li><code>ChompLean.OBUQ.highValues_shiftHigh_memEq._proof_1_1</code><pre class="prose">∀ (h : ChompLean.OBUQ.HighRecord)
+  (hn : @Ne.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.OBUQ.HighRecord.excess h)) →
+    False</pre></li><li><code>ChompLean.OBUQ.highValues_shiftHigh_memEq._proof_1_2</code><pre class="prose">∀ (n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  @Eq.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) → False</pre></li><li><code>ChompLean.OBUQ.highValues_shiftHigh_memEq._proof_1_3</code><pre class="prose">∀ (n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  Not
+      (@Eq.{1} Nat n
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq</code><pre class="prose">∀ (H : List.{0} ChompLean.OBUQ.HighRecord) (k : Nat),
+  ChompLean.OBUQ.MemEq (ChompLean.OBUQ.highValues (ChompLean.OBUQ.updateHigh H k))
+    (ChompLean.OBUQ.updateQueue (ChompLean.OBUQ.highValues H) k)</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq._proof_1_3</code><pre class="prose">∀ (k : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (hn : @Ne.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.OBUQ.HighRecord.excess h)) →
+    False</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq._proof_1_4</code><pre class="prose">∀ (k n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  @Eq.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) → False</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq._proof_1_5</code><pre class="prose">∀ (k n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  Not
+      (@Eq.{1} Nat n
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq._proof_1_7</code><pre class="prose">∀ (h : ChompLean.OBUQ.HighRecord)
+  (hn : @Ne.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.OBUQ.HighRecord.excess h)) →
+    False</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq._proof_1_8</code><pre class="prose">∀ (n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (hval :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  @Eq.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) → False</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq._proof_1_9</code><pre class="prose">∀ (n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (hval :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  Not
+      (@Eq.{1} Nat n
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq._simp_1_1</code><pre class="prose">∀ {α : Type u_1} {a : α} {s t : List.{u_1} α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)
+      (@HAppend.hAppend.{u_1, u_1, u_1} (List.{u_1} α) (List.{u_1} α) (List.{u_1} α)
+        (@instHAppendOfAppend.{u_1} (List.{u_1} α) (@List.instAppend.{u_1} α)) s t)
+      a)
+    (Or (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) s a)
+      (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) t a))</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq._simp_1_2</code><pre class="prose">∀ {α : Type u_1} {a : α},
+  @Eq.{1} Prop (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.nil.{u_1} α) a) False</pre></li><li><code>ChompLean.OBUQ.highValues_updateHigh_memEq._simp_1_6</code><pre class="prose">∀ {α : Type u_1} {a b : α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)
+      (@List.cons.{u_1} α b (@List.nil.{u_1} α)) a)
+    (@Eq.{u_1 + 1} α a b)</pre></li><li><code>ChompLean.OBUQ.instDecidableEqHighRecord</code><pre class="prose">DecidableEq.{1} ChompLean.OBUQ.HighRecord</pre></li><li><code>ChompLean.OBUQ.instDecidableEqHighRecord.decEq</code><pre class="prose">(x x_1 : ChompLean.OBUQ.HighRecord) → Decidable (@Eq.{1} ChompLean.OBUQ.HighRecord x x_1)</pre></li><li><code>ChompLean.OBUQ.instDecidableEqHighRecord.decEq._proof_1</code><pre class="prose">∀ (a a_1 : Nat),
+  @Eq.{1} ChompLean.OBUQ.HighRecord (ChompLean.OBUQ.HighRecord.mk a a_1) (ChompLean.OBUQ.HighRecord.mk a a_1)</pre></li><li><code>ChompLean.OBUQ.instDecidableEqHighRecord.decEq._proof_2</code><pre class="prose">∀ (a a_1 b : Nat),
+  Not (@Eq.{1} Nat a_1 b) →
+    @Eq.{1} ChompLean.OBUQ.HighRecord (ChompLean.OBUQ.HighRecord.mk a a_1) (ChompLean.OBUQ.HighRecord.mk a b) → False</pre></li><li><code>ChompLean.OBUQ.instDecidableEqHighRecord.decEq._proof_3</code><pre class="prose">∀ (a a_1 b b_1 : Nat),
+  Not (@Eq.{1} Nat a b) →
+    @Eq.{1} ChompLean.OBUQ.HighRecord (ChompLean.OBUQ.HighRecord.mk a a_1) (ChompLean.OBUQ.HighRecord.mk b b_1) → False</pre></li><li><code>ChompLean.OBUQ.instDecidableEqHighRecord.decEq.match_1</code><pre class="prose">(motive : ChompLean.OBUQ.HighRecord → ChompLean.OBUQ.HighRecord → Sort u_1) →
+  (x x_1 : ChompLean.OBUQ.HighRecord) →
+    (h_1 : (a a_1 b b_1 : Nat) → motive (ChompLean.OBUQ.HighRecord.mk a a_1) (ChompLean.OBUQ.HighRecord.mk b b_1)) →
+      motive x x_1</pre></li><li><code>ChompLean.OBUQ.instDecidableEqLiveRecord</code><pre class="prose">DecidableEq.{1} ChompLean.OBUQ.LiveRecord</pre></li><li><code>ChompLean.OBUQ.instDecidableEqLiveRecord.decEq</code><pre class="prose">(x x_1 : ChompLean.OBUQ.LiveRecord) → Decidable (@Eq.{1} ChompLean.OBUQ.LiveRecord x x_1)</pre></li><li><code>ChompLean.OBUQ.instDecidableEqLiveRecord.decEq._proof_1</code><pre class="prose">∀ (a : Nat) (a_1 : List.{0} Nat),
+  @Eq.{1} ChompLean.OBUQ.LiveRecord (ChompLean.OBUQ.LiveRecord.mk a a_1) (ChompLean.OBUQ.LiveRecord.mk a a_1)</pre></li><li><code>ChompLean.OBUQ.instDecidableEqLiveRecord.decEq._proof_2</code><pre class="prose">∀ (a : Nat) (a_1 b : List.{0} Nat),
+  Not (@Eq.{1} (List.{0} Nat) a_1 b) →
+    @Eq.{1} ChompLean.OBUQ.LiveRecord (ChompLean.OBUQ.LiveRecord.mk a a_1) (ChompLean.OBUQ.LiveRecord.mk a b) → False</pre></li><li><code>ChompLean.OBUQ.instDecidableEqLiveRecord.decEq._proof_3</code><pre class="prose">∀ (a : Nat) (a_1 : List.{0} Nat) (b : Nat) (b_1 : List.{0} Nat),
+  Not (@Eq.{1} Nat a b) →
+    @Eq.{1} ChompLean.OBUQ.LiveRecord (ChompLean.OBUQ.LiveRecord.mk a a_1) (ChompLean.OBUQ.LiveRecord.mk b b_1) → False</pre></li><li><code>ChompLean.OBUQ.instDecidableEqLiveRecord.decEq.match_1</code><pre class="prose">(motive : ChompLean.OBUQ.LiveRecord → ChompLean.OBUQ.LiveRecord → Sort u_1) →
+  (x x_1 : ChompLean.OBUQ.LiveRecord) →
+    (h_1 :
+        (a : Nat) →
+          (a_1 : List.{0} Nat) →
+            (b : Nat) →
+              (b_1 : List.{0} Nat) → motive (ChompLean.OBUQ.LiveRecord.mk a a_1) (ChompLean.OBUQ.LiveRecord.mk b b_1)) →
+      motive x x_1</pre></li><li><code>ChompLean.OBUQ.listMax</code><pre class="prose">List.{0} Nat → Nat</pre></li><li><code>ChompLean.OBUQ.listMax._sunfold</code><pre class="prose">List.{0} Nat → Nat</pre></li><li><code>ChompLean.OBUQ.listMax._unsafe_rec</code><pre class="prose">List.{0} Nat → Nat</pre></li><li><code>ChompLean.OBUQ.listMax.eq_1</code><pre class="prose">@Eq.{1} Nat (ChompLean.OBUQ.listMax (@List.nil.{0} Nat)) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))</pre></li><li><code>ChompLean.OBUQ.listMax.eq_2</code><pre class="prose">∀ (x_1 : Nat) (xs : List.{0} Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.listMax (@List.cons.{0} Nat x_1 xs))
+    (@Max.max.{0} Nat Nat.instMax x_1 (ChompLean.OBUQ.listMax xs))</pre></li><li><code>ChompLean.OBUQ.listMax.eq_def</code><pre class="prose">∀ (x : List.{0} Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.listMax x)
+    (ChompLean.OBUQ.listMax.match_1.{1} (fun (x : List.{0} Nat) =&gt; Nat) x
+      (fun (_ : Unit) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      fun (x : Nat) (xs : List.{0} Nat) =&gt; @Max.max.{0} Nat Nat.instMax x (ChompLean.OBUQ.listMax xs))</pre></li><li><code>ChompLean.OBUQ.listMax.match_1</code><pre class="prose">(motive : List.{0} Nat → Sort u_1) →
+  (x : List.{0} Nat) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} Nat)) →
+      (h_2 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat x xs)) → motive x</pre></li><li><code>ChompLean.OBUQ.listMax_eq_of_memEq</code><pre class="prose">∀ {xs ys : List.{0} Nat} (h : ChompLean.OBUQ.MemEq xs ys),
+  @Eq.{1} Nat (ChompLean.OBUQ.listMax xs) (ChompLean.OBUQ.listMax ys)</pre></li><li><code>ChompLean.OBUQ.listMax_le_of_mem_le</code><pre class="prose">∀ {xs : List.{0} Nat} {b : Nat}
+  (h :
+    ∀ (x : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x → @LE.le.{0} Nat instLENat x b),
+  @LE.le.{0} Nat instLENat (ChompLean.OBUQ.listMax xs) b</pre></li><li><code>ChompLean.OBUQ.memEq_append</code><pre class="prose">∀ {xs xs&#x27; ys ys&#x27; : List.{0} Nat} (hx : ChompLean.OBUQ.MemEq xs xs&#x27;) (hy : ChompLean.OBUQ.MemEq ys ys&#x27;),
+  ChompLean.OBUQ.MemEq
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) xs ys)
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) xs&#x27; ys&#x27;)</pre></li><li><code>ChompLean.OBUQ.memEq_append._simp_1_1</code><pre class="prose">∀ {α : Type u_1} {a : α} {s t : List.{u_1} α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)
+      (@HAppend.hAppend.{u_1, u_1, u_1} (List.{u_1} α) (List.{u_1} α) (List.{u_1} α)
+        (@instHAppendOfAppend.{u_1} (List.{u_1} α) (@List.instAppend.{u_1} α)) s t)
+      a)
+    (Or (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) s a)
+      (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) t a))</pre></li><li><code>ChompLean.OBUQ.memEq_refl</code><pre class="prose">∀ (xs : List.{0} Nat), ChompLean.OBUQ.MemEq xs xs</pre></li><li><code>ChompLean.OBUQ.memEq_symm</code><pre class="prose">∀ {xs ys : List.{0} Nat} (h : ChompLean.OBUQ.MemEq xs ys), ChompLean.OBUQ.MemEq ys xs</pre></li><li><code>ChompLean.OBUQ.memEq_trans</code><pre class="prose">∀ {xs ys zs : List.{0} Nat} (hxy : ChompLean.OBUQ.MemEq xs ys) (hyz : ChompLean.OBUQ.MemEq ys zs),
+  ChompLean.OBUQ.MemEq xs zs</pre></li><li><code>ChompLean.OBUQ.mem_highValues_iff</code><pre class="prose">∀ {n : Nat} {H : List.{0} ChompLean.OBUQ.HighRecord},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.highValues H) n)
+    (@Exists.{1} ChompLean.OBUQ.HighRecord fun (h : ChompLean.OBUQ.HighRecord) =&gt;
+      And
+        (@Membership.mem.{0, 0} ChompLean.OBUQ.HighRecord (List.{0} ChompLean.OBUQ.HighRecord)
+          (@List.instMembership.{0} ChompLean.OBUQ.HighRecord) H h)
+        (@Eq.{1} Nat n (ChompLean.OBUQ.HighRecord.excess h)))</pre></li><li><code>ChompLean.OBUQ.mem_highValues_iff._simp_1_4</code><pre class="prose">∀ {α : Type u_1} {b : α} {l : List.{u_1} α} {a : α},
+  @Eq.{1} Prop (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.cons.{u_1} α b l) a)
+    (Or (@Eq.{u_1 + 1} α a b) (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) l a))</pre></li><li><code>ChompLean.OBUQ.mem_le_listMax</code><pre class="prose">∀ {x : Nat} {xs : List.{0} Nat} (hx : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x),
+  @LE.le.{0} Nat instLENat x (ChompLean.OBUQ.listMax xs)</pre></li><li><code>ChompLean.OBUQ.mem_le_listMax._simp_1_1</code><pre class="prose">∀ {α : Type u_1} {b : α} {l : List.{u_1} α} {a : α},
+  @Eq.{1} Prop (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.cons.{u_1} α b l) a)
+    (Or (@Eq.{u_1 + 1} α a b) (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) l a))</pre></li><li><code>ChompLean.OBUQ.mem_olderValues_iff</code><pre class="prose">∀ {n a : Nat} {H : List.{0} ChompLean.OBUQ.HighRecord},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.olderValues H a) n)
+    (@Exists.{1} ChompLean.OBUQ.HighRecord fun (h : ChompLean.OBUQ.HighRecord) =&gt;
+      And
+        (@Membership.mem.{0, 0} ChompLean.OBUQ.HighRecord (List.{0} ChompLean.OBUQ.HighRecord)
+          (@List.instMembership.{0} ChompLean.OBUQ.HighRecord) H h)
+        (And (@LT.lt.{0} Nat instLTNat a (ChompLean.OBUQ.HighRecord.age h))
+          (@Eq.{1} Nat n (ChompLean.OBUQ.HighRecord.excess h))))</pre></li><li><code>ChompLean.OBUQ.mem_olderValues_iff._simp_1_4</code><pre class="prose">∀ {α : Type u_1} {b : α} {l : List.{u_1} α} {a : α},
+  @Eq.{1} Prop (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.cons.{u_1} α b l) a)
+    (Or (@Eq.{u_1 + 1} α a b) (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) l a))</pre></li><li><code>ChompLean.OBUQ.mem_shiftHigh_iff</code><pre class="prose">∀ {r : ChompLean.OBUQ.HighRecord} {H : List.{0} ChompLean.OBUQ.HighRecord},
+  Iff
+    (@Membership.mem.{0, 0} ChompLean.OBUQ.HighRecord (List.{0} ChompLean.OBUQ.HighRecord)
+      (@List.instMembership.{0} ChompLean.OBUQ.HighRecord) (ChompLean.OBUQ.shiftHigh H) r)
+    (@Exists.{1} ChompLean.OBUQ.HighRecord fun (h : ChompLean.OBUQ.HighRecord) =&gt;
+      And
+        (@Membership.mem.{0, 0} ChompLean.OBUQ.HighRecord (List.{0} ChompLean.OBUQ.HighRecord)
+          (@List.instMembership.{0} ChompLean.OBUQ.HighRecord) H h)
+        (And
+          (@Ne.{1} Nat (ChompLean.OBUQ.HighRecord.excess h)
+            (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+          (@Eq.{1} ChompLean.OBUQ.HighRecord r
+            (ChompLean.OBUQ.HighRecord.mk
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.HighRecord.age h)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))</pre></li><li><code>ChompLean.OBUQ.mem_shiftHigh_iff._simp_1_4</code><pre class="prose">∀ {α : Type u_1} {b : α} {l : List.{u_1} α} {a : α},
+  @Eq.{1} Prop (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.cons.{u_1} α b l) a)
+    (Or (@Eq.{u_1 + 1} α a b) (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) l a))</pre></li><li><code>ChompLean.OBUQ.mem_shiftQueue_iff</code><pre class="prose">∀ {n : Nat} {xs : List.{0} Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.shiftQueue xs) n)
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.OBUQ.mem_updateHigh_iff</code><pre class="prose">∀ {r : ChompLean.OBUQ.HighRecord} {H : List.{0} ChompLean.OBUQ.HighRecord} {k : Nat},
+  Iff
+    (@Membership.mem.{0, 0} ChompLean.OBUQ.HighRecord (List.{0} ChompLean.OBUQ.HighRecord)
+      (@List.instMembership.{0} ChompLean.OBUQ.HighRecord) (ChompLean.OBUQ.updateHigh H k) r)
+    (Or
+      (@Membership.mem.{0, 0} ChompLean.OBUQ.HighRecord (List.{0} ChompLean.OBUQ.HighRecord)
+        (@List.instMembership.{0} ChompLean.OBUQ.HighRecord) (ChompLean.OBUQ.shiftHigh H) r)
+      (And (@Ne.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (@Eq.{1} ChompLean.OBUQ.HighRecord r
+          (ChompLean.OBUQ.HighRecord.mk (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))</pre></li><li><code>ChompLean.OBUQ.mem_updateQueue_iff</code><pre class="prose">∀ {n y : Nat} {xs : List.{0} Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.updateQueue xs y) n)
+    (Or
+      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (And (@Ne.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (@Eq.{1} Nat n
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) y
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))</pre></li><li><code>ChompLean.OBUQ.not_mem_of_listMax_lt</code><pre class="prose">∀ {xs : List.{0} Nat} {n : Nat} (h : @LT.lt.{0} Nat instLTNat (ChompLean.OBUQ.listMax xs) n),
+  Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs n)</pre></li><li><code>ChompLean.OBUQ.not_mem_of_listMax_lt._proof_1_1</code><pre class="prose">∀ {xs : List.{0} Nat} {n : Nat} (h : @LT.lt.{0} Nat instLTNat (ChompLean.OBUQ.listMax xs) n)
+  (this : @LE.le.{0} Nat instLENat n (ChompLean.OBUQ.listMax xs)), False</pre></li><li><code>ChompLean.OBUQ.olderValues</code><pre class="prose">List.{0} ChompLean.OBUQ.HighRecord → Nat → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.olderValues._sunfold</code><pre class="prose">List.{0} ChompLean.OBUQ.HighRecord → Nat → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.olderValues._unsafe_rec</code><pre class="prose">List.{0} ChompLean.OBUQ.HighRecord → Nat → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.olderValues.eq_1</code><pre class="prose">∀ (x : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.olderValues (@List.nil.{0} ChompLean.OBUQ.HighRecord) x) (@List.nil.{0} Nat)</pre></li><li><code>ChompLean.OBUQ.olderValues.eq_2</code><pre class="prose">∀ (x : Nat) (h : ChompLean.OBUQ.HighRecord) (hs : List.{0} ChompLean.OBUQ.HighRecord),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.olderValues (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs) x)
+    (@ite.{1} (List.{0} Nat) (@LT.lt.{0} Nat instLTNat x (ChompLean.OBUQ.HighRecord.age h))
+      (Nat.decLt x (ChompLean.OBUQ.HighRecord.age h))
+      (@List.cons.{0} Nat (ChompLean.OBUQ.HighRecord.excess h) (ChompLean.OBUQ.olderValues hs x))
+      (ChompLean.OBUQ.olderValues hs x))</pre></li><li><code>ChompLean.OBUQ.olderValues.eq_def</code><pre class="prose">∀ (x : List.{0} ChompLean.OBUQ.HighRecord) (x_1 : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.olderValues x x_1)
+    (ChompLean.OBUQ.olderValues.match_1.{1} (fun (x : List.{0} ChompLean.OBUQ.HighRecord) (x_2 : Nat) =&gt; List.{0} Nat) x
+      x_1 (fun (_a : Nat) =&gt; @List.nil.{0} Nat)
+      fun (h : ChompLean.OBUQ.HighRecord) (hs : List.{0} ChompLean.OBUQ.HighRecord) (a : Nat) =&gt;
+      @ite.{1} (List.{0} Nat) (@LT.lt.{0} Nat instLTNat a (ChompLean.OBUQ.HighRecord.age h))
+        (Nat.decLt a (ChompLean.OBUQ.HighRecord.age h))
+        (@List.cons.{0} Nat (ChompLean.OBUQ.HighRecord.excess h) (ChompLean.OBUQ.olderValues hs a))
+        (ChompLean.OBUQ.olderValues hs a))</pre></li><li><code>ChompLean.OBUQ.olderValues.match_1</code><pre class="prose">(motive : List.{0} ChompLean.OBUQ.HighRecord → Nat → Sort u_1) →
+  (x : List.{0} ChompLean.OBUQ.HighRecord) →
+    (x_1 : Nat) →
+      (h_1 : (_a : Nat) → motive (@List.nil.{0} ChompLean.OBUQ.HighRecord) _a) →
+        (h_2 :
+            (h : ChompLean.OBUQ.HighRecord) →
+              (hs : List.{0} ChompLean.OBUQ.HighRecord) →
+                (a : Nat) → motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs) a) →
+          motive x x_1</pre></li><li><code>ChompLean.OBUQ.olderValues_shiftHigh_memEq</code><pre class="prose">∀ (H : List.{0} ChompLean.OBUQ.HighRecord) (a : Nat),
+  ChompLean.OBUQ.MemEq
+    (ChompLean.OBUQ.olderValues (ChompLean.OBUQ.shiftHigh H)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (ChompLean.OBUQ.shiftQueue (ChompLean.OBUQ.olderValues H a))</pre></li><li><code>ChompLean.OBUQ.olderValues_shiftHigh_memEq._proof_1_1</code><pre class="prose">∀ (a : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (har :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.HighRecord.age h)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LT.lt.{0} Nat instLTNat a (ChompLean.OBUQ.HighRecord.age h)) → False</pre></li><li><code>ChompLean.OBUQ.olderValues_shiftHigh_memEq._proof_1_2</code><pre class="prose">∀ (a : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (hn : @Ne.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.OBUQ.HighRecord.excess h)) →
+    False</pre></li><li><code>ChompLean.OBUQ.olderValues_shiftHigh_memEq._proof_1_3</code><pre class="prose">∀ (a n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  @Eq.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) → False</pre></li><li><code>ChompLean.OBUQ.olderValues_shiftHigh_memEq._proof_1_4</code><pre class="prose">∀ (a n : Nat) (h : ChompLean.OBUQ.HighRecord) (hah : @LT.lt.{0} Nat instLTNat a (ChompLean.OBUQ.HighRecord.age h)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.HighRecord.age h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.olderValues_shiftHigh_memEq._proof_1_5</code><pre class="prose">∀ (a n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  Not
+      (@Eq.{1} Nat n
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_memEq</code><pre class="prose">∀ (H : List.{0} ChompLean.OBUQ.HighRecord) (a k : Nat),
+  ChompLean.OBUQ.MemEq
+    (ChompLean.OBUQ.olderValues (ChompLean.OBUQ.updateHigh H k)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (ChompLean.OBUQ.shiftQueue (ChompLean.OBUQ.olderValues H a))</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_memEq._proof_1_1</code><pre class="prose">∀ (a : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (har :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.HighRecord.age h)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LT.lt.{0} Nat instLTNat a (ChompLean.OBUQ.HighRecord.age h)) → False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_memEq._proof_1_2</code><pre class="prose">∀ (a : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (hn : @Ne.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.OBUQ.HighRecord.excess h)) →
+    False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_memEq._proof_1_3</code><pre class="prose">∀ (a : Nat)
+  (har :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))),
+  False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_memEq._proof_1_4</code><pre class="prose">∀ (a n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  @Eq.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) → False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_memEq._proof_1_5</code><pre class="prose">∀ (a n : Nat) (h : ChompLean.OBUQ.HighRecord) (hah : @LT.lt.{0} Nat instLTNat a (ChompLean.OBUQ.HighRecord.age h)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.HighRecord.age h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_memEq._proof_1_6</code><pre class="prose">∀ (a n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  Not
+      (@Eq.{1} Nat n
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_one_memEq</code><pre class="prose">∀ (H : List.{0} ChompLean.OBUQ.HighRecord) (k : Nat)
+  (hpos :
+    ∀ (h : ChompLean.OBUQ.HighRecord),
+      @Membership.mem.{0, 0} ChompLean.OBUQ.HighRecord (List.{0} ChompLean.OBUQ.HighRecord)
+          (@List.instMembership.{0} ChompLean.OBUQ.HighRecord) H h →
+        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          (ChompLean.OBUQ.HighRecord.age h)),
+  ChompLean.OBUQ.MemEq
+    (ChompLean.OBUQ.olderValues (ChompLean.OBUQ.updateHigh H k)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (ChompLean.OBUQ.shiftQueue (ChompLean.OBUQ.highValues H))</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_one_memEq._proof_1_1</code><pre class="prose">∀ (h : ChompLean.OBUQ.HighRecord)
+  (hn : @Ne.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.OBUQ.HighRecord.excess h)) →
+    False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_one_memEq._proof_1_2</code><pre class="prose">∀
+  (har :
+    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))),
+  False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_one_memEq._proof_1_3</code><pre class="prose">∀ (n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  @Eq.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) → False</pre></li><li><code>ChompLean.OBUQ.olderValues_updateHigh_one_memEq._proof_1_4</code><pre class="prose">∀ (n : Nat) (h : ChompLean.OBUQ.HighRecord)
+  (heq :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.OBUQ.HighRecord.excess h)),
+  Not
+      (@Eq.{1} Nat n
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.projectFrontier</code><pre class="prose">(Z : ChompLean.OBUQ.Frontier) → ChompLean.OBUQ.QState</pre></li><li><code>ChompLean.OBUQ.projectLive</code><pre class="prose">(H : List.{0} ChompLean.OBUQ.HighRecord) → (l : ChompLean.OBUQ.LiveRecord) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.project_newborn_memEq</code><pre class="prose">∀ (H : List.{0} ChompLean.OBUQ.HighRecord) (k : Nat)
+  (hpos :
+    ∀ (h : ChompLean.OBUQ.HighRecord),
+      @Membership.mem.{0, 0} ChompLean.OBUQ.HighRecord (List.{0} ChompLean.OBUQ.HighRecord)
+          (@List.instMembership.{0} ChompLean.OBUQ.HighRecord) H h →
+        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          (ChompLean.OBUQ.HighRecord.age h))
+  (hk : @Ne.{1} Nat k (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),
+  ChompLean.OBUQ.MemEq
+    (ChompLean.OBUQ.projectLive (ChompLean.OBUQ.updateHigh H k)
+      (ChompLean.OBUQ.LiveRecord.mk (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@List.cons.{0} Nat
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@List.nil.{0} Nat))))
+    (ChompLean.OBUQ.updateQueue (ChompLean.OBUQ.highValues H) k)</pre></li><li><code>ChompLean.OBUQ.project_newborn_memEq._simp_1_1</code><pre class="prose">∀ {α : Type u_1} {a : α} {s t : List.{u_1} α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)
+      (@HAppend.hAppend.{u_1, u_1, u_1} (List.{u_1} α) (List.{u_1} α) (List.{u_1} α)
+        (@instHAppendOfAppend.{u_1} (List.{u_1} α) (@List.instAppend.{u_1} α)) s t)
+      a)
+    (Or (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) s a)
+      (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) t a))</pre></li><li><code>ChompLean.OBUQ.project_newborn_memEq._simp_1_2</code><pre class="prose">∀ {α : Type u_1} {a b : α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)
+      (@List.cons.{u_1} α b (@List.nil.{u_1} α)) a)
+    (@Eq.{u_1 + 1} α a b)</pre></li><li><code>ChompLean.OBUQ.project_updated_live_memEq</code><pre class="prose">∀ (H : List.{0} ChompLean.OBUQ.HighRecord) (l : ChompLean.OBUQ.LiveRecord) (y k : Nat),
+  ChompLean.OBUQ.MemEq (ChompLean.OBUQ.projectLive (ChompLean.OBUQ.updateHigh H k) (ChompLean.OBUQ.updateLive l y))
+    (ChompLean.OBUQ.updateQueue (ChompLean.OBUQ.projectLive H l) y)</pre></li><li><code>ChompLean.OBUQ.project_updated_live_memEq._simp_1_1</code><pre class="prose">∀ {α : Type u_1} {a : α} {s t : List.{u_1} α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)
+      (@HAppend.hAppend.{u_1, u_1, u_1} (List.{u_1} α) (List.{u_1} α) (List.{u_1} α)
+        (@instHAppendOfAppend.{u_1} (List.{u_1} α) (@List.instAppend.{u_1} α)) s t)
+      a)
+    (Or (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) s a)
+      (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) t a))</pre></li><li><code>ChompLean.OBUQ.qEq_refl</code><pre class="prose">∀ (Q : ChompLean.OBUQ.QState), ChompLean.OBUQ.QEq Q Q</pre></li><li><code>ChompLean.OBUQ.qEq_symm</code><pre class="prose">∀ {Q Q&#x27; : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.QEq Q Q&#x27;), ChompLean.OBUQ.QEq Q&#x27; Q</pre></li><li><code>ChompLean.OBUQ.qEq_trans</code><pre class="prose">∀ {Q Q&#x27; Q&#x27;&#x27; : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.QEq Q Q&#x27;) (h&#x27; : ChompLean.OBUQ.QEq Q&#x27; Q&#x27;&#x27;),
+  ChompLean.OBUQ.QEq Q Q&#x27;&#x27;</pre></li><li><code>ChompLean.OBUQ.qOutput</code><pre class="prose">(U : List.{0} Nat) → (Q : ChompLean.OBUQ.QState) → Nat</pre></li><li><code>ChompLean.OBUQ.qOutput_eq_of_qEq</code><pre class="prose">∀ {Q Q&#x27; : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.QEq Q Q&#x27;) (U : List.{0} Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.qOutput U Q) (ChompLean.OBUQ.qOutput U Q&#x27;)</pre></li><li><code>ChompLean.OBUQ.qRun</code><pre class="prose">List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → ChompLean.OBUQ.QRunResult</pre></li><li><code>ChompLean.OBUQ.qRun._sunfold</code><pre class="prose">List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → ChompLean.OBUQ.QRunResult</pre></li><li><code>ChompLean.OBUQ.qRun._unsafe_rec</code><pre class="prose">List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → ChompLean.OBUQ.QRunResult</pre></li><li><code>ChompLean.OBUQ.qRun.eq_1</code><pre class="prose">∀ (x : ChompLean.OBUQ.QState),
+  @Eq.{1} ChompLean.OBUQ.QRunResult (ChompLean.OBUQ.qRun (@List.nil.{0} (List.{0} Nat)) x)
+    (ChompLean.OBUQ.QRunResult.mk (@List.nil.{0} Nat) x)</pre></li><li><code>ChompLean.OBUQ.qRun.eq_2</code><pre class="prose">∀ (x : ChompLean.OBUQ.QState) (U : List.{0} Nat) (Us : List.{0} (List.{0} Nat)),
+  @Eq.{1} ChompLean.OBUQ.QRunResult (ChompLean.OBUQ.qRun (@List.cons.{0} (List.{0} Nat) U Us) x)
+    (ChompLean.OBUQ.QRunResult.mk
+      (@List.cons.{0} Nat (ChompLean.OBUQ.qOutput U x)
+        (ChompLean.OBUQ.QRunResult.outputs (ChompLean.OBUQ.qRun Us (ChompLean.OBUQ.qStep U x))))
+      (ChompLean.OBUQ.QRunResult.state (ChompLean.OBUQ.qRun Us (ChompLean.OBUQ.qStep U x))))</pre></li><li><code>ChompLean.OBUQ.qRun.eq_def</code><pre class="prose">∀ (x : List.{0} (List.{0} Nat)) (x_1 : ChompLean.OBUQ.QState),
+  @Eq.{1} ChompLean.OBUQ.QRunResult (ChompLean.OBUQ.qRun x x_1)
+    (ChompLean.OBUQ.qRunOutputs.match_1.{1}
+      (fun (x : List.{0} (List.{0} Nat)) (x_2 : ChompLean.OBUQ.QState) =&gt; ChompLean.OBUQ.QRunResult) x x_1
+      (fun (Q : ChompLean.OBUQ.QState) =&gt; ChompLean.OBUQ.QRunResult.mk (@List.nil.{0} Nat) Q)
+      fun (U : List.{0} Nat) (Us : List.{0} (List.{0} Nat)) (Q : ChompLean.OBUQ.QState) =&gt;
+      have tail : ChompLean.OBUQ.QRunResult := ChompLean.OBUQ.qRun Us (ChompLean.OBUQ.qStep U Q);
+      ChompLean.OBUQ.QRunResult.mk
+        (@List.cons.{0} Nat (ChompLean.OBUQ.qOutput U Q) (ChompLean.OBUQ.QRunResult.outputs tail))
+        (ChompLean.OBUQ.QRunResult.state tail))</pre></li><li><code>ChompLean.OBUQ.qRunOutputs</code><pre class="prose">List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.qRunOutputs._sunfold</code><pre class="prose">List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.qRunOutputs._unsafe_rec</code><pre class="prose">List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.qRunOutputs.eq_1</code><pre class="prose">∀ (x : ChompLean.OBUQ.QState),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.qRunOutputs (@List.nil.{0} (List.{0} Nat)) x) (@List.nil.{0} Nat)</pre></li><li><code>ChompLean.OBUQ.qRunOutputs.eq_2</code><pre class="prose">∀ (x : ChompLean.OBUQ.QState) (U : List.{0} Nat) (Us : List.{0} (List.{0} Nat)),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.qRunOutputs (@List.cons.{0} (List.{0} Nat) U Us) x)
+    (@List.cons.{0} Nat (ChompLean.OBUQ.qOutput U x) (ChompLean.OBUQ.qRunOutputs Us (ChompLean.OBUQ.qStep U x)))</pre></li><li><code>ChompLean.OBUQ.qRunOutputs.eq_def</code><pre class="prose">∀ (x : List.{0} (List.{0} Nat)) (x_1 : ChompLean.OBUQ.QState),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.qRunOutputs x x_1)
+    (ChompLean.OBUQ.qRunOutputs.match_1.{1}
+      (fun (x : List.{0} (List.{0} Nat)) (x_2 : ChompLean.OBUQ.QState) =&gt; List.{0} Nat) x x_1
+      (fun (_Q : ChompLean.OBUQ.QState) =&gt; @List.nil.{0} Nat)
+      fun (U : List.{0} Nat) (Us : List.{0} (List.{0} Nat)) (Q : ChompLean.OBUQ.QState) =&gt;
+      @List.cons.{0} Nat (ChompLean.OBUQ.qOutput U Q) (ChompLean.OBUQ.qRunOutputs Us (ChompLean.OBUQ.qStep U Q)))</pre></li><li><code>ChompLean.OBUQ.qRunOutputs.match_1</code><pre class="prose">(motive : List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → Sort u_1) →
+  (x : List.{0} (List.{0} Nat)) →
+    (x_1 : ChompLean.OBUQ.QState) →
+      (h_1 : (_Q : ChompLean.OBUQ.QState) → motive (@List.nil.{0} (List.{0} Nat)) _Q) →
+        (h_2 :
+            (U : List.{0} Nat) →
+              (Us : List.{0} (List.{0} Nat)) →
+                (Q : ChompLean.OBUQ.QState) → motive (@List.cons.{0} (List.{0} Nat) U Us) Q) →
+          motive x x_1</pre></li><li><code>ChompLean.OBUQ.qRunOutputs_eq_of_qEq</code><pre class="prose">∀ {Q Q&#x27; : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.QEq Q Q&#x27;) (forcing : List.{0} (List.{0} Nat)),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.qRunOutputs forcing Q) (ChompLean.OBUQ.qRunOutputs forcing Q&#x27;)</pre></li><li><code>ChompLean.OBUQ.qRun_congruent</code><pre class="prose">∀ (forcing : List.{0} (List.{0} Nat)) {Q Q&#x27; : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.QEq Q Q&#x27;),
+  And
+    (@Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.QRunResult.outputs (ChompLean.OBUQ.qRun forcing Q))
+      (ChompLean.OBUQ.QRunResult.outputs (ChompLean.OBUQ.qRun forcing Q&#x27;)))
+    (ChompLean.OBUQ.QEq (ChompLean.OBUQ.QRunResult.state (ChompLean.OBUQ.qRun forcing Q))
+      (ChompLean.OBUQ.QRunResult.state (ChompLean.OBUQ.qRun forcing Q&#x27;)))</pre></li><li><code>ChompLean.OBUQ.qStep</code><pre class="prose">(U : List.{0} Nat) → (Q : ChompLean.OBUQ.QState) → ChompLean.OBUQ.QState</pre></li><li><code>ChompLean.OBUQ.qStep_congruent</code><pre class="prose">∀ {Q Q&#x27; : ChompLean.OBUQ.QState} (h : ChompLean.OBUQ.QEq Q Q&#x27;) (U : List.{0} Nat),
+  ChompLean.OBUQ.QEq (ChompLean.OBUQ.qStep U Q) (ChompLean.OBUQ.qStep U Q&#x27;)</pre></li><li><code>ChompLean.OBUQ.queueMex</code><pre class="prose">(xs : List.{0} Nat) → Nat</pre></li><li><code>ChompLean.OBUQ.queueMex_memEq</code><pre class="prose">∀ {xs ys : List.{0} Nat} (h : ChompLean.OBUQ.MemEq xs ys),
+  @Eq.{1} Nat (ChompLean.OBUQ.queueMex xs) (ChompLean.OBUQ.queueMex ys)</pre></li><li><code>ChompLean.OBUQ.queueMex_spec</code><pre class="prose">∀ (xs : List.{0} Nat),
+  And (Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs (ChompLean.OBUQ.queueMex xs)))
+    (∀ (k : Nat),
+      @LT.lt.{0} Nat instLTNat k (ChompLean.OBUQ.queueMex xs) →
+        @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs k)</pre></li><li><code>ChompLean.OBUQ.queueMex_spec._proof_1_1</code><pre class="prose">∀ (k : Nat) (hk : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))), False</pre></li><li><code>ChompLean.OBUQ.queueMex_spec._proof_1_2</code><pre class="prose">∀ (xs : List.{0} Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (ChompLean.OBUQ.listMax xs)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.listMax xs)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.scanFrontier</code><pre class="prose">(U : List.{0} Nat) →
+  (H : List.{0} ChompLean.OBUQ.HighRecord) →
+    (R : List.{0} Nat) → List.{0} ChompLean.OBUQ.LiveRecord → ChompLean.OBUQ.FrontScanResult</pre></li><li><code>ChompLean.OBUQ.scanFrontier._sunfold</code><pre class="prose">(U : List.{0} Nat) →
+  (H : List.{0} ChompLean.OBUQ.HighRecord) →
+    (R : List.{0} Nat) → List.{0} ChompLean.OBUQ.LiveRecord → ChompLean.OBUQ.FrontScanResult</pre></li><li><code>ChompLean.OBUQ.scanFrontier._unsafe_rec</code><pre class="prose">(U : List.{0} Nat) →
+  (H : List.{0} ChompLean.OBUQ.HighRecord) →
+    (R : List.{0} Nat) → List.{0} ChompLean.OBUQ.LiveRecord → ChompLean.OBUQ.FrontScanResult</pre></li><li><code>ChompLean.OBUQ.scanFrontier.eq_1</code><pre class="prose">∀ (U : List.{0} Nat) (H : List.{0} ChompLean.OBUQ.HighRecord) (R : List.{0} Nat),
+  @Eq.{1} ChompLean.OBUQ.FrontScanResult (ChompLean.OBUQ.scanFrontier U H R (@List.nil.{0} ChompLean.OBUQ.LiveRecord))
+    (ChompLean.OBUQ.FrontScanResult.mk (@List.nil.{0} Nat) (@List.nil.{0} ChompLean.OBUQ.LiveRecord))</pre></li><li><code>ChompLean.OBUQ.scanFrontier.eq_2</code><pre class="prose">∀ (U : List.{0} Nat) (H : List.{0} ChompLean.OBUQ.HighRecord) (R : List.{0} Nat) (l : ChompLean.OBUQ.LiveRecord)
+  (ls : List.{0} ChompLean.OBUQ.LiveRecord),
+  @Eq.{1} ChompLean.OBUQ.FrontScanResult
+    (ChompLean.OBUQ.scanFrontier U H R (@List.cons.{0} ChompLean.OBUQ.LiveRecord l ls))
+    (ChompLean.OBUQ.FrontScanResult.mk
+      (@List.cons.{0} Nat
+        (ChompLean.OBUQ.queueMex
+          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.projectLive H l) R)))
+        (ChompLean.OBUQ.FrontScanResult.outputs
+          (ChompLean.OBUQ.scanFrontier U H
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R
+              (@List.cons.{0} Nat
+                (ChompLean.OBUQ.queueMex
+                  (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                    (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+                    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+                      (ChompLean.OBUQ.projectLive H l) R)))
+                (@List.nil.{0} Nat)))
+            ls)))
+      (@ite.{1} (List.{0} ChompLean.OBUQ.LiveRecord)
+        (@Eq.{1} Nat
+          (ChompLean.OBUQ.queueMex
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.projectLive H l)
+                R)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (instDecidableEqNat
+          (ChompLean.OBUQ.queueMex
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.projectLive H l)
+                R)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (ChompLean.OBUQ.FrontScanResult.survivors
+          (ChompLean.OBUQ.scanFrontier U H
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R
+              (@List.cons.{0} Nat
+                (ChompLean.OBUQ.queueMex
+                  (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                    (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+                    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+                      (ChompLean.OBUQ.projectLive H l) R)))
+                (@List.nil.{0} Nat)))
+            ls))
+        (@List.cons.{0} ChompLean.OBUQ.LiveRecord
+          (ChompLean.OBUQ.updateLive l
+            (ChompLean.OBUQ.queueMex
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+                (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                  (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.projectLive H l)
+                  R))))
+          (ChompLean.OBUQ.FrontScanResult.survivors
+            (ChompLean.OBUQ.scanFrontier U H
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R
+                (@List.cons.{0} Nat
+                  (ChompLean.OBUQ.queueMex
+                    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+                      (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                        (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+                        (ChompLean.OBUQ.projectLive H l) R)))
+                  (@List.nil.{0} Nat)))
+              ls)))))</pre></li><li><code>ChompLean.OBUQ.scanFrontier.eq_def</code><pre class="prose">∀ (U : List.{0} Nat) (H : List.{0} ChompLean.OBUQ.HighRecord) (R : List.{0} Nat)
+  (x : List.{0} ChompLean.OBUQ.LiveRecord),
+  @Eq.{1} ChompLean.OBUQ.FrontScanResult (ChompLean.OBUQ.scanFrontier U H R x)
+    (ChompLean.OBUQ.scanFrontier.match_1.{1}
+      (fun (x : List.{0} ChompLean.OBUQ.LiveRecord) =&gt; ChompLean.OBUQ.FrontScanResult) x
+      (fun (_ : Unit) =&gt;
+        ChompLean.OBUQ.FrontScanResult.mk (@List.nil.{0} Nat) (@List.nil.{0} ChompLean.OBUQ.LiveRecord))
+      fun (l : ChompLean.OBUQ.LiveRecord) (ls : List.{0} ChompLean.OBUQ.LiveRecord) =&gt;
+      have y : Nat :=
+        ChompLean.OBUQ.queueMex
+          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.projectLive H l) R));
+      have tail : ChompLean.OBUQ.FrontScanResult :=
+        ChompLean.OBUQ.scanFrontier U H
+          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R
+            (@List.cons.{0} Nat y (@List.nil.{0} Nat)))
+          ls;
+      ChompLean.OBUQ.FrontScanResult.mk (@List.cons.{0} Nat y (ChompLean.OBUQ.FrontScanResult.outputs tail))
+        (@ite.{1} (List.{0} ChompLean.OBUQ.LiveRecord)
+          (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+          (instDecidableEqNat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+          (ChompLean.OBUQ.FrontScanResult.survivors tail)
+          (@List.cons.{0} ChompLean.OBUQ.LiveRecord (ChompLean.OBUQ.updateLive l y)
+            (ChompLean.OBUQ.FrontScanResult.survivors tail))))</pre></li><li><code>ChompLean.OBUQ.scanFrontier.match_1</code><pre class="prose">(motive : List.{0} ChompLean.OBUQ.LiveRecord → Sort u_1) →
+  (x : List.{0} ChompLean.OBUQ.LiveRecord) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.OBUQ.LiveRecord)) →
+      (h_2 :
+          (l : ChompLean.OBUQ.LiveRecord) →
+            (ls : List.{0} ChompLean.OBUQ.LiveRecord) → motive (@List.cons.{0} ChompLean.OBUQ.LiveRecord l ls)) →
+        motive x</pre></li><li><code>ChompLean.OBUQ.scanFrontier_project</code><pre class="prose">∀ (U : List.{0} Nat) (H : List.{0} ChompLean.OBUQ.HighRecord) (R : List.{0} Nat)
+  (ls : List.{0} ChompLean.OBUQ.LiveRecord) (k : Nat),
+  And
+    (@Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.FrontScanResult.outputs (ChompLean.OBUQ.scanFrontier U H R ls))
+      (ChompLean.OBUQ.ScanResult.outputs
+        (ChompLean.OBUQ.scanQueues U R
+          (@List.map.{0, 0} ChompLean.OBUQ.LiveRecord (List.{0} Nat) (ChompLean.OBUQ.projectLive H) ls))))
+    (ChompLean.OBUQ.WordEq
+      (@List.map.{0, 0} ChompLean.OBUQ.LiveRecord (List.{0} Nat)
+        (ChompLean.OBUQ.projectLive (ChompLean.OBUQ.updateHigh H k))
+        (ChompLean.OBUQ.FrontScanResult.survivors (ChompLean.OBUQ.scanFrontier U H R ls)))
+      (ChompLean.OBUQ.ScanResult.survivors
+        (ChompLean.OBUQ.scanQueues U R
+          (@List.map.{0, 0} ChompLean.OBUQ.LiveRecord (List.{0} Nat) (ChompLean.OBUQ.projectLive H) ls))))</pre></li><li><code>ChompLean.OBUQ.scanQueues</code><pre class="prose">(U R : List.{0} Nat) → List.{0} (List.{0} Nat) → ChompLean.OBUQ.ScanResult</pre></li><li><code>ChompLean.OBUQ.scanQueues._sunfold</code><pre class="prose">(U R : List.{0} Nat) → List.{0} (List.{0} Nat) → ChompLean.OBUQ.ScanResult</pre></li><li><code>ChompLean.OBUQ.scanQueues._unsafe_rec</code><pre class="prose">(U R : List.{0} Nat) → List.{0} (List.{0} Nat) → ChompLean.OBUQ.ScanResult</pre></li><li><code>ChompLean.OBUQ.scanQueues.eq_1</code><pre class="prose">∀ (U R : List.{0} Nat),
+  @Eq.{1} ChompLean.OBUQ.ScanResult (ChompLean.OBUQ.scanQueues U R (@List.nil.{0} (List.{0} Nat)))
+    (ChompLean.OBUQ.ScanResult.mk (@List.nil.{0} Nat) (@List.nil.{0} (List.{0} Nat)))</pre></li><li><code>ChompLean.OBUQ.scanQueues.eq_2</code><pre class="prose">∀ (U R q : List.{0} Nat) (qs : List.{0} (List.{0} Nat)),
+  @Eq.{1} ChompLean.OBUQ.ScanResult (ChompLean.OBUQ.scanQueues U R (@List.cons.{0} (List.{0} Nat) q qs))
+    (ChompLean.OBUQ.ScanResult.mk
+      (@List.cons.{0} Nat
+        (ChompLean.OBUQ.queueMex
+          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q R)))
+        (ChompLean.OBUQ.ScanResult.outputs
+          (ChompLean.OBUQ.scanQueues U
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R
+              (@List.cons.{0} Nat
+                (ChompLean.OBUQ.queueMex
+                  (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                    (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+                    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q R)))
+                (@List.nil.{0} Nat)))
+            qs)))
+      (@ite.{1} (List.{0} (List.{0} Nat))
+        (@Eq.{1} Nat
+          (ChompLean.OBUQ.queueMex
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q R)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (instDecidableEqNat
+          (ChompLean.OBUQ.queueMex
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q R)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (ChompLean.OBUQ.ScanResult.survivors
+          (ChompLean.OBUQ.scanQueues U
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R
+              (@List.cons.{0} Nat
+                (ChompLean.OBUQ.queueMex
+                  (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                    (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+                    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q R)))
+                (@List.nil.{0} Nat)))
+            qs))
+        (@List.cons.{0} (List.{0} Nat)
+          (ChompLean.OBUQ.updateQueue q
+            (ChompLean.OBUQ.queueMex
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+                (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                  (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q R))))
+          (ChompLean.OBUQ.ScanResult.survivors
+            (ChompLean.OBUQ.scanQueues U
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R
+                (@List.cons.{0} Nat
+                  (ChompLean.OBUQ.queueMex
+                    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+                      (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                        (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q R)))
+                  (@List.nil.{0} Nat)))
+              qs)))))</pre></li><li><code>ChompLean.OBUQ.scanQueues.eq_def</code><pre class="prose">∀ (U R : List.{0} Nat) (x : List.{0} (List.{0} Nat)),
+  @Eq.{1} ChompLean.OBUQ.ScanResult (ChompLean.OBUQ.scanQueues U R x)
+    (ChompLean.OBUQ.scanQueues.match_1.{1} (fun (x : List.{0} (List.{0} Nat)) =&gt; ChompLean.OBUQ.ScanResult) x
+      (fun (_ : Unit) =&gt; ChompLean.OBUQ.ScanResult.mk (@List.nil.{0} Nat) (@List.nil.{0} (List.{0} Nat)))
+      fun (q : List.{0} Nat) (qs : List.{0} (List.{0} Nat)) =&gt;
+      have y : Nat :=
+        ChompLean.OBUQ.queueMex
+          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q R));
+      have tail : ChompLean.OBUQ.ScanResult :=
+        ChompLean.OBUQ.scanQueues U
+          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R
+            (@List.cons.{0} Nat y (@List.nil.{0} Nat)))
+          qs;
+      ChompLean.OBUQ.ScanResult.mk (@List.cons.{0} Nat y (ChompLean.OBUQ.ScanResult.outputs tail))
+        (@ite.{1} (List.{0} (List.{0} Nat))
+          (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+          (instDecidableEqNat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+          (ChompLean.OBUQ.ScanResult.survivors tail)
+          (@List.cons.{0} (List.{0} Nat) (ChompLean.OBUQ.updateQueue q y) (ChompLean.OBUQ.ScanResult.survivors tail))))</pre></li><li><code>ChompLean.OBUQ.scanQueues.match_1</code><pre class="prose">(motive : List.{0} (List.{0} Nat) → Sort u_1) →
+  (x : List.{0} (List.{0} Nat)) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} (List.{0} Nat))) →
+      (h_2 : (q : List.{0} Nat) → (qs : List.{0} (List.{0} Nat)) → motive (@List.cons.{0} (List.{0} Nat) q qs)) →
+        motive x</pre></li><li><code>ChompLean.OBUQ.scanQueues_congruent</code><pre class="prose">∀ {qs qs&#x27; : List.{0} (List.{0} Nat)} (hword : ChompLean.OBUQ.WordEq qs qs&#x27;) (U R : List.{0} Nat),
+  And
+    (@Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.ScanResult.outputs (ChompLean.OBUQ.scanQueues U R qs))
+      (ChompLean.OBUQ.ScanResult.outputs (ChompLean.OBUQ.scanQueues U R qs&#x27;)))
+    (ChompLean.OBUQ.WordEq (ChompLean.OBUQ.ScanResult.survivors (ChompLean.OBUQ.scanQueues U R qs))
+      (ChompLean.OBUQ.ScanResult.survivors (ChompLean.OBUQ.scanQueues U R qs&#x27;)))</pre></li><li><code>ChompLean.OBUQ.seekMissing</code><pre class="prose">(xs : List.{0} Nat) → (n : Nat) → Nat → Nat</pre></li><li><code>ChompLean.OBUQ.seekMissing._sunfold</code><pre class="prose">(xs : List.{0} Nat) → (n : Nat) → Nat → Nat</pre></li><li><code>ChompLean.OBUQ.seekMissing._unsafe_rec</code><pre class="prose">(xs : List.{0} Nat) → (n : Nat) → Nat → Nat</pre></li><li><code>ChompLean.OBUQ.seekMissing.eq_1</code><pre class="prose">∀ (xs : List.{0} Nat) (n : Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.seekMissing xs n (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) n</pre></li><li><code>ChompLean.OBUQ.seekMissing.eq_2</code><pre class="prose">∀ (xs : List.{0} Nat) (n fuel : Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.seekMissing xs n (Nat.succ fuel))
+    (@ite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs n)
+      (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat) Nat.instLawfulBEq n
+        xs)
+      (ChompLean.OBUQ.seekMissing xs
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        fuel)
+      n)</pre></li><li><code>ChompLean.OBUQ.seekMissing.eq_def</code><pre class="prose">∀ (xs : List.{0} Nat) (n x : Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.seekMissing xs n x)
+    (ChompLean.OBUQ.seekMissing.match_1.{1} (fun (x : Nat) =&gt; Nat) x (fun (_ : Unit) =&gt; n) fun (fuel : Nat) =&gt;
+      @ite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs n)
+        (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat) Nat.instLawfulBEq
+          n xs)
+        (ChompLean.OBUQ.seekMissing xs
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          fuel)
+        n)</pre></li><li><code>ChompLean.OBUQ.seekMissing.match_1</code><pre class="prose">(motive : Nat → Sort u_1) →
+  (x : Nat) →
+    (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) →
+      (h_2 : (fuel : Nat) → motive (Nat.succ fuel)) → motive x</pre></li><li><code>ChompLean.OBUQ.seekMissing_memEq</code><pre class="prose">∀ {xs ys : List.{0} Nat} (h : ChompLean.OBUQ.MemEq xs ys) (n fuel : Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.seekMissing xs n fuel) (ChompLean.OBUQ.seekMissing ys n fuel)</pre></li><li><code>ChompLean.OBUQ.seekMissing_spec</code><pre class="prose">∀ {xs : List.{0} Nat} {n fuel : Nat}
+  (hpast :
+    ∀ (k : Nat),
+      @LT.lt.{0} Nat instLTNat k n → @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs k)
+  (hbound :
+    @LT.lt.{0} Nat instLTNat (ChompLean.OBUQ.listMax xs)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n fuel)),
+  have m : Nat := ChompLean.OBUQ.seekMissing xs n fuel;
+  And (Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs m))
+    (∀ (k : Nat),
+      @LT.lt.{0} Nat instLTNat k m → @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs k)</pre></li><li><code>ChompLean.OBUQ.seekMissing_spec._proof_1_4</code><pre class="prose">∀ {xs : List.{0} Nat} (fuel : Nat) {n : Nat} (k : Nat)
+  (hk :
+    @LT.lt.{0} Nat instLTNat k
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hkn : Not (@LT.lt.{0} Nat instLTNat k n)), Not (@Eq.{1} Nat k n) → False</pre></li><li><code>ChompLean.OBUQ.seekMissing_spec._proof_1_5</code><pre class="prose">∀ {xs : List.{0} Nat} (fuel : Nat) {n : Nat}
+  (hbound :
+    @LT.lt.{0} Nat instLTNat (ChompLean.OBUQ.listMax xs)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) fuel
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (ChompLean.OBUQ.listMax xs)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          fuel)) →
+    False</pre></li><li><code>ChompLean.OBUQ.shiftHigh</code><pre class="prose">List.{0} ChompLean.OBUQ.HighRecord → List.{0} ChompLean.OBUQ.HighRecord</pre></li><li><code>ChompLean.OBUQ.shiftHigh._sunfold</code><pre class="prose">List.{0} ChompLean.OBUQ.HighRecord → List.{0} ChompLean.OBUQ.HighRecord</pre></li><li><code>ChompLean.OBUQ.shiftHigh._unsafe_rec</code><pre class="prose">List.{0} ChompLean.OBUQ.HighRecord → List.{0} ChompLean.OBUQ.HighRecord</pre></li><li><code>ChompLean.OBUQ.shiftHigh.eq_1</code><pre class="prose">@Eq.{1} (List.{0} ChompLean.OBUQ.HighRecord) (ChompLean.OBUQ.shiftHigh (@List.nil.{0} ChompLean.OBUQ.HighRecord))
+  (@List.nil.{0} ChompLean.OBUQ.HighRecord)</pre></li><li><code>ChompLean.OBUQ.shiftHigh.eq_2</code><pre class="prose">∀ (h : ChompLean.OBUQ.HighRecord) (hs : List.{0} ChompLean.OBUQ.HighRecord),
+  @Eq.{1} (List.{0} ChompLean.OBUQ.HighRecord)
+    (ChompLean.OBUQ.shiftHigh (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs))
+    (@ite.{1} (List.{0} ChompLean.OBUQ.HighRecord)
+      (@Eq.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (instDecidableEqNat (ChompLean.OBUQ.HighRecord.excess h)
+        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (ChompLean.OBUQ.shiftHigh hs)
+      (@List.cons.{0} ChompLean.OBUQ.HighRecord
+        (ChompLean.OBUQ.HighRecord.mk
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.HighRecord.age h)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (ChompLean.OBUQ.shiftHigh hs)))</pre></li><li><code>ChompLean.OBUQ.shiftHigh.eq_def</code><pre class="prose">∀ (x : List.{0} ChompLean.OBUQ.HighRecord),
+  @Eq.{1} (List.{0} ChompLean.OBUQ.HighRecord) (ChompLean.OBUQ.shiftHigh x)
+    (ChompLean.OBUQ.highValues.match_1.{1}
+      (fun (x : List.{0} ChompLean.OBUQ.HighRecord) =&gt; List.{0} ChompLean.OBUQ.HighRecord) x
+      (fun (_ : Unit) =&gt; @List.nil.{0} ChompLean.OBUQ.HighRecord)
+      fun (h : ChompLean.OBUQ.HighRecord) (hs : List.{0} ChompLean.OBUQ.HighRecord) =&gt;
+      @ite.{1} (List.{0} ChompLean.OBUQ.HighRecord)
+        (@Eq.{1} Nat (ChompLean.OBUQ.HighRecord.excess h) (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (instDecidableEqNat (ChompLean.OBUQ.HighRecord.excess h)
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (ChompLean.OBUQ.shiftHigh hs)
+        (@List.cons.{0} ChompLean.OBUQ.HighRecord
+          (ChompLean.OBUQ.HighRecord.mk
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.OBUQ.HighRecord.age h)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.OBUQ.HighRecord.excess h)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (ChompLean.OBUQ.shiftHigh hs)))</pre></li><li><code>ChompLean.OBUQ.shiftQueue</code><pre class="prose">List.{0} Nat → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.shiftQueue._sunfold</code><pre class="prose">List.{0} Nat → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.shiftQueue._unsafe_rec</code><pre class="prose">List.{0} Nat → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.shiftQueue.eq_1</code><pre class="prose">@Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.shiftQueue (@List.nil.{0} Nat)) (@List.nil.{0} Nat)</pre></li><li><code>ChompLean.OBUQ.shiftQueue.eq_2</code><pre class="prose">∀ (xs : List.{0} Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.shiftQueue (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs))
+    (ChompLean.OBUQ.shiftQueue xs)</pre></li><li><code>ChompLean.OBUQ.shiftQueue.eq_3</code><pre class="prose">∀ (x_1 : Nat) (xs : List.{0} Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.shiftQueue (@List.cons.{0} Nat (Nat.succ x_1) xs))
+    (@List.cons.{0} Nat x_1 (ChompLean.OBUQ.shiftQueue xs))</pre></li><li><code>ChompLean.OBUQ.shiftQueue.eq_def</code><pre class="prose">∀ (x : List.{0} Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.shiftQueue x)
+    (ChompLean.OBUQ.shiftQueue.match_1.{1} (fun (x : List.{0} Nat) =&gt; List.{0} Nat) x
+      (fun (_ : Unit) =&gt; @List.nil.{0} Nat) (fun (xs : List.{0} Nat) =&gt; ChompLean.OBUQ.shiftQueue xs)
+      fun (x : Nat) (xs : List.{0} Nat) =&gt; @List.cons.{0} Nat x (ChompLean.OBUQ.shiftQueue xs))</pre></li><li><code>ChompLean.OBUQ.shiftQueue.match_1</code><pre class="prose">(motive : List.{0} Nat → Sort u_1) →
+  (x : List.{0} Nat) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} Nat)) →
+      (h_2 :
+          (xs : List.{0} Nat) →
+            motive (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs)) →
+        (h_3 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat (Nat.succ x) xs)) → motive x</pre></li><li><code>ChompLean.OBUQ.shiftQueue_memEq</code><pre class="prose">∀ {xs ys : List.{0} Nat} (h : ChompLean.OBUQ.MemEq xs ys),
+  ChompLean.OBUQ.MemEq (ChompLean.OBUQ.shiftQueue xs) (ChompLean.OBUQ.shiftQueue ys)</pre></li><li><code>ChompLean.OBUQ.updateHigh</code><pre class="prose">(H : List.{0} ChompLean.OBUQ.HighRecord) → (k : Nat) → List.{0} ChompLean.OBUQ.HighRecord</pre></li><li><code>ChompLean.OBUQ.updateLive</code><pre class="prose">(l : ChompLean.OBUQ.LiveRecord) → (y : Nat) → ChompLean.OBUQ.LiveRecord</pre></li><li><code>ChompLean.OBUQ.updateQueue</code><pre class="prose">(xs : List.{0} Nat) → (y : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.updateQueue_memEq</code><pre class="prose">∀ {xs ys : List.{0} Nat} (h : ChompLean.OBUQ.MemEq xs ys) (y : Nat),
+  ChompLean.OBUQ.MemEq (ChompLean.OBUQ.updateQueue xs y) (ChompLean.OBUQ.updateQueue ys y)</pre></li><li><code>ChompLean.OBUQ.wordEq_append</code><pre class="prose">∀ {as as&#x27; bs bs&#x27; : List.{0} (List.{0} Nat)} (ha : ChompLean.OBUQ.WordEq as as&#x27;) (hb : ChompLean.OBUQ.WordEq bs bs&#x27;),
+  ChompLean.OBUQ.WordEq
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat))
+      (@instHAppendOfAppend.{0} (List.{0} (List.{0} Nat)) (@List.instAppend.{0} (List.{0} Nat))) as bs)
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat))
+      (@instHAppendOfAppend.{0} (List.{0} (List.{0} Nat)) (@List.instAppend.{0} (List.{0} Nat))) as&#x27; bs&#x27;)</pre></li><li><code>ChompLean.OBUQ.wordEq_refl</code><pre class="prose">∀ (qs : List.{0} (List.{0} Nat)), ChompLean.OBUQ.WordEq qs qs</pre></li><li><code>ChompLean.OBUQ.wordEq_symm</code><pre class="prose">∀ {qs qs&#x27; : List.{0} (List.{0} Nat)} (h : ChompLean.OBUQ.WordEq qs qs&#x27;), ChompLean.OBUQ.WordEq qs&#x27; qs</pre></li><li><code>ChompLean.OBUQ.wordEq_trans</code><pre class="prose">∀ {a b c : List.{0} (List.{0} Nat)} (hab : ChompLean.OBUQ.WordEq a b) (hbc : ChompLean.OBUQ.WordEq b c),
+  ChompLean.OBUQ.WordEq a c</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.frontierRun.match_1.eq_1</code><pre class="prose">∀ (motive : List.{0} (List.{0} Nat) → ChompLean.OBUQ.Frontier → Sort u_1) (Z : ChompLean.OBUQ.Frontier)
+  (h_1 : (Z : ChompLean.OBUQ.Frontier) → motive (@List.nil.{0} (List.{0} Nat)) Z)
+  (h_2 :
+    (U : List.{0} Nat) →
+      (Us : List.{0} (List.{0} Nat)) → (Z : ChompLean.OBUQ.Frontier) → motive (@List.cons.{0} (List.{0} Nat) U Us) Z),
+  @Eq.{u_1} (motive (@List.nil.{0} (List.{0} Nat)) Z)
+    (ChompLean.OBUQ.frontierRun.match_1.{u_1} motive (@List.nil.{0} (List.{0} Nat)) Z h_1 h_2) (h_1 Z)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.frontierRun.match_1.eq_2</code><pre class="prose">∀ (motive : List.{0} (List.{0} Nat) → ChompLean.OBUQ.Frontier → Sort u_1) (U : List.{0} Nat)
+  (Us : List.{0} (List.{0} Nat)) (Z : ChompLean.OBUQ.Frontier)
+  (h_1 : (Z : ChompLean.OBUQ.Frontier) → motive (@List.nil.{0} (List.{0} Nat)) Z)
+  (h_2 :
+    (U : List.{0} Nat) →
+      (Us : List.{0} (List.{0} Nat)) → (Z : ChompLean.OBUQ.Frontier) → motive (@List.cons.{0} (List.{0} Nat) U Us) Z),
+  @Eq.{u_1} (motive (@List.cons.{0} (List.{0} Nat) U Us) Z)
+    (ChompLean.OBUQ.frontierRun.match_1.{u_1} motive (@List.cons.{0} (List.{0} Nat) U Us) Z h_1 h_2) (h_2 U Us Z)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.frontierRun.match_1.splitter</code><pre class="prose">(motive : List.{0} (List.{0} Nat) → ChompLean.OBUQ.Frontier → Sort u_1) →
+  (x : List.{0} (List.{0} Nat)) →
+    (x_1 : ChompLean.OBUQ.Frontier) →
+      (h_1 : (Z : ChompLean.OBUQ.Frontier) → motive (@List.nil.{0} (List.{0} Nat)) Z) →
+        (h_2 :
+            (U : List.{0} Nat) →
+              (Us : List.{0} (List.{0} Nat)) →
+                (Z : ChompLean.OBUQ.Frontier) → motive (@List.cons.{0} (List.{0} Nat) U Us) Z) →
+          motive x x_1</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.highValues.match_1.eq_1</code><pre class="prose">∀ (motive : List.{0} ChompLean.OBUQ.HighRecord → Sort u_1)
+  (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.OBUQ.HighRecord))
+  (h_2 :
+    (h : ChompLean.OBUQ.HighRecord) →
+      (hs : List.{0} ChompLean.OBUQ.HighRecord) → motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs)),
+  @Eq.{u_1} (motive (@List.nil.{0} ChompLean.OBUQ.HighRecord))
+    (ChompLean.OBUQ.highValues.match_1.{u_1} motive (@List.nil.{0} ChompLean.OBUQ.HighRecord) h_1 h_2) (h_1 Unit.unit)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.highValues.match_1.eq_2</code><pre class="prose">∀ (motive : List.{0} ChompLean.OBUQ.HighRecord → Sort u_1) (h : ChompLean.OBUQ.HighRecord)
+  (hs : List.{0} ChompLean.OBUQ.HighRecord) (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.OBUQ.HighRecord))
+  (h_2 :
+    (h : ChompLean.OBUQ.HighRecord) →
+      (hs : List.{0} ChompLean.OBUQ.HighRecord) → motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs)),
+  @Eq.{u_1} (motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs))
+    (ChompLean.OBUQ.highValues.match_1.{u_1} motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs) h_1 h_2) (h_2 h hs)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.highValues.match_1.splitter</code><pre class="prose">(motive : List.{0} ChompLean.OBUQ.HighRecord → Sort u_1) →
+  (x : List.{0} ChompLean.OBUQ.HighRecord) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.OBUQ.HighRecord)) →
+      (h_2 :
+          (h : ChompLean.OBUQ.HighRecord) →
+            (hs : List.{0} ChompLean.OBUQ.HighRecord) → motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs)) →
+        motive x</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.listMax.match_1.eq_1</code><pre class="prose">∀ (motive : List.{0} Nat → Sort u_1) (h_1 : (a : Unit) → motive (@List.nil.{0} Nat))
+  (h_2 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat x xs)),
+  @Eq.{u_1} (motive (@List.nil.{0} Nat)) (ChompLean.OBUQ.listMax.match_1.{u_1} motive (@List.nil.{0} Nat) h_1 h_2)
+    (h_1 Unit.unit)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.listMax.match_1.eq_2</code><pre class="prose">∀ (motive : List.{0} Nat → Sort u_1) (x : Nat) (xs : List.{0} Nat) (h_1 : (a : Unit) → motive (@List.nil.{0} Nat))
+  (h_2 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat x xs)),
+  @Eq.{u_1} (motive (@List.cons.{0} Nat x xs))
+    (ChompLean.OBUQ.listMax.match_1.{u_1} motive (@List.cons.{0} Nat x xs) h_1 h_2) (h_2 x xs)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.listMax.match_1.splitter</code><pre class="prose">(motive : List.{0} Nat → Sort u_1) →
+  (x : List.{0} Nat) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} Nat)) →
+      (h_2 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat x xs)) → motive x</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.olderValues.match_1.eq_1</code><pre class="prose">∀ (motive : List.{0} ChompLean.OBUQ.HighRecord → Nat → Sort u_1) (_a : Nat)
+  (h_1 : (_a : Nat) → motive (@List.nil.{0} ChompLean.OBUQ.HighRecord) _a)
+  (h_2 :
+    (h : ChompLean.OBUQ.HighRecord) →
+      (hs : List.{0} ChompLean.OBUQ.HighRecord) → (a : Nat) → motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs) a),
+  @Eq.{u_1} (motive (@List.nil.{0} ChompLean.OBUQ.HighRecord) _a)
+    (ChompLean.OBUQ.olderValues.match_1.{u_1} motive (@List.nil.{0} ChompLean.OBUQ.HighRecord) _a h_1 h_2) (h_1 _a)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.olderValues.match_1.eq_2</code><pre class="prose">∀ (motive : List.{0} ChompLean.OBUQ.HighRecord → Nat → Sort u_1) (h : ChompLean.OBUQ.HighRecord)
+  (hs : List.{0} ChompLean.OBUQ.HighRecord) (a : Nat)
+  (h_1 : (_a : Nat) → motive (@List.nil.{0} ChompLean.OBUQ.HighRecord) _a)
+  (h_2 :
+    (h : ChompLean.OBUQ.HighRecord) →
+      (hs : List.{0} ChompLean.OBUQ.HighRecord) → (a : Nat) → motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs) a),
+  @Eq.{u_1} (motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs) a)
+    (ChompLean.OBUQ.olderValues.match_1.{u_1} motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs) a h_1 h_2)
+    (h_2 h hs a)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.olderValues.match_1.splitter</code><pre class="prose">(motive : List.{0} ChompLean.OBUQ.HighRecord → Nat → Sort u_1) →
+  (x : List.{0} ChompLean.OBUQ.HighRecord) →
+    (x_1 : Nat) →
+      (h_1 : (_a : Nat) → motive (@List.nil.{0} ChompLean.OBUQ.HighRecord) _a) →
+        (h_2 :
+            (h : ChompLean.OBUQ.HighRecord) →
+              (hs : List.{0} ChompLean.OBUQ.HighRecord) →
+                (a : Nat) → motive (@List.cons.{0} ChompLean.OBUQ.HighRecord h hs) a) →
+          motive x x_1</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.qRunOutputs.match_1.eq_1</code><pre class="prose">∀ (motive : List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → Sort u_1) (_Q : ChompLean.OBUQ.QState)
+  (h_1 : (_Q : ChompLean.OBUQ.QState) → motive (@List.nil.{0} (List.{0} Nat)) _Q)
+  (h_2 :
+    (U : List.{0} Nat) →
+      (Us : List.{0} (List.{0} Nat)) → (Q : ChompLean.OBUQ.QState) → motive (@List.cons.{0} (List.{0} Nat) U Us) Q),
+  @Eq.{u_1} (motive (@List.nil.{0} (List.{0} Nat)) _Q)
+    (ChompLean.OBUQ.qRunOutputs.match_1.{u_1} motive (@List.nil.{0} (List.{0} Nat)) _Q h_1 h_2) (h_1 _Q)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.qRunOutputs.match_1.eq_2</code><pre class="prose">∀ (motive : List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → Sort u_1) (U : List.{0} Nat)
+  (Us : List.{0} (List.{0} Nat)) (Q : ChompLean.OBUQ.QState)
+  (h_1 : (_Q : ChompLean.OBUQ.QState) → motive (@List.nil.{0} (List.{0} Nat)) _Q)
+  (h_2 :
+    (U : List.{0} Nat) →
+      (Us : List.{0} (List.{0} Nat)) → (Q : ChompLean.OBUQ.QState) → motive (@List.cons.{0} (List.{0} Nat) U Us) Q),
+  @Eq.{u_1} (motive (@List.cons.{0} (List.{0} Nat) U Us) Q)
+    (ChompLean.OBUQ.qRunOutputs.match_1.{u_1} motive (@List.cons.{0} (List.{0} Nat) U Us) Q h_1 h_2) (h_2 U Us Q)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.qRunOutputs.match_1.splitter</code><pre class="prose">(motive : List.{0} (List.{0} Nat) → ChompLean.OBUQ.QState → Sort u_1) →
+  (x : List.{0} (List.{0} Nat)) →
+    (x_1 : ChompLean.OBUQ.QState) →
+      (h_1 : (_Q : ChompLean.OBUQ.QState) → motive (@List.nil.{0} (List.{0} Nat)) _Q) →
+        (h_2 :
+            (U : List.{0} Nat) →
+              (Us : List.{0} (List.{0} Nat)) →
+                (Q : ChompLean.OBUQ.QState) → motive (@List.cons.{0} (List.{0} Nat) U Us) Q) →
+          motive x x_1</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.scanFrontier.match_1.eq_1</code><pre class="prose">∀ (motive : List.{0} ChompLean.OBUQ.LiveRecord → Sort u_1)
+  (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.OBUQ.LiveRecord))
+  (h_2 :
+    (l : ChompLean.OBUQ.LiveRecord) →
+      (ls : List.{0} ChompLean.OBUQ.LiveRecord) → motive (@List.cons.{0} ChompLean.OBUQ.LiveRecord l ls)),
+  @Eq.{u_1} (motive (@List.nil.{0} ChompLean.OBUQ.LiveRecord))
+    (ChompLean.OBUQ.scanFrontier.match_1.{u_1} motive (@List.nil.{0} ChompLean.OBUQ.LiveRecord) h_1 h_2) (h_1 Unit.unit)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.scanFrontier.match_1.eq_2</code><pre class="prose">∀ (motive : List.{0} ChompLean.OBUQ.LiveRecord → Sort u_1) (l : ChompLean.OBUQ.LiveRecord)
+  (ls : List.{0} ChompLean.OBUQ.LiveRecord) (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.OBUQ.LiveRecord))
+  (h_2 :
+    (l : ChompLean.OBUQ.LiveRecord) →
+      (ls : List.{0} ChompLean.OBUQ.LiveRecord) → motive (@List.cons.{0} ChompLean.OBUQ.LiveRecord l ls)),
+  @Eq.{u_1} (motive (@List.cons.{0} ChompLean.OBUQ.LiveRecord l ls))
+    (ChompLean.OBUQ.scanFrontier.match_1.{u_1} motive (@List.cons.{0} ChompLean.OBUQ.LiveRecord l ls) h_1 h_2)
+    (h_2 l ls)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.scanFrontier.match_1.splitter</code><pre class="prose">(motive : List.{0} ChompLean.OBUQ.LiveRecord → Sort u_1) →
+  (x : List.{0} ChompLean.OBUQ.LiveRecord) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.OBUQ.LiveRecord)) →
+      (h_2 :
+          (l : ChompLean.OBUQ.LiveRecord) →
+            (ls : List.{0} ChompLean.OBUQ.LiveRecord) → motive (@List.cons.{0} ChompLean.OBUQ.LiveRecord l ls)) →
+        motive x</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.scanQueues.match_1.eq_1</code><pre class="prose">∀ (motive : List.{0} (List.{0} Nat) → Sort u_1) (h_1 : (a : Unit) → motive (@List.nil.{0} (List.{0} Nat)))
+  (h_2 : (q : List.{0} Nat) → (qs : List.{0} (List.{0} Nat)) → motive (@List.cons.{0} (List.{0} Nat) q qs)),
+  @Eq.{u_1} (motive (@List.nil.{0} (List.{0} Nat)))
+    (ChompLean.OBUQ.scanQueues.match_1.{u_1} motive (@List.nil.{0} (List.{0} Nat)) h_1 h_2) (h_1 Unit.unit)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.scanQueues.match_1.eq_2</code><pre class="prose">∀ (motive : List.{0} (List.{0} Nat) → Sort u_1) (q : List.{0} Nat) (qs : List.{0} (List.{0} Nat))
+  (h_1 : (a : Unit) → motive (@List.nil.{0} (List.{0} Nat)))
+  (h_2 : (q : List.{0} Nat) → (qs : List.{0} (List.{0} Nat)) → motive (@List.cons.{0} (List.{0} Nat) q qs)),
+  @Eq.{u_1} (motive (@List.cons.{0} (List.{0} Nat) q qs))
+    (ChompLean.OBUQ.scanQueues.match_1.{u_1} motive (@List.cons.{0} (List.{0} Nat) q qs) h_1 h_2) (h_2 q qs)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.scanQueues.match_1.splitter</code><pre class="prose">(motive : List.{0} (List.{0} Nat) → Sort u_1) →
+  (x : List.{0} (List.{0} Nat)) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} (List.{0} Nat))) →
+      (h_2 : (q : List.{0} Nat) → (qs : List.{0} (List.{0} Nat)) → motive (@List.cons.{0} (List.{0} Nat) q qs)) →
+        motive x</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.seekMissing.match_1.eq_1</code><pre class="prose">∀ (motive : Nat → Sort u_1) (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  (h_2 : (fuel : Nat) → motive (Nat.succ fuel)),
+  @Eq.{u_1} (motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+    (ChompLean.OBUQ.seekMissing.match_1.{u_1} motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) h_1
+      h_2)
+    (h_1 Unit.unit)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.seekMissing.match_1.eq_2</code><pre class="prose">∀ (motive : Nat → Sort u_1) (fuel : Nat)
+  (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  (h_2 : (fuel : Nat) → motive (Nat.succ fuel)),
+  @Eq.{u_1} (motive (Nat.succ fuel)) (ChompLean.OBUQ.seekMissing.match_1.{u_1} motive (Nat.succ fuel) h_1 h_2)
+    (h_2 fuel)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.seekMissing.match_1.splitter</code><pre class="prose">(motive : Nat → Sort u_1) →
+  (x : Nat) →
+    (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) →
+      (h_2 : (fuel : Nat) → motive (Nat.succ fuel)) → motive x</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.shiftQueue.match_1.eq_1</code><pre class="prose">∀ (motive : List.{0} Nat → Sort u_1) (h_1 : (a : Unit) → motive (@List.nil.{0} Nat))
+  (h_2 :
+    (xs : List.{0} Nat) → motive (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs))
+  (h_3 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat (Nat.succ x) xs)),
+  @Eq.{u_1} (motive (@List.nil.{0} Nat))
+    (ChompLean.OBUQ.shiftQueue.match_1.{u_1} motive (@List.nil.{0} Nat) h_1 h_2 h_3) (h_1 Unit.unit)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.shiftQueue.match_1.eq_2</code><pre class="prose">∀ (motive : List.{0} Nat → Sort u_1) (xs : List.{0} Nat) (h_1 : (a : Unit) → motive (@List.nil.{0} Nat))
+  (h_2 :
+    (xs : List.{0} Nat) → motive (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs))
+  (h_3 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat (Nat.succ x) xs)),
+  @Eq.{u_1} (motive (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs))
+    (ChompLean.OBUQ.shiftQueue.match_1.{u_1} motive
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs) h_1 h_2 h_3)
+    (h_2 xs)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.shiftQueue.match_1.eq_3</code><pre class="prose">∀ (motive : List.{0} Nat → Sort u_1) (x : Nat) (xs : List.{0} Nat) (h_1 : (a : Unit) → motive (@List.nil.{0} Nat))
+  (h_2 :
+    (xs : List.{0} Nat) → motive (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs))
+  (h_3 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat (Nat.succ x) xs)),
+  @Eq.{u_1} (motive (@List.cons.{0} Nat (Nat.succ x) xs))
+    (ChompLean.OBUQ.shiftQueue.match_1.{u_1} motive (@List.cons.{0} Nat (Nat.succ x) xs) h_1 h_2 h_3) (h_3 x xs)</pre></li><li><code>_private.XOrderedBlockerUnionQuotient.0.ChompLean.OBUQ.shiftQueue.match_1.splitter</code><pre class="prose">(motive : List.{0} Nat → Sort u_1) →
+  (x : List.{0} Nat) →
+    (h_1 : (a : Unit) → motive (@List.nil.{0} Nat)) →
+      (h_2 :
+          (xs : List.{0} Nat) →
+            motive (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs)) →
+        (h_3 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat (Nat.succ x) xs)) → motive x</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/XOrderedBlockerUnionQuotient.lean:1</p><p>SHA-256: <code class="path">4f05ea8cff54b2087cb6bfa46a08feb4a9ca2ee4ba740c5bff17cf7b37ed3db0</code></p></section><p><a href="../index.html#id=lean-4f05ea8cff54b2087cb6">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

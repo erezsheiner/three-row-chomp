@@ -1,0 +1,100 @@
+import R59Q4OwnerChronology
+
+set_option autoImplicit false
+set_option maxHeartbeats 1000000
+
+namespace ChompLean
+
+/-!
+R59 finite-fate collapse for the surviving Q4 value.
+
+The permanent row-start arm is unchanged.  The old bare first-loss arm is
+replaced by the exact R59 conclusion: the value is below `z`, the original
+band host obeys both source-capacity and defect-band localization, and the
+loss has a unique surviving chronology through an early diagonal owner.
+-/
+
+/-- R59 finite fate.  The first arm is literally the R55 row-start arm;
+the second carries the full early-owner certificate obtained after the
+no-recross barrier eliminates exact capture and every late owner. -/
+def EventEFourPrefixFiniteFateR59
+    (s delta z g : Nat) : Prop :=
+  (exists p r,
+    p = gameF s g /\ r < p /\ gameF p r = p /\
+    forall t, p < t -> C gameF t t p) \/
+  (exists t,
+    s + 4 <= t /\ t <= gameF s g /\ t < z /\
+    gameF s g ∈ StrictRowPrefixValues gameF (t - 1) /\
+    gameF s g ∉ StrictRowPrefixValues gameF t /\
+    gameF s g < z /\ gameF s g <= s + g + 1 /\
+    s - delta - 2 <= g /\
+    exists a b,
+      gameF s g < gameF t t /\ b < a /\ a < s /\ g < a /\
+      g ≠ b /\ b < t - 1 /\ t <= 2 * a + 1 /\
+      s + 3 <= 2 * a /\
+      gameF a a = gameF s g /\
+      gameF (t - 1) b = gameF s g)
+
+/-- Under the actual R55/R59 Q4 hypotheses, the annotated R59 fate is
+equivalent to the original finite fate.  Thus this is a branch collapse,
+not an extra assumption. -/
+theorem eventE_four_prefix_finite_fate_iff_R59
+    (hU : UnitDip gameRecurrenceModel)
+    {s c b0 g : Nat}
+    (hres : NonmaxMarginEventECrossEdgeResidual s)
+    (hcross : EventECrossEdgeSurvivorCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0)
+    (hstrict : EventENonDipStrictSharedOwnerCertificate
+      s (2 * s - gameF (s + 1) (s + 1))
+        (gameF (s + 1) (s + 1) - 1) c b0)
+    (hg : g ∈ EventEFourPrefixBandSlots
+      s (2 * s - gameF (s + 1) (s + 1)) c b0) :
+    let delta := 2 * s - gameF (s + 1) (s + 1)
+    let z := gameF (s + 1) (s + 1) - 1
+    EventEFourPrefixFiniteFate s z g <->
+      EventEFourPrefixFiniteFateR59 s delta z g := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  change EventECrossEdgeSurvivorCertificate s delta z c b0 at hcross
+  change EventENonDipStrictSharedOwnerCertificate
+    s delta z c b0 at hstrict
+  change g ∈ EventEFourPrefixBandSlots s delta c b0 at hg
+  change EventEFourPrefixFiniteFate s z g <->
+    EventEFourPrefixFiniteFateR59 s delta z g
+  constructor
+  · intro hfate
+    rcases hfate with hstart | hloss
+    · exact Or.inl hstart
+    · right
+      rcases hloss with
+        ⟨t, htLower, htUpper, htz, hpresent, habsent⟩
+      have hcollapse := gameF_Q4_first_loss_R59_early_owner_only
+        hU hres hcross hstrict hg htLower htUpper htz hpresent habsent
+      change t < z /\ gameF s g < z /\
+          gameF s g <= s + g + 1 /\
+          s - delta - 2 <= g /\ _ at hcollapse
+      rcases hcollapse with
+        ⟨_htz, hpz, hpSource, hgLower, a, b,
+          hpBelow, hba, has, hga, hgb, hbt,
+          htCap, haHalf, howner, hhost⟩
+      exact ⟨t, htLower, htUpper, htz, hpresent, habsent,
+        hpz, hpSource, hgLower, a, b,
+        hpBelow, hba, has, hga, hgb, hbt,
+        htCap, haHalf, howner, hhost⟩
+  · intro hfate
+    rcases hfate with hstart | hloss
+    · exact Or.inl hstart
+    · right
+      rcases hloss with
+        ⟨t, htLower, htUpper, htz, hpresent, habsent,
+          _hpz, _hpSource, _hgLower, _a, _b,
+          _hpBelow, _hba, _has, _hga, _hgb, _hbt,
+          _htCap, _haHalf, _howner, _hhost⟩
+      exact ⟨t, htLower, htUpper, htz, hpresent, habsent⟩
+
+#print axioms eventE_four_prefix_finite_fate_iff_R59
+
+end ChompLean

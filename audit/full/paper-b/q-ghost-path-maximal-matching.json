@@ -1,0 +1,46 @@
+{
+  "schema": "independent-paper-audit-v1",
+  "recordIndex": 5,
+  "id": "q-ghost-path-maximal-matching",
+  "originalTitle": "Optimal blocker matching on one ghost path",
+  "originalStatement": "A ghost path with e edges and k available blocker vertices has maximum matching size min(e,k).",
+  "originalStatus": "paper-reviewed",
+  "originalHypotheses": [
+    "Canonical positive-MEX/COPY recurrence and the named banked lemmas in the source."
+  ],
+  "sourceWorkspace": "ThreeRowChompAug",
+  "sourcePath": "projects/central-first-exit/work/DIRECT-Q-RESIDUAL-20261012-002/ROOT-ATTEMPT.md",
+  "sourceLine": 15,
+  "sourceSHA256": "41dbf77e09e07218ad67e90924b51654fbd2b21827f5afdc360a71798bb5977a",
+  "sourceAttachment": "papers/originals/41dbf77e09e07218ad67.md",
+  "independence": "Proof reconstructed from primary arguments and explicit definitions. Earlier source status/review assertions were not treated as proof. The author previously collected these sources; the present derivations and finite/exact-algebra checks are new independent audit work.",
+  "verdict": "accepted",
+  "detailedDerivation": [
+    "A path v0→…→ve has e candidate ghost edges, and k available endpoint vertices. Capacity one on edges and vertices bounds every matching by min(e,k).",
+    "If all e+1 vertices are available, assign each edge to its target, obtaining e matches.",
+    "Otherwise choose a nonavailable vj. Assign every available vi with i<j to edge i and every available vi with i>j to edge i−1. On either side edge indexes are distinct, and the two sets are disjoint, so all k available vertices are saturated.",
+    "There are e+1−k nonavailable vertices, hence unmatched edge count max(0,e−k)=max(0,r−1). An available non-source vertex is exactly a surviving mortal echo owner, since q<σ_a<d(a)<d(q) gives its actual blocker service.",
+    "Owner-only matching already uses every available target. The source gains one additional match precisely when it is available and some target is unavailable. This proves μ=L+T and the stated U,V,Q formulas, without any asymptotic assertion."
+  ],
+  "proofDependencyMap": [
+    {
+      "dependency": "Finite path matching argument: independently proved, no external matching theorem.",
+      "auditScope": "Independently derived here unless explicitly assigned to the shared exact canonical-foundation/kernel audit."
+    },
+    {
+      "dependency": "Actual availability⇔surviving mortal owner uses FFD and nonpast coverage from canonical foundation.",
+      "auditScope": "Independently derived here unless explicitly assigned to the shared exact canonical-foundation/kernel audit."
+    },
+    {
+      "dependency": "Full proof source: DIRECT-Q-RESIDUAL/lanes/matching/ATTEMPT.md sections1–2.",
+      "auditScope": "Independently derived here unless explicitly assigned to the shared exact canonical-foundation/kernel audit."
+    }
+  ],
+  "boundaryAndQuantifierChecks": [],
+  "defects": [],
+  "exactCorrection": null,
+  "canonicalAdmission": "Shared foundational game/recurrence/declaration dependencies must be discharged by the root audit before public admission. Missing named higher theorem is unresolved when explicitly identified; no vague bank/review label fills it.",
+  "newResearchExecuted": false,
+  "sharedFoundationEvidence": "../CANONICAL-FOUNDATIONS.md",
+  "sharedFoundationStatus": "Mathematical bridge independently reconstructed by root; final exact-source kernel authentication is separately required where applicable."
+}

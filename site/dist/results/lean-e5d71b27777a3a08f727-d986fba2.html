@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XGap Two Forcing · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>XGap Two Forcing</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/XGapTwoForcing.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/XGapTwoForcing.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/XGapTwoForcing.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 67 declarations</summary><ul class="declarations"><li><code>ChompLean.gameFGapTwoActiveCols</code><pre class="prose">(v c : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFGapTwoActiveCols.eq_1</code><pre class="prose">∀ (v c : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.gameFGapTwoActiveCols v c)
+    (@List.filter.{0} Nat
+      (fun (e : Nat) =&gt;
+        @Decidable.decide
+          (Not
+            (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+              (ChompLean.gameFGapTwoFreezeColsThroughList
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              e))
+          (@instDecidableNot
+            (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+              (ChompLean.gameFGapTwoFreezeColsThroughList
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              e)
+            (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+              Nat.instLawfulBEq e
+              (ChompLean.gameFGapTwoFreezeColsThroughList
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))
+      (List.range c))</pre></li><li><code>ChompLean.gameFGapTwoActiveCols_nodup</code><pre class="prose">∀ (v c : Nat), @List.Nodup.{0} Nat (ChompLean.gameFGapTwoActiveCols v c)</pre></li><li><code>ChompLean.gameFGapTwoFreezeColsThroughList</code><pre class="prose">(n : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFGapTwoFreezeColsThroughList.eq_1</code><pre class="prose">∀ (n : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.gameFGapTwoFreezeColsThroughList n)
+    (@List.map.{0, 0} Nat Nat ChompLean.gameFGapTwoFreezeColumn (ChompLean.gameFBlockersThroughList n))</pre></li><li><code>ChompLean.gameFGapTwoFreezeColsThroughList_length</code><pre class="prose">∀ (n : Nat),
+  @Eq.{1} Nat (@List.length.{0} Nat (ChompLean.gameFGapTwoFreezeColsThroughList n))
+    (ChompLean.gameFBlockerCountThrough n)</pre></li><li><code>ChompLean.gameFGapTwoFreezeColsThroughList_nodup</code><pre class="prose">∀ (n : Nat), @List.Nodup.{0} Nat (ChompLean.gameFGapTwoFreezeColsThroughList n)</pre></li><li><code>ChompLean.gameFGapTwoFreezeColsThroughList_nodup._proof_1_1</code><pre class="prose">∀ (x y : Nat)
+  (hxspec :
+    And (@LT.lt.{0} Nat instLTNat (ChompLean.gameFGapTwoFreezeColumn x) x)
+      (@Eq.{1} Nat (ChompLean.gameF x (ChompLean.gameFGapTwoFreezeColumn x)) x))
+  (hyspec :
+    And (@LT.lt.{0} Nat instLTNat (ChompLean.gameFGapTwoFreezeColumn y) y)
+      (@Eq.{1} Nat (ChompLean.gameF y (ChompLean.gameFGapTwoFreezeColumn y)) y))
+  (hxy : Not (@Eq.{1} Nat x y)) (hlt : Not (@LT.lt.{0} Nat instLTNat x y)), Not (@LT.lt.{0} Nat instLTNat y x) → False</pre></li><li><code>ChompLean.gameFGapTwoFreezeColsThroughList_subset_range</code><pre class="prose">∀ {v c : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v)
+  (hvc2 :
+    @LE.le.{0} Nat instLENat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+  (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v),
+  @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat)
+    (ChompLean.gameFGapTwoFreezeColsThroughList
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (List.range c)</pre></li><li><code>ChompLean.gameFGapTwoFreezeColsThroughList_subset_range._proof_1_1</code><pre class="prose">∀ {v c : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v) (k : Nat)
+  (hkdata :
+    And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+      (And
+        (@LE.le.{0} Nat instLENat k
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (ChompLean.S ChompLean.gameF k)))
+  (hkspec :
+    And (@LT.lt.{0} Nat instLTNat (ChompLean.gameFGapTwoFreezeColumn k) k)
+      (@Eq.{1} Nat (ChompLean.gameF k (ChompLean.gameFGapTwoFreezeColumn k)) k)),
+  Not (@LT.lt.{0} Nat instLTNat k v) → False</pre></li><li><code>ChompLean.gameFGapTwoFreezeColsThroughList_subset_range._proof_1_2</code><pre class="prose">∀ {v c : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v)
+  (hvc2 :
+    @LE.le.{0} Nat instLENat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+  (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v) (k : Nat)
+  (hkspec :
+    And (@LT.lt.{0} Nat instLTNat (ChompLean.gameFGapTwoFreezeColumn k) k)
+      (@Eq.{1} Nat (ChompLean.gameF k (ChompLean.gameFGapTwoFreezeColumn k)) k))
+  (hkltv : @LT.lt.{0} Nat instLTNat k v), Not (@LE.le.{0} Nat instLENat (ChompLean.gameFGapTwoFreezeColumn k) c) → False</pre></li><li><code>ChompLean.gameFGapTwoFreezeColsThroughList_subset_range._proof_1_3</code><pre class="prose">∀ {v c : Nat} (k : Nat) (hle : @LE.le.{0} Nat instLENat (ChompLean.gameFGapTwoFreezeColumn k) c)
+  (hne : @Ne.{1} Nat (ChompLean.gameFGapTwoFreezeColumn k) c),
+  Not (@LT.lt.{0} Nat instLTNat (ChompLean.gameFGapTwoFreezeColumn k) c) → False</pre></li><li><code>ChompLean.gameFGapTwoFreezeColumn</code><pre class="prose">(k : Nat) → Nat</pre></li><li><code>ChompLean.gameFGapTwoFreezeColumn.eq_1</code><pre class="prose">∀ (k : Nat),
+  @Eq.{1} Nat (ChompLean.gameFGapTwoFreezeColumn k)
+    (@dite.{1} Nat (ChompLean.S ChompLean.gameF k) (Classical.propDecidable (ChompLean.S ChompLean.gameF k))
+      (fun (h : ChompLean.S ChompLean.gameF k) =&gt;
+        @Classical.choose.{1} Nat
+          (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x k) (@Eq.{1} Nat (ChompLean.gameF k x) k)) h)
+      fun (h : Not (ChompLean.S ChompLean.gameF k)) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))</pre></li><li><code>ChompLean.gameFGapTwoFreezeColumn_spec</code><pre class="prose">∀ {k : Nat} (hS : ChompLean.S ChompLean.gameF k),
+  And (@LT.lt.{0} Nat instLTNat (ChompLean.gameFGapTwoFreezeColumn k) k)
+    (@Eq.{1} Nat (ChompLean.gameF k (ChompLean.gameFGapTwoFreezeColumn k)) k)</pre></li><li><code>ChompLean.gameFGapTwo_active_count_le_blockers</code><pre class="prose">∀ {v c : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v) (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v),
+  @LE.le.{0} Nat instLENat (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))
+    (ChompLean.gameFBlockerCountThrough v)</pre></li><li><code>ChompLean.gameFGapTwo_active_count_le_blockers._proof_1_1</code><pre class="prose">∀ {v c : Nat}
+  (hhostExists :
+    ∀ (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))),
+      @Exists.{1} Nat fun (x : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+          (And (@LT.lt.{0} Nat instLTNat x v)
+            (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+  (hhostSpec :
+    ∀ (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))),
+      And
+        (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)
+          ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                    (And (@LT.lt.{0} Nat instLTNat x v)
+                      (And
+                        (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                        (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                (hhostExists i))
+            i))
+        (And
+          (@LT.lt.{0} Nat instLTNat
+            ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt;
+                    And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                      (And (@LT.lt.{0} Nat instLTNat x v)
+                        (And
+                          (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+                            v)
+                          (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                  (hhostExists i))
+              i)
+            v)
+          (And
+            (@Eq.{1} Nat
+              (ChompLean.gameF
+                ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                    @Classical.choose.{1} Nat
+                      (fun (x : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                          (And (@LT.lt.{0} Nat instLTNat x v)
+                            (And
+                              (@Eq.{1} Nat
+                                (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                      (hhostExists i))
+                  i)
+                (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+              v)
+            (@LT.lt.{0} Nat instLTNat v
+              (ChompLean.gameF
+                ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                    @Classical.choose.{1} Nat
+                      (fun (x : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                          (And (@LT.lt.{0} Nat instLTNat x v)
+                            (And
+                              (@Eq.{1} Nat
+                                (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                      (hhostExists i))
+                  i)
+                ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                    @Classical.choose.{1} Nat
+                      (fun (x : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                          (And (@LT.lt.{0} Nat instLTNat x v)
+                            (And
+                              (@Eq.{1} Nat
+                                (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                      (hhostExists i))
+                  i))))))
+  ⦃i j : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))⦄
+  (hrow :
+    @Eq.{1} Nat
+      ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+          @Classical.choose.{1} Nat
+            (fun (x : Nat) =&gt;
+              And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                (And (@LT.lt.{0} Nat instLTNat x v)
+                  (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                    (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+            (hhostExists i))
+        i)
+      ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+          @Classical.choose.{1} Nat
+            (fun (x : Nat) =&gt;
+              And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                (And (@LT.lt.{0} Nat instLTNat x v)
+                  (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                    (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+            (hhostExists i))
+        j))
+  (hi :
+    And
+      (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)
+        ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+            @Classical.choose.{1} Nat
+              (fun (x : Nat) =&gt;
+                And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                  (And (@LT.lt.{0} Nat instLTNat x v)
+                    (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                      (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+              (hhostExists i))
+          i))
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                    (And (@LT.lt.{0} Nat instLTNat x v)
+                      (And
+                        (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                        (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                (hhostExists i))
+            i)
+          v)
+        (And
+          (@Eq.{1} Nat
+            (ChompLean.gameF
+              ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt;
+                      And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                        (And (@LT.lt.{0} Nat instLTNat x v)
+                          (And
+                            (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+                              v)
+                            (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                    (hhostExists i))
+                i)
+              (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+            v)
+          (@LT.lt.{0} Nat instLTNat v
+            (ChompLean.gameF
+              ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt;
+                      And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                        (And (@LT.lt.{0} Nat instLTNat x v)
+                          (And
+                            (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+                              v)
+                            (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                    (hhostExists i))
+                i)
+              ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt;
+                      And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                        (And (@LT.lt.{0} Nat instLTNat x v)
+                          (And
+                            (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+                              v)
+                            (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                    (hhostExists i))
+                i)))))),
+  Not
+      (@LE.le.{0} Nat instLENat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)
+        ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+            @Classical.choose.{1} Nat
+              (fun (x : Nat) =&gt;
+                And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                  (And (@LT.lt.{0} Nat instLTNat x v)
+                    (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                      (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+              (hhostExists i))
+          i)) →
+    False</pre></li><li><code>ChompLean.gameFGapTwo_active_count_le_blockers._proof_1_2</code><pre class="prose">∀ {v c : Nat}
+  (hhostExists :
+    ∀ (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))),
+      @Exists.{1} Nat fun (x : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+          (And (@LT.lt.{0} Nat instLTNat x v)
+            (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+  (hhostSpec :
+    ∀ (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))),
+      And
+        (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)
+          ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                    (And (@LT.lt.{0} Nat instLTNat x v)
+                      (And
+                        (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                        (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                (hhostExists i))
+            i))
+        (And
+          (@LT.lt.{0} Nat instLTNat
+            ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt;
+                    And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                      (And (@LT.lt.{0} Nat instLTNat x v)
+                        (And
+                          (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+                            v)
+                          (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                  (hhostExists i))
+              i)
+            v)
+          (And
+            (@Eq.{1} Nat
+              (ChompLean.gameF
+                ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                    @Classical.choose.{1} Nat
+                      (fun (x : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                          (And (@LT.lt.{0} Nat instLTNat x v)
+                            (And
+                              (@Eq.{1} Nat
+                                (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                      (hhostExists i))
+                  i)
+                (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+              v)
+            (@LT.lt.{0} Nat instLTNat v
+              (ChompLean.gameF
+                ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                    @Classical.choose.{1} Nat
+                      (fun (x : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                          (And (@LT.lt.{0} Nat instLTNat x v)
+                            (And
+                              (@Eq.{1} Nat
+                                (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                      (hhostExists i))
+                  i)
+                ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                    @Classical.choose.{1} Nat
+                      (fun (x : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                          (And (@LT.lt.{0} Nat instLTNat x v)
+                            (And
+                              (@Eq.{1} Nat
+                                (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                      (hhostExists i))
+                  i))))))
+  ⦃i j : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))⦄
+  (hrow :
+    @Eq.{1} Nat
+      ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+          @Classical.choose.{1} Nat
+            (fun (x : Nat) =&gt;
+              And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                (And (@LT.lt.{0} Nat instLTNat x v)
+                  (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                    (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+            (hhostExists i))
+        i)
+      ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+          @Classical.choose.{1} Nat
+            (fun (x : Nat) =&gt;
+              And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                (And (@LT.lt.{0} Nat instLTNat x v)
+                  (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                    (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+            (hhostExists i))
+        j))
+  (hj :
+    And
+      (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) j)
+        ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+            @Classical.choose.{1} Nat
+              (fun (x : Nat) =&gt;
+                And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                  (And (@LT.lt.{0} Nat instLTNat x v)
+                    (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                      (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+              (hhostExists i))
+          j))
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                    (And (@LT.lt.{0} Nat instLTNat x v)
+                      (And
+                        (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                        (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                (hhostExists i))
+            j)
+          v)
+        (And
+          (@Eq.{1} Nat
+            (ChompLean.gameF
+              ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt;
+                      And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                        (And (@LT.lt.{0} Nat instLTNat x v)
+                          (And
+                            (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+                              v)
+                            (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                    (hhostExists i))
+                j)
+              (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) j))
+            v)
+          (@LT.lt.{0} Nat instLTNat v
+            (ChompLean.gameF
+              ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt;
+                      And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                        (And (@LT.lt.{0} Nat instLTNat x v)
+                          (And
+                            (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+                              v)
+                            (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                    (hhostExists i))
+                j)
+              ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt;
+                      And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                        (And (@LT.lt.{0} Nat instLTNat x v)
+                          (And
+                            (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+                              v)
+                            (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                    (hhostExists i))
+                j)))))),
+  Not
+      (@LE.le.{0} Nat instLENat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) j)
+        ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+            @Classical.choose.{1} Nat
+              (fun (x : Nat) =&gt;
+                And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                  (And (@LT.lt.{0} Nat instLTNat x v)
+                    (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                      (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+              (hhostExists i))
+          i)) →
+    False</pre></li><li><code>ChompLean.gameFGapTwo_active_count_le_blockers._proof_1_3</code><pre class="prose">∀ {v c : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v)
+  (i : Fin (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList v)))
+  (hgt :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameFDiagonalOwner (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) i))
+      (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) i))
+  (hkle : @LE.le.{0} Nat instLENat (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) i) v),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameFDiagonalOwner (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) i)) v) →
+    False</pre></li><li><code>ChompLean.gameFGapTwo_active_count_le_blockers._proof_1_4</code><pre class="prose">∀ {v c : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v)
+  (hhostExists :
+    ∀ (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))),
+      @Exists.{1} Nat fun (x : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+          (And (@LT.lt.{0} Nat instLTNat x v)
+            (And (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+  (hhostSpec :
+    ∀ (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))),
+      And
+        (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)
+          ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                    (And (@LT.lt.{0} Nat instLTNat x v)
+                      (And
+                        (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                        (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                (hhostExists i))
+            i))
+        (And
+          (@LT.lt.{0} Nat instLTNat
+            ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt;
+                    And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                      (And (@LT.lt.{0} Nat instLTNat x v)
+                        (And
+                          (@Eq.{1} Nat (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+                            v)
+                          (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                  (hhostExists i))
+              i)
+            v)
+          (And
+            (@Eq.{1} Nat
+              (ChompLean.gameF
+                ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                    @Classical.choose.{1} Nat
+                      (fun (x : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                          (And (@LT.lt.{0} Nat instLTNat x v)
+                            (And
+                              (@Eq.{1} Nat
+                                (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                      (hhostExists i))
+                  i)
+                (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i))
+              v)
+            (@LT.lt.{0} Nat instLTNat v
+              (ChompLean.gameF
+                ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                    @Classical.choose.{1} Nat
+                      (fun (x : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                          (And (@LT.lt.{0} Nat instLTNat x v)
+                            (And
+                              (@Eq.{1} Nat
+                                (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                      (hhostExists i))
+                  i)
+                ((fun (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))) =&gt;
+                    @Classical.choose.{1} Nat
+                      (fun (x : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i) x)
+                          (And (@LT.lt.{0} Nat instLTNat x v)
+                            (And
+                              (@Eq.{1} Nat
+                                (ChompLean.gameF x (@List.get.{0} Nat (ChompLean.gameFGapTwoActiveCols v c) i)) v)
+                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)))))
+                      (hhostExists i))
+                  i))))))
+  (hownerLt :
+    ∀ (i : Fin (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList v))),
+      @LT.lt.{0} Nat instLTNat
+        (ChompLean.gameFDiagonalOwner (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) i)) v)
+  (i : Fin (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c)))
+  (j : Fin (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList v)))
+  (hhighDiag : @LT.lt.{0} Nat instLTNat v (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) j))
+  (hown :
+    @Eq.{1} Nat
+      (ChompLean.gameF (ChompLean.gameFDiagonalOwner (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) j))
+        (ChompLean.gameFDiagonalOwner (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) j)))
+      (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) j))
+  (hjle : @LE.le.{0} Nat instLENat (@List.get.{0} Nat (ChompLean.gameFNonblockersThroughList v) j) v), False</pre></li><li><code>ChompLean.gameFGapTwo_active_count_le_blockers._proof_1_5</code><pre class="prose">∀ {v c : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v)
+  (hhall :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))
+        (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList v)))
+      v)
+  (hpartition :
+    @Eq.{1} Nat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough v)
+        (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList v)))),
+  Not
+      (@LE.le.{0} Nat instLENat (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c))
+        (ChompLean.gameFBlockerCountThrough v)) →
+    False</pre></li><li><code>ChompLean.gameFGapTwo_active_freeze_partition</code><pre class="prose">∀ {v c : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v)
+  (hvc2 :
+    @LE.le.{0} Nat instLENat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+  (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v),
+  @Eq.{1} Nat c
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (ChompLean.gameFBlockerCountThrough
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@List.length.{0} Nat (ChompLean.gameFGapTwoActiveCols v c)))</pre></li><li><code>ChompLean.gameFGapTwo_active_freeze_partition._proof_1_1</code><pre class="prose">∀ {v c : Nat}
+  (hle₁ :
+    @LE.le.{0} Nat instLENat
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (e : Nat) =&gt;
+            @Decidable.decide
+              (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                (ChompLean.gameFGapTwoFreezeColsThroughList
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                e)
+              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                Nat.instLawfulBEq e
+                (ChompLean.gameFGapTwoFreezeColsThroughList
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+          (List.range c)))
+      (@List.length.{0} Nat
+        (ChompLean.gameFGapTwoFreezeColsThroughList
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+  (hle₂ :
+    @LE.le.{0} Nat instLENat
+      (@List.length.{0} Nat
+        (ChompLean.gameFGapTwoFreezeColsThroughList
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (e : Nat) =&gt;
+            @Decidable.decide
+              (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                (ChompLean.gameFGapTwoFreezeColsThroughList
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                e)
+              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                Nat.instLawfulBEq e
+                (ChompLean.gameFGapTwoFreezeColsThroughList
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+          (List.range c)))),
+  Not
+      (@Eq.{1} Nat
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (e : Nat) =&gt;
+              @Decidable.decide
+                (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                  (ChompLean.gameFGapTwoFreezeColsThroughList
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                  e)
+                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                  Nat.instLawfulBEq e
+                  (ChompLean.gameFGapTwoFreezeColsThroughList
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+            (List.range c)))
+        (@List.length.{0} Nat
+          (ChompLean.gameFGapTwoFreezeColsThroughList
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))) →
+    False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host</code><pre class="prose">∀ {v c e : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v) (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v)
+  (he :
+    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.gameFGapTwoActiveCols v c) e),
+  @Exists.{1} Nat fun (x : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat e x)
+      (And (@LT.lt.{0} Nat instLTNat x v)
+        (And (@Eq.{1} Nat (ChompLean.gameF x e) v) (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x))))</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_1</code><pre class="prose">∀ {v c e : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v) (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v)
+  (hedata :
+    And (@LT.lt.{0} Nat instLTNat e c)
+      (Not
+        (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (ChompLean.gameFGapTwoFreezeColsThroughList
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          e))),
+  Not (@LE.le.{0} Nat instLENat e v) → False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_10</code><pre class="prose">∀ {v c e : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v) (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v)
+  (hedata :
+    And (@LT.lt.{0} Nat instLTNat e c)
+      (Not
+        (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (ChompLean.gameFGapTwoFreezeColsThroughList
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          e)))
+  (b : Nat) (hbe : @LT.lt.{0} Nat instLTNat b e) (hb : @Eq.{1} Nat (ChompLean.gameF v b) v),
+  Not (@LE.le.{0} Nat instLENat b v) → False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_11</code><pre class="prose">∀ {v c e : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v) (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v) (b : Nat)
+  (hb : @Eq.{1} Nat (ChompLean.gameF v b) v), Not (@LE.le.{0} Nat instLENat c v) → False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_12</code><pre class="prose">∀ {v c e : Nat}
+  (hedata :
+    And (@LT.lt.{0} Nat instLTNat e c)
+      (Not
+        (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (ChompLean.gameFGapTwoFreezeColsThroughList
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          e)))
+  (b : Nat) (hbe : @LT.lt.{0} Nat instLTNat b e) (hbc : @Eq.{1} Nat b c), False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_2</code><pre class="prose">∀ {v c e : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v) (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v)
+  (hcell :
+    And (@LT.lt.{0} Nat instLTNat e (ChompLean.gameF v e))
+      (@Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF v e) e) (ChompLean.gameF v e)))
+  (hkstart : @Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF v e) e) (ChompLean.gameF v e))
+  (hkv : @Eq.{1} Nat (ChompLean.gameF v e) v), Not (@LE.le.{0} Nat instLENat c v) → False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_3</code><pre class="prose">∀ {v c e : Nat}
+  (hedata :
+    And (@LT.lt.{0} Nat instLTNat e c)
+      (Not
+        (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (ChompLean.gameFGapTwoFreezeColsThroughList
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          e)))
+  (hec : @Eq.{1} Nat e c), False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_4</code><pre class="prose">∀ {v c e : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v) (hnot : @GE.ge.{0} Nat instLENat v (ChompLean.gameF v e))
+  (hcell :
+    And (@LT.lt.{0} Nat instLTNat e (ChompLean.gameF v e))
+      (@Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF v e) e) (ChompLean.gameF v e)))
+  (hkstart : @Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF v e) e) (ChompLean.gameF v e))
+  (hkv : Not (@Eq.{1} Nat (ChompLean.gameF v e) v)), Not (@LT.lt.{0} Nat instLTNat (ChompLean.gameF v e) v) → False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_5</code><pre class="prose">∀ {v c e : Nat}
+  (hcell :
+    And (@LT.lt.{0} Nat instLTNat e (ChompLean.gameF v e))
+      (@Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF v e) e) (ChompLean.gameF v e)))
+  (hkstart : @Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF v e) e) (ChompLean.gameF v e)),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.gameF v e)) →
+    False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_6</code><pre class="prose">∀ {v c e : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v)
+  (hcell :
+    And (@LT.lt.{0} Nat instLTNat e (ChompLean.gameF v e))
+      (@Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF v e) e) (ChompLean.gameF v e)))
+  (hkstart : @Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF v e) e) (ChompLean.gameF v e))
+  (hklt : @LT.lt.{0} Nat instLTNat (ChompLean.gameF v e) v)
+  (hkpos :
+    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.gameF v e)),
+  Not
+      (@LE.le.{0} Nat instLENat (ChompLean.gameF v e)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_7</code><pre class="prose">∀ {v c e : Nat} (hcv : @LT.lt.{0} Nat instLTNat c v) (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v)
+  (hedata :
+    And (@LT.lt.{0} Nat instLTNat e c)
+      (Not
+        (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (ChompLean.gameFGapTwoFreezeColsThroughList
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          e)))
+  (hev : @LE.le.{0} Nat instLENat e v),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v) → False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_8</code><pre class="prose">∀ {v c e : Nat} (x : Nat) (hxe : Not (@LE.le.{0} Nat instLENat x e)), Not (@LT.lt.{0} Nat instLTNat e x) → False</pre></li><li><code>ChompLean.gameFGapTwo_active_has_high_diagonal_host._proof_1_9</code><pre class="prose">∀ {v c e : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v c) v) (x : Nat)
+  (hx : @Eq.{1} Nat (ChompLean.gameF x (@Min.min.{0} Nat instMinNat x e)) v)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF x e) v)
+  (hrowMax : @LT.lt.{0} Nat instLTNat (ChompLean.gameF x e) (ChompLean.gameF x x)),
+  Not (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF x x)) → False</pre></li><li><code>ChompLean.gameF_gap_two_blocker_count_lower</code><pre class="prose">∀ {c : Nat}
+  (h :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        c)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),
+  @LE.le.{0} Nat instLENat c
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (ChompLean.gameFBlockerCountThrough
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.gameF_gap_two_blocker_count_lower._proof_1_1</code><pre class="prose">∀ {c : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.gameF_gap_two_blocker_count_lower._proof_1_2</code><pre class="prose">∀ {c : Nat},
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.gameF_gap_two_blocker_count_lower._proof_1_3</code><pre class="prose">∀ {c : Nat}
+  (hpartition :
+    @Eq.{1} Nat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (ChompLean.gameFBlockerCountThrough
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@List.length.{0} Nat
+          (ChompLean.gameFGapTwoActiveCols
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            c)))),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_gap_two_blocker_count_lower._proof_1_4</code><pre class="prose">∀ {c : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.gameF_gap_two_blocker_count_lower._proof_1_5</code><pre class="prose">∀ {c : Nat}
+  (hpartition :
+    @Eq.{1} Nat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (ChompLean.gameFBlockerCountThrough
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@List.length.{0} Nat
+          (ChompLean.gameFGapTwoActiveCols
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            c))))
+  (hactive :
+    @LE.le.{0} Nat instLENat
+      (@List.length.{0} Nat
+        (ChompLean.gameFGapTwoActiveCols
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          c))
+      (ChompLean.gameFBlockerCountThrough
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+  (hstep :
+    @Eq.{1} Nat
+      (ChompLean.gameFBlockerCountThrough
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (ChompLean.gameFBlockerCountThrough
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hi1 :
+    @Eq.{1} Nat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LE.le.{0} Nat instLENat c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+            (ChompLean.gameFBlockerCountThrough
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_gap_two_forcing</code><pre class="prose">∀ {c : Nat}
+  (h :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        c)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),
+  @Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_1</code><pre class="prose">∀ {c : Nat} (hc : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 15) (instOfNatNat (nat_lit 15))) c),
+  Not
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_10</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_11</code><pre class="prose">Not
+    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_12</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_13</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_14</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_15</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_16</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_17</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_18</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 22) (instOfNatNat (nat_lit 22)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_19</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 22) (instOfNatNat (nat_lit 22)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_2</code><pre class="prose">∀ {c : Nat}
+  (hlower :
+    @LE.le.{0} Nat instLENat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (ChompLean.gameFBlockerCountThrough
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hceiling :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (ChompLean.gameFBlockerCountThrough
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_20</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 22) (instOfNatNat (nat_lit 22)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 15) (instOfNatNat (nat_lit 15)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_21</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 23) (instOfNatNat (nat_lit 23)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_3</code><pre class="prose">∀ {c : Nat} (hc : Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 15) (instOfNatNat (nat_lit 15))) c)),
+  Not (@LE.le.{0} Nat instLENat c (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))) → False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_4</code><pre class="prose">∀ {c : Nat} (hc : Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 15) (instOfNatNat (nat_lit 15))) c)),
+  Not
+      (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                      (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                        (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                          (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                            (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))
+                              (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))))
+                                (Or (@Eq.{1} Nat c (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))
+                                  (@Eq.{1} Nat c
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14)))))))))))))))))) →
+    False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_5</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_6</code><pre class="prose">Not
+    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_7</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))),
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_8</code><pre class="prose">Not
+    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))) →
+  False</pre></li><li><code>ChompLean.gameF_gap_two_forcing._proof_1_9</code><pre class="prose">∀
+  (hh :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))),
+  False</pre></li><li><code>ChompLean.gameF_mem_gapTwoActiveCols</code><pre class="prose">∀ {v c e : Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.gameFGapTwoActiveCols v c) e)
+    (And (@LT.lt.{0} Nat instLTNat e c)
+      (Not
+        (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (ChompLean.gameFGapTwoFreezeColsThroughList
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          e)))</pre></li><li><code>_private.XGapTwoForcing.0.ChompLean.xgap2_nodup_get_injective</code><pre class="prose">∀ {alpha : Type} [inst : BEq.{0} alpha] [@LawfulBEq.{0} alpha inst] {xs : List.{0} alpha}
+  (hxs : @List.Nodup.{0} alpha xs),
+  @Function.Injective.{1, 1} (Fin (@List.length.{0} alpha xs)) alpha (@List.get.{0} alpha xs)</pre></li><li><code>_private.XGapTwoForcing.0.ChompLean.xgap2_nodup_map_of_injective_on</code><pre class="prose">∀ (f : Nat → Nat) (xs : List.{0} Nat) (hxs : @List.Nodup.{0} Nat xs)
+  (hinj :
+    ∀ (x : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →
+        ∀ (y : Nat),
+          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs y →
+            @Eq.{1} Nat (f x) (f y) → @Eq.{1} Nat x y),
+  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat f xs)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/XGapTwoForcing.lean:1</p><p>SHA-256: <code class="path">e5d71b27777a3a08f72762e7ba9c93384f6f3b8e06c5291203ee75095a86c178</code></p></section><p><a href="../index.html#id=lean-e5d71b27777a3a08f727">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

@@ -1,0 +1,54 @@
+{
+  "paperIndex": 38,
+  "id": "pell-cumulative-transfer",
+  "original": {
+    "title": "Divergent cumulative relative Pell slack gives sublinear scale defects",
+    "status": "conditional",
+    "statement": "Σ_j min(2,S_j/max(1,b_j))=∞ ⇒ b_j/q_j→0, S_j=2b_j+b_{j−1}−b_{j+1}.",
+    "assumptions": [
+      "Pell denominator recurrence q_{j+1}=2q_j+q_{j−1}.",
+      "Nonnegative defect sequence with the named envelope/recurrence bounds.",
+      "Divergence of the stated cumulative relative slack."
+    ],
+    "sourcePath": "projects/g1-canonical-macro/claude-workspace/work/CODEX-CFE-20260901-040/CUMULATIVE-SUBCRITICAL-PELL-TRANSFER.md",
+    "sourceLine": 1,
+    "sha256": "11ec4c9593a4d1142b6e2183de4eda35cc456c33fd175c61dab5573f3f5d90ca"
+  },
+  "exactAuditedStatement": "Let q_-1=0, q_0=1, q_(j+1)=2q_j+q_(j-1), b_j>=0, S_j=2b_j+b_(j-1)-b_(j+1)>=0. If sum_j min(2, S_j/max(1, b_j)) diverges, then b_j/q_j->0. More generally the same conclusion holds if b_(j+1)<=(2-delta_j)b_j+b_(j-1)+C, 0<=delta_j<=2, C>=0and sum delta_j diverges.",
+  "hypotheses": [
+    "Recurrence holds after a finite prefix; C fixed, not growing with j.",
+    "For window discrepancy application b_j must be the supremum over all starts."
+  ],
+  "proofDependencyMap": [],
+  "independentDerivationAndChecks": [
+    "Letρ=1+sqrt2, x_j=b_j/ρ^j, e_j=C/ρ^(j+1), M_j=max(x_j, x_(j-1)). Normalized coefficients sum1-delta_j/ρ. Hence x_(j+1)<=(1-delta_j/ρ)M_j+e_j.",
+    "At next step discard its nonnegative saving. Substitute previous bound to get x_(j+2)<=(1-2delta_j/ρ²)M_j+(2/ρ)e_j+e_(j+1). Since2/ρ<1, both entries of M_(j+2) obey(1-c delta_j)M_j+g_j with c=min(1/ρ,2/ρ²), g=e_j+e_(j+1). 0<=c delta_j<1 and sum g finite.",
+    "At least one parity has sum delta infinite. On that parity the product of contraction factors tends0 by log(1-u)<=-u. Every fixed prefix of error contributions vanishes under future products; remaining tail is bounded by sum tail g. Thus M tends0 along that parity; its adjacent entries cover every x_j, so full sequence x->0. Pell q_j is comparable toρ^j.",
+    "For capped relative slack delta=min(2, S/max(1, b)), delta*b<=S even for b=0or0<b<1, so recurrence holds with C0. No saving is assumed canonical.",
+    "Optional J(N)=o(N) bridge can be proved without an Ostrowski supplier: tile[0, N] by fixed q_j windows and one remainder. Then limsup_N |J(N)|/N<=(b_j+|p_j-beta q_j|)/q_j; let j grow. This requires exact Pell approximants and bounded unit word increments, explicit in the window application."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\g1-canonical-macro\\claude-workspace\\work\\CODEX-CFE-20260901-040\\CUMULATIVE-SUBCRITICAL-PELL-TRANSFER.md",
+      "sha256": "11ec4c9593a4d1142b6e2183de4eda35cc456c33fd175c61dab5573f3f5d90ca"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\284c9593c84a83c10015.md",
+      "sha256": "284c9593c84a83c1001554187499689332ea04fb87f1a54529b68fcb06ccdcce"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#pell-cumulative-transfer",
+    "proofTextSha256": "72e463ec5c0440c0b43e036af58af2f90501a6fa803fc0095c545e58c123db67",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": false,
+  "sharedCanonicalFoundationReview": null,
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish; parent integrates the independent audit and corrections."
+}

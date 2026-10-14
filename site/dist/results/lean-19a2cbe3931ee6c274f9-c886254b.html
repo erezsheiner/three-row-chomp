@@ -1,0 +1,2088 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R188 Lag8 Preload Transition Obstruction · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R188 Lag8 Preload Transition Obstruction</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R188Lag8PreloadTransitionObstruction.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R188Lag8PreloadTransitionObstruction.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R188Lag8PreloadTransitionObstruction.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 60 declarations</summary><ul class="declarations"><li><code>ChompLean.Lag8FourValuePreloaded</code><pre class="prose">(u d : Nat) → Prop</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition</code><pre class="prose">(u g d e : Nat) → Prop</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.casesOn</code><pre class="prose">{u g d e : Nat} →
+  {motive : (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) → Sort u} →
+    (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) →
+      (mk :
+          (outputBand :
+              @LE.le.{0} Nat instLENat
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e)) →
+            (outputBelowTarget :
+                @LT.lt.{0} Nat instLTNat
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e)
+                  u) →
+              (outputNotLowerHost :
+                  @Ne.{1} Nat
+                    (ChompLean.gameF
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                      e)
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+                (parkedLoss :
+                    @Exists.{1} Nat fun (j : Nat) =&gt;
+                      And (@LE.le.{0} Nat instLENat d j)
+                        (And (@LT.lt.{0} Nat instLTNat j e)
+                          (And
+                            (ChompLean.ParkedOnly ChompLean.gameF
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                              j
+                              (ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                e))
+                            (Not
+                              (ChompLean.B ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                (ChompLean.gameF
+                                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                  e)))))) →
+                  (rightOwnerOrCurrentFreeze :
+                      Or
+                        (@Exists.{1} Nat fun (a : Nat) =&gt;
+                          And (@LT.lt.{0} Nat instLTNat e a)
+                            (And (@LE.le.{0} Nat instLENat a g)
+                              (@Eq.{1} Nat (ChompLean.gameF a a)
+                                (ChompLean.gameF
+                                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                  e))))
+                        (Or
+                          (@Exists.{1} Nat fun (s : Nat) =&gt;
+                            And (@LT.lt.{0} Nat instLTNat e s)
+                              (And (@LE.le.{0} Nat instLENat s g)
+                                (And
+                                  (@LT.lt.{0} Nat instLTNat s
+                                    (ChompLean.gameF
+                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                      e))
+                                  (@Eq.{1} Nat
+                                    (ChompLean.gameF
+                                      (ChompLean.gameF
+                                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                        e)
+                                      s)
+                                    (ChompLean.gameF
+                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                      e)))))
+                          (And
+                            (@Eq.{1} Nat
+                              (ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                e)
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+                            (@Eq.{1} Nat
+                              (ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                e)
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))) →
+                    motive
+                      (@ChompLean.Lag8PreloadedSkippedTransition.mk u g d e outputBand outputBelowTarget
+                        outputNotLowerHost parkedLoss rightOwnerOrCurrentFreeze)) →
+        motive t</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.mk</code><pre class="prose">∀ {u g d e : Nat}
+  (outputBand :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e))
+  (outputBelowTarget :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e)
+      u)
+  (outputNotLowerHost :
+    @Ne.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (parkedLoss :
+    @Exists.{1} Nat fun (j : Nat) =&gt;
+      And (@LE.le.{0} Nat instLENat d j)
+        (And (@LT.lt.{0} Nat instLTNat j e)
+          (And
+            (ChompLean.ParkedOnly ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              j
+              (ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                e))
+            (Not
+              (ChompLean.B ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e))))))
+  (rightOwnerOrCurrentFreeze :
+    Or
+      (@Exists.{1} Nat fun (a : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat e a)
+          (And (@LE.le.{0} Nat instLENat a g)
+            (@Eq.{1} Nat (ChompLean.gameF a a)
+              (ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                e))))
+      (Or
+        (@Exists.{1} Nat fun (s : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat e s)
+            (And (@LE.le.{0} Nat instLENat s g)
+              (And
+                (@LT.lt.{0} Nat instLTNat s
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e))
+                (@Eq.{1} Nat
+                  (ChompLean.gameF
+                    (ChompLean.gameF
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                      e)
+                    s)
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e)))))
+        (And
+          (@Eq.{1} Nat
+            (ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              e)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+          (@Eq.{1} Nat
+            (ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              e)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))),
+  ChompLean.Lag8PreloadedSkippedTransition u g d e</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.mk._flat_ctor</code><pre class="prose">∀ {u g d e : Nat}
+  (outputBand :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e))
+  (outputBelowTarget :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e)
+      u)
+  (outputNotLowerHost :
+    @Ne.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (parkedLoss :
+    @Exists.{1} Nat fun (j : Nat) =&gt;
+      And (@LE.le.{0} Nat instLENat d j)
+        (And (@LT.lt.{0} Nat instLTNat j e)
+          (And
+            (ChompLean.ParkedOnly ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              j
+              (ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                e))
+            (Not
+              (ChompLean.B ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e))))))
+  (rightOwnerOrCurrentFreeze :
+    Or
+      (@Exists.{1} Nat fun (a : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat e a)
+          (And (@LE.le.{0} Nat instLENat a g)
+            (@Eq.{1} Nat (ChompLean.gameF a a)
+              (ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                e))))
+      (Or
+        (@Exists.{1} Nat fun (s : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat e s)
+            (And (@LE.le.{0} Nat instLENat s g)
+              (And
+                (@LT.lt.{0} Nat instLTNat s
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e))
+                (@Eq.{1} Nat
+                  (ChompLean.gameF
+                    (ChompLean.gameF
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                      e)
+                    s)
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e)))))
+        (And
+          (@Eq.{1} Nat
+            (ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              e)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+          (@Eq.{1} Nat
+            (ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              e)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))),
+  ChompLean.Lag8PreloadedSkippedTransition u g d e</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.outputBand</code><pre class="prose">∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),
+  @LE.le.{0} Nat instLENat
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+    (ChompLean.gameF
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      e)</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.outputBelowTarget</code><pre class="prose">∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),
+  @LT.lt.{0} Nat instLTNat
+    (ChompLean.gameF
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      e)
+    u</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.outputNotLowerHost</code><pre class="prose">∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),
+  @Ne.{1} Nat
+    (ChompLean.gameF
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      e)
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.parkedLoss</code><pre class="prose">∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),
+  @Exists.{1} Nat fun (j : Nat) =&gt;
+    And (@LE.le.{0} Nat instLENat d j)
+      (And (@LT.lt.{0} Nat instLTNat j e)
+        (And
+          (ChompLean.ParkedOnly ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            j
+            (ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              e))
+          (Not
+            (ChompLean.B ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                e)))))</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.rec</code><pre class="prose">{u g d e : Nat} →
+  {motive : (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) → Sort u} →
+    (mk :
+        (outputBand :
+            @LE.le.{0} Nat instLENat
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                e)) →
+          (outputBelowTarget :
+              @LT.lt.{0} Nat instLTNat
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e)
+                u) →
+            (outputNotLowerHost :
+                @Ne.{1} Nat
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e)
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+              (parkedLoss :
+                  @Exists.{1} Nat fun (j : Nat) =&gt;
+                    And (@LE.le.{0} Nat instLENat d j)
+                      (And (@LT.lt.{0} Nat instLTNat j e)
+                        (And
+                          (ChompLean.ParkedOnly ChompLean.gameF
+                            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                            j
+                            (ChompLean.gameF
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                              e))
+                          (Not
+                            (ChompLean.B ChompLean.gameF
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              (ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                e)))))) →
+                (rightOwnerOrCurrentFreeze :
+                    Or
+                      (@Exists.{1} Nat fun (a : Nat) =&gt;
+                        And (@LT.lt.{0} Nat instLTNat e a)
+                          (And (@LE.le.{0} Nat instLENat a g)
+                            (@Eq.{1} Nat (ChompLean.gameF a a)
+                              (ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                e))))
+                      (Or
+                        (@Exists.{1} Nat fun (s : Nat) =&gt;
+                          And (@LT.lt.{0} Nat instLTNat e s)
+                            (And (@LE.le.{0} Nat instLENat s g)
+                              (And
+                                (@LT.lt.{0} Nat instLTNat s
+                                  (ChompLean.gameF
+                                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                    e))
+                                (@Eq.{1} Nat
+                                  (ChompLean.gameF
+                                    (ChompLean.gameF
+                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                      e)
+                                    s)
+                                  (ChompLean.gameF
+                                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                    e)))))
+                        (And
+                          (@Eq.{1} Nat
+                            (ChompLean.gameF
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                              e)
+                            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+                          (@Eq.{1} Nat
+                            (ChompLean.gameF
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                              e)
+                            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))) →
+                  motive
+                    (@ChompLean.Lag8PreloadedSkippedTransition.mk u g d e outputBand outputBelowTarget
+                      outputNotLowerHost parkedLoss rightOwnerOrCurrentFreeze)) →
+      (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) → motive t</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.recOn</code><pre class="prose">{u g d e : Nat} →
+  {motive : (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) → Sort u} →
+    (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) →
+      (mk :
+          (outputBand :
+              @LE.le.{0} Nat instLENat
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e)) →
+            (outputBelowTarget :
+                @LT.lt.{0} Nat instLTNat
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e)
+                  u) →
+              (outputNotLowerHost :
+                  @Ne.{1} Nat
+                    (ChompLean.gameF
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                      e)
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+                (parkedLoss :
+                    @Exists.{1} Nat fun (j : Nat) =&gt;
+                      And (@LE.le.{0} Nat instLENat d j)
+                        (And (@LT.lt.{0} Nat instLTNat j e)
+                          (And
+                            (ChompLean.ParkedOnly ChompLean.gameF
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                              j
+                              (ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                e))
+                            (Not
+                              (ChompLean.B ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                (ChompLean.gameF
+                                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                  e)))))) →
+                  (rightOwnerOrCurrentFreeze :
+                      Or
+                        (@Exists.{1} Nat fun (a : Nat) =&gt;
+                          And (@LT.lt.{0} Nat instLTNat e a)
+                            (And (@LE.le.{0} Nat instLENat a g)
+                              (@Eq.{1} Nat (ChompLean.gameF a a)
+                                (ChompLean.gameF
+                                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                  e))))
+                        (Or
+                          (@Exists.{1} Nat fun (s : Nat) =&gt;
+                            And (@LT.lt.{0} Nat instLTNat e s)
+                              (And (@LE.le.{0} Nat instLENat s g)
+                                (And
+                                  (@LT.lt.{0} Nat instLTNat s
+                                    (ChompLean.gameF
+                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                      e))
+                                  (@Eq.{1} Nat
+                                    (ChompLean.gameF
+                                      (ChompLean.gameF
+                                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                        e)
+                                      s)
+                                    (ChompLean.gameF
+                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                      e)))))
+                          (And
+                            (@Eq.{1} Nat
+                              (ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                e)
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+                            (@Eq.{1} Nat
+                              (ChompLean.gameF
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                                e)
+                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))) →
+                    motive
+                      (@ChompLean.Lag8PreloadedSkippedTransition.mk u g d e outputBand outputBelowTarget
+                        outputNotLowerHost parkedLoss rightOwnerOrCurrentFreeze)) →
+        motive t</pre></li><li><code>ChompLean.Lag8PreloadedSkippedTransition.rightOwnerOrCurrentFreeze</code><pre class="prose">∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),
+  Or
+    (@Exists.{1} Nat fun (a : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat e a)
+        (And (@LE.le.{0} Nat instLENat a g)
+          (@Eq.{1} Nat (ChompLean.gameF a a)
+            (ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              e))))
+    (Or
+      (@Exists.{1} Nat fun (s : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat e s)
+          (And (@LE.le.{0} Nat instLENat s g)
+            (And
+              (@LT.lt.{0} Nat instLTNat s
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e))
+              (@Eq.{1} Nat
+                (ChompLean.gameF
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e)
+                  s)
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e)))))
+      (And
+        (@Eq.{1} Nat
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            e)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+        (@Eq.{1} Nat
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            e)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay</code><pre class="prose">∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (howners : ChompLean.LowerOwnerCoveredBy u g)
+  (hct :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)
+  (hlower :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hdg : @LT.lt.{0} Nat instLTNat d g)
+  (hlowerFreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        g)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  @Exists.{1} Nat fun (a : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat g a)
+      (And
+        (@LT.lt.{0} Nat instLTNat a
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+        (And (@Eq.{1} Nat (ChompLean.gameF a g) u)
+          (∀ (a&#x27; : Nat),
+            @LT.lt.{0} Nat instLTNat g a&#x27; →
+              @LT.lt.{0} Nat instLTNat a&#x27;
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+                @Eq.{1} Nat (ChompLean.gameF a&#x27; g) u → @Eq.{1} Nat a&#x27; a)))</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_1</code><pre class="prose">∀ {u r g d : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat g
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_2</code><pre class="prose">∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hct :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)
+  (hlow :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        g)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),
+  Not
+      (@LE.le.{0} Nat instLENat g
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_3</code><pre class="prose">∀ {u r g d : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)
+  (hdg : @LT.lt.{0} Nat instLTNat d g)
+  (hlow :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        g)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hcol :
+    @LE.le.{0} Nat instLENat g
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          g)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_4</code><pre class="prose">∀ {u r g d : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)
+  (hdg : @LT.lt.{0} Nat instLTNat d g)
+  (hlowerFreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        g)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowLe :
+    @LE.le.{0} Nat instLENat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        g)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hsmallFreeze :
+    And
+      (@LT.lt.{0} Nat instLTNat g
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          g))
+      (@Eq.{1} Nat
+        (ChompLean.gameF
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            g)
+          g)
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          g))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          g)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_5</code><pre class="prose">∀ {u r g d : Nat} (a : Nat) (hga : @LT.lt.{0} Nat instLTNat g a) (hag : @LE.le.{0} Nat instLENat a g), False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_6</code><pre class="prose">∀ {u r g d : Nat}
+  (hct :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hfreezeNow :
+    And
+      (@Eq.{1} Nat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          g)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@Eq.{1} Nat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          g)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat g
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_7</code><pre class="prose">∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)
+  (hlowerFreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        g)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hfreezeNow :
+    And
+      (@Eq.{1} Nat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          g)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@Eq.{1} Nat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          g)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu</code><pre class="prose">∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (howners : ChompLean.LowerOwnerCoveredBy u g)
+  (hct :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)
+  (hlower :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hpreload : ChompLean.Lag8FourValuePreloaded u d)
+  (hdg :
+    @LT.lt.{0} Nat instLTNat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hlowerFreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        g)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Or
+    (And
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))
+    (Or
+      (@Exists.{1} Nat fun (a : Nat) =&gt;
+        And
+          (@LT.lt.{0} Nat instLTNat
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            a)
+          (And
+            (@LT.lt.{0} Nat instLTNat a
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+            (And
+              (@Eq.{1} Nat
+                (ChompLean.gameF a
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                u)
+              (∀ (a&#x27; : Nat),
+                @LT.lt.{0} Nat instLTNat
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    a&#x27; →
+                  @LT.lt.{0} Nat instLTNat a&#x27;
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+                    @Eq.{1} Nat
+                        (ChompLean.gameF a&#x27;
+                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                        u →
+                      @Eq.{1} Nat a&#x27; a))))
+      (And
+        (ChompLean.Lag8PreloadedSkippedTransition u g d
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (Or
+          (@Eq.{1} Nat (ChompLean.gameF g g)
+            (ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          (@Eq.{1} Nat
+            (ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))))</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_1</code><pre class="prose">∀ {u r g d : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat g
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_2</code><pre class="prose">∀ {u r g d : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_3</code><pre class="prose">∀ {u r g d : Nat} (a : Nat)
+  (hga :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      a)
+  (hag : @LE.le.{0} Nat instLENat a g), Not (@Eq.{1} Nat a g) → False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_4</code><pre class="prose">∀ {u r g d : Nat}
+  (hlowerFreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        g)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        g)
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hmNe :
+    @Ne.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hmOrder :
+    Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_5</code><pre class="prose">∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hct :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)
+  (hlowerFreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        g)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hgs :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      g)
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        g)
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hmNe :
+    @Ne.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hpOrder :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat g
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition</code><pre class="prose">∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hlower :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hde : @LT.lt.{0} Nat instLTNat d e)
+  (hec : @LT.lt.{0} Nat instLTNat e c)
+  (hnotCarry :
+    Not
+      (And
+        (@LT.lt.{0} Nat instLTNat e
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+        (@LT.lt.{0} Nat instLTNat
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            e)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))
+  (hnoTargetTail :
+    Not
+      (ChompLean.ColTail ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e u)),
+  ChompLean.Lag8PreloadedSkippedTransition u g d e</pre></li><li><code>ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_1</code><pre class="prose">∀ {u r g c d e : Nat}
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hec : @LT.lt.{0} Nat instLTNat e c),
+  Not
+      (@LE.le.{0} Nat instLENat e
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_2</code><pre class="prose">∀ {u r g c d e : Nat} (hgc : @LT.lt.{0} Nat instLTNat g c)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat g
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_3</code><pre class="prose">∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hec : @LT.lt.{0} Nat instLTNat e c)
+  (hnotCarry :
+    Not
+      (And
+        (@LT.lt.{0} Nat instLTNat e
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+        (@LT.lt.{0} Nat instLTNat
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            e)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))
+  (heTop :
+    @LE.le.{0} Nat instLENat e
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        u) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_4</code><pre class="prose">∀ {u r g c d e : Nat} (hde : @LT.lt.{0} Nat instLTNat d e) (hcol : @Eq.{1} Nat e d), False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_5</code><pre class="prose">∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hec : @LT.lt.{0} Nat instLTNat e c)
+  (hnotCarry :
+    Not
+      (And
+        (@LT.lt.{0} Nat instLTNat e
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+        (@LT.lt.{0} Nat instLTNat
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            e)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))
+  (heTop :
+    @LE.le.{0} Nat instLENat e
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hband :
+    And
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          e))
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            e)
+          u)
+        (Or
+          (@Exists.{1} Nat fun (a : Nat) =&gt;
+            And (@LT.lt.{0} Nat instLTNat e a)
+              (And (@LE.le.{0} Nat instLENat a g)
+                (@Eq.{1} Nat (ChompLean.gameF a a)
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e))))
+          (Or
+            (@Exists.{1} Nat fun (s : Nat) =&gt;
+              And (@LT.lt.{0} Nat instLTNat e s)
+                (And (@LE.le.{0} Nat instLENat s g)
+                  (And
+                    (@LT.lt.{0} Nat instLTNat s
+                      (ChompLean.gameF
+                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                        e))
+                    (@Eq.{1} Nat
+                      (ChompLean.gameF
+                        (ChompLean.gameF
+                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                          e)
+                        s)
+                      (ChompLean.gameF
+                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                        e)))))
+            (And
+              (@Eq.{1} Nat
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+              (@Eq.{1} Nat
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))))))
+  (hmLower :
+    @Ne.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_6</code><pre class="prose">∀ {u r g c d e : Nat}
+  (hgt :
+    @LT.lt.{0} Nat instLTNat g
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hband :
+    And
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          e))
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            e)
+          u)
+        (Or
+          (@Exists.{1} Nat fun (a : Nat) =&gt;
+            And (@LT.lt.{0} Nat instLTNat e a)
+              (And (@LE.le.{0} Nat instLENat a g)
+                (@Eq.{1} Nat (ChompLean.gameF a a)
+                  (ChompLean.gameF
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    e))))
+          (Or
+            (@Exists.{1} Nat fun (s : Nat) =&gt;
+              And (@LT.lt.{0} Nat instLTNat e s)
+                (And (@LE.le.{0} Nat instLENat s g)
+                  (And
+                    (@LT.lt.{0} Nat instLTNat s
+                      (ChompLean.gameF
+                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                        e))
+                    (@Eq.{1} Nat
+                      (ChompLean.gameF
+                        (ChompLean.gameF
+                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                          e)
+                        s)
+                      (ChompLean.gameF
+                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                        e)))))
+            (And
+              (@Eq.{1} Nat
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+              (@Eq.{1} Nat
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  e)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          e)) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_7</code><pre class="prose">∀ {u r g c d e : Nat}
+  (hmLower :
+    @Ne.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hmBelow :
+    Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          e)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+          e)) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_every_skip_relay_trichotomy</code><pre class="prose">∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hlower :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hde : @LT.lt.{0} Nat instLTNat d e)
+  (hec : @LT.lt.{0} Nat instLTNat e c),
+  Or
+    (And
+      (@LT.lt.{0} Nat instLTNat e
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))
+    (Or
+      (@Exists.{1} Nat fun (a : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat e a)
+          (And
+            (@LT.lt.{0} Nat instLTNat a
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+            (And (@Eq.{1} Nat (ChompLean.gameF a e) u)
+              (∀ (a&#x27; : Nat),
+                @LT.lt.{0} Nat instLTNat e a&#x27; →
+                  @LT.lt.{0} Nat instLTNat a&#x27;
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+                    @Eq.{1} Nat (ChompLean.gameF a&#x27; e) u → @Eq.{1} Nat a&#x27; a))))
+      (ChompLean.Lag8PreloadedSkippedTransition u g d e))</pre></li><li><code>ChompLean.gameF_lag8_preloaded_every_skip_trichotomy</code><pre class="prose">∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hlower :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hde : @LT.lt.{0} Nat instLTNat d e)
+  (hec : @LT.lt.{0} Nat instLTNat e c),
+  Or
+    (And
+      (@LT.lt.{0} Nat instLTNat e
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))
+    (Or
+      (ChompLean.ColTail ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e u)
+      (ChompLean.Lag8PreloadedSkippedTransition u g d e))</pre></li><li><code>ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail</code><pre class="prose">∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hlower :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hdc : @LT.lt.{0} Nat instLTNat d c)
+  (hnoCarry :
+    ∀ (e : Nat),
+      @LT.lt.{0} Nat instLTNat d e →
+        @LT.lt.{0} Nat instLTNat e c →
+          Not
+            (And
+              (@LT.lt.{0} Nat instLTNat e
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+              (@LT.lt.{0} Nat instLTNat
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  e)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))
+  (hnoTail :
+    ∀ (e : Nat),
+      @LT.lt.{0} Nat instLTNat d e →
+        @LT.lt.{0} Nat instLTNat e c →
+          Not
+            (ChompLean.ColTail ChompLean.gameF
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+              e u)),
+  @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))</pre></li><li><code>ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_1</code><pre class="prose">∀ {u r g c d : Nat} (hdc : @LT.lt.{0} Nat instLTNat d c)
+  (i :
+    Fin
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hi :
+    @LT.lt.{0} Nat instLTNat
+      (@Fin.val
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        i)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat d
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@Fin.val
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              i)))
+        (@LT.lt.{0} Nat instLTNat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@Fin.val
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              i))
+          c)) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_2</code><pre class="prose">∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hpacket :
+    ∀
+      (i :
+        Fin
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+      ChompLean.Lag8PreloadedSkippedTransition u g d
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@Fin.val
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            i)))
+  ⦃i j :
+    Fin
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))⦄
+  (hi :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@Fin.val
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          i))
+      c),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@Fin.val
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            i))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_3</code><pre class="prose">∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hpacket :
+    ∀
+      (i :
+        Fin
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+      ChompLean.Lag8PreloadedSkippedTransition u g d
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@Fin.val
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            i)))
+  ⦃i j :
+    Fin
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))⦄
+  (hj :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@Fin.val
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          j))
+      c),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@Fin.val
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            j))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_4</code><pre class="prose">∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hpacket :
+    ∀
+      (i :
+        Fin
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+      ChompLean.Lag8PreloadedSkippedTransition u g d
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@Fin.val
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            i)))
+  ⦃i j :
+    Fin
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))⦄
+  (hcols :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@Fin.val
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          i))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@Fin.val
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          j))),
+  Not
+      (@Eq.{1} Nat
+        (@Fin.val
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          i)
+        (@Fin.val
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          j)) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_5</code><pre class="prose">∀ {u r g c d : Nat} (hdc : @LT.lt.{0} Nat instLTNat d c)
+  (hn :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),
+  Not
+      (@LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_large_gap_forces_carry_or_targetTail</code><pre class="prose">∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hlower :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hdc : @LT.lt.{0} Nat instLTNat d c)
+  (hgap :
+    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)),
+  @Exists.{1} Nat fun (e : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat d e)
+      (And (@LT.lt.{0} Nat instLTNat e c)
+        (Or
+          (And
+            (@LT.lt.{0} Nat instLTNat e
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+            (@LT.lt.{0} Nat instLTNat
+              (ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                e)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))
+          (ChompLean.ColTail ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            e u)))</pre></li><li><code>ChompLean.gameF_lag8_preloaded_large_gap_forces_carry_or_targetTail._proof_1_1</code><pre class="prose">∀ {u r g c d : Nat}
+  (hgap :
+    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d))
+  (hbound :
+    @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))),
+  False</pre></li><li><code>ChompLean.gameF_lag8_preloaded_skip_outputs_injective</code><pre class="prose">∀ {u e1 e2 : Nat}
+  (he1 :
+    @LE.le.{0} Nat instLENat e1
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (he2 :
+    @LE.le.{0} Nat instLENat e2
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hout :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e1)
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e2)),
+  @Eq.{1} Nat e1 e2</pre></li><li><code>ChompLean.gameF_lag8_target_colTail_has_unique_relay_row</code><pre class="prose">∀ {u e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (htail :
+    ChompLean.ColTail ChompLean.gameF
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      e u),
+  @Exists.{1} Nat fun (a : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat e a)
+      (And
+        (@LT.lt.{0} Nat instLTNat a
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+        (And (@Eq.{1} Nat (ChompLean.gameF a e) u)
+          (∀ (a&#x27; : Nat),
+            @LT.lt.{0} Nat instLTNat e a&#x27; →
+              @LT.lt.{0} Nat instLTNat a&#x27;
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+                @Eq.{1} Nat (ChompLean.gameF a&#x27; e) u → @Eq.{1} Nat a&#x27; a)))</pre></li><li><code>ChompLean.gameF_lag8_target_colTail_has_unique_relay_row._proof_1_1</code><pre class="prose">∀ {u e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u) (a : Nat)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF a e) u) (a&#x27; : Nat)
+  (ha&#x27;t :
+    @LT.lt.{0} Nat instLTNat a&#x27;
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hhost&#x27; : @Eq.{1} Nat (ChompLean.gameF a&#x27; e) u) (haa&#x27; : Not (@Eq.{1} Nat a a&#x27;))
+  (haa&#x27;Order : @LT.lt.{0} Nat instLTNat a a&#x27;), Not (@LT.lt.{0} Nat instLTNat a&#x27; u) → False</pre></li><li><code>ChompLean.gameF_lag8_target_colTail_has_unique_relay_row._proof_1_2</code><pre class="prose">∀ {u e : Nat} (a a&#x27; : Nat) (haa&#x27; : Not (@Eq.{1} Nat a a&#x27;)) (haa&#x27;Order : Not (@LT.lt.{0} Nat instLTNat a a&#x27;)),
+  Not (@LT.lt.{0} Nat instLTNat a&#x27; a) → False</pre></li><li><code>ChompLean.gameF_lag8_target_colTail_has_unique_relay_row._proof_1_3</code><pre class="prose">∀ {u e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u) (a : Nat)
+  (hat :
+    @LT.lt.{0} Nat instLTNat a
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hhost : @Eq.{1} Nat (ChompLean.gameF a e) u) (a&#x27; : Nat) (hhost&#x27; : @Eq.{1} Nat (ChompLean.gameF a&#x27; e) u)
+  (haa&#x27; : Not (@Eq.{1} Nat a a&#x27;)) (ha&#x27;a : @LT.lt.{0} Nat instLTNat a&#x27; a), Not (@LT.lt.{0} Nat instLTNat a u) → False</pre></li><li><code>ChompLean.source_interval_loss_has_parked_edge</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t d e z : Nat} (hde : @LT.lt.{0} Nat instLTNat d e) (hloaded : ChompLean.B f t d z)
+  (hhole : Not (ChompLean.B f t e z)),
+  @Exists.{1} Nat fun (j : Nat) =&gt;
+    And (@LE.le.{0} Nat instLENat d j)
+      (And (@LT.lt.{0} Nat instLTNat j e)
+        (And (ChompLean.ParkedOnly f t j z)
+          (Not
+            (ChompLean.B f t
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              z))))</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank</code><pre class="prose">(u m : Nat) → Nat</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank.eq_1</code><pre class="prose">∀ (u m : Nat),
+  @Eq.{1} Nat (_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank u m)
+    (@ite.{1} Nat
+      (@LT.lt.{0} Nat instLTNat m
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+      (Nat.decLt m
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band</code><pre class="prose">∀ {u m1 m2 : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hlo1 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m1)
+  (hhi1 : @LT.lt.{0} Nat instLTNat m1 u)
+  (hne1 :
+    @Ne.{1} Nat m1
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlo2 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m2)
+  (hhi2 : @LT.lt.{0} Nat instLTNat m2 u)
+  (hne2 :
+    @Ne.{1} Nat m2
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hrank :
+    @Eq.{1} Nat (_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank u m1)
+      (_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank u m2)),
+  @Eq.{1} Nat m1 m2</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band._proof_1_2</code><pre class="prose">∀ {u m1 m2 : Nat}
+  (hlo1 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m1)
+  (hlo2 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m2)
+  (hrank :
+    @Eq.{1} Nat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m1
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m2
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),
+  Not (@Eq.{1} Nat m1 m2) → False</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band._proof_1_3</code><pre class="prose">∀ {u m1 m2 : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hlo1 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m1)
+  (hlo2 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m2)
+  (hhi2 : @LT.lt.{0} Nat instLTNat m2 u)
+  (hne2 :
+    @Ne.{1} Nat m2
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  @LT.lt.{0} Nat instLTNat m1
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →
+    Not
+        (@LT.lt.{0} Nat instLTNat m2
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+      ∀
+        (hrank :
+          @Eq.{1} Nat
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m1
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m2
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+        Not (@Eq.{1} Nat m1 m2) → False</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band._proof_1_4</code><pre class="prose">∀ {u m1 m2 : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hlo1 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m1)
+  (hhi1 : @LT.lt.{0} Nat instLTNat m1 u)
+  (hne1 :
+    @Ne.{1} Nat m1
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlo2 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m2)
+  (hne2 :
+    @Ne.{1} Nat m2
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat m1
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    @LT.lt.{0} Nat instLTNat m2
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →
+      ∀
+        (hrank :
+          @Eq.{1} Nat
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m1
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m2
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),
+        Not (@Eq.{1} Nat m1 m2) → False</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band._proof_1_5</code><pre class="prose">∀ {u m1 m2 : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hlo1 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m1)
+  (hhi1 : @LT.lt.{0} Nat instLTNat m1 u)
+  (hne1 :
+    @Ne.{1} Nat m1
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlo2 :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m2)
+  (hhi2 : @LT.lt.{0} Nat instLTNat m2 u)
+  (hne2 :
+    @Ne.{1} Nat m2
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat m1
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    Not
+        (@LT.lt.{0} Nat instLTNat m2
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+      ∀
+        (hrank :
+          @Eq.{1} Nat
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m1
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m2
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+        Not (@Eq.{1} Nat m1 m2) → False</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_lt</code><pre class="prose">∀ {u m : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hlo :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m)
+  (hhi : @LT.lt.{0} Nat instLTNat m u)
+  (hne :
+    @Ne.{1} Nat m
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  @LT.lt.{0} Nat instLTNat (_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank u m)
+    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_lt._proof_1_2</code><pre class="prose">∀ {u m : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hlo :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      m)
+  (hne :
+    @Ne.{1} Nat m
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  @LT.lt.{0} Nat instLTNat m
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →
+    Not
+        (@LT.lt.{0} Nat instLTNat
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →
+      False</pre></li><li><code>_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_lt._proof_1_3</code><pre class="prose">∀ {u m : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hhi : @LT.lt.{0} Nat instLTNat m u)
+  (hne :
+    @Ne.{1} Nat m
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat m
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    Not
+        (@LT.lt.{0} Nat instLTNat
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →
+      False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R188Lag8PreloadTransitionObstruction.lean:1</p><p>SHA-256: <code class="path">19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3</code></p></section><p><a href="../index.html#id=lean-19a2cbe3931ee6c274f9">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

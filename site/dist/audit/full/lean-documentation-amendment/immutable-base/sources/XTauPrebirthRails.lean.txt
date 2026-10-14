@@ -1,0 +1,385 @@
+import XTauCorridorConsumer
+
+set_option autoImplicit false
+set_option maxHeartbeats 1000000
+
+namespace ChompLean
+
+/-!
+# X-TAU: prebirth rails — exceeder equivalence, owner-column ceiling,
+column-1/2 rails, and the sharpened owner window
+
+Companion to `XTauCorridorConsumer.lean` (same run, follow-up batch).  All
+UNCONDITIONAL; no open Prop is consumed anywhere in this file.
+
+* `gameF_col1` / `gameF_col2` — the column rails `f(r,1) = 2` (r ≥ 2) and
+  `f(r,2) = r+2` (r ≥ 2), proved from the recurrence alone (with the finite
+  bases `f(1,1) = 3`, `f(2,2) = 4`).  ⚠ ARCHAEOLOGY (post-compile bank
+  sweep): these DUPLICATE the banked-compiled `gameF_col1_rail` /
+  `gameF_col2_rail` of `SelectorColHistCausalDepth.lean` (same statements,
+  same hypothesis `2 ≤ r`) — priority there; kept here only because this
+  file was already wired to them, and re-proved independently.
+* `gameF_diagonal_ne_row_add_two` / `gameF_diagonal_lower` — the rail chain:
+  `d(t) ≠ t+2` for `t ≥ 3` (column-2 rail occupies `t+2` in the diagonal MEX
+  sources), hence `d(t) ≥ t+3` for `t ≥ 3`.
+* `futureDiagonal_owner_window_sharp` — every host of a future diagonal
+  obeys `t+3 ≤ f(q,c) ≤ q+c+1` and `t+2 ≤ q+c` — one better than the banked
+  R184 window `t ≤ q+c`.
+* `prebirth_host_iff_exceeder` — **for `q < t`: row `q` hosts `d(t)`
+  (strictly left of its diagonal) iff `d(q) > d(t)`.**  Forward: coverage of
+  the diagonal MEX at `(q,q)`, with the diagonal source arm killed by owner
+  uniqueness.  Backward: `diagonalMaximal` + row injectivity.  This converts
+  the entire prebirth-host geometry into the `d`-sequence: prebirth hosts
+  live exactly on the EXCEEDER rows `{q < t : d(q) > d(t)}`, and the audit's
+  507 events are exactly the unit dips.  ⚠ ARCHAEOLOGY: the exceeder⟹host
+  direction was banked-compiled the same day as
+  `gameF_elevated_row_hosts_future_dip` (S4 `VerticalCrossingLocality.lean`)
+  and the full iff is banked-on-paper as `RangeMirror` /
+  `MuPreBirthEquivalence` (MASTER-PROOFS) — this is its first compiled
+  two-directional form, not a new face.
+* `prebirth_two_hosts_distinct_columns` — two prebirth hosts of one owner
+  occupy distinct columns and both rows are exceeders: the open
+  `GatedFutureDiagonalNoRightShift` quantifies exactly over the order of
+  those columns.
+* `owner_column_ceiling` — post-birth confinement: NO cell other than the
+  owner cell itself carries a diagonal value at a column ≥ the owner row
+  (mex dies on the diagonal source arm; carry chains ascend to a mex or to
+  the owner, whose value is too large to carry).  ⚠ ARCHAEOLOGY: content =
+  banked `encoding_diagonal_general_no_attack` (case `a < c`) +
+  `no_return_to_birth_column` (case `c = a`); packaged here as one
+  statement, no new content.
+* `gated_deep_anchor_corridor_bounds_sharp` — the corridor bounds tighten to
+  `5 ≤ e`, `e+2 ≤ x`, `x+3 ≤ 2e`, `t+2 ≤ 2e` under the sharpened window.
+* `penultimate_echo_window` — a penultimate echo of `d(t)` obeys
+  `t+3 ≤ 2x`: the echo row sits in the upper half `(t+3)/2 ≤ x < t`.
+
+## What this file does NOT say
+
+It does not prove or advance `GatedFutureDiagonalNoRightShift`,
+`GatedNoDeepFuture`, `PenultimateEchoPairKill`, atom C, or any gate/blocker
+debt.  The exceeder equivalence is a REFRAMING of the open atom's arena, not
+a proof step toward it by itself.  CORE: OPEN.
+-/
+
+/-! ## 1. Finite bases and the column-1/2 rails -/
+
+/- `gameF_one_one : gameF 1 1 = 3` is already BANKED in the import closure
+and is consumed below as-is (rediscovery avoided). -/
+
+/-- **Column-1 rail:** `f(r,1) = 2` for every `r ≥ 2` (mex at `r = 2`, then
+a frozen carry forever). -/
+theorem gameF_col1 : ∀ r : Nat, 2 ≤ r → gameF r 1 = 2 := by
+  intro r
+  induction r using Nat.strongRecOn with
+  | ind r ih =>
+    intro hr
+    rcases Nat.lt_or_ge r 3 with h3 | h3
+    · have hr2 : r = 2 := by omega
+      subst hr2
+      apply gameF_value_of_source_mex (by omega)
+      · rintro ⟨-, hc⟩
+        rw [gameF_one_one] at hc
+        omega
+      · omega
+      · intro h
+        simp only [B, R, C] at h
+        rcases h with ⟨a, ha, hval⟩ | ⟨b, hb, hval⟩
+        · by_cases ha0 : a = 0
+          · subst ha0
+            rw [Nat.min_eq_left (by omega), gameF_zero_zero] at hval
+            omega
+          · have ha1 : a = 1 := by omega
+            subst ha1
+            rw [Nat.min_eq_left (by omega), gameF_one_one] at hval
+            omega
+        · have hb0 : b = 0 := by omega
+          subst hb0
+          rw [gameF_col0] at hval
+          omega
+      · intro k hk0 hk2
+        have hk1 : k = 1 := by omega
+        subst hk1
+        exact Or.inl ⟨0, by omega,
+          by rw [Nat.min_eq_left (by omega), gameF_zero_zero]⟩
+    · have hprev : gameF (r - 1) 1 = 2 := ih (r - 1) (by omega) (by omega)
+      have hstep := gameF_brouwerRecurrence.1 (show 1 < r by omega)
+        (show gameF (r - 1) 1 < r by rw [hprev]; omega)
+      rw [hstep, hprev]
+
+/-- `d(2) = 4` (sources `{1, 3}` on the diagonal arm, `{3, 2}` on the row
+arm). -/
+theorem gameF_two_two : gameF 2 2 = 4 := by
+  apply gameF_value_of_source_mex (Nat.le_refl 2)
+  · rintro ⟨h, -⟩; omega
+  · omega
+  · intro h
+    simp only [B, R, C] at h
+    rcases h with ⟨a, ha, hval⟩ | ⟨b, hb, hval⟩
+    · by_cases ha0 : a = 0
+      · subst ha0
+        rw [Nat.min_eq_left (by omega), gameF_zero_zero] at hval
+        omega
+      · have ha1 : a = 1 := by omega
+        subst ha1
+        rw [Nat.min_eq_left (by omega), gameF_one_one] at hval
+        omega
+    · by_cases hb0 : b = 0
+      · subst hb0
+        rw [gameF_col0] at hval
+        omega
+      · have hb1 : b = 1 := by omega
+        subst hb1
+        rw [gameF_col1 2 (by omega)] at hval
+        omega
+  · intro k hk0 hk4
+    by_cases hk1 : k = 1
+    · subst hk1
+      exact Or.inl ⟨0, by omega,
+        by rw [Nat.min_eq_left (by omega), gameF_zero_zero]⟩
+    · by_cases hk2 : k = 2
+      · subst hk2
+        exact Or.inr ⟨1, by omega, by rw [gameF_col1 2 (by omega)]⟩
+      · have hk3 : k = 3 := by omega
+        subst hk3
+        exact Or.inl ⟨1, by omega,
+          by rw [Nat.min_eq_left (by omega), gameF_one_one]⟩
+
+/-- **Column-2 rail:** `f(r,2) = r+2` for every `r ≥ 2` (never carries; the
+sources are exactly `{1,3} ∪ {4,…,r+1} ∪ {r+1,2}`). -/
+theorem gameF_col2 : ∀ r : Nat, 2 ≤ r → gameF r 2 = r + 2 := by
+  intro r
+  induction r using Nat.strongRecOn with
+  | ind r ih =>
+    intro hr
+    rcases Nat.lt_or_ge r 3 with h3 | h3
+    · have hr2 : r = 2 := by omega
+      subst hr2
+      exact gameF_two_two
+    · have hprev : gameF (r - 1) 2 = r + 1 := by
+        have := ih (r - 1) (by omega) (by omega)
+        omega
+      apply gameF_value_of_source_mex (by omega)
+      · rintro ⟨-, hc⟩
+        rw [hprev] at hc
+        omega
+      · omega
+      · intro h
+        simp only [B, R, C] at h
+        rcases h with ⟨a, ha, hval⟩ | ⟨b, hb, hval⟩
+        · by_cases ha0 : a = 0
+          · subst ha0
+            rw [Nat.min_eq_left (by omega), gameF_zero_zero] at hval
+            omega
+          · by_cases ha1 : a = 1
+            · subst ha1
+              rw [Nat.min_eq_left (by omega), gameF_one_one] at hval
+              omega
+            · have ha2 : 2 ≤ a := by omega
+              rw [Nat.min_eq_right ha2, ih a ha ha2] at hval
+              omega
+        · by_cases hb0 : b = 0
+          · subst hb0
+            rw [gameF_col0] at hval
+            omega
+          · have hb1 : b = 1 := by omega
+            subst hb1
+            rw [gameF_col1 r (by omega)] at hval
+            omega
+      · intro k hk0 hkr
+        by_cases hk1 : k = 1
+        · subst hk1
+          exact Or.inl ⟨0, by omega,
+            by rw [Nat.min_eq_left (by omega), gameF_zero_zero]⟩
+        · by_cases hk2 : k = 2
+          · subst hk2
+            exact Or.inr ⟨1, by omega, by rw [gameF_col1 r (by omega)]⟩
+          · by_cases hk3 : k = 3
+            · subst hk3
+              exact Or.inl ⟨1, by omega,
+                by rw [Nat.min_eq_left (by omega), gameF_one_one]⟩
+            · refine Or.inl ⟨k - 2, by omega, ?_⟩
+              rw [Nat.min_eq_right (by omega), ih (k - 2) (by omega) (by omega)]
+              omega
+
+/-! ## 2. The rail chain and the sharpened owner window -/
+
+/-- `d(t) ≠ t+2` for `t ≥ 3`: the column-2 rail already occupies `t+2` in
+the diagonal's MEX sources.  (`d(1) = 3 = 1+2` and `d(2) = 4 = 2+2` show the
+bound `t ≥ 3` is exact.) -/
+theorem gameF_diagonal_ne_row_add_two {t : Nat} (ht : 3 ≤ t) :
+    gameF t t ≠ t + 2 := by
+  intro heq
+  have hmex : IsMex (B gameF t t) (gameF t t) :=
+    gameF_brouwerRecurrence.2 (Nat.le_refl t) (by rintro ⟨hc, -⟩; omega)
+  exact hmex.2.1 (Or.inr ⟨2, by omega, by rw [gameF_col2 t (by omega)]; omega⟩)
+
+/-- **Diagonal rail:** `d(t) ≥ t+3` for `t ≥ 3` (from `d > t`, `d ≠ t+1`,
+`d ≠ t+2`). -/
+theorem gameF_diagonal_lower {t : Nat} (ht : 3 ≤ t) :
+    t + 3 ≤ gameF t t := by
+  have h1 : t < gameF t t := encoded_gt game_encodes (Nat.le_refl t)
+  have h2 : gameF t t ≠ t + 1 := gameF_diagonal_ne_row_succ (by omega)
+  have h3 : gameF t t ≠ t + 2 := gameF_diagonal_ne_row_add_two ht
+  omega
+
+/-- **Sharpened owner window** (R184 window + diagonal rail): every host of
+a strictly-future diagonal obeys `t+3 ≤ f(q,c) ≤ q+c+1`, hence
+`t+2 ≤ q+c` — one better than the banked `t ≤ q+c`. -/
+theorem futureDiagonal_owner_window_sharp {q c t : Nat}
+    (hcq : c < q) (hqt : q < t) (ht : 3 ≤ t)
+    (heq : gameF q c = gameF t t) :
+    t + 3 ≤ gameF q c ∧ gameF q c ≤ q + c + 1 ∧ t + 2 ≤ q + c := by
+  have hw := futureDiagonal_owner_window gameRecurrenceModel hcq hqt heq
+  have hcap : gameF q c ≤ q + c + 1 := hw.2.1
+  have hlow : t + 3 ≤ gameF q c := by
+    rw [heq]
+    exact gameF_diagonal_lower ht
+  exact ⟨hlow, hcap, by omega⟩
+
+/-! ## 3. Prebirth hosts ⟺ exceeder rows -/
+
+/-- **Prebirth-host ⟺ exceeder.**  For `q < t`: row `q` hosts `d(t)`
+strictly left of its diagonal iff `d(q) > d(t)`.  Forward: `diagonalMaximal`
++ row injectivity.  Backward: the diagonal MEX at `(q,q)` must cover
+`d(t) < d(q)`; the diagonal source arm dies by owner uniqueness
+(no-attack), leaving a row host.  Consequence: the prebirth host set of
+`d(t)` is EXACTLY the exceeder set `{q < t : d(q) > d(t)}`, and every such
+host is live (`q < t < d(t)`). -/
+theorem prebirth_host_iff_exceeder {q t : Nat} (hqt : q < t) :
+    (∃ c, c < q ∧ gameF q c = gameF t t) ↔ gameF t t < gameF q q := by
+  have htV : t < gameF t t := encoded_gt game_encodes (Nat.le_refl t)
+  constructor
+  · rintro ⟨c, hcq, heq⟩
+    have hle : gameF q c ≤ gameF q q :=
+      diagonalMaximal gameRecurrenceModel (Nat.le_of_lt hcq)
+    have hne : gameF q c ≠ gameF q q := by
+      intro h
+      have := encoding_fixed_q_injective game_encodes
+        (Nat.le_of_lt hcq) (Nat.le_refl q) h
+      omega
+    omega
+  · intro hdr
+    have hmex : IsMex (B gameF q q) (gameF q q) :=
+      gameF_brouwerRecurrence.2 (Nat.le_refl q) (by rintro ⟨hc, -⟩; omega)
+    rcases hmex.2.2 (gameF t t) (by omega) hdr with hR | hC
+    · rcases hR with ⟨a, haq, hfa⟩
+      rw [Nat.min_eq_left (Nat.le_of_lt haq)] at hfa
+      exact (encoding_diagonal_general_no_attack game_encodes
+        (show a < t by omega) (Nat.le_refl t) hfa).elim
+    · rcases hC with ⟨c, hcq, hfc⟩
+      exact ⟨c, hcq, hfc⟩
+
+/-- Two prebirth hosts of one owner occupy DISTINCT columns (same-lower
+no-repeat at value `> q₂`), and both rows are exceeders.  The open atom
+`GatedFutureDiagonalNoRightShift` quantifies exactly over the ORDER of these
+columns (`c₁ < c₂` with the later host gated). -/
+theorem prebirth_two_hosts_distinct_columns {q₁ c₁ q₂ c₂ t : Nat}
+    (h1q : c₁ < q₁) (h2q : c₂ < q₂) (h12 : q₁ < q₂) (h2t : q₂ < t)
+    (hf₁ : gameF q₁ c₁ = gameF t t) (hf₂ : gameF q₂ c₂ = gameF t t) :
+    c₁ ≠ c₂ ∧ gameF t t < gameF q₁ q₁ ∧ gameF t t < gameF q₂ q₂ := by
+  have htV : t < gameF t t := encoded_gt game_encodes (Nat.le_refl t)
+  refine ⟨?_, ?_, ?_⟩
+  · intro hcc
+    subst hcc
+    exact encoding_same_lower_no_repeat game_encodes h1q h12 (by omega) hf₁ hf₂
+  · exact (prebirth_host_iff_exceeder (by omega)).1 ⟨c₁, h1q, hf₁⟩
+  · exact (prebirth_host_iff_exceeder h2t).1 ⟨c₂, h2q, hf₂⟩
+
+/-! ## 4. Post-birth owner-column ceiling -/
+
+/-- **Owner-column ceiling.**  No cell other than the owner cell itself
+carries a diagonal value at a column ≥ the owner row: `f(q,c) = d(a)` with
+`a ≤ c ≤ q` forces `(q,c) = (a,a)`.  MEX cells die on the diagonal source
+arm (`a ≤ c`); carry cells ascend (strong induction) until a MEX host or the
+owner cell, whose value `d(a) > a` is too large to have carried.  With
+`diagonalMaximal` this confines every post-birth appearance of `d(a)`
+strictly left of column `a`. -/
+theorem owner_column_ceiling :
+    ∀ q : Nat, ∀ {a c : Nat}, a ≤ c → c ≤ q → ¬(q = a ∧ c = a) →
+      gameF q c = gameF a a → False := by
+  intro q
+  induction q using Nat.strongRecOn with
+  | ind q ih =>
+    intro a c hac hcq hne heq
+    have haV : a < gameF a a := encoded_gt game_encodes (Nat.le_refl a)
+    rcases Nat.lt_or_ge c q with hcltq | hcgeq
+    · by_cases hcar : gameF (q - 1) c < q
+      · -- carry: ascend one row
+        have hstep := gameF_brouwerRecurrence.1 hcltq hcar
+        have heq' : gameF (q - 1) c = gameF a a := by
+          rw [← hstep]
+          exact heq
+        have hne' : ¬(q - 1 = a ∧ c = a) := by
+          rintro ⟨hqa, hca⟩
+          subst hca
+          have hq : q = c + 1 := by omega
+          rw [hqa] at hcar
+          omega
+        exact ih (q - 1) (by omega) hac (by omega) hne' heq'
+      · -- MEX: the owner sits in the diagonal source arm
+        have hmex : IsMex (B gameF q c) (gameF q c) :=
+          gameF_brouwerRecurrence.2 (Nat.le_of_lt hcltq)
+            (by rintro ⟨-, hc2⟩; omega)
+        exact hmex.2.1 (Or.inl ⟨a, by omega, by
+          rw [Nat.min_eq_left hac]
+          exact heq.symm⟩)
+    · -- c = q: a diagonal cell
+      have hcq' : c = q := by omega
+      subst hcq'
+      rcases Nat.lt_or_ge a c with hac' | hge
+      · exact encoding_diagonal_general_no_attack game_encodes hac'
+          (Nat.le_refl c) heq.symm
+      · have hae : a = c := by omega
+        exact hne ⟨hae.symm, hae.symm⟩
+
+/-! ## 5. Sharpened corridor and echo geometry -/
+
+/-- **Sharpened corridor bounds.**  With the `t+2 ≤ q+c` window, a deep
+gated future-diagonal anchor is confined to
+`5 ≤ e`, `e+2 ≤ x`, `x+3 ≤ 2e`, `t+2 ≤ 2e` — one better than the
+`x ≤ 2e-2`, `t ≤ 2e` of `gated_deep_anchor_corridor_bounds` on each side. -/
+theorem gated_deep_anchor_corridor_bounds_sharp {x e t : Nat}
+    (hex : e + 1 < x) (hxt : x < t)
+    (hanchor : gameF x e = gameF t t)
+    (hgate : A1Gate x e (gameF t t)) :
+    5 ≤ e ∧ e + 2 ≤ x ∧ x + 3 ≤ 2 * e ∧ t + 2 ≤ 2 * e := by
+  rcases (gated_deep_anchor_host_corridor hex hxt hanchor hgate (e + 1)
+      (by omega) (by omega)).2 with ⟨h, hh1, hh2, -, -, -, hd⟩
+  rcases hd (by omega) with ⟨hlt, h3, -⟩
+  have hw := futureDiagonal_owner_window_sharp hh1
+    (show e + 1 < t by omega) (show 3 ≤ t by omega) hh2
+  have hband : t + 2 ≤ e + 1 + h := hw.2.2
+  exact ⟨by omega, by omega, by omega, by omega⟩
+
+/-- **Penultimate-echo window.**  A penultimate echo of a strictly-future
+diagonal obeys `t + 3 ≤ 2x`: the echo row sits in the upper half of
+`[1, t)`.  (For `PenultimateEchoPairKill` this pins BOTH echo rows into
+`[(t+3)/2, t)`, an interval of length `< t/2`.) -/
+theorem penultimate_echo_window {x t : Nat} (hx : 0 < x) (hxt : x < t)
+    (heq : gameF x (x - 1) = gameF t t) :
+    t + 3 ≤ 2 * x := by
+  rcases Nat.lt_or_ge x 2 with hx1 | hx2
+  · have hx1' : x = 1 := by omega
+    subst hx1'
+    rw [show (1:Nat) - 1 = 0 from rfl, gameF_col0] at heq
+    have h2 : t < gameF t t := encoded_gt game_encodes (Nat.le_refl t)
+    have h3 : gameF t t ≠ t + 1 := gameF_diagonal_ne_row_succ (by omega)
+    omega
+  · have hw := futureDiagonal_owner_window_sharp (show x - 1 < x by omega)
+      hxt (show 3 ≤ t by omega) heq
+    have := hw.2.2
+    omega
+
+end ChompLean
+
+#print axioms ChompLean.gameF_col1
+#print axioms ChompLean.gameF_two_two
+#print axioms ChompLean.gameF_col2
+#print axioms ChompLean.gameF_diagonal_ne_row_add_two
+#print axioms ChompLean.gameF_diagonal_lower
+#print axioms ChompLean.futureDiagonal_owner_window_sharp
+#print axioms ChompLean.prebirth_host_iff_exceeder
+#print axioms ChompLean.prebirth_two_hosts_distinct_columns
+#print axioms ChompLean.owner_column_ceiling
+#print axioms ChompLean.gated_deep_anchor_corridor_bounds_sharp
+#print axioms ChompLean.penultimate_echo_window

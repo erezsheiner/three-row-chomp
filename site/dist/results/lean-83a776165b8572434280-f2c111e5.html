@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R14 Frontier Law · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R14 Frontier Law</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R14FrontierLaw.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R14FrontierLaw.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R14FrontierLaw.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 52 declarations</summary><ul class="declarations"><li><code>ChompLean.B.eq_1</code><pre class="prose">∀ (f : Nat → Nat → Nat) (q r p : Nat),
+  @Eq.{1} Prop (ChompLean.B f q r p) (Or (ChompLean.R f q r p) (ChompLean.C f q r p))</pre></li><li><code>ChompLean.BValueList</code><pre class="prose">(f : Nat → Nat → Nat) → (t e : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.BValueList.eq_1</code><pre class="prose">∀ (f : Nat → Nat → Nat) (t e : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.BValueList f t e)
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.RValueList f t e)
+      (ChompLean.CValueList f t e))</pre></li><li><code>ChompLean.C.eq_1</code><pre class="prose">∀ (f : Nat → Nat → Nat) (q r p : Nat),
+  @Eq.{1} Prop (ChompLean.C f q r p)
+    (@Exists.{1} Nat fun (b : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (f q b) p))</pre></li><li><code>ChompLean.CValueList</code><pre class="prose">(f : Nat → Nat → Nat) → (t e : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.CValueList.eq_1</code><pre class="prose">∀ (f : Nat → Nat → Nat) (t e : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.CValueList f t e) (@List.map.{0, 0} Nat Nat (fun (b : Nat) =&gt; f t b) (List.range e))</pre></li><li><code>ChompLean.HasLowerHole</code><pre class="prose">(f : Nat → Nat → Nat) → (t e u : Nat) → Prop</pre></li><li><code>ChompLean.IsSaturationFrontier</code><pre class="prose">(f : Nat → Nat → Nat) → (t u fr : Nat) → Prop</pre></li><li><code>ChompLean.LowerSaturated</code><pre class="prose">(f : Nat → Nat → Nat) → (t e u : Nat) → Prop</pre></li><li><code>ChompLean.R.eq_1</code><pre class="prose">∀ (f : Nat → Nat → Nat) (q r p : Nat),
+  @Eq.{1} Prop (ChompLean.R f q r p)
+    (@Exists.{1} Nat fun (a : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat a q) (@Eq.{1} Nat (f a (@Min.min.{0} Nat instMinNat a r)) p))</pre></li><li><code>ChompLean.RValueList</code><pre class="prose">(f : Nat → Nat → Nat) → (t e : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.RValueList.eq_1</code><pre class="prose">∀ (f : Nat → Nat → Nat) (t e : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.RValueList f t e)
+    (@List.map.{0, 0} Nat Nat (fun (a : Nat) =&gt; f a (@Min.min.{0} Nat instMinNat a e)) (List.range t))</pre></li><li><code>ChompLean.frontier_body_excludes_high_target</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr : Nat} (hfrt : @LE.le.{0} Nat instLENat fr t)
+  (htu : @LE.le.{0} Nat instLENat t u) (hfront : ChompLean.IsSaturationFrontier f t u fr) (e : Nat),
+  @LT.lt.{0} Nat instLTNat e fr → @Ne.{1} Nat (f t e) u</pre></li><li><code>ChompLean.frontier_body_excludes_high_target._proof_1_1</code><pre class="prose">∀ {t u fr : Nat} (hfrt : @LE.le.{0} Nat instLENat fr t) (e : Nat) (he : @LT.lt.{0} Nat instLTNat e fr),
+  Not (@LE.le.{0} Nat instLENat e t) → False</pre></li><li><code>ChompLean.frontier_body_has_lower_hole</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t u fr e : Nat} (hfront : ChompLean.IsSaturationFrontier f t u fr)
+  (he : @LT.lt.{0} Nat instLTNat e fr), ChompLean.HasLowerHole f t e u</pre></li><li><code>ChompLean.frontier_body_unsaturated</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t u fr e : Nat} (hfront : ChompLean.IsSaturationFrontier f t u fr)
+  (he : @LT.lt.{0} Nat instLTNat e fr), Not (ChompLean.LowerSaturated f t e u)</pre></li><li><code>ChompLean.frontier_ge_implies_body_unsaturated</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t u star fr : Nat} (hfront : ChompLean.IsSaturationFrontier f t u fr)
+  (hstarFr : @LE.le.{0} Nat instLENat star fr) (e : Nat),
+  @LT.lt.{0} Nat instLTNat e star → Not (ChompLean.LowerSaturated f t e u)</pre></li><li><code>ChompLean.frontier_ge_implies_body_unsaturated._proof_1_1</code><pre class="prose">∀ {star fr : Nat} (hstarFr : @LE.le.{0} Nat instLENat star fr) (e : Nat) (he : @LT.lt.{0} Nat instLTNat e star),
+  Not (@LT.lt.{0} Nat instLTNat e fr) → False</pre></li><li><code>ChompLean.hasLowerHole_iff_not_lowerSaturated</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat}, Iff (ChompLean.HasLowerHole f t e u) (Not (ChompLean.LowerSaturated f t e u))</pre></li><li><code>ChompLean.isMex_eq_of_lowerSaturated_and_clean</code><pre class="prose">∀ {S : Nat → Prop} {m u : Nat} (hmex : ChompLean.IsMex S m)
+  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)
+  (hsat :
+    ∀ (z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+        @LT.lt.{0} Nat instLTNat z u → S z)
+  (hclean : Not (S u)), @Eq.{1} Nat m u</pre></li><li><code>ChompLean.isMex_lt_of_lower_hole</code><pre class="prose">∀ {S : Nat → Prop} {m u : Nat} (hmex : ChompLean.IsMex S m)
+  (hhole :
+    @Exists.{1} Nat fun (z : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+        (And (@LT.lt.{0} Nat instLTNat z u) (Not (S z)))),
+  @LT.lt.{0} Nat instLTNat m u</pre></li><li><code>ChompLean.isMex_lt_of_lower_hole._proof_1_1</code><pre class="prose">∀ {m u : Nat} (z : Nat) (hzu : @LT.lt.{0} Nat instLTNat z u) (hmu : Not (@LT.lt.{0} Nat instLTNat m u)),
+  Not (@LT.lt.{0} Nat instLTNat z m) → False</pre></li><li><code>ChompLean.length_BValueList</code><pre class="prose">∀ (f : Nat → Nat → Nat) (t e : Nat),
+  @Eq.{1} Nat (@List.length.{0} Nat (ChompLean.BValueList f t e))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t e)</pre></li><li><code>ChompLean.lowerSaturated_card_bound</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat} (hsat : ChompLean.LowerSaturated f t e u),
+  @LE.le.{0} Nat instLENat
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t e)</pre></li><li><code>ChompLean.lowerSaturated_card_bound._proof_1_1</code><pre class="prose">∀ {u : Nat} ⦃z : Nat⦄
+  (hz&#x27; :
+    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z)
+      (@LT.lt.{0} Nat instLTNat z
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) → False</pre></li><li><code>ChompLean.lowerSaturated_card_bound._proof_1_2</code><pre class="prose">∀ {u : Nat} ⦃z : Nat⦄
+  (hz&#x27; :
+    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z)
+      (@LT.lt.{0} Nat instLTNat z
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (@LT.lt.{0} Nat instLTNat z u) → False</pre></li><li><code>ChompLean.mem_BValueList_iff</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.BValueList f t e) z)
+    (ChompLean.B f t e z)</pre></li><li><code>ChompLean.mem_BValueList_iff._simp_1_3</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat},
+  @Eq.{1} Prop (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.RValueList f t e) z)
+    (ChompLean.R f t e z)</pre></li><li><code>ChompLean.mem_BValueList_iff._simp_1_4</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat},
+  @Eq.{1} Prop (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.CValueList f t e) z)
+    (ChompLean.C f t e z)</pre></li><li><code>ChompLean.mem_CValueList_iff</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.CValueList f t e) z)
+    (ChompLean.C f t e z)</pre></li><li><code>ChompLean.mem_RValueList_iff</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e z : Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.RValueList f t e) z)
+    (ChompLean.R f t e z)</pre></li><li><code>ChompLean.mex_cell_lt_of_lower_hole</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u out : Nat} (hmex : ChompLean.IsMex (ChompLean.B f t e) out)
+  (hhole : ChompLean.HasLowerHole f t e u), @LT.lt.{0} Nat instLTNat out u</pre></li><li><code>ChompLean.nodup_subset_length_le</code><pre class="prose">∀ {xs ys : List.{0} Nat} (hnd : @List.Nodup.{0} Nat xs)
+  (hsub : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) xs ys),
+  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs) (@List.length.{0} Nat ys)</pre></li><li><code>ChompLean.nodup_subset_length_le._proof_1_1</code><pre class="prose">∀ (a : Nat) (xs : List.{0} Nat) {ys : List.{0} Nat}
+  (hlen :
+    @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (@List.length.{0} Nat ys)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (herase :
+    @Eq.{1} Nat (@List.length.{0} Nat (@List.erase.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat) ys a))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (@List.length.{0} Nat ys)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hypos :
+    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.length.{0} Nat ys)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat xs)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@List.length.{0} Nat ys)) →
+    False</pre></li><li><code>ChompLean.noncarry_of_live</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t e : Nat} (hlive : @LT.lt.{0} Nat instLTNat t (f t e)),
+  Not
+    (And (@LT.lt.{0} Nat instLTNat e t)
+      (@LT.lt.{0} Nat instLTNat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        t))</pre></li><li><code>ChompLean.noncarry_of_live._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e : Nat} (hlive : @LT.lt.{0} Nat instLTNat t (f t e))
+  (hcarry :
+    And (@LT.lt.{0} Nat instLTNat e t)
+      (@LT.lt.{0} Nat instLTNat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        t))
+  (heq :
+    @Eq.{1} Nat (f t e)
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)),
+  False</pre></li><li><code>ChompLean.pigeonhole_body_unsaturated</code><pre class="prose">∀ {f : Nat → Nat → Nat} {s e u : Nat}
+  (hsmall :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s e)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      u),
+  Not
+    (ChompLean.LowerSaturated f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      e u)</pre></li><li><code>ChompLean.pigeonhole_body_unsaturated._proof_1_1</code><pre class="prose">∀ {s e u : Nat}
+  (hsmall :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s e)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      u)
+  (hcard :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)),
+  False</pre></li><li><code>ChompLean.pigeonhole_body_unsaturated_sub</code><pre class="prose">∀ {f : Nat → Nat → Nat} {s e u : Nat}
+  (hsmall :
+    @LT.lt.{0} Nat instLTNat e
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u s)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),
+  Not
+    (ChompLean.LowerSaturated f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      e u)</pre></li><li><code>ChompLean.pigeonhole_body_unsaturated_sub._proof_1_1</code><pre class="prose">∀ {s e u : Nat}
+  (hsmall :
+    @LT.lt.{0} Nat instLTNat e
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u s)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s e)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        u) →
+    False</pre></li><li><code>ChompLean.recurrence_live_cell_lt_of_lower_hole</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t e u : Nat} (het : @LE.le.{0} Nat instLENat e t)
+  (hlive : @LT.lt.{0} Nat instLTNat t (f t e)) (hhole : ChompLean.HasLowerHole f t e u),
+  @LT.lt.{0} Nat instLTNat (f t e) u</pre></li><li><code>ChompLean.recurrence_live_cell_lt_of_lower_hole._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e : Nat} (hlive : @LT.lt.{0} Nat instLTNat t (f t e))
+  (hcarry :
+    And (@LT.lt.{0} Nat instLTNat e t)
+      (@LT.lt.{0} Nat instLTNat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        t))
+  (heq :
+    @Eq.{1} Nat (f t e)
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)),
+  False</pre></li><li><code>ChompLean.recurrence_lower_hole_excludes_high_target</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t e u : Nat} (het : @LE.le.{0} Nat instLENat e t)
+  (htu : @LE.le.{0} Nat instLENat t u) (hhole : ChompLean.HasLowerHole f t e u), @Ne.{1} Nat (f t e) u</pre></li><li><code>ChompLean.recurrence_lower_hole_excludes_high_target._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat} (htu : @LE.le.{0} Nat instLENat t u) (hout : @Eq.{1} Nat (f t e) u)
+  (hcarry :
+    And (@LT.lt.{0} Nat instLTNat e t)
+      (@LT.lt.{0} Nat instLTNat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        t))
+  (heq :
+    @Eq.{1} Nat u
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)),
+  False</pre></li><li><code>ChompLean.recurrence_lower_hole_excludes_high_target._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {t e u : Nat} (houtlt : @LT.lt.{0} Nat instLTNat u u), False</pre></li><li><code>ChompLean.rolling_frontier_captures</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr seat : Nat}
+  (hseatT : @LE.le.{0} Nat instLENat seat t) (hfrSeat : @LE.le.{0} Nat instLENat fr seat)
+  (htu : @LE.le.{0} Nat instLENat t u)
+  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)
+  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hsatSeat : ChompLean.LowerSaturated f t seat u)
+  (hRcleanSeat : Not (ChompLean.R f t seat u))
+  (hnotCarrySeat :
+    Not
+      (And (@LT.lt.{0} Nat instLTNat seat t)
+        (@LT.lt.{0} Nat instLTNat
+          (f
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            seat)
+          t)))
+  (hzoneClean : ∀ (e : Nat), @LE.le.{0} Nat instLENat fr e → @LT.lt.{0} Nat instLTNat e seat → @Ne.{1} Nat (f t e) u),
+  @Eq.{1} Nat (f t seat) u</pre></li><li><code>ChompLean.rolling_frontier_captures._proof_1_1</code><pre class="prose">∀ {t u fr seat : Nat} (hseatT : @LE.le.{0} Nat instLENat seat t) (hfrSeat : @LE.le.{0} Nat instLENat fr seat),
+  Not (@LE.le.{0} Nat instLENat fr t) → False</pre></li><li><code>ChompLean.rolling_frontier_captures_of_live</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr seat : Nat}
+  (hseatT : @LE.le.{0} Nat instLENat seat t) (hfrSeat : @LE.le.{0} Nat instLENat fr seat)
+  (htu : @LE.le.{0} Nat instLENat t u)
+  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)
+  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hsatSeat : ChompLean.LowerSaturated f t seat u)
+  (hRcleanSeat : Not (ChompLean.R f t seat u)) (hliveSeat : @LT.lt.{0} Nat instLTNat t (f t seat))
+  (hzoneClean : ∀ (e : Nat), @LE.le.{0} Nat instLENat fr e → @LT.lt.{0} Nat instLTNat e seat → @Ne.{1} Nat (f t e) u),
+  @Eq.{1} Nat (f t seat) u</pre></li><li><code>ChompLean.saturation_frontier_captures</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr : Nat} (hfrt : @LE.le.{0} Nat instLENat fr t)
+  (htu : @LE.le.{0} Nat instLENat t u)
+  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)
+  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hRclean : Not (ChompLean.R f t fr u))
+  (hnotCarry :
+    Not
+      (And (@LT.lt.{0} Nat instLTNat fr t)
+        (@LT.lt.{0} Nat instLTNat
+          (f
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            fr)
+          t))),
+  @Eq.{1} Nat (f t fr) u</pre></li><li><code>ChompLean.saturation_frontier_captures_of_live</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr : Nat} (hfrt : @LE.le.{0} Nat instLENat fr t)
+  (htu : @LE.le.{0} Nat instLENat t u)
+  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)
+  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hRclean : Not (ChompLean.R f t fr u))
+  (hlive : @LT.lt.{0} Nat instLTNat t (f t fr)), @Eq.{1} Nat (f t fr) u</pre></li><li><code>ChompLean.two_seat_capture_of_rolling_frontier</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u star fr back : Nat}
+  (hbackT : @LE.le.{0} Nat instLENat back t) (hfrBack : @LE.le.{0} Nat instLENat fr back)
+  (htu : @LE.le.{0} Nat instLENat t u)
+  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)
+  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hstarClean : @Eq.{1} Nat fr star → Not (ChompLean.R f t star u))
+  (hstarNotCarry :
+    @Eq.{1} Nat fr star →
+      Not
+        (And (@LT.lt.{0} Nat instLTNat star t)
+          (@LT.lt.{0} Nat instLTNat
+            (f
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              star)
+            t)))
+  (hsatBack : @Ne.{1} Nat fr star → ChompLean.LowerSaturated f t back u)
+  (hbackClean : @Ne.{1} Nat fr star → Not (ChompLean.R f t back u))
+  (hbackNotCarry :
+    @Ne.{1} Nat fr star →
+      Not
+        (And (@LT.lt.{0} Nat instLTNat back t)
+          (@LT.lt.{0} Nat instLTNat
+            (f
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              back)
+            t)))
+  (hzoneClean :
+    @Ne.{1} Nat fr star →
+      ∀ (e : Nat), @LE.le.{0} Nat instLENat fr e → @LT.lt.{0} Nat instLTNat e back → @Ne.{1} Nat (f t e) u),
+  Or (@Eq.{1} Nat (f t star) u) (@Eq.{1} Nat (f t back) u)</pre></li><li><code>ChompLean.two_seat_capture_of_rolling_frontier._proof_1_1</code><pre class="prose">∀ {t u star back : Nat} (hbackT : @LE.le.{0} Nat instLENat back t) (hfrBack : @LE.le.{0} Nat instLENat star back),
+  Not (@LE.le.{0} Nat instLENat star t) → False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R14FrontierLaw.lean:1</p><p>SHA-256: <code class="path">83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa</code></p></section><p><a href="../index.html#id=lean-83a776165b8572434280">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

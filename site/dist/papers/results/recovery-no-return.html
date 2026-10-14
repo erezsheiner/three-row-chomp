@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No return to a column after a value departs · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../document.css"><link rel="stylesheet" href="../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../index.html">Search</a><a href="../../browse.html">Browse all</a><a href="../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="no-return-to-a-column-after-a-value-departs">No return to a column after a value departs</h1><p><strong>Statement.</strong> In a full positive-MEX/COPY triangular history, once value v leaves column c after row s, it never returns there. With row injectivity, a recovery of v at another host at transition q is a fresh-column MEX event with q&lt;=v. If v&lt;=s is present at row s, it persists forever.</p>
+<h2 id="complete-proof-and-definitions">Complete proof and definitions</h2><ul>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/PRIVATE-HISTORY-AND-RELAY.html">Private history, increasing source exits and departure resources</a></li>
+</ul>
+<p>The argument below and the linked full derivations form the reviewed proof. All stated hypotheses remain part of the result.</p>
+<h2 id="hypotheses-and-scope">Hypotheses and scope</h2><ul>
+<li>Explicit full-history journal V(t, c)={F(r, min(r, c)):r&lt;t}.</li>
+<li>COPY iff old value&lt;t, otherwise positive MEX of V and strict current prefix. Row injectivity needed for host-recovery conclusion.</li>
+</ul>
+<h2 id="argument">Argument</h2><ol>
+<li><p>Assume a return and choose least t&gt;s+1. COPY would preserve previous value which is not v, while MEX has v in V from row s because c&lt;=s. Both branches contradict a return; induction not needed beyond least finite counterexample.</p>
+</li>
+<li><p>At recovery d!=c, row injectivity makes old hostc unique and current F(q, c)!=v. If d&lt;q, old F(q-1, d)!=v so COPY cannot produce v; newborn q also MEX. Hence v absent from entire V(q, d), proving no earlier award in existing part of column. If v&lt;q then old c would COPY v, contradiction; so q&lt;=v.</p>
+</li>
+<li><p>If v&lt;=s, at next row v&lt;s+1 so COPY preserves it, and induction covers all later rows. No UnitDip, canonical reach, owner-map injectivity, or restriction on movement direction was used.</p>
+</li>
+<li><p>The additional relay/nonmerging R4/R5 claims in the source have stronger absent-root/endpoint guards and are separate catalogue records; none is needed for R1-R3. No finite counterexample log is used as a proof.</p>
+</li>
+</ol>
+<h2 id="review-and-supporting-evidence">Review and supporting evidence</h2><ul>
+<li>Historical original-claim verdict: accepted.</li>
+<li>This statement was independently audited on paper. The audit did not produce a new Lean formalization of the derived statement; its listed formal dependencies have separate verification receipts.</li>
+<li><a href="../../audit/prepublication/papers/PAPER-REVIEW.json">Renewed statement and proof-completeness review</a></li>
+<li><a href="../../audit/full/paper-a/recovery-no-return.json">Full independent audit and original-claim verdict</a></li>
+<li><a href="../../audit/full/CANONICAL-FOUNDATIONS.html">Shared canonical foundation and exact Lean bridges</a></li>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Full proof and definitions: Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/PRIVATE-HISTORY-AND-RELAY.html">Full proof and definitions: Private history, increasing source exits and departure resources</a></li>
+</ul>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

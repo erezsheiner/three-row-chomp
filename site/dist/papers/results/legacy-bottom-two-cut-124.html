@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two bottom cuts exclude penultimate lags through 124 · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../document.css"><link rel="stylesheet" href="../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../index.html">Search</a><a href="../../browse.html">Browse all</a><a href="../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="two-bottom-cuts-exclude-penultimate-lags-through-124">Two bottom cuts exclude penultimate lags through 124</h1><p><strong>Statement.</strong> For everyb&gt;=500, f(b, b-1)&gt;b+124. For0&lt;=k&lt;=124 the actual winning-target sets satisfy W(b+k, b, b-1)=W(b+k, b, b).</p>
+<h2 id="complete-proof-and-definitions">Complete proof and definitions</h2><ul>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/lag124-proof.html">Two bottom cuts exclude every penultimate lag through 124</a></li>
+<li><a href="../supplements/FINITE-CERTIFICATE-INDUCTION.html">Finite certificates and the all-index bridge</a></li>
+</ul>
+<p>The argument below and the linked full derivations form the reviewed proof. All stated hypotheses remain part of the result.</p>
+<h2 id="hypotheses-and-scope">Hypotheses and scope</h2><ul>
+<li>Canonical positive-MEX/COPY three-row Chomp history, with the structural facts proved in the shared canonical foundation review.</li>
+<li>Exact canonical completion/game dictionary; legal moves are ordinary three-row Chomp; positive-MEX/COPY floor.</li>
+<li>Verified C300 periodic certificate, prior120closure, and finite context certificate all independently replayed.</li>
+</ul>
+<h2 id="argument">Argument</h2><ol>
+<li><p>Independent replay in independent-checks.json rebuilt228826cells from literal MEX starting at1. C300 certificate:all 52976base cells,250normalized phase MEX identities, G176, H675, T676. At b&gt;=T, inherited/pre500labels&lt;b and own history older than Grows&lt;b; normalized recent history/prefix is exact. Induction on row then column proves patterns for all b&gt;=500. Frozen columns COPY forever.</p>
+</li>
+<li><p>Complete new replies after t-bottom deletion from P(a=b+k, b, b-m): middle cuts b-j with1&lt;=j&lt;=m+t-1 yield E(k+j, m+t-j; b-j); top cuts b-m-t+h yield faces E(0, h; b-m-t+h); remaining top cuts b+ell,0&lt;=ell&lt;k yield E(ell, m+t; b). All other legal options were already options of the original P and therefore N. This is a derivation from moves, not a graph assumption.</p>
+</li>
+<li><p>Prior120finite closure rebuilt1284states,82217edges and23112base N checks on500..535. All nonrail children stay in the closed set of states; earlier row jump&lt;=36or same-row lag decrease gives well-founded induction. Rails use bottom&gt;host and row&gt;=500.</p>
+</li>
+<li><p>Context graph rebuilt1510states,104995edges,29339base checks on500..538. Every retained step decreases middle or lag; maximum back jump39cannot jump below500from539up. Each ABAB/BABA stop reconstructs age1 root at lag121/122with nonincreasing top/middle coordinates. Empty context age2/3 states for every uncovered lag&lt;=120were rechecked. Therefore actual P in states must descend to an earlier/equal low top penultimate failure, never to an assumed N state with unpaid memory.</p>
+</li>
+<li><p>Choose least penultimate failure B. Base forces B&gt;=539; prior120leaves121or122. Empty context descent excludes all age2/3 lower lag&lt;=120states at B by minimality or strictly smaller top. A121start ABAB forces122at B-1, contradiction. A122start forces Q=(B+121, B, B-2)P. Its two-bottom neighbor Y=(B+122, B, B-3)N has252phase classified possible replies: lags123/124rails, lag0faces, top ell&lt;=120by descent, and ell121attacked by Q. All N contradicts N having a P reply. Rails123/124then finish bound.</p>
+</li>
+<li><p>For the winning-target sets write X=(a, b, b), Y=(a, b, b-1), and f=f(b, b-1), with b&lt;=a&lt;d(b). Middle-cut target lists coincide. Bottom-cut lists differ only by the extra target Y of X. Top cuts below b coincide in both positions, so their outcomes need not be evaluated. The remaining top cuts of X cannot be P because their top is below d(b); those of Y can be P only at top f. When f&gt;a, none of these differing top cuts is P and Y itself is N, proving W(X)=W(Y). When f=a, Y is an extra P target of X. When f&lt;a, (f, b, b-1) is a P target of Y but is not any one-move target of X. The bound a&lt;=b+124&lt;f&lt;d(b) gives exactly the equal-set case. No unbounded-lag or proof-grammar exhaustion claim follows.</p>
+</li>
+</ol>
+<h2 id="review-and-supporting-evidence">Review and supporting evidence</h2><ul>
+<li>Historical original-claim verdict: accepted.</li>
+<li>This statement was independently audited on paper. The audit did not produce a new Lean formalization of the derived statement; its listed formal dependencies have separate verification receipts.</li>
+<li><a href="../../audit/prepublication/papers/PAPER-REVIEW.json">Renewed statement and proof-completeness review</a></li>
+<li><a href="../../audit/full/paper-a/legacy-bottom-two-cut-124.json">Full independent audit and original-claim verdict</a></li>
+<li><a href="../../audit/full/CANONICAL-FOUNDATIONS.html">Shared canonical foundation and exact Lean bridges</a></li>
+<li><a href="../../certificates/README.md">Reproducible finite certificate data and checker</a></li>
+<li><a href="../../certificates/INPUT-MANIFEST.json">Exact certificate input hashes</a></li>
+<li><a href="../../certificates/CHECK-RESULTS.json">Finite obligation replay receipt</a></li>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Full proof and definitions: Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/lag124-proof.html">Full proof and definitions: Two bottom cuts exclude every penultimate lag through 124</a></li>
+<li><a href="../supplements/FINITE-CERTIFICATE-INDUCTION.html">Full proof and definitions: Finite certificates and the all-index bridge</a></li>
+</ul>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

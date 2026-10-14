@@ -1,0 +1,1226 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R198 Causal Middle Cohort Pullback · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R198 Causal Middle Cohort Pullback</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R198CausalMiddleCohortPullback.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R198CausalMiddleCohortPullback.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R198CausalMiddleCohortPullback.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 111 declarations</summary><ul class="declarations"><li><code>ChompLean.ActualNonblockerSublevelVisible</code><pre class="prose">(T R : Nat) → Prop</pre></li><li><code>ChompLean.ActualRangeOwnerMidpointCutoffFrom</code><pre class="prose">(base margin : Nat) → Prop</pre></li><li><code>ChompLean.PastDiagonalThrough</code><pre class="prose">(r v : Nat) → Prop</pre></li><li><code>ChompLean.actualBlockerCount_add_pastDiagonalCount_le</code><pre class="prose">∀ (r v : Nat),
+  @LE.le.{0} Nat instLENat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (ChompLean.gameFBlockerCountThrough
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.gameFPastDiagonalBelowCount r v))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.actualBlockerCount_add_pastDiagonalCount_le._proof_1_3</code><pre class="prose">∀ (r v : Nat)
+  (hpartition :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (x : Nat) =&gt;
+              @Decidable.decide (ChompLean.S ChompLean.gameF x)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF x)))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (x : Nat) =&gt;
+              @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))
+                (@instDecidableNot (ChompLean.S ChompLean.gameF x)
+                  (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+      (@List.length.{0} Nat
+        (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hpastLe :
+    @LE.le.{0} Nat instLENat
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (x : Nat) =&gt;
+            @Decidable.decide (ChompLean.PastDiagonalThrough r x)
+              (Classical.propDecidable (ChompLean.PastDiagonalThrough r x)))
+          (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (x : Nat) =&gt;
+            @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))
+              (@instDecidableNot (ChompLean.S ChompLean.gameF x)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))
+          (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+  (hlen :
+    @Eq.{1} Nat
+      (@List.length.{0} Nat
+        (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@List.length.{0} Nat
+            (@List.filter.{0} Nat
+              (fun (k : Nat) =&gt;
+                @Decidable.decide (ChompLean.S ChompLean.gameF k)
+                  (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))
+              (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          (@List.length.{0} Nat
+            (@List.filter.{0} Nat
+              (fun (k : Nat) =&gt;
+                @Decidable.decide (ChompLean.PastDiagonalThrough r k)
+                  (Classical.propDecidable (ChompLean.PastDiagonalThrough r k)))
+              (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_sublevel</code><pre class="prose">∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r)
+  (hupper :
+    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)),
+  @Eq.{1} Nat
+    (ChompLean.gameFBlockerCountThrough
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (ChompLean.causalBlockerCountAt r v)</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_sublevel._proof_1_1</code><pre class="prose">∀ {base margin K r v : Nat} (k : Nat)
+  (hkrange :
+    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)
+      (@LT.lt.{0} Nat instLTNat k
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (@LT.lt.{0} Nat instLTNat k v) → False</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_sublevel._proof_1_2</code><pre class="prose">∀ {base margin K r v : Nat} (k : Nat)
+  (hkrange :
+    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)
+      (@LT.lt.{0} Nat instLTNat k
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) → False</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_sublevel._proof_1_3</code><pre class="prose">∀ {base margin K r v : Nat}
+  (hpartition :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (x : Nat) =&gt;
+              @Decidable.decide (ChompLean.S ChompLean.gameF x)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF x)))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (x : Nat) =&gt;
+              @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))
+                (@instDecidableNot (ChompLean.S ChompLean.gameF x)
+                  (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+      (@List.length.{0} Nat
+        (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hcomplement :
+    @Eq.{1} Nat
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (k : Nat) =&gt;
+            @Decidable.decide (Not (ChompLean.S ChompLean.gameF k))
+              (@instDecidableNot (ChompLean.S ChompLean.gameF k)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF k))))
+          (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (k : Nat) =&gt;
+            @Decidable.decide (ChompLean.PastDiagonalThrough r k)
+              (Classical.propDecidable (ChompLean.PastDiagonalThrough r k)))
+          (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+  (hlen :
+    @Eq.{1} Nat
+      (@List.length.{0} Nat
+        (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@Eq.{1} Nat
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (k : Nat) =&gt;
+              @Decidable.decide (ChompLean.S ChompLean.gameF k)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@List.length.{0} Nat
+            (@List.filter.{0} Nat
+              (fun (k : Nat) =&gt;
+                @Decidable.decide (ChompLean.PastDiagonalThrough r k)
+                  (Classical.propDecidable (ChompLean.PastDiagonalThrough r k)))
+              (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))) →
+    False</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visibility</code><pre class="prose">∀ {T R v : Nat} (hvisible : ChompLean.ActualNonblockerSublevelVisible T R)
+  (hupper : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R),
+  @Eq.{1} Nat
+    (ChompLean.gameFBlockerCountThrough
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (ChompLean.causalBlockerCountAt T v)</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visibility._proof_1_1</code><pre class="prose">∀ {R v : Nat} (k : Nat)
+  (hkrange :
+    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)
+      (@LT.lt.{0} Nat instLTNat k
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (@LT.lt.{0} Nat instLTNat k v) → False</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visibility._proof_1_2</code><pre class="prose">∀ {R v : Nat} (k : Nat)
+  (hkrange :
+    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)
+      (@LT.lt.{0} Nat instLTNat k
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) → False</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visibility._proof_1_3</code><pre class="prose">∀ {T R v : Nat}
+  (hpartition :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (x : Nat) =&gt;
+              @Decidable.decide (ChompLean.S ChompLean.gameF x)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF x)))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (x : Nat) =&gt;
+              @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))
+                (@instDecidableNot (ChompLean.S ChompLean.gameF x)
+                  (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+      (@List.length.{0} Nat
+        (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hcomplement :
+    @Eq.{1} Nat
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (k : Nat) =&gt;
+            @Decidable.decide (Not (ChompLean.S ChompLean.gameF k))
+              (@instDecidableNot (ChompLean.S ChompLean.gameF k)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF k))))
+          (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (k : Nat) =&gt;
+            @Decidable.decide (ChompLean.PastDiagonalThrough T k)
+              (Classical.propDecidable (ChompLean.PastDiagonalThrough T k)))
+          (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+  (hlen :
+    @Eq.{1} Nat
+      (@List.length.{0} Nat
+        (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@Eq.{1} Nat
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (k : Nat) =&gt;
+              @Decidable.decide (ChompLean.S ChompLean.gameF k)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@List.length.{0} Nat
+            (@List.filter.{0} Nat
+              (fun (k : Nat) =&gt;
+                @Decidable.decide (ChompLean.PastDiagonalThrough T k)
+                  (Classical.propDecidable (ChompLean.PastDiagonalThrough T k)))
+              (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))) →
+    False</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visible_sublevel</code><pre class="prose">∀ {base margin center K T v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hreach :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))
+  (hTBase : @LE.le.{0} Nat instLENat base T)
+  (hupper :
+    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),
+  @Eq.{1} Nat
+    (ChompLean.gameFBlockerCountThrough
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (ChompLean.causalBlockerCountAt T v)</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visible_sublevel._proof_1_1</code><pre class="prose">∀ {base margin center K T v : Nat} (k : Nat)
+  (hkrange :
+    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)
+      (@LT.lt.{0} Nat instLTNat k
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (@LT.lt.{0} Nat instLTNat k v) → False</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visible_sublevel._proof_1_2</code><pre class="prose">∀ {base margin center K T v : Nat} (k : Nat)
+  (hkrange :
+    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k)
+      (@LT.lt.{0} Nat instLTNat k
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) → False</pre></li><li><code>ChompLean.actualBlockerCount_eq_causalBlockerCountAt_of_visible_sublevel._proof_1_3</code><pre class="prose">∀ {base margin center K T v : Nat}
+  (hpartition :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (x : Nat) =&gt;
+              @Decidable.decide (ChompLean.S ChompLean.gameF x)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF x)))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (x : Nat) =&gt;
+              @Decidable.decide (Not (ChompLean.S ChompLean.gameF x))
+                (@instDecidableNot (ChompLean.S ChompLean.gameF x)
+                  (Classical.propDecidable (ChompLean.S ChompLean.gameF x))))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+      (@List.length.{0} Nat
+        (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hcomplement :
+    @Eq.{1} Nat
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (k : Nat) =&gt;
+            @Decidable.decide (Not (ChompLean.S ChompLean.gameF k))
+              (@instDecidableNot (ChompLean.S ChompLean.gameF k)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF k))))
+          (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat
+          (fun (k : Nat) =&gt;
+            @Decidable.decide (ChompLean.PastDiagonalThrough T k)
+              (Classical.propDecidable (ChompLean.PastDiagonalThrough T k)))
+          (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+  (hlen :
+    @Eq.{1} Nat
+      (@List.length.{0} Nat
+        (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@Eq.{1} Nat
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (k : Nat) =&gt;
+              @Decidable.decide (ChompLean.S ChompLean.gameF k)
+                (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))
+            (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@List.length.{0} Nat
+            (@List.filter.{0} Nat
+              (fun (k : Nat) =&gt;
+                @Decidable.decide (ChompLean.PastDiagonalThrough T k)
+                  (Classical.propDecidable (ChompLean.PastDiagonalThrough T k)))
+              (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))) →
+    False</pre></li><li><code>ChompLean.actualBlockerCount_le_causalBlockerCountAt</code><pre class="prose">∀ (r v : Nat),
+  @LE.le.{0} Nat instLENat
+    (ChompLean.gameFBlockerCountThrough
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (ChompLean.causalBlockerCountAt r v)</pre></li><li><code>ChompLean.actualBlockerCount_le_causalBlockerCountAt._proof_1_1</code><pre class="prose">∀ (r v : Nat)
+  (h :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (ChompLean.gameFBlockerCountThrough
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (ChompLean.gameFPastDiagonalBelowCount r v))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (ChompLean.gameFBlockerCountThrough
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (ChompLean.gameFPastDiagonalBelowCount r v))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMiddleCohortList_earlyLag_K10_causal_of_floorPlus_AFloor</code><pre class="prose">∀ {u L : Nat} (hLu : @LE.le.{0} Nat instLENat L u)
+  (hL :
+    Or (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))
+      (Or (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))
+        (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))))
+  (hRight :
+    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 25) (instOfNatNat (nat_lit 25)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)
+        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))
+  (hAFloor :
+    ∀ {v : Nat},
+      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26))) v →
+        @LE.le.{0} Nat instLENat v
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+              (ChompLean.gameFBlockerCountThrough
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+  (hFloorPlus :
+    ∀ {a k : Nat},
+      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))) a →
+        @Eq.{1} Nat (ChompLean.gameF a a) k →
+          @LE.le.{0} Nat instLENat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) a)
+              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  And
+    (@Eq.{1} (List.{0} Nat)
+      (ChompLean.actualBlockerMiddleCohortList (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)
+        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+      (ChompLean.causalBlockerMiddleCohortListFrom
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)
+          (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)
+        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))
+    (@LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)
+        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+      u)</pre></li><li><code>ChompLean.actualBlockerMiddleCohortList_eq_causal</code><pre class="prose">∀ {base margin K r : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r),
+  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList r K) (ChompLean.causalBlockerMiddleCohortList r K)</pre></li><li><code>ChompLean.actualBlockerMiddleCohortList_eq_causalFrom</code><pre class="prose">∀ {base margin center K T : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hreach :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))
+  (hTBase : @LE.le.{0} Nat instLENat base T),
+  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList center K)
+    (ChompLean.causalBlockerMiddleCohortListFrom T center K)</pre></li><li><code>ChompLean.actualBlockerMiddleCohortList_eq_causalFrom_of_visibility</code><pre class="prose">∀ {T center K : Nat}
+  (hvisible :
+    ChompLean.ActualNonblockerSublevelVisible T
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),
+  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList center K)
+    (ChompLean.causalBlockerMiddleCohortListFrom T center K)</pre></li><li><code>ChompLean.actualBlockerMiddleCohortList_eq_causalFrom_rightEdge</code><pre class="prose">∀ {base center K : Nat}
+  (hownerLeMidpoint :
+    ChompLean.ActualRangeOwnerMidpointCutoffFrom base (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  (hbase : @LE.le.{0} Nat instLENat base (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),
+  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList center K)
+    (ChompLean.causalBlockerMiddleCohortListFrom
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K) center K)</pre></li><li><code>ChompLean.actualBlockerMiddleCohortList_eq_causalFrom_rightEdge._proof_1_1</code><pre class="prose">∀ {base center K : Nat},
+  Not
+      (@LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMiddleCohortList_eq_causalFrom_rightEdge_of_floorPlus_AFloor</code><pre class="prose">∀ {center K : Nat}
+  (hRight :
+    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 25) (instOfNatNat (nat_lit 25)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))
+  (hAFloor :
+    ∀ {v : Nat},
+      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26))) v →
+        @LE.le.{0} Nat instLENat v
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+              (ChompLean.gameFBlockerCountThrough
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+  (hFloorPlus :
+    ∀ {a k : Nat},
+      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))) a →
+        @Eq.{1} Nat (ChompLean.gameF a a) k →
+          @LE.le.{0} Nat instLENat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) a)
+              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  @Eq.{1} (List.{0} Nat) (ChompLean.actualBlockerMiddleCohortList center K)
+    (ChompLean.causalBlockerMiddleCohortListFrom
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K) center K)</pre></li><li><code>ChompLean.actualBlockerMiddleCohortList_eq_causal_of_cutoff16_K10</code><pre class="prose">∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 131) (instOfNatNat (nat_lit 131))) r)
+  (hcut16 :
+    ChompLean.ActualRangeOwnerMidpointCutoffFrom (@OfNat.ofNat.{0} Nat (nat_lit 131) (instOfNatNat (nat_lit 131)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.actualBlockerMiddleCohortList r (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+    (ChompLean.causalBlockerMiddleCohortList r (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))</pre></li><li><code>ChompLean.actualBlockerMiddleCohortList_eq_causal_of_cutoff16_K10._proof_1_1</code><pre class="prose">∀ {r : Nat},
+  Not
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMidpoint_band_iff_causal</code><pre class="prose">∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r),
+  Iff
+    (And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+        (ChompLean.actualBlockerMidpoint v))
+      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))
+    (And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+        (ChompLean.causalBlockerMidpointAt r v))
+      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))</pre></li><li><code>ChompLean.actualBlockerMidpoint_band_iff_causal._proof_1_1</code><pre class="prose">∀ {base margin K r v : Nat}
+  (hband :
+    And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+        (ChompLean.actualBlockerMidpoint v))
+      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))
+  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+          (ChompLean.causalBlockerMidpointAt r v))
+        (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMidpoint_band_iff_causal._proof_1_2</code><pre class="prose">∀ {base margin K r v : Nat}
+  (hband :
+    And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+        (ChompLean.causalBlockerMidpointAt r v))
+      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))
+  (hactualUpper :
+    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))
+  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+          (ChompLean.actualBlockerMidpoint v))
+        (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMidpoint_band_iff_causal_of_visibility</code><pre class="prose">∀ {T center K v : Nat}
+  (hvisible :
+    ChompLean.ActualNonblockerSublevelVisible T
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),
+  Iff
+    (And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+        (ChompLean.actualBlockerMidpoint v))
+      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))
+    (And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+        (ChompLean.causalBlockerMidpointAt T v))
+      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))</pre></li><li><code>ChompLean.actualBlockerMidpoint_band_iff_causal_of_visibility._proof_1_1</code><pre class="prose">∀ {T center K v : Nat}
+  (hband :
+    And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+        (ChompLean.actualBlockerMidpoint v))
+      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))
+  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+          (ChompLean.causalBlockerMidpointAt T v))
+        (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMidpoint_band_iff_causal_of_visibility._proof_1_2</code><pre class="prose">∀ {T center K v : Nat}
+  (hband :
+    And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+        (ChompLean.causalBlockerMidpointAt T v))
+      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))
+  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+          (ChompLean.actualBlockerMidpoint v))
+        (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMidpoint_eq_causalBlockerMidpointAt_of_sublevel</code><pre class="prose">∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r)
+  (hupper :
+    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)),
+  @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)</pre></li><li><code>ChompLean.actualBlockerMidpoint_eq_causal_of_visibility</code><pre class="prose">∀ {T R v : Nat} (hvisible : ChompLean.ActualNonblockerSublevelVisible T R)
+  (hupper : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R),
+  @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)</pre></li><li><code>ChompLean.actualBlockerMidpoint_eq_causal_of_visible_sublevel</code><pre class="prose">∀ {base margin center K T v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hreach :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))
+  (hTBase : @LE.le.{0} Nat instLENat base T)
+  (hupper :
+    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),
+  @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)</pre></li><li><code>ChompLean.actualBlockerMidpoint_eq_past_add_futurePacket</code><pre class="prose">∀ {r v : Nat}
+  (hrv :
+    @LE.le.{0} Nat instLENat r
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v)
+    (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v (ChompLean.gameFBlockerCountThrough r))
+        (ChompLean.gameFFutureBlockerCount r
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.actualBlockerMidpoint_eq_past_add_futurePacket._proof_1_1</code><pre class="prose">∀ {r v : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough r)
+            (ChompLean.gameFFutureBlockerCount r
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v (ChompLean.gameFBlockerCountThrough r))
+          (ChompLean.gameFFutureBlockerCount r
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMidpoint_le_causalBlockerMidpointAt</code><pre class="prose">∀ (r v : Nat), @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)</pre></li><li><code>ChompLean.actualBlockerMidpoint_sublevel_iff_causal</code><pre class="prose">∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r),
+  Iff
+    (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))
+    (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))</pre></li><li><code>ChompLean.actualBlockerMidpoint_sublevel_iff_causal._proof_1_1</code><pre class="prose">∀ {base margin K r v : Nat}
+  (hcausal :
+    @LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt r v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))
+  (hle : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt r v)),
+  Not
+      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)) →
+    False</pre></li><li><code>ChompLean.actualBlockerMidpoint_sublevel_iff_causal_of_visibility</code><pre class="prose">∀ {T R v : Nat} (hvisible : ChompLean.ActualNonblockerSublevelVisible T R),
+  Iff (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R)
+    (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v) R)</pre></li><li><code>ChompLean.actualBlockerMidpoint_sublevel_iff_causal_of_visibility._proof_1_1</code><pre class="prose">∀ {T R v : Nat} (hcausal : @LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v) R)
+  (hle : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),
+  Not (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R) → False</pre></li><li><code>ChompLean.actualBlockerMidpoint_visible_band_iff_causal</code><pre class="prose">∀ {base margin center K T v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hreach :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))
+  (hTBase : @LE.le.{0} Nat instLENat base T),
+  Iff
+    (And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+        (ChompLean.actualBlockerMidpoint v))
+      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))
+    (And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+        (ChompLean.causalBlockerMidpointAt T v))
+      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))</pre></li><li><code>ChompLean.actualBlockerMidpoint_visible_band_iff_causal._proof_1_1</code><pre class="prose">∀ {base margin center K T v : Nat}
+  (hband :
+    And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+        (ChompLean.actualBlockerMidpoint v))
+      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))
+  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+          (ChompLean.causalBlockerMidpointAt T v))
+        (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMidpoint_visible_band_iff_causal._proof_1_2</code><pre class="prose">∀ {base margin center K T v : Nat}
+  (hband :
+    And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+        (ChompLean.causalBlockerMidpointAt T v))
+      (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)))
+  (heq : @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center K)
+          (ChompLean.actualBlockerMidpoint v))
+        (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))) →
+    False</pre></li><li><code>ChompLean.actualBlockerMidpoint_visible_sublevel_iff_causal</code><pre class="prose">∀ {base margin center K T v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hreach :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))
+  (hTBase : @LE.le.{0} Nat instLENat base T),
+  Iff
+    (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))
+    (@LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))</pre></li><li><code>ChompLean.actualBlockerMidpoint_visible_sublevel_iff_causal._proof_1_1</code><pre class="prose">∀ {base margin center K T v : Nat}
+  (hcausal :
+    @LE.le.{0} Nat instLENat (ChompLean.causalBlockerMidpointAt T v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))
+  (hle : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) (ChompLean.causalBlockerMidpointAt T v)),
+  Not
+      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)) →
+    False</pre></li><li><code>ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor</code><pre class="prose">∀ {T : Nat} (hT : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 25) (instOfNatNat (nat_lit 25))) T)
+  (hAFloor :
+    ∀ {v : Nat},
+      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26))) v →
+        @LE.le.{0} Nat instLENat v
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+              (ChompLean.gameFBlockerCountThrough
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+  (hFloorPlus :
+    ∀ {a k : Nat},
+      @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))) a →
+        @Eq.{1} Nat (ChompLean.gameF a a) k →
+          @LE.le.{0} Nat instLENat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) a)
+              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),
+  ChompLean.ActualNonblockerSublevelVisible T T</pre></li><li><code>ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor._proof_1_1</code><pre class="prose">∀ {T v k : Nat} (a : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+          (ChompLean.gameFBlockerCountThrough
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+                (ChompLean.gameFBlockerCountThrough
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor._proof_1_2</code><pre class="prose">∀ {T v k : Nat} (hupper : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) T) (a : Nat)
+  (hag : @LE.le.{0} Nat instLENat a (ChompLean.actualBlockerMidpoint v)), Not (@LE.le.{0} Nat instLENat a T) → False</pre></li><li><code>ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor._proof_1_3</code><pre class="prose">∀ {T : Nat} (hT : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 25) (instOfNatNat (nat_lit 25))) T)
+  {v k : Nat} (hkv : @LT.lt.{0} Nat instLTNat k v) (a : Nat) (hak : @LT.lt.{0} Nat instLTNat a k)
+  (ha : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)
+  (hv : Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26))) v)),
+  Not (@LE.le.{0} Nat instLENat a T) → False</pre></li><li><code>ChompLean.actualNonblockerSublevelVisible_of_floorPlus_AFloor._proof_1_4</code><pre class="prose">∀ {T v k : Nat} (a : Nat) (haT : @LE.le.{0} Nat instLENat a T),
+  Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.actualNonblockerSublevelVisible_of_lowerOwnerCovered</code><pre class="prose">∀ {T R : Nat}
+  (howners :
+    ∀ {v : Nat}, @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v) R → ChompLean.LowerOwnerCoveredBy v T),
+  ChompLean.ActualNonblockerSublevelVisible T R</pre></li><li><code>ChompLean.actualNonblockerSublevelVisible_of_lowerOwnerCovered._proof_1_1</code><pre class="prose">∀ {T R v k : Nat} (a : Nat) (haT : @LE.le.{0} Nat instLENat a T),
+  Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.causalBlockerCountAt</code><pre class="prose">(r v : Nat) → Nat</pre></li><li><code>ChompLean.causalBlockerMiddleCohortList</code><pre class="prose">(r K : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.causalBlockerMiddleCohortListFrom</code><pre class="prose">(T center K : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.causalBlockerMiddleCohortList_length_le</code><pre class="prose">∀ {base margin K r : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r),
+  @LE.le.{0} Nat instLENat (@List.length.{0} Nat (ChompLean.causalBlockerMiddleCohortList r K))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) K)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.causalBlockerMiddleCohortList_length_le_42_of_cutoff16</code><pre class="prose">∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 131) (instOfNatNat (nat_lit 131))) r)
+  (hcut16 :
+    ChompLean.ActualRangeOwnerMidpointCutoffFrom (@OfNat.ofNat.{0} Nat (nat_lit 131) (instOfNatNat (nat_lit 131)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))),
+  @LE.le.{0} Nat instLENat
+    (@List.length.{0} Nat
+      (ChompLean.causalBlockerMiddleCohortList r (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 42) (instOfNatNat (nat_lit 42)))</pre></li><li><code>ChompLean.causalBlockerMiddleCohortList_length_le_42_of_cutoff16._proof_1_1</code><pre class="prose">∀ {r : Nat},
+  Not
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))) →
+    False</pre></li><li><code>ChompLean.causalBlockerMidpointAt</code><pre class="prose">(r v : Nat) → Nat</pre></li><li><code>ChompLean.future_band_not_determined_by_unitIncrement_prefix</code><pre class="prose">∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r),
+  have v : Nat :=
+    @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)));
+  have center : Nat :=
+    @HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)));
+  And
+    (And
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.countMidpoint (fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v))
+      (@LE.le.{0} Nat instLENat
+        (ChompLean.countMidpoint (fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+    (Not
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) center
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r) v))
+        (@LE.le.{0} Nat instLENat
+          (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r) v)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))</pre></li><li><code>ChompLean.future_band_not_determined_by_unitIncrement_prefix._proof_1_1</code><pre class="prose">∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r) → False</pre></li><li><code>ChompLean.future_band_not_determined_by_unitIncrement_prefix._proof_1_2</code><pre class="prose">∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+  (hg0 :
+    @Eq.{1} Nat
+      (ChompLean.countMidpoint (fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      r)
+  (hg1 :
+    @Eq.{1} Nat
+      (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (ChompLean.countMidpoint (fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@LE.le.{0} Nat instLENat
+          (ChompLean.countMidpoint (fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.future_band_not_determined_by_unitIncrement_prefix._proof_1_3</code><pre class="prose">∀ {r : Nat} (hr : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+  (hg0 :
+    @Eq.{1} Nat
+      (ChompLean.countMidpoint (fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      r)
+  (hg1 :
+    @Eq.{1} Nat
+      (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hband :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@LE.le.{0} Nat instLENat
+        (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  False</pre></li><li><code>ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix</code><pre class="prose">∀ {r : Nat} (hr : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r),
+  And (ChompLean.UnitIncrement01 fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+    (And (ChompLean.UnitIncrement01 (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r))
+      (And
+        (∀ (n : Nat),
+          @LE.le.{0} Nat instLENat n r →
+            @Eq.{1} Nat ((fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n)
+              (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r n))
+        (And
+          (@Eq.{1} Nat
+            (ChompLean.countMidpoint (fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            r)
+          (@Eq.{1} Nat
+            (ChompLean.countMidpoint (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))</pre></li><li><code>ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix._proof_1_2</code><pre class="prose">∀ {r : Nat} (n : Nat) (hnr : @LE.le.{0} Nat instLENat n r), @LT.lt.{0} Nat instLTNat r n → False</pre></li><li><code>ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix._proof_1_3</code><pre class="prose">∀ {r : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        r) →
+    False</pre></li><li><code>ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix._proof_1_4</code><pre class="prose">∀ {r : Nat} (hr : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r),
+  Not
+      (@LT.lt.{0} Nat instLTNat r
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)) →
+    False</pre></li><li><code>ChompLean.future_midpoint_not_determined_by_unitIncrement_prefix._proof_1_5</code><pre class="prose">∀ {r : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameFBlockerCountThrough_eq_past_add_futurePacket</code><pre class="prose">∀ {r n : Nat} (hrn : @LE.le.{0} Nat instLENat r n),
+  @Eq.{1} Nat (ChompLean.gameFBlockerCountThrough n)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough r)
+      (ChompLean.gameFFutureBlockerCount r n))</pre></li><li><code>ChompLean.gameFFutureBlockerCount</code><pre class="prose">(r n : Nat) → Nat</pre></li><li><code>ChompLean.gameFFutureBlockerCount.eq_1</code><pre class="prose">∀ (r n : Nat),
+  @Eq.{1} Nat (ChompLean.gameFFutureBlockerCount r n)
+    (@List.length.{0} Nat (ChompLean.gameFFutureBlockersBetweenList r n))</pre></li><li><code>ChompLean.gameFFutureBlockersBetweenList</code><pre class="prose">(r n : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFFutureBlockersBetweenList.eq_1</code><pre class="prose">∀ (r n : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.gameFFutureBlockersBetweenList r n)
+    (@List.filter.{0} Nat
+      (fun (k : Nat) =&gt;
+        @Decidable.decide (ChompLean.S ChompLean.gameF k) (Classical.propDecidable (ChompLean.S ChompLean.gameF k)))
+      (List.range&#x27;
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.gameFPastDiagonalBelowCount</code><pre class="prose">(r v : Nat) → Nat</pre></li><li><code>ChompLean.gameFPastDiagonalBelowCount.eq_1</code><pre class="prose">∀ (r v : Nat),
+  @Eq.{1} Nat (ChompLean.gameFPastDiagonalBelowCount r v)
+    (@List.length.{0} Nat (ChompLean.gameFPastDiagonalBelowList r v))</pre></li><li><code>ChompLean.gameFPastDiagonalBelowList</code><pre class="prose">(r v : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFPastDiagonalBelowList.eq_1</code><pre class="prose">∀ (r v : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.gameFPastDiagonalBelowList r v)
+    (@List.filter.{0} Nat
+      (fun (k : Nat) =&gt;
+        @Decidable.decide (ChompLean.PastDiagonalThrough r k)
+          (Classical.propDecidable (ChompLean.PastDiagonalThrough r k)))
+      (List.range&#x27; (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.gameF_blocker_iff_no_diagonal_owner</code><pre class="prose">∀ {v : Nat} (hv : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v),
+  Iff (ChompLean.S ChompLean.gameF v) (Not (@Exists.{1} Nat fun (a : Nat) =&gt; @Eq.{1} Nat (ChompLean.gameF a a) v))</pre></li><li><code>ChompLean.gameF_middle_cohort_blocker_iff_not_pastDiagonal</code><pre class="prose">∀ {base margin K r v : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r)
+  (hvpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+  (hcohort :
+    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.actualBlockerMiddleCohortList r K) v),
+  Iff (ChompLean.S ChompLean.gameF v) (Not (ChompLean.PastDiagonalThrough r v))</pre></li><li><code>ChompLean.gameF_middle_cohort_blocker_iff_not_pastDiagonal._proof_1_1</code><pre class="prose">∀ {base margin K r v : Nat} (hK : @LE.le.{0} Nat instLENat K margin)
+  (hband :
+    And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+        (ChompLean.actualBlockerMidpoint v))
+      (@LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)))
+  (a : Nat)
+  (hmargin :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a margin)
+      (ChompLean.actualBlockerMidpoint v)),
+  Not (@LE.le.{0} Nat instLENat a r) → False</pre></li><li><code>ChompLean.gameF_middle_cohort_blocker_iff_not_pastDiagonal._proof_1_2</code><pre class="prose">∀ {base margin K r v : Nat} (hrBase : @LE.le.{0} Nat instLENat base r) (a : Nat)
+  (ha : @Eq.{1} Nat (ChompLean.gameF a a) v) (hvBase : Not (@LE.le.{0} Nat instLENat base v))
+  (hav : @LT.lt.{0} Nat instLTNat a v), Not (@LE.le.{0} Nat instLENat a r) → False</pre></li><li><code>ChompLean.gameF_middle_cohort_blocker_iff_not_pastDiagonal._proof_1_3</code><pre class="prose">∀ {base margin K r v : Nat} (a : Nat) (hownerLe : @LE.le.{0} Nat instLENat a r),
+  Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_sublevel</code><pre class="prose">∀ {base margin K r v k : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hK : @LE.le.{0} Nat instLENat K margin) (hrBase : @LE.le.{0} Nat instLENat base r)
+  (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+  (hkv : @LT.lt.{0} Nat instLTNat k v)
+  (hupper :
+    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)),
+  Iff (Not (ChompLean.S ChompLean.gameF k)) (ChompLean.PastDiagonalThrough r k)</pre></li><li><code>ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_sublevel._proof_1_1</code><pre class="prose">∀ {base margin K r v k : Nat} (hK : @LE.le.{0} Nat instLENat K margin)
+  (hupper :
+    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))
+  (a : Nat)
+  (hmargin :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a margin)
+      (ChompLean.actualBlockerMidpoint k))
+  (hmono : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint k) (ChompLean.actualBlockerMidpoint v)),
+  Not (@LE.le.{0} Nat instLENat a r) → False</pre></li><li><code>ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_sublevel._proof_1_2</code><pre class="prose">∀ {base margin K r v k : Nat} (hrBase : @LE.le.{0} Nat instLENat base r) (a : Nat) (_hak : @LT.lt.{0} Nat instLTNat a k)
+  (ha : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)
+  (hkBase : Not (@LE.le.{0} Nat instLENat base k)), Not (@LE.le.{0} Nat instLENat a r) → False</pre></li><li><code>ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_sublevel._proof_1_3</code><pre class="prose">∀ {base margin K r v k : Nat} (a : Nat) (har : @LE.le.{0} Nat instLENat a r),
+  Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_visible_sublevel</code><pre class="prose">∀ {base margin center K T v k : Nat} (hcut : ChompLean.ActualRangeOwnerMidpointCutoffFrom base margin)
+  (hreach :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))
+  (hTBase : @LE.le.{0} Nat instLENat base T)
+  (hkpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+  (hkv : @LT.lt.{0} Nat instLTNat k v)
+  (hupper :
+    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)),
+  Iff (Not (ChompLean.S ChompLean.gameF k)) (ChompLean.PastDiagonalThrough T k)</pre></li><li><code>ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_visible_sublevel._proof_1_1</code><pre class="prose">∀ {base margin center K T v k : Nat}
+  (hreach :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T margin))
+  (hupper :
+    @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint v)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) center K))
+  (a : Nat)
+  (hmargin :
+    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a margin)
+      (ChompLean.actualBlockerMidpoint k))
+  (hmono : @LE.le.{0} Nat instLENat (ChompLean.actualBlockerMidpoint k) (ChompLean.actualBlockerMidpoint v)),
+  Not (@LE.le.{0} Nat instLENat a T) → False</pre></li><li><code>ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_visible_sublevel._proof_1_2</code><pre class="prose">∀ {base margin center K T v k : Nat} (hTBase : @LE.le.{0} Nat instLENat base T) (a : Nat)
+  (_hak : @LT.lt.{0} Nat instLTNat a k)
+  (ha : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)
+  (hkBase : Not (@LE.le.{0} Nat instLENat base k)), Not (@LE.le.{0} Nat instLENat a T) → False</pre></li><li><code>ChompLean.gameF_not_blocker_iff_pastDiagonalThrough_of_visible_sublevel._proof_1_3</code><pre class="prose">∀ {base margin center K T v k : Nat} (a : Nat) (haT : @LE.le.{0} Nat instLENat a T),
+  Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) T
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.lag13_18_20_K10_visible_horizon_before_target</code><pre class="prose">∀ {u L : Nat} (hLu : @LE.le.{0} Nat instLENat L u)
+  (hL :
+    Or (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))
+      (Or (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))
+        (@Eq.{1} Nat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))),
+  @LT.lt.{0} Nat instLTNat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)
+      (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+    u</pre></li><li><code>ChompLean.lag13_18_20_K10_visible_horizon_before_target._proof_1_1</code><pre class="prose">∀ {u : Nat} (hLu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))) u),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+        u) →
+    False</pre></li><li><code>ChompLean.lag13_18_20_K10_visible_horizon_before_target._proof_1_2</code><pre class="prose">∀ {u : Nat} (hLu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))) u),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+        u) →
+    False</pre></li><li><code>ChompLean.lag13_18_20_K10_visible_horizon_before_target._proof_1_3</code><pre class="prose">∀ {u : Nat} (hLu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))) u),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+        u) →
+    False</pre></li><li><code>ChompLean.middle_cohort_futurePacket_horizon</code><pre class="prose">∀ {r K v : Nat}
+  (hcohort :
+    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.actualBlockerMiddleCohortList r K) v),
+  @LE.le.{0} Nat instLENat
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))</pre></li><li><code>ChompLean.middle_cohort_futurePacket_horizon._proof_1_1</code><pre class="prose">∀ {r K v : Nat}
+  (hindex :
+    @LT.lt.{0} Nat instLTNat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))) →
+    False</pre></li><li><code>ChompLean.pastDiagonalThrough_not_blocker</code><pre class="prose">∀ {r v : Nat} (hpast : ChompLean.PastDiagonalThrough r v), Not (ChompLean.S ChompLean.gameF v)</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount</code><pre class="prose">(r n : Nat) → Nat</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount.eq_1</code><pre class="prose">∀ (r n : Nat),
+  @Eq.{1} Nat (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r n)
+    (@ite.{1} Nat (@LT.lt.{0} Nat instLTNat r n) (Nat.decLt r n)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount_unitIncrement01</code><pre class="prose">∀ (r : Nat), ChompLean.UnitIncrement01 (_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount r)</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.delayedOneCount_unitIncrement01._proof_1_1</code><pre class="prose">∀ (r n : Nat) (hn : @LT.lt.{0} Nat instLTNat r n),
+  Not
+      (@LT.lt.{0} Nat instLTNat r
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_decide_partition_length</code><pre class="prose">∀ {alpha : Type} (P : alpha → Prop) [inst : @DecidablePred.{1} alpha P] (xs : List.{0} alpha),
+  @Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (P x) (inst x)) xs))
+      (@List.length.{0} alpha
+        (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (Not (P x)) (@instDecidableNot (P x) (inst x)))
+          xs)))
+    (@List.length.{0} alpha xs)</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_decide_partition_length._proof_1_1</code><pre class="prose">∀ {alpha : Type} (P : alpha → Prop) [inst : @DecidablePred.{1} alpha P] (xs : List.{0} alpha)
+  (ih :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (P x) (inst x)) xs))
+        (@List.length.{0} alpha
+          (@List.filter.{0} alpha (fun (x : alpha) =&gt; Bool.not (@Decidable.decide (P x) (inst x))) xs)))
+      (@List.length.{0} alpha xs)),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (P x) (inst x)) xs))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@List.length.{0} alpha
+            (@List.filter.{0} alpha (fun (x : alpha) =&gt; Bool.not (@Decidable.decide (P x) (inst x))) xs)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} alpha xs)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_decide_partition_length._proof_1_2</code><pre class="prose">∀ {alpha : Type} (P : alpha → Prop) [inst : @DecidablePred.{1} alpha P] (xs : List.{0} alpha)
+  (ih :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (P x) (inst x)) xs))
+        (@List.length.{0} alpha
+          (@List.filter.{0} alpha (fun (x : alpha) =&gt; Bool.not (@Decidable.decide (P x) (inst x))) xs)))
+      (@List.length.{0} alpha xs)),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (P x) (inst x)) xs))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@List.length.{0} alpha
+              (@List.filter.{0} alpha (fun (x : alpha) =&gt; Bool.not (@Decidable.decide (P x) (inst x))) xs))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} alpha xs)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_length_eq_of_iff_on</code><pre class="prose">∀ {alpha : Type} (P Q : alpha → Prop) [inst : @DecidablePred.{1} alpha P] [inst_1 : @DecidablePred.{1} alpha Q]
+  (xs : List.{0} alpha)
+  (hiff :
+    ∀ (x : alpha),
+      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x → Iff (P x) (Q x)),
+  @Eq.{1} Nat (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (P x) (inst x)) xs))
+    (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (Q x) (inst_1 x)) xs))</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_length_le_filter_of_imp</code><pre class="prose">∀ {alpha : Type} (P Q : alpha → Prop) [inst : @DecidablePred.{1} alpha P] [inst_1 : @DecidablePred.{1} alpha Q]
+  (himp : ∀ (x : alpha), P x → Q x) (xs : List.{0} alpha),
+  @LE.le.{0} Nat instLENat
+    (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (P x) (inst x)) xs))
+    (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (Q x) (inst_1 x)) xs))</pre></li><li><code>_private.R198CausalMiddleCohortPullback.0.ChompLean.filter_length_le_filter_of_imp._proof_1_1</code><pre class="prose">∀ {alpha : Type} (P Q : alpha → Prop) [inst : @DecidablePred.{1} alpha P] [inst_1 : @DecidablePred.{1} alpha Q]
+  (xs : List.{0} alpha)
+  (ih :
+    @LE.le.{0} Nat instLENat
+      (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (P x) (inst x)) xs))
+      (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (Q x) (inst_1 x)) xs))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (P x) (inst x)) xs))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@List.length.{0} alpha (@List.filter.{0} alpha (fun (x : alpha) =&gt; @Decidable.decide (Q x) (inst_1 x)) xs))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R198CausalMiddleCohortPullback.lean:1</p><p>SHA-256: <code class="path">00381a0a18da9e4147b43dded12353a97f177a2d6c10d314bbe5a7ecbd47936c</code></p></section><p><a href="../index.html#id=lean-00381a0a18da9e4147b4">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

@@ -1,0 +1,149 @@
+{
+  "module": "R47FutureBackfillOwnerPacking",
+  "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+  "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+  "declarationCount": 9,
+  "theoremDeclarationCount": 9,
+  "proofValuedDeclarationCount": 9,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.game_future_first_gap_quantitative_backfill_charge",
+      "module": "R47FutureBackfillOwnerPacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 76,
+      "typePretty": "∀ {s : Nat} (hFuture : ChompLean.DipFirstGapFutureDiagonalLoss ChompLean.gameRecurrenceModel s),\n  @Exists.{1} (List.{0} Nat) fun (bs : List.{0} Nat) =>\n    And (@List.Nodup.{0} Nat bs)\n      (And\n        (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n          (@List.length.{0} Nat bs))\n        (And\n          (@LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (@List.length.{0} Nat bs))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            s)\n          (∀ (b : Nat),\n            @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) bs b →\n              And\n                (@LT.lt.{0} Nat instLTNat b\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                (And\n                  (Not\n                    (ChompLean.C ChompLean.gameF s s\n                      (ChompLean.gameF\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                        b)))\n                  (@Exists.{1} Nat fun (i : Nat) =>\n                    And (@LT.lt.{0} Nat instLTNat b i)\n                      (And (@LT.lt.{0} Nat instLTNat i s)\n                        (And\n                          (@LT.lt.{0} Nat instLTNat\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                            (ChompLean.gameF i i))\n                          (And\n                            (@LT.lt.{0} Nat instLTNat s\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i))\n                            (@Eq.{1} Nat (ChompLean.gameF i i)\n                              (ChompLean.gameF\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                                b))))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+      "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_future_first_gap_quantitative_backfill_charge._proof_1_1",
+      "module": "R47FutureBackfillOwnerPacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (bs : List.{0} Nat)\n  (hthree : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) s),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) s) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+      "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.nodup_interval_length_bound",
+      "module": "R47FutureBackfillOwnerPacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 16,
+      "typePretty": "∀ {xs : List.{0} Nat} {lo hi : Nat} (hlo : @LE.le.{0} Nat instLENat lo hi) (hnd : @List.Nodup.{0} Nat xs)\n  (hmem :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →\n        And (@LE.le.{0} Nat instLENat lo x) (@LT.lt.{0} Nat instLTNat x hi)),\n  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+      "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.nodup_interval_length_bound._proof_1_1",
+      "module": "R47FutureBackfillOwnerPacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {lo hi : Nat} (hlo : @LE.le.{0} Nat instLENat lo hi) ⦃x : Nat⦄ (hxhi : @LT.lt.{0} Nat instLTNat x hi),\n  Not\n      (@LT.lt.{0} Nat instLTNat x\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+      "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.nodup_strict_upper_half_length_bound",
+      "module": "R47FutureBackfillOwnerPacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 32,
+      "typePretty": "∀ {xs : List.{0} Nat} {s : Nat}\n  (hs : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) s)\n  (hnd : @List.Nodup.{0} Nat xs)\n  (hmem :\n    ∀ (i : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs i →\n        And (@LT.lt.{0} Nat instLTNat i s)\n          (@LT.lt.{0} Nat instLTNat s (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i))),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (@List.length.{0} Nat xs))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    s",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+      "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.nodup_strict_upper_half_length_bound._proof_1_1",
+      "module": "R47FutureBackfillOwnerPacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (hs : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) s),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        s) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+      "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.nodup_strict_upper_half_length_bound._proof_1_2",
+      "module": "R47FutureBackfillOwnerPacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (i : Nat)\n  (hhalf : @LT.lt.{0} Nat instLTNat s (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i)),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        i) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+      "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.nodup_strict_upper_half_length_bound._proof_1_3",
+      "module": "R47FutureBackfillOwnerPacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {xs : List.{0} Nat} {s : Nat}\n  (hlo :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      s)\n  (hcard :\n    @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) s\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (@List.length.{0} Nat xs))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        s) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+      "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R47FutureBackfillOwnerPacking.0.ChompLean.r47_nodup_map_of_injective_on",
+      "module": "R47FutureBackfillOwnerPacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 52,
+      "typePretty": "∀ {α β : Type} [inst : BEq.{0} α] [@LawfulBEq.{0} α inst] [inst : BEq.{0} β] [@LawfulBEq.{0} β inst] (f : α → β)\n  (xs : List.{0} α) (hxs : @List.Nodup.{0} α xs)\n  (hinj :\n    ∀ (x : α),\n      @Membership.mem.{0, 0} α (List.{0} α) (@List.instMembership.{0} α) xs x →\n        ∀ (y : α),\n          @Membership.mem.{0, 0} α (List.{0} α) (@List.instMembership.{0} α) xs y →\n            @Eq.{1} β (f x) (f y) → @Eq.{1} α x y),\n  @List.Nodup.{0} β (@List.map.{0, 0} α β f xs)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5e5068b2e237d3bc553c4ef50cdaf118596e09851d1aa8f8137b520e702ce2ec",
+      "sourcePath": "lean/core/R47FutureBackfillOwnerPacking.lean",
+      "universeParameters": []
+    }
+  ]
+}

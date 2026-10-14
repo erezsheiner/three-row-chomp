@@ -1,0 +1,11 @@
+# Fresh corrected-source formal review
+
+**PASS.** All 265 final corrected Lean modules were compiled from an absent project build cache with pinned Lean 4.29.1 and warnings treated as errors. The build was launched by the root reviewer and its source-bound receipt is preserved unchanged. The remaining checks were newly executed against those exact compiled modules.
+
+The elaborated and serialized censuses account for 21,064 declaration identities: 19,991 theorem declarations and 20,028 proposition-valued declarations, including private/generated auxiliaries rather than independent results. Isolated R14/R15 inspections recover coalescing equation origins. All exact types, values, binders and declaration-specific fields match the preserved full-pass base objects. Historical source line numbers are not reused: the current census exports current declaration ranges and source hashes for every module.
+
+Five fresh Lean-kernel replay roots passed: ResearchCore, SJSDiagonalDictionary, ClaudeFutureFreezeDiagonal, R14FrontierLaw and R15ParkedValueSwap. All recursive axiom dependencies belong to propext, Classical.choice or Quot.sound. There are no sorry/custom/native trust axioms, unsafe project declarations or open types. The 25 compiler-generated nonproof partial helpers have only self-references and no logical dependency. Fresh isolated controls reject a sorry proof and a deliberately custom axiom plus its derived theorem.
+
+FINAL-REVIEW.json binds the frozen sources, configuration, runtime, receipts, complete losslessly compressed census and per-module exports. This snapshot supersedes an interrupted census of the earlier archive; the earlier archive's full fresh audit is not claimed to have passed. Final ZIP packaging must verify its source/config members against this final manifest. A complete bundle hash is a separate packaging receipt.
+
+The result validates exact formal statements with their own hypotheses. It does not promote stronger paper targets, prove semantic correspondence merely from compilation, or replace the separate manuscript/source-prose audits. Fresh replay uses Lean's own kernel, not a second independent proof assistant. Nothing is published by this audit.

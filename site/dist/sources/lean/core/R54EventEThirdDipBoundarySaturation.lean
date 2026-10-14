@@ -1,0 +1,949 @@
+import R53RM2EqualityCollisionPropagatedAtoms
+
+set_option autoImplicit false
+set_option maxHeartbeats 800000
+
+namespace ChompLean
+
+/-!
+Publication scope: The game-specific margin Event E and RM2 specializations below retain their
+explicit UnitDip, numerical-margin, dip and residual/certificate hypotheses.
+Generic source, packing and overlap lemmas retain only the assumptions
+displayed in their own signatures.
+
+R54: compress the two third-dip atoms.
+
+For three consecutive diagonal drops, every new-only value on the last
+edge is emitted on row `s+3`, but its diagonal owner lies strictly before
+`s`.  Its owner is therefore squeezed into the smaller band
+
+    i < s,   s+2 < 2*i.
+
+This improves the last-edge forbidden-packet constants by four.  In the
+event-E specialization, the future diagonal value `p=z-1=d(s+3)` is forced
+by exact MEX into each of the preceding three strict prefixes.  Source
+capacity puts its row-`s` host at or to the right of `s-delta-3`.  If it is
+to the right, it belongs to the canonical third-missing packet.  Hence the
+extra-forbidden alternative has one exact possibility: the host is the
+boundary cell `s-delta-3`, and that cell saturates all of its source slots.
+-/
+
+private theorem r54_nodup_map_of_injective_on
+    (f : Nat -> Nat) (xs : List Nat)
+    (hxs : xs.Nodup)
+    (hinj : forall x, x ∈ xs -> forall y, y ∈ xs ->
+      f x = f y -> x = y) :
+    (xs.map f).Nodup := by
+  induction xs with
+  | nil => simp
+  | cons a as ih =>
+      rw [List.nodup_cons] at hxs
+      change (f a :: as.map f).Nodup
+      rw [List.nodup_cons]
+      constructor
+      · intro hmem
+        rcases List.mem_map.mp hmem with ⟨y, hy, hay⟩
+        have hay' : a = y :=
+          hinj a (by simp) y (by simp [hy]) hay.symm
+        subst y
+        exact hxs.1 hy
+      · apply ih hxs.2
+        intro x hx y hy hxy
+        exact hinj x (by simp [hx]) y (by simp [hy]) hxy
+
+private theorem r54_boundary_capacity_arithmetic
+    {s d delta z g : Nat}
+    (hsum : d + delta = 2 * s)
+    (hz : z + 1 = d)
+    (hroom : delta + 6 <= s)
+    (hg : g = s - delta - 3) :
+    (z - 1) - 1 = s + g := by
+  omega
+
+/-- Pure compressed packing.  Compared with the usual strict upper-half
+bound, the lower edge has moved two units to the right and the two latest
+indices have been removed. -/
+theorem compressed_upper_half_owner_packing
+    {s : Nat} {owners : List Nat}
+    (howners : owners.Nodup)
+    (hnonempty : 0 < owners.length)
+    (hband : forall i, i ∈ owners -> i < s /\ s + 2 < i + i) :
+    2 * owners.length + 3 <= s := by
+  have hsPos : 0 < s := by
+    cases owners with
+    | nil => simp at hnonempty
+    | cons i is =>
+        have hi := hband i (by simp)
+        omega
+  let rank : Nat -> Nat := fun i => s - 1 - i
+  have hrankNodup : (owners.map rank).Nodup := by
+    apply r54_nodup_map_of_injective_on rank owners howners
+    intro i hi j hj hEq
+    have hiBand := hband i hi
+    have hjBand := hband j hj
+    dsimp [rank] at hEq
+    omega
+  have hrankSub : owners.map rank ⊆ List.range ((s - 3) / 2) := by
+    intro r hr
+    rcases List.mem_map.mp hr with ⟨i, hi, rfl⟩
+    apply List.mem_range.mpr
+    have hiBand := hband i hi
+    dsimp [rank]
+    omega
+  have hcap := nodup_subset_length_le hrankNodup hrankSub
+  simp only [List.length_map, List.length_range] at hcap
+  omega
+
+/-- The last backfill packet of three consecutive drops fits in the
+compressed owner band below the first row. -/
+theorem game_three_consecutive_dips_last_backfill_compressed_packing
+    {s : Nat}
+    (hdip0 : gameF (s + 1) (s + 1) < gameF s s)
+    (hdip1 : gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1))
+    (hdip2 : gameF (s + 3) (s + 3) < gameF (s + 2) (s + 2)) :
+    let back := PrefixBackfillValues
+      (StrictRowPrefixValues gameF (s + 2))
+      (StrictRowPrefixValues gameF (s + 3))
+    2 * back.length + 3 <= s := by
+  dsimp only
+  let back := PrefixBackfillValues
+    (StrictRowPrefixValues gameF (s + 2))
+    (StrictRowPrefixValues gameF (s + 3))
+  have hbackNodup : back.Nodup := by
+    exact List.filter_sublist.nodup
+      (strictRowPrefixValues_nodup gameRecurrenceModel (s + 3))
+  have hownerExists : forall v, v ∈ back ->
+      exists i, i < s /\ s + 2 < i + i /\ gameF i i = v := by
+    intro v hv
+    rcases adjacent_dip_backfill_has_past_diagonal_owner
+        gameRecurrenceModel hdip2 hv with ⟨i, hi, hdiag⟩
+    have hvNew := (List.mem_filter.mp hv).1
+    rcases mem_strictRowPrefixValues_iff_C.mp hvNew with
+      ⟨b, hb, hcell⟩
+    have hrowMax := game_diagonal_maximal
+      (q := s + 3) (s := b) (Nat.le_of_lt hb)
+    have hiFirst : i < s := by
+      by_cases his : i < s
+      · exact his
+      · have hicases : i = s ∨ i = s + 1 := by omega
+        rcases hicases with hiEq | hiEq
+        · have hdrop : gameF (s + 3) (s + 3) < gameF s s :=
+            Nat.lt_trans hdip2 (Nat.lt_trans hdip1 hdip0)
+          rw [hiEq] at hdiag
+          have hEq : gameF s s = gameF (s + 3) b :=
+            hdiag.trans hcell.symm
+          omega
+        · have hdrop :
+              gameF (s + 3) (s + 3) < gameF (s + 1) (s + 1) :=
+            Nat.lt_trans hdip2 hdip1
+          rw [hiEq] at hdiag
+          have hEq : gameF (s + 1) (s + 1) = gameF (s + 3) b :=
+            hdiag.trans hcell.symm
+          omega
+    have hhigh := game_past_diagonal_reemission_is_high
+      (i := i) (t := s + 3) (b := b)
+      (Nat.le_of_lt hb) (hdiag.trans hcell.symm)
+    have hcap := recurrence_diagonal_source_capacity
+      gameRecurrenceModel i
+    change gameF i i <= i + i + 1 at hcap
+    exact ⟨i, hiFirst, by omega, hdiag⟩
+  let owner : Nat -> Nat := fun v =>
+    if hv : v ∈ back then Classical.choose (hownerExists v hv) else 0
+  have howner : forall v, v ∈ back ->
+      owner v < s /\ s + 2 < owner v + owner v /\
+        gameF (owner v) (owner v) = v := by
+    intro v hv
+    dsimp [owner]
+    rw [dif_pos hv]
+    exact Classical.choose_spec (hownerExists v hv)
+  have hownerInj : forall v, v ∈ back -> forall w, w ∈ back ->
+      owner v = owner w -> v = w := by
+    intro v hv w hw hEq
+    have hvDiag := (howner v hv).2.2
+    have hwDiag := (howner w hw).2.2
+    rw [hEq] at hvDiag
+    exact hvDiag.symm.trans hwDiag
+  have hownersNodup : (back.map owner).Nodup :=
+    r54_nodup_map_of_injective_on owner back hbackNodup hownerInj
+  have hownersBand : forall i, i ∈ back.map owner ->
+      i < s /\ s + 2 < i + i := by
+    intro i hi
+    rcases List.mem_map.mp hi with ⟨v, hv, rfl⟩
+    exact ⟨(howner v hv).1, (howner v hv).2.1⟩
+  have hpositive : 0 < back.length := by
+    have hpkg := adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills
+      gameRecurrenceModel (forbidden := []) hdip2
+        (by simp) (by simp) (by simp)
+    change 1 <= back.length /\ _ at hpkg
+    omega
+  have hpack := compressed_upper_half_owner_packing
+    hownersNodup (by simpa using hpositive) hownersBand
+  simpa [back] using hpack
+
+/-- A forbidden packet on the last edge of three consecutive drops gains
+four units over the standalone adjacent-dip bound. -/
+theorem game_three_consecutive_dips_last_forbidden_compressed_bound
+    {s : Nat} {forbidden : List Nat}
+    (hdip0 : gameF (s + 1) (s + 1) < gameF s s)
+    (hdip1 : gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1))
+    (hdip2 : gameF (s + 3) (s + 3) < gameF (s + 2) (s + 2))
+    (hforbidden : forbidden.Nodup)
+    (hsub : forbidden ⊆ StrictRowPrefixValues gameF (s + 2))
+    (hmissing : forall v, v ∈ forbidden ->
+      v ∉ StrictRowPrefixValues gameF (s + 3)) :
+    2 * forbidden.length + 5 <= s := by
+  let back := PrefixBackfillValues
+    (StrictRowPrefixValues gameF (s + 2))
+    (StrictRowPrefixValues gameF (s + 3))
+  have hpkg := adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills
+    gameRecurrenceModel hdip2 hforbidden hsub hmissing
+  change forbidden.length + 1 <= back.length /\ _ at hpkg
+  have hpack := game_three_consecutive_dips_last_backfill_compressed_packing
+    hdip0 hdip1 hdip2
+  change 2 * back.length + 3 <= s at hpack
+  omega
+
+/-- Weighted three-edge overlap bound.  The middle packet is charged twice:
+once in each of the two strict consecutive-edge packings.  No disjointness
+between the first and third backfill packets is needed. -/
+theorem game_three_consecutive_dips_weighted_forbidden_overlap_bound
+    {s : Nat} {forbidden0 forbidden1 forbidden2 : List Nat}
+    (hdip0 : gameF (s + 1) (s + 1) < gameF s s)
+    (hdip1 : gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1))
+    (hdip2 : gameF (s + 3) (s + 3) < gameF (s + 2) (s + 2))
+    (hnd0 : forbidden0.Nodup)
+    (hsub0 : forbidden0 ⊆ StrictRowPrefixValues gameF s)
+    (hmiss0 : forall v, v ∈ forbidden0 ->
+      v ∉ StrictRowPrefixValues gameF (s + 1))
+    (hnd1 : forbidden1.Nodup)
+    (hsub1 : forbidden1 ⊆ StrictRowPrefixValues gameF (s + 1))
+    (hmiss1 : forall v, v ∈ forbidden1 ->
+      v ∉ StrictRowPrefixValues gameF (s + 2))
+    (hnd2 : forbidden2.Nodup)
+    (hsub2 : forbidden2 ⊆ StrictRowPrefixValues gameF (s + 2))
+    (hmiss2 : forall v, v ∈ forbidden2 ->
+      v ∉ StrictRowPrefixValues gameF (s + 3)) :
+    forbidden0.length + 2 * forbidden1.length +
+      forbidden2.length + 5 <= s := by
+  let back0 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF s)
+    (StrictRowPrefixValues gameF (s + 1))
+  let back1 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF (s + 1))
+    (StrictRowPrefixValues gameF (s + 2))
+  let back2 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF (s + 2))
+    (StrictRowPrefixValues gameF (s + 3))
+  have hpkg0 := adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills
+    gameRecurrenceModel hdip0 hnd0 hsub0 hmiss0
+  change forbidden0.length + 1 <= back0.length /\ _ at hpkg0
+  have hpkg1 := adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills
+    gameRecurrenceModel hdip1 hnd1 hsub1 hmiss1
+  change forbidden1.length + 1 <= back1.length /\ _ at hpkg1
+  have hpkg2 := adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills
+    gameRecurrenceModel hdip2 hnd2 hsub2 hmiss2
+  change forbidden2.length + 1 <= back2.length /\ _ at hpkg2
+  have hpack01 :=
+    game_consecutive_dips_combined_backfill_owner_strict_packing
+      hdip0 hdip1
+  change 2 * (back0.length + back1.length) + 1 <= s at hpack01
+  have hpack12 :=
+    game_consecutive_dips_combined_backfill_owner_strict_packing
+      (q := s + 1) (by simpa [Nat.add_assoc] using hdip1)
+        (by simpa [Nat.add_assoc] using hdip2)
+  change 2 * (back1.length + back2.length) + 1 <= s + 1 at hpack12
+  omega
+
+/-- The common geometric core of both third-dip atoms. -/
+def EventEThirdDipPrehostStaircaseCertificate
+    (s delta z : Nat) : Prop :=
+  delta + 6 <= s /\
+  gameF s s = z + 2 /\
+  gameF (s + 1) (s + 1) = z + 1 /\
+  gameF (s + 2) (s + 2) = z /\
+  gameF (s + 3) (s + 3) = z - 1 /\
+  exists g b1 b2,
+    g < s /\ b1 < s + 1 /\ b2 < s + 2 /\
+    gameF s g = z - 1 /\
+    gameF (s + 1) b1 = z - 1 /\
+    gameF (s + 2) b2 = z - 1 /\
+    g ≠ b1 /\ b1 ≠ b2 /\ g ≠ b2 /\
+    s - delta - 3 <= g
+
+/-- Exact MEX makes the next diagonal value a three-row prehost staircase;
+source capacity supplies its sharp boundary lower bound. -/
+theorem gameF_nonmax_eventE_third_dip_prehost_staircase
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hres : NonmaxMarginEventECrossEdgeResidual s)
+    (hdip2 : gameF (s + 3) (s + 3) < gameF (s + 2) (s + 2)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    EventEThirdDipPrehostStaircaseCertificate s delta z := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  change MarginEventECounterexample s /\
+      EventEDefectPacketInvariant s d delta z /\ _ at hres
+  rcases hres with ⟨hEvent, hInv, _hnonmax, _hcross⟩
+  rcases hEvent with ⟨hdip0, _hmargin, hdip1⟩
+  have hsum : d + delta = 2 * s := hInv.2.2.1
+  have hzDiag : z + 1 = d := hInv.2.2.2.1
+  have hunit0 := hU s hdip0
+  change d + 1 = gameF s s at hunit0
+  have hdiag0 : gameF s s = z + 2 := by omega
+  have hdiag1 : gameF (s + 1) (s + 1) = z + 1 := by omega
+  have hunit1 := hU (s + 1) hdip1
+  change gameF (s + 2) (s + 2) + 1 = d at hunit1
+  have hdiag2 : gameF (s + 2) (s + 2) = z := by omega
+  have hunit2 := hU (s + 2) hdip2
+  have hdiag3 : gameF (s + 3) (s + 3) = z - 1 := by
+    change gameF (s + 3) (s + 3) + 1 =
+      gameF (s + 2) (s + 2) at hunit2
+    have hgt := gameRecurrenceModel.diagonal_gt (s + 3)
+    change s + 3 < gameF (s + 3) (s + 3) at hgt
+    omega
+  have hgt3 := gameRecurrenceModel.diagonal_gt (s + 3)
+  change s + 3 < gameF (s + 3) (s + 3) at hgt3
+  have hdeltaSix : delta + 6 <= s := by omega
+  rcases game_future_diagonal_below_row_has_interior_host
+      (r := s) (a := s + 3) (x := z - 1)
+      (by omega) hdiag3 (by omega) with ⟨g, hg, hhost0⟩
+  rcases game_future_diagonal_below_row_has_interior_host
+      (r := s + 1) (a := s + 3) (x := z - 1)
+      (by omega) hdiag3 (by omega) with ⟨b1, hb1, hhost1⟩
+  rcases game_future_diagonal_below_row_has_interior_host
+      (r := s + 2) (a := s + 3) (x := z - 1)
+      (by omega) hdiag3 (by omega) with ⟨b2, hb2, hhost2⟩
+  have hgb1 : g ≠ b1 :=
+    game_future_diagonal_preowner_hosts_use_distinct_columns
+      hg (by omega) (by omega) hdiag3 hhost0 hhost1
+  have hb1b2 : b1 ≠ b2 :=
+    game_future_diagonal_preowner_hosts_use_distinct_columns
+      hb1 (by omega) (by omega) hdiag3 hhost1 hhost2
+  have hgb2 : g ≠ b2 :=
+    game_future_diagonal_preowner_hosts_use_distinct_columns
+      hg (by omega) (by omega) hdiag3 hhost0 hhost2
+  have hcap := high_cell_output_source_capacity
+    gameRecurrenceModel (q := s) (r := g) (m := z - 1)
+      (Nat.le_of_lt hg) (by omega) hhost0
+  have hgLower : s - delta - 3 <= g := by omega
+  exact ⟨hdeltaSix, hdiag0, hdiag1, hdiag2, hdiag3,
+    g, b1, b2, hg, hb1, hb2, hhost0, hhost1, hhost2,
+    hgb1, hb1b2, hgb2, hgLower⟩
+
+private theorem r54_third_missing_packet_properties
+    {s delta z c b0 : Nat}
+    (hcross : EventECrossEdgeSurvivorCertificate s delta z c b0) :
+    let missing := EventEThirdMissingBandSlots s delta c b0
+    let values := missing.map (fun g => gameF s g)
+    values.Nodup /\
+    values ⊆ StrictRowPrefixValues gameF (s + 2) /\
+    (forall v, v ∈ values ->
+      v ∉ StrictRowPrefixValues gameF (s + 3)) := by
+  classical
+  dsimp only
+  let missing := EventEThirdMissingBandSlots s delta c b0
+  let triple := EventETriplePrefixBandSlots s delta c b0
+  let slots := EventEDefectBandSlots s delta c b0
+  let values := missing.map (fun g => gameF s g)
+  have hbase := hcross.1.1.1
+  rcases hbase with
+    ⟨_hc, _hb0, _hcNe, _hSucc, _hBase,
+      hslotsNodup, _hslotsLen, hslotsProps, _hweak⟩
+  have hsurvivorsNodup :
+      (EventESurvivingBandSlots s delta c b0).Nodup :=
+    List.filter_sublist.nodup hslotsNodup
+  have htripleNodup : triple.Nodup :=
+    List.filter_sublist.nodup hsurvivorsNodup
+  have hmissingNodup : missing.Nodup :=
+    List.filter_sublist.nodup htripleNodup
+  have hmissingSlot : forall g, g ∈ missing -> g ∈ slots := by
+    intro g hg
+    have hgTriple : g ∈ triple := (List.mem_filter.mp hg).1
+    have hgSurvivor :
+        g ∈ EventESurvivingBandSlots s delta c b0 :=
+      (List.mem_filter.mp hgTriple).1
+    exact (List.mem_filter.mp hgSurvivor).1
+  have hvaluesNodup : values.Nodup := by
+    apply r54_nodup_map_of_injective_on
+      (fun g => gameF s g) missing hmissingNodup
+    intro g hg k hk hEq
+    have hgData := hslotsProps g (hmissingSlot g hg)
+    have hkData := hslotsProps k (hmissingSlot k hk)
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hgData.1) (Nat.le_of_lt hkData.1) hEq
+  have hsub : values ⊆ StrictRowPrefixValues gameF (s + 2) := by
+    intro v hv
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hgTriple : g ∈ triple := (List.mem_filter.mp hg).1
+    simpa [triple, EventETriplePrefixBandSlots] using
+      (List.mem_filter.mp hgTriple).2
+  have habsent : forall v, v ∈ values ->
+      v ∉ StrictRowPrefixValues gameF (s + 3) := by
+    intro v hv
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hfilter := (List.mem_filter.mp hg).2
+    simpa [missing, EventEThirdMissingBandSlots] using hfilter
+  exact ⟨hvaluesNodup, hsub, habsent⟩
+
+private theorem r54_eventE_first_two_forbidden_properties
+    {s delta z c b0 b1 : Nat}
+    (hc : c < s) (hSucc : gameF s c = z + 1)
+    (hNextDiag : gameF (s + 1) (s + 1) = z + 1)
+    (hb1 : b1 < s + 1) (hHost1 : gameF (s + 1) b1 = z)
+    (hEmit : gameF (s + 2) (s + 2) = z)
+    (hslotsNodup : (EventEDefectBandSlots s delta c b0).Nodup)
+    (hslotsData : forall g, g ∈ EventEDefectBandSlots s delta c b0 ->
+      g < s /\ gameF s g < z) :
+    let low0 := (EventEMissingBandSlots s delta c b0).map
+      (fun g => gameF s g)
+    let low1 := (EventESecondMissingBandSlots s delta c b0).map
+      (fun g => gameF s g)
+    let forbidden0 := low0 ++ [z + 1]
+    let forbidden1 := low1 ++ [z]
+    forbidden0.Nodup /\
+    forbidden0 ⊆ StrictRowPrefixValues gameF s /\
+    (forall v, v ∈ forbidden0 ->
+      v ∉ StrictRowPrefixValues gameF (s + 1)) /\
+    forbidden1.Nodup /\
+    forbidden1 ⊆ StrictRowPrefixValues gameF (s + 1) /\
+    (forall v, v ∈ forbidden1 ->
+      v ∉ StrictRowPrefixValues gameF (s + 2)) := by
+  classical
+  dsimp only
+  let slots := EventEDefectBandSlots s delta c b0
+  let missing0 := EventEMissingBandSlots s delta c b0
+  let survivors := EventESurvivingBandSlots s delta c b0
+  let missing1 := EventESecondMissingBandSlots s delta c b0
+  let low0 := missing0.map (fun g => gameF s g)
+  let low1 := missing1.map (fun g => gameF s g)
+  let forbidden0 := low0 ++ [z + 1]
+  let forbidden1 := low1 ++ [z]
+  have hmissing0Nodup : missing0.Nodup :=
+    List.filter_sublist.nodup hslotsNodup
+  have hsurvivorsNodup : survivors.Nodup :=
+    List.filter_sublist.nodup hslotsNodup
+  have hmissing1Nodup : missing1.Nodup :=
+    List.filter_sublist.nodup hsurvivorsNodup
+  have hlow0Nodup : low0.Nodup := by
+    apply r54_nodup_map_of_injective_on
+      (fun g => gameF s g) missing0 hmissing0Nodup
+    intro g hg k hk heq
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+    have hkSlots : k ∈ slots := (List.mem_filter.mp hk).1
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt (hslotsData g hgSlots).1)
+      (Nat.le_of_lt (hslotsData k hkSlots).1) heq
+  have hlow1Nodup : low1.Nodup := by
+    apply r54_nodup_map_of_injective_on
+      (fun g => gameF s g) missing1 hmissing1Nodup
+    intro g hg k hk heq
+    have hgSurv : g ∈ survivors := (List.mem_filter.mp hg).1
+    have hkSurv : k ∈ survivors := (List.mem_filter.mp hk).1
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hgSurv).1
+    have hkSlots : k ∈ slots := (List.mem_filter.mp hkSurv).1
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt (hslotsData g hgSlots).1)
+      (Nat.le_of_lt (hslotsData k hkSlots).1) heq
+  have hdisjoint0 : forall v, v ∈ low0 ->
+      forall w, w ∈ [z + 1] -> v ≠ w := by
+    intro v hv w hw hEq
+    simp only [List.mem_singleton] at hw
+    subst w
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+    have hLower := (hslotsData g hgSlots).2
+    omega
+  have hdisjoint1 : forall v, v ∈ low1 ->
+      forall w, w ∈ [z] -> v ≠ w := by
+    intro v hv w hw hEq
+    simp only [List.mem_singleton] at hw
+    subst w
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hgSurv : g ∈ survivors := (List.mem_filter.mp hg).1
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hgSurv).1
+    have hLower := (hslotsData g hgSlots).2
+    omega
+  have hnd0 : forbidden0.Nodup :=
+    List.nodup_append.mpr ⟨hlow0Nodup, by simp, hdisjoint0⟩
+  have hnd1 : forbidden1.Nodup :=
+    List.nodup_append.mpr ⟨hlow1Nodup, by simp, hdisjoint1⟩
+  have hsub0 : forbidden0 ⊆ StrictRowPrefixValues gameF s := by
+    intro v hv
+    rcases List.mem_append.mp hv with hv | hv
+    · rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+      have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+      exact List.mem_map.mpr
+        ⟨g, List.mem_range.mpr (hslotsData g hgSlots).1, rfl⟩
+    · simp only [List.mem_singleton] at hv
+      subst v
+      exact List.mem_map.mpr ⟨c, List.mem_range.mpr hc, hSucc⟩
+  have hmiss0 : forall v, v ∈ forbidden0 ->
+      v ∉ StrictRowPrefixValues gameF (s + 1) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hv | hv
+    · rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+      have hfilter := (List.mem_filter.mp hg).2
+      simpa [missing0, EventEMissingBandSlots] using hfilter
+    · simp only [List.mem_singleton] at hv
+      subst v
+      rw [← hNextDiag]
+      exact diagonal_value_absent_strict_prefix
+        gameRecurrenceModel (s + 1)
+  have hsub1 : forbidden1 ⊆
+      StrictRowPrefixValues gameF (s + 1) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hv | hv
+    · rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+      have hgSurv : g ∈ survivors := (List.mem_filter.mp hg).1
+      have hfilter := (List.mem_filter.mp hgSurv).2
+      simpa [survivors, EventESurvivingBandSlots] using hfilter
+    · simp only [List.mem_singleton] at hv
+      subst v
+      exact List.mem_map.mpr ⟨b1, List.mem_range.mpr hb1, hHost1⟩
+  have hmiss1 : forall v, v ∈ forbidden1 ->
+      v ∉ StrictRowPrefixValues gameF (s + 2) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hv | hv
+    · rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+      have hfilter := (List.mem_filter.mp hg).2
+      simpa [missing1, EventESecondMissingBandSlots] using hfilter
+    · simp only [List.mem_singleton] at hv
+      subst v
+      rw [← hEmit]
+      exact diagonal_value_absent_strict_prefix
+        gameRecurrenceModel (s + 2)
+  exact ⟨hnd0, hsub0, hmiss0, hnd1, hsub1, hmiss1⟩
+
+private theorem r54_strict_global_for_given_cross
+    (hU : UnitDip gameRecurrenceModel) {s c b0 : Nat}
+    (hdip0 : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 ∨
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hdip1 : gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    EventECrossEdgeSurvivorCertificate s delta z c b0 ->
+    2 * delta + 9 <= s +
+      2 * (EventETriplePrefixBandSlots s delta c b0).length := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  intro hcross
+  have hstrict := gameF_margin_eventE_strict_cross_edge_survivor_bound
+    hU hdip0 hmargin hdip1
+  change exists c' b0',
+    EventEStrictCrossEdgeSurvivorCertificate s delta z c' b0' at hstrict
+  rcases hstrict with ⟨c', b0', hstrict⟩
+  have hbase := hcross.1.1.1
+  have hbase' := hstrict.1.1.1.1
+  rcases hbase with
+    ⟨hc, hb0, _hcNe, hSucc, hBase, _hrest⟩
+  rcases hbase' with
+    ⟨hc', hb0', _hcNe', hSucc', hBase', _hrest'⟩
+  have hcEq : c = c' :=
+    gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hc) (Nat.le_of_lt hc')
+      (hSucc.trans hSucc'.symm)
+  have hbEq : b0 = b0' :=
+    gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hb0) (Nat.le_of_lt hb0')
+      (hBase.trans hBase'.symm)
+  subst c'
+  subst b0'
+  exact hstrict.2.2
+
+/-- Strengthened penultimate-hit atom. -/
+def EventEThirdDipBandHitCompressedCertificate
+    (s delta z c b0 : Nat) : Prop :=
+  EventEThirdDipPenultimateHitCertificate s delta z c b0 /\
+  EventEThirdDipPrehostStaircaseCertificate s delta z /\
+  2 * (EventEThirdMissingBandSlots s delta c b0).length + 5 <= s /\
+  delta + (EventESecondMissingBandSlots s delta c b0).length + 8 <=
+    s + (EventEFourPrefixBandSlots s delta c b0).length /\
+  delta + 8 <= s + (EventEFourPrefixBandSlots s delta c b0).length /\
+  exists g b1 b2,
+    g ∈ EventEThirdMissingBandSlots s delta c b0 /\
+    b1 < s + 1 /\ b2 < s + 2 /\
+    gameF s g = z - 1 /\
+    gameF (s + 1) b1 = z - 1 /\
+    gameF (s + 2) b2 = z - 1 /\
+    g ≠ b1 /\ b1 ≠ b2 /\ g ≠ b2
+
+/-- Strengthened extra-forbidden atom.  Its only possible row-`s` host is
+the exact cell immediately to the left of the canonical defect band. -/
+def EventEThirdDipBoundarySaturationCertificate
+    (s delta z c b0 : Nat) : Prop :=
+  EventEThirdDipExtraForbiddenCertificate s delta z c b0 /\
+  EventEThirdDipPrehostStaircaseCertificate s delta z /\
+  2 * (EventEThirdMissingBandSlots s delta c b0).length + 7 <= s /\
+  delta + (EventESecondMissingBandSlots s delta c b0).length + 9 <=
+    s + (EventEFourPrefixBandSlots s delta c b0).length /\
+  delta + 9 <= s + (EventEFourPrefixBandSlots s delta c b0).length /\
+  exists g b1 b2,
+    g = s - delta - 3 /\
+    g < s /\ b1 < s + 1 /\ b2 < s + 2 /\
+    gameF s g = z - 1 /\
+    gameF (s + 1) b1 = z - 1 /\
+    gameF (s + 2) b2 = z - 1 /\
+    g ≠ b1 /\ b1 ≠ b2 /\ g ≠ b2 /\
+    (z - 1) - 1 = s + g /\
+    LowerSaturated gameF s g (z - 1)
+
+/-- The penultimate-hit branch carries the compressed last-edge packing
+bound and a concrete three-prehost geometry for its named value. -/
+theorem gameF_nonmax_eventE_third_dip_band_hit_compressed
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hres : NonmaxMarginEventECrossEdgeResidual s) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    forall {c b0},
+      EventECrossEdgeSurvivorCertificate s delta z c b0 ->
+      EventEThirdDipPenultimateHitCertificate s delta z c b0 ->
+      EventEThirdDipBandHitCompressedCertificate s delta z c b0 := by
+  classical
+  dsimp only
+  intro c b0 hcross hhit
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  change EventECrossEdgeSurvivorCertificate s delta z c b0 at hcross
+  change EventEThirdDipPenultimateHitCertificate s delta z c b0 at hhit
+  have hhitFull := hhit
+  dsimp only [EventEThirdDipPenultimateHitCertificate] at hhit
+  rcases hhit with
+    ⟨hdip2, hpartition, _holdBound, _holdFour,
+      gHit, hgMissing, hgValue⟩
+  have hresData := hres
+  change MarginEventECounterexample s /\
+      EventEDefectPacketInvariant s d delta z /\
+      delta + 5 <= s /\
+      exists ce be, EventECrossEdgeSurvivorCertificate s delta z ce be
+    at hresData
+  rcases hresData with ⟨hEvent, hInv, _hnonmax, _hcrossExists⟩
+  rcases hEvent with ⟨hdip0, hmargin, hdip1⟩
+  have hstair := gameF_nonmax_eventE_third_dip_prehost_staircase
+    hU hres hdip2
+  change EventEThirdDipPrehostStaircaseCertificate s delta z at hstair
+  have hstairFull := hstair
+  rcases hstair with
+    ⟨_hdeltaSix, _hdiag0, hdiag1, hdiag2, _hdiag3,
+      g0, b1, b2, hg0, hb1, hb2,
+      hhost0, hhost1, hhost2, hgb1, hb1b2, hgb2, _hgLower⟩
+  let missing := EventEThirdMissingBandSlots s delta c b0
+  let values := missing.map (fun g => gameF s g)
+  have hpacket := r54_third_missing_packet_properties hcross
+  change values.Nodup /\
+      values ⊆ StrictRowPrefixValues gameF (s + 2) /\
+      (forall v, v ∈ values ->
+        v ∉ StrictRowPrefixValues gameF (s + 3)) at hpacket
+  have hlastRaw :=
+    game_three_consecutive_dips_last_forbidden_compressed_bound
+      (forbidden := values) hdip0 hdip1 hdip2
+        hpacket.1 hpacket.2.1 hpacket.2.2
+  have hlast :
+      2 * (EventEThirdMissingBandSlots s delta c b0).length + 5 <= s := by
+    simpa [values, missing] using hlastRaw
+  have hbaseW := hcross.1.1.1
+  rcases hbaseW with
+    ⟨hcW, _hb0W, _hcNeW, hSuccW, _hBaseW,
+      hslotsNodupW, hslotsLenW, hslotsPropsW, _hmissingBoundW⟩
+  rcases hInv with
+    ⟨_hdeltaPos, _hdeltaUpper, _hdeltaSum, _hzDiag,
+      _ci, _bi, bFirst, _dc, _d0, _d1,
+      _hci, _hbi, hbFirst, _hciNe, _hbiNe,
+      _hSuccI, _hBaseI, hHostFirst, _hInvRest⟩
+  have hslotsDataW : forall k,
+      k ∈ EventEDefectBandSlots s delta c b0 ->
+      k < s /\ gameF s k < z := by
+    intro k hk
+    have hdata := hslotsPropsW k hk
+    have htransition := hdata.2.2.2
+    have hLower : gameF s k < z := by
+      simpa [EventELowerTransition] using htransition.2.1
+    exact ⟨hdata.1, hLower⟩
+  let missing0 := EventEMissingBandSlots s delta c b0
+  let missing1 := EventESecondMissingBandSlots s delta c b0
+  let low0 := missing0.map (fun k => gameF s k)
+  let low1 := missing1.map (fun k => gameF s k)
+  let forbidden0 := low0 ++ [z + 1]
+  let forbidden1 := low1 ++ [z]
+  have hfirst := r54_eventE_first_two_forbidden_properties
+    hcW hSuccW hdiag1 hbFirst hHostFirst hdiag2
+      hslotsNodupW hslotsDataW
+  change forbidden0.Nodup /\
+      forbidden0 ⊆ StrictRowPrefixValues gameF s /\
+      (forall v, v ∈ forbidden0 ->
+        v ∉ StrictRowPrefixValues gameF (s + 1)) /\
+      forbidden1.Nodup /\
+      forbidden1 ⊆ StrictRowPrefixValues gameF (s + 1) /\
+      (forall v, v ∈ forbidden1 ->
+        v ∉ StrictRowPrefixValues gameF (s + 2)) at hfirst
+  have hweightRaw :=
+    game_three_consecutive_dips_weighted_forbidden_overlap_bound
+      hdip0 hdip1 hdip2
+      hfirst.1 hfirst.2.1 hfirst.2.2.1
+      hfirst.2.2.2.1 hfirst.2.2.2.2.1 hfirst.2.2.2.2.2
+      hpacket.1 hpacket.2.1 hpacket.2.2
+  have hweight :
+      missing0.length + 2 * missing1.length + missing.length + 8 <= s := by
+    simp [forbidden0, forbidden1, low0, low1, values] at hweightRaw
+    omega
+  have hbandPartition := hcross.1.2.2.1
+  change (EventEDefectBandSlots s delta c b0).length =
+      missing0.length + missing1.length +
+        (EventETriplePrefixBandSlots s delta c b0).length
+    at hbandPartition
+  change (EventEDefectBandSlots s delta c b0).length = delta at hslotsLenW
+  change (EventETriplePrefixBandSlots s delta c b0).length =
+      (EventEFourPrefixBandSlots s delta c b0).length + missing.length
+    at hpartition
+  have hweightedFour :
+      delta + missing1.length + 8 <= s +
+        (EventEFourPrefixBandSlots s delta c b0).length := by
+    omega
+  have hfour :
+      delta + 8 <= s +
+        (EventEFourPrefixBandSlots s delta c b0).length := by
+    omega
+  have hgTriple :
+      gHit ∈ EventETriplePrefixBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgMissing).1
+  have hgSurvivor :
+      gHit ∈ EventESurvivingBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgTriple).1
+  have hgSlots : gHit ∈ EventEDefectBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgSurvivor).1
+  have hbase := hcross.1.1.1
+  rcases hbase with
+    ⟨_hc, _hb0, _hcNe, _hSucc, _hBase,
+      _hslotsNodup, _hslotsLen, hslotsProps, _hmissingBound⟩
+  have hgHitLt : gHit < s := (hslotsProps gHit hgSlots).1
+  have hgEq : gHit = g0 :=
+    gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hgHitLt) (Nat.le_of_lt hg0)
+      (hgValue.trans hhost0.symm)
+  subst g0
+  change EventEThirdDipBandHitCompressedCertificate s delta z c b0
+  exact ⟨hhitFull, hstairFull, hlast, hweightedFour, hfour,
+    gHit, b1, b2, hgMissing, hb1, hb2,
+    hgValue, hhost1, hhost2, hgb1, hb1b2, hgb2⟩
+
+/-- The extra-forbidden branch collapses to one exact boundary-saturated
+cell.  In particular its old anonymous bound improves from
+`2*|M3|+5 <= s+2` to `2*|M3|+7 <= s`. -/
+theorem gameF_nonmax_eventE_third_dip_extra_boundary_saturation
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hres : NonmaxMarginEventECrossEdgeResidual s) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    forall {c b0},
+      EventECrossEdgeSurvivorCertificate s delta z c b0 ->
+      EventEThirdDipExtraForbiddenCertificate s delta z c b0 ->
+      EventEThirdDipBoundarySaturationCertificate s delta z c b0 := by
+  classical
+  dsimp only
+  intro c b0 hcross hextra
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  change EventECrossEdgeSurvivorCertificate s delta z c b0 at hcross
+  change EventEThirdDipExtraForbiddenCertificate s delta z c b0 at hextra
+  have hextraFull := hextra
+  dsimp only [EventEThirdDipExtraForbiddenCertificate] at hextra
+  rcases hextra with
+    ⟨hdip2, hpartition, hnohit, _holdBound, _holdFour⟩
+  have hresData := hres
+  change MarginEventECounterexample s /\
+      EventEDefectPacketInvariant s d delta z /\
+      delta + 5 <= s /\
+      exists ce be, EventECrossEdgeSurvivorCertificate s delta z ce be
+    at hresData
+  rcases hresData with ⟨hEvent, hInv, _hnonmax, _hcrossExists⟩
+  rcases hEvent with ⟨hdip0, hmargin, hdip1⟩
+  have hsum : d + delta = 2 * s := hInv.2.2.1
+  have hzDiag : z + 1 = d := hInv.2.2.2.1
+  have hstair := gameF_nonmax_eventE_third_dip_prehost_staircase
+    hU hres hdip2
+  change EventEThirdDipPrehostStaircaseCertificate s delta z at hstair
+  have hstairFull := hstair
+  rcases hstair with
+    ⟨hdeltaSix, _hdiag0, hdiag1, hdiag2, hdiag3,
+      g, b1, b2, hg, hb1, hb2,
+      hhost0, hhost1, hhost2, hgb1, hb1b2, hgb2, hgLower⟩
+  let missing := EventEThirdMissingBandSlots s delta c b0
+  let values := missing.map (fun k => gameF s k)
+  have hpacket := r54_third_missing_packet_properties hcross
+  change values.Nodup /\
+      values ⊆ StrictRowPrefixValues gameF (s + 2) /\
+      (forall v, v ∈ values ->
+        v ∉ StrictRowPrefixValues gameF (s + 3)) at hpacket
+  let forbidden := values ++ [z - 1]
+  have hdisjoint : forall v, v ∈ values ->
+      forall w, w ∈ [z - 1] -> v ≠ w := by
+    intro v hv w hw hEq
+    simp only [List.mem_singleton] at hw
+    rcases List.mem_map.mp hv with ⟨k, hk, hkv⟩
+    have hkTriple :
+        k ∈ EventETriplePrefixBandSlots s delta c b0 :=
+      (List.mem_filter.mp hk).1
+    apply hnohit k hkTriple
+    exact hkv.trans (hEq.trans hw)
+  have hforbiddenNodup : forbidden.Nodup :=
+    List.nodup_append.mpr ⟨hpacket.1, by simp, hdisjoint⟩
+  have hpOld : z - 1 ∈ StrictRowPrefixValues gameF (s + 2) :=
+    mem_strictRowPrefixValues_iff_C.mpr ⟨b2, hb2, hhost2⟩
+  have hpAbsent : z - 1 ∉ StrictRowPrefixValues gameF (s + 3) := by
+    rw [← hdiag3]
+    exact diagonal_value_absent_strict_prefix
+      gameRecurrenceModel (s + 3)
+  have hforbiddenSub : forbidden ⊆
+      StrictRowPrefixValues gameF (s + 2) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hv | hv
+    · exact hpacket.2.1 hv
+    · simp only [List.mem_singleton] at hv
+      subst v
+      exact hpOld
+  have hforbiddenAbsent : forall v, v ∈ forbidden ->
+      v ∉ StrictRowPrefixValues gameF (s + 3) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hv | hv
+    · exact hpacket.2.2 v hv
+    · simp only [List.mem_singleton] at hv
+      subst v
+      exact hpAbsent
+  have hlastRaw :=
+    game_three_consecutive_dips_last_forbidden_compressed_bound
+      (forbidden := forbidden) hdip0 hdip1 hdip2
+        hforbiddenNodup hforbiddenSub hforbiddenAbsent
+  have hlast :
+      2 * (EventEThirdMissingBandSlots s delta c b0).length + 7 <= s := by
+    simpa [forbidden, values, missing] using hlastRaw
+  have hbaseW := hcross.1.1.1
+  rcases hbaseW with
+    ⟨hc, hb0, _hcNe, hSucc, hBase,
+      hslotsNodupW, hslotsLenW, hslotsPropsW, _hmissingBound⟩
+  rcases hInv with
+    ⟨_hdeltaPos, _hdeltaUpper, _hdeltaSum, _hzDiag,
+      _ci, _bi, bFirst, _dc, _d0, _d1,
+      _hci, _hbi, hbFirst, _hciNe, _hbiNe,
+      _hSuccI, _hBaseI, hHostFirst, _hInvRest⟩
+  have hslotsDataW : forall k,
+      k ∈ EventEDefectBandSlots s delta c b0 ->
+      k < s /\ gameF s k < z := by
+    intro k hk
+    have hdata := hslotsPropsW k hk
+    have htransition := hdata.2.2.2
+    have hLower : gameF s k < z := by
+      simpa [EventELowerTransition] using htransition.2.1
+    exact ⟨hdata.1, hLower⟩
+  let missing0 := EventEMissingBandSlots s delta c b0
+  let missing1 := EventESecondMissingBandSlots s delta c b0
+  let low0 := missing0.map (fun k => gameF s k)
+  let low1 := missing1.map (fun k => gameF s k)
+  let forbidden0 := low0 ++ [z + 1]
+  let forbidden1 := low1 ++ [z]
+  have hfirst := r54_eventE_first_two_forbidden_properties
+    hc hSucc hdiag1 hbFirst hHostFirst hdiag2
+      hslotsNodupW hslotsDataW
+  change forbidden0.Nodup /\
+      forbidden0 ⊆ StrictRowPrefixValues gameF s /\
+      (forall v, v ∈ forbidden0 ->
+        v ∉ StrictRowPrefixValues gameF (s + 1)) /\
+      forbidden1.Nodup /\
+      forbidden1 ⊆ StrictRowPrefixValues gameF (s + 1) /\
+      (forall v, v ∈ forbidden1 ->
+        v ∉ StrictRowPrefixValues gameF (s + 2)) at hfirst
+  have hweightRaw :=
+    game_three_consecutive_dips_weighted_forbidden_overlap_bound
+      hdip0 hdip1 hdip2
+      hfirst.1 hfirst.2.1 hfirst.2.2.1
+      hfirst.2.2.2.1 hfirst.2.2.2.2.1 hfirst.2.2.2.2.2
+      hforbiddenNodup hforbiddenSub hforbiddenAbsent
+  have hweight :
+      missing0.length + 2 * missing1.length + missing.length + 9 <= s := by
+    simp [forbidden0, forbidden1, low0, low1,
+      forbidden, values] at hweightRaw
+    omega
+  have hbandPartition := hcross.1.2.2.1
+  change (EventEDefectBandSlots s delta c b0).length =
+      missing0.length + missing1.length +
+        (EventETriplePrefixBandSlots s delta c b0).length
+    at hbandPartition
+  change (EventEDefectBandSlots s delta c b0).length = delta at hslotsLenW
+  change (EventETriplePrefixBandSlots s delta c b0).length =
+      (EventEFourPrefixBandSlots s delta c b0).length + missing.length
+    at hpartition
+  have hweightedFour :
+      delta + missing1.length + 9 <= s +
+        (EventEFourPrefixBandSlots s delta c b0).length := by
+    omega
+  have hfour :
+      delta + 9 <= s +
+        (EventEFourPrefixBandSlots s delta c b0).length := by
+    omega
+  have hgc : g ≠ c := by
+    intro hEq
+    subst g
+    omega
+  have hgb0 : g ≠ b0 := by
+    intro hEq
+    subst g
+    omega
+  let band := List.range' (s - delta - 2) (delta + 2)
+  have hgNotInside : Not (s - delta - 2 <= g) := by
+    intro hgInside
+    have hgBand : g ∈ band := by
+      apply List.mem_range'_1.mpr
+      dsimp [band]
+      constructor <;> omega
+    have hgEraseC : g ∈ band.erase c :=
+      (List.mem_erase_of_ne hgc).mpr hgBand
+    have hgSlots : g ∈ EventEDefectBandSlots s delta c b0 := by
+      change g ∈ (band.erase c).erase b0
+      exact (List.mem_erase_of_ne hgb0).mpr hgEraseC
+    have hpNext : z - 1 ∈ StrictRowPrefixValues gameF (s + 1) :=
+      mem_strictRowPrefixValues_iff_C.mpr ⟨b1, hb1, hhost1⟩
+    have hgSurvivor :
+        g ∈ EventESurvivingBandSlots s delta c b0 := by
+      apply List.mem_filter.mpr
+      refine ⟨hgSlots, ?_⟩
+      simpa [hhost0] using hpNext
+    have hgTriple :
+        g ∈ EventETriplePrefixBandSlots s delta c b0 := by
+      apply List.mem_filter.mpr
+      refine ⟨hgSurvivor, ?_⟩
+      simpa [hhost0] using hpOld
+    exact hnohit g hgTriple hhost0
+  have hgExact : g = s - delta - 3 := by omega
+  have hcapacityExact : (z - 1) - 1 = s + g :=
+    r54_boundary_capacity_arithmetic hsum hzDiag hdeltaSix hgExact
+  have hpHigh : s < z - 1 := by
+    have hgt := gameRecurrenceModel.diagonal_gt (s + 3)
+    change s + 3 < gameF (s + 3) (s + 3) at hgt
+    omega
+  have hsaturated : LowerSaturated gameF s g (z - 1) := by
+    intro k hkPos hkBelow
+    have hhighCell : s < gameF s g := by
+      rw [hhost0]
+      exact hpHigh
+    have hkBelowCell : k < gameF s g := by
+      rw [hhost0]
+      exact hkBelow
+    exact gameRecurrenceModel.mex_no_skip
+      (Nat.le_of_lt hg) hhighCell hkPos hkBelowCell
+  change EventEThirdDipBoundarySaturationCertificate s delta z c b0
+  exact ⟨hextraFull, hstairFull, hlast, hweightedFour, hfour,
+    g, b1, b2, hgExact, hg, hb1, hb2,
+    hhost0, hhost1, hhost2, hgb1, hb1b2, hgb2,
+    hcapacityExact, hsaturated⟩
+
+end ChompLean

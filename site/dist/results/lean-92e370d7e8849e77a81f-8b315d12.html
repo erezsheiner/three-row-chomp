@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Uniqueness and game foundations · lean</p>
+<h1>Game</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/ChompLean/Game.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/ChompLean.Game.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/ChompLean.Game.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 7 declarations</summary><ul class="declarations"><li><code>ChompLean.IsP.eq_1</code><pre class="prose">∀ (x : ChompLean.Pos),
+  @Eq.{1} Prop (ChompLean.IsP x)
+    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.Pos.p x))
+      (∀ (y : ChompLean.Pos), ChompLean.Move x y → Not (ChompLean.IsP y)))</pre></li><li><code>ChompLean.Pos.ext</code><pre class="prose">∀ {x y : ChompLean.Pos} (hp : @Eq.{1} Nat (ChompLean.Pos.p x) (ChompLean.Pos.p y))
+  (hq : @Eq.{1} Nat (ChompLean.Pos.q x) (ChompLean.Pos.q y)) (hr : @Eq.{1} Nat (ChompLean.Pos.r x) (ChompLean.Pos.r y)),
+  @Eq.{1} ChompLean.Pos x y</pre></li><li><code>ChompLean.Pos.ext_iff</code><pre class="prose">∀ {x y : ChompLean.Pos},
+  Iff (@Eq.{1} ChompLean.Pos x y)
+    (And (@Eq.{1} Nat (ChompLean.Pos.p x) (ChompLean.Pos.p y))
+      (And (@Eq.{1} Nat (ChompLean.Pos.q x) (ChompLean.Pos.q y)) (@Eq.{1} Nat (ChompLean.Pos.r x) (ChompLean.Pos.r y))))</pre></li><li><code>ChompLean.isP_no_move_to_P</code><pre class="prose">∀ {x y : ChompLean.Pos} (hx : ChompLean.IsP x) (hxy : ChompLean.Move x y), Not (ChompLean.IsP y)</pre></li><li><code>ChompLean.isP_of_no_cut_replies</code><pre class="prose">∀ (x : ChompLean.Pos)
+  (hpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.Pos.p x))
+  (hfirst :
+    ∀ (a : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) a →
+        @LT.lt.{0} Nat instLTNat a (ChompLean.Pos.p x) → Not (ChompLean.IsP (ChompLean.Pos.firstCut x a)))
+  (hsecond :
+    ∀ (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (ChompLean.Pos.q x)),
+      Not (ChompLean.IsP (ChompLean.Pos.secondCut x a (@Nat.le_of_lt a (ChompLean.Pos.q x) ha))))
+  (hthird :
+    ∀ (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (ChompLean.Pos.r x)),
+      Not (ChompLean.IsP (ChompLean.Pos.thirdCut x b (@Nat.le_of_lt b (ChompLean.Pos.r x) hb)))),
+  ChompLean.IsP x</pre></li><li><code>ChompLean.isP_pos</code><pre class="prose">∀ {x : ChompLean.Pos} (hx : ChompLean.IsP x),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.Pos.p x)</pre></li><li><code>ChompLean.not_isP_has_move_to_P</code><pre class="prose">∀ {x : ChompLean.Pos}
+  (hpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.Pos.p x))
+  (hnp : Not (ChompLean.IsP x)),
+  @Exists.{1} ChompLean.Pos fun (y : ChompLean.Pos) =&gt; And (ChompLean.Move x y) (ChompLean.IsP y)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/ChompLean/Game.lean:1</p><p>SHA-256: <code class="path">92e370d7e8849e77a81f8ea70aa740609ab47a05ae37ffe9a734057986204233</code></p></section><p><a href="../index.html#id=lean-92e370d7e8849e77a81f">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

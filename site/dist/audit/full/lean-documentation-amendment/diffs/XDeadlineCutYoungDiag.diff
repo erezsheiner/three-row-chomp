@@ -1,0 +1,35 @@
+--- before/XDeadlineCutYoungDiag.lean
++++ after/XDeadlineCutYoungDiag.lean
+@@ -15,8 +15,9 @@
+ This file splits every diagonal owner of a value `q + k` at the cut `q`.
+ The old arm is the normalized youngest inventory; the new arm records a
+ diagonal born after the cut.  The split is disjoint and its witnesses are
+-unique.  It yields an all-horizon blocker certificate and, below depth three,
+-the three low-bit formulas without assuming `NoTriple` or any host-cover law.
++unique.  It yields an all-horizon blocker certificate with its positive-target
++guard. For cuts `q >= 3` and depths `k < 3`, the three low-bit formulas
++follow without assuming `NoTriple` or any host-cover law.
+ -/
+ 
+ /-- An old diagonal value still alive `k` clocks above the cut `q`. -/
+@@ -129,9 +130,8 @@
+   rw [diagonalOwner_cut_partition, newDiagAfterCut_iff_lag]
+   simp only [not_or, not_exists, not_and]
+ 
+-/-- Below depth three, no diagonal born after the cut can mature at the
+-target.  This is the exact role of the unconditional diagonal rail
+-`d(t) >= t + 3`. -/
++/-- For `q >= 3` and `k < 3`, no diagonal born after the cut can mature
++at `q+k`. This uses the diagonal rail `d(t) >= t+3` for `t >= 3`. -/
+ theorem no_newDiagAfterCut_of_lt_three {q k : Nat}
+     (hq : 3 <= q) (hk : k < 3) :
+     Not (NewDiagAfterCut q k) := by
+@@ -141,7 +141,7 @@
+   rw [hvalue] at hlow
+   omega
+ 
+-/-- The all-`k < 3` low-bit formula. -/
++/-- The low-bit formula for `q >= 3` and `k < 3`; no claim for cuts 0, 1, 2. -/
+ theorem blocker_iff_not_youngDiag_of_lt_three {q k : Nat}
+     (hq : 3 <= q) (hk : k < 3) :
+     S gameF (q + k) <-> Not (YoungDiag q k) := by

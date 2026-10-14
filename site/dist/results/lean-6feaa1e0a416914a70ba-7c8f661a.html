@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canonical game reconstruction and blocker-count bounds · Three-Row Chomp</title>
+<meta name="description" content="Identifies the canonical blocker-union orbit with the actual game at row n+1, including normalized diagonal output and positive blocker counts; derives quadratic and square-root count certificates.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>Canonical game reconstruction and blocker-count bounds</h1><p class="lead">Identifies the canonical blocker-union orbit with the actual game at row n+1, including normalized diagonal output and positive blocker counts; derives quadratic and square-root count certificates.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/XGameFOrderedBlockerUnionReconstruction.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/XGameFOrderedBlockerUnionReconstruction.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/XGameFOrderedBlockerUnionReconstruction.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a> <a href="../audit/full/lean/MAIN-CLAIM-MAPPING.md">Historical 13 October evidence: Exact mathematical correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>The orbit starts at canonicalSeed = ([[0]],[0]), equal to canonicalQState 1. The all-row step uses forcing [0] at row 0 and [] thereafter. The square-root certificate assumes R*R &lt;= 2*N, for natural N and R.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">sourceQueue and rowQueue normalize exact historical and current-row source values by the row cut. The scan proof identifies both outputs and survivors. canonical_step and canonicalOrbit_eq_state inductively bind that quotient to gameF. Output is gameF(n+1,n+1)-(n+1), with truncated natural subtraction; absolute target and hole-count bridges account for the index shift. The count A(N) satisfies 2*N &lt;= A(N)^2+5*A(N)+2 and R-2 &lt;= A(N) when R^2 &lt;= 2*N.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 136 declarations</summary><ul class="declarations"><li><code>ChompLean.OBUQ.canonicalForcing</code><pre class="prose">(q : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.canonicalForcing.eq_1</code><pre class="prose">∀ (q : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.canonicalForcing q)
+    (@ite.{1} (List.{0} Nat) (@Eq.{1} Nat q (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (instDecidableEqNat q (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.nil.{0} Nat))
+      (@List.nil.{0} Nat))</pre></li><li><code>ChompLean.OBUQ.canonicalForcing_pos</code><pre class="prose">∀ {q : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.canonicalForcing q) (@List.nil.{0} Nat)</pre></li><li><code>ChompLean.OBUQ.canonicalForcing_zero</code><pre class="prose">@Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.canonicalForcing (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.nil.{0} Nat))</pre></li><li><code>ChompLean.OBUQ.canonicalOrbit_eq_state</code><pre class="prose">∀ (n : Nat),
+  @Eq.{1} ChompLean.OBUQ.QState (ChompLean.OBUQ.autonomousOrbit ChompLean.OBUQ.canonicalSeed n)
+    (ChompLean.OBUQ.canonicalQState
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.OBUQ.canonicalOrbit_eq_state._proof_1_1</code><pre class="prose">∀ (n : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.canonicalOrbit_output</code><pre class="prose">∀ (n : Nat),
+  @Eq.{1} Nat
+    (ChompLean.OBUQ.qOutput (@List.nil.{0} Nat) (ChompLean.OBUQ.autonomousOrbit ChompLean.OBUQ.canonicalSeed n))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.OBUQ.canonicalOrbit_output._proof_1_1</code><pre class="prose">∀ (n : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.canonicalQState</code><pre class="prose">(q : Nat) → ChompLean.OBUQ.QState</pre></li><li><code>ChompLean.OBUQ.canonicalQState.eq_1</code><pre class="prose">∀ (q : Nat),
+  @Eq.{1} ChompLean.OBUQ.QState (ChompLean.OBUQ.canonicalQState q)
+    (ChompLean.OBUQ.QState.mk
+      (@List.map.{0, 0} Nat (List.{0} Nat) (fun (e : Nat) =&gt; ChompLean.OBUQ.sourceQueue q e)
+        (ChompLean.OBUQ.liveCols q))
+      (ChompLean.OBUQ.sourceQueue q q))</pre></li><li><code>ChompLean.OBUQ.canonicalQState_one</code><pre class="prose">@Eq.{1} ChompLean.OBUQ.QState
+  (ChompLean.OBUQ.canonicalQState (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+  (ChompLean.OBUQ.QState.mk
+    (@List.cons.{0} (List.{0} Nat)
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.nil.{0} Nat))
+      (@List.nil.{0} (List.{0} Nat)))
+    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.nil.{0} Nat)))</pre></li><li><code>ChompLean.OBUQ.canonicalQState_zero</code><pre class="prose">@Eq.{1} ChompLean.OBUQ.QState
+  (ChompLean.OBUQ.canonicalQState (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+  (ChompLean.OBUQ.QState.mk (@List.nil.{0} (List.{0} Nat)) (@List.nil.{0} Nat))</pre></li><li><code>ChompLean.OBUQ.canonicalSeed</code><pre class="prose">ChompLean.OBUQ.QState</pre></li><li><code>ChompLean.OBUQ.canonicalSeed.eq_1</code><pre class="prose">@Eq.{1} ChompLean.OBUQ.QState ChompLean.OBUQ.canonicalSeed
+  (ChompLean.OBUQ.QState.mk
+    (@List.cons.{0} (List.{0} Nat)
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.nil.{0} Nat))
+      (@List.nil.{0} (List.{0} Nat)))
+    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.nil.{0} Nat)))</pre></li><li><code>ChompLean.OBUQ.canonicalSeed_anchored</code><pre class="prose">ChompLean.OBUQ.Anchored ChompLean.OBUQ.canonicalSeed</pre></li><li><code>ChompLean.OBUQ.canonicalSeed_diagonal_nodup</code><pre class="prose">@List.Nodup.{0} Nat (ChompLean.OBUQ.QState.diagonal ChompLean.OBUQ.canonicalSeed)</pre></li><li><code>ChompLean.OBUQ.canonicalSeed_eq_state_one</code><pre class="prose">@Eq.{1} ChompLean.OBUQ.QState ChompLean.OBUQ.canonicalSeed
+  (ChompLean.OBUQ.canonicalQState (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.OBUQ.canonical_absoluteHoleBit_eq_one_iff_blocker</code><pre class="prose">∀ (n : Nat),
+  Iff
+    (@Eq.{1} Nat (ChompLean.OBUQ.absoluteHoleBit ChompLean.OBUQ.canonicalSeed n)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (ChompLean.S ChompLean.gameF
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.OBUQ.canonical_absoluteHoleBit_eq_one_iff_blocker._proof_1_1</code><pre class="prose">∀ (n : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.canonical_absoluteHoleCount_eq_gameFBlockerCountThrough</code><pre class="prose">∀ (N : Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.absoluteHoleCount ChompLean.OBUQ.canonicalSeed N) (ChompLean.gameFBlockerCountThrough N)</pre></li><li><code>ChompLean.OBUQ.canonical_absoluteHoleCount_eq_gameFBlockerCountThrough._proof_1_1</code><pre class="prose">∀ (N : Nat),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough N)
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (ChompLean.gameFBlockerCountThrough N)) →
+    False</pre></li><li><code>ChompLean.OBUQ.canonical_absoluteTarget_iff_diagonalOwner</code><pre class="prose">∀ (t : Nat),
+  Iff (ChompLean.OBUQ.AbsoluteDiagonalTarget ChompLean.OBUQ.canonicalSeed t)
+    (ChompLean.D ChompLean.gameF
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.OBUQ.canonical_absoluteTarget_iff_diagonalOwner._proof_1_2</code><pre class="prose">∀ (t i : Nat)
+  (hi :
+    @Eq.{1} Nat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (ChompLean.gameF
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      t)
+  (hgt :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@Eq.{1} Nat
+        (ChompLean.gameF
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.canonical_absoluteTarget_iff_diagonalOwner._proof_1_3</code><pre class="prose">∀ (t : Nat)
+  (ha :
+    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@Eq.{1} Nat t (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) → False</pre></li><li><code>ChompLean.OBUQ.canonical_absoluteTarget_iff_diagonalOwner._proof_1_4</code><pre class="prose">∀ (t i : Nat)
+  (ha :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (ChompLean.gameF
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        t) →
+    False</pre></li><li><code>ChompLean.OBUQ.canonical_diagonalTarget_eq_gameF_sub_one</code><pre class="prose">∀ (n : Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.diagonalTarget ChompLean.OBUQ.canonicalSeed n)
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.OBUQ.canonical_diagonalTarget_eq_gameF_sub_one._proof_1_1</code><pre class="prose">∀ (n : Nat)
+  (hgt :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (ChompLean.gameF
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (ChompLean.gameF
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.canonical_output</code><pre class="prose">∀ (q : Nat),
+  @Eq.{1} Nat (ChompLean.OBUQ.qOutput (ChompLean.OBUQ.canonicalForcing q) (ChompLean.OBUQ.canonicalQState q))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q q) q)</pre></li><li><code>ChompLean.OBUQ.canonical_output_pos</code><pre class="prose">∀ {q : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q),
+  @Eq.{1} Nat (ChompLean.OBUQ.qOutput (@List.nil.{0} Nat) (ChompLean.OBUQ.canonicalQState q))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q q) q)</pre></li><li><code>ChompLean.OBUQ.canonical_output_zero</code><pre class="prose">@Eq.{1} Nat
+  (ChompLean.OBUQ.qOutput
+    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.nil.{0} Nat))
+    (ChompLean.OBUQ.canonicalQState (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+  (ChompLean.gameF (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))</pre></li><li><code>ChompLean.OBUQ.canonical_step</code><pre class="prose">∀ (q : Nat),
+  @Eq.{1} ChompLean.OBUQ.QState
+    (ChompLean.OBUQ.qStep (ChompLean.OBUQ.canonicalForcing q) (ChompLean.OBUQ.canonicalQState q))
+    (ChompLean.OBUQ.canonicalQState
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.OBUQ.canonical_step_pos</code><pre class="prose">∀ {q : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q),
+  @Eq.{1} ChompLean.OBUQ.QState (ChompLean.OBUQ.qStep (@List.nil.{0} Nat) (ChompLean.OBUQ.canonicalQState q))
+    (ChompLean.OBUQ.canonicalQState
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.OBUQ.canonical_step_pos._proof_1_1</code><pre class="prose">∀ {q : Nat} (hd : @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q q)),
+  @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q q) q)
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →
+    False</pre></li><li><code>ChompLean.OBUQ.canonical_step_zero</code><pre class="prose">@Eq.{1} ChompLean.OBUQ.QState
+  (ChompLean.OBUQ.qStep
+    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.nil.{0} Nat))
+    (ChompLean.OBUQ.canonicalQState (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+  (ChompLean.OBUQ.canonicalQState (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.OBUQ.gameFBlockerCountThrough_quadratic_bound</code><pre class="prose">∀ (N : Nat),
+  @LE.le.{0} Nat instLENat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) N)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.gameFBlockerCountThrough N)
+          (ChompLean.gameFBlockerCountThrough N))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) (ChompLean.gameFBlockerCountThrough N)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.OBUQ.gameFBlockerCountThrough_quadratic_bound._proof_1_1</code><pre class="prose">∀ (N : Nat)
+  (hbound :
+    @LE.le.{0} Nat instLENat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) N)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.gameFBlockerCountThrough N))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.gameFBlockerCountThrough N))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.gameFBlockerCountThrough N)
+            (ChompLean.gameFBlockerCountThrough N))
+          (ChompLean.gameFBlockerCountThrough N)))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) N)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ChompLean.gameFBlockerCountThrough N)
+              (ChompLean.gameFBlockerCountThrough N))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) (ChompLean.gameFBlockerCountThrough N)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.gameFBlockerCountThrough_sqrt_certificate</code><pre class="prose">∀ (N R : Nat)
+  (hroot :
+    @LE.le.{0} Nat instLENat (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) R R)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) N)),
+  @LE.le.{0} Nat instLENat
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) R
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (ChompLean.gameFBlockerCountThrough N)</pre></li><li><code>ChompLean.OBUQ.gameFBlockerCountThrough_strict_square</code><pre class="prose">∀ (N : Nat),
+  @LT.lt.{0} Nat instLTNat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) N)
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough N)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough N)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))</pre></li><li><code>ChompLean.OBUQ.gameF_normalized_cell_mex</code><pre class="prose">∀ {q r : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)
+  (hrq : @LE.le.{0} Nat instLENat r q) (hvisible : @LE.le.{0} Nat instLENat q (ChompLean.gameF q r)),
+  @Eq.{1} Nat
+    (ChompLean.OBUQ.queueMex
+      (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+        (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.sourceQueue q r)
+        (ChompLean.OBUQ.rowQueue q r)))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q r) q)</pre></li><li><code>ChompLean.OBUQ.gameF_normalized_cell_mex._proof_1_1</code><pre class="prose">∀ {q r : Nat} (hvisible : @LE.le.{0} Nat instLENat q (ChompLean.gameF q r)),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q r) q))
+        (ChompLean.gameF q r)) →
+    False</pre></li><li><code>ChompLean.OBUQ.gameF_normalized_cell_mex._proof_1_2</code><pre class="prose">∀ {q r : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q) (k : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)) →
+    False</pre></li><li><code>ChompLean.OBUQ.gameF_normalized_cell_mex._proof_1_3</code><pre class="prose">∀ {q r : Nat} (hvisible : @LE.le.{0} Nat instLENat q (ChompLean.gameF q r)) (k : Nat)
+  (hk :
+    @LT.lt.{0} Nat instLTNat k
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q r) q)),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)
+        (ChompLean.gameF q r)) →
+    False</pre></li><li><code>ChompLean.OBUQ.gameF_visible_isMex</code><pre class="prose">∀ {q r : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hvisible : @LE.le.{0} Nat instLENat q (ChompLean.gameF q r)),
+  ChompLean.IsMex (ChompLean.B ChompLean.gameF q r) (ChompLean.gameF q r)</pre></li><li><code>ChompLean.OBUQ.gameF_visible_isMex._proof_1_1</code><pre class="prose">∀ {q r : Nat} (hvisible : @LE.le.{0} Nat instLENat q (ChompLean.gameF q r))
+  (hprev :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)
+      q)
+  (heq :
+    @Eq.{1} Nat (ChompLean.gameF q r)
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)),
+  False</pre></li><li><code>ChompLean.OBUQ.liveCols</code><pre class="prose">(q : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.liveCols.eq_1</code><pre class="prose">∀ (q : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.liveCols q)
+    (@List.filter.{0} Nat
+      (fun (e : Nat) =&gt;
+        @Decidable.decide (@LE.le.{0} Nat instLENat q (ChompLean.gameF q e)) (Nat.decLe q (ChompLean.gameF q e)))
+      (List.range q))</pre></li><li><code>ChompLean.OBUQ.liveColsPrefix</code><pre class="prose">(q r : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.liveColsPrefix.eq_1</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.liveColsPrefix q r)
+    (@List.filter.{0} Nat
+      (fun (e : Nat) =&gt;
+        @Decidable.decide (@LE.le.{0} Nat instLENat q (ChompLean.gameF q e)) (Nat.decLe q (ChompLean.gameF q e)))
+      (List.range r))</pre></li><li><code>ChompLean.OBUQ.liveColsPrefix_succ</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.liveColsPrefix q
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.liveColsPrefix q r)
+      (@ite.{1} (List.{0} Nat) (@LE.le.{0} Nat instLENat q (ChompLean.gameF q r)) (Nat.decLe q (ChompLean.gameF q r))
+        (@List.cons.{0} Nat r (@List.nil.{0} Nat)) (@List.nil.{0} Nat)))</pre></li><li><code>ChompLean.OBUQ.liveCols_eq_prefix</code><pre class="prose">∀ (q : Nat), @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.liveCols q) (ChompLean.OBUQ.liveColsPrefix q q)</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_list</code><pre class="prose">∀ (q : Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.liveCols
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.survivingColsPrefix q q)
+      (@List.cons.{0} Nat q (@List.nil.{0} Nat)))</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_list._proof_1_2</code><pre class="prose">∀ (q e : Nat) (hstrict : @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q e)), @Eq.{1} Nat (ChompLean.gameF q e) q → False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_list._proof_1_3</code><pre class="prose">∀ (q e : Nat) (hstrict : @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q e)),
+  Not (@LE.le.{0} Nat instLENat q (ChompLean.gameF q e)) → False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_list._proof_1_4</code><pre class="prose">∀ (q e : Nat) (hnstrict : Not (@LT.lt.{0} Nat instLTNat q (ChompLean.gameF q e)))
+  (hvisible : @LE.le.{0} Nat instLENat q (ChompLean.gameF q e)), Not (@Eq.{1} Nat (ChompLean.gameF q e) q) → False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_list._proof_1_5</code><pre class="prose">∀ (q : Nat),
+  Not
+      (@LE.le.{0} Nat instLENat q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_list._proof_1_6</code><pre class="prose">∀ (q : Nat)
+  (hg :
+    @LT.lt.{0} Nat instLTNat q
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        q)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.gameF
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          q)) →
+    False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership</code><pre class="prose">∀ {q e : Nat},
+  Iff
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.OBUQ.liveCols
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      e)
+    (Or
+      (And (@LT.lt.{0} Nat instLTNat e q)
+        (And (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.liveCols q) e)
+          (@Ne.{1} Nat (ChompLean.gameF q e) q)))
+      (@Eq.{1} Nat e q))</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._proof_1_10</code><pre class="prose">∀ {q : Nat},
+  Not
+      (@LE.le.{0} Nat instLENat q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._proof_1_11</code><pre class="prose">∀ {q : Nat}
+  (hg :
+    @LT.lt.{0} Nat instLTNat q
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        q)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.gameF
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          q)) →
+    False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._proof_1_4</code><pre class="prose">∀ {q e : Nat}
+  (he :
+    @LT.lt.{0} Nat instLTNat e
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (heq : Not (@Eq.{1} Nat e q)), Not (@LT.lt.{0} Nat instLTNat e q) → False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._proof_1_5</code><pre class="prose">∀ {q e : Nat} (hstrict : @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q e)),
+  Not (@LE.le.{0} Nat instLENat q (ChompLean.gameF q e)) → False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._proof_1_6</code><pre class="prose">∀ {q e : Nat} (hstrict : @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q e)), @Eq.{1} Nat (ChompLean.gameF q e) q → False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._proof_1_7</code><pre class="prose">∀ {q e : Nat} (hel : @LT.lt.{0} Nat instLTNat e q),
+  Not
+      (@LT.lt.{0} Nat instLTNat e
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._proof_1_8</code><pre class="prose">∀ {q e : Nat} (hne : @Ne.{1} Nat (ChompLean.gameF q e) q) (hlive : @LE.le.{0} Nat instLENat q (ChompLean.gameF q e)),
+  Not (@LT.lt.{0} Nat instLTNat q (ChompLean.gameF q e)) → False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._proof_1_9</code><pre class="prose">∀ {q : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._simp_1_2</code><pre class="prose">∀ {α : Type u_1} {p : α → Bool} {as : List.{u_1} α} {x : α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.filter.{u_1} α p as) x)
+    (And (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) as x)
+      (@Eq.{1} Bool (p x) Bool.true))</pre></li><li><code>ChompLean.OBUQ.liveCols_succ_membership._simp_1_3</code><pre class="prose">∀ {m n : Nat},
+  @Eq.{1} Prop (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (List.range n) m)
+    (@LT.lt.{0} Nat instLTNat m n)</pre></li><li><code>ChompLean.OBUQ.live_next_iff_current_strict</code><pre class="prose">∀ {q e : Nat} (heq : @LT.lt.{0} Nat instLTNat e q),
+  Iff
+    (@LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e))
+    (@LT.lt.{0} Nat instLTNat q (ChompLean.gameF q e))</pre></li><li><code>ChompLean.OBUQ.live_next_iff_current_strict._proof_1_1</code><pre class="prose">∀ {q e : Nat} (heq : @LT.lt.{0} Nat instLTNat e q),
+  Not
+      (@LT.lt.{0} Nat instLTNat e
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.live_next_iff_current_strict._proof_1_2</code><pre class="prose">∀ {q e : Nat}
+  (hnext :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e))
+  (hsmall :
+    @LT.lt.{0} Nat instLTNat (ChompLean.gameF q e)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hcarry :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e))
+  (hcarry&#x27; :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)
+      (ChompLean.gameF q e)),
+  False</pre></li><li><code>ChompLean.OBUQ.live_next_iff_current_strict._proof_1_3</code><pre class="prose">∀ {q e : Nat}
+  (hsmall :
+    Not
+      (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q e)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not (@LT.lt.{0} Nat instLTNat q (ChompLean.gameF q e)) → False</pre></li><li><code>ChompLean.OBUQ.live_next_iff_current_strict._proof_1_4</code><pre class="prose">∀ {q e : Nat} (hstrict : @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q e)),
+  And
+      (@LT.lt.{0} Nat instLTNat e
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q e)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.live_next_iff_current_strict._proof_1_5</code><pre class="prose">∀ {q e : Nat} (heq : @LT.lt.{0} Nat instLTNat e q),
+  Not
+      (@LE.le.{0} Nat instLENat e
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.mem_normalizeAt_iff</code><pre class="prose">∀ {q k : Nat} {xs : List.{0} Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.normalizeAt q xs) k)
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))</pre></li><li><code>ChompLean.OBUQ.mem_normalizeAt_iff._proof_1_1</code><pre class="prose">∀ {q k : Nat} (p : Nat) (hpk : @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p q) k)
+  (hqp : @LE.le.{0} Nat instLENat q p),
+  Not (@Eq.{1} Nat p (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)) → False</pre></li><li><code>ChompLean.OBUQ.mem_normalizeAt_iff._proof_1_2</code><pre class="prose">∀ {q k : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k) q)
+        k) →
+    False</pre></li><li><code>ChompLean.OBUQ.mem_rowQueue_iff</code><pre class="prose">∀ {q r k : Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.rowQueue q r) k)
+    (ChompLean.C ChompLean.gameF q r (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))</pre></li><li><code>ChompLean.OBUQ.mem_sourceQueue_iff</code><pre class="prose">∀ {q r k : Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.sourceQueue q r) k)
+    (ChompLean.R ChompLean.gameF q r (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))</pre></li><li><code>ChompLean.OBUQ.mem_sourceRowQueue_iff</code><pre class="prose">∀ {q r k : Nat},
+  Iff
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+        (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.sourceQueue q r)
+        (ChompLean.OBUQ.rowQueue q r))
+      k)
+    (ChompLean.B ChompLean.gameF q r (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))</pre></li><li><code>ChompLean.OBUQ.mem_sourceRowQueue_iff._simp_1_1</code><pre class="prose">∀ {α : Type u_1} {a : α} {s t : List.{u_1} α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)
+      (@HAppend.hAppend.{u_1, u_1, u_1} (List.{u_1} α) (List.{u_1} α) (List.{u_1} α)
+        (@instHAppendOfAppend.{u_1} (List.{u_1} α) (@List.instAppend.{u_1} α)) s t)
+      a)
+    (Or (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) s a)
+      (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) t a))</pre></li><li><code>ChompLean.OBUQ.mem_sourceRowQueue_iff._simp_1_2</code><pre class="prose">∀ {q r k : Nat},
+  @Eq.{1} Prop
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.sourceQueue q r) k)
+    (ChompLean.R ChompLean.gameF q r (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))</pre></li><li><code>ChompLean.OBUQ.mem_sourceRowQueue_iff._simp_1_3</code><pre class="prose">∀ {q r k : Nat},
+  @Eq.{1} Prop
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.rowQueue q r) k)
+    (ChompLean.C ChompLean.gameF q r (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))</pre></li><li><code>ChompLean.OBUQ.mem_sourceValues_iff</code><pre class="prose">∀ {q r p : Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.OBUQ.sourceValues q r) p)
+    (ChompLean.R ChompLean.gameF q r p)</pre></li><li><code>ChompLean.OBUQ.normalizeAt</code><pre class="prose">(q : Nat) → (xs : List.{0} Nat) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.normalizeAt.eq_1</code><pre class="prose">∀ (q : Nat) (xs : List.{0} Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.normalizeAt q xs)
+    (@List.map.{0, 0} Nat Nat (fun (p : Nat) =&gt; @HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p q)
+      (@List.filter.{0} Nat (fun (p : Nat) =&gt; @Decidable.decide (@LE.le.{0} Nat instLENat q p) (Nat.decLe q p)) xs))</pre></li><li><code>ChompLean.OBUQ.normalizeAt_append</code><pre class="prose">∀ (q : Nat) (xs ys : List.{0} Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.normalizeAt q
+      (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+        (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) xs ys))
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.normalizeAt q xs)
+      (ChompLean.OBUQ.normalizeAt q ys))</pre></li><li><code>ChompLean.OBUQ.normalizeAt_cons</code><pre class="prose">∀ (q p : Nat) (xs : List.{0} Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.normalizeAt q (@List.cons.{0} Nat p xs))
+    (@ite.{1} (List.{0} Nat) (@LE.le.{0} Nat instLENat q p) (Nat.decLe q p)
+      (@List.cons.{0} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p q)
+        (ChompLean.OBUQ.normalizeAt q xs))
+      (ChompLean.OBUQ.normalizeAt q xs))</pre></li><li><code>ChompLean.OBUQ.normalizeAt_succ</code><pre class="prose">∀ (q : Nat) (xs : List.{0} Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.normalizeAt
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      xs)
+    (ChompLean.OBUQ.shiftQueue (ChompLean.OBUQ.normalizeAt q xs))</pre></li><li><code>ChompLean.OBUQ.normalizeAt_succ._proof_1_2</code><pre class="prose">∀ (q p : Nat) (hpq : @LT.lt.{0} Nat instLTNat p q), @LE.le.{0} Nat instLENat q p → False</pre></li><li><code>ChompLean.OBUQ.normalizeAt_succ._proof_1_3</code><pre class="prose">∀ (q p : Nat) (hpq : @LT.lt.{0} Nat instLTNat p q),
+  @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      p →
+    False</pre></li><li><code>ChompLean.OBUQ.normalizeAt_succ._proof_1_4</code><pre class="prose">∀ (q p : Nat) (hpq : Not (@LT.lt.{0} Nat instLTNat p q)) (heq : Not (@Eq.{1} Nat p q)),
+  Not (@LT.lt.{0} Nat instLTNat q p) → False</pre></li><li><code>ChompLean.OBUQ.normalizeAt_succ._proof_1_5</code><pre class="prose">∀ (q p : Nat) (hq : @LT.lt.{0} Nat instLTNat q p),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        p) →
+    False</pre></li><li><code>ChompLean.OBUQ.normalizeAt_succ._proof_1_6</code><pre class="prose">∀ (q p : Nat) (hq : @LT.lt.{0} Nat instLTNat q p), Not (@LE.le.{0} Nat instLENat q p) → False</pre></li><li><code>ChompLean.OBUQ.normalizeAt_succ._proof_1_7</code><pre class="prose">∀ (q p : Nat) (hq : @LT.lt.{0} Nat instLTNat q p),
+  Not
+      (@Eq.{1} Nat p
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.normalizeAt_succ._proof_1_8</code><pre class="prose">∀ (q u : Nat),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            u)
+          q)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.normalizeAt_succ._proof_1_9</code><pre class="prose">∀ (q u : Nat)
+  (hsub :
+    @Eq.{1} Nat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          u)
+        q)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            u)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        u) →
+    False</pre></li><li><code>ChompLean.OBUQ.rowQueue</code><pre class="prose">(q r : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.rowQueue.eq_1</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.rowQueue q r)
+    (ChompLean.OBUQ.normalizeAt q (@List.map.{0, 0} Nat Nat (fun (b : Nat) =&gt; ChompLean.gameF q b) (List.range r)))</pre></li><li><code>ChompLean.OBUQ.rowQueue_succ</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.rowQueue q
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.rowQueue q r)
+      (@ite.{1} (List.{0} Nat) (@LE.le.{0} Nat instLENat q (ChompLean.gameF q r)) (Nat.decLe q (ChompLean.gameF q r))
+        (@List.cons.{0} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q r) q)
+          (@List.nil.{0} Nat))
+        (@List.nil.{0} Nat)))</pre></li><li><code>ChompLean.OBUQ.scanCanonicalPrefix_outputs</code><pre class="prose">∀ {q r : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)
+  (hrq : @LE.le.{0} Nat instLENat r q),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.ScanResult.outputs
+      (ChompLean.OBUQ.scanQueues (@List.nil.{0} Nat) (@List.nil.{0} Nat)
+        (@List.map.{0, 0} Nat (List.{0} Nat) (fun (e : Nat) =&gt; ChompLean.OBUQ.sourceQueue q e)
+          (ChompLean.OBUQ.liveColsPrefix q r))))
+    (ChompLean.OBUQ.rowQueue q r)</pre></li><li><code>ChompLean.OBUQ.scanCanonicalPrefix_outputs._proof_1_4</code><pre class="prose">∀ {q : Nat} (r : Nat)
+  (hrq :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q),
+  Not (@LE.le.{0} Nat instLENat r q) → False</pre></li><li><code>ChompLean.OBUQ.scanCanonicalPrefix_survivors</code><pre class="prose">∀ {q r : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)
+  (hrq : @LE.le.{0} Nat instLENat r q),
+  @Eq.{1} (List.{0} (List.{0} Nat))
+    (ChompLean.OBUQ.ScanResult.survivors
+      (ChompLean.OBUQ.scanQueues (@List.nil.{0} Nat) (@List.nil.{0} Nat)
+        (@List.map.{0, 0} Nat (List.{0} Nat) (fun (e : Nat) =&gt; ChompLean.OBUQ.sourceQueue q e)
+          (ChompLean.OBUQ.liveColsPrefix q r))))
+    (@List.map.{0, 0} Nat (List.{0} Nat)
+      (fun (e : Nat) =&gt;
+        ChompLean.OBUQ.sourceQueue
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+      (ChompLean.OBUQ.survivingColsPrefix q r))</pre></li><li><code>ChompLean.OBUQ.scanCanonicalPrefix_survivors._proof_1_3</code><pre class="prose">∀ {q : Nat} (r : Nat)
+  (hrq :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q),
+  Not (@LE.le.{0} Nat instLENat r q) → False</pre></li><li><code>ChompLean.OBUQ.scanCanonicalPrefix_survivors._proof_1_4</code><pre class="prose">∀ {q : Nat} (r : Nat) (hstrict : @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q r)),
+  @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q r) q)
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →
+    False</pre></li><li><code>ChompLean.OBUQ.scanCanonicalPrefix_survivors._proof_1_5</code><pre class="prose">∀ {q : Nat} (r : Nat) (hvisible : @LE.le.{0} Nat instLENat q (ChompLean.gameF q r))
+  (hstrict : Not (@LT.lt.{0} Nat instLTNat q (ChompLean.gameF q r))), Not (@Eq.{1} Nat (ChompLean.gameF q r) q) → False</pre></li><li><code>ChompLean.OBUQ.scanCanonicalPrefix_survivors._proof_1_6</code><pre class="prose">∀ {q : Nat} (r : Nat) (hvisible : Not (@LE.le.{0} Nat instLENat q (ChompLean.gameF q r))),
+  @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q r) → False</pre></li><li><code>ChompLean.OBUQ.scanCanonical_outputs</code><pre class="prose">∀ {q : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.ScanResult.outputs
+      (ChompLean.OBUQ.scanQueues (@List.nil.{0} Nat) (@List.nil.{0} Nat)
+        (ChompLean.OBUQ.QState.queues (ChompLean.OBUQ.canonicalQState q))))
+    (ChompLean.OBUQ.rowQueue q q)</pre></li><li><code>ChompLean.OBUQ.scanCanonical_survivors</code><pre class="prose">∀ {q : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q),
+  @Eq.{1} (List.{0} (List.{0} Nat))
+    (ChompLean.OBUQ.ScanResult.survivors
+      (ChompLean.OBUQ.scanQueues (@List.nil.{0} Nat) (@List.nil.{0} Nat)
+        (ChompLean.OBUQ.QState.queues (ChompLean.OBUQ.canonicalQState q))))
+    (@List.map.{0, 0} Nat (List.{0} Nat)
+      (fun (e : Nat) =&gt;
+        ChompLean.OBUQ.sourceQueue
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+      (ChompLean.OBUQ.survivingColsPrefix q q))</pre></li><li><code>ChompLean.OBUQ.scanQueues_survivors_append</code><pre class="prose">∀ (U R q : List.{0} Nat) (pre : List.{0} (List.{0} Nat)),
+  @Eq.{1} (List.{0} (List.{0} Nat))
+    (ChompLean.OBUQ.ScanResult.survivors
+      (ChompLean.OBUQ.scanQueues U R
+        (@HAppend.hAppend.{0, 0, 0} (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat))
+          (@instHAppendOfAppend.{0} (List.{0} (List.{0} Nat)) (@List.instAppend.{0} (List.{0} Nat))) pre
+          (@List.cons.{0} (List.{0} Nat) q (@List.nil.{0} (List.{0} Nat))))))
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat)) (List.{0} (List.{0} Nat))
+      (@instHAppendOfAppend.{0} (List.{0} (List.{0} Nat)) (@List.instAppend.{0} (List.{0} Nat)))
+      (ChompLean.OBUQ.ScanResult.survivors (ChompLean.OBUQ.scanQueues U R pre))
+      (have y : Nat :=
+        ChompLean.OBUQ.queueMex
+          (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+            (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) U
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) q
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) R
+                (ChompLean.OBUQ.ScanResult.outputs (ChompLean.OBUQ.scanQueues U R pre)))));
+      @ite.{1} (List.{0} (List.{0} Nat)) (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (instDecidableEqNat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (@List.nil.{0} (List.{0} Nat))
+        (@List.cons.{0} (List.{0} Nat) (ChompLean.OBUQ.updateQueue q y) (@List.nil.{0} (List.{0} Nat)))))</pre></li><li><code>ChompLean.OBUQ.sourceQueue</code><pre class="prose">(q r : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.sourceQueue.eq_1</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.sourceQueue q r)
+    (ChompLean.OBUQ.normalizeAt q (ChompLean.OBUQ.sourceValues q r))</pre></li><li><code>ChompLean.OBUQ.sourceQueue_newborn</code><pre class="prose">∀ (q : Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.sourceQueue
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q)
+    (ChompLean.OBUQ.updateQueue (ChompLean.OBUQ.sourceQueue q q)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q q) q))</pre></li><li><code>ChompLean.OBUQ.sourceQueue_old_update</code><pre class="prose">∀ {q e : Nat} (heq : @LE.le.{0} Nat instLENat e q) (hlive : @LE.le.{0} Nat instLENat q (ChompLean.gameF q e)),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.sourceQueue
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      e)
+    (ChompLean.OBUQ.updateQueue (ChompLean.OBUQ.sourceQueue q e)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q e) q))</pre></li><li><code>ChompLean.OBUQ.sourceQueue_old_update._proof_1_2</code><pre class="prose">∀ {q e : Nat}
+  (hstrict :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.gameF q e)),
+  @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q e) q)
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →
+    False</pre></li><li><code>ChompLean.OBUQ.sourceQueue_old_update._proof_1_3</code><pre class="prose">∀ {q e : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q e)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q e) q)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.sourceQueue_old_update._proof_1_4</code><pre class="prose">∀ {q e : Nat} (hlive : @LE.le.{0} Nat instLENat q (ChompLean.gameF q e))
+  (hstrict :
+    Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.gameF q e))),
+  Not (@Eq.{1} Nat (ChompLean.gameF q e) q) → False</pre></li><li><code>ChompLean.OBUQ.sourceQueue_succ</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.sourceQueue
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      r)
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+      (ChompLean.OBUQ.shiftQueue (ChompLean.OBUQ.sourceQueue q r))
+      (@ite.{1} (List.{0} Nat)
+        (@LE.le.{0} Nat instLENat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (ChompLean.gameF q (@Min.min.{0} Nat instMinNat q r)))
+        (Nat.decLe
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (ChompLean.gameF q (@Min.min.{0} Nat instMinNat q r)))
+        (@List.cons.{0} Nat
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (ChompLean.gameF q (@Min.min.{0} Nat instMinNat q r))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@List.nil.{0} Nat))
+        (@List.nil.{0} Nat)))</pre></li><li><code>ChompLean.OBUQ.sourceQueue_youngest_eq_diagonal</code><pre class="prose">∀ (q : Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.sourceQueue
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q)
+    (ChompLean.OBUQ.sourceQueue
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.OBUQ.sourceQueue_youngest_eq_diagonal._proof_1_1</code><pre class="prose">∀ (q a : Nat)
+  (haq :
+    @LT.lt.{0} Nat instLTNat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LE.le.{0} Nat instLENat a q) → False</pre></li><li><code>ChompLean.OBUQ.sourceQueue_youngest_eq_diagonal._proof_1_2</code><pre class="prose">∀ (q a : Nat)
+  (haq :
+    @LT.lt.{0} Nat instLTNat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hminq : @Eq.{1} Nat (@Min.min.{0} Nat instMinNat a q) a),
+  Not
+      (@LE.le.{0} Nat instLENat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.OBUQ.sourceValues</code><pre class="prose">(q r : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.sourceValues.eq_1</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.sourceValues q r)
+    (@List.map.{0, 0} Nat Nat (fun (a : Nat) =&gt; ChompLean.gameF a (@Min.min.{0} Nat instMinNat a r)) (List.range q))</pre></li><li><code>ChompLean.OBUQ.sourceValues_succ</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.sourceValues
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      r)
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.sourceValues q r)
+      (@List.cons.{0} Nat (ChompLean.gameF q (@Min.min.{0} Nat instMinNat q r)) (@List.nil.{0} Nat)))</pre></li><li><code>ChompLean.OBUQ.survivingColsPrefix</code><pre class="prose">(q r : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.OBUQ.survivingColsPrefix.eq_1</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.survivingColsPrefix q r)
+    (@List.filter.{0} Nat
+      (fun (e : Nat) =&gt;
+        @Decidable.decide (@Ne.{1} Nat (ChompLean.gameF q e) q)
+          (@instDecidableNot (@Eq.{1} Nat (ChompLean.gameF q e) q) (instDecidableEqNat (ChompLean.gameF q e) q)))
+      (ChompLean.OBUQ.liveColsPrefix q r))</pre></li><li><code>ChompLean.OBUQ.survivingColsPrefix_succ</code><pre class="prose">∀ (q r : Nat),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.survivingColsPrefix q
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.survivingColsPrefix q r)
+      (@ite.{1} (List.{0} Nat) (@LT.lt.{0} Nat instLTNat q (ChompLean.gameF q r)) (Nat.decLt q (ChompLean.gameF q r))
+        (@List.cons.{0} Nat r (@List.nil.{0} Nat)) (@List.nil.{0} Nat)))</pre></li><li><code>ChompLean.OBUQ.survivingColsPrefix_succ._proof_1_2</code><pre class="prose">∀ (q r : Nat) (hstrict : @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q r)), @Eq.{1} Nat (ChompLean.gameF q r) q → False</pre></li><li><code>ChompLean.OBUQ.survivingColsPrefix_succ._proof_1_3</code><pre class="prose">∀ (q r : Nat) (hvisible : @LE.le.{0} Nat instLENat q (ChompLean.gameF q r))
+  (hstrict : Not (@LT.lt.{0} Nat instLTNat q (ChompLean.gameF q r))), Not (@Eq.{1} Nat (ChompLean.gameF q r) q) → False</pre></li><li><code>ChompLean.OBUQ.survivingColsPrefix_succ._proof_1_4</code><pre class="prose">∀ (q r : Nat) (hvisible : Not (@LE.le.{0} Nat instLENat q (ChompLean.gameF q r))),
+  @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q r) → False</pre></li><li><code>ChompLean.OBUQ.updateQueue.eq_1</code><pre class="prose">∀ (xs : List.{0} Nat) (y : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.OBUQ.updateQueue xs y)
+    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.OBUQ.shiftQueue xs)
+      (@ite.{1} (List.{0} Nat) (@Eq.{1} Nat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (instDecidableEqNat y (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) (@List.nil.{0} Nat)
+        (@List.cons.{0} Nat
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) y
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@List.nil.{0} Nat))))</pre></li><li><code>_private.XGameFOrderedBlockerUnionReconstruction.0.ChompLean.OBUQ.gameFBlockerCountThrough_succ_of_blocker</code><pre class="prose">∀ {n : Nat}
+  (hblocker :
+    ChompLean.S ChompLean.gameF
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  @Eq.{1} Nat
+    (ChompLean.gameFBlockerCountThrough
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough n)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>_private.XGameFOrderedBlockerUnionReconstruction.0.ChompLean.OBUQ.gameFBlockerCountThrough_succ_of_not_blocker</code><pre class="prose">∀ {n : Nat}
+  (hnot :
+    Not
+      (ChompLean.S ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  @Eq.{1} Nat
+    (ChompLean.gameFBlockerCountThrough
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (ChompLean.gameFBlockerCountThrough n)</pre></li><li><code>_private.XGameFOrderedBlockerUnionReconstruction.0.ChompLean.OBUQ.sourceQueue_old_update_pre</code><pre class="prose">∀ {q e : Nat} (heq : @LE.le.{0} Nat instLENat e q) (hlive : @LE.le.{0} Nat instLENat q (ChompLean.gameF q e)),
+  @Eq.{1} (List.{0} Nat)
+    (ChompLean.OBUQ.sourceQueue
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      e)
+    (ChompLean.OBUQ.updateQueue (ChompLean.OBUQ.sourceQueue q e)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q e) q))</pre></li><li><code>_private.XGameFOrderedBlockerUnionReconstruction.0.ChompLean.OBUQ.sourceQueue_old_update_pre._proof_1_3</code><pre class="prose">∀ {q e : Nat}
+  (hstrict :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.gameF q e)),
+  @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q e) q)
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) →
+    False</pre></li><li><code>_private.XGameFOrderedBlockerUnionReconstruction.0.ChompLean.OBUQ.sourceQueue_old_update_pre._proof_1_4</code><pre class="prose">∀ {q e : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q e)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF q e) q)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>_private.XGameFOrderedBlockerUnionReconstruction.0.ChompLean.OBUQ.sourceQueue_old_update_pre._proof_1_6</code><pre class="prose">∀ {q e : Nat} (hlive : @LE.le.{0} Nat instLENat q (ChompLean.gameF q e))
+  (hstrict :
+    Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.gameF q e))),
+  Not (@Eq.{1} Nat (ChompLean.gameF q e) q) → False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/XGameFOrderedBlockerUnionReconstruction.lean:1</p><p>SHA-256: <code class="path">6feaa1e0a416914a70ba1515a87a237d5941d0f13ef12fc14efe3c18a9bdc605</code></p></section><p><a href="../index.html#id=lean-6feaa1e0a416914a70ba">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

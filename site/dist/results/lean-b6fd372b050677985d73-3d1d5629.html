@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R186 Greedy Seat Density Audit · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R186 Greedy Seat Density Audit</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R186GreedySeatDensityAudit.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R186GreedySeatDensityAudit.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R186GreedySeatDensityAudit.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 25 declarations</summary><ul class="declarations"><li><code>ChompLean.GreedyAfterHostSource</code><pre class="prose">(p jump z : Nat) → Prop</pre></li><li><code>ChompLean.GreedyAfterHostSource.eq_1</code><pre class="prose">∀ (p jump z : Nat),
+  @Eq.{1} Prop (ChompLean.GreedyAfterHostSource p jump z)
+    (Or (ChompLean.GreedyPreloadedSource p jump z) (@Eq.{1} Nat z p))</pre></li><li><code>ChompLean.GreedyPreloadedSource</code><pre class="prose">(p jump z : Nat) → Prop</pre></li><li><code>ChompLean.GreedyPreloadedSource.eq_1</code><pre class="prose">∀ (p jump z : Nat),
+  @Eq.{1} Prop (ChompLean.GreedyPreloadedSource p jump z)
+    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+      (And (@LT.lt.{0} Nat instLTNat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump))
+        (@Ne.{1} Nat z p)))</pre></li><li><code>ChompLean.gameF_before_high_rowstart_low_or_colTail</code><pre class="prose">∀ {u r t c e : Nat} (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hct : @LE.le.{0} Nat instLENat c t) (htu : @LT.lt.{0} Nat instLTNat t u)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u) (hec : @LT.lt.{0} Nat instLTNat e c),
+  Or (@LT.lt.{0} Nat instLTNat (ChompLean.gameF t e) u) (ChompLean.ColTail ChompLean.gameF t e u)</pre></li><li><code>ChompLean.gameF_before_high_rowstart_low_or_colTail._proof_1_1</code><pre class="prose">∀ {u r t c e : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u) (htu : @LT.lt.{0} Nat instLTNat t u)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u)
+  (hcarry :
+    And (@LT.lt.{0} Nat instLTNat e t)
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        t))
+  (heq :
+    @Eq.{1} Nat (ChompLean.gameF t e)
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)),
+  Not (@LT.lt.{0} Nat instLTNat (ChompLean.gameF t e) u) → False</pre></li><li><code>ChompLean.gameF_before_high_rowstart_low_or_colTail._proof_1_2</code><pre class="prose">∀ {u r t c e : Nat} (hct : @LE.le.{0} Nat instLENat c t) (hec : @LT.lt.{0} Nat instLTNat e c),
+  Not (@LE.le.{0} Nat instLENat e t) → False</pre></li><li><code>ChompLean.gameF_lag8_between_hosts_clean_emission</code><pre class="prose">∀ {u r c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hlower :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hde : @LT.lt.{0} Nat instLTNat d e) (hec : @LT.lt.{0} Nat instLTNat e c)
+  (hclean :
+    Not
+      (ChompLean.ColTail ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e u)),
+  And
+    (@LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e)
+      u)
+    (@Ne.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        e)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))</pre></li><li><code>ChompLean.gameF_lag8_between_hosts_clean_emission._proof_1_1</code><pre class="prose">∀ {u r c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        u) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_between_hosts_clean_emission._proof_1_2</code><pre class="prose">∀ {u r c d e : Nat}
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hec : @LT.lt.{0} Nat instLTNat e c),
+  Not
+      (@LE.le.{0} Nat instLENat e
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_between_hosts_clean_emission._proof_1_3</code><pre class="prose">∀ {u r c d e : Nat} (hde : @LT.lt.{0} Nat instLTNat d e) (hcol : @Eq.{1} Nat d e), False</pre></li><li><code>ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness</code><pre class="prose">∀ {u : Nat} (hu : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) u),
+  And
+    (ChompLean.IsMex
+      (ChompLean.GreedyPreloadedSource
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+    (And
+      (ChompLean.IsMex
+        (ChompLean.GreedyAfterHostSource
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        u)
+      (∀ (z : Nat),
+        @LT.lt.{0} Nat instLTNat
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+            z →
+          @LT.lt.{0} Nat instLTNat z u →
+            ChompLean.GreedyPreloadedSource
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) z))</pre></li><li><code>ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness._proof_1_1</code><pre class="prose">∀ {u : Nat} (hu : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) u),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness._proof_1_2</code><pre class="prose">∀ {u : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →
+    False</pre></li><li><code>ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness._proof_1_3</code><pre class="prose">∀ {u : Nat} (hu : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) u),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        u) →
+    False</pre></li><li><code>ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness._proof_1_4</code><pre class="prose">∀ {u : Nat}
+  (hsum :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+      u)
+  (z : Nat)
+  (hzlo :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+      z)
+  (hzhi : @LT.lt.{0} Nat instLTNat z u),
+  Not
+      (@LT.lt.{0} Nat instLTNat z
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.greedy_preloaded_single_host_mex_jump</code><pre class="prose">∀ (p jump : Nat) (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)
+  (hjump : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) jump),
+  And (ChompLean.IsMex (ChompLean.GreedyPreloadedSource p jump) p)
+    (And
+      (∀ (z : Nat),
+        Iff (ChompLean.GreedyAfterHostSource p jump z)
+          (Or (ChompLean.GreedyPreloadedSource p jump z) (@Eq.{1} Nat z p)))
+      (And
+        (ChompLean.IsMex (ChompLean.GreedyAfterHostSource p jump)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump))
+        (∀ (z : Nat),
+          @LT.lt.{0} Nat instLTNat p z →
+            @LT.lt.{0} Nat instLTNat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump) →
+              ChompLean.GreedyPreloadedSource p jump z)))</pre></li><li><code>ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_2</code><pre class="prose">∀ (p jump : Nat) (hjump : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) jump)
+  (z : Nat) (hzp : @LT.lt.{0} Nat instLTNat z p),
+  Not (@LT.lt.{0} Nat instLTNat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump)) → False</pre></li><li><code>ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_3</code><pre class="prose">∀ (p jump z : Nat) (hzp : @LT.lt.{0} Nat instLTNat z p), @Eq.{1} Nat z p → False</pre></li><li><code>ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_4</code><pre class="prose">∀ (p jump : Nat) (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)
+  (hjump : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) jump),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump)) →
+    False</pre></li><li><code>ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_6</code><pre class="prose">∀ (p jump : Nat) (hjump : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) jump),
+  @Eq.{1} Nat jump (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) → False</pre></li><li><code>ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_7</code><pre class="prose">∀ (p jump : Nat) (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)
+  (z : Nat) (hpz : @LT.lt.{0} Nat instLTNat p z),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) → False</pre></li><li><code>ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_8</code><pre class="prose">∀ (p jump z : Nat) (hpz : @LT.lt.{0} Nat instLTNat p z), @Eq.{1} Nat z p → False</pre></li><li><code>ChompLean.lag8_between_host_low_value_bank_has_seven_slack</code><pre class="prose">∀ {u c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hdc : @LT.lt.{0} Nat instLTNat d c)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),
+  @LE.le.{0} Nat instLENat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.lag8_between_host_low_value_bank_has_seven_slack._proof_1_1</code><pre class="prose">∀ {u c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hdc : @LT.lt.{0} Nat instLTNat d c)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R186GreedySeatDensityAudit.lean:1</p><p>SHA-256: <code class="path">b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be</code></p></section><p><a href="../index.html#id=lean-b6fd372b050677985d73">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

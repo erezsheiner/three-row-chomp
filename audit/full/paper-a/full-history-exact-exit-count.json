@@ -1,0 +1,61 @@
+{
+  "paperIndex": 52,
+  "id": "full-history-exact-exit-count",
+  "original": {
+    "title": "Full-history nonpast roots biject with pending diagonal holes",
+    "status": "paper-reviewed",
+    "statement": "For a currently fresh old column with full strict postbirth history H and corresponding diagonal set G, its actual private source map is an injective strictly increasing map from H onto G. Nonpast history labels are H minus G, so their count equals |G minus H|. The resulting paths biject original nonpast roots with distinct pending diagonal holes.",
+    "assumptions": [
+      "Full canonical journal, continuing liveness, exact MEX absence, low-cell/row-start hook and D/S disjointness."
+    ],
+    "sourcePath": "projects/notriple-proof-20261009/round3/audit/FULL-HISTORY-EXACT-EXIT-COUNT.md",
+    "sourceLine": 3,
+    "sha256": "5731896cc97ac930ecd7eb36bcd3360c9faefee1b5470eb7413902c69f206859"
+  },
+  "exactAuditedStatement": "For currently fresh old column c at rowq, H={f(a, c):c<a<q}, G={d(a):c<a<q}, the actual source map Phi:H->G is bijective and satisfies Phi(h)>h for every h. Nonpast(H)=H minus G; |nonpast(H)|=|G minus H|. Directed Phi paths biject original nonpast roots H minus G with pending diagonal holes G minus H.",
+  "hypotheses": [
+    "Currentfreshness>old record T; full strict postbirth history; seed exclusion and current MEX coverage.",
+    "Inflationary inequality Phi(h)>h is intended; no order-preserving property h<h prime=>Phi(h)<Phi(h prime)is asserted."
+  ],
+  "proofDependencyMap": [
+    "Shared canonical foundation: exact positive-MEX/COPY recurrence and P01-P12, independently reconstructed in ../CANONICAL-FOUNDATIONS.md with exact declaration mapping and game interpretation. DEPENDENCIES.json records the additional service lemmas. Final kernel receipts bind the source versions.",
+    "Full journal nonreuse; row max; diagonal/frozen label disjointness."
+  ],
+  "independentDerivationAndChecks": [
+    "Current fresh cell cannot be copied, so column has not frozen earlier. All private awards are distinct and outside seeds D_<=c; each original row a has one award. Thus source row map H->(c, q) is bijective, and distinct diagonals yield Phi image G. Since c<a, strict row max gives Phi(h)=d(a)>h.",
+    "Every past diagonal owner is<=c or in(c, q); the seed part is excluded from H, so exactly H intersect G are past labels. Equal cardinalities give|H minus G|=|G minus H|.",
+    "For z in G minus H, diagonal injectivity also excludes the seed set, so z is absent from full journal. Since z<=T<current fresh MEX, it must occur before c in rowq. A currently present diagonal label cannot be<=q: values<q are frozen blockers and value q would be a blocker by P07. Thus q<z<=T; distinct exits have unique distinct holders.",
+    "The finite graph h->Phi(h) has indegree/outdegree<=1 and strictly increases along edges, so acyclic. Roots H minus G and exits G minus H pair exactly along paths. This needs inflationarity only. Max G is outsideH because each h<Phi(h)<=max G, giving a nonempty exit when H nonempty.",
+    "If visible first-fresh surplus P is defined as actual H-labels held before c, it is disjoint from exits and prefix capacity gives|nonpast H|+|P|<=c. This is conditional on the precise surplus definition and does not assert arbitrary surplus labels are roots."
+  ],
+  "verdict": "repaired",
+  "defects": [
+    "Catalogue phrase \"injective strictly increasing map\" can state the stronger, unproved order-preserving property. Source argument proves only Phi(h)>h."
+  ],
+  "exactCorrection": "Replace by \"an injective source map with image exactly G and Phi(h)>h for every h\". No canonical counterexample to order-preservation is claimed; it is not needed and was not proved.",
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\notriple-proof-20261009\\round3\\audit\\FULL-HISTORY-EXACT-EXIT-COUNT.md",
+      "sha256": "5731896cc97ac930ecd7eb36bcd3360c9faefee1b5470eb7413902c69f206859"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\a8731b4d5e01ec00497d.md",
+      "sha256": "a8731b4d5e01ec00497d12b54e6b400be5c18951ad3e6c30d2b133e12617818d"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\audit\\full\\CANONICAL-FOUNDATIONS.md",
+      "sha256": "88fb71f3229c40c29c5c909ce0f60734e171291e54a6c1b0634d7342d86f26fe"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#full-history-exact-exit-count",
+    "proofTextSha256": "5731896cc97ac930ecd7eb36bcd3360c9faefee1b5470eb7413902c69f206859",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": true,
+  "sharedCanonicalFoundationReview": "../CANONICAL-FOUNDATIONS.md",
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish. If shared canonical bridge has an unresolved premise, this result remains conditional on that premise regardless of local derivation verdict."
+}

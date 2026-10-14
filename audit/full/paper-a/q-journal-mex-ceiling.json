@@ -1,0 +1,60 @@
+{
+  "paperIndex": 28,
+  "id": "q-journal-mex-ceiling",
+  "original": {
+    "title": "Positive MEX imposes a literal journal ceiling and diagonal capacity bound",
+    "status": "paper-reviewed",
+    "statement": "max J_N(h)≤Z=max(T_h,u_{h+K_N(h)+M_N+1}); K_N(h)≥N−A(Z)−Imm(h).",
+    "assumptions": [
+      "Column h<N is live at START N.",
+      "K_N counts actual private diagonal awards; M_N is the maximum whole-row diagonal census before N.",
+      "Canonical positive MEX, nonreuse, FFD and whole-history blocker-host exclusion."
+    ],
+    "sourcePath": "projects/central-first-exit/work/DIRECT-Q-DATED-BLOCK-20261013-011/MEX-JOURNAL-CEILING.md",
+    "sourceLine": 5,
+    "sha256": "99150b7349e4353ef8e654a7be9a24cdddd9c6d17adf67d8aa06fddd03411638"
+  },
+  "exactAuditedStatement": "For h<N live at START N, let K count actual private diagonal awards on h<=t<N, including birth, S(t)=t+1-A(d(t)), M=max_{t<N}S(t), T_h=max_{a<h}d(a), u_i increasing diagonal labels, L=h+K+M and Z=max(T_h, u_(L+1)). Then max J_N(h)<=Z and K>=N-A(Z)-Imm(h).",
+  "hypotheses": [
+    "N>=1 and 0<=h<N. The column is live at START N; in particular, no COPY occurs among its awards before N. Set T_0=0 for the empty seed set.",
+    "K includes future-owner diagonal awards; M is the whole-row diagonal census, not just ghosts."
+  ],
+  "proofDependencyMap": [
+    "Shared canonical foundation: exact positive-MEX/COPY recurrence and P01-P12, independently reconstructed in ../CANONICAL-FOUNDATIONS.md with exact declaration mapping and game interpretation. DEPENDENCIES.json records the additional service lemmas. Final kernel receipts bind the source versions.",
+    "Whole-history blocker-host exclusion and FFD; exact journal cardinality."
+  ],
+  "independentDerivationAndChecks": [
+    "The pre-N journal consists of h distinct seeds and N-h distinct private awards, disjoint by seed exclusion/nonreuse, total N labels. Its diagonal part has h+K labels.",
+    "For any private award z, literal positive MEX covers every diagonal label<z using its earlier journal and current left prefix. Their diagonal-label counts are at most h+K and M, so R(z-1)<=L. If z>u_(L+1) there would be L+1 such labels, contradiction. Seeds<=T_h supply the other ceiling.",
+    "Each eventually mortal a<h has a distinct blocker death sigma_a<d(a)<=T_h<=Z. Whole-history host exclusion forbids it from J_N(h), even when its death lies after N. Thus h-Imm(h) blockers inside[1, Z] are unavailable. Journal blocker count N-h-K<=A(Z)-(h-Imm(h)); rearrange.",
+    "No efficient recognition of future diagonal/blocker status is claimed. A dead/copied column would violate distinct-journal size and is excluded. Any slope-limit corollary requires the explicit existence premise; neither finite inequality supplies it."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\central-first-exit\\work\\DIRECT-Q-DATED-BLOCK-20261013-011\\MEX-JOURNAL-CEILING.md",
+      "sha256": "99150b7349e4353ef8e654a7be9a24cdddd9c6d17adf67d8aa06fddd03411638"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\28f46cb2488b91d3bbb9.md",
+      "sha256": "28f46cb2488b91d3bbb92460627d7e9405923736365cc11eb7cdd683df964042"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\audit\\full\\CANONICAL-FOUNDATIONS.md",
+      "sha256": "88fb71f3229c40c29c5c909ce0f60734e171291e54a6c1b0634d7342d86f26fe"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#q-journal-mex-ceiling",
+    "proofTextSha256": "985730e5484cf25cd4da2ae0fd4ac2c4c4ee541e721b56388b9e67c3742ed1be",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": true,
+  "sharedCanonicalFoundationReview": "../CANONICAL-FOUNDATIONS.md",
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish. If shared canonical bridge has an unresolved premise, this result remains conditional on that premise regardless of local derivation verdict."
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R26 Actual Game Future Gap · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R26 Actual Game Future Gap</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R26ActualGameFutureGap.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R26ActualGameFutureGap.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R26ActualGameFutureGap.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 8 declarations</summary><ul class="declarations"><li><code>ChompLean.R21_high_lower_loss_forces_blocker_future_gap</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t e q z r : Nat}
+  (het :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      t)
+  (hq :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      q)
+  (htq : @LT.lt.{0} Nat instLTNat t q) (hqz : @LT.lt.{0} Nat instLTNat q z)
+  (hzMissingTwo :
+    Not
+      (ChompLean.B (ChompLean.RecurrenceModel.f M) t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        z))
+  (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z),
+  @Exists.{1} Nat fun (x : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat t x)
+      (And (@LT.lt.{0} Nat instLTNat x z)
+        (And
+          (Not
+            (ChompLean.C (ChompLean.RecurrenceModel.f M) x
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              z))
+          (Or (@LE.le.{0} Nat instLENat x r)
+            (@Exists.{1} Nat fun (b : Nat) =&gt;
+              And
+                (@LE.le.{0} Nat instLENat
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                  b)
+                (And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M x b) z))))))</pre></li><li><code>ChompLean.future_rowstart_gap_or_middle_band_return</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {c t q z r : Nat} (hct : @LT.lt.{0} Nat instLTNat c t)
+  (hq : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M t c) q) (htq : @LT.lt.{0} Nat instLTNat t q)
+  (hqz : @LT.lt.{0} Nat instLTNat q z) (hgap : Not (ChompLean.C (ChompLean.RecurrenceModel.f M) t c z))
+  (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z),
+  @Exists.{1} Nat fun (x : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat t x)
+      (And (@LT.lt.{0} Nat instLTNat x z)
+        (And (Not (ChompLean.C (ChompLean.RecurrenceModel.f M) x c z))
+          (Or (@LE.le.{0} Nat instLENat x r)
+            (@Exists.{1} Nat fun (b : Nat) =&gt;
+              And (@LE.le.{0} Nat instLENat c b)
+                (And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M x b) z))))))</pre></li><li><code>ChompLean.future_rowstart_gap_or_middle_band_return._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {c t q z r : Nat} (x : Nat) (hxr : Not (@LE.le.{0} Nat instLENat x r)),
+  Not (@LT.lt.{0} Nat instLTNat r x) → False</pre></li><li><code>ChompLean.future_rowstart_gap_or_middle_band_return._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {c t q z r : Nat} (x b : Nat) (hle : Not (@LE.le.{0} Nat instLENat c b)),
+  Not (@LT.lt.{0} Nat instLTNat b c) → False</pre></li><li><code>ChompLean.gameF_future_rowstart_gap_or_middle_band_return</code><pre class="prose">∀ {c t q z r : Nat} (hct : @LT.lt.{0} Nat instLTNat c t) (hq : @Eq.{1} Nat (ChompLean.gameF t c) q)
+  (htq : @LT.lt.{0} Nat instLTNat t q) (hqz : @LT.lt.{0} Nat instLTNat q z)
+  (hgap : Not (ChompLean.C ChompLean.gameF t c z)) (hrz : @LT.lt.{0} Nat instLTNat r z)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),
+  @Exists.{1} Nat fun (x : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat t x)
+      (And (@LT.lt.{0} Nat instLTNat x z)
+        (And (Not (ChompLean.C ChompLean.gameF x c z))
+          (Or (@LE.le.{0} Nat instLENat x r)
+            (@Exists.{1} Nat fun (b : Nat) =&gt;
+              And (@LE.le.{0} Nat instLENat c b)
+                (And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF x b) z))))))</pre></li><li><code>ChompLean.rightmost_hole_forces_future_prefix_gap</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {c t q z : Nat} (hct : @LT.lt.{0} Nat instLTNat c t)
+  (hq : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M t c) q) (htq : @LT.lt.{0} Nat instLTNat t q)
+  (hqz : @LT.lt.{0} Nat instLTNat q z) (hgap : Not (ChompLean.C (ChompLean.RecurrenceModel.f M) t c z)),
+  @Exists.{1} Nat fun (x : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat t x)
+      (And (@LT.lt.{0} Nat instLTNat x z) (Not (ChompLean.C (ChompLean.RecurrenceModel.f M) x c z)))</pre></li><li><code>ChompLean.rightmost_hole_forces_future_prefix_gap._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {c t q z : Nat} (htq : @LT.lt.{0} Nat instLTNat t q)
+  (hqz : @LT.lt.{0} Nat instLTNat q z), Not (@LT.lt.{0} Nat instLTNat t z) → False</pre></li><li><code>ChompLean.rightmost_hole_forces_future_prefix_gap._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {c t q z : Nat} (hqz : @LT.lt.{0} Nat instLTNat q z)
+  (hzle : @LE.le.{0} Nat instLENat z q), False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R26ActualGameFutureGap.lean:1</p><p>SHA-256: <code class="path">5c08904ced54ccbcc12907e09330b94d3d5fbae7ddc8ba29ed07389953f182ec</code></p></section><p><a href="../index.html#id=lean-5c08904ced54ccbcc129">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

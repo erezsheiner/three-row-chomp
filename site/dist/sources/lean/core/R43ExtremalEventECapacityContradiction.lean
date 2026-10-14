@@ -1,0 +1,593 @@
+import EventEPacketSourceCapacity
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+Publication scope: The game-specific margin Event E and RM2 specializations below retain their
+explicit UnitDip, numerical-margin, dip and residual/certificate hypotheses.
+Generic source, packing and overlap lemmas retain only the assumptions
+displayed in their own signatures.
+
+The extremal event-E packet cannot occur.
+
+At `z+1=2*s`, the two adjacent packet cells
+
+* `gameF s (s-2) = z`, and
+* `gameF s (s-1) = z+1`
+
+both use exactly all of their available MEX source slots.  Hence their source
+lists are permutations of the full positive intervals below their outputs.
+Comparing the two lists forces the exceptional old-row source
+`gameF (s-1) (s-2)` to equal the diagonal `gameF (s-1) (s-1)`, contradicting
+fixed-row injectivity.
+-/
+
+/-- A duplicate-free membership cover with no spare slots is a permutation. -/
+private theorem r43_perm_of_nodup_subset_length_le
+    {xs ys : List Nat}
+    (hnd : xs.Nodup) (hsub : xs ⊆ ys)
+    (hlen : ys.length ≤ xs.length) :
+    xs.Perm ys := by
+  induction xs generalizing ys with
+  | nil =>
+      cases ys with
+      | nil => exact List.Perm.nil
+      | cons y ys => simp at hlen
+  | cons a xs ih =>
+      have hndParts := List.nodup_cons.mp hnd
+      have ha : a ∈ ys := hsub (by simp)
+      have hsubErase : xs ⊆ ys.erase a := by
+        intro x hx
+        have hxy : x ∈ ys := hsub (by simp [hx])
+        have hxa : x ≠ a := by
+          intro hxa
+          apply hndParts.1
+          simpa [hxa] using hx
+        exact (List.mem_erase_of_ne hxa).mpr hxy
+      have hlenErase : (ys.erase a).length ≤ xs.length := by
+        have herase := List.length_erase_of_mem ha
+        simp only [List.length_cons] at hlen
+        omega
+      have htail : xs.Perm (ys.erase a) :=
+        ih hndParts.2 hsubErase hlenErase
+      exact (htail.cons a).trans (List.perm_cons_erase ha).symm
+
+/-- Exact source capacity upgrades lower saturation from a cardinal inequality
+to a permutation of the complete positive interval. -/
+theorem lowerSaturated_exact_source_perm
+    {f : Nat → Nat → Nat} {t e u : Nat}
+    (hsat : LowerSaturated f t e u)
+    (hexact : u - 1 = t + e) :
+    (List.range' 1 (u - 1)).Perm (BValueList f t e) := by
+  have hsub : List.range' 1 (u - 1) ⊆ BValueList f t e := by
+    intro x hx
+    have hxRange := List.mem_range'_1.mp hx
+    apply mem_BValueList_iff.mpr
+    exact hsat x (by omega) (by omega)
+  have hlen : (BValueList f t e).length ≤
+      (List.range' 1 (u - 1)).length := by
+    rw [length_BValueList]
+    simp only [List.length_range']
+    omega
+  exact r43_perm_of_nodup_subset_length_le
+    (List.nodup_range' 1) hsub hlen
+
+/-- A nodup mapped list is injective on the entries of its source list. -/
+private theorem r43_eq_of_map_nodup
+    {α β : Type} [BEq β] [LawfulBEq β]
+    {g : α → β} {xs : List α} {a b : α}
+    (hnd : (xs.map g).Nodup)
+    (ha : a ∈ xs) (hb : b ∈ xs)
+    (heq : g a = g b) : a = b := by
+  induction xs with
+  | nil => simp at ha
+  | cons x xs ih =>
+      have hparts := List.nodup_cons.mp hnd
+      simp only [List.mem_cons] at ha hb
+      rcases ha with rfl | ha
+      · rcases hb with rfl | hb
+        · rfl
+        · exfalso
+          apply hparts.1
+          rw [heq]
+          exact List.mem_map.mpr ⟨b, hb, rfl⟩
+      · rcases hb with rfl | hb
+        · exfalso
+          apply hparts.1
+          rw [← heq]
+          exact List.mem_map.mpr ⟨a, ha, rfl⟩
+        · exact ih hparts.2 ha hb
+
+/-- Generic adjacent-cell obstruction behind the extremal event-E argument.
+At distance two from the diagonal, a high output cannot fill its source
+capacity exactly and then rise by one in the next column: exact saturation
+would identify the last off-diagonal source in row `e+1` with that row's
+diagonal. -/
+theorem no_adjacent_exact_capacity_pair
+    (M : RecurrenceModel) {e m : Nat}
+    (hSmall : M.f (e + 2) e = m)
+    (hBig : M.f (e + 2) (e + 1) = m + 1)
+    (hHigh : e + 2 < m)
+    (hExact : m - 1 = (e + 2) + e) : False := by
+  have hsatSmall : LowerSaturated M.f (e + 2) e m := by
+    intro k hkPos hkm
+    apply M.mex_no_skip (by omega)
+    · rw [hSmall]
+      exact hHigh
+    · exact hkPos
+    · rw [hSmall]
+      exact hkm
+  have hpermSmall := lowerSaturated_exact_source_perm hsatSmall hExact
+  have hnodupSmall : (BValueList M.f (e + 2) e).Nodup :=
+    hpermSmall.nodup (List.nodup_range' 1)
+  have hsmallParts := List.nodup_append.mp hnodupSmall
+
+  have hsatBig : LowerSaturated M.f (e + 2) (e + 1) (m + 1) := by
+    intro k hkPos hkm
+    apply M.mex_no_skip (by omega)
+    · rw [hBig]
+      omega
+    · exact hkPos
+    · rw [hBig]
+      exact hkm
+  have hExactBig : (m + 1) - 1 = (e + 2) + (e + 1) := by
+    omega
+  have hpermBig := lowerSaturated_exact_source_perm hsatBig hExactBig
+
+  let w := M.f (e + 1) e
+  have hwSmallR : w ∈ RValueList M.f (e + 2) e := by
+    apply mem_RValueList_iff.mpr
+    refine ⟨e + 1, by omega, ?_⟩
+    rw [Nat.min_eq_right (by omega : e ≤ e + 1)]
+  have hwSmallB : w ∈ BValueList M.f (e + 2) e := by
+    simp only [BValueList, List.mem_append]
+    exact Or.inl hwSmallR
+  have hwRangeSmall : w ∈ List.range' 1 (m - 1) :=
+    hpermSmall.mem_iff.mpr hwSmallB
+  have hwBounds := List.mem_range'_1.mp hwRangeSmall
+  have hwm : w < m := by omega
+  have hwRangeBig : w ∈ List.range' 1 ((m + 1) - 1) := by
+    apply List.mem_range'_1.mpr
+    omega
+  have hwBigB : w ∈ BValueList M.f (e + 2) (e + 1) :=
+    hpermBig.mem_iff.mp hwRangeBig
+
+  rcases mem_BValueList_iff.mp hwBigB with hwBigR | hwBigC
+  · rcases hwBigR with ⟨a, ha, haValue⟩
+    have hminBig : min a (e + 1) = a := Nat.min_eq_left (by omega)
+    rw [hminBig] at haValue
+    have haEq : a = e + 1 := by
+      by_cases heq : a = e + 1
+      · exact heq
+      · exfalso
+        apply heq
+        have haMem : a ∈ List.range (e + 2) := List.mem_range.mpr ha
+        have heMem : e + 1 ∈ List.range (e + 2) :=
+          List.mem_range.mpr (by omega)
+        apply r43_eq_of_map_nodup hsmallParts.1 haMem heMem
+        have hminA : min a e = a := Nat.min_eq_left (by omega)
+        have hminE : min (e + 1) e = e := Nat.min_eq_right (by omega)
+        rw [hminA, hminE, haValue]
+    subst a
+    have hrowEq : M.f (e + 1) e = M.f (e + 1) (e + 1) := by
+      dsimp [w] at haValue ⊢
+      exact haValue.symm
+    have hcols := M.fixed_q_injective
+      (q := e + 1) (b₁ := e) (b₂ := e + 1)
+      (by omega) (Nat.le_refl _) hrowEq
+    omega
+  · rcases hwBigC with ⟨b, hb, hbValue⟩
+    have hbSmall : b < e := by
+      by_cases hlt : b < e
+      · exact hlt
+      · have hbEq : b = e := by omega
+        subst b
+        rw [hSmall] at hbValue
+        omega
+    have hwSmallC : w ∈ CValueList M.f (e + 2) e := by
+      apply mem_CValueList_iff.mpr
+      exact ⟨b, hbSmall, hbValue⟩
+    exact (hsmallParts.2.2 w hwSmallR w hwSmallC) rfl
+
+/-- One row farther from the diagonal, two adjacent exact-capacity outputs do
+not immediately contradict injectivity.  They force the unique surviving
+two-by-two cross exchange between the exceptional source cells. -/
+theorem adjacent_exact_capacity_distance_three_cross
+    (M : RecurrenceModel) {e m : Nat}
+    (hSmall : M.f (e + 3) e = m)
+    (hBig : M.f (e + 3) (e + 1) = m + 1)
+    (hHigh : e + 3 < m)
+    (hExact : m - 1 = (e + 3) + e) :
+    M.f (e + 1) e = M.f (e + 2) (e + 1) ∧
+      M.f (e + 2) e = M.f (e + 1) (e + 1) := by
+  have hsatSmall : LowerSaturated M.f (e + 3) e m := by
+    intro k hkPos hkm
+    apply M.mex_no_skip (by omega)
+    · rw [hSmall]
+      exact hHigh
+    · exact hkPos
+    · rw [hSmall]
+      exact hkm
+  have hpermSmall := lowerSaturated_exact_source_perm hsatSmall hExact
+  have hnodupSmall : (BValueList M.f (e + 3) e).Nodup :=
+    hpermSmall.nodup (List.nodup_range' 1)
+  have hsmallParts := List.nodup_append.mp hnodupSmall
+  have hsatBig : LowerSaturated M.f (e + 3) (e + 1) (m + 1) := by
+    intro k hkPos hkm
+    apply M.mex_no_skip (by omega)
+    · rw [hBig]
+      omega
+    · exact hkPos
+    · rw [hBig]
+      exact hkm
+  have hExactBig : (m + 1) - 1 = (e + 3) + (e + 1) := by omega
+  have hpermBig := lowerSaturated_exact_source_perm hsatBig hExactBig
+
+  have liftSmallValue
+      {w i : Nat} (hi : i < e + 3)
+      (hiValue : M.f i (min i e) = w) :
+      w < m ∧ w ∈ BValueList M.f (e + 3) (e + 1) := by
+    have hwSmallR : w ∈ RValueList M.f (e + 3) e := by
+      exact mem_RValueList_iff.mpr ⟨i, hi, hiValue⟩
+    have hwSmallB : w ∈ BValueList M.f (e + 3) e := by
+      simp only [BValueList, List.mem_append]
+      exact Or.inl hwSmallR
+    have hwRangeSmall : w ∈ List.range' 1 (m - 1) :=
+      hpermSmall.mem_iff.mpr hwSmallB
+    have hwBounds := List.mem_range'_1.mp hwRangeSmall
+    have hwm : w < m := by omega
+    have hwRangeBig : w ∈ List.range' 1 ((m + 1) - 1) := by
+      apply List.mem_range'_1.mpr
+      omega
+    exact ⟨hwm, hpermBig.mem_iff.mp hwRangeBig⟩
+
+  let w1 := M.f (e + 1) e
+  have hw1Lift : w1 < m ∧ w1 ∈ BValueList M.f (e + 3) (e + 1) := by
+    apply liftSmallValue (i := e + 1) (by omega)
+    rw [Nat.min_eq_right (by omega : e ≤ e + 1)]
+  have hw1SmallR : w1 ∈ RValueList M.f (e + 3) e := by
+    apply mem_RValueList_iff.mpr
+    refine ⟨e + 1, by omega, ?_⟩
+    rw [Nat.min_eq_right (by omega : e ≤ e + 1)]
+  have hcross1 : w1 = M.f (e + 2) (e + 1) := by
+    rcases mem_BValueList_iff.mp hw1Lift.2 with hR | hC
+    · rcases hR with ⟨a, ha, haValue⟩
+      by_cases haLow : a ≤ e
+      · have hminBig : min a (e + 1) = a := Nat.min_eq_left (by omega)
+        rw [hminBig] at haValue
+        have haMem : a ∈ List.range (e + 3) := List.mem_range.mpr ha
+        have heMem : e + 1 ∈ List.range (e + 3) :=
+          List.mem_range.mpr (by omega)
+        have hidx := r43_eq_of_map_nodup
+          hsmallParts.1 haMem heMem (by
+            have hminA : min a e = a := Nat.min_eq_left haLow
+            have hminE : min (e + 1) e = e := Nat.min_eq_right (by omega)
+            rw [hminA, hminE, haValue])
+        omega
+      · have haCases : a = e + 1 ∨ a = e + 2 := by omega
+        rcases haCases with rfl | rfl
+        · have hmin : min (e + 1) (e + 1) = e + 1 := Nat.min_self _
+          rw [hmin] at haValue
+          have hrowEq : M.f (e + 1) e = M.f (e + 1) (e + 1) := by
+            dsimp [w1] at haValue ⊢
+            exact haValue.symm
+          have hcols := M.fixed_q_injective
+            (q := e + 1) (b₁ := e) (b₂ := e + 1)
+            (by omega) (Nat.le_refl _) hrowEq
+          omega
+        · have hmin : min (e + 2) (e + 1) = e + 1 :=
+            Nat.min_eq_right (by omega)
+          rw [hmin] at haValue
+          exact haValue.symm
+    · rcases hC with ⟨b, hb, hbValue⟩
+      by_cases hbLow : b < e
+      · have hw1SmallC : w1 ∈ CValueList M.f (e + 3) e := by
+          exact mem_CValueList_iff.mpr ⟨b, hbLow, hbValue⟩
+        exact False.elim ((hsmallParts.2.2
+          w1 hw1SmallR w1 hw1SmallC) rfl)
+      · have hbEq : b = e := by omega
+        subst b
+        rw [hSmall] at hbValue
+        omega
+
+  let w2 := M.f (e + 2) e
+  have hw2Lift : w2 < m ∧ w2 ∈ BValueList M.f (e + 3) (e + 1) := by
+    apply liftSmallValue (i := e + 2) (by omega)
+    rw [Nat.min_eq_right (by omega : e ≤ e + 2)]
+  have hw2SmallR : w2 ∈ RValueList M.f (e + 3) e := by
+    apply mem_RValueList_iff.mpr
+    refine ⟨e + 2, by omega, ?_⟩
+    rw [Nat.min_eq_right (by omega : e ≤ e + 2)]
+  have hcross2 : w2 = M.f (e + 1) (e + 1) := by
+    rcases mem_BValueList_iff.mp hw2Lift.2 with hR | hC
+    · rcases hR with ⟨a, ha, haValue⟩
+      by_cases haLow : a ≤ e
+      · have hminBig : min a (e + 1) = a := Nat.min_eq_left (by omega)
+        rw [hminBig] at haValue
+        have haMem : a ∈ List.range (e + 3) := List.mem_range.mpr ha
+        have heMem : e + 2 ∈ List.range (e + 3) :=
+          List.mem_range.mpr (by omega)
+        have hidx := r43_eq_of_map_nodup
+          hsmallParts.1 haMem heMem (by
+            have hminA : min a e = a := Nat.min_eq_left haLow
+            have hminE : min (e + 2) e = e := Nat.min_eq_right (by omega)
+            rw [hminA, hminE, haValue])
+        omega
+      · have haCases : a = e + 1 ∨ a = e + 2 := by omega
+        rcases haCases with rfl | rfl
+        · have hmin : min (e + 1) (e + 1) = e + 1 := Nat.min_self _
+          rw [hmin] at haValue
+          exact haValue.symm
+        · have hmin : min (e + 2) (e + 1) = e + 1 :=
+            Nat.min_eq_right (by omega)
+          rw [hmin] at haValue
+          have hrowEq : M.f (e + 2) e = M.f (e + 2) (e + 1) := by
+            dsimp [w2] at haValue ⊢
+            exact haValue.symm
+          have hcols := M.fixed_q_injective
+            (q := e + 2) (b₁ := e) (b₂ := e + 1)
+            (by omega) (by omega) hrowEq
+          omega
+    · rcases hC with ⟨b, hb, hbValue⟩
+      by_cases hbLow : b < e
+      · have hw2SmallC : w2 ∈ CValueList M.f (e + 3) e := by
+          exact mem_CValueList_iff.mpr ⟨b, hbLow, hbValue⟩
+        exact False.elim ((hsmallParts.2.2
+          w2 hw2SmallR w2 hw2SmallC) rfl)
+      · have hbEq : b = e := by omega
+        subst b
+        rw [hSmall] at hbValue
+        omega
+  exact ⟨hcross1, hcross2⟩
+
+/-- Concrete form for the deepest ordered pair in the first surviving
+Event-E defect layer.  If `z,z+1` occupy columns `s-3,s-2`, exact saturation
+forces a two-by-two cross in the two preceding rows. -/
+theorem gameF_defect_one_deep_pair_forces_cross
+    {s z : Nat} (hs : 4 ≤ s)
+    (hz : z + 2 = 2 * s)
+    (hBase : gameF s (s - 3) = z)
+    (hSucc : gameF s (s - 2) = z + 1) :
+    gameF (s - 2) (s - 3) = gameF (s - 1) (s - 2) ∧
+      gameF (s - 1) (s - 3) = gameF (s - 2) (s - 2) := by
+  have hs0 : (s - 3) + 3 = s := by omega
+  have hs1 : (s - 3) + 1 = s - 2 := by omega
+  have hs2 : (s - 3) + 2 = s - 1 := by omega
+  have hHigh : (s - 3) + 3 < z := by omega
+  have hExact : z - 1 = ((s - 3) + 3) + (s - 3) := by omega
+  have hcross := adjacent_exact_capacity_distance_three_cross
+    gameRecurrenceModel (e := s - 3) (m := z)
+    (by simpa [hs0] using hBase)
+    (by simpa [hs0, hs1] using hSucc)
+    hHigh hExact
+  simpa [hs1, hs2] using hcross
+
+/-- The source-capacity equality case of event E is impossible.  This closes
+the whole extremal class `d(s+1)=2*s`, rather than merely localizing its final
+host to three columns. -/
+theorem gameF_no_extremal_margin_eventE
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 ∨
+      ∃ j, s = j + 1 ∧
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hextreme :
+      (gameF (s + 1) (s + 1) - 1) + 1 = 2 * s) :
+    ¬ (gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) := by
+  intro hnextDip
+  let z := gameF (s + 1) (s + 1) - 1
+  rcases gameF_extremal_eventE_forces_first_two_entries_and_three_column_tail
+      hU hdip hmargin hnextDip hextreme with
+    ⟨hV1, hV2, _hTail⟩
+  have hunitNext := hU (s + 1) hnextDip
+  change gameF (s + 2) (s + 2) + 1 =
+    gameF (s + 1) (s + 1) at hunitNext
+  have hEmit : gameF (s + 2) (s + 2) = z := by
+    dsimp [z]
+    have hgt := gameRecurrenceModel.diagonal_gt (s + 2)
+    omega
+  have hsz : s + 2 < z := by
+    have hgt := gameRecurrenceModel.diagonal_gt (s + 2)
+    change s + 2 < gameF (s + 2) (s + 2) at hgt
+    rw [hEmit] at hgt
+    exact hgt
+  have hsTwo : 2 ≤ s := by omega
+
+  have hsatSmall : LowerSaturated gameF s (s - 2) z := by
+    intro k hkPos hkz
+    apply gameRecurrenceModel.mex_no_skip (by omega)
+    · change s < gameF s (s - 2)
+      rw [hV2]
+      omega
+    · exact hkPos
+    · change k < gameF s (s - 2)
+      rw [hV2]
+      exact hkz
+  have hcapSmall : z - 1 = s + (s - 2) := by omega
+  have hpermSmall := lowerSaturated_exact_source_perm
+    hsatSmall hcapSmall
+  have hnodupSmall : (BValueList gameF s (s - 2)).Nodup :=
+    hpermSmall.nodup (List.nodup_range' 1)
+  have hsmallParts := List.nodup_append.mp hnodupSmall
+
+  have hsatBig : LowerSaturated gameF s (s - 1) (z + 1) := by
+    intro k hkPos hkz
+    apply gameRecurrenceModel.mex_no_skip (by omega)
+    · change s < gameF s (s - 1)
+      rw [hV1]
+      omega
+    · exact hkPos
+    · change k < gameF s (s - 1)
+      rw [hV1]
+      exact hkz
+  have hcapBig : (z + 1) - 1 = s + (s - 1) := by omega
+  have hpermBig := lowerSaturated_exact_source_perm hsatBig hcapBig
+
+  let w := gameF (s - 1) (s - 2)
+  have hwSmallR : w ∈ RValueList gameF s (s - 2) := by
+    apply mem_RValueList_iff.mpr
+    refine ⟨s - 1, by omega, ?_⟩
+    have hmin : min (s - 1) (s - 2) = s - 2 :=
+      Nat.min_eq_right (by omega)
+    rw [hmin]
+  have hwSmallB : w ∈ BValueList gameF s (s - 2) := by
+    simp only [BValueList, List.mem_append]
+    exact Or.inl hwSmallR
+  have hwRangeSmall : w ∈ List.range' 1 (z - 1) :=
+    hpermSmall.mem_iff.mpr hwSmallB
+  have hwBounds := List.mem_range'_1.mp hwRangeSmall
+  have hwPos : 0 < w := by omega
+  have hwz : w < z := by omega
+  have hwRangeBig : w ∈ List.range' 1 ((z + 1) - 1) := by
+    apply List.mem_range'_1.mpr
+    omega
+  have hwBigB : w ∈ BValueList gameF s (s - 1) :=
+    hpermBig.mem_iff.mp hwRangeBig
+
+  rcases mem_BValueList_iff.mp hwBigB with hwBigR | hwBigC
+  · rcases hwBigR with ⟨a, has, haValue⟩
+    have hminBig : min a (s - 1) = a := Nat.min_eq_left (by omega)
+    rw [hminBig] at haValue
+    have haEq : a = s - 1 := by
+      by_cases heq : a = s - 1
+      · exact heq
+      · exfalso
+        apply heq
+        have haSmall : a ∈ List.range s := List.mem_range.mpr has
+        have hlastSmall : s - 1 ∈ List.range s := List.mem_range.mpr (by omega)
+        apply r43_eq_of_map_nodup hsmallParts.1 haSmall hlastSmall
+        have hminA : min a (s - 2) = a := Nat.min_eq_left (by omega)
+        have hminLast : min (s - 1) (s - 2) = s - 2 :=
+          Nat.min_eq_right (by omega)
+        rw [hminA, hminLast, haValue]
+    subst a
+    have hrowEq : gameF (s - 1) (s - 2) =
+        gameF (s - 1) (s - 1) := by
+      dsimp [w] at haValue ⊢
+      exact haValue.symm
+    have hcols := gameRecurrenceModel.fixed_q_injective
+      (q := s - 1) (b₁ := s - 2) (b₂ := s - 1)
+      (by omega) (Nat.le_refl _) hrowEq
+    omega
+  · rcases hwBigC with ⟨b, hbs, hbValue⟩
+    have hbSmall : b < s - 2 := by
+      by_cases hlt : b < s - 2
+      · exact hlt
+      · have hbEq : b = s - 2 := by omega
+        subst b
+        rw [hV2] at hbValue
+        omega
+    have hwSmallC : w ∈ CValueList gameF s (s - 2) := by
+      apply mem_CValueList_iff.mpr
+      exact ⟨b, hbSmall, hbValue⟩
+    exact (hsmallParts.2.2 w hwSmallR w hwSmallC) rfl
+
+/-- Consequently every genuine margin event E lies strictly below the source
+capacity boundary. -/
+theorem gameF_margin_eventE_strict_source_capacity
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 ∨
+      ∃ j, s = j + 1 ∧
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    gameF (s + 1) (s + 1) < 2 * s := by
+  let z := gameF (s + 1) (s + 1) - 1
+  rcases gameF_margin_eventE_packet_source_capacity
+      hU hdip hmargin hnextDip with
+    ⟨_c, _b0, _b1, _hc, _hb0, _hb1, _hcNe, _hbNe,
+      _hsucc, _hbase, _hhost1, _hcapSucc, _hcapBase, _hcapNext,
+      htotal⟩
+  have hdiagPos : 0 < gameF (s + 1) (s + 1) := by
+    have hgt := gameRecurrenceModel.diagonal_gt (s + 1)
+    change s + 1 < gameF (s + 1) (s + 1) at hgt
+    omega
+  have hzDiag : z + 1 = gameF (s + 1) (s + 1) := by
+    dsimp [z]
+    omega
+  have hle : gameF (s + 1) (s + 1) ≤ 2 * s := by
+    rw [← hzDiag]
+    exact htotal
+  by_cases hlt : gameF (s + 1) (s + 1) < 2 * s
+  · exact hlt
+  · exfalso
+    have hextreme : z + 1 = 2 * s := by omega
+    exact (gameF_no_extremal_margin_eventE
+      hU hdip hmargin hextreme) hnextDip
+
+/-- Event E is confined to the strict interior window
+`s+3 < d(s+1) < 2*s`; in particular it cannot occur before row five. -/
+theorem gameF_margin_eventE_strict_window
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 ∨
+      ∃ j, s = j + 1 ∧
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    5 ≤ s ∧
+      s + 3 < gameF (s + 1) (s + 1) ∧
+      gameF (s + 1) (s + 1) < 2 * s := by
+  have hupper := gameF_margin_eventE_strict_source_capacity
+    hU hdip hmargin hnextDip
+  have hunitNext := hU (s + 1) hnextDip
+  change gameF (s + 2) (s + 2) + 1 =
+    gameF (s + 1) (s + 1) at hunitNext
+  have hdiagNext := gameRecurrenceModel.diagonal_gt (s + 2)
+  change s + 2 < gameF (s + 2) (s + 2) at hdiagNext
+  omega
+
+/-- The next-to-extremal layer `d(s+1)+1=2*s` has a finite packet menu:
+the `z+1` host has two possible columns, the old `z` host has three, and the
+new `z` host has five.  This is the first surviving source-defect layer after
+the exact-capacity boundary has been removed. -/
+theorem gameF_margin_eventE_defect_one_packet_menu
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 ∨
+      ∃ j, s = j + 1 ∧
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1))
+    (hdefectOne : gameF (s + 1) (s + 1) + 1 = 2 * s) :
+    let z := gameF (s + 1) (s + 1) - 1
+    ∃ c b0 b1,
+      c < s ∧ b0 < s ∧ b1 < s + 1 ∧
+      c ≠ b0 ∧ b0 ≠ b1 ∧
+      gameF s c = z + 1 ∧ gameF s b0 = z ∧
+      gameF (s + 1) b1 = z ∧
+      (c = s - 2 ∨ c = s - 1) ∧
+      (b0 = s - 3 ∨ b0 = s - 2 ∨ b0 = s - 1) ∧
+      (b1 = s - 4 ∨ b1 = s - 3 ∨ b1 = s - 2 ∨
+        b1 = s - 1 ∨ b1 = s) := by
+  let z := gameF (s + 1) (s + 1) - 1
+  have hwindow := gameF_margin_eventE_strict_window
+    hU hdip hmargin hnextDip
+  rcases gameF_margin_eventE_packet_source_capacity
+      hU hdip hmargin hnextDip with
+    ⟨c, b0, b1, hc, hb0, hb1, hcNe, hbNe,
+      hsucc, hbase, hhost1, hcapSucc, hcapBase, hcapNext, _htotal⟩
+  have hdiagPos : 0 < gameF (s + 1) (s + 1) := by omega
+  have hzRelation : z + 2 = 2 * s := by
+    dsimp [z]
+    omega
+  have hcMenu : c = s - 2 ∨ c = s - 1 := by omega
+  have hb0Menu : b0 = s - 3 ∨ b0 = s - 2 ∨ b0 = s - 1 := by omega
+  have hb1Menu : b1 = s - 4 ∨ b1 = s - 3 ∨ b1 = s - 2 ∨
+      b1 = s - 1 ∨ b1 = s := by omega
+  exact ⟨c, b0, b1, hc, hb0, hb1, hcNe, hbNe,
+    hsucc, hbase, hhost1, hcMenu, hb0Menu, hb1Menu⟩
+
+#print axioms lowerSaturated_exact_source_perm
+#print axioms no_adjacent_exact_capacity_pair
+#print axioms adjacent_exact_capacity_distance_three_cross
+#print axioms gameF_defect_one_deep_pair_forces_cross
+#print axioms gameF_no_extremal_margin_eventE
+#print axioms gameF_margin_eventE_strict_source_capacity
+#print axioms gameF_margin_eventE_strict_window
+#print axioms gameF_margin_eventE_defect_one_packet_menu
+
+end ChompLean

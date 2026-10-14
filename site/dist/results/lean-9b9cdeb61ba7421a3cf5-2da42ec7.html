@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three-row Chomp: definitions and uniqueness statement · Three-Row Chomp</title>
+<meta name="description" content="Defines sorted three-row positions, legal moves that avoid poison, recursively losing positions, and the uniqueness claim for positive rectangular boards.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Uniqueness and game foundations · lean</p>
+<h1>Three-row Chomp: definitions and uniqueness statement</h1><p class="lead">Defines sorted three-row positions, legal moves that avoid poison, recursively losing positions, and the uniqueness claim for positive rectangular boards.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/ChompLean/Statement.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/ChompLean.Statement.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/ChompLean.Statement.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a> <a href="../audit/full/lean/MAIN-CLAIM-MAPPING.md">Historical 13 October evidence: Exact mathematical correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Rows are natural numbers p &gt;= q &gt;= r; a rectangle has n &gt; 0 squares per row. Poison-taking moves are excluded because they lose immediately.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">Move.first cuts the top row to a positive smaller length and truncates both lower rows; second/third moves truncate the corresponding suffix. IsP requires a nonempty board and every legal move to be non-P, recursively on total squares. This is a statement/definition module, not a proof of the uniqueness claim.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 53 declarations</summary><ul class="declarations"><li><code>ChompLean.IsP</code><pre class="prose">(x : ChompLean.Pos) → Prop</pre></li><li><code>ChompLean.IsP._proof_1</code><pre class="prose">∀ (x y : ChompLean.Pos),
+  ChompLean.Move x y →
+    @InvImage.{1, 1} ChompLean.Pos Nat (fun (x1 x2 : Nat) =&gt; @LT.lt.{0} Nat instLTNat x1 x2)
+      (fun (x : ChompLean.Pos) =&gt; ChompLean.Pos.size x) y x</pre></li><li><code>ChompLean.IsP._unsafe_rec</code><pre class="prose">(x : ChompLean.Pos) → Prop</pre></li><li><code>ChompLean.IsP.eq_def</code><pre class="prose">∀ (x : ChompLean.Pos),
+  @Eq.{1} Prop (ChompLean.IsP x)
+    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.Pos.p x))
+      (∀ (y : ChompLean.Pos), ChompLean.Move x y → Not (ChompLean.IsP y)))</pre></li><li><code>ChompLean.Move</code><pre class="prose">ChompLean.Pos → ChompLean.Pos → Prop</pre></li><li><code>ChompLean.Move.casesOn</code><pre class="prose">∀ {a : ChompLean.Pos} {motive : (a_1 : ChompLean.Pos) → (t : ChompLean.Move a a_1) → Prop} {a_1 : ChompLean.Pos}
+  (t : ChompLean.Move a a_1)
+  (first :
+    ∀ (a_2 : Nat) (ha0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) a_2)
+      (ha : @LT.lt.{0} Nat instLTNat a_2 (ChompLean.Pos.p a)),
+      motive (ChompLean.Pos.firstCut a a_2) (ChompLean.Move.first a a_2 ha0 ha))
+  (second :
+    ∀ (a_2 : Nat) (ha : @LT.lt.{0} Nat instLTNat a_2 (ChompLean.Pos.q a)),
+      motive (ChompLean.Pos.secondCut a a_2 (@Nat.le_of_lt a_2 (ChompLean.Pos.q a) ha))
+        (ChompLean.Move.second a a_2 ha))
+  (third :
+    ∀ (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (ChompLean.Pos.r a)),
+      motive (ChompLean.Pos.thirdCut a b (@Nat.le_of_lt b (ChompLean.Pos.r a) hb)) (ChompLean.Move.third a b hb)),
+  motive a_1 t</pre></li><li><code>ChompLean.Move.first</code><pre class="prose">∀ (x : ChompLean.Pos) (a : Nat)
+  (ha0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) a)
+  (ha : @LT.lt.{0} Nat instLTNat a (ChompLean.Pos.p x)), ChompLean.Move x (ChompLean.Pos.firstCut x a)</pre></li><li><code>ChompLean.Move.rec</code><pre class="prose">∀ {a : ChompLean.Pos} {motive : (a_1 : ChompLean.Pos) → (t : ChompLean.Move a a_1) → Prop}
+  (first :
+    ∀ (a_1 : Nat) (ha0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) a_1)
+      (ha : @LT.lt.{0} Nat instLTNat a_1 (ChompLean.Pos.p a)),
+      motive (ChompLean.Pos.firstCut a a_1) (ChompLean.Move.first a a_1 ha0 ha))
+  (second :
+    ∀ (a_1 : Nat) (ha : @LT.lt.{0} Nat instLTNat a_1 (ChompLean.Pos.q a)),
+      motive (ChompLean.Pos.secondCut a a_1 (@Nat.le_of_lt a_1 (ChompLean.Pos.q a) ha))
+        (ChompLean.Move.second a a_1 ha))
+  (third :
+    ∀ (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (ChompLean.Pos.r a)),
+      motive (ChompLean.Pos.thirdCut a b (@Nat.le_of_lt b (ChompLean.Pos.r a) hb)) (ChompLean.Move.third a b hb))
+  {a_1 : ChompLean.Pos} (t : ChompLean.Move a a_1), motive a_1 t</pre></li><li><code>ChompLean.Move.recOn</code><pre class="prose">∀ {a : ChompLean.Pos} {motive : (a_1 : ChompLean.Pos) → (t : ChompLean.Move a a_1) → Prop} {a_1 : ChompLean.Pos}
+  (t : ChompLean.Move a a_1)
+  (first :
+    ∀ (a_2 : Nat) (ha0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) a_2)
+      (ha : @LT.lt.{0} Nat instLTNat a_2 (ChompLean.Pos.p a)),
+      motive (ChompLean.Pos.firstCut a a_2) (ChompLean.Move.first a a_2 ha0 ha))
+  (second :
+    ∀ (a_2 : Nat) (ha : @LT.lt.{0} Nat instLTNat a_2 (ChompLean.Pos.q a)),
+      motive (ChompLean.Pos.secondCut a a_2 (@Nat.le_of_lt a_2 (ChompLean.Pos.q a) ha))
+        (ChompLean.Move.second a a_2 ha))
+  (third :
+    ∀ (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (ChompLean.Pos.r a)),
+      motive (ChompLean.Pos.thirdCut a b (@Nat.le_of_lt b (ChompLean.Pos.r a) hb)) (ChompLean.Move.third a b hb)),
+  motive a_1 t</pre></li><li><code>ChompLean.Move.second</code><pre class="prose">∀ (x : ChompLean.Pos) (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (ChompLean.Pos.q x)),
+  ChompLean.Move x (ChompLean.Pos.secondCut x a (@Nat.le_of_lt a (ChompLean.Pos.q x) ha))</pre></li><li><code>ChompLean.Move.third</code><pre class="prose">∀ (x : ChompLean.Pos) (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (ChompLean.Pos.r x)),
+  ChompLean.Move x (ChompLean.Pos.thirdCut x b (@Nat.le_of_lt b (ChompLean.Pos.r x) hb))</pre></li><li><code>ChompLean.Pos</code><pre class="prose">Type</pre></li><li><code>ChompLean.Pos._sizeOf_1</code><pre class="prose">(t : ChompLean.Pos) → Nat</pre></li><li><code>ChompLean.Pos._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.Pos</pre></li><li><code>ChompLean.Pos.casesOn</code><pre class="prose">{motive : (t : ChompLean.Pos) → Sort u} →
+  (t : ChompLean.Pos) →
+    (mk :
+        (p q r : Nat) →
+          (hq : @LE.le.{0} Nat instLENat q p) →
+            (hr : @LE.le.{0} Nat instLENat r q) → motive (ChompLean.Pos.mk p q r hq hr)) →
+      motive t</pre></li><li><code>ChompLean.Pos.ctorIdx</code><pre class="prose">ChompLean.Pos → Nat</pre></li><li><code>ChompLean.Pos.firstCut</code><pre class="prose">(x : ChompLean.Pos) → (a : Nat) → ChompLean.Pos</pre></li><li><code>ChompLean.Pos.firstCut._proof_1</code><pre class="prose">∀ (x : ChompLean.Pos) (a : Nat), @LE.le.{0} Nat instLENat (@Min.min.{0} Nat instMinNat a (ChompLean.Pos.q x)) a</pre></li><li><code>ChompLean.Pos.firstCut._proof_2</code><pre class="prose">∀ (x : ChompLean.Pos) (a : Nat),
+  @LE.le.{0} Nat instLENat (Nat.min a (ChompLean.Pos.r x)) (Nat.min a (ChompLean.Pos.q x))</pre></li><li><code>ChompLean.Pos.firstCut.eq_1</code><pre class="prose">∀ (x : ChompLean.Pos) (a : Nat),
+  @Eq.{1} ChompLean.Pos (ChompLean.Pos.firstCut x a)
+    (ChompLean.Pos.mk a (Nat.min a (ChompLean.Pos.q x)) (Nat.min a (ChompLean.Pos.r x))
+      (ChompLean.Pos.firstCut._proof_1 x a) (ChompLean.Pos.firstCut._proof_2 x a))</pre></li><li><code>ChompLean.Pos.hq</code><pre class="prose">∀ (self : ChompLean.Pos), @LE.le.{0} Nat instLENat (ChompLean.Pos.q self) (ChompLean.Pos.p self)</pre></li><li><code>ChompLean.Pos.hr</code><pre class="prose">∀ (self : ChompLean.Pos), @LE.le.{0} Nat instLENat (ChompLean.Pos.r self) (ChompLean.Pos.q self)</pre></li><li><code>ChompLean.Pos.min_mono_right</code><pre class="prose">∀ {a r q : Nat} (h : @LE.le.{0} Nat instLENat r q), @LE.le.{0} Nat instLENat (Nat.min a r) (Nat.min a q)</pre></li><li><code>ChompLean.Pos.mk</code><pre class="prose">(p q r : Nat) → (hq : @LE.le.{0} Nat instLENat q p) → (hr : @LE.le.{0} Nat instLENat r q) → ChompLean.Pos</pre></li><li><code>ChompLean.Pos.mk._flat_ctor</code><pre class="prose">(p q r : Nat) → (hq : @LE.le.{0} Nat instLENat q p) → (hr : @LE.le.{0} Nat instLENat r q) → ChompLean.Pos</pre></li><li><code>ChompLean.Pos.mk.congr_simp</code><pre class="prose">∀ (p p_1 : Nat) (e_p : @Eq.{1} Nat p p_1) (q q_1 : Nat) (e_q : @Eq.{1} Nat q q_1) (r r_1 : Nat)
+  (e_r : @Eq.{1} Nat r r_1) (hq : @LE.le.{0} Nat instLENat q p) (hr : @LE.le.{0} Nat instLENat r q),
+  @Eq.{1} ChompLean.Pos (ChompLean.Pos.mk p q r hq hr)
+    (ChompLean.Pos.mk p_1 q_1 r_1
+      (@Eq.ndrec.{0, 1} Nat p (fun (p : Nat) =&gt; @LE.le.{0} Nat instLENat q_1 p)
+        (@Eq.ndrec.{0, 1} Nat q (fun (q : Nat) =&gt; @LE.le.{0} Nat instLENat q p) hq q_1 e_q) p_1 e_p)
+      (@Eq.ndrec.{0, 1} Nat q (fun (q : Nat) =&gt; @LE.le.{0} Nat instLENat r_1 q)
+        (@Eq.ndrec.{0, 1} Nat r (fun (r : Nat) =&gt; @LE.le.{0} Nat instLENat r q) hr r_1 e_r) q_1 e_q))</pre></li><li><code>ChompLean.Pos.mk.inj</code><pre class="prose">∀ {p q r : Nat} {hq : @LE.le.{0} Nat instLENat q p} {hr : @LE.le.{0} Nat instLENat r q} {p_1 q_1 r_1 : Nat}
+  {hq_1 : @LE.le.{0} Nat instLENat q_1 p_1} {hr_1 : @LE.le.{0} Nat instLENat r_1 q_1},
+  @Eq.{1} ChompLean.Pos (ChompLean.Pos.mk p q r hq hr) (ChompLean.Pos.mk p_1 q_1 r_1 hq_1 hr_1) →
+    And (@Eq.{1} Nat p p_1) (And (@Eq.{1} Nat q q_1) (@Eq.{1} Nat r r_1))</pre></li><li><code>ChompLean.Pos.mk.injEq</code><pre class="prose">∀ (p q r : Nat) (hq : @LE.le.{0} Nat instLENat q p) (hr : @LE.le.{0} Nat instLENat r q) (p_1 q_1 r_1 : Nat)
+  (hq_1 : @LE.le.{0} Nat instLENat q_1 p_1) (hr_1 : @LE.le.{0} Nat instLENat r_1 q_1),
+  @Eq.{1} Prop (@Eq.{1} ChompLean.Pos (ChompLean.Pos.mk p q r hq hr) (ChompLean.Pos.mk p_1 q_1 r_1 hq_1 hr_1))
+    (And (@Eq.{1} Nat p p_1) (And (@Eq.{1} Nat q q_1) (@Eq.{1} Nat r r_1)))</pre></li><li><code>ChompLean.Pos.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {p q r : Nat} →
+    {hq : @LE.le.{0} Nat instLENat q p} →
+      {hr : @LE.le.{0} Nat instLENat r q} →
+        {p&#x27; q&#x27; r&#x27; : Nat} →
+          {hq&#x27; : @LE.le.{0} Nat instLENat q&#x27; p&#x27;} →
+            {hr&#x27; : @LE.le.{0} Nat instLENat r&#x27; q&#x27;} →
+              (eq : @Eq.{1} ChompLean.Pos (ChompLean.Pos.mk p q r hq hr) (ChompLean.Pos.mk p&#x27; q&#x27; r&#x27; hq&#x27; hr&#x27;)) →
+                (k : (p_eq : @Eq.{1} Nat p p&#x27;) → (q_eq : @Eq.{1} Nat q q&#x27;) → (r_eq : @Eq.{1} Nat r r&#x27;) → P) → P</pre></li><li><code>ChompLean.Pos.mk.sizeOf_spec</code><pre class="prose">∀ (p q r : Nat) (hq : @LE.le.{0} Nat instLENat q p) (hr : @LE.le.{0} Nat instLENat r q),
+  @Eq.{1} Nat (@SizeOf.sizeOf.{1} ChompLean.Pos ChompLean.Pos._sizeOf_inst (ChompLean.Pos.mk p q r hq hr))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) (@SizeOf.sizeOf.{1} Nat instSizeOfNat p))
+            (@SizeOf.sizeOf.{1} Nat instSizeOfNat q))
+          (@SizeOf.sizeOf.{1} Nat instSizeOfNat r))
+        (@SizeOf.sizeOf.{0} (@LE.le.{0} Nat instLENat q p) (instSizeOfDefault.{0} (@LE.le.{0} Nat instLENat q p)) hq))
+      (@SizeOf.sizeOf.{0} (@LE.le.{0} Nat instLENat r q) (instSizeOfDefault.{0} (@LE.le.{0} Nat instLENat r q)) hr))</pre></li><li><code>ChompLean.Pos.noConfusion</code><pre class="prose">{P : Sort u} → {t t&#x27; : ChompLean.Pos} → (eq : @Eq.{1} ChompLean.Pos t t&#x27;) → ChompLean.Pos.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.Pos.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.Pos) → Sort u</pre></li><li><code>ChompLean.Pos.p</code><pre class="prose">(self : ChompLean.Pos) → Nat</pre></li><li><code>ChompLean.Pos.q</code><pre class="prose">(self : ChompLean.Pos) → Nat</pre></li><li><code>ChompLean.Pos.r</code><pre class="prose">(self : ChompLean.Pos) → Nat</pre></li><li><code>ChompLean.Pos.rec</code><pre class="prose">{motive : (t : ChompLean.Pos) → Sort u} →
+  (mk :
+      (p q r : Nat) →
+        (hq : @LE.le.{0} Nat instLENat q p) →
+          (hr : @LE.le.{0} Nat instLENat r q) → motive (ChompLean.Pos.mk p q r hq hr)) →
+    (t : ChompLean.Pos) → motive t</pre></li><li><code>ChompLean.Pos.recOn</code><pre class="prose">{motive : (t : ChompLean.Pos) → Sort u} →
+  (t : ChompLean.Pos) →
+    (mk :
+        (p q r : Nat) →
+          (hq : @LE.le.{0} Nat instLENat q p) →
+            (hr : @LE.le.{0} Nat instLENat r q) → motive (ChompLean.Pos.mk p q r hq hr)) →
+      motive t</pre></li><li><code>ChompLean.Pos.secondCut</code><pre class="prose">(x : ChompLean.Pos) → (a : Nat) → (ha : @LE.le.{0} Nat instLENat a (ChompLean.Pos.q x)) → ChompLean.Pos</pre></li><li><code>ChompLean.Pos.secondCut._proof_1</code><pre class="prose">∀ (x : ChompLean.Pos) (a : Nat) (ha : @LE.le.{0} Nat instLENat a (ChompLean.Pos.q x)),
+  @LE.le.{0} Nat instLENat a (ChompLean.Pos.p x)</pre></li><li><code>ChompLean.Pos.secondCut._proof_2</code><pre class="prose">∀ (x : ChompLean.Pos) (a : Nat), @LE.le.{0} Nat instLENat (@Min.min.{0} Nat instMinNat a (ChompLean.Pos.r x)) a</pre></li><li><code>ChompLean.Pos.secondCut.eq_1</code><pre class="prose">∀ (x : ChompLean.Pos) (a : Nat) (ha : @LE.le.{0} Nat instLENat a (ChompLean.Pos.q x)),
+  @Eq.{1} ChompLean.Pos (ChompLean.Pos.secondCut x a ha)
+    (ChompLean.Pos.mk (ChompLean.Pos.p x) a (Nat.min a (ChompLean.Pos.r x)) (ChompLean.Pos.secondCut._proof_1 x a ha)
+      (ChompLean.Pos.secondCut._proof_2 x a))</pre></li><li><code>ChompLean.Pos.size</code><pre class="prose">(x : ChompLean.Pos) → Nat</pre></li><li><code>ChompLean.Pos.size.eq_1</code><pre class="prose">∀ (x : ChompLean.Pos),
+  @Eq.{1} Nat (ChompLean.Pos.size x)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.Pos.p x) (ChompLean.Pos.q x))
+      (ChompLean.Pos.r x))</pre></li><li><code>ChompLean.Pos.thirdCut</code><pre class="prose">(x : ChompLean.Pos) → (b : Nat) → (hb : @LE.le.{0} Nat instLENat b (ChompLean.Pos.r x)) → ChompLean.Pos</pre></li><li><code>ChompLean.Pos.thirdCut._proof_1</code><pre class="prose">∀ (x : ChompLean.Pos) (b : Nat) (hb : @LE.le.{0} Nat instLENat b (ChompLean.Pos.r x)),
+  @LE.le.{0} Nat instLENat b (ChompLean.Pos.q x)</pre></li><li><code>ChompLean.Pos.thirdCut.eq_1</code><pre class="prose">∀ (x : ChompLean.Pos) (b : Nat) (hb : @LE.le.{0} Nat instLENat b (ChompLean.Pos.r x)),
+  @Eq.{1} ChompLean.Pos (ChompLean.Pos.thirdCut x b hb)
+    (ChompLean.Pos.mk (ChompLean.Pos.p x) (ChompLean.Pos.q x) b (ChompLean.Pos.hq x)
+      (ChompLean.Pos.thirdCut._proof_1 x b hb))</pre></li><li><code>ChompLean.UniqueActualWinningTargetClaim</code><pre class="prose">Prop</pre></li><li><code>ChompLean.lowerSquarePos</code><pre class="prose">(p a : Nat) → (hap : @LE.le.{0} Nat instLENat a p) → ChompLean.Pos</pre></li><li><code>ChompLean.mkPos</code><pre class="prose">(p q r : Nat) → (hqp : @LE.le.{0} Nat instLENat q p) → (hrq : @LE.le.{0} Nat instLENat r q) → ChompLean.Pos</pre></li><li><code>ChompLean.move_size_lt</code><pre class="prose">∀ {x y : ChompLean.Pos} (h : ChompLean.Move x y), @LT.lt.{0} Nat instLTNat (ChompLean.Pos.size y) (ChompLean.Pos.size x)</pre></li><li><code>ChompLean.move_size_lt._proof_1_4</code><pre class="prose">∀ {x : ChompLean.Pos} (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (ChompLean.Pos.p x))
+  (hq : @LE.le.{0} Nat instLENat (Nat.min a (ChompLean.Pos.q x)) (ChompLean.Pos.q x))
+  (hr : @LE.le.{0} Nat instLENat (Nat.min a (ChompLean.Pos.r x)) (ChompLean.Pos.r x)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a (ChompLean.Pos.q x)))
+          (Nat.min a (ChompLean.Pos.r x)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.Pos.p x) (ChompLean.Pos.q x))
+          (ChompLean.Pos.r x))) →
+    False</pre></li><li><code>ChompLean.move_size_lt._proof_1_6</code><pre class="prose">∀ {x : ChompLean.Pos} (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (ChompLean.Pos.q x))
+  (hr : @LE.le.{0} Nat instLENat (Nat.min a (ChompLean.Pos.r x)) (ChompLean.Pos.r x)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.Pos.p x) a)
+          (Nat.min a (ChompLean.Pos.r x)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.Pos.p x) (ChompLean.Pos.q x))
+          (ChompLean.Pos.r x))) →
+    False</pre></li><li><code>ChompLean.rectanglePos</code><pre class="prose">(p : Nat) → ChompLean.Pos</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/ChompLean/Statement.lean:1</p><p>SHA-256: <code class="path">ad588cd4579742118a8cfa3ee524557ef0f32fe13aa61e3caad8c584bd261cbd</code></p></section><p><a href="../index.html#id=lean-9b9cdeb61ba7421a3cf5">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

@@ -1,0 +1,1131 @@
+{
+  "module": "R151FAtomicPreview",
+  "sourcePath": "lean/core/R151FAtomicPreview.lean",
+  "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+  "declarationCount": 70,
+  "theoremDeclarationCount": 70,
+  "proofValuedDeclarationCount": 70,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 234,
+      "typePretty": "∀ {q g H : Nat}\n  (hrv :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hstart :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (howners :\n    ChompLean.LowerOwnerCoveredBy\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      g)\n  (hNB :\n    Not\n      (@Exists.{1} Nat fun (k0 : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat g k0)\n          (And\n            (@LT.lt.{0} Nat instLTNat k0\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n            (@Eq.{1} Nat (ChompLean.gameF k0 g) k0))))\n  (hra :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hq1 : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q)\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hpreviewLeft : @LE.le.{0} Nat instLENat H g)\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.gameF q H)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  And\n    (@Exists.{1} Nat fun (w : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat g w)\n        (And\n          (@LT.lt.{0} Nat instLTNat w\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@Eq.{1} Nat (ChompLean.gameF w g)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))\n    (@LT.lt.{0} Nat instLTNat H g)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hra :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat g\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_10",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat} (w : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_11",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat} (hpreviewLeft : @LE.le.{0} Nat instLENat H g) (w : Nat) (hHg : Not (@Eq.{1} Nat H g)),\n  Not (@LT.lt.{0} Nat instLTNat H g) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hstart :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hq1 : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q)\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.gameF q H)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_3",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hra :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (b : Nat) (hbg : @LT.lt.{0} Nat instLTNat b g),\n  Not\n      (@LE.le.{0} Nat instLENat b\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_4",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hra :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (b : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_5",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat} (b : Nat) (hbg : @LT.lt.{0} Nat instLTNat b g)\n  (hbb :\n    @Eq.{1} Nat b\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_6",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hra :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat g\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_7",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hra :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_8",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hgg :\n    @Eq.{1} Nat g\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_g_extension._proof_1_9",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hstart :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hq1 : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q)\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.gameF q g)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (htri :\n    Or\n      (@Exists.{1} Nat fun (b : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat b g)\n          (@Eq.{1} Nat\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              b)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))\n      (Or\n        (@Exists.{1} Nat fun (w : Nat) =>\n          And (@LT.lt.{0} Nat instLTNat g w)\n            (And\n              (@LT.lt.{0} Nat instLTNat w\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              (@Eq.{1} Nat (ChompLean.gameF w g)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))\n        (@Eq.{1} Nat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            g)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))\n  (w : Nat)\n  (hwq :\n    @LT.lt.{0} Nat instLTNat w\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hwval :\n    @Eq.{1} Nat (ChompLean.gameF w g)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  Not (@LT.lt.{0} Nat instLTNat w q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_three_worlds",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 346,
+      "typePretty": "∀ {q g H : Nat}\n  (hrv :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hstart :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (howners :\n    ChompLean.LowerOwnerCoveredBy\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      g)\n  (hra :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hq1 : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q)\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hpreviewLeft : @LE.le.{0} Nat instLENat H g)\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.gameF q H)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  Or\n    (And\n      (@Exists.{1} Nat fun (w : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat g w)\n          (And\n            (@LT.lt.{0} Nat instLTNat w\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@Eq.{1} Nat (ChompLean.gameF w g)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))\n      (@LT.lt.{0} Nat instLTNat H g))\n    (Or\n      (And\n        (@Exists.{1} Nat fun (k0 : Nat) =>\n          And (@LT.lt.{0} Nat instLTNat g k0)\n            (And (@LE.le.{0} Nat instLENat k0 q) (@Eq.{1} Nat (ChompLean.gameF k0 g) k0)))\n        (@LT.lt.{0} Nat instLTNat H g))\n      (@Exists.{1} Nat fun (k0 : Nat) =>\n        And\n          (Or\n            (@Eq.{1} Nat k0\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@Eq.{1} Nat k0\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))\n          (@Eq.{1} Nat (ChompLean.gameF k0 g) k0)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_three_worlds._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hstart :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.gameF q g)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (k0 : Nat) (hk0 : @Eq.{1} Nat (ChompLean.gameF k0 g) k0) (hk0q : @LE.le.{0} Nat instLENat k0 q)\n  (hpers : @Eq.{1} Nat (ChompLean.gameF q g) k0), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_three_worlds._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat} (hpreviewLeft : @LE.le.{0} Nat instLENat H g) (k0 : Nat) (hHg : Not (@Eq.{1} Nat H g)),\n  Not (@LT.lt.{0} Nat instLTNat H g) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_atomic_boundary_three_worlds._proof_1_3",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q g H : Nat}\n  (hstart :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hburn :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.gameF q H)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (k0 : Nat)\n  (hkv :\n    @LT.lt.{0} Nat instLTNat k0\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hk0 : @Eq.{1} Nat (ChompLean.gameF k0 g) k0) (hk0q : Not (@LE.le.{0} Nat instLENat k0 q)),\n  Not\n      (Or\n        (@Eq.{1} Nat k0\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@Eq.{1} Nat k0\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_column_g_trichotomy",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 197,
+      "typePretty": "∀ {v r g t : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (howners : ChompLean.LowerOwnerCoveredBy v g)\n  (hNB :\n    Not\n      (@Exists.{1} Nat fun (k0 : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat g k0)\n          (And (@LT.lt.{0} Nat instLTNat k0 v) (@Eq.{1} Nat (ChompLean.gameF k0 g) k0))))\n  (hgt : @LT.lt.{0} Nat instLTNat g t) (htv : @LT.lt.{0} Nat instLTNat t v),\n  Or (@Exists.{1} Nat fun (b : Nat) => And (@LT.lt.{0} Nat instLTNat b g) (@Eq.{1} Nat (ChompLean.gameF t b) v))\n    (Or\n      (@Exists.{1} Nat fun (w : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat g w) (And (@LT.lt.{0} Nat instLTNat w t) (@Eq.{1} Nat (ChompLean.gameF w g) v)))\n      (@Eq.{1} Nat (ChompLean.gameF t g) v))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_column_g_trichotomy._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g t : Nat} (hgt : @LT.lt.{0} Nat instLTNat g t), Not (@LE.le.{0} Nat instLENat g t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_column_g_trichotomy._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g t : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v) (htv : @LT.lt.{0} Nat instLTNat t v),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_column_g_trichotomy._proof_1_3",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g t : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hlt : Not (@LT.lt.{0} Nat instLTNat (ChompLean.gameF t g) v))\n  (hgt' : Not (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF t g))), Not (@Eq.{1} Nat (ChompLean.gameF t g) v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_crossing_supplier_is_saturated",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 326,
+      "typePretty": "∀ {a H k : Nat} (hHa : @LT.lt.{0} Nat instLTNat H a) (hak : @LT.lt.{0} Nat instLTNat a k)\n  (hval : @Eq.{1} Nat (ChompLean.gameF a H) k) (j : Nat),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) j →\n    @LT.lt.{0} Nat instLTNat j k → ChompLean.B ChompLean.gameF a H j",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_crossing_supplier_is_saturated._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a H k : Nat} (hak : @LT.lt.{0} Nat instLTNat a k) (hval : @Eq.{1} Nat (ChompLean.gameF a H) k)\n  (hsmall :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        H)\n      a)\n  (hconst :\n    @Eq.{1} Nat k\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        H)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_crossing_supplier_is_saturated._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a H k : Nat} (hHa : @LT.lt.{0} Nat instLTNat H a), Not (@LE.le.{0} Nat instLENat H a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 88,
+      "typePretty": "∀ {v r g : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (howners : ChompLean.LowerOwnerCoveredBy v g)\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r),\n  Or\n    (@Exists.{1} Nat fun (k0 : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat g k0) (And (@LT.lt.{0} Nat instLTNat k0 v) (@Eq.{1} Nat (ChompLean.gameF k0 g) k0)))\n    (@Exists.{1} Nat fun (s : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat g s) (And (@LT.lt.{0} Nat instLTNat s v) (@Eq.{1} Nat (ChompLean.gameF s g) v)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v),\n  @LT.lt.{0} Nat instLTNat g v →\n    Not\n        (@LE.le.{0} Nat instLENat g\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n      False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_10",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat}\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (b : Nat) (hbg : @LT.lt.{0} Nat instLTNat b g) (hbr : @Eq.{1} Nat b r), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_11",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_12",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hlt : Not (@LT.lt.{0} Nat instLTNat (ChompLean.gameF v g) v))\n  (hgt' : Not (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF v g))), Not (@Eq.{1} Nat (ChompLean.gameF v g) v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_13",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (hout : @Eq.{1} Nat (ChompLean.gameF v g) v), Not (@LE.le.{0} Nat instLENat g v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_14",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hout : @Eq.{1} Nat (ChompLean.gameF v g) v), Not (@LE.le.{0} Nat instLENat r v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_15",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat}\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (hgr : @Eq.{1} Nat g r), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v),\n  @LT.lt.{0} Nat instLTNat g v →\n    ∀\n      (hcarry :\n        @LT.lt.{0} Nat instLTNat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            g)\n          v),\n      Not\n          (@LE.le.{0} Nat instLENat\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              g)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n        False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_3",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r),\n  Not (@LE.le.{0} Nat instLENat g v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_4",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (k a : Nat) (hag : @LE.le.{0} Nat instLENat a g), Not (@LT.lt.{0} Nat instLTNat a v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_5",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (k rk : Nat) (hrkk : @LT.lt.{0} Nat instLTNat rk k) (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k)\n  (hrkg' : @Eq.{1} Nat rk g), Not (@LT.lt.{0} Nat instLTNat g k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_6",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (k rk : Nat) (hrkg : @LE.le.{0} Nat instLENat rk g) (hrkg' : Not (@Eq.{1} Nat rk g)),\n  Not (@LT.lt.{0} Nat instLTNat rk g) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_7",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v) (k : Nat) (hkv : @LT.lt.{0} Nat instLTNat k v) (rk : Nat)\n  (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k), Not (@LE.le.{0} Nat instLENat k v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_8",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (b : Nat) (hbg : @LT.lt.{0} Nat instLTNat b g) (hbval : @Eq.{1} Nat (ChompLean.gameF v b) v),\n  Not (@LE.le.{0} Nat instLENat b v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failure_column_g_dichotomy._proof_1_9",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v) (b : Nat)\n  (hbval : @Eq.{1} Nat (ChompLean.gameF v b) v), Not (@LE.le.{0} Nat instLENat r v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_freeze_column_unique",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 57,
+      "typePretty": "∀ {r k₁ k₂ : Nat} (hrk₁ : @LT.lt.{0} Nat instLTNat r k₁) (h₁ : @Eq.{1} Nat (ChompLean.gameF k₁ r) k₁)\n  (h₁₂ : @LT.lt.{0} Nat instLTNat k₁ k₂) (h₂ : @Eq.{1} Nat (ChompLean.gameF k₂ r) k₂), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_freeze_column_unique._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r k₁ k₂ : Nat} (h₁ : @Eq.{1} Nat (ChompLean.gameF k₁ r) k₁) (h₁₂ : @LT.lt.{0} Nat instLTNat k₁ k₂)\n  (h₂ : @Eq.{1} Nat (ChompLean.gameF k₂ r) k₂), Not (@LE.le.{0} Nat instLENat k₁ k₂) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_freeze_column_unique._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r k₁ k₂ : Nat} (h₁ : @Eq.{1} Nat (ChompLean.gameF k₁ r) k₁) (h₁₂ : @LT.lt.{0} Nat instLTNat k₁ k₂)\n  (h₂ : @Eq.{1} Nat (ChompLean.gameF k₂ r) k₂) (hpers : @Eq.{1} Nat (ChompLean.gameF k₂ r) k₁), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_freeze_persists",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 39,
+      "typePretty": "∀ {k rk t : Nat} (hrkk : @LT.lt.{0} Nat instLTNat rk k) (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k)\n  (hkt : @LE.le.{0} Nat instLENat k t), @Eq.{1} Nat (ChompLean.gameF t rk) k",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_freeze_persists._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k rk t : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat k\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_freeze_persists._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k rk t : Nat} (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k) (hkt : @LE.le.{0} Nat instLENat k t)\n  (h :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t k))\n        rk)\n      (ChompLean.gameF k rk)),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t k))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_noCarry_at_g_of_no_g_freeze",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 184,
+      "typePretty": "∀ {v g t : Nat}\n  (hNB :\n    Not\n      (@Exists.{1} Nat fun (k0 : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat g k0)\n          (And (@LT.lt.{0} Nat instLTNat k0 v) (@Eq.{1} Nat (ChompLean.gameF k0 g) k0))))\n  (hgt : @LT.lt.{0} Nat instLTNat g t) (htv : @LT.lt.{0} Nat instLTNat t v),\n  Not\n    (And (@LT.lt.{0} Nat instLTNat g t)\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g)\n        t))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_noCarry_at_g_of_no_g_freeze._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g t : Nat} (hgt : @LT.lt.{0} Nat instLTNat g t)\n  (hcarry :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        g)\n      t),\n  Not\n      (@LE.le.{0} Nat instLENat g\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_noCarry_at_g_of_no_g_freeze._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g t : Nat}\n  (hcarry :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        g)\n      t),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_noCarry_at_g_of_no_g_freeze._proof_1_3",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g t : Nat} (htv : @LT.lt.{0} Nat instLTNat t v)\n  (hcarry :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        g)\n      t)\n  (hrow :\n    And\n      (@LT.lt.{0} Nat instLTNat g\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g))\n      (@Eq.{1} Nat\n        (ChompLean.gameF\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            g)\n          g)\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g)\n        v) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_ownerCovered_saturation_at_g",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 155,
+      "typePretty": "∀ {v g t : Nat} (howners : ChompLean.LowerOwnerCoveredBy v g)\n  (hNB :\n    Not\n      (@Exists.{1} Nat fun (k0 : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat g k0)\n          (And (@LT.lt.{0} Nat instLTNat k0 v) (@Eq.{1} Nat (ChompLean.gameF k0 g) k0))))\n  (hgt : @LT.lt.{0} Nat instLTNat g t) (_htv : @LT.lt.{0} Nat instLTNat t v) (k : Nat),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →\n    @LT.lt.{0} Nat instLTNat k v → ChompLean.B ChompLean.gameF t g k",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_ownerCovered_saturation_at_g._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g t : Nat} (hgt : @LT.lt.{0} Nat instLTNat g t) (k a : Nat) (hag : @LE.le.{0} Nat instLENat a g),\n  Not (@LT.lt.{0} Nat instLTNat a t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_ownerCovered_saturation_at_g._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g t : Nat} (k rk : Nat) (hrkk : @LT.lt.{0} Nat instLTNat rk k) (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k)\n  (hrkg' : @Eq.{1} Nat rk g), Not (@LT.lt.{0} Nat instLTNat g k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_ownerCovered_saturation_at_g._proof_1_3",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g t : Nat} (k rk : Nat) (hrkg : @LE.le.{0} Nat instLENat rk g) (hrkg' : Not (@Eq.{1} Nat rk g)),\n  Not (@LT.lt.{0} Nat instLTNat rk g) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_ownerCovered_saturation_at_g._proof_1_4",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g t : Nat} (k rk : Nat) (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k)\n  (hkt : Not (@LE.le.{0} Nat instLENat k t)), Not (@LT.lt.{0} Nat instLTNat t k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_ownerCovered_saturation_at_g._proof_1_5",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v g t : Nat} (k rk : Nat) (hrkg : @LE.le.{0} Nat instLENat rk g) (b : Nat) (hbrk : @LT.lt.{0} Nat instLTNat b rk),\n  Not (@LT.lt.{0} Nat instLTNat b g) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_column_freeze_free",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 70,
+      "typePretty": "∀ {q H k rk : Nat}\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.gameF q H)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hkq : @LE.le.{0} Nat instLENat k q) (hrkk : @LT.lt.{0} Nat instLTNat rk k)\n  (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k), @Ne.{1} Nat rk H",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_column_freeze_free._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat}\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.gameF q H)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hkq : @LE.le.{0} Nat instLENat k q) (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k)\n  (hpers : @Eq.{1} Nat (ChompLean.gameF q H) k), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 272,
+      "typePretty": "∀ {q H k rk : Nat}\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.gameF q H)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hkq : @LE.le.{0} Nat instLENat k q) (hrkH : @LT.lt.{0} Nat instLTNat H rk) (hrkk : @LT.lt.{0} Nat instLTNat rk k)\n  (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k),\n  @Exists.{1} Nat fun (a : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat H a) (And (@LT.lt.{0} Nat instLTNat a k) (@Eq.{1} Nat (ChompLean.gameF a H) k))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_1",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hrkH : @LT.lt.{0} Nat instLTNat H rk) (hrkk : @LT.lt.{0} Nat instLTNat rk k)\n  (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_10",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k) (hpersist : @Eq.{1} Nat (ChompLean.gameF q rk) k)\n  (a : Nat) (haval : @Eq.{1} Nat (ChompLean.gameF a (@Min.min.{0} Nat instMinNat a H)) k)\n  (hcol : @Eq.{1} Nat (ChompLean.gameF a H) k)\n  (hrow : And (@LT.lt.{0} Nat instLTNat H k) (@Eq.{1} Nat (ChompLean.gameF k H) k)),\n  Not (@LE.le.{0} Nat instLENat H k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_11",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hrkk : @LT.lt.{0} Nat instLTNat rk k) (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k)\n  (hpersist : @Eq.{1} Nat (ChompLean.gameF q rk) k) (a : Nat)\n  (haval : @Eq.{1} Nat (ChompLean.gameF a (@Min.min.{0} Nat instMinNat a H)) k)\n  (hcol : @Eq.{1} Nat (ChompLean.gameF a H) k)\n  (hrow : And (@LT.lt.{0} Nat instLTNat H k) (@Eq.{1} Nat (ChompLean.gameF k H) k)),\n  Not (@LE.le.{0} Nat instLENat rk k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_12",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hrkH : @LT.lt.{0} Nat instLTNat H rk) (a : Nat) (hHrk : @Eq.{1} Nat H rk), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_2",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat}\n  (hsmall :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        H)\n      q)\n  (hconst :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        H)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_3",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hkq : @LE.le.{0} Nat instLENat k q) (hrkH : @LT.lt.{0} Nat instLTNat H rk)\n  (hrkk : @LT.lt.{0} Nat instLTNat rk k) (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k),\n  Not (@LE.le.{0} Nat instLENat H q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_4",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hkq : @LE.le.{0} Nat instLENat k q) (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k),\n  Not\n      (@LT.lt.{0} Nat instLTNat k\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_5",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hkq : @LE.le.{0} Nat instLENat k q) (hrkH : @LT.lt.{0} Nat instLTNat H rk)\n  (hrkk : @LT.lt.{0} Nat instLTNat rk k) (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k)\n  (hpersist : @Eq.{1} Nat (ChompLean.gameF q rk) k) (b : Nat) (hbH : @LT.lt.{0} Nat instLTNat b H)\n  (hbval : @Eq.{1} Nat (ChompLean.gameF q b) k), Not (@LE.le.{0} Nat instLENat b q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_6",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hkq : @LE.le.{0} Nat instLENat k q) (hrkk : @LT.lt.{0} Nat instLTNat rk k)\n  (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k) (hpersist : @Eq.{1} Nat (ChompLean.gameF q rk) k) (b : Nat)\n  (hbval : @Eq.{1} Nat (ChompLean.gameF q b) k), Not (@LE.le.{0} Nat instLENat rk q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_7",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hrkH : @LT.lt.{0} Nat instLTNat H rk) (b : Nat) (hbH : @LT.lt.{0} Nat instLTNat b H)\n  (hbrk : @Eq.{1} Nat b rk), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_8",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (a : Nat) (haH : Not (@LE.le.{0} Nat instLENat a H)), Not (@LE.le.{0} Nat instLENat H a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_crossing_blocker_prefreeze_visit._proof_1_9",
+      "module": "R151FAtomicPreview",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q H k rk : Nat} (hstartk : @Eq.{1} Nat (ChompLean.gameF k rk) k) (hpersist : @Eq.{1} Nat (ChompLean.gameF q rk) k)\n  (a : Nat) (haval : @Eq.{1} Nat (ChompLean.gameF a (@Min.min.{0} Nat instMinNat a H)) k)\n  (hcol : @Eq.{1} Nat (ChompLean.gameF a H) k) (hak : Not (@LT.lt.{0} Nat instLTNat a k)),\n  Not (@LE.le.{0} Nat instLENat (ChompLean.gameF a H) a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "c6398082ce317f5b5bb24f9cd9b85aab61f562c87c66c2e3c2b0fddb730e82d0",
+      "sourcePath": "lean/core/R151FAtomicPreview.lean",
+      "universeParameters": []
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "module": "R37UnitDipLateBlockerCharge",
+  "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+  "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+  "declarationCount": 26,
+  "theoremDeclarationCount": 26,
+  "proofValuedDeclarationCount": 26,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.gameF_active_hosts_unique_and_avoid_preview",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 130,
+      "typePretty": "∀ {s b r z : Nat} (hbs : @LT.lt.{0} Nat instLTNat b s) (hsr : @LT.lt.{0} Nat instLTNat s r)\n  (hrz : @LT.lt.{0} Nat instLTNat r z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (x : Nat),\n  @LT.lt.{0} Nat instLTNat r x →\n    @LT.lt.{0} Nat instLTNat x z →\n      @Exists.{1} Nat fun (c : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat c r)\n          (And (@Ne.{1} Nat c b)\n            (And (@Eq.{1} Nat (ChompLean.gameF x c) z)\n              (∀ (c' : Nat), @LT.lt.{0} Nat instLTNat c' r → @Eq.{1} Nat (ChompLean.gameF x c') z → @Eq.{1} Nat c' c)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_active_hosts_unique_and_avoid_preview._proof_1_1",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s b r z : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (x : Nat) (hrx : @LT.lt.{0} Nat instLTNat r x),\n  Not (@LT.lt.{0} Nat instLTNat s x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_active_hosts_unique_and_avoid_preview._proof_1_2",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s b r z : Nat} (x : Nat) (hrx : @LT.lt.{0} Nat instLTNat r x) (c c' : Nat) (hc'r : @LT.lt.{0} Nat instLTNat c' r),\n  Not (@LE.le.{0} Nat instLENat c' x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_active_hosts_unique_and_avoid_preview._proof_1_3",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s b r z : Nat} (x : Nat) (hrx : @LT.lt.{0} Nat instLTNat r x) (c : Nat) (hcr : @LT.lt.{0} Nat instLTNat c r)\n  (c' : Nat), Not (@LE.le.{0} Nat instLENat c x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_dip_first_gap_late_blocker_has_no_early_freeze",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 189,
+      "typePretty": "∀ {s : Nat} (hLate : ChompLean.DipFirstGapLateBlockerLoss ChompLean.gameRecurrenceModel s),\n  Not\n    (@Exists.{1} Nat fun (r : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n        (And\n          (@Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)\n            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n          (@LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_dip_first_gap_late_blocker_has_no_early_freeze._proof_1_1",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (_b r : Nat)\n  (_hpreview : @Eq.{1} Nat (ChompLean.gameF s _b) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hstart :\n    @Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hhalf :\n    @LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r))\n  (r' : Nat)\n  (hstart' :\n    @Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r')\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hearly :\n    @LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r' r')\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hrr' : @Eq.{1} Nat r r'), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_dip_first_gap_late_blocker_sharp_coordinates",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 154,
+      "typePretty": "∀ {s : Nat} (hLate : ChompLean.DipFirstGapLateBlockerLoss ChompLean.gameRecurrenceModel s),\n  @Exists.{1} Nat fun (b : Nat) =>\n    @Exists.{1} Nat fun (r : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat b s)\n        (And\n          (@LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            r)\n          (And (@LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n            (And (@Eq.{1} Nat (ChompLean.gameF s b) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n              (And\n                (@Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)\n                  (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n                (And\n                  (Not\n                    (ChompLean.B ChompLean.gameF\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)))\n                  (And\n                    (@LE.le.{0} Nat instLENat\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                        (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)\n                      r)\n                    (And\n                      (@LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r))\n                      (∀ (x : Nat),\n                        @LT.lt.{0} Nat instLTNat r x →\n                          @LT.lt.{0} Nat instLTNat x (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) →\n                            @Exists.{1} Nat fun (c : Nat) =>\n                              And (@LT.lt.{0} Nat instLTNat c r)\n                                (And (@Ne.{1} Nat c b)\n                                  (And\n                                    (@Eq.{1} Nat (ChompLean.gameF x c)\n                                      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n                                    (∀ (c' : Nat),\n                                      @LT.lt.{0} Nat instLTNat c' r →\n                                        @Eq.{1} Nat (ChompLean.gameF x c')\n                                            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) →\n                                          @Eq.{1} Nat c' c)))))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_dip_first_gap_late_blocker_sharp_coordinates._proof_1_1",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (r : Nat)\n  (hrLate :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (b : Nat), Not (@LT.lt.{0} Nat instLTNat s r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_dip_first_gap_late_blocker_sharp_coordinates._proof_1_2",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (r : Nat) (hrz : @LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hstart :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n        r)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (b : Nat)\n  (hpreview :\n    @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel s b)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hcap :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)\n      r),\n  Not\n      (@LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 210,
+      "typePretty": "∀ {s : Nat} (hLate : ChompLean.DipFirstGapLateBlockerLoss ChompLean.gameRecurrenceModel s),\n  have z : Nat := ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s;\n  have q : Nat :=\n    ChompLean.gameF\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      s;\n  @Exists.{1} Nat fun (r : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat r z)\n      (And (@Eq.{1} Nat (ChompLean.gameF z r) z)\n        (Or\n          (@Eq.{1} Nat q\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (And\n            (@LT.lt.{0} Nat instLTNat\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              q)\n            (And (@LT.lt.{0} Nat instLTNat q z)\n              (@Exists.{1} Nat fun (x : Nat) =>\n                And\n                  (@LT.lt.{0} Nat instLTNat\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    x)\n                  (And (@LT.lt.{0} Nat instLTNat x z)\n                    (And (Not (ChompLean.C ChompLean.gameF x s z))\n                      (Or (@LE.le.{0} Nat instLENat x r)\n                        (Or (Not (ChompLean.B ChompLean.gameF x s z))\n                          (@Exists.{1} Nat fun (a : Nat) =>\n                            And (@LT.lt.{0} Nat instLTNat s a)\n                              (And (@LT.lt.{0} Nat instLTNat a x) (@Eq.{1} Nat (ChompLean.gameF a s) z))))))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_1",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (r : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat s\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_2",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (r : Nat)\n  (hqMax :\n    @LE.le.{0} Nat instLENat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        s)\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          s)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_3",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (r : Nat)\n  (hqLower :\n    @LT.lt.{0} Nat instLTNat s\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        s))\n  (hboundary :\n    Not\n      (@Eq.{1} Nat\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          s)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          s)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_4",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (r b : Nat) (hbs : @LT.lt.{0} Nat instLTNat b s),\n  Not\n      (@LT.lt.{0} Nat instLTNat b\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_5",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (r : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat s\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_owner_free_nonunit_dip_has_halfway_late_freeze",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 256,
+      "typePretty": "∀ {s : Nat}\n  (hgap : @LT.lt.{0} Nat instLTNat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) (ChompLean.gameF s s))\n  (hNoDiagonal :\n    ∀ (a : Nat), @Ne.{1} Nat (ChompLean.gameF a a) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)),\n  @Exists.{1} Nat fun (b : Nat) =>\n    @Exists.{1} Nat fun (r : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat b s)\n        (And\n          (@LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            r)\n          (And (@LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n            (And (@Eq.{1} Nat (ChompLean.gameF s b) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n              (And\n                (@Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)\n                  (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n                (@LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_owner_free_nonunit_dip_has_no_early_freeze",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 279,
+      "typePretty": "∀ {s : Nat}\n  (hgap : @LT.lt.{0} Nat instLTNat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) (ChompLean.gameF s s))\n  (hNoDiagonal :\n    ∀ (a : Nat), @Ne.{1} Nat (ChompLean.gameF a a) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)),\n  Not\n    (@Exists.{1} Nat fun (r : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n        (And\n          (@Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)\n            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n          (@LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_plus_active_hosts_capacity",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 48,
+      "typePretty": "∀ {s b r z : Nat} (hbs : @LT.lt.{0} Nat instLTNat b s) (hsr : @LT.lt.{0} Nat instLTNat s r)\n  (hrz : @LT.lt.{0} Nat instLTNat r z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),\n  @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r) r",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_1",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s b r z : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (x : Nat)\n  (hrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        x)\n      (@LT.lt.{0} Nat instLTNat x\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (And (@LT.lt.{0} Nat instLTNat r x) (@LT.lt.{0} Nat instLTNat x z)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_2",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s b r z : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r)\n  (hrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        s)\n      (@LT.lt.{0} Nat instLTNat s\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_3",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {b r z : Nat} (x : Nat) (hbs : @LT.lt.{0} Nat instLTNat b x) (hsr : @LT.lt.{0} Nat instLTNat x r),\n  Not (@LT.lt.{0} Nat instLTNat b r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_4",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s b r z : Nat} (x : Nat) (hxActive : And (@LT.lt.{0} Nat instLTNat r x) (@LT.lt.{0} Nat instLTNat x z)) (c : Nat)\n  (hcr : @LT.lt.{0} Nat instLTNat c r), Not (@LT.lt.{0} Nat instLTNat c x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_5",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {b r z : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (x : Nat)\n  (hsr : @LT.lt.{0} Nat instLTNat x r) (hpreview : @Eq.{1} Nat (ChompLean.gameF x b) z),\n  Not (@LT.lt.{0} Nat instLTNat x z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_6",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s b r z : Nat}\n  (hex :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n          (@List.cons.{0} Nat s\n            (List.range'\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          x →\n        @Exists.{1} Nat fun (c : Nat) =>\n          And (@LT.lt.{0} Nat instLTNat c r) (And (@LT.lt.{0} Nat instLTNat c x) (@Eq.{1} Nat (ChompLean.gameF x c) z)))\n  (x y : Nat) (hEq : Not (@Eq.{1} Nat x y)) (hlt : Not (@LT.lt.{0} Nat instLTNat x y)),\n  Not (@LT.lt.{0} Nat instLTNat y x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_7",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s b r z : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)\n  (hex :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n          (@List.cons.{0} Nat s\n            (List.range'\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          x →\n        @Exists.{1} Nat fun (c : Nat) =>\n          And (@LT.lt.{0} Nat instLTNat c r)\n            (And (@LT.lt.{0} Nat instLTNat c x) (@Eq.{1} Nat (ChompLean.gameF x c) z))),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R37UnitDipLateBlockerCharge.0.ChompLean.r37_nodup_map_of_injective_on",
+      "module": "R37UnitDipLateBlockerCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 23,
+      "typePretty": "∀ {alpha beta : Type} [inst : BEq.{0} alpha] [@LawfulBEq.{0} alpha inst] [inst : BEq.{0} beta]\n  [@LawfulBEq.{0} beta inst] (f : alpha → beta) (xs : List.{0} alpha) (hxs : @List.Nodup.{0} alpha xs)\n  (hinj :\n    ∀ (x : alpha),\n      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x →\n        ∀ (y : alpha),\n          @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs y →\n            @Eq.{1} beta (f x) (f y) → @Eq.{1} alpha x y),\n  @List.Nodup.{0} beta (@List.map.{0, 0} alpha beta f xs)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c",
+      "sourcePath": "lean/core/R37UnitDipLateBlockerCharge.lean",
+      "universeParameters": []
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R194 Blocker Midpoint Finite Cohort · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R194 Blocker Midpoint Finite Cohort</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R194BlockerMidpointFiniteCohort.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R194BlockerMidpointFiniteCohort.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R194BlockerMidpointFiniteCohort.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 35 declarations</summary><ul class="declarations"><li><code>ChompLean.NatMonotone</code><pre class="prose">(f : Nat → Nat) → Prop</pre></li><li><code>ChompLean.UnitIncrement01</code><pre class="prose">(A : Nat → Nat) → Prop</pre></li><li><code>ChompLean.blockerMidpoint_equal_fiber_distance_le_one</code><pre class="prose">∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A) {a b : Nat}
+  (heq : @Eq.{1} Nat (ChompLean.countMidpoint A a) (ChompLean.countMidpoint A b)),
+  @LE.le.{0} Nat instLENat b
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.blockerMidpoint_equal_fiber_distance_le_one._proof_1_1</code><pre class="prose">∀ {A : Nat → Nat} {a b : Nat}
+  (hfar :
+    @GT.gt.{0} Nat instLTNat b
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        b) →
+    False</pre></li><li><code>ChompLean.blockerMidpoint_equal_fiber_distance_le_one._proof_1_2</code><pre class="prose">∀ {A : Nat → Nat} {a b : Nat} (heq : @Eq.{1} Nat (ChompLean.countMidpoint A a) (ChompLean.countMidpoint A b))
+  (hstrict :
+    @LT.lt.{0} Nat instLTNat (ChompLean.countMidpoint A a)
+      (ChompLean.countMidpoint A
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+  (htail :
+    @LE.le.{0} Nat instLENat
+      (ChompLean.countMidpoint A
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (ChompLean.countMidpoint A b)),
+  False</pre></li><li><code>ChompLean.blockerMidpoint_fiber_list_length_le_two</code><pre class="prose">∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A) {y : Nat} (xs : List.{0} Nat)
+  (hpair : @List.Pairwise.{0} Nat (fun (a b : Nat) =&gt; @LT.lt.{0} Nat instLTNat a b) xs)
+  (hfiber :
+    ∀ (v : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs v →
+        @Eq.{1} Nat (ChompLean.countMidpoint A v) y),
+  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs) (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))</pre></li><li><code>ChompLean.blockerMidpoint_fiber_list_length_le_two._proof_1_1</code><pre class="prose">∀ {A : Nat → Nat} {y : Nat} (v : Nat) (heq : @Eq.{1} Nat (ChompLean.countMidpoint A v) y),
+  Not
+      (And (@LE.le.{0} Nat instLENat y (ChompLean.countMidpoint A v))
+        (@LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v) y)) →
+    False</pre></li><li><code>ChompLean.blockerMidpoint_middle_cohort_length_le</code><pre class="prose">∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A) {r K : Nat} (xs : List.{0} Nat)
+  (hpair : @List.Pairwise.{0} Nat (fun (a b : Nat) =&gt; @LT.lt.{0} Nat instLTNat a b) xs)
+  (hcohort :
+    ∀ (v : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs v →
+        And
+          (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+            (ChompLean.countMidpoint A v))
+          (@LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))),
+  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) K)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.blockerMidpoint_middle_cohort_length_le._proof_1_1</code><pre class="prose">∀ {A : Nat → Nat} {r K : Nat} (v : Nat)
+  (h :
+    And
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+        (ChompLean.countMidpoint A v))
+      (@LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))),
+  Not
+      (And
+        (@LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)
+          (ChompLean.countMidpoint A v))
+        (@LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))) →
+    False</pre></li><li><code>ChompLean.blockerMidpoint_middle_cohort_length_le._proof_1_2</code><pre class="prose">∀ {r K : Nat} (xs : List.{0} Nat)
+  (h :
+    @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) K)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.blockerMidpoint_monotone_of_unitIncrement01</code><pre class="prose">∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A), ChompLean.NatMonotone (ChompLean.countMidpoint A)</pre></li><li><code>ChompLean.blockerMidpoint_strict_after_two</code><pre class="prose">∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A) (v : Nat),
+  @LT.lt.{0} Nat instLTNat (ChompLean.countMidpoint A v)
+    (ChompLean.countMidpoint A
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))</pre></li><li><code>ChompLean.blockerMidpoint_strict_after_two._proof_1_1</code><pre class="prose">∀ (v : Nat),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.blockerMidpoint_strict_after_two._proof_1_2</code><pre class="prose">∀ {A : Nat → Nat} (v : Nat)
+  (hA :
+    @LE.le.{0} Nat instLENat
+      (A
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (A
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+            (A
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (A
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.countMidpoint</code><pre class="prose">(A : Nat → Nat) → (v : Nat) → Nat</pre></li><li><code>ChompLean.countMidpoint.eq_1</code><pre class="prose">∀ (A : Nat → Nat) (v : Nat),
+  @Eq.{1} Nat (ChompLean.countMidpoint A v)
+    (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+        (A
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.countMidpoint_index_lt_of_le</code><pre class="prose">∀ {A : Nat → Nat} {v R : Nat} (hupper : @LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v) R),
+  @LT.lt.{0} Nat instLTNat v
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) R)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.countMidpoint_index_lt_of_le._proof_1_1</code><pre class="prose">∀ {A : Nat → Nat} {v R : Nat}
+  (hupper :
+    @LE.le.{0} Nat instLENat
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+          (A
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      R),
+  Not
+      (@LT.lt.{0} Nat instLTNat v
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) R)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.middle_cohort_can_contain_future_index</code><pre class="prose">∀ {r : Nat} (hr : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r),
+  And
+    (@LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.countMidpoint (fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)))
+    (And
+      (@LE.le.{0} Nat instLENat
+        (ChompLean.countMidpoint (fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@LT.lt.{0} Nat instLTNat r
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)))</pre></li><li><code>ChompLean.middle_cohort_can_contain_future_index._proof_1_2</code><pre class="prose">∀ {r : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        r) →
+    False</pre></li><li><code>ChompLean.middle_cohort_can_contain_future_index._proof_1_3</code><pre class="prose">∀ {r : Nat} (hr : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r)
+  (hhalf :
+    @Eq.{1} Nat
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      r),
+  Not
+      (And
+        (@LT.lt.{0} Nat instLTNat
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          r)
+        (And
+          (@LE.le.{0} Nat instLENat r
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@LT.lt.{0} Nat instLTNat r
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)))) →
+    False</pre></li><li><code>ChompLean.twoStepStrict_pairwise_band_length_le</code><pre class="prose">∀ (g : Nat → Nat) (hmono : ChompLean.NatMonotone g)
+  (hstrict2 :
+    ∀ (v : Nat),
+      @LT.lt.{0} Nat instLTNat (g v)
+        (g
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+  {lo hi : Nat} (xs : List.{0} Nat)
+  (hpair : @List.Pairwise.{0} Nat (fun (a b : Nat) =&gt; @LT.lt.{0} Nat instLTNat a b) xs)
+  (hband :
+    ∀ (x : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →
+        And (@LE.le.{0} Nat instLENat lo (g x)) (@LE.le.{0} Nat instLENat (g x) hi)),
+  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_1</code><pre class="prose">∀ (g : Nat → Nat) (n lo hi a : Nat),
+  Not
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_2</code><pre class="prose">∀ (n a b : Nat) (rest : List.{0} Nat) (hab : @LT.lt.{0} Nat instLTNat a b) (z : Nat)
+  (hbz : @LT.lt.{0} Nat instLTNat b z),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        z) →
+    False</pre></li><li><code>ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_3</code><pre class="prose">∀ (g : Nat → Nat) (n a b : Nat) (rest : List.{0} Nat) (z : Nat)
+  (hgaz :
+    @LE.le.{0} Nat instLENat
+      (g
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (g z))
+  (hga2 :
+    @LT.lt.{0} Nat instLTNat (g a)
+      (g
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (g a)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (g z)) →
+    False</pre></li><li><code>ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_4</code><pre class="prose">∀ (g : Nat → Nat) (n lo hi a b : Nat) (rest : List.{0} Nat)
+  (hlen :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat rest)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      n),
+  Not (@LT.lt.{0} Nat instLTNat (@List.length.{0} Nat rest) n) → False</pre></li><li><code>ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_5</code><pre class="prose">∀ (g : Nat → Nat) (n lo hi a b : Nat) (rest : List.{0} Nat)
+  (haBounds : And (@LE.le.{0} Nat instLENat lo (g a)) (@LE.le.{0} Nat instLENat (g a) hi))
+  (hahi : @LT.lt.{0} Nat instLTNat (g a) hi)
+  (hrec :
+    @LE.le.{0} Nat instLENat (@List.length.{0} Nat rest)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (g a)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat rest)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_6</code><pre class="prose">∀ (g : Nat → Nat) (n lo hi a b : Nat) (rest : List.{0} Nat)
+  (haBounds : And (@LE.le.{0} Nat instLENat lo (g a)) (@LE.le.{0} Nat instLENat (g a) hi))
+  (hahi : Not (@LT.lt.{0} Nat instLTNat (g a) hi)), Not (@Eq.{1} Nat (g a) hi) → False</pre></li><li><code>ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_7</code><pre class="prose">∀ (g : Nat → Nat) (n lo hi a b : Nat)
+  (haBounds : And (@LE.le.{0} Nat instLENat lo (g a)) (@LE.le.{0} Nat instLENat (g a) hi))
+  (hahi : Not (@LT.lt.{0} Nat instLTNat (g a) hi)) (z : Nat) (zs : List.{0} Nat)
+  (hzLower :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (g a)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (g z))
+  (hzUpper : @LE.le.{0} Nat instLENat (g z) hi), False</pre></li><li><code>ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_8</code><pre class="prose">∀ (g : Nat → Nat) (n lo hi a b : Nat),
+  Not
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.unitIncrement01_monotone</code><pre class="prose">∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A), ChompLean.NatMonotone A</pre></li><li><code>ChompLean.unitIncrement01_monotone._proof_1_1</code><pre class="prose">∀ {a : Nat} (n : Nat),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.unitIncrement01_monotone._proof_1_2</code><pre class="prose">∀ {A : Nat → Nat} {a : Nat} (n : Nat)
+  (ih :
+    ∀ (hab : @LE.le.{0} Nat instLENat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)),
+      @LE.le.{0} Nat instLENat (A a) (A (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)))
+  (hs :
+    @Eq.{1} Nat
+      (A
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (A (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n))),
+  Not
+      (@LE.le.{0} Nat instLENat (A a)
+        (A
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.unitIncrement01_monotone._proof_1_3</code><pre class="prose">∀ {A : Nat → Nat} {a : Nat} (n : Nat)
+  (ih :
+    ∀ (hab : @LE.le.{0} Nat instLENat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)),
+      @LE.le.{0} Nat instLENat (A a) (A (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)))
+  (hs :
+    @Eq.{1} Nat
+      (A
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (A (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LE.le.{0} Nat instLENat (A a)
+        (A
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.unitIncrement01_zero</code><pre class="prose">ChompLean.UnitIncrement01 fun (x : Nat) =&gt; @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R194BlockerMidpointFiniteCohort.lean:1</p><p>SHA-256: <code class="path">fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9</code></p></section><p><a href="../index.html#id=lean-fff8f2f6470dea53c6ed">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

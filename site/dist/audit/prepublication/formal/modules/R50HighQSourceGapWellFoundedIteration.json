@@ -1,0 +1,391 @@
+{
+  "module": "R50HighQSourceGapWellFoundedIteration",
+  "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+  "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+  "declarationCount": 24,
+  "theoremDeclarationCount": 18,
+  "proofValuedDeclarationCount": 18,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.HighQGapIterationRun",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 110,
+      "typePretty": "(c z r start length : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.HighQGapIterationStep",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 39,
+      "typePretty": "(c z r next current : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.HighQGapIterationTerminal",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 45,
+      "typePretty": "(c z r current : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.HighQGapLandingTerminal",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 30,
+      "typePretty": "(c z r x : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.HighQGapSeed",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 22,
+      "typePretty": "(c z t : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.LateBlockerHighQIterativeNormalForm",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 147,
+      "typePretty": "(s : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_descent_to_high_q_internal_iteration_global_bound",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 200,
+      "typePretty": "∀ {s n : Nat} (hrun : ChompLean.LateBlockerDescentRun s n)\n  (hHigh : ChompLean.LateBlockerHighQGapPacket (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)),\n  @Exists.{1} Nat fun (r : Nat) =>\n    @Exists.{1} Nat fun (x : Nat) =>\n      And\n        (@LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          r)\n        (And\n          (@LT.lt.{0} Nat instLTNat r\n            (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))\n          (And\n            (@Eq.{1} Nat\n              (ChompLean.gameF\n                (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)) r)\n              (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))\n            (And\n              (@LT.lt.{0} Nat instLTNat\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                x)\n              (And\n                (@LT.lt.{0} Nat instLTNat x\n                  (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))\n                (And\n                  (Not\n                    (ChompLean.C ChompLean.gameF x (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n                      (ChompLean.LateBlockerValue\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))))\n                  (Or\n                    (ChompLean.HighQGapLandingTerminal\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n                      (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))\n                      r x)\n                    (And\n                      (ChompLean.HighQGapSeed (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n                        (ChompLean.LateBlockerValue\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))\n                        x)\n                      (And\n                        (@LT.lt.{0} Nat instLTNat\n                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                            (ChompLean.LateBlockerValue\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))\n                            x)\n                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                            (ChompLean.LateBlockerValue\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n                        (∀ (length : Nat),\n                          ChompLean.HighQGapIterationRun\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n                              (ChompLean.LateBlockerValue\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))\n                              r x length →\n                            @LE.le.{0} Nat instLENat\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n length)\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                (ChompLean.LateBlockerValue s)\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                                  (ChompLean.LateBlockerValue\n                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))\n                                  x)))))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_descent_to_high_q_internal_iteration_global_bound._proof_1_1",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s n : Nat} (r x : Nat)\n  (hrLate :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (hrz :\n    @LT.lt.{0} Nat instLTNat r\n      (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))\n  (hstart :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)) r)\n      (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))\n  (hxLate :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      x)\n  (hxz :\n    @LT.lt.{0} Nat instLTNat x\n      (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)) x)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_iteration_run_length_bound",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 118,
+      "typePretty": "∀ {c z r : Nat} (length start : Nat),\n  ChompLean.HighQGapIterationRun c z r start length →\n    @LE.le.{0} Nat instLENat length (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z start)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_iteration_run_length_bound._proof_1_1",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z : Nat} (start : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z start)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_iteration_run_length_bound._proof_1_2",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (length start : Nat) (state : Nat → Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) length\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_iteration_run_length_bound._proof_1_3",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z : Nat} (length start : Nat) (state : Nat → Nat) (k : Nat) (hk : @LT.lt.{0} Nat instLTNat k length),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) length\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_iteration_run_length_bound._proof_1_4",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z : Nat} (length start : Nat) (state : Nat → Nat)\n  (hmeasure :\n    @LT.lt.{0} Nat instLTNat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z\n        (state (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z start))\n  (htailBound :\n    @LE.le.{0} Nat instLENat length\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z\n        (state (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) length\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z start)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_iteration_step_strict_measure",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 86,
+      "typePretty": "∀ {c z r next current : Nat} (hstep : ChompLean.HighQGapIterationStep c z r next current),\n  @LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z next)\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z current)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_iteration_step_strict_measure._proof_1_1",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c z r next current : Nat}\n  (hstep :\n    And (@LT.lt.{0} Nat instLTNat current next)\n      (And (@LT.lt.{0} Nat instLTNat r next)\n        (And (@LT.lt.{0} Nat instLTNat c next)\n          (And (@LT.lt.{0} Nat instLTNat next (ChompLean.gameF next c))\n            (And (@LT.lt.{0} Nat instLTNat (ChompLean.gameF next c) z)\n              (Not (ChompLean.C ChompLean.gameF next c z))))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z next)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z current)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_iteration_wellFounded",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 94,
+      "typePretty": "∀ (c z r : Nat), @WellFounded.{1} Nat (ChompLean.HighQGapIterationStep c z r)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_seed_terminal_or_strict_step",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 53,
+      "typePretty": "∀ {c z r current : Nat} (hSeed : ChompLean.HighQGapSeed c z current) (hrz : @LT.lt.{0} Nat instLTNat r z)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),\n  Or (ChompLean.HighQGapIterationTerminal c z r current)\n    (@Exists.{1} Nat fun (next : Nat) => ChompLean.HighQGapIterationStep c z r next current)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_seed_terminal_or_strict_step._proof_1_1",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c z r current : Nat} (next : Nat) (hpre : Not (@LE.le.{0} Nat instLENat next r)),\n  Not (@LT.lt.{0} Nat instLTNat r next) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_gap_seed_terminal_or_strict_step._proof_1_2",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c z r current : Nat} (hct : @LT.lt.{0} Nat instLTNat c current) (next : Nat)\n  (hnext : @LT.lt.{0} Nat instLTNat current next), Not (@LT.lt.{0} Nat instLTNat c next) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_terminal_iterative_normal_form",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 159,
+      "typePretty": "∀ {s : Nat} (hHigh : ChompLean.LateBlockerHighQGapPacket s), ChompLean.LateBlockerHighQIterativeNormalForm s",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_terminal_iterative_normal_form._proof_1_1",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (b r x : Nat)\n  (hxLate :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      x),\n  Not (@LE.le.{0} Nat instLENat s x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_terminal_iterative_normal_form._proof_1_2",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (b r x : Nat) (hrz : @LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hstart :\n    @Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hhalf :\n    @LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_q_terminal_iterative_normal_form._proof_1_3",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (b r x : Nat)\n  (hxLate :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      x),\n  Not (@LT.lt.{0} Nat instLTNat s x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_late_blocker_terminal_certificate_R50_reduction",
+      "module": "R50HighQSourceGapWellFoundedIteration",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 187,
+      "typePretty": "∀ {s : Nat} (hTerminal : ChompLean.LateBlockerTerminalCertificate s),\n  Or (ChompLean.LateBlockerHighQIterativeNormalForm s)\n    (And (ChompLean.BoundaryLateBlockerParametricNormalForm s) (Not (ChompLean.BoundaryCorridorSmallerLateBlocker s)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990",
+      "sourcePath": "lean/core/R50HighQSourceGapWellFoundedIteration.lean",
+      "universeParameters": []
+    }
+  ]
+}

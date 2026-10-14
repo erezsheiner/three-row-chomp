@@ -1,0 +1,59 @@
+{
+  "paperIndex": 50,
+  "id": "fresh-host-saturated-handover",
+  "original": {
+    "title": "Saturated private-history handover and a jump of at least 2k",
+    "status": "paper-reviewed",
+    "statement": "At the rightmost old fresh host in a record row with k fresh labels, its entire strict postbirth private history is permuted into the current right tail. Every matched historical value is at most T−k; if the host has a previous postbirth row, its current column jump is at least 2k.",
+    "assumptions": [
+      "Canonical record row and rightmost old fresh host. C19 age≥17 consequence requires the named C19 hypothesis, which must not be folded into unconditional statement."
+    ],
+    "sourcePath": "projects/notriple-proof-20261009/direct/PRIVATE-HISTORY-PACKET.md",
+    "sourceLine": 82,
+    "sha256": "7ddc2c1401e065f315b9abed2fbcc1f5015017d06a8b99d4288fdf8d01b30d8f"
+  },
+  "exactAuditedStatement": "For record rowq>=1 with k=d(q)-T(q)-1>=1, let c*<q be rightmost old fresh host. Then {f(a, c*):c*<a<q}={f(q, r):c*<r<q}, both sets with q-c*-1 distinct labels, each<=T-k. If c*<=q-2, f(q, c*)-f(q-1, c*)>=2k.",
+  "hypotheses": [
+    "Full canonical journals; fresh means value>T(q).",
+    "C19 age>=17 corollary is separately conditional and not part of unconditional statement."
+  ],
+  "proofDependencyMap": [
+    "Shared canonical foundation: exact positive-MEX/COPY recurrence and P01-P12, independently reconstructed in ../CANONICAL-FOUNDATIONS.md with exact declaration mapping and game interpretation. DEPENDENCIES.json records the additional service lemmas. Final kernel receipts bind the source versions.",
+    "Journal identity, P14 inversion-journal fact derived by MEX, P16 journal ceiling derived by row max, fresh-label coverage derived by P11."
+  ],
+  "independentDerivationAndChecks": [
+    "Fresh labels T+1,..., d-1 all occur by P11 and cannot belong to old journals. Two fresh hosts in physical order cannot decline: MEX would place the later fresh value in the earlier journal<=T. Thus c* holds T+k and all strict right tail cells are<=T.",
+    "For any tail valuex and any fresh hostc<r, MEX forces x into that journal. It cannot be a seed d(i), i<c, or own birth d(c), because current column r>c cannot emit any earlier diagonal. Therefore x was privately served at some c<a<q with d(a)>x.",
+    "Different fresh hosts for fixed x have distinct source rows by row injectivity. Therefore k<=#{a<q:d(a)>x}<=T-x, giving x<=T-k.",
+    "At fixed c*, the distinct q-c*-1 tail values map into the equally many postbirth rows(c*, q). They cannot share one source row because one cell has one value. Thus bijection onto all rows and all postbirth values distinct; no historical row is omitted. Birth row excluded essentially.",
+    "If previous postbirth row exists, its value<=T-k while current is T+k, giving jump>=2k. If c*=q-1, history and tail are empty and jump corollary is inapplicable. Nothing bounds positive column jumps or proves NoTriple."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\notriple-proof-20261009\\direct\\PRIVATE-HISTORY-PACKET.md",
+      "sha256": "7ddc2c1401e065f315b9abed2fbcc1f5015017d06a8b99d4288fdf8d01b30d8f"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\745d804e27429294f05a.md",
+      "sha256": "745d804e27429294f05a64c9407bf86e5c34a1362d927755c384ca0fb5b0f5f7"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\audit\\full\\CANONICAL-FOUNDATIONS.md",
+      "sha256": "88fb71f3229c40c29c5c909ce0f60734e171291e54a6c1b0634d7342d86f26fe"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#private-ancestry-arbitrary-packing",
+    "proofTextSha256": "7ddc2c1401e065f315b9abed2fbcc1f5015017d06a8b99d4288fdf8d01b30d8f",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": true,
+  "sharedCanonicalFoundationReview": "../CANONICAL-FOUNDATIONS.md",
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish. If shared canonical bridge has an unresolved premise, this result remains conditional on that premise regardless of local derivation verdict."
+}

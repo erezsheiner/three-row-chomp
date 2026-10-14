@@ -1,0 +1,209 @@
+import DipZRehostRM2Reduction
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+Independent audit and strengthening of `DipZRehostRM2Reduction`.
+
+The original `ZRehost` uses the guard that `d(s+1)-1` is not any diagonal
+value at an index at most `s`.  The prose version uses the narrower numerical
+"margin at least two" guard: after deleting the immediately preceding record
+row, the hole lies strictly above the older running maximum.
+
+`MarginZRehost` below states that numerical version without truncated
+predecessor notation.  At `s=0` there is no older maximum; at `s=j+1` the
+guard is `RMax(j) < d(s+1)-1`.  This hypothesis is weaker than `ZRehost`, and
+the first-violation induction only needs this weaker form.
+-/
+
+/-- The diagonal cell is exactly the positive MEX of its literal source.
+This closes the exact-MEX assertion used in the prose audit using only fields
+already present in `RecurrenceModel`. -/
+theorem recurrence_diagonal_exact_mex (M : RecurrenceModel) (q : Nat) :
+    IsMex (B M.f q q) (M.f q q) := by
+  have hdiag : q < M.f q q := M.diagonal_gt q
+  refine ⟨by omega, ?_, ?_⟩
+  · intro hB
+    rcases hB with hR | hC
+    · rcases hR with ⟨a, ha, hvalue⟩
+      have hae : M.f a a = M.f q q := by
+        simpa [Nat.min_eq_left (Nat.le_of_lt ha)] using hvalue
+      have hidx := diagonal_injective M hae
+      omega
+    · rcases hC with ⟨b, hb, hvalue⟩
+      have hidx := M.fixed_q_injective
+        (Nat.le_of_lt hb) (Nat.le_refl q) hvalue
+      omega
+  · intro k hkpos hklt
+    exact M.mex_no_skip (Nat.le_refl q) hdiag hkpos hklt
+
+/--
+Numerical margin form of `ZRehost`.
+
+For a dip at `s+1`, the transported hole is `z=d(s+1)-1`.  If `s=0`
+there is no older record.  If `s=j+1`, the displayed guard says exactly that
+`z` is strictly above the running maximum through row `s-1=j`.
+-/
+def MarginZRehost (M : RecurrenceModel) : Prop :=
+  forall s, M.f (s + 1) (s + 1) < M.f s s ->
+    (s = 0 \/
+      exists j, s = j + 1 /\
+        RMax M j < M.f (s + 1) (s + 1) - 1) ->
+    C M.f (s + 2) (s + 2) (M.f (s + 1) (s + 1) - 1)
+
+/-- The original not-a-past-diagonal hypothesis implies the numerical-margin
+version.  The converse is deliberately not claimed. -/
+theorem marginZRehost_of_zRehost (M : RecurrenceModel)
+    (hZ : ZRehost M) : MarginZRehost M := by
+  intro s hdip hmargin
+  apply hZ s hdip
+  intro i his hEq
+  have hpositive := M.diagonal_gt (s + 1)
+  by_cases hisEq : i = s
+  · subst i
+    omega
+  · have hislt : i < s := by omega
+    rcases hmargin with hs0 | ⟨j, hsj, hmargin⟩
+    · omega
+    · have hij : i <= j := by omega
+      have hle := rmax_ge M j i hij
+      rw [hEq] at hle
+      omega
+
+/--
+First-violation induction with only numerical-margin rehosting.  This is the
+same combinatorial core as the audited reduction, but the `ZRehost` call is
+made only after the induction hypothesis proves the strict margin.
+-/
+theorem rmax_lt_of_unitDip_marginZRehost (M : RecurrenceModel)
+    (hU : UnitDip M) (hZ : MarginZRehost M) :
+    forall k, RMax M k < M.f (k + 2) (k + 2) := by
+  intro k
+  induction k using Nat.strongRecOn with
+  | ind k ih =>
+    refine Nat.not_le.mp ?_
+    intro hle
+    rcases rmax_witness M k with ⟨m, hmk, hmax⟩
+    have hstrict : M.f (k + 2) (k + 2) < RMax M k := by
+      rcases Nat.lt_or_ge (M.f (k + 2) (k + 2)) (RMax M k) with h | h
+      · exact h
+      · exfalso
+        have hEq : M.f (k + 2) (k + 2) = M.f m m := by omega
+        have hidx := diagonal_injective M hEq
+        omega
+    have hcases :
+        RMax M k = M.f k k \/
+          exists j, k = j + 1 /\ RMax M k = RMax M j := by
+      cases k with
+      | zero => exact Or.inl rfl
+      | succ j =>
+          have hstep :
+              RMax M (j + 1) =
+                max (RMax M j) (M.f (j + 1) (j + 1)) := rfl
+          by_cases h : RMax M j <= M.f (j + 1) (j + 1)
+          · left
+            omega
+          · right
+            exact ⟨j, rfl, by omega⟩
+    rcases Nat.lt_trichotomy
+        (M.f (k + 1) (k + 1)) (M.f (k + 2) (k + 2)) with
+      hasc | heq | hdesc
+    · rcases hcases with hrec | ⟨j, hkj, hold⟩
+      · have hdip : M.f (k + 1) (k + 1) < M.f k k := by omega
+        have hunit := hU k hdip
+        omega
+      · have hIH := ih j (by omega)
+        have hidx : j + 2 = k + 1 := by omega
+        rw [hidx] at hIH
+        omega
+    · have hidx := diagonal_injective M heq
+      omega
+    · have hu2 :
+          M.f (k + 2) (k + 2) + 1 = M.f (k + 1) (k + 1) :=
+        hU (k + 1) hdesc
+      rcases hcases with hrec | ⟨j, hkj, hold⟩
+      · have hne1 : M.f (k + 1) (k + 1) ≠ M.f k k := by
+          intro hEq
+          have hidx := diagonal_injective M hEq
+          omega
+        have hdip1 : M.f (k + 1) (k + 1) < M.f k k := by omega
+        have hhole :
+            M.f (k + 1) (k + 1) - 1 = M.f (k + 2) (k + 2) := by
+          omega
+        have hmargin :
+            k = 0 \/
+              exists j, k = j + 1 /\
+                RMax M j < M.f (k + 1) (k + 1) - 1 := by
+          cases k with
+          | zero => exact Or.inl rfl
+          | succ j =>
+              right
+              refine ⟨j, rfl, ?_⟩
+              have hIH := ih j (by omega)
+              have hIH' :
+                  RMax M j < M.f (j + 1 + 1) (j + 1 + 1) := by
+                simpa [Nat.add_assoc] using hIH
+              have hdiagPos := M.diagonal_gt (j + 1 + 1)
+              have hleMargin :
+                  RMax M j <= M.f (j + 1 + 1) (j + 1 + 1) - 1 := by
+                omega
+              have hneMargin :
+                  RMax M j ≠ M.f (j + 1 + 1) (j + 1 + 1) - 1 := by
+                intro hEq
+                rcases rmax_witness M j with ⟨a, haj, hrecord⟩
+                have hdiagEq :
+                    M.f a a = M.f (j + 1 + 2) (j + 1 + 2) := by
+                  calc
+                    M.f a a = RMax M j := hrecord.symm
+                    _ = M.f (j + 1 + 1) (j + 1 + 1) - 1 := hEq
+                    _ = M.f (j + 1 + 2) (j + 1 + 2) := hhole
+                have hidx := diagonal_injective M hdiagEq
+                omega
+              omega
+        have hC :
+            exists b, b < k + 2 /\
+              M.f (k + 2) b = M.f (k + 1) (k + 1) - 1 :=
+          hZ k hdip1 hmargin
+        rcases hC with ⟨b, hb, hfb⟩
+        rw [hhole] at hfb
+        have hidx := M.fixed_q_injective
+          (Nat.le_of_lt hb) (Nat.le_refl (k + 2)) hfb
+        omega
+      · have hIH := ih j (by omega)
+        have hidx : j + 2 = k + 1 := by omega
+        rw [hidx] at hIH
+        omega
+
+/-- Strengthened sharpened reduction: the numerical margin version of
+rehosting, together with `UnitDip`, already implies RM2. -/
+theorem twoStepRecordLaw_of_unitDip_marginZRehost (M : RecurrenceModel)
+    (hU : UnitDip M) (hZ : MarginZRehost M) :
+    TwoStepDiagonalRecordLaw M := by
+  intro i a hia
+  rcases (⟨a - 2, by omega⟩ : exists k, a = k + 2) with ⟨k, hk⟩
+  subst hk
+  exact Nat.lt_of_le_of_lt (rmax_ge M k i (by omega))
+    (rmax_lt_of_unitDip_marginZRehost M hU hZ k)
+
+/-- Compatibility: the original theorem follows through the weaker numerical-margin interface. -/
+theorem twoStepRecordLaw_of_unitDip_zrehost_via_margin
+    (M : RecurrenceModel) (hU : UnitDip M) (hZ : ZRehost M) :
+    TwoStepDiagonalRecordLaw M :=
+  twoStepRecordLaw_of_unitDip_marginZRehost M hU
+    (marginZRehost_of_zRehost M hZ)
+
+/-- Actual-game instance of the strengthened numerical-margin reduction. -/
+theorem game_twoStepRecordLaw_of_unitDip_marginZRehost
+    (hU : UnitDip gameRecurrenceModel)
+    (hZ : MarginZRehost gameRecurrenceModel) :
+    TwoStepDiagonalRecordLaw gameRecurrenceModel :=
+  twoStepRecordLaw_of_unitDip_marginZRehost gameRecurrenceModel hU hZ
+
+#print axioms recurrence_diagonal_exact_mex
+#print axioms twoStepRecordLaw_of_unitDip_marginZRehost
+#print axioms twoStepRecordLaw_of_unitDip_zrehost_via_margin
+#print axioms game_twoStepRecordLaw_of_unitDip_marginZRehost
+
+end ChompLean

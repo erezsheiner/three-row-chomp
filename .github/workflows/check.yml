@@ -1,0 +1,44 @@
+name: Validate reviewed release
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check source-bound release approval
+        run: python3 scripts/check_release_gate.py
+      - name: Rebuild website
+        run: python3 scripts/build_publication.py
+      - name: Validate links and attachment hashes
+        run: python3 scripts/validate_publication.py
+      - name: Check browser script
+        run: node --check site/dist/app.js
+      - name: Replay finite certificates
+        run: python3 certificates/run_checks.py
+  lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: lean/core
+          auto-config: false
+          build: true
+          build-args: ResearchCore ChompLean
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Fresh kernel replay
+        working-directory: lean/core
+        run: |
+          lake env leanchecker --fresh --verbose ResearchCore
+          lake env leanchecker --fresh --verbose SJSDiagonalDictionary
+          lake env leanchecker --fresh --verbose ClaudeFutureFreezeDiagonal
+          lake env leanchecker --fresh --verbose R14FrontierLaw
+          lake env leanchecker --fresh --verbose R15ParkedValueSwap

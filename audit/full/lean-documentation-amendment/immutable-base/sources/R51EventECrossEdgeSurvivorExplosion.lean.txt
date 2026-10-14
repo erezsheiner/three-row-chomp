@@ -1,0 +1,285 @@
+import R51ConsecutiveDipCrossEdgeBackfillPacking
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+R51 application to event E.  The two forced missing packets are charged
+together, exploiting the automatic disjointness of their backfill packets.
+-/
+
+private theorem r51_event_nodup_map_of_injective_on
+    (f : Nat -> Nat) (xs : List Nat)
+    (hxs : xs.Nodup)
+    (hinj : forall x, x ∈ xs -> forall y, y ∈ xs ->
+      f x = f y -> x = y) :
+    (xs.map f).Nodup := by
+  induction xs with
+  | nil => simp
+  | cons a as ih =>
+      rw [List.nodup_cons] at hxs
+      change (f a :: as.map f).Nodup
+      rw [List.nodup_cons]
+      constructor
+      · intro hmem
+        rcases List.mem_map.mp hmem with ⟨y, hy, hay⟩
+        have hay' : a = y :=
+          hinj a (by simp) y (by simp [hy]) hay.symm
+        subst y
+        exact hxs.1 hy
+      · apply ih hxs.2
+        intro x hx y hy hxy
+        exact hinj x (by simp [hx]) y (by simp [hy]) hxy
+
+/-- Local event-E cross-edge inequality. -/
+theorem gameF_eventE_cross_edge_missing_bound
+    {s delta z c b0 b1 : Nat}
+    (hdip0 : gameF (s + 1) (s + 1) < gameF s s)
+    (hdip1 : gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1))
+    (hc : c < s) (hSucc : gameF s c = z + 1)
+    (hNextDiag : gameF (s + 1) (s + 1) = z + 1)
+    (hb1 : b1 < s + 1) (hHost1 : gameF (s + 1) b1 = z)
+    (hEmit : gameF (s + 2) (s + 2) = z)
+    (hslotsNodup : (EventEDefectBandSlots s delta c b0).Nodup)
+    (hslotsData : forall g, g ∈ EventEDefectBandSlots s delta c b0 ->
+      g < s /\ gameF s g < z) :
+    2 * ((EventEMissingBandSlots s delta c b0).length +
+      (EventESecondMissingBandSlots s delta c b0).length) + 7 <= s := by
+  let slots := EventEDefectBandSlots s delta c b0
+  let missing0 := EventEMissingBandSlots s delta c b0
+  let survivors := EventESurvivingBandSlots s delta c b0
+  let missing1 := EventESecondMissingBandSlots s delta c b0
+  let low0 := missing0.map (fun g => gameF s g)
+  let low1 := missing1.map (fun g => gameF s g)
+  let forbidden0 := low0 ++ [z + 1]
+  let forbidden1 := low1 ++ [z]
+
+  have hmissing0Nodup : missing0.Nodup :=
+    List.filter_sublist.nodup hslotsNodup
+  have hsurvivorsNodup : survivors.Nodup :=
+    List.filter_sublist.nodup hslotsNodup
+  have hmissing1Nodup : missing1.Nodup :=
+    List.filter_sublist.nodup hsurvivorsNodup
+  have hlow0Nodup : low0.Nodup := by
+    apply r51_event_nodup_map_of_injective_on
+      (fun g => gameF s g) missing0 hmissing0Nodup
+    intro g hg k hk heq
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+    have hkSlots : k ∈ slots := (List.mem_filter.mp hk).1
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt (hslotsData g hgSlots).1)
+      (Nat.le_of_lt (hslotsData k hkSlots).1) heq
+  have hlow1Nodup : low1.Nodup := by
+    apply r51_event_nodup_map_of_injective_on
+      (fun g => gameF s g) missing1 hmissing1Nodup
+    intro g hg k hk heq
+    have hgSurv : g ∈ survivors := (List.mem_filter.mp hg).1
+    have hkSurv : k ∈ survivors := (List.mem_filter.mp hk).1
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hgSurv).1
+    have hkSlots : k ∈ slots := (List.mem_filter.mp hkSurv).1
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt (hslotsData g hgSlots).1)
+      (Nat.le_of_lt (hslotsData k hkSlots).1) heq
+
+  have hdisjoint0 : forall v, v ∈ low0 -> forall w, w ∈ [z + 1] ->
+      v ≠ w := by
+    intro v hv w hw hEq
+    simp only [List.mem_singleton] at hw
+    subst w
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+    have hLower := (hslotsData g hgSlots).2
+    omega
+  have hdisjoint1 : forall v, v ∈ low1 -> forall w, w ∈ [z] ->
+      v ≠ w := by
+    intro v hv w hw hEq
+    simp only [List.mem_singleton] at hw
+    subst w
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hgSurv : g ∈ survivors := (List.mem_filter.mp hg).1
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hgSurv).1
+    have hLower := (hslotsData g hgSlots).2
+    omega
+  have hforbidden0Nodup : forbidden0.Nodup :=
+    List.nodup_append.mpr ⟨hlow0Nodup, by simp, hdisjoint0⟩
+  have hforbidden1Nodup : forbidden1.Nodup :=
+    List.nodup_append.mpr ⟨hlow1Nodup, by simp, hdisjoint1⟩
+
+  have hsub0 : forbidden0 ⊆ StrictRowPrefixValues gameF s := by
+    intro v hv
+    rcases List.mem_append.mp hv with hvLow | hvHigh
+    · rcases List.mem_map.mp hvLow with ⟨g, hg, rfl⟩
+      have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+      exact List.mem_map.mpr
+        ⟨g, List.mem_range.mpr (hslotsData g hgSlots).1, rfl⟩
+    · simp only [List.mem_singleton] at hvHigh
+      subst v
+      exact List.mem_map.mpr ⟨c, List.mem_range.mpr hc, hSucc⟩
+  have hmissing0 : forall v, v ∈ forbidden0 ->
+      v ∉ StrictRowPrefixValues gameF (s + 1) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hvLow | hvHigh
+    · rcases List.mem_map.mp hvLow with ⟨g, hg, rfl⟩
+      have hfilter := (List.mem_filter.mp hg).2
+      simpa [missing0, EventEMissingBandSlots] using hfilter
+    · simp only [List.mem_singleton] at hvHigh
+      subst v
+      rw [← hNextDiag]
+      exact diagonal_value_absent_strict_prefix
+        gameRecurrenceModel (s + 1)
+
+  have hsub1 : forbidden1 ⊆ StrictRowPrefixValues gameF (s + 1) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hvLow | hvHigh
+    · rcases List.mem_map.mp hvLow with ⟨g, hg, rfl⟩
+      have hgSurv : g ∈ survivors := (List.mem_filter.mp hg).1
+      have hfilter := (List.mem_filter.mp hgSurv).2
+      simpa [survivors, EventESurvivingBandSlots] using hfilter
+    · simp only [List.mem_singleton] at hvHigh
+      subst v
+      exact List.mem_map.mpr
+        ⟨b1, List.mem_range.mpr hb1, hHost1⟩
+  have hmissing1 : forall v, v ∈ forbidden1 ->
+      v ∉ StrictRowPrefixValues gameF (s + 2) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hvLow | hvHigh
+    · rcases List.mem_map.mp hvLow with ⟨g, hg, rfl⟩
+      have hfilter := (List.mem_filter.mp hg).2
+      simpa [missing1, EventESecondMissingBandSlots] using hfilter
+    · simp only [List.mem_singleton] at hvHigh
+      subst v
+      rw [← hEmit]
+      exact diagonal_value_absent_strict_prefix
+        gameRecurrenceModel (s + 2)
+
+  have hbound := game_consecutive_dips_two_forbidden_packets_amortized_bound
+    hdip0 hdip1 hforbidden0Nodup hsub0 hmissing0
+      hforbidden1Nodup hsub1 hmissing1
+  have hlen0 : forbidden0.length = missing0.length + 1 := by
+    simp [forbidden0, low0]
+  have hlen1 : forbidden1.length = missing1.length + 1 := by
+    simp [forbidden1, low1]
+  change 2 * (missing0.length + missing1.length) + 7 <= s
+  omega
+
+/-- Full cross-edge survivor certificate. -/
+def EventECrossEdgeSurvivorCertificate
+    (s delta z c b0 : Nat) : Prop :=
+  EventETwoEdgeSurvivorCountCertificate s delta z c b0 /\
+    2 * ((EventEMissingBandSlots s delta c b0).length +
+      (EventESecondMissingBandSlots s delta c b0).length) + 7 <= s /\
+    2 * delta + 7 <= s +
+      2 * (EventETriplePrefixBandSlots s delta c b0).length
+
+/-- Every event E satisfies the stronger cross-edge survivor inequality
+`2*delta+7 <= s+2*|T|`. -/
+theorem gameF_margin_eventE_cross_edge_survivor_bound
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    exists c b0, EventECrossEdgeSurvivorCertificate s delta z c b0 := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  have hcount := gameF_margin_eventE_two_edge_survivor_lower_bound
+    hU hdip hmargin hnextDip
+  change exists c b0,
+    EventETwoEdgeSurvivorCountCertificate s delta z c b0 at hcount
+  rcases hcount with ⟨c, b0, hcount⟩
+  have hbase := hcount.1.1
+  rcases hbase with
+    ⟨hc, hb0, _hcNe, hSucc, _hBase,
+      hslotsNodup, hslotsLen, hslotsProps, _hweak⟩
+
+  have hInv := gameF_margin_eventE_parametric_defect_invariant
+    hU hdip hmargin hnextDip
+  change EventEDefectPacketInvariant s d delta z at hInv
+  rcases hInv with
+    ⟨_hdeltaPos, _hdeltaUpper, _hdeltaSum, hzDiag,
+      ci, bi, b1, _dc, _d0, _d1,
+      hci, hbi, hb1, _hciNe, _hbiNe,
+      hSuccI, hBaseI, hHost1, _rest⟩
+  have hciEq : ci = c := by
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hci) (Nat.le_of_lt hc)
+      (hSuccI.trans hSucc.symm)
+  have hbiEq : bi = b0 := by
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hbi) (Nat.le_of_lt hb0)
+      (hBaseI.trans _hBase.symm)
+  subst ci
+  subst bi
+  have hslotsData : forall g,
+      g ∈ EventEDefectBandSlots s delta c b0 ->
+      g < s /\ gameF s g < z := by
+    intro g hg
+    have hdata := hslotsProps g hg
+    have htransition := hdata.2.2.2
+    have hLower : gameF s g < z := by
+      simpa [EventELowerTransition] using htransition.2.1
+    exact ⟨hdata.1, hLower⟩
+  have hunitNext := hU (s + 1) hnextDip
+  change gameF (s + 2) (s + 2) + 1 = d at hunitNext
+  have hEmit : gameF (s + 2) (s + 2) = z := by omega
+  have hcross := gameF_eventE_cross_edge_missing_bound
+    hdip hnextDip hc hSucc (by omega) hb1 hHost1 hEmit
+      hslotsNodup hslotsData
+  let m0 := (EventEMissingBandSlots s delta c b0).length
+  let m1 := (EventESecondMissingBandSlots s delta c b0).length
+  let t := (EventETriplePrefixBandSlots s delta c b0).length
+  have hpartition := hcount.2.2.1
+  change (EventEDefectBandSlots s delta c b0).length = m0 + m1 + t
+    at hpartition
+  change (EventEDefectBandSlots s delta c b0).length = delta at hslotsLen
+  have hdeltaPart : delta = m0 + m1 + t := by omega
+  change 2 * (m0 + m1) + 7 <= s at hcross
+  have hglobal : 2 * delta + 7 <= s + 2 * t := by omega
+  exact ⟨c, b0, hcount, hcross, hglobal⟩
+
+/-- At maximal defect, at least half of the canonical band survives both
+edges.  This replaces R50's single survivor by a linear-size family. -/
+theorem gameF_margin_eventE_maximal_defect_half_band_survives
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    delta + 4 = s ->
+      exists c b0,
+        EventECrossEdgeSurvivorCertificate s delta z c b0 /\
+        s / 2 <= (EventETriplePrefixBandSlots s delta c b0).length := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  intro hmax
+  have hcert := gameF_margin_eventE_cross_edge_survivor_bound
+    hU hdip hmargin hnextDip
+  change exists c b0,
+    EventECrossEdgeSurvivorCertificate s delta z c b0 at hcert
+  rcases hcert with ⟨c, b0, hcert⟩
+  have hglobal := hcert.2.2
+  have hhalf : s / 2 <=
+      (EventETriplePrefixBandSlots s delta c b0).length := by
+    omega
+  exact ⟨c, b0, hcert, hhalf⟩
+
+#print axioms gameF_eventE_cross_edge_missing_bound
+#print axioms gameF_margin_eventE_cross_edge_survivor_bound
+#print axioms gameF_margin_eventE_maximal_defect_half_band_survives
+
+end ChompLean

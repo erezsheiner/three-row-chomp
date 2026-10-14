@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R174 Terminal Relay Hall Saturation · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R174 Terminal Relay Hall Saturation</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R174TerminalRelayHallSaturation.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R174TerminalRelayHallSaturation.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R174TerminalRelayHallSaturation.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 44 declarations</summary><ul class="declarations"><li><code>ChompLean.TerminalRelayHallCertificate</code><pre class="prose">(z r : Nat) → (host : Nat → Nat) → Prop</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.capacity</code><pre class="prose">∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host),
+  @LE.le.{0} Nat instLENat z
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.casesOn</code><pre class="prose">{z r : Nat} →
+  {host : Nat → Nat} →
+    {motive : (t : ChompLean.TerminalRelayHallCertificate z r host) → Sort u} →
+      (t : ChompLean.TerminalRelayHallCertificate z r host) →
+        (mk :
+            (hosted :
+                ∀ (t : Nat),
+                  @LT.lt.{0} Nat instLTNat r t →
+                    @LT.lt.{0} Nat instLTNat t z →
+                      And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z)) →
+              (uniqueOnRow :
+                  ∀ (t : Nat),
+                    @LT.lt.{0} Nat instLTNat r t →
+                      @LT.lt.{0} Nat instLTNat t z →
+                        ∀ (c : Nat),
+                          @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t)) →
+                (hostMex :
+                    ∀ (t : Nat),
+                      @LT.lt.{0} Nat instLTNat r t →
+                        @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z) →
+                  (noReuse :
+                      ∀ (t1 t2 : Nat),
+                        @LT.lt.{0} Nat instLTNat r t1 →
+                          @LT.lt.{0} Nat instLTNat t1 t2 →
+                            @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2)) →
+                    (capacity :
+                        @LE.le.{0} Nat instLENat z
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+                      (saturatedBijection :
+                          @Eq.{1} Nat z
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+                            ∀ (c : Nat),
+                              @LT.lt.{0} Nat instLTNat c r →
+                                @Exists.{1} Nat fun (t : Nat) =&gt;
+                                  And
+                                    (And (@LT.lt.{0} Nat instLTNat r t)
+                                      (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))
+                                    (∀ (y : Nat),
+                                      And (@LT.lt.{0} Nat instLTNat r y)
+                                          (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →
+                                        @Eq.{1} Nat y t)) →
+                        motive
+                          (@ChompLean.TerminalRelayHallCertificate.mk z r host hosted uniqueOnRow hostMex noReuse
+                            capacity saturatedBijection)) →
+          motive t</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.hostMex</code><pre class="prose">∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host) (t : Nat),
+  @LT.lt.{0} Nat instLTNat r t →
+    @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.hosted</code><pre class="prose">∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host) (t : Nat),
+  @LT.lt.{0} Nat instLTNat r t →
+    @LT.lt.{0} Nat instLTNat t z →
+      And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z)</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.mk</code><pre class="prose">∀ {z r : Nat} {host : Nat → Nat}
+  (hosted :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z))
+  (uniqueOnRow :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          ∀ (c : Nat), @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t))
+  (hostMex :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z)
+  (noReuse :
+    ∀ (t1 t2 : Nat),
+      @LT.lt.{0} Nat instLTNat r t1 →
+        @LT.lt.{0} Nat instLTNat t1 t2 → @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2))
+  (capacity :
+    @LE.le.{0} Nat instLENat z
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (saturatedBijection :
+    @Eq.{1} Nat z
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+      ∀ (c : Nat),
+        @LT.lt.{0} Nat instLTNat c r →
+          @Exists.{1} Nat fun (t : Nat) =&gt;
+            And (And (@LT.lt.{0} Nat instLTNat r t) (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))
+              (∀ (y : Nat),
+                And (@LT.lt.{0} Nat instLTNat r y) (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →
+                  @Eq.{1} Nat y t)),
+  ChompLean.TerminalRelayHallCertificate z r host</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.mk._flat_ctor</code><pre class="prose">∀ {z r : Nat} {host : Nat → Nat}
+  (hosted :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z))
+  (uniqueOnRow :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          ∀ (c : Nat), @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t))
+  (hostMex :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z)
+  (noReuse :
+    ∀ (t1 t2 : Nat),
+      @LT.lt.{0} Nat instLTNat r t1 →
+        @LT.lt.{0} Nat instLTNat t1 t2 → @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2))
+  (capacity :
+    @LE.le.{0} Nat instLENat z
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (saturatedBijection :
+    @Eq.{1} Nat z
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+      ∀ (c : Nat),
+        @LT.lt.{0} Nat instLTNat c r →
+          @Exists.{1} Nat fun (t : Nat) =&gt;
+            And (And (@LT.lt.{0} Nat instLTNat r t) (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))
+              (∀ (y : Nat),
+                And (@LT.lt.{0} Nat instLTNat r y) (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →
+                  @Eq.{1} Nat y t)),
+  ChompLean.TerminalRelayHallCertificate z r host</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.noReuse</code><pre class="prose">∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host) (t1 t2 : Nat),
+  @LT.lt.{0} Nat instLTNat r t1 →
+    @LT.lt.{0} Nat instLTNat t1 t2 → @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2)</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.rec</code><pre class="prose">{z r : Nat} →
+  {host : Nat → Nat} →
+    {motive : (t : ChompLean.TerminalRelayHallCertificate z r host) → Sort u} →
+      (mk :
+          (hosted :
+              ∀ (t : Nat),
+                @LT.lt.{0} Nat instLTNat r t →
+                  @LT.lt.{0} Nat instLTNat t z →
+                    And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z)) →
+            (uniqueOnRow :
+                ∀ (t : Nat),
+                  @LT.lt.{0} Nat instLTNat r t →
+                    @LT.lt.{0} Nat instLTNat t z →
+                      ∀ (c : Nat),
+                        @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t)) →
+              (hostMex :
+                  ∀ (t : Nat),
+                    @LT.lt.{0} Nat instLTNat r t →
+                      @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z) →
+                (noReuse :
+                    ∀ (t1 t2 : Nat),
+                      @LT.lt.{0} Nat instLTNat r t1 →
+                        @LT.lt.{0} Nat instLTNat t1 t2 →
+                          @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2)) →
+                  (capacity :
+                      @LE.le.{0} Nat instLENat z
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+                    (saturatedBijection :
+                        @Eq.{1} Nat z
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+                          ∀ (c : Nat),
+                            @LT.lt.{0} Nat instLTNat c r →
+                              @Exists.{1} Nat fun (t : Nat) =&gt;
+                                And
+                                  (And (@LT.lt.{0} Nat instLTNat r t)
+                                    (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))
+                                  (∀ (y : Nat),
+                                    And (@LT.lt.{0} Nat instLTNat r y)
+                                        (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →
+                                      @Eq.{1} Nat y t)) →
+                      motive
+                        (@ChompLean.TerminalRelayHallCertificate.mk z r host hosted uniqueOnRow hostMex noReuse capacity
+                          saturatedBijection)) →
+        (t : ChompLean.TerminalRelayHallCertificate z r host) → motive t</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.recOn</code><pre class="prose">{z r : Nat} →
+  {host : Nat → Nat} →
+    {motive : (t : ChompLean.TerminalRelayHallCertificate z r host) → Sort u} →
+      (t : ChompLean.TerminalRelayHallCertificate z r host) →
+        (mk :
+            (hosted :
+                ∀ (t : Nat),
+                  @LT.lt.{0} Nat instLTNat r t →
+                    @LT.lt.{0} Nat instLTNat t z →
+                      And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z)) →
+              (uniqueOnRow :
+                  ∀ (t : Nat),
+                    @LT.lt.{0} Nat instLTNat r t →
+                      @LT.lt.{0} Nat instLTNat t z →
+                        ∀ (c : Nat),
+                          @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t)) →
+                (hostMex :
+                    ∀ (t : Nat),
+                      @LT.lt.{0} Nat instLTNat r t →
+                        @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z) →
+                  (noReuse :
+                      ∀ (t1 t2 : Nat),
+                        @LT.lt.{0} Nat instLTNat r t1 →
+                          @LT.lt.{0} Nat instLTNat t1 t2 →
+                            @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2)) →
+                    (capacity :
+                        @LE.le.{0} Nat instLENat z
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+                      (saturatedBijection :
+                          @Eq.{1} Nat z
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+                            ∀ (c : Nat),
+                              @LT.lt.{0} Nat instLTNat c r →
+                                @Exists.{1} Nat fun (t : Nat) =&gt;
+                                  And
+                                    (And (@LT.lt.{0} Nat instLTNat r t)
+                                      (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))
+                                    (∀ (y : Nat),
+                                      And (@LT.lt.{0} Nat instLTNat r y)
+                                          (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →
+                                        @Eq.{1} Nat y t)) →
+                        motive
+                          (@ChompLean.TerminalRelayHallCertificate.mk z r host hosted uniqueOnRow hostMex noReuse
+                            capacity saturatedBijection)) →
+          motive t</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.saturatedBijection</code><pre class="prose">∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host),
+  @Eq.{1} Nat z
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+    ∀ (c : Nat),
+      @LT.lt.{0} Nat instLTNat c r →
+        @Exists.{1} Nat fun (t : Nat) =&gt;
+          And (And (@LT.lt.{0} Nat instLTNat r t) (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))
+            (∀ (y : Nat),
+              And (@LT.lt.{0} Nat instLTNat r y) (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →
+                @Eq.{1} Nat y t)</pre></li><li><code>ChompLean.TerminalRelayHallCertificate.uniqueOnRow</code><pre class="prose">∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host) (t : Nat),
+  @LT.lt.{0} Nat instLTNat r t →
+    @LT.lt.{0} Nat instLTNat t z →
+      ∀ (c : Nat), @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t)</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_boundary_oldHost_strict_capacity</code><pre class="prose">∀ {v r g a : Nat} (hbraid : ChompLean.FailedTerminalDeepHistoryHighBraidPacket v r g a) (har : @Eq.{1} Nat a r),
+  @LE.le.{0} Nat instLENat v (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_boundary_oldHost_strict_capacity._proof_1_1</code><pre class="prose">∀ {r g : Nat}
+  (this :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      r),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r) →
+    False</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin</code><pre class="prose">∀ {v r g a : Nat} (hbraid : ChompLean.FailedTerminalDeepHistoryHighBraidPacket v r g a)
+  (hext :
+    @Eq.{1} Nat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  And (@LT.lt.{0} Nat instLTNat r a)
+    (∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t v →
+          @Eq.{1} Nat
+              (ChompLean.gameF t
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              v →
+            @Eq.{1} Nat t a)</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_1</code><pre class="prose">∀ {v r a : Nat}
+  (hext :
+    @Eq.{1} Nat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hcap : @LE.le.{0} Nat instLENat v (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)), False</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_2</code><pre class="prose">∀ {v r a : Nat} (hra : @LE.le.{0} Nat instLENat r a) (har : Not (@Eq.{1} Nat a r)),
+  Not (@LT.lt.{0} Nat instLTNat r a) → False</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_3</code><pre class="prose">∀ {v r a : Nat}
+  (hext :
+    @Eq.{1} Nat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hadeep :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      v),
+  Not (@LT.lt.{0} Nat instLTNat a v) → False</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_4</code><pre class="prose">∀ {v r a : Nat}
+  (hext :
+    @Eq.{1} Nat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hraStrict : @LT.lt.{0} Nat instLTNat r a) (hav : @LT.lt.{0} Nat instLTNat a v) (t : Nat)
+  (hrt : @LT.lt.{0} Nat instLTNat r t),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        t) →
+    False</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_5</code><pre class="prose">∀ {v r a : Nat} (t : Nat) (hta : Not (@Eq.{1} Nat t a)) (htaOrder : Not (@LT.lt.{0} Nat instLTNat t a)),
+  Not (@LT.lt.{0} Nat instLTNat a t) → False</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_6</code><pre class="prose">∀ {v r a : Nat}
+  (hext :
+    @Eq.{1} Nat v
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hraStrict : @LT.lt.{0} Nat instLTNat r a) (hav : @LT.lt.{0} Nat instLTNat a v) (t : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        a) →
+    False</pre></li><li><code>ChompLean.gameF_failedTerminalHighBraid_global_relay_hall</code><pre class="prose">∀ {v r g a : Nat} (hbraid : ChompLean.FailedTerminalDeepHistoryHighBraidPacket v r g a),
+  @Exists.{1} (Nat → Nat) fun (host : Nat → Nat) =&gt; ChompLean.TerminalRelayHallCertificate v r host</pre></li><li><code>ChompLean.gameF_prefreeze_host_sharpens_terminal_relay_capacity</code><pre class="prose">∀ {z r s b : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)
+  (hbs : @LT.lt.{0} Nat instLTNat b s) (hsr : @LE.le.{0} Nat instLENat s r)
+  (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z),
+  @LE.le.{0} Nat instLENat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)</pre></li><li><code>ChompLean.gameF_prefreeze_host_sharpens_terminal_relay_capacity._proof_1_1</code><pre class="prose">∀ {z r s b : Nat} (hbs : @LT.lt.{0} Nat instLTNat b s) (hsr : @LE.le.{0} Nat instLENat s r),
+  Not (@LT.lt.{0} Nat instLTNat b r) → False</pre></li><li><code>ChompLean.gameF_prefreeze_host_sharpens_terminal_relay_capacity._proof_1_2</code><pre class="prose">∀ {z r s b : Nat} (hsr : @LE.le.{0} Nat instLENat s r) (host : Nat → Nat) (t : Nat)
+  (ht : And (@LT.lt.{0} Nat instLTNat r t) (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) b))),
+  Not (@LT.lt.{0} Nat instLTNat s t) → False</pre></li><li><code>ChompLean.gameF_prefreeze_host_sharpens_terminal_relay_capacity._proof_1_3</code><pre class="prose">∀ {z r s b : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)
+  (hext :
+    Not
+      (@Eq.{1} Nat z
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hcap :
+    @LE.le.{0} Nat instLENat z
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LE.le.{0} Nat instLENat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)) → False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate</code><pre class="prose">∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),
+  @Exists.{1} (Nat → Nat) fun (host : Nat → Nat) =&gt; ChompLean.TerminalRelayHallCertificate z r host</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_1</code><pre class="prose">∀ {z r : Nat}
+  (hExists :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          @Exists.{1} Nat fun (c : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))
+  (t : Nat) (hrt : @LT.lt.{0} Nat instLTNat r t) (c : Nat) (hcr : @LT.lt.{0} Nat instLTNat c r),
+  Not (@LE.le.{0} Nat instLENat c t) → False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_10</code><pre class="prose">∀ {z r : Nat}
+  (hExists :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          @Exists.{1} Nat fun (c : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))
+  (c x y : Nat) (heq : Not (@Eq.{1} Nat x y)) (hxyOrder : Not (@LT.lt.{0} Nat instLTNat x y)),
+  Not (@LT.lt.{0} Nat instLTNat y x) → False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_11</code><pre class="prose">∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)
+  (hext :
+    @Eq.{1} Nat z
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (c : Nat),
+  Not
+      (@Eq.{1} Nat r
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_12</code><pre class="prose">∀ {z r : Nat}
+  (hExists :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          @Exists.{1} Nat fun (c : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))
+  (c t y : Nat) (hyt : Not (@Eq.{1} Nat y t)) (hytOrder : Not (@LT.lt.{0} Nat instLTNat y t)),
+  Not (@LT.lt.{0} Nat instLTNat t y) → False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_2</code><pre class="prose">∀ {z r : Nat}
+  (hExists :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          @Exists.{1} Nat fun (c : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))
+  (t : Nat) (hrt : @LT.lt.{0} Nat instLTNat r t) (c : Nat)
+  (hh :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+                (Nat.decLt t z))
+              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t)
+        r)
+      (@Eq.{1} Nat
+        (ChompLean.gameF t
+          ((fun (t : Nat) =&gt;
+              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+                  (Nat.decLt t z))
+                (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                    (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                      (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+                fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            t))
+        z)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+                (Nat.decLt t z))
+              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t)
+        t) →
+    False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_3</code><pre class="prose">∀ {z r : Nat}
+  (hExists :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          @Exists.{1} Nat fun (c : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))
+  (t : Nat) (hrt : @LT.lt.{0} Nat instLTNat r t)
+  (hh :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+                (Nat.decLt t z))
+              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t)
+        r)
+      (@Eq.{1} Nat
+        (ChompLean.gameF t
+          ((fun (t : Nat) =&gt;
+              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+                  (Nat.decLt t z))
+                (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                    (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                      (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+                fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            t))
+        z)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+                (Nat.decLt t z))
+              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t)
+        t) →
+    False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_4</code><pre class="prose">∀ {z r : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)
+  (hExists :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          @Exists.{1} Nat fun (c : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))
+  (t1 t2 : Nat) (ht12 : @LT.lt.{0} Nat instLTNat t1 t2) (ht2z : @LT.lt.{0} Nat instLTNat t2 z),
+  Not (@LT.lt.{0} Nat instLTNat t1 z) → False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_5</code><pre class="prose">∀ {z r : Nat}
+  (hExists :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          @Exists.{1} Nat fun (c : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))
+  (t1 t2 : Nat) (hrt1 : @LT.lt.{0} Nat instLTNat r t1) (ht12 : @LT.lt.{0} Nat instLTNat t1 t2),
+  Not (@LT.lt.{0} Nat instLTNat r t2) → False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_6</code><pre class="prose">∀ {z r : Nat}
+  (hExists :
+    ∀ (t : Nat),
+      @LT.lt.{0} Nat instLTNat r t →
+        @LT.lt.{0} Nat instLTNat t z →
+          @Exists.{1} Nat fun (c : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))
+  (t1 t2 : Nat) (hrt1 : @LT.lt.{0} Nat instLTNat r t1)
+  (heq :
+    @Eq.{1} Nat
+      ((fun (t : Nat) =&gt;
+          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+              (Nat.decLt t z))
+            (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                  (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+            fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        t1)
+      ((fun (t : Nat) =&gt;
+          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+              (Nat.decLt t z))
+            (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                  (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+            fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        t2))
+  (h1 :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+                (Nat.decLt t z))
+              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t1)
+        r)
+      (@Eq.{1} Nat
+        (ChompLean.gameF t1
+          ((fun (t : Nat) =&gt;
+              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+                  (Nat.decLt t z))
+                (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                    (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                      (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+                fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            t1))
+        z)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)
+                (Nat.decLt t z))
+              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))
+                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)
+                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))
+              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t1)
+        t1) →
+    False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_7</code><pre class="prose">∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)
+  (htooLarge :
+    @GT.gt.{0} Nat instLTNat z
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_8</code><pre class="prose">∀ {z r : Nat} (t c : Nat)
+  (hc0 : @LT.lt.{0} Nat instLTNat c (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))), False</pre></li><li><code>ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_9</code><pre class="prose">∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)
+  (hext :
+    @Eq.{1} Nat z
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (c t : Nat)
+  (htrange :
+    And
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        t)
+      (@LT.lt.{0} Nat instLTNat t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) → False</pre></li><li><code>ChompLean.gameF_terminal_freeze_value_le_twice_column_plus_one</code><pre class="prose">∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),
+  @LE.le.{0} Nat instLENat z
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>_private.R174TerminalRelayHallSaturation.0.ChompLean.r174_exact_cover_of_nodup_subset_length</code><pre class="prose">∀ {target raw : List.{0} Nat} (hTarget : @List.Nodup.{0} Nat target)
+  (hsub : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) target raw)
+  (hcard : @Eq.{1} Nat (@List.length.{0} Nat raw) (@List.length.{0} Nat target)) (x : Nat),
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) raw x)
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) target x)</pre></li><li><code>_private.R174TerminalRelayHallSaturation.0.ChompLean.r174_exact_cover_of_nodup_subset_length._proof_1_2</code><pre class="prose">∀ {target raw : List.{0} Nat} (hcard : @Eq.{1} Nat (@List.length.{0} Nat raw) (@List.length.{0} Nat target))
+  (hle :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat target)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@List.length.{0} Nat raw)),
+  False</pre></li><li><code>_private.R174TerminalRelayHallSaturation.0.ChompLean.r174_exact_cover_of_nodup_subset_length._simp_1_1</code><pre class="prose">∀ {α : Type u_1} {b : α} {l : List.{u_1} α} {a : α},
+  @Eq.{1} Prop (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.cons.{u_1} α b l) a)
+    (Or (@Eq.{u_1 + 1} α a b) (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) l a))</pre></li><li><code>_private.R174TerminalRelayHallSaturation.0.ChompLean.r174_nodup_map_of_injective_on</code><pre class="prose">∀ {alpha beta : Type} [inst : BEq.{0} alpha] [@LawfulBEq.{0} alpha inst] [inst : BEq.{0} beta]
+  [@LawfulBEq.{0} beta inst] (f : alpha → beta) (xs : List.{0} alpha) (hxs : @List.Nodup.{0} alpha xs)
+  (hinj :
+    ∀ (x : alpha),
+      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x →
+        ∀ (y : alpha),
+          @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs y →
+            @Eq.{1} beta (f x) (f y) → @Eq.{1} alpha x y),
+  @List.Nodup.{0} beta (@List.map.{0, 0} alpha beta f xs)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R174TerminalRelayHallSaturation.lean:1</p><p>SHA-256: <code class="path">2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536</code></p></section><p><a href="../index.html#id=lean-2cc48d7c1db1f601f6c0">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

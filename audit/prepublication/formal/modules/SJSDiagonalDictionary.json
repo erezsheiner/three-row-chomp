@@ -1,0 +1,1357 @@
+{
+  "module": "SJSDiagonalDictionary",
+  "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+  "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+  "declarationCount": 99,
+  "theoremDeclarationCount": 49,
+  "proofValuedDeclarationCount": 49,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.SJS.AgreeAbove",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 148,
+      "typePretty": "(q : Nat) → (l₁ l₂ : List.{0} Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.AgreeAbove.append",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 174,
+      "typePretty": "∀ {q : Nat} {a₁ a₂ b₁ b₂ : List.{0} Nat} (ha : ChompLean.SJS.AgreeAbove q a₁ a₂)\n  (hb : ChompLean.SJS.AgreeAbove q b₁ b₂),\n  ChompLean.SJS.AgreeAbove q\n    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) a₁ b₁)\n    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) a₂ b₂)",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.AgreeAbove.append._simp_1_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {α : Type u_1} {a : α} {s t : List.{u_1} α},\n  @Eq.{1} Prop\n    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)\n      (@HAppend.hAppend.{u_1, u_1, u_1} (List.{u_1} α) (List.{u_1} α) (List.{u_1} α)\n        (@instHAppendOfAppend.{u_1} (List.{u_1} α) (@List.instAppend.{u_1} α)) s t)\n      a)\n    (Or (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) s a)\n      (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) t a))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.AgreeAbove.cons",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 168,
+      "typePretty": "∀ {q : Nat} {l₁ l₂ : List.{0} Nat} (x : Nat) (h : ChompLean.SJS.AgreeAbove q l₁ l₂),\n  ChompLean.SJS.AgreeAbove q (@List.cons.{0} Nat x l₁) (@List.cons.{0} Nat x l₂)",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.AgreeAbove.cons._simp_1_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {α : Type u_1} {b : α} {l : List.{u_1} α} {a : α},\n  @Eq.{1} Prop (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.cons.{u_1} α b l) a)\n    (Or (@Eq.{u_1 + 1} α a b) (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) l a))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.AgreeAbove.mono",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 163,
+      "typePretty": "∀ {q q' : Nat} {l₁ l₂ : List.{0} Nat} (h : ChompLean.SJS.AgreeAbove q l₁ l₂) (hq : @LE.le.{0} Nat instLENat q q'),\n  ChompLean.SJS.AgreeAbove q' l₁ l₂",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.AgreeAbove.refl",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 152,
+      "typePretty": "∀ (q : Nat) (l : List.{0} Nat), ChompLean.SJS.AgreeAbove q l l",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.AgreeAbove.symm",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 155,
+      "typePretty": "∀ {q : Nat} {l₁ l₂ : List.{0} Nat} (h : ChompLean.SJS.AgreeAbove q l₁ l₂), ChompLean.SJS.AgreeAbove q l₂ l₁",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.AgreeAbove.trans",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 159,
+      "typePretty": "∀ {q : Nat} {l₁ l₂ l₃ : List.{0} Nat} (h₁ : ChompLean.SJS.AgreeAbove q l₁ l₂) (h₂ : ChompLean.SJS.AgreeAbove q l₂ l₃),\n  ChompLean.SJS.AgreeAbove q l₁ l₃",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.Journal",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 207,
+      "typePretty": "Type",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State",
+      "module": "SJSDiagonalDictionary",
+      "kind": "inductive",
+      "isProof": false,
+      "sourceLine": 209,
+      "typePretty": "Type",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State.J",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 211,
+      "typePretty": "(self : ChompLean.SJS.State) → List.{0} ChompLean.SJS.Journal",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State._sizeOf_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(t : ChompLean.SJS.State) → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State._sizeOf_inst",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "SizeOf.{1} ChompLean.SJS.State",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State.casesOn",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 209,
+      "typePretty": "{motive : (t : ChompLean.SJS.State) → Sort u} →\n  (t : ChompLean.SJS.State) →\n    (mk : (q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → motive (ChompLean.SJS.State.mk q J)) → motive t",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.State.ctorIdx",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "ChompLean.SJS.State → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State.mk",
+      "module": "SJSDiagonalDictionary",
+      "kind": "constructor",
+      "isProof": false,
+      "sourceLine": 209,
+      "typePretty": "(q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → ChompLean.SJS.State",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State.mk._flat_ctor",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → ChompLean.SJS.State",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State.mk.inj",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} {J : List.{0} ChompLean.SJS.Journal} {q_1 : Nat} {J_1 : List.{0} ChompLean.SJS.Journal},\n  @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.State.mk q J) (ChompLean.SJS.State.mk q_1 J_1) →\n    And (@Eq.{1} Nat q q_1) (@Eq.{1} (List.{0} ChompLean.SJS.Journal) J J_1)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State.mk.injEq",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (J : List.{0} ChompLean.SJS.Journal) (q_1 : Nat) (J_1 : List.{0} ChompLean.SJS.Journal),\n  @Eq.{1} Prop (@Eq.{1} ChompLean.SJS.State (ChompLean.SJS.State.mk q J) (ChompLean.SJS.State.mk q_1 J_1))\n    (And (@Eq.{1} Nat q q_1) (@Eq.{1} (List.{0} ChompLean.SJS.Journal) J J_1))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State.mk.noConfusion",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 209,
+      "typePretty": "{P : Sort u} →\n  {q : Nat} →\n    {J : List.{0} ChompLean.SJS.Journal} →\n      {q' : Nat} →\n        {J' : List.{0} ChompLean.SJS.Journal} →\n          (eq : @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.State.mk q J) (ChompLean.SJS.State.mk q' J')) →\n            (k : (q_eq : @Eq.{1} Nat q q') → (J_eq : @Eq.{1} (List.{0} ChompLean.SJS.Journal) J J') → P) → P",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.State.mk.sizeOf_spec",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (J : List.{0} ChompLean.SJS.Journal),\n  @Eq.{1} Nat (@SizeOf.sizeOf.{1} ChompLean.SJS.State ChompLean.SJS.State._sizeOf_inst (ChompLean.SJS.State.mk q J))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) (@SizeOf.sizeOf.{1} Nat instSizeOfNat q))\n      (@SizeOf.sizeOf.{1} (List.{0} ChompLean.SJS.Journal)\n        (@List._sizeOf_inst.{0} ChompLean.SJS.Journal (@List._sizeOf_inst.{0} Nat instSizeOfNat)) J))",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State.noConfusion",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 209,
+      "typePretty": "{P : Sort u} →\n  {t t' : ChompLean.SJS.State} →\n    (eq : @Eq.{1} ChompLean.SJS.State t t') → ChompLean.SJS.State.noConfusionType.{u} P t t'",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.State.noConfusionType",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(P : Sort u) → (t t' : ChompLean.SJS.State) → Sort u",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.State.q",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 210,
+      "typePretty": "(self : ChompLean.SJS.State) → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.State.rec",
+      "module": "SJSDiagonalDictionary",
+      "kind": "recursor",
+      "isProof": false,
+      "sourceLine": 209,
+      "typePretty": "{motive : (t : ChompLean.SJS.State) → Sort u} →\n  (mk : (q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → motive (ChompLean.SJS.State.mk q J)) →\n    (t : ChompLean.SJS.State) → motive t",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.State.recOn",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 209,
+      "typePretty": "{motive : (t : ChompLean.SJS.State) → Sort u} →\n  (t : ChompLean.SJS.State) →\n    (mk : (q : Nat) → (J : List.{0} ChompLean.SJS.Journal) → motive (ChompLean.SJS.State.mk q J)) → motive t",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.awards",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 221,
+      "typePretty": "(q : Nat) → (Js : List.{0} ChompLean.SJS.Journal) → List.{0} Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.dOf",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 231,
+      "typePretty": "(s : ChompLean.SJS.State) → Nat",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.dayBound",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 70,
+      "typePretty": "List.{0} Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.dayBound._sunfold",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "List.{0} Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.dayBound._unsafe_rec",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "List.{0} Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.dayBound.match_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : List.{0} Nat → Sort u_1) →\n  (x : List.{0} Nat) →\n    (h_1 : (a : Unit) → motive (@List.nil.{0} Nat)) →\n      (h_2 : (x : Nat) → (xs : List.{0} Nat) → motive (@List.cons.{0} Nat x xs)) → motive x",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.dword",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 251,
+      "typePretty": "(q : Nat) → Nat",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.dword_one",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 264,
+      "typePretty": "@Eq.{1} Nat (ChompLean.SJS.dword (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.dword_zero",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 262,
+      "typePretty": "@Eq.{1} Nat (ChompLean.SJS.dword (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.hasDay",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 43,
+      "typePretty": "List.{0} Nat → Nat → Bool",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.hasDay._sunfold",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "List.{0} Nat → Nat → Bool",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.hasDay._unsafe_rec",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "List.{0} Nat → Nat → Bool",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.hasDay.eq_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (x : Nat), @Eq.{1} Bool (ChompLean.SJS.hasDay (@List.nil.{0} Nat) x) Bool.false",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.hasDay.eq_2",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (x x_2 : Nat) (xs : List.{0} Nat),\n  @Eq.{1} Bool (ChompLean.SJS.hasDay (@List.cons.{0} Nat x_2 xs) x)\n    (Bool.or (@BEq.beq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat) x_2 x) (ChompLean.SJS.hasDay xs x))",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.hasDay.eq_def",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (x : List.{0} Nat) (x_1 : Nat),\n  @Eq.{1} Bool (ChompLean.SJS.hasDay x x_1)\n    (ChompLean.SJS.hasDay.match_1.{1} (fun (x : List.{0} Nat) (x_2 : Nat) => Bool) x x_1 (fun (x : Nat) => Bool.false)\n      fun (x : Nat) (xs : List.{0} Nat) (k : Nat) =>\n      Bool.or (@BEq.beq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat) x k) (ChompLean.SJS.hasDay xs k))",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.hasDay.match_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : List.{0} Nat → Nat → Sort u_1) →\n  (x : List.{0} Nat) →\n    (x_1 : Nat) →\n      (h_1 : (x : Nat) → motive (@List.nil.{0} Nat) x) →\n        (h_2 : (x : Nat) → (xs : List.{0} Nat) → (k : Nat) → motive (@List.cons.{0} Nat x xs) k) → motive x x_1",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.hasDay_iff",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 47,
+      "typePretty": "∀ (l : List.{0} Nat) (k : Nat),\n  Iff (@Eq.{1} Bool (ChompLean.SJS.hasDay l k) Bool.true)\n    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l k)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.lastJ",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 225,
+      "typePretty": "List.{0} ChompLean.SJS.Journal → ChompLean.SJS.Journal",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.lastJ._sparseCasesOn_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "{α : Type u} →\n  {motive : (t : List.{u} α) → Sort u_1} →\n    (t : List.{u} α) →\n      (nil : motive (@List.nil.{u} α)) → ((h : Nat.hasNotBit (nat_lit 1) (@List.ctorIdx.{u} α t)) → motive t) → motive t",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1",
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.lastJ._sunfold",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "List.{0} ChompLean.SJS.Journal → ChompLean.SJS.Journal",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.lastJ._unsafe_rec",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "List.{0} ChompLean.SJS.Journal → ChompLean.SJS.Journal",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.lastJ.match_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : List.{0} ChompLean.SJS.Journal → Sort u_1) →\n  (x : List.{0} ChompLean.SJS.Journal) →\n    (h_1 : (a : Unit) → motive (@List.nil.{0} ChompLean.SJS.Journal)) →\n      (h_2 :\n          (g : ChompLean.SJS.Journal) →\n            motive (@List.cons.{0} ChompLean.SJS.Journal g (@List.nil.{0} ChompLean.SJS.Journal))) →\n        (h_3 :\n            (head : ChompLean.SJS.Journal) →\n              (gs : List.{0} ChompLean.SJS.Journal) → motive (@List.cons.{0} ChompLean.SJS.Journal head gs)) →\n          motive x",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.le_dayBound",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 74,
+      "typePretty": "∀ {l : List.{0} Nat} {x : Nat} (h : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l x),\n  @LE.le.{0} Nat instLENat x (ChompLean.SJS.dayBound l)",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGE",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 86,
+      "typePretty": "(q : Nat) → (l : List.{0} Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGE_congr",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 181,
+      "typePretty": "∀ {q : Nat} {l₁ l₂ : List.{0} Nat} (h : ChompLean.SJS.AgreeAbove q l₁ l₂),\n  @Eq.{1} Nat (ChompLean.SJS.mexGE q l₁) (ChompLean.SJS.mexGE q l₂)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGE_ge",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 131,
+      "typePretty": "∀ (q : Nat) (l : List.{0} Nat), @LE.le.{0} Nat instLENat q (ChompLean.SJS.mexGE q l)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGE_min",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 136,
+      "typePretty": "∀ (q : Nat) (l : List.{0} Nat) (j : Nat),\n  @LE.le.{0} Nat instLENat q j →\n    @LT.lt.{0} Nat instLTNat j (ChompLean.SJS.mexGE q l) →\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l j",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGE_not_mem",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 133,
+      "typePretty": "∀ (q : Nat) (l : List.{0} Nat),\n  Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l (ChompLean.SJS.mexGE q l))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGE_not_mem._proof_1_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q : Nat) (l : List.{0} Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.SJS.dayBound l)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGE_unique",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 139,
+      "typePretty": "∀ {q : Nat} {l : List.{0} Nat} {v : Nat} (h1 : @LE.le.{0} Nat instLENat q v)\n  (h2 : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l v))\n  (h3 :\n    ∀ (j : Nat),\n      @LE.le.{0} Nat instLENat q j →\n        @LT.lt.{0} Nat instLTNat j v → @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l j),\n  @Eq.{1} Nat (ChompLean.SJS.mexGE q l) v",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 82,
+      "typePretty": "(l : List.{0} Nat) → Nat → Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux._sunfold",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(l : List.{0} Nat) → Nat → Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux._unsafe_rec",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(l : List.{0} Nat) → Nat → Nat → Nat",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux.eq_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (l : List.{0} Nat) (x : Nat),\n  @Eq.{1} Nat (ChompLean.SJS.mexGEaux l (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x) x",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux.eq_2",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (l : List.{0} Nat) (x fuel : Nat),\n  @Eq.{1} Nat (ChompLean.SJS.mexGEaux l (Nat.succ fuel) x)\n    (@ite.{1} Nat (@Eq.{1} Bool (ChompLean.SJS.hasDay l x) Bool.true)\n      (instDecidableEqBool (ChompLean.SJS.hasDay l x) Bool.true)\n      (ChompLean.SJS.mexGEaux l fuel\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      x)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux.eq_def",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (l : List.{0} Nat) (x x_1 : Nat),\n  @Eq.{1} Nat (ChompLean.SJS.mexGEaux l x x_1)\n    (ChompLean.SJS.mexGEaux.match_1.{1} (fun (x x_2 : Nat) => Nat) x x_1 (fun (k : Nat) => k) fun (fuel k : Nat) =>\n      @ite.{1} Nat (@Eq.{1} Bool (ChompLean.SJS.hasDay l k) Bool.true)\n        (instDecidableEqBool (ChompLean.SJS.hasDay l k) Bool.true)\n        (ChompLean.SJS.mexGEaux l fuel\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        k)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux.match_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : Nat → Nat → Sort u_1) →\n  (x x_1 : Nat) →\n    (h_1 : (k : Nat) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) →\n      (h_2 : (fuel k : Nat) → motive (Nat.succ fuel) k) → motive x x_1",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux_ge",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 89,
+      "typePretty": "∀ (l : List.{0} Nat) (fuel k : Nat), @LE.le.{0} Nat instLENat k (ChompLean.SJS.mexGEaux l fuel k)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux_ge._proof_1_4",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (l : List.{0} Nat) (n k : Nat)\n  (this :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.SJS.mexGEaux l n\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LE.le.{0} Nat instLENat k\n        (ChompLean.SJS.mexGEaux l n\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux_min",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 115,
+      "typePretty": "∀ (l : List.{0} Nat) (fuel k j : Nat),\n  @LE.le.{0} Nat instLENat k j →\n    @LT.lt.{0} Nat instLTNat j (ChompLean.SJS.mexGEaux l fuel k) →\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l j",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux_min._proof_1_4",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k j : Nat) (h1 : @LE.le.{0} Nat instLENat k j) (h2 : @LT.lt.{0} Nat instLTNat j k), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux_min._proof_1_5",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (l : List.{0} Nat) (n k j : Nat) (h1 : @LE.le.{0} Nat instLENat k j) (hjk : Not (@Eq.{1} Nat j k)),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        j) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux_not_mem",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 99,
+      "typePretty": "∀ (l : List.{0} Nat) (fuel k : Nat)\n  (hf :\n    @LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k fuel)),\n  Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l (ChompLean.SJS.mexGEaux l fuel k))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux_not_mem._proof_1_4",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (l : List.{0} Nat) (k : Nat)\n  (hf :\n    @LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))\n  (hb : @LE.le.{0} Nat instLENat k (ChompLean.SJS.dayBound l)), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.mexGEaux_not_mem._proof_1_5",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (l : List.{0} Nat) (n k : Nat)\n  (hf :\n    @LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat (ChompLean.SJS.dayBound l)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          n)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.not_mem_of_hasDay_false",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 63,
+      "typePretty": "∀ {l : List.{0} Nat} {k : Nat} (h : @Eq.{1} Bool (ChompLean.SJS.hasDay l k) Bool.false),\n  Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l k)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.scan",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 213,
+      "typePretty": "(q : Nat) → List.{0} ChompLean.SJS.Journal → List.{0} Nat → List.{0} (Prod.{0, 0} ChompLean.SJS.Journal Nat)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.scan._sunfold",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(q : Nat) → List.{0} ChompLean.SJS.Journal → List.{0} Nat → List.{0} (Prod.{0, 0} ChompLean.SJS.Journal Nat)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.scan._unsafe_rec",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(q : Nat) → List.{0} ChompLean.SJS.Journal → List.{0} Nat → List.{0} (Prod.{0, 0} ChompLean.SJS.Journal Nat)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.scan.match_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : List.{0} ChompLean.SJS.Journal → List.{0} Nat → Sort u_1) →\n  (x : List.{0} ChompLean.SJS.Journal) →\n    (x_1 : List.{0} Nat) →\n      (h_1 : (x : List.{0} Nat) → motive (@List.nil.{0} ChompLean.SJS.Journal) x) →\n        (h_2 :\n            (g : ChompLean.SJS.Journal) →\n              (gs : List.{0} ChompLean.SJS.Journal) →\n                (served : List.{0} Nat) → motive (@List.cons.{0} ChompLean.SJS.Journal g gs) served) →\n          motive x x_1",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.seed",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 243,
+      "typePretty": "ChompLean.SJS.State",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.state",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 247,
+      "typePretty": "Nat → ChompLean.SJS.State",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.state._sunfold",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "Nat → ChompLean.SJS.State",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.state._unsafe_rec",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "Nat → ChompLean.SJS.State",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.state.eq_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "@Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  ChompLean.SJS.seed",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.state.eq_2",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (n : Nat), @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state (Nat.succ n)) (ChompLean.SJS.step (ChompLean.SJS.state n))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.state.eq_def",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (x : Nat),\n  @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state x)\n    (ChompLean.SJS.state.match_1.{1} (fun (x : Nat) => ChompLean.SJS.State) x (fun (_ : Unit) => ChompLean.SJS.seed)\n      fun (n : Nat) => ChompLean.SJS.step (ChompLean.SJS.state n))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.state.match_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : Nat → Sort u_1) →\n  (x : Nat) →\n    (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) →\n      (h_2 : (n : Nat) → motive (Nat.succ n)) → motive x",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.SJS.state_one",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 260,
+      "typePretty": "@Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n  (ChompLean.SJS.State.mk (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n    (@List.cons.{0} ChompLean.SJS.Journal\n      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) (@List.nil.{0} Nat))\n      (@List.nil.{0} ChompLean.SJS.Journal)))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.state_q",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 266,
+      "typePretty": "∀ (n : Nat), @Eq.{1} Nat (ChompLean.SJS.State.q (ChompLean.SJS.state n)) n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.state_zero",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 258,
+      "typePretty": "@Eq.{1} ChompLean.SJS.State (ChompLean.SJS.state (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (ChompLean.SJS.State.mk (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n    (@List.cons.{0} ChompLean.SJS.Journal (@List.nil.{0} Nat) (@List.nil.{0} ChompLean.SJS.Journal)))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.step",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 236,
+      "typePretty": "(s : ChompLean.SJS.State) → ChompLean.SJS.State",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SJS.step.eq_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (s : ChompLean.SJS.State),\n  @Eq.{1} ChompLean.SJS.State (ChompLean.SJS.step s)\n    (ChompLean.SJS.State.mk\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.SJS.State.q s)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HAppend.hAppend.{0, 0, 0} (List.{0} ChompLean.SJS.Journal) (List.{0} (List.{0} Nat))\n        (List.{0} ChompLean.SJS.Journal)\n        (@instHAppendOfAppend.{0} (List.{0} ChompLean.SJS.Journal) (@List.instAppend.{0} ChompLean.SJS.Journal))\n        (@List.map.{0, 0} (Prod.{0, 0} ChompLean.SJS.Journal Nat) ChompLean.SJS.Journal\n          (@Prod.fst.{0, 0} ChompLean.SJS.Journal Nat)\n          (@List.filter.{0} (Prod.{0, 0} ChompLean.SJS.Journal Nat)\n            (fun (p : Prod.{0, 0} ChompLean.SJS.Journal Nat) =>\n              Bool.not\n                (@BEq.beq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                  (@Prod.snd.{0, 0} ChompLean.SJS.Journal Nat p) (ChompLean.SJS.State.q s)))\n            (ChompLean.SJS.scan (ChompLean.SJS.State.q s) (ChompLean.SJS.State.J s) (@List.nil.{0} Nat))))\n        (@List.cons.{0} (List.{0} Nat)\n          (@List.cons.{0} Nat (ChompLean.SJS.dOf s)\n            (@List.filter.{0} Nat\n              (fun (x : Nat) =>\n                @Decidable.decide (@LT.lt.{0} Nat instLTNat (ChompLean.SJS.State.q s) x)\n                  (Nat.decLt (ChompLean.SJS.State.q s) x))\n              (ChompLean.SJS.lastJ (ChompLean.SJS.State.J s))))\n          (@List.nil.{0} (List.{0} Nat)))))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.SJSDiagonalDictionary.0.ChompLean.SJS.hasDay.match_1.eq_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (motive : List.{0} Nat → Nat → Sort u_1) (x : Nat) (h_1 : (x : Nat) → motive (@List.nil.{0} Nat) x)\n  (h_2 : (x : Nat) → (xs : List.{0} Nat) → (k : Nat) → motive (@List.cons.{0} Nat x xs) k),\n  @Eq.{u_1} (motive (@List.nil.{0} Nat) x) (ChompLean.SJS.hasDay.match_1.{u_1} motive (@List.nil.{0} Nat) x h_1 h_2)\n    (h_1 x)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.SJSDiagonalDictionary.0.ChompLean.SJS.hasDay.match_1.eq_2",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (motive : List.{0} Nat → Nat → Sort u_1) (x : Nat) (xs : List.{0} Nat) (k : Nat)\n  (h_1 : (x : Nat) → motive (@List.nil.{0} Nat) x)\n  (h_2 : (x : Nat) → (xs : List.{0} Nat) → (k : Nat) → motive (@List.cons.{0} Nat x xs) k),\n  @Eq.{u_1} (motive (@List.cons.{0} Nat x xs) k)\n    (ChompLean.SJS.hasDay.match_1.{u_1} motive (@List.cons.{0} Nat x xs) k h_1 h_2) (h_2 x xs k)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.SJSDiagonalDictionary.0.ChompLean.SJS.hasDay.match_1.splitter",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : List.{0} Nat → Nat → Sort u_1) →\n  (x : List.{0} Nat) →\n    (x_1 : Nat) →\n      (h_1 : (x : Nat) → motive (@List.nil.{0} Nat) x) →\n        (h_2 : (x : Nat) → (xs : List.{0} Nat) → (k : Nat) → motive (@List.cons.{0} Nat x xs) k) → motive x x_1",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.SJSDiagonalDictionary.0.ChompLean.SJS.mexGEaux.match_1.eq_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (motive : Nat → Nat → Sort u_1) (k : Nat)\n  (h_1 : (k : Nat) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (h_2 : (fuel k : Nat) → motive (Nat.succ fuel) k),\n  @Eq.{u_1} (motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n    (ChompLean.SJS.mexGEaux.match_1.{u_1} motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k h_1\n      h_2)\n    (h_1 k)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.SJSDiagonalDictionary.0.ChompLean.SJS.mexGEaux.match_1.eq_2",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (motive : Nat → Nat → Sort u_1) (fuel k : Nat)\n  (h_1 : (k : Nat) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)\n  (h_2 : (fuel k : Nat) → motive (Nat.succ fuel) k),\n  @Eq.{u_1} (motive (Nat.succ fuel) k) (ChompLean.SJS.mexGEaux.match_1.{u_1} motive (Nat.succ fuel) k h_1 h_2)\n    (h_2 fuel k)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.SJSDiagonalDictionary.0.ChompLean.SJS.mexGEaux.match_1.splitter",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : Nat → Nat → Sort u_1) →\n  (x x_1 : Nat) →\n    (h_1 : (k : Nat) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k) →\n      (h_2 : (fuel k : Nat) → motive (Nat.succ fuel) k) → motive x x_1",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.SJSDiagonalDictionary.0.ChompLean.SJS.state.match_1.eq_1",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (motive : Nat → Sort u_1) (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (h_2 : (n : Nat) → motive (Nat.succ n)),\n  @Eq.{u_1} (motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n    (ChompLean.SJS.state.match_1.{u_1} motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) h_1 h_2)\n    (h_1 Unit.unit)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.SJSDiagonalDictionary.0.ChompLean.SJS.state.match_1.eq_2",
+      "module": "SJSDiagonalDictionary",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (motive : Nat → Sort u_1) (n : Nat)\n  (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (h_2 : (n : Nat) → motive (Nat.succ n)),\n  @Eq.{u_1} (motive (Nat.succ n)) (ChompLean.SJS.state.match_1.{u_1} motive (Nat.succ n) h_1 h_2) (h_2 n)",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "_private.SJSDiagonalDictionary.0.ChompLean.SJS.state.match_1.splitter",
+      "module": "SJSDiagonalDictionary",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": null,
+      "typePretty": "(motive : Nat → Sort u_1) →\n  (x : Nat) →\n    (h_1 : (a : Unit) → motive (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) →\n      (h_2 : (n : Nat) → motive (Nat.succ n)) → motive x",
+      "axioms": [],
+      "sourceSha256": "a20da2c694da00c6c2a0193a9718ec62241752e7774508d3eec76cb8a7067acf",
+      "sourcePath": "lean/core/SJSDiagonalDictionary.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    }
+  ]
+}

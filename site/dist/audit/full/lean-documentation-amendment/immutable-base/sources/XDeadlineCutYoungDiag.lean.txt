@@ -1,0 +1,492 @@
+import XTauPrebirthRails
+import R198CausalMiddleCohortPullback
+
+set_option autoImplicit false
+set_option maxHeartbeats 800000
+
+namespace ChompLean
+
+/-!
+# Deadline cuts and the youngest diagonal inventory
+
+Work-ID: `X-DEADLINE-CUT-LOWBIT-FORMALIZATION-001`
+Run-ID: `XDCLF-20260812-2218-ROOT`
+
+This file splits every diagonal owner of a value `q + k` at the cut `q`.
+The old arm is the normalized youngest inventory; the new arm records a
+diagonal born after the cut.  The split is disjoint and its witnesses are
+unique.  It yields an all-horizon blocker certificate and, below depth three,
+the three low-bit formulas without assuming `NoTriple` or any host-cover law.
+-/
+
+/-- An old diagonal value still alive `k` clocks above the cut `q`. -/
+def YoungDiag (q k : Nat) : Prop :=
+  exists a, a < q /\ gameF a a = q + k
+
+/-- A diagonal owner born at or after `q`, but before its target `q + k`. -/
+def NewDiagAfterCut (q k : Nat) : Prop :=
+  exists i, i < k /\ gameF (q + i) (q + i) = q + k
+
+/-- The normalized lag of the diagonal born at row `a`. -/
+noncomputable def gameFDiagonalLag (a : Nat) : Nat :=
+  gameF a a - a
+
+/-- Moving the cut one row shifts every old clock down by one and exposes
+exactly the diagonal born at the old cut. -/
+theorem youngDiag_succ_iff (q k : Nat) :
+    YoungDiag (q + 1) k <->
+      YoungDiag q (k + 1) \/ gameF q q = (q + 1) + k := by
+  constructor
+  · rintro ⟨a, ha, hvalue⟩
+    by_cases haq : a = q
+    · right
+      subst a
+      exact hvalue
+    · left
+      refine ⟨a, by omega, ?_⟩
+      simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hvalue
+  · rintro (⟨a, ha, hvalue⟩ | hvalue)
+    · refine ⟨a, by omega, ?_⟩
+      simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hvalue
+    · exact ⟨q, by omega, hvalue⟩
+
+/-- Exact all-horizon owner partition at a cut.  The diagonal-growth law is
+used only to show that an owner at or to the right of `q` occurs strictly
+before its target, hence has the form `q + i` with `i < k`. -/
+theorem diagonalOwner_cut_partition (q k : Nat) :
+    D gameF (q + k) <-> YoungDiag q k \/ NewDiagAfterCut q k := by
+  constructor
+  · rintro ⟨a, hvalue⟩
+    by_cases haq : a < q
+    · exact Or.inl ⟨a, haq, hvalue⟩
+    · right
+      have hgt : a < gameF a a := gameRecurrenceModel.diagonal_gt a
+      rw [hvalue] at hgt
+      refine ⟨a - q, by omega, ?_⟩
+      have hqa : q + (a - q) = a := by omega
+      simpa [hqa] using hvalue
+  · rintro (⟨a, _haq, hvalue⟩ | ⟨i, _hik, hvalue⟩)
+    · exact ⟨a, hvalue⟩
+    · exact ⟨q + i, hvalue⟩
+
+/-- The two sides of the cut cannot own the same diagonal value. -/
+theorem youngDiag_disjoint_newDiagAfterCut (q k : Nat) :
+    Not (YoungDiag q k /\ NewDiagAfterCut q k) := by
+  rintro ⟨⟨a, haq, hold⟩, ⟨i, hik, hnew⟩⟩
+  have hai : a = q + i :=
+    diagonal_injective gameRecurrenceModel (hold.trans hnew.symm)
+  omega
+
+/-- The old-owner witness in `YoungDiag` is unique. -/
+theorem youngDiag_witness_unique {q k a b : Nat}
+    (_ha : a < q) (hva : gameF a a = q + k)
+    (_hb : b < q) (hvb : gameF b b = q + k) :
+    a = b := by
+  exact diagonal_injective gameRecurrenceModel (hva.trans hvb.symm)
+
+/-- The post-cut birth offset is unique. -/
+theorem newDiagAfterCut_witness_unique {q k i j : Nat}
+    (_hi : i < k) (hvi : gameF (q + i) (q + i) = q + k)
+    (_hj : j < k) (hvj : gameF (q + j) (q + j) = q + k) :
+    i = j := by
+  have hij : q + i = q + j :=
+    diagonal_injective gameRecurrenceModel (hvi.trans hvj.symm)
+  omega
+
+/-- The new-owner arm expressed only through future diagonal lags. -/
+theorem newDiagAfterCut_iff_lag (q k : Nat) :
+    NewDiagAfterCut q k <->
+      exists i, i < k /\ gameFDiagonalLag (q + i) = k - i := by
+  constructor
+  · rintro ⟨i, hi, hvalue⟩
+    refine ⟨i, hi, ?_⟩
+    simp only [gameFDiagonalLag, hvalue]
+    omega
+  · rintro ⟨i, hi, hlag⟩
+    refine ⟨i, hi, ?_⟩
+    have hgt : q + i < gameF (q + i) (q + i) :=
+      gameRecurrenceModel.diagonal_gt (q + i)
+    simp only [gameFDiagonalLag] at hlag
+    omega
+
+/-- Complete finite-horizon blocker certificate at the cut `q`. -/
+theorem blocker_iff_cut_deadline_absent {q k : Nat} (hpositive : 0 < q + k) :
+    S gameF (q + k) <->
+      Not (YoungDiag q k) /\
+        forall i, i < k -> gameF (q + i) (q + i) ≠ q + k := by
+  rw [gameF_blocker_iff_no_diagonal_owner hpositive]
+  change Not (D gameF (q + k)) <-> _
+  rw [diagonalOwner_cut_partition]
+  simp only [NewDiagAfterCut, not_or, not_exists, not_and]
+
+/-- Lag form of the complete blocker certificate. -/
+theorem blocker_iff_cut_lags_miss {q k : Nat} (hpositive : 0 < q + k) :
+    S gameF (q + k) <->
+      Not (YoungDiag q k) /\
+        forall i, i < k -> gameFDiagonalLag (q + i) ≠ k - i := by
+  rw [gameF_blocker_iff_no_diagonal_owner hpositive]
+  change Not (D gameF (q + k)) <-> _
+  rw [diagonalOwner_cut_partition, newDiagAfterCut_iff_lag]
+  simp only [not_or, not_exists, not_and]
+
+/-- Below depth three, no diagonal born after the cut can mature at the
+target.  This is the exact role of the unconditional diagonal rail
+`d(t) >= t + 3`. -/
+theorem no_newDiagAfterCut_of_lt_three {q k : Nat}
+    (hq : 3 <= q) (hk : k < 3) :
+    Not (NewDiagAfterCut q k) := by
+  rintro ⟨i, hi, hvalue⟩
+  have hlow : q + i + 3 <= gameF (q + i) (q + i) :=
+    gameF_diagonal_lower (by omega)
+  rw [hvalue] at hlow
+  omega
+
+/-- The all-`k < 3` low-bit formula. -/
+theorem blocker_iff_not_youngDiag_of_lt_three {q k : Nat}
+    (hq : 3 <= q) (hk : k < 3) :
+    S gameF (q + k) <-> Not (YoungDiag q k) := by
+  have hpositive : 0 < q + k := by omega
+  constructor
+  · intro hblocker hyoung
+    have hnoOwner :=
+      (gameF_blocker_iff_no_diagonal_owner hpositive).mp hblocker
+    exact hnoOwner ⟨hyoung.choose, hyoung.choose_spec.2⟩
+  · intro hnoYoung
+    apply (gameF_blocker_iff_no_diagonal_owner hpositive).mpr
+    intro howner
+    have hsplit := (diagonalOwner_cut_partition q k).mp howner
+    rcases hsplit with hyoung | hnew
+    · exact hnoYoung hyoung
+    · exact (no_newDiagAfterCut_of_lt_three hq hk) hnew
+
+theorem blocker_q_iff_not_youngDiag_zero {q : Nat} (hq : 3 <= q) :
+    S gameF q <-> Not (YoungDiag q 0) := by
+  simpa using blocker_iff_not_youngDiag_of_lt_three (q := q) (k := 0) hq (by omega)
+
+theorem blocker_q_add_one_iff_not_youngDiag_one {q : Nat} (hq : 3 <= q) :
+    S gameF (q + 1) <-> Not (YoungDiag q 1) := by
+  simpa using blocker_iff_not_youngDiag_of_lt_three (q := q) (k := 1) hq (by omega)
+
+theorem blocker_q_add_two_iff_not_youngDiag_two {q : Nat} (hq : 3 <= q) :
+    S gameF (q + 2) <-> Not (YoungDiag q 2) := by
+  simpa using blocker_iff_not_youngDiag_of_lt_three (q := q) (k := 2) hq (by omega)
+
+/-! ## A diagonal-only certificate for the blocker count -/
+
+private theorem xdclf_nodup_map_of_injective_on
+    (f : Nat -> Nat) (xs : List Nat) (hxs : xs.Nodup)
+    (hinj : forall x, x ∈ xs -> forall y, y ∈ xs ->
+      f x = f y -> x = y) :
+    (xs.map f).Nodup := by
+  induction xs with
+  | nil => simp
+  | cons a as ih =>
+      have hnd := List.nodup_cons.mp hxs
+      change (f a :: as.map f).Nodup
+      rw [List.nodup_cons]
+      constructor
+      · intro hmem
+        rcases List.mem_map.mp hmem with ⟨y, hy, hay⟩
+        have hay' : a = y :=
+          hinj a (by simp) y (by simp [hy]) hay.symm
+        subst y
+        exact hnd.1 hy
+      · apply ih hnd.2
+        intro x hx y hy hxy
+        exact hinj x (by simp [hx]) y (by simp [hy]) hxy
+
+/-- The diagonal range in `[1,n]`, computed from the one-dimensional
+diagonal prefix with owner indices `< n`. -/
+noncomputable def gameFDiagonalValuesThroughList (n : Nat) : List Nat := by
+  classical
+  exact ((List.range n).map (fun a => gameF a a)).filter
+    (fun k => decide (k <= n))
+
+/-- Number of diagonal values in `[1,n]`, exposed as a diagonal-only finite
+certificate rather than as a query to the blocker predicate. -/
+noncomputable def gameFDiagonalPrefixCount (n : Nat) : Nat :=
+  (gameFDiagonalValuesThroughList n).length
+
+theorem gameF_mem_diagonalValuesThroughList {n k : Nat} :
+    k ∈ gameFDiagonalValuesThroughList n <->
+      0 < k /\ k <= n /\ exists a, gameF a a = k := by
+  classical
+  simp only [gameFDiagonalValuesThroughList, List.mem_filter,
+    decide_eq_true_eq, List.mem_map, List.mem_range]
+  constructor
+  · rintro ⟨⟨a, ha, hvalue⟩, hle⟩
+    subst k
+    have hgt : a < gameF a a := gameRecurrenceModel.diagonal_gt a
+    exact ⟨by omega, hle, ⟨a, rfl⟩⟩
+  · rintro ⟨_hpos, hle, ⟨a, hvalue⟩⟩
+    have hgt : a < gameF a a := gameRecurrenceModel.diagonal_gt a
+    refine ⟨⟨a, by omega, hvalue⟩, hle⟩
+
+theorem gameF_diagonalValuesThroughList_nodup (n : Nat) :
+    (gameFDiagonalValuesThroughList n).Nodup := by
+  classical
+  unfold gameFDiagonalValuesThroughList
+  apply List.filter_sublist.nodup
+  apply xdclf_nodup_map_of_injective_on (fun a => gameF a a)
+    (List.range n) List.nodup_range
+  intro x _hx y _hy hxy
+  exact diagonal_injective gameRecurrenceModel hxy
+
+/-- The diagonal-prefix certificate enumerates exactly the positive
+nonblockers through `n`. -/
+theorem gameF_mem_diagonalValuesThroughList_iff_nonblocker {n k : Nat} :
+    k ∈ gameFDiagonalValuesThroughList n <->
+      k ∈ gameFNonblockersThroughList n := by
+  constructor
+  · intro hk
+    rcases gameF_mem_diagonalValuesThroughList.mp hk with
+      ⟨hpos, hle, howner⟩
+    apply gameF_mem_nonblockersThroughList.mpr
+    refine ⟨hpos, hle, ?_⟩
+    intro hS
+    exact (gameF_blocker_iff_no_diagonal_owner hpos).mp hS howner
+  · intro hk
+    rcases gameF_mem_nonblockersThroughList.mp hk with
+      ⟨hpos, hle, hnotS⟩
+    apply gameF_mem_diagonalValuesThroughList.mpr
+    exact ⟨hpos, hle, ⟨gameFDiagonalOwner k,
+      gameFDiagonalOwner_spec hpos hnotS⟩⟩
+
+private theorem gameF_nonblockersThroughList_nodup_xdclf (n : Nat) :
+    (gameFNonblockersThroughList n).Nodup := by
+  classical
+  unfold gameFNonblockersThroughList
+  exact List.filter_sublist.nodup (List.nodup_range' 1)
+
+theorem gameF_diagonalPrefixCount_eq_nonblockers (n : Nat) :
+    gameFDiagonalPrefixCount n = (gameFNonblockersThroughList n).length := by
+  have hAB : gameFDiagonalValuesThroughList n ⊆
+      gameFNonblockersThroughList n := by
+    intro k hk
+    exact gameF_mem_diagonalValuesThroughList_iff_nonblocker.mp hk
+  have hBA : gameFNonblockersThroughList n ⊆
+      gameFDiagonalValuesThroughList n := by
+    intro k hk
+    exact gameF_mem_diagonalValuesThroughList_iff_nonblocker.mpr hk
+  have hleAB := nodup_subset_length_le
+    (gameF_diagonalValuesThroughList_nodup n) hAB
+  have hleBA := nodup_subset_length_le
+    (gameF_nonblockersThroughList_nodup_xdclf n) hBA
+  unfold gameFDiagonalPrefixCount
+  omega
+
+/-- Exact diagonal-only reconstruction of the actual blocker count. -/
+theorem gameFBlockerCountThrough_eq_diagPrefixComplement (n : Nat) :
+    gameFBlockerCountThrough n = n - gameFDiagonalPrefixCount n := by
+  classical
+  have hpartition0 := List.length_eq_countP_add_countP
+    (fun k : Nat => decide (S gameF k)) (l := List.range' 1 n)
+  simp only [List.countP_eq_length_filter] at hpartition0
+  have hpartition :
+      n = gameFBlockerCountThrough n +
+        (gameFNonblockersThroughList n).length := by
+    simpa [gameFBlockerCountThrough, gameFBlockersThroughList,
+      gameFNonblockersThroughList] using hpartition0
+  have hlength := gameF_diagonalPrefixCount_eq_nonblockers n
+  omega
+
+/-- R195's blocker midpoint can therefore be verified from the diagonal
+prefix alone. -/
+theorem actualBlockerMidpoint_eq_diagPrefixCertificate (v : Nat) :
+    actualBlockerMidpoint v =
+      (v + ((v - 1) - gameFDiagonalPrefixCount (v - 1))) / 2 := by
+  unfold actualBlockerMidpoint countMidpoint
+  rw [gameFBlockerCountThrough_eq_diagPrefixComplement]
+
+/-! ## Exact window count at an arbitrary deadline cut -/
+
+/-- All owners whose diagonal deadlines land in `[q,q+H)`.  Diagonal
+growth implies that every such owner lies below `q+H`, so this is a complete
+finite enumeration. -/
+noncomputable def gameFDiagonalOwnersLandingInWindow
+    (q H : Nat) : List Nat := by
+  classical
+  exact (List.range (q + H)).filter (fun a =>
+    decide (q <= gameF a a /\ gameF a a < q + H))
+
+/-- The old side of the cut: owners born strictly before `q`. -/
+noncomputable def gameFOldDiagonalOwnersLandingInWindow
+    (q H : Nat) : List Nat := by
+  classical
+  exact (List.range q).filter (fun a =>
+    decide (q <= gameF a a /\ gameF a a < q + H))
+
+/-- The new side of the cut: owners born in `[q,q+H)`. -/
+noncomputable def gameFNewDiagonalOwnersLandingInWindow
+    (q H : Nat) : List Nat := by
+  classical
+  exact (List.range' q H).filter (fun a =>
+    decide (q <= gameF a a /\ gameF a a < q + H))
+
+/-- Exact all-window cardinality split by owner index at the cut. -/
+theorem gameF_diagonalOwnerLandingWindow_cut_count (q H : Nat) :
+    (gameFDiagonalOwnersLandingInWindow q H).length =
+      (gameFOldDiagonalOwnersLandingInWindow q H).length +
+        (gameFNewDiagonalOwnersLandingInWindow q H).length := by
+  classical
+  have hrange :
+      List.range q ++ List.range' q H = List.range (q + H) := by
+    have h := List.range'_append
+      (s := 0) (m := q) (n := H) (step := 1)
+    simpa only [List.range_eq_range'] using (by simpa using h)
+  simp only [gameFDiagonalOwnersLandingInWindow,
+    gameFOldDiagonalOwnersLandingInWindow,
+    gameFNewDiagonalOwnersLandingInWindow]
+  rw [← hrange, List.filter_append, List.length_append]
+
+/-- Normalized offsets of the old owner arm. -/
+noncomputable def gameFOldDiagonalLandingOffsets (q H : Nat) : List Nat :=
+  (gameFOldDiagonalOwnersLandingInWindow q H).map
+    (fun a => gameF a a - q)
+
+/-- Normalized offsets of the new owner arm. -/
+noncomputable def gameFNewDiagonalLandingOffsets (q H : Nat) : List Nat :=
+  (gameFNewDiagonalOwnersLandingInWindow q H).map
+    (fun a => gameF a a - q)
+
+/-- The old window arm is exactly the truncated youngest inventory. -/
+theorem gameF_mem_oldDiagonalLandingOffsets_iff {q H k : Nat} :
+    k ∈ gameFOldDiagonalLandingOffsets q H <->
+      k < H /\ YoungDiag q k := by
+  classical
+  constructor
+  · intro hk
+    rcases List.mem_map.mp hk with ⟨a, ha, hak⟩
+    have haData :
+        a < q /\ q <= gameF a a /\ gameF a a < q + H := by
+      simpa [gameFOldDiagonalOwnersLandingInWindow] using ha
+    refine ⟨by omega, ⟨a, haData.1, ?_⟩⟩
+    have hEq : gameF a a - q = k := hak
+    omega
+  · rintro ⟨hkH, ⟨a, haq, hvalue⟩⟩
+    apply List.mem_map.mpr
+    refine ⟨a, ?_, ?_⟩
+    · simp [gameFOldDiagonalOwnersLandingInWindow, haq, hvalue]
+      omega
+    · rw [hvalue]
+      omega
+
+/-- The new window arm is exactly the truncated post-cut birth inventory. -/
+theorem gameF_mem_newDiagonalLandingOffsets_iff {q H k : Nat} :
+    k ∈ gameFNewDiagonalLandingOffsets q H <->
+      k < H /\ NewDiagAfterCut q k := by
+  classical
+  constructor
+  · intro hk
+    rcases List.mem_map.mp hk with ⟨a, ha, hak⟩
+    have haData :
+        (q <= a /\ a < q + H) /\
+          q <= gameF a a /\ gameF a a < q + H := by
+      simpa [gameFNewDiagonalOwnersLandingInWindow] using ha
+    have hgt : a < gameF a a := gameRecurrenceModel.diagonal_gt a
+    let i := a - q
+    have hai : q + i = a := by
+      dsimp [i]
+      omega
+    have hEq : gameF a a - q = k := hak
+    refine ⟨by omega, ⟨i, ?_, ?_⟩⟩
+    · omega
+    · rw [hai]
+      omega
+  · rintro ⟨hkH, ⟨i, hik, hvalue⟩⟩
+    apply List.mem_map.mpr
+    refine ⟨q + i, ?_, ?_⟩
+    · simp [gameFNewDiagonalOwnersLandingInWindow, hvalue]
+      omega
+    · rw [hvalue]
+      omega
+
+/-- Old normalized offsets are duplicate-free: subtraction is injective on
+this list because every selected deadline is at least the cut. -/
+theorem gameF_oldDiagonalLandingOffsets_nodup (q H : Nat) :
+    (gameFOldDiagonalLandingOffsets q H).Nodup := by
+  unfold gameFOldDiagonalLandingOffsets
+  apply xdclf_nodup_map_of_injective_on
+    (fun a => gameF a a - q)
+    (gameFOldDiagonalOwnersLandingInWindow q H)
+  · unfold gameFOldDiagonalOwnersLandingInWindow
+    exact List.filter_sublist.nodup List.nodup_range
+  · intro x hx y hy hxy
+    have hxData : q <= gameF x x := by
+      have hx' := (List.mem_filter.mp hx).2
+      have hx'' : q <= gameF x x /\ gameF x x < q + H := by
+        simpa only [decide_eq_true_eq] using hx'
+      exact hx''.1
+    have hyData : q <= gameF y y := by
+      have hy' := (List.mem_filter.mp hy).2
+      have hy'' : q <= gameF y y /\ gameF y y < q + H := by
+        simpa only [decide_eq_true_eq] using hy'
+      exact hy''.1
+    have hvalues : gameF x x = gameF y y := by omega
+    exact diagonal_injective gameRecurrenceModel hvalues
+
+/-- New normalized offsets are duplicate-free for the same reason. -/
+theorem gameF_newDiagonalLandingOffsets_nodup (q H : Nat) :
+    (gameFNewDiagonalLandingOffsets q H).Nodup := by
+  unfold gameFNewDiagonalLandingOffsets
+  apply xdclf_nodup_map_of_injective_on
+    (fun a => gameF a a - q)
+    (gameFNewDiagonalOwnersLandingInWindow q H)
+  · unfold gameFNewDiagonalOwnersLandingInWindow
+    exact List.filter_sublist.nodup (List.nodup_range' 1)
+  · intro x hx y hy hxy
+    have hxData : q <= gameF x x := by
+      have hx' := (List.mem_filter.mp hx).2
+      have hx'' : q <= gameF x x /\ gameF x x < q + H := by
+        simpa only [decide_eq_true_eq] using hx'
+      exact hx''.1
+    have hyData : q <= gameF y y := by
+      have hy' := (List.mem_filter.mp hy).2
+      have hy'' : q <= gameF y y /\ gameF y y < q + H := by
+        simpa only [decide_eq_true_eq] using hy'
+      exact hy''.1
+    have hvalues : gameF x x = gameF y y := by omega
+    exact diagonal_injective gameRecurrenceModel hvalues
+
+/-- Complete finite-window provenance certificate: a landing offset below
+the horizon is present on exactly one of the old or post-cut arms. -/
+theorem gameF_deadlineLandingOffset_cut_iff {q H k : Nat} :
+    k ∈ gameFOldDiagonalLandingOffsets q H \/
+        k ∈ gameFNewDiagonalLandingOffsets q H <->
+      k < H /\ (YoungDiag q k \/ NewDiagAfterCut q k) := by
+  rw [gameF_mem_oldDiagonalLandingOffsets_iff,
+    gameF_mem_newDiagonalLandingOffsets_iff]
+  constructor
+  · rintro (⟨hk, hold⟩ | ⟨hk, hnew⟩)
+    · exact ⟨hk, Or.inl hold⟩
+    · exact ⟨hk, Or.inr hnew⟩
+  · rintro ⟨hk, hold | hnew⟩
+    · exact Or.inl ⟨hk, hold⟩
+    · exact Or.inr ⟨hk, hnew⟩
+
+/-- The two finite-window offset lists are disjoint, not merely separated
+at the owner-index level. -/
+theorem gameF_old_new_landingOffsets_disjoint {q H k : Nat}
+    (hold : k ∈ gameFOldDiagonalLandingOffsets q H)
+    (hnew : k ∈ gameFNewDiagonalLandingOffsets q H) : False := by
+  have hold' := (gameF_mem_oldDiagonalLandingOffsets_iff.mp hold).2
+  have hnew' := (gameF_mem_newDiagonalLandingOffsets_iff.mp hnew).2
+  exact youngDiag_disjoint_newDiagAfterCut q k ⟨hold', hnew'⟩
+
+#print axioms youngDiag_succ_iff
+#print axioms diagonalOwner_cut_partition
+#print axioms youngDiag_disjoint_newDiagAfterCut
+#print axioms blocker_iff_cut_deadline_absent
+#print axioms blocker_iff_cut_lags_miss
+#print axioms blocker_iff_not_youngDiag_of_lt_three
+#print axioms gameFBlockerCountThrough_eq_diagPrefixComplement
+#print axioms actualBlockerMidpoint_eq_diagPrefixCertificate
+#print axioms gameF_diagonalOwnerLandingWindow_cut_count
+#print axioms gameF_mem_oldDiagonalLandingOffsets_iff
+#print axioms gameF_mem_newDiagonalLandingOffsets_iff
+#print axioms gameF_oldDiagonalLandingOffsets_nodup
+#print axioms gameF_newDiagonalLandingOffsets_nodup
+#print axioms gameF_deadlineLandingOffset_cut_iff
+#print axioms gameF_old_new_landingOffsets_disjoint
+
+end ChompLean

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cross-clock injection into original departure events · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../document.css"><link rel="stylesheet" href="../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../index.html">Search</a><a href="../../browse.html">Browse all</a><a href="../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="cross-clock-injection-into-original-departure-events">Cross-clock injection into original departure events</h1><p><strong>Statement.</strong> Distinct original roots with certified same-transition absent-root relays inject into their endpoint old payload and original endpoint column, across all clocks in one fixed history. Every arising endpoint payload y satisfies y&gt;=3; its charged-root count is at most the number of relay-eligible departure columns, hence at most y-2. For an arbitrary nonnegative payload y, the bound is max(0,y-2), with no arising endpoints when y&lt;3.</p>
+<h2 id="complete-proof-and-definitions">Complete proof and definitions</h2><ul>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/PRIVATE-HISTORY-AND-RELAY.html">Private history, increasing source exits and departure resources</a></li>
+</ul>
+<p>The argument below and the linked full derivations form the reviewed proof. All stated hypotheses remain part of the result.</p>
+<h2 id="hypotheses-and-scope">Hypotheses and scope</h2><ul>
+<li>One fixed full history; distinct original roots with exact absent-root guards and certified rising relay endpoints. Does not prove relay existence or capacity one.</li>
+<li>Every relay starts at a strict old-core host b&lt;q-2, so q&gt;=3; its finite exact leftward path ends at a rising column c&lt;=q-3. Endpoint old payload y&gt;=q&gt;=3. Root absence is in the new retained prefix, and all row/source domains are as defined in the public relay supplement.</li>
+</ul>
+<h2 id="argument">Argument</h2><ol>
+<li><p>A departing value v cannot return to the same column: choose a first return, COPY would retain a different previous value, while MEX forbids the earlier v already in that column’s full history.</p>
+</li>
+<li><p>At one clock, exact leftward relay maps have indegree/outdegree≤1 by old/new row injectivity. Two paths meeting would imply one root lies on the other path, but the earlier path then emits that root’s old value in the new retained prefix, contradicting root absence. Distinct absent roots therefore have distinct rise endpoints.</p>
+</li>
+<li><p>Charge an original root to(endpoint old value y, endpoint column c). Equal-clock equality contradicts distinct endpoints. If clocksq1&lt;q2 share the same key, the rise atq1 is a departure of y, forbidding y at rowq2−1 by no-return.</p>
+</li>
+<li><p>A rise cannot be COPY, so its old value y&gt;=q. The strict old-core starting host b&lt;q-2 requires q&gt;=3, and a leftward relay ends at 0&lt;=c&lt;=q-3&lt;=y-3. Thus every arising endpoint payload has y&gt;=3, and there are at most y-2 eligible columns for that payload. For arbitrary y&gt;=0 use max(0,y-2); no endpoint with y&lt;3 can arise. This is the restricted departure-resource count, not a bound on all value departures.</p>
+</li>
+<li><p>Different histories require a source identifier in the key. Actual relay existence, exact absence guards and earlier replacement absence are not proved by this accounting. The optional min(y−2,r) refinement needs the separate row-start-owner theorem; it is not part of the headline injection.</p>
+</li>
+</ol>
+<h2 id="review-and-supporting-evidence">Review and supporting evidence</h2><ul>
+<li>Historical original-claim verdict: accepted.</li>
+<li>This entry has a paper audit with an explicit verdict. Its formal dependencies have separate Lean receipts; this audit did not produce a Lean formalization of the derived statement.</li>
+<li>Renewed clarification: With no endpoints, the unguarded expression at y=1 could read 0&lt;=-1. Arising endpoints have y&gt;=q&gt;=3; the nonnegative totalized bound retains exactly the proved resource count.</li>
+<li><a href="../../audit/prepublication/papers/PAPER-REVIEW.json">Renewed statement and proof-completeness review</a></li>
+<li><a href="../../audit/full/paper-b/cross-clock-departure-injection.json">Full independent audit and original-claim verdict</a></li>
+<li><a href="../../audit/full/CANONICAL-FOUNDATIONS.html">Shared canonical foundation and exact Lean bridges</a></li>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Full proof and definitions: Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/PRIVATE-HISTORY-AND-RELAY.html">Full proof and definitions: Private history, increasing source exits and departure resources</a></li>
+</ul>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

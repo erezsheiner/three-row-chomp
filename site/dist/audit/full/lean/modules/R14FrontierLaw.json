@@ -1,0 +1,760 @@
+{
+  "module": "R14FrontierLaw",
+  "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+  "declarationCount": 52,
+  "theoremDeclarationCount": 46,
+  "proofValuedDeclarationCount": 46,
+  "scope": "All serialized module declarations including private/generated auxiliaries. These are declaration counts, not counts of independent mathematical results.",
+  "declarations": [
+    {
+      "name": "ChompLean.B.eq_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (f : Nat → Nat → Nat) (q r p : Nat),\n  @Eq.{1} Prop (ChompLean.B f q r p) (Or (ChompLean.R f q r p) (ChompLean.C f q r p))",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.BValueList.eq_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (f : Nat → Nat → Nat) (t e : Nat),\n  @Eq.{1} (List.{0} Nat) (ChompLean.BValueList f t e)\n    (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n      (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat)) (ChompLean.RValueList f t e)\n      (ChompLean.CValueList f t e))",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.C.eq_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (f : Nat → Nat → Nat) (q r p : Nat),\n  @Eq.{1} Prop (ChompLean.C f q r p)\n    (@Exists.{1} Nat fun (b : Nat) => And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (f q b) p))",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.CValueList.eq_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (f : Nat → Nat → Nat) (t e : Nat),\n  @Eq.{1} (List.{0} Nat) (ChompLean.CValueList f t e) (@List.map.{0, 0} Nat Nat (fun (b : Nat) => f t b) (List.range e))",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R.eq_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (f : Nat → Nat → Nat) (q r p : Nat),\n  @Eq.{1} Prop (ChompLean.R f q r p)\n    (@Exists.{1} Nat fun (a : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat a q) (@Eq.{1} Nat (f a (@Min.min.{0} Nat instMinNat a r)) p))",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.RValueList.eq_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (f : Nat → Nat → Nat) (t e : Nat),\n  @Eq.{1} (List.{0} Nat) (ChompLean.RValueList f t e)\n    (@List.map.{0, 0} Nat Nat (fun (a : Nat) => f a (@Min.min.{0} Nat instMinNat a e)) (List.range t))",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.frontier_body_excludes_high_target._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t u fr : Nat} (hfrt : @LE.le.{0} Nat instLENat fr t) (e : Nat) (he : @LT.lt.{0} Nat instLTNat e fr),\n  Not (@LE.le.{0} Nat instLENat e t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.frontier_ge_implies_body_unsaturated._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {star fr : Nat} (hstarFr : @LE.le.{0} Nat instLENat star fr) (e : Nat) (he : @LT.lt.{0} Nat instLTNat e star),\n  Not (@LT.lt.{0} Nat instLTNat e fr) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isMex_lt_of_lower_hole._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {m u : Nat} (z : Nat) (hzu : @LT.lt.{0} Nat instLTNat z u) (hmu : Not (@LT.lt.{0} Nat instLTNat m u)),\n  Not (@LT.lt.{0} Nat instLTNat z m) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lowerSaturated_card_bound._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u : Nat} ⦃z : Nat⦄\n  (hz' :\n    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z)\n      (@LT.lt.{0} Nat instLTNat z\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lowerSaturated_card_bound._proof_1_2",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u : Nat} ⦃z : Nat⦄\n  (hz' :\n    And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) z)\n      (@LT.lt.{0} Nat instLTNat z\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat z u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mem_BValueList_iff._simp_1_3",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  @Eq.{1} Prop (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.RValueList f t e) z)\n    (ChompLean.R f t e z)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mem_BValueList_iff._simp_1_4",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  @Eq.{1} Prop (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.CValueList f t e) z)\n    (ChompLean.C f t e z)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.nodup_subset_length_le._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat) (xs : List.{0} Nat) {ys : List.{0} Nat}\n  (hlen :\n    @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (@List.length.{0} Nat ys)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (herase :\n    @Eq.{1} Nat (@List.length.{0} Nat (@List.erase.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat) ys a))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (@List.length.{0} Nat ys)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hypos :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.length.{0} Nat ys)),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat xs)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@List.length.{0} Nat ys)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noncarry_of_live._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e : Nat} (hlive : @LT.lt.{0} Nat instLTNat t (f t e))\n  (hcarry :\n    And (@LT.lt.{0} Nat instLTNat e t)\n      (@LT.lt.{0} Nat instLTNat\n        (f\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          e)\n        t))\n  (heq :\n    @Eq.{1} Nat (f t e)\n      (f\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        e)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pigeonhole_body_unsaturated._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s e u : Nat}\n  (hsmall :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s e)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      u)\n  (hcard :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        e)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pigeonhole_body_unsaturated_sub._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s e u : Nat}\n  (hsmall :\n    @LT.lt.{0} Nat instLTNat e\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u s)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s e)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        u) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_live_cell_lt_of_lower_hole._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e : Nat} (hlive : @LT.lt.{0} Nat instLTNat t (f t e))\n  (hcarry :\n    And (@LT.lt.{0} Nat instLTNat e t)\n      (@LT.lt.{0} Nat instLTNat\n        (f\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          e)\n        t))\n  (heq :\n    @Eq.{1} Nat (f t e)\n      (f\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        e)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_lower_hole_excludes_high_target._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e u : Nat} (htu : @LE.le.{0} Nat instLENat t u) (hout : @Eq.{1} Nat (f t e) u)\n  (hcarry :\n    And (@LT.lt.{0} Nat instLTNat e t)\n      (@LT.lt.{0} Nat instLTNat\n        (f\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          e)\n        t))\n  (heq :\n    @Eq.{1} Nat u\n      (f\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        e)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_lower_hole_excludes_high_target._proof_1_2",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e u : Nat} (houtlt : @LT.lt.{0} Nat instLTNat u u), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rolling_frontier_captures._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t u fr seat : Nat} (hseatT : @LE.le.{0} Nat instLENat seat t) (hfrSeat : @LE.le.{0} Nat instLENat fr seat),\n  Not (@LE.le.{0} Nat instLENat fr t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.two_seat_capture_of_rolling_frontier._proof_1_1",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t u star back : Nat} (hbackT : @LE.le.{0} Nat instLENat back t) (hfrBack : @LE.le.{0} Nat instLENat star back),\n  Not (@LE.le.{0} Nat instLENat star t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.LowerSaturated",
+      "module": "R14FrontierLaw",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 24,
+      "typePretty": "(f : Nat → Nat → Nat) → (t e u : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.HasLowerHole",
+      "module": "R14FrontierLaw",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 27,
+      "typePretty": "(f : Nat → Nat → Nat) → (t e u : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.IsSaturationFrontier",
+      "module": "R14FrontierLaw",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 30,
+      "typePretty": "(f : Nat → Nat → Nat) → (t u fr : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.hasLowerHole_iff_not_lowerSaturated",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 35,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e u : Nat}, Iff (ChompLean.HasLowerHole f t e u) (Not (ChompLean.LowerSaturated f t e u))",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.frontier_body_unsaturated",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 54,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t u fr e : Nat} (hfront : ChompLean.IsSaturationFrontier f t u fr)\n  (he : @LT.lt.{0} Nat instLTNat e fr), Not (ChompLean.LowerSaturated f t e u)",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.frontier_body_has_lower_hole",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 61,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t u fr e : Nat} (hfront : ChompLean.IsSaturationFrontier f t u fr)\n  (he : @LT.lt.{0} Nat instLTNat e fr), ChompLean.HasLowerHole f t e u",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.frontier_ge_implies_body_unsaturated",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 68,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t u star fr : Nat} (hfront : ChompLean.IsSaturationFrontier f t u fr)\n  (hstarFr : @LE.le.{0} Nat instLENat star fr) (e : Nat),\n  @LT.lt.{0} Nat instLTNat e star → Not (ChompLean.LowerSaturated f t e u)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isMex_lt_of_lower_hole",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 78,
+      "typePretty": "∀ {S : Nat → Prop} {m u : Nat} (hmex : ChompLean.IsMex S m)\n  (hhole :\n    @Exists.{1} Nat fun (z : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)\n        (And (@LT.lt.{0} Nat instLTNat z u) (Not (S z)))),\n  @LT.lt.{0} Nat instLTNat m u",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mex_cell_lt_of_lower_hole",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 89,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e u out : Nat} (hmex : ChompLean.IsMex (ChompLean.B f t e) out)\n  (hhole : ChompLean.HasLowerHole f t e u), @LT.lt.{0} Nat instLTNat out u",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_live_cell_lt_of_lower_hole",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 96,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t e u : Nat} (het : @LE.le.{0} Nat instLENat e t)\n  (hlive : @LT.lt.{0} Nat instLTNat t (f t e)) (hhole : ChompLean.HasLowerHole f t e u),\n  @LT.lt.{0} Nat instLTNat (f t e) u",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.noncarry_of_live",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 111,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t e : Nat} (hlive : @LT.lt.{0} Nat instLTNat t (f t e)),\n  Not\n    (And (@LT.lt.{0} Nat instLTNat e t)\n      (@LT.lt.{0} Nat instLTNat\n        (f\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          e)\n        t))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_lower_hole_excludes_high_target",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 120,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t e u : Nat} (het : @LE.le.{0} Nat instLENat e t)\n  (htu : @LE.le.{0} Nat instLENat t u) (hhole : ChompLean.HasLowerHole f t e u), @Ne.{1} Nat (f t e) u",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.frontier_body_excludes_high_target",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 140,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr : Nat} (hfrt : @LE.le.{0} Nat instLENat fr t)\n  (htu : @LE.le.{0} Nat instLENat t u) (hfront : ChompLean.IsSaturationFrontier f t u fr) (e : Nat),\n  @LT.lt.{0} Nat instLTNat e fr → @Ne.{1} Nat (f t e) u",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.RValueList",
+      "module": "R14FrontierLaw",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 152,
+      "typePretty": "(f : Nat → Nat → Nat) → (t e : Nat) → List.{0} Nat",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.CValueList",
+      "module": "R14FrontierLaw",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 155,
+      "typePretty": "(f : Nat → Nat → Nat) → (t e : Nat) → List.{0} Nat",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.BValueList",
+      "module": "R14FrontierLaw",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 158,
+      "typePretty": "(f : Nat → Nat → Nat) → (t e : Nat) → List.{0} Nat",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mem_RValueList_iff",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 161,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.RValueList f t e) z)\n    (ChompLean.R f t e z)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mem_CValueList_iff",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 166,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.CValueList f t e) z)\n    (ChompLean.C f t e z)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mem_BValueList_iff",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 171,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.BValueList f t e) z)\n    (ChompLean.B f t e z)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.length_BValueList",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 176,
+      "typePretty": "∀ (f : Nat → Nat → Nat) (t e : Nat),\n  @Eq.{1} Nat (@List.length.{0} Nat (ChompLean.BValueList f t e))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t e)",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.nodup_subset_length_le",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 181,
+      "typePretty": "∀ {xs ys : List.{0} Nat} (hnd : @List.Nodup.{0} Nat xs)\n  (hsub : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) xs ys),\n  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs) (@List.length.{0} Nat ys)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lowerSaturated_card_bound",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 205,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e u : Nat} (hsat : ChompLean.LowerSaturated f t e u),\n  @LE.le.{0} Nat instLENat\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t e)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pigeonhole_body_unsaturated",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 218,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {s e u : Nat}\n  (hsmall :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s e)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      u),\n  Not\n    (ChompLean.LowerSaturated f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      e u)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.pigeonhole_body_unsaturated_sub",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 227,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {s e u : Nat}\n  (hsmall :\n    @LT.lt.{0} Nat instLTNat e\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u s)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  Not\n    (ChompLean.LowerSaturated f\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      e u)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isMex_eq_of_lowerSaturated_and_clean",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 237,
+      "typePretty": "∀ {S : Nat → Prop} {m u : Nat} (hmex : ChompLean.IsMex S m)\n  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)\n  (hsat :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u → S z)\n  (hclean : Not (S u)), @Eq.{1} Nat m u",
+      "axioms": [],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.saturation_frontier_captures",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 252,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr : Nat} (hfrt : @LE.le.{0} Nat instLENat fr t)\n  (htu : @LE.le.{0} Nat instLENat t u)\n  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)\n  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hRclean : Not (ChompLean.R f t fr u))\n  (hnotCarry :\n    Not\n      (And (@LT.lt.{0} Nat instLTNat fr t)\n        (@LT.lt.{0} Nat instLTNat\n          (f\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            fr)\n          t))),\n  @Eq.{1} Nat (f t fr) u",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.saturation_frontier_captures_of_live",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 275,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr : Nat} (hfrt : @LE.le.{0} Nat instLENat fr t)\n  (htu : @LE.le.{0} Nat instLENat t u)\n  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)\n  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hRclean : Not (ChompLean.R f t fr u))\n  (hlive : @LT.lt.{0} Nat instLTNat t (f t fr)), @Eq.{1} Nat (f t fr) u",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rolling_frontier_captures",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 286,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr seat : Nat}\n  (hseatT : @LE.le.{0} Nat instLENat seat t) (hfrSeat : @LE.le.{0} Nat instLENat fr seat)\n  (htu : @LE.le.{0} Nat instLENat t u)\n  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)\n  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hsatSeat : ChompLean.LowerSaturated f t seat u)\n  (hRcleanSeat : Not (ChompLean.R f t seat u))\n  (hnotCarrySeat :\n    Not\n      (And (@LT.lt.{0} Nat instLTNat seat t)\n        (@LT.lt.{0} Nat instLTNat\n          (f\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            seat)\n          t)))\n  (hzoneClean : ∀ (e : Nat), @LE.le.{0} Nat instLENat fr e → @LT.lt.{0} Nat instLTNat e seat → @Ne.{1} Nat (f t e) u),\n  @Eq.{1} Nat (f t seat) u",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rolling_frontier_captures_of_live",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 319,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u fr seat : Nat}\n  (hseatT : @LE.le.{0} Nat instLENat seat t) (hfrSeat : @LE.le.{0} Nat instLENat fr seat)\n  (htu : @LE.le.{0} Nat instLENat t u)\n  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)\n  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hsatSeat : ChompLean.LowerSaturated f t seat u)\n  (hRcleanSeat : Not (ChompLean.R f t seat u)) (hliveSeat : @LT.lt.{0} Nat instLTNat t (f t seat))\n  (hzoneClean : ∀ (e : Nat), @LE.le.{0} Nat instLENat fr e → @LT.lt.{0} Nat instLTNat e seat → @Ne.{1} Nat (f t e) u),\n  @Eq.{1} Nat (f t seat) u",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.two_seat_capture_of_rolling_frontier",
+      "module": "R14FrontierLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 334,
+      "typePretty": "∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {t u star fr back : Nat}\n  (hbackT : @LE.le.{0} Nat instLENat back t) (hfrBack : @LE.le.{0} Nat instLENat fr back)\n  (htu : @LE.le.{0} Nat instLENat t u)\n  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)\n  (hfront : ChompLean.IsSaturationFrontier f t u fr) (hstarClean : @Eq.{1} Nat fr star → Not (ChompLean.R f t star u))\n  (hstarNotCarry :\n    @Eq.{1} Nat fr star →\n      Not\n        (And (@LT.lt.{0} Nat instLTNat star t)\n          (@LT.lt.{0} Nat instLTNat\n            (f\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              star)\n            t)))\n  (hsatBack : @Ne.{1} Nat fr star → ChompLean.LowerSaturated f t back u)\n  (hbackClean : @Ne.{1} Nat fr star → Not (ChompLean.R f t back u))\n  (hbackNotCarry :\n    @Ne.{1} Nat fr star →\n      Not\n        (And (@LT.lt.{0} Nat instLTNat back t)\n          (@LT.lt.{0} Nat instLTNat\n            (f\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              back)\n            t)))\n  (hzoneClean :\n    @Ne.{1} Nat fr star →\n      ∀ (e : Nat), @LE.le.{0} Nat instLENat fr e → @LT.lt.{0} Nat instLTNat e back → @Ne.{1} Nat (f t e) u),\n  Or (@Eq.{1} Nat (f t star) u) (@Eq.{1} Nat (f t back) u)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "83a776165b85724342801b62c9e7110839f53e0ed23c5cbbc3fa673c6f717baa",
+      "sourcePath": "lean/core/R14FrontierLaw.lean",
+      "universeParameters": []
+    }
+  ],
+  "fullExpressionTrees": "audit/full/lean/declarations.jsonl"
+}

@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R48 Adjacent Dip Amortized Backfill Packing · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R48 Adjacent Dip Amortized Backfill Packing</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R48AdjacentDipAmortizedBackfillPacking.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R48AdjacentDipAmortizedBackfillPacking.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R48AdjacentDipAmortizedBackfillPacking.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 12 declarations</summary><ul class="declarations"><li><code>ChompLean.game_adjacent_dip_backfill_owner_packing</code><pre class="prose">∀ {q : Nat}
+  (hdip :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.gameF q q))
+  (hnonempty :
+    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@List.length.{0} Nat
+        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+          (ChompLean.StrictRowPrefixValues ChompLean.gameF
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))),
+  @LE.le.{0} Nat instLENat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@List.length.{0} Nat
+          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+            (ChompLean.StrictRowPrefixValues ChompLean.gameF
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    q</pre></li><li><code>ChompLean.game_adjacent_dip_backfill_owner_packing._proof_1_1</code><pre class="prose">∀ {q : Nat}
+  (hownerExists :
+    ∀ (v : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+            (ChompLean.StrictRowPrefixValues ChompLean.gameF
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          v →
+        @Exists.{1} Nat fun (i : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat i q) (@Eq.{1} Nat (ChompLean.gameF i i) v))
+  (v b : Nat)
+  (hhigh :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.gameF
+        ((fun (v : Nat) =&gt;
+            @dite.{1} Nat
+              (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                  (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                v)
+              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                Nat.instLawfulBEq v
+                (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                  (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+              (fun
+                  (hv :
+                    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                        (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                      v) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x q) (@Eq.{1} Nat (ChompLean.gameF x x) v))
+                  (hownerExists v hv))
+              fun
+                (hv :
+                  Not
+                    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                        (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                      v)) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          v)
+        ((fun (v : Nat) =&gt;
+            @dite.{1} Nat
+              (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                  (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                v)
+              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                Nat.instLawfulBEq v
+                (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                  (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+              (fun
+                  (hv :
+                    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                        (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                      v) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x q) (@Eq.{1} Nat (ChompLean.gameF x x) v))
+                  (hownerExists v hv))
+              fun
+                (hv :
+                  Not
+                    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                        (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                      v)) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          v)))
+  (hsourceCap :
+    @LE.le.{0} Nat instLENat
+      (ChompLean.gameF
+        ((fun (v : Nat) =&gt;
+            @dite.{1} Nat
+              (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                  (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                v)
+              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                Nat.instLawfulBEq v
+                (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                  (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+              (fun
+                  (hv :
+                    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                        (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                      v) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x q) (@Eq.{1} Nat (ChompLean.gameF x x) v))
+                  (hownerExists v hv))
+              fun
+                (hv :
+                  Not
+                    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                        (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                      v)) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          v)
+        ((fun (v : Nat) =&gt;
+            @dite.{1} Nat
+              (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                  (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                v)
+              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                Nat.instLawfulBEq v
+                (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                  (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+              (fun
+                  (hv :
+                    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                        (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                      v) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x q) (@Eq.{1} Nat (ChompLean.gameF x x) v))
+                  (hownerExists v hv))
+              fun
+                (hv :
+                  Not
+                    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                      (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                        (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                      v)) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          v))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          ((fun (v : Nat) =&gt;
+              @dite.{1} Nat
+                (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                  (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                    (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                  v)
+                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                  Nat.instLawfulBEq v
+                  (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                    (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+                (fun
+                    (hv :
+                      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                          (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                        v) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x q) (@Eq.{1} Nat (ChompLean.gameF x x) v))
+                    (hownerExists v hv))
+                fun
+                  (hv :
+                    Not
+                      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                          (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                        v)) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            v)
+          ((fun (v : Nat) =&gt;
+              @dite.{1} Nat
+                (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                  (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                    (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                  v)
+                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                  Nat.instLawfulBEq v
+                  (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                    (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+                (fun
+                    (hv :
+                      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                          (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                        v) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x q) (@Eq.{1} Nat (ChompLean.gameF x x) v))
+                    (hownerExists v hv))
+                fun
+                  (hv :
+                    Not
+                      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                          (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                        v)) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            v))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          ((fun (v : Nat) =&gt;
+              @dite.{1} Nat
+                (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                  (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                    (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                  v)
+                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                  Nat.instLawfulBEq v
+                  (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                    (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+                (fun
+                    (hv :
+                      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                          (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                        v) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x q) (@Eq.{1} Nat (ChompLean.gameF x x) v))
+                    (hownerExists v hv))
+                fun
+                  (hv :
+                    Not
+                      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                          (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                        v)) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            v)
+          ((fun (v : Nat) =&gt;
+              @dite.{1} Nat
+                (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                  (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                    (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                  v)
+                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)
+                  Nat.instLawfulBEq v
+                  (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                    (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+                (fun
+                    (hv :
+                      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                          (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                        v) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x q) (@Eq.{1} Nat (ChompLean.gameF x x) v))
+                    (hownerExists v hv))
+                fun
+                  (hv :
+                    Not
+                      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+                        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                          (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                        v)) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            v))) →
+    False</pre></li><li><code>ChompLean.game_adjacent_dip_forbidden_amortized_bound</code><pre class="prose">∀ {q : Nat} {forbidden : List.{0} Nat}
+  (hdip :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.gameF q q))
+  (hforbidden : @List.Nodup.{0} Nat forbidden)
+  (hsub :
+    @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) forbidden
+      (ChompLean.StrictRowPrefixValues ChompLean.gameF q))
+  (hmissing :
+    ∀ (v : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) forbidden v →
+        Not
+          (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+            (ChompLean.StrictRowPrefixValues ChompLean.gameF
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            v)),
+  @LE.le.{0} Nat instLENat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (@List.length.{0} Nat forbidden))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+    q</pre></li><li><code>ChompLean.game_adjacent_dip_forbidden_amortized_bound._proof_1_1</code><pre class="prose">∀ {q : Nat} {forbidden : List.{0} Nat}
+  (hpkg :
+    And
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@List.length.{0} Nat
+          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+            (ChompLean.StrictRowPrefixValues ChompLean.gameF
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))
+      (And
+        (@List.Nodup.{0} Nat
+          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+            (ChompLean.StrictRowPrefixValues ChompLean.gameF
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+        (∀ (v : Nat),
+          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+              (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+              v →
+            @Exists.{1} Nat fun (i : Nat) =&gt;
+              And (@LT.lt.{0} Nat instLTNat i q) (@Eq.{1} Nat (ChompLean.gameF i i) v)))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@List.length.{0} Nat
+          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+            (ChompLean.StrictRowPrefixValues ChompLean.gameF
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))) →
+    False</pre></li><li><code>ChompLean.game_adjacent_dip_forbidden_amortized_bound._proof_1_2</code><pre class="prose">∀ {q : Nat} {forbidden : List.{0} Nat}
+  (hpkg :
+    And
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@List.length.{0} Nat
+          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+            (ChompLean.StrictRowPrefixValues ChompLean.gameF
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))
+      (And
+        (@List.Nodup.{0} Nat
+          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+            (ChompLean.StrictRowPrefixValues ChompLean.gameF
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+        (∀ (v : Nat),
+          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+              (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+                (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+              v →
+            @Exists.{1} Nat fun (i : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat i q) (@Eq.{1} Nat (ChompLean.gameF i i) v))))
+  (hpack :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (@List.length.{0} Nat
+            (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)
+              (ChompLean.StrictRowPrefixValues ChompLean.gameF
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (@List.length.{0} Nat forbidden))
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        q) →
+    False</pre></li><li><code>ChompLean.game_adjacent_dip_requires_row_three</code><pre class="prose">∀ {q : Nat}
+  (hdip :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.gameF q q)),
+  @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) q</pre></li><li><code>ChompLean.strict_upper_half_owner_packing</code><pre class="prose">∀ {q : Nat} {owners : List.{0} Nat} (howners : @List.Nodup.{0} Nat owners)
+  (hnonempty :
+    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@List.length.{0} Nat owners))
+  (hband :
+    ∀ (i : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) owners i →
+        And (@LT.lt.{0} Nat instLTNat i q)
+          (@LT.lt.{0} Nat instLTNat q (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i))),
+  @LE.le.{0} Nat instLENat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (@List.length.{0} Nat owners))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    q</pre></li><li><code>ChompLean.strict_upper_half_owner_packing._proof_1_1</code><pre class="prose">∀ {q : Nat} (i : Nat) (is : List.{0} Nat)
+  (hi :
+    And (@LT.lt.{0} Nat instLTNat i q)
+      (@LT.lt.{0} Nat instLTNat q (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i))),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q) → False</pre></li><li><code>ChompLean.strict_upper_half_owner_packing._proof_1_2</code><pre class="prose">∀ {q : Nat} {owners : List.{0} Nat} (i j : Nat)
+  (hEq :
+    @Eq.{1} Nat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        i)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        j))
+  (hiBand :
+    And (@LT.lt.{0} Nat instLTNat i q)
+      (@LT.lt.{0} Nat instLTNat q (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i)))
+  (hjBand :
+    And (@LT.lt.{0} Nat instLTNat j q)
+      (@LT.lt.{0} Nat instLTNat q (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j j))),
+  Not (@Eq.{1} Nat i j) → False</pre></li><li><code>ChompLean.strict_upper_half_owner_packing._proof_1_3</code><pre class="prose">∀ {q : Nat} {owners : List.{0} Nat}
+  (hqPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q) (i : Nat)
+  (hiBand :
+    And (@LT.lt.{0} Nat instLTNat i q)
+      (@LT.lt.{0} Nat instLTNat q (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          i)
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.strict_upper_half_owner_packing._proof_1_4</code><pre class="prose">∀ {q : Nat} {owners : List.{0} Nat}
+  (hqPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)
+  (hcap :
+    @LE.le.{0} Nat instLENat (@List.length.{0} Nat owners)
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (@List.length.{0} Nat owners))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        q) →
+    False</pre></li><li><code>_private.R48AdjacentDipAmortizedBackfillPacking.0.ChompLean.r48_nodup_map_of_injective_on</code><pre class="prose">∀ (f : Nat → Nat) (xs : List.{0} Nat) (hxs : @List.Nodup.{0} Nat xs)
+  (hinj :
+    ∀ (x : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →
+        ∀ (y : Nat),
+          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs y →
+            @Eq.{1} Nat (f x) (f y) → @Eq.{1} Nat x y),
+  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat f xs)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R48AdjacentDipAmortizedBackfillPacking.lean:1</p><p>SHA-256: <code class="path">ff381ae21039d6ceee3f02a062525212c1d80255fa6be4d899b402ff8b20ede5</code></p></section><p><a href="../index.html#id=lean-ff381ae21039d6ceee3f">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

@@ -1,0 +1,390 @@
+{
+  "module": "R27ActualGameGapCharge",
+  "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+  "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+  "declarationCount": 24,
+  "theoremDeclarationCount": 24,
+  "proofValuedDeclarationCount": 24,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.gameF_future_gap_iteration_normal_form",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 130,
+      "typePretty": "∀ {c t q z r : Nat} (hct : @LT.lt.{0} Nat instLTNat c t) (hq : @Eq.{1} Nat (ChompLean.gameF t c) q)\n  (htq : @LT.lt.{0} Nat instLTNat t q) (hqz : @LT.lt.{0} Nat instLTNat q z)\n  (hgap : Not (ChompLean.C ChompLean.gameF t c z)) (hrz : @LT.lt.{0} Nat instLTNat r z)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),\n  @Exists.{1} Nat fun (x : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat t x)\n      (And (@LT.lt.{0} Nat instLTNat x z)\n        (And (Not (ChompLean.C ChompLean.gameF x c z))\n          (Or (@LE.le.{0} Nat instLENat x r)\n            (Or\n              (@Exists.{1} Nat fun (a : Nat) =>\n                And (@LT.lt.{0} Nat instLTNat c a)\n                  (And (@LT.lt.{0} Nat instLTNat a x) (@Eq.{1} Nat (ChompLean.gameF a c) z)))\n              (And (Not (ChompLean.B ChompLean.gameF x c z))\n                (Or (@LE.le.{0} Nat instLENat (ChompLean.gameF x c) x)\n                  (Or (@Eq.{1} Nat (ChompLean.gameF x c) z)\n                    (And (@LT.lt.{0} Nat instLTNat x (ChompLean.gameF x c))\n                      (@LT.lt.{0} Nat instLTNat (ChompLean.gameF x c) z)))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_future_gap_iteration_normal_form._proof_1_1",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t q z r : Nat} (hct : @LT.lt.{0} Nat instLTNat c t) (x : Nat) (htx : @LT.lt.{0} Nat instLTNat t x),\n  Not (@LE.le.{0} Nat instLENat c x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_future_gap_iteration_normal_form._proof_1_2",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c t q z r : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (x : Nat) (hxz : @LT.lt.{0} Nat instLTNat x z),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_future_gap_prefreeze_or_source_gap_or_boundary_owner",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 104,
+      "typePretty": "∀ {c t q z r : Nat} (hct : @LT.lt.{0} Nat instLTNat c t) (hq : @Eq.{1} Nat (ChompLean.gameF t c) q)\n  (htq : @LT.lt.{0} Nat instLTNat t q) (hqz : @LT.lt.{0} Nat instLTNat q z)\n  (hgap : Not (ChompLean.C ChompLean.gameF t c z)) (hrz : @LT.lt.{0} Nat instLTNat r z)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),\n  @Exists.{1} Nat fun (x : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat t x)\n      (And (@LT.lt.{0} Nat instLTNat x z)\n        (And (Not (ChompLean.C ChompLean.gameF x c z))\n          (Or (@LE.le.{0} Nat instLENat x r)\n            (Or (Not (ChompLean.B ChompLean.gameF x c z))\n              (@Exists.{1} Nat fun (a : Nat) =>\n                And (@LT.lt.{0} Nat instLTNat c a)\n                  (And (@LT.lt.{0} Nat instLTNat a x) (@Eq.{1} Nat (ChompLean.gameF a c) z)))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_long_active_interval_forces_prefix_return",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 246,
+      "typePretty": "∀ {c r z : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (hrz : @LT.lt.{0} Nat instLTNat r z)\n  (hlong :\n    @LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r c)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  @Exists.{1} Nat fun (x : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat r x) (And (@LT.lt.{0} Nat instLTNat x z) (ChompLean.C ChompLean.gameF x c z))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_long_active_interval_forces_prefix_return._proof_1_1",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r z : Nat} (x : Nat)\n  (hxrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        x)\n      (@LT.lt.{0} Nat instLTNat x\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat r x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_long_active_interval_forces_prefix_return._proof_1_2",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r z : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (x : Nat)\n  (hxrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        x)\n      (@LT.lt.{0} Nat instLTNat x\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (@LT.lt.{0} Nat instLTNat x z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_long_active_interval_forces_prefix_return._proof_1_3",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r z : Nat}\n  (hlong :\n    @LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r c)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hbound :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r c)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_long_prefix_gap_chain_hits_prefreeze",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 281,
+      "typePretty": "∀ {c r z : Nat} {xs : List.{0} Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (hrz : @LT.lt.{0} Nat instLTNat r z)\n  (hxs : @List.Nodup.{0} Nat xs)\n  (hrows :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →\n        And (@LT.lt.{0} Nat instLTNat x z) (Not (ChompLean.C ChompLean.gameF x c z)))\n  (hlong :\n    @LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r c)\n      (@List.length.{0} Nat xs)),\n  @Exists.{1} Nat fun (x : Nat) =>\n    And (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x) (@LE.le.{0} Nat instLENat x r)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_long_prefix_gap_chain_hits_prefreeze._proof_1_1",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r z : Nat} {xs : List.{0} Nat} (x : Nat) (hle : Not (@LE.le.{0} Nat instLENat x r)),\n  Not (@LT.lt.{0} Nat instLTNat r x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_long_prefix_gap_chain_hits_prefreeze._proof_1_2",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r z : Nat} {xs : List.{0} Nat}\n  (hlong :\n    @LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r c)\n      (@List.length.{0} Nat xs))\n  (hbound :\n    @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r c)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_postfreeze_prefix_gap_charge_bound",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 186,
+      "typePretty": "∀ {c r z : Nat} {xs : List.{0} Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (hrz : @LT.lt.{0} Nat instLTNat r z)\n  (hxs : @List.Nodup.{0} Nat xs)\n  (hrows :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →\n        And (@LT.lt.{0} Nat instLTNat r x)\n          (And (@LT.lt.{0} Nat instLTNat x z) (Not (ChompLean.C ChompLean.gameF x c z)))),\n  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r c)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_postfreeze_prefix_gap_charge_bound._proof_1_1",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r z : Nat} (x b : Nat) (h : Not (@LE.le.{0} Nat instLENat c b)), Not (@LT.lt.{0} Nat instLTNat b c) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_postfreeze_prefix_gap_charge_bound._proof_1_2",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r z : Nat} {xs : List.{0} Nat}\n  (hex :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →\n        @Exists.{1} Nat fun (b : Nat) =>\n          And (@LE.le.{0} Nat instLENat c b) (And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF x b) z)))\n  (x y : Nat) (hEq : Not (@Eq.{1} Nat x y)) (hlt : Not (@LT.lt.{0} Nat instLTNat x y)),\n  Not (@LT.lt.{0} Nat instLTNat y x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_postfreeze_prefix_gap_charge_bound._proof_1_3",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r z : Nat} {xs : List.{0} Nat}\n  (hex :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →\n        @Exists.{1} Nat fun (b : Nat) =>\n          And (@LE.le.{0} Nat instLENat c b) (And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF x b) z)))\n  (x : Nat)\n  (hs :\n    And\n      (@LE.le.{0} Nat instLENat c\n        ((fun (x : Nat) =>\n            @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x)\n              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                Nat.instLawfulBEq x xs)\n              (fun (hx : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x) =>\n                @Classical.choose.{1} Nat\n                  (fun (x_1 : Nat) =>\n                    And (@LE.le.{0} Nat instLENat c x_1)\n                      (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF x x_1) z)))\n                  (hex x hx))\n              fun (hx : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x)) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          x))\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          ((fun (x : Nat) =>\n              @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x)\n                (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                  Nat.instLawfulBEq x xs)\n                (fun (hx : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x) =>\n                  @Classical.choose.{1} Nat\n                    (fun (x_1 : Nat) =>\n                      And (@LE.le.{0} Nat instLENat c x_1)\n                        (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF x x_1) z)))\n                    (hex x hx))\n                fun (hx : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x)) =>\n                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            x)\n          r)\n        (@Eq.{1} Nat\n          (ChompLean.gameF x\n            ((fun (x : Nat) =>\n                @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x)\n                  (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                    Nat.instLawfulBEq x xs)\n                  (fun (hx : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x) =>\n                    @Classical.choose.{1} Nat\n                      (fun (x_1 : Nat) =>\n                        And (@LE.le.{0} Nat instLENat c x_1)\n                          (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF x x_1) z)))\n                      (hex x hx))\n                  fun (hx : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x)) =>\n                  @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n              x))\n          z))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        ((fun (x : Nat) =>\n            @dite.{1} Nat (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x)\n              (@List.instDecidableMemOfLawfulBEq.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n                Nat.instLawfulBEq x xs)\n              (fun (hx : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x) =>\n                @Classical.choose.{1} Nat\n                  (fun (x_1 : Nat) =>\n                    And (@LE.le.{0} Nat instLENat c x_1)\n                      (And (@LT.lt.{0} Nat instLTNat x_1 r) (@Eq.{1} Nat (ChompLean.gameF x x_1) z)))\n                  (hex x hx))\n              fun (hx : Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x)) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          x)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r c))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_postfreeze_gaps_have_distinct_hosts",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 23,
+      "typePretty": "∀ {c r x y z : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (hrz : @LT.lt.{0} Nat instLTNat r z)\n  (hrx : @LT.lt.{0} Nat instLTNat r x) (hxy : @LT.lt.{0} Nat instLTNat x y) (hyz : @LT.lt.{0} Nat instLTNat y z)\n  (hxgap : Not (ChompLean.C ChompLean.gameF x c z)) (hygap : Not (ChompLean.C ChompLean.gameF y c z)),\n  @Exists.{1} Nat fun (bx : Nat) =>\n    @Exists.{1} Nat fun (bY : Nat) =>\n      And (@LE.le.{0} Nat instLENat c bx)\n        (And (@LT.lt.{0} Nat instLTNat bx r)\n          (And (@Eq.{1} Nat (ChompLean.gameF x bx) z)\n            (And (@LE.le.{0} Nat instLENat c bY)\n              (And (@LT.lt.{0} Nat instLTNat bY r)\n                (And (@Eq.{1} Nat (ChompLean.gameF y bY) z) (Not (@Eq.{1} Nat bx bY)))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_postfreeze_gaps_have_distinct_hosts._proof_1_1",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r x y z : Nat} (bx byHost : Nat) (h : Not (@LE.le.{0} Nat instLENat c bx)),\n  Not (@LT.lt.{0} Nat instLTNat bx c) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_two_postfreeze_gaps_have_distinct_hosts._proof_1_2",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {c r x y z : Nat} (bx byHost : Nat) (h : Not (@LE.le.{0} Nat instLENat c byHost)),\n  Not (@LT.lt.{0} Nat instLTNat byHost c) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rowstart_C_gap_is_source_gap_or_boundary_owner",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 54,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c r x z : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z)\n  (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M z r) z)\n  (hxgap : Not (ChompLean.C (ChompLean.RecurrenceModel.f M) x c z)),\n  Or (Not (ChompLean.B (ChompLean.RecurrenceModel.f M) x c z))\n    (@Exists.{1} Nat fun (a : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat c a)\n        (And (@LT.lt.{0} Nat instLTNat a x) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M a c) z)))",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rowstart_C_gap_is_source_gap_or_boundary_owner._proof_1_1",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c r x z : Nat} (a : Nat) (hac : Not (@LE.le.{0} Nat instLENat a c)),\n  Not (@LT.lt.{0} Nat instLTNat c a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.source_gap_cell_low_or_service_or_high_lower",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 83,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c x z : Nat} (hcx : @LE.le.{0} Nat instLENat c x)\n  (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)\n  (hgap : Not (ChompLean.B (ChompLean.RecurrenceModel.f M) x c z)),\n  Or (@LE.le.{0} Nat instLENat (ChompLean.RecurrenceModel.f M x c) x)\n    (Or (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M x c) z)\n      (And (@LT.lt.{0} Nat instLTNat x (ChompLean.RecurrenceModel.f M x c))\n        (@LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M x c) z)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.source_gap_cell_low_or_service_or_high_lower._proof_1_1",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c x z : Nat}\n  (hlow : Not (@LE.le.{0} Nat instLENat (ChompLean.RecurrenceModel.f M x c) x)),\n  Not (@LT.lt.{0} Nat instLTNat x (ChompLean.RecurrenceModel.f M x c)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.source_gap_cell_low_or_service_or_high_lower._proof_1_2",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c x z : Nat}\n  (houtle : @LE.le.{0} Nat instLENat (ChompLean.RecurrenceModel.f M x c) z)\n  (heq : Not (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M x c) z)),\n  Not (@LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M x c) z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R27ActualGameGapCharge.0.ChompLean.nodup_map_of_injective_on",
+      "module": "R27ActualGameGapCharge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 160,
+      "typePretty": "∀ {alpha beta : Type} [inst : BEq.{0} alpha] [@LawfulBEq.{0} alpha inst] [inst : BEq.{0} beta]\n  [@LawfulBEq.{0} beta inst] (f : alpha → beta) (xs : List.{0} alpha) (hxs : @List.Nodup.{0} alpha xs)\n  (hinj :\n    ∀ (x : alpha),\n      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x →\n        ∀ (y : alpha),\n          @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs y →\n            @Eq.{1} beta (f x) (f y) → @Eq.{1} alpha x y),\n  @List.Nodup.{0} beta (@List.map.{0, 0} alpha beta f xs)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "d07646925d8d0780a9d52cb14d96703c23c7763716f3bd89dde71fbd8d264636",
+      "sourcePath": "lean/core/R27ActualGameGapCharge.lean",
+      "universeParameters": []
+    }
+  ]
+}

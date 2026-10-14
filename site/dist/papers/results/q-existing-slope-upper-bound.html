@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>If a diagonal slope exists, it is below 1.868565865679 · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../document.css"><link rel="stylesheet" href="../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../index.html">Search</a><a href="../../browse.html">Browse all</a><a href="../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="if-a-diagonal-slope-exists-it-is-below-1868565865679">If a diagonal slope exists, it is below 1.868565865679</h1><p><strong>Statement.</strong> For the canonical table, if d(n)/n→c, then c≤c_*&lt;1.868565865679, where c_* is the unique root in [9/5,15/8] of 7c⁷−25c⁶+22c⁵+25c⁴−58c³+11c²+27c−9.</p>
+<h2 id="complete-proof-and-definitions">Complete proof and definitions</h2><ul>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../../audit/full/paper-b/SLOPE-REPAIR.html">Independent completion of the existing-slope upper bound</a></li>
+<li><a href="../../audit/full/paper-b/exact-algebra-checks.json">Exact algebra checks</a></li>
+</ul>
+<p>The argument below and the linked full derivations form the reviewed proof. All stated hypotheses remain part of the result.</p>
+<h2 id="hypotheses-and-scope">Hypotheses and scope</h2><ul>
+<li>Canonical positive-MEX/COPY table, with d the diagonal map and A the count of positive labels not in its image; token and service inventories use the attached proof definitions.</li>
+<li>Existence of the ordered diagonal slope d(n)/n→c. The proof supplies all service, union-exclusion, rank-area and logarithmic-population inequalities used by this conditional consumer.</li>
+<li>See the full independently reconstructed SLOPE-REPAIR.md; no convergence, Q=o(n), or count-uniform-integrability conclusion is asserted.</li>
+</ul>
+<h2 id="argument">Argument</h2><ol>
+<li><p>Existence d(n)/n→c and reach give c≤2, R(x)=x/c+o(x), A(x)=(1−1/c)x+o(x), and uniform errors on bounded multiples. P98 is rederived by excluding victims dying before the first p-service row from its j distinct bookers; P99 adds reach-forbidden victims with p_i+s_i&lt;p_j. Both exclusion classes lie below s_j and are disjoint from bookers.</p>
+</li>
+<li><p>With v_j=s_j/j, L=1+1/c, r_j=j/c+o(j) and m_i=i(1+bv_i)+o(i), the full union yields s_j≥j+r_j+#{i&gt;r_j:m_i&lt;j}. Weighted summation over j gives liminf(logJ)^−1Σ(v_i−L−φ(v_i))/i≥0. The sufficient j interval is (1+bv_i+ξ)i&lt;j&lt;i/(1/c+ξ); omitted proportional tails and integer boundaries have Oξ(1) weight.</p>
+</li>
+<li><p>For φ=[1/(1+bv)−1/c]+, H(v)=1/v+k(v−L−φ) is convex on[L,c] and[c,2]. Chord coefficient k equalizes outer endpoint values; the kink is smaller by(2−c)(k−1/(2c))≥0. Thus reciprocal-victim mean≤C, and actual victim census gives log-average Imm(h)/h≥V=1−C. V−1/(c+1)&gt;0 because c²−c−1&gt;0; V&lt;1/2 because2c²−1&gt;0.</p>
+</li>
+<li><p>MEX diagonal-rank counting bounds each live journal ceiling, giving cK_h≥B N−(c−1)h−Imm(h), while direct journal exclusions give K_h≥N/c−b h−Imm(h). Integrating the maximum at a fixed immortal host has exact coefficient Ψ=B²/[c(c−1+u)]+bz²/u. The line crossing is N=u h/z and is after birth/positivity thresholds. Summing hosts and Stieltjes integration gives the concave integrand g=uΨ, with bounded endpoint primitive.</p>
+</li>
+<li><p>The chord of g on[u0,1/2] at meanV yields U10. Independent polynomial expansion gives[-9,27,11,−58,25,22,−25,7]. Exact Bernstein positivity of its derivative on[9/5,15/8] and a90-step rational bracket prove the unique root c_*&lt;1.868565865679.</p>
+</li>
+<li><p>The source’s vague prior upper-endpoint exclusion is replaced by a self-contained repair: the rank-integrated two-line MEX inequality M8 has positive surplus159327/60696000 at15/8. Its derivative is positive throughout[15/8,2), using |(1/(cD))′|&lt;15/64 and positive derivative of(c−1)^3(c²−3)^2/(c³D). At c=2, a positive fraction of immortal hosts demandsΩ(N²) diagonal cells while row capacity is o(N²). Thus no c≥15/8 occurs; c&lt;9/5 trivially satisfies the final bound.</p>
+</li>
+</ol>
+<h2 id="review-and-supporting-evidence">Review and supporting evidence</h2><ul>
+<li>Historical original-claim verdict: repaired.</li>
+<li>The complete repaired paper argument was independently reconstructed and second-reviewed. No matching Lean certificate for this derived bound was identified.</li>
+<li><a href="../../audit/prepublication/papers/PAPER-REVIEW.json">Renewed statement and proof-completeness review</a></li>
+<li><a href="../../audit/full/paper-b/q-existing-slope-upper-bound.json">Full independent audit and original-claim verdict</a></li>
+<li><a href="../../audit/full/CANONICAL-FOUNDATIONS.html">Shared canonical foundation and exact Lean bridges</a></li>
+<li><a href="../../audit/full/paper-b/SLOPE-REPAIR.html">Detailed audit proof or correction</a></li>
+<li><a href="../../audit/full/paper-b/exact-algebra-checks.json">Detailed audit proof or correction</a></li>
+<li><a href="../../audit/full/paper-a/SLOPE-SECOND-REVIEW.html">Detailed audit proof or correction</a></li>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Full proof and definitions: Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../../audit/full/paper-b/SLOPE-REPAIR.html">Full proof and definitions: Independent completion of the existing-slope upper bound</a></li>
+<li><a href="../../audit/full/paper-b/exact-algebra-checks.json">Full proof and definitions: Exact algebra checks</a></li>
+</ul>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

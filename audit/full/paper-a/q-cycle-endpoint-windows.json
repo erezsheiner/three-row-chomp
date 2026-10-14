@@ -1,0 +1,52 @@
+{
+  "paperIndex": 12,
+  "id": "q-cycle-endpoint-windows",
+  "original": {
+    "title": "Dyadic completion has bounded singleton endpoint cost in both window directions",
+    "status": "paper-reviewed",
+    "statement": "2U(I)≤Σ_{v∈I}(2−deg(v))≤2U(I)+2⌈log₂(8κ)⌉.",
+    "assumptions": [
+      "The ordered dyadic graph of one fixed κ-local matching.",
+      "N≥4, L=⌈√N⌉; I=[N,N+L−1] or [N−L+1,N]."
+    ],
+    "sourcePath": "projects/central-first-exit/work/DIRECT-Q-MICROLEMMAS-20261012-004/ORDERED-CYCLE-LEMMA.md",
+    "sourceLine": 48,
+    "sha256": "ad066d26af345cc7a9f654bb56345f6daf5af22575fca2e89a0b2605dec31d64"
+  },
+  "exactAuditedStatement": "For the specified dyadic cycle completion of a fixed kappa-local matching, kappa>=1, N>=4 and L=ceil(sqrt N), in either I=[N, N+L-1] or[N-L+1, N], 2U(I)<=sum_{v in I}(2-deg v)<=2U(I)+2ceil(log2(8kappa)).",
+  "hypotheses": [
+    "Positive integer dates, finite token count per date.",
+    "Buckets defined by floor(log2(minimum pair date)); positive endpoints sorted by date; nonsingletons receive cyclic opposite-sign edges."
+  ],
+  "proofDependencyMap": [],
+  "independentDerivationAndChecks": [
+    "In a nonsingleton bucket each vertex acquires exactly one new edge in addition to its matching edge. Singleton vertices have degree1, unmatched vertices0. Thus the deficit consists exactly of2 per unmatched vertex and1 per singleton endpoint.",
+    "Every I date lies in[N/2,2N]: the backward lower endpoint uses ceil(sqrt N)<=N/2+1 for N>=4; forward endpoint<=2N. A singleton pair touching I has minimum m in[N/(2kappa),2N]. Its bucket scale obeys N/(4kappa)<2^k<=2N. A half-open log interval of length log2(8kappa) contains at most its ceiling integer scales; at most two singleton endpoints per scale prove both bounds.",
+    "Supporting crossing lemma: for x_i=1[P_i<=n], z_i=1[M_i<=n], triangle inequality gives sum|x_i-z_(i+1)|<=sum|x_i-x_(i+1)|+sum|x_i-z_i|. Sorted x has0 or2 cyclic changes; varying buckets have n/(2kappa)<2^k<=n. Thus completed W<=2W_matching+2ceil(log2(2kappa)).",
+    "The optional final consumer needs one fixed matching with U(window)=O(N), W(cut)=O(n), plus bounded upward increments Q(q)-Q(q-1)<=K. Signed edge cancellation then bounds both window sums; backward positive spikes and forward negative spikes yield |Q(N)|=O(sqrt N). None of those canonical suppliers is established by the endpoint theorem."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\central-first-exit\\work\\DIRECT-Q-MICROLEMMAS-20261012-004\\ORDERED-CYCLE-LEMMA.md",
+      "sha256": "ad066d26af345cc7a9f654bb56345f6daf5af22575fca2e89a0b2605dec31d64"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\041ca8988de6f5fdc0c6.md",
+      "sha256": "041ca8988de6f5fdc0c6f7c91312526cb9fccf153b8ef98b0536623bfd505733"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#q-ordered-cycle-crossing",
+    "proofTextSha256": "ad066d26af345cc7a9f654bb56345f6daf5af22575fca2e89a0b2605dec31d64",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": false,
+  "sharedCanonicalFoundationReview": null,
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish; parent integrates the independent audit and corrections."
+}

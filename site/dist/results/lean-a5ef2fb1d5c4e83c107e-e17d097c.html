@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R27 Lower New Loss Anatomy · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R27 Lower New Loss Anatomy</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R27LowerNewLossAnatomy.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R27LowerNewLossAnatomy.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R27LowerNewLossAnatomy.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 22 declarations</summary><ul class="declarations"><li><code>ChompLean.StrictParkedHost</code><pre class="prose">(M : ChompLean.RecurrenceModel) → (t c v a : Nat) → Prop</pre></li><li><code>ChompLean.l3_lower_new_loss_is_final_diagonal_or_future_rowstart_of_rm2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {e u v : Nat}
+  (huSeat :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))))
+      u)
+  (hPrevDiagonalAbove :
+    @LT.lt.{0} Nat instLTNat u
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))))
+  (hv : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+  (hvu : @LT.lt.{0} Nat instLTNat v u)
+  (hvOne :
+    ChompLean.B (ChompLean.RecurrenceModel.f M)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      v)
+  (hvMissing :
+    Not
+      (ChompLean.B (ChompLean.RecurrenceModel.f M)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        v))
+  (hRM2 : ChompLean.TwoStepDiagonalRecordLaw M),
+  Or
+    (@Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+      v)
+    (@Exists.{1} Nat fun (r : Nat) =&gt;
+      And
+        (@LT.lt.{0} Nat instLTNat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          r)
+        (And (@LT.lt.{0} Nat instLTNat r v) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M v r) v)))</pre></li><li><code>ChompLean.l3_missing_penultimate_is_final_diagonal_or_rowstart_of_rm2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {e u v : Nat}
+  (huSeat :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))))
+      u)
+  (hPrevDiagonalAbove :
+    @LT.lt.{0} Nat instLTNat u
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))))
+  (hv : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+  (hvu : @LT.lt.{0} Nat instLTNat v u)
+  (hvMissing :
+    Not
+      (ChompLean.B (ChompLean.RecurrenceModel.f M)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        v))
+  (hRM2 : ChompLean.TwoStepDiagonalRecordLaw M),
+  Or
+    (@Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+      v)
+    (@Exists.{1} Nat fun (r : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat r v) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M v r) v))</pre></li><li><code>ChompLean.l3_missing_penultimate_is_final_diagonal_or_rowstart_of_rm2._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {e u v : Nat} (a : Nat)
+  (h :
+    Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        a) →
+    False</pre></li><li><code>ChompLean.l3_missing_penultimate_is_final_diagonal_or_rowstart_of_rm2._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {e u v : Nat}
+  (hPrevDiagonalAbove :
+    @LT.lt.{0} Nat instLTNat u
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))))
+  (hvu : @LT.lt.{0} Nat instLTNat v u) (a : Nat) (haOwner : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M a a) v)
+  (hrecord :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))))
+      v),
+  False</pre></li><li><code>ChompLean.l3_unserved_lower_loss_anatomy_and_opening_split_of_rm2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {e u z : Nat}
+  (hmexEntry :
+    ChompLean.IsMex
+      (ChompLean.B (ChompLean.RecurrenceModel.f M)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        e)
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        e))
+  (honeEntry :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u →
+              Not
+                  (ChompLean.B (ChompLean.RecurrenceModel.f M)
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    e y) →
+                Not
+                    (ChompLean.B (ChompLean.RecurrenceModel.f M)
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                      e z) →
+                  @Eq.{1} Nat y z)
+  (hmexOne :
+    ChompLean.IsMex
+      (ChompLean.B (ChompLean.RecurrenceModel.f M)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hmexTwo :
+    ChompLean.IsMex
+      (ChompLean.B (ChompLean.RecurrenceModel.f M)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+  (hEntryLossCapTwo :
+    ∀ (x y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x →
+        @LT.lt.{0} Nat instLTNat x u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+            @LT.lt.{0} Nat instLTNat y u →
+              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+                @LT.lt.{0} Nat instLTNat z u →
+                  ChompLean.B (ChompLean.RecurrenceModel.f M)
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                      e x →
+                    Not
+                        (ChompLean.B (ChompLean.RecurrenceModel.f M)
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                            (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                          x) →
+                      ChompLean.B (ChompLean.RecurrenceModel.f M)
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                            (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                          e y →
+                        Not
+                            (ChompLean.B (ChompLean.RecurrenceModel.f M)
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              y) →
+                          ChompLean.B (ChompLean.RecurrenceModel.f M)
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                              e z →
+                            Not
+                                (ChompLean.B (ChompLean.RecurrenceModel.f M)
+                                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                  z) →
+                              Or (@Eq.{1} Nat x y) (Or (@Eq.{1} Nat x z) (@Eq.{1} Nat y z)))
+  (hz : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hzu : @LT.lt.{0} Nat instLTNat z u)
+  (hzMissingOne :
+    Not
+      (ChompLean.B (ChompLean.RecurrenceModel.f M)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        z))
+  (hzMissingTwo :
+    Not
+      (ChompLean.B (ChompLean.RecurrenceModel.f M)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        z))
+  (hNotServed :
+    @Ne.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      z)
+  (huSeat :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))))
+      u)
+  (hPrevDiagonalAbove :
+    @LT.lt.{0} Nat instLTNat u
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))))
+  (hRM2 : ChompLean.TwoStepDiagonalRecordLaw M),
+  have q : Nat :=
+    ChompLean.RecurrenceModel.f M
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))));
+  And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)
+    (And (@LT.lt.{0} Nat instLTNat q z)
+      (And
+        (ChompLean.ParkedOnly (ChompLean.RecurrenceModel.f M)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+          e q)
+        (And
+          (ChompLean.ParkedOnly (ChompLean.RecurrenceModel.f M)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            q)
+          (And
+            (@Exists.{1} Nat fun (a0 : Nat) =&gt;
+              @Exists.{1} Nat fun (a1 : Nat) =&gt;
+                And
+                  (ChompLean.StrictParkedHost M
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    e q a0)
+                  (And
+                    (ChompLean.StrictParkedHost M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      q a1)
+                    (@Ne.{1} Nat a0 a1)))
+            (And
+              (ChompLean.ParkedOnly (ChompLean.RecurrenceModel.f M)
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                  (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                e z)
+              (And
+                (@Exists.{1} Nat fun (az : Nat) =&gt;
+                  ChompLean.StrictParkedHost M
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    e z az)
+                (Or
+                  (@Eq.{1} Nat
+                    (ChompLean.RecurrenceModel.f M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                    q)
+                  (@Exists.{1} Nat fun (r : Nat) =&gt;
+                    And
+                      (@LT.lt.{0} Nat instLTNat
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                        r)
+                      (And (@LT.lt.{0} Nat instLTNat r q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M q r) q))))))))))</pre></li><li><code>ChompLean.parkedOnly_has_strict_host_of_no_fresh</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (hpark : ChompLean.ParkedOnly (ChompLean.RecurrenceModel.f M) t c v)
+  (hnoFresh : @Ne.{1} Nat (ChompLean.RecurrenceModel.f M t c) v),
+  @Exists.{1} Nat fun (a : Nat) =&gt; ChompLean.StrictParkedHost M t c v a</pre></li><li><code>ChompLean.parkedOnly_has_strict_host_of_no_fresh._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (a : Nat) (hav : Not (@LT.lt.{0} Nat instLTNat a v)),
+  Not
+      (@LT.lt.{0} Nat instLTNat v
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.source_loss_future_opening_normal_form</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (hhere : ChompLean.B (ChompLean.RecurrenceModel.f M) t c v)
+  (hlost :
+    Not
+      (ChompLean.B (ChompLean.RecurrenceModel.f M) t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        v)),
+  Or
+    (@Exists.{1} Nat fun (i : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat c i)
+        (And (@LT.lt.{0} Nat instLTNat i v) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M i i) v)))
+    (@Exists.{1} Nat fun (r : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat c r)
+        (And (@LT.lt.{0} Nat instLTNat r v) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M v r) v)))</pre></li><li><code>ChompLean.source_loss_future_opening_normal_form._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (a : Nat) (hca : @LT.lt.{0} Nat instLTNat c a)
+  (hav : @LT.lt.{0} Nat instLTNat a v) (_hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M a c) v),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v) → False</pre></li><li><code>ChompLean.source_loss_has_strict_parked_host</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (hhere : ChompLean.B (ChompLean.RecurrenceModel.f M) t c v)
+  (hlost :
+    Not
+      (ChompLean.B (ChompLean.RecurrenceModel.f M) t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        v)),
+  And (ChompLean.ParkedOnly (ChompLean.RecurrenceModel.f M) t c v)
+    (@Exists.{1} Nat fun (a : Nat) =&gt; ChompLean.StrictParkedHost M t c v a)</pre></li><li><code>ChompLean.source_loss_opening_is_strictly_right</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (hhere : ChompLean.B (ChompLean.RecurrenceModel.f M) t c v)
+  (hlost :
+    Not
+      (ChompLean.B (ChompLean.RecurrenceModel.f M) t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        v)),
+  And
+    (∀ (i : Nat),
+      @LT.lt.{0} Nat instLTNat i v → @Eq.{1} Nat (ChompLean.RecurrenceModel.f M i i) v → @LT.lt.{0} Nat instLTNat c i)
+    (∀ (r : Nat),
+      @LT.lt.{0} Nat instLTNat r v → @Eq.{1} Nat (ChompLean.RecurrenceModel.f M v r) v → @LT.lt.{0} Nat instLTNat c r)</pre></li><li><code>ChompLean.source_loss_opening_is_strictly_right._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (a i : Nat) (hci : Not (@LT.lt.{0} Nat instLTNat c i)),
+  Not (@LE.le.{0} Nat instLENat i c) → False</pre></li><li><code>ChompLean.source_loss_opening_is_strictly_right._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (a : Nat) (hca : @LT.lt.{0} Nat instLTNat c a)
+  (hat : @LT.lt.{0} Nat instLTNat a t) (i : Nat) (hit : Not (@LT.lt.{0} Nat instLTNat i t)),
+  Not (@LT.lt.{0} Nat instLTNat c i) → False</pre></li><li><code>ChompLean.source_loss_opening_is_strictly_right._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (a r : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat v
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.source_loss_opening_is_strictly_right._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (a : Nat) (hca : @LT.lt.{0} Nat instLTNat c a)
+  (hat : @LT.lt.{0} Nat instLTNat a t) (r : Nat) (hrc : @LT.lt.{0} Nat instLTNat r c),
+  Not (@LT.lt.{0} Nat instLTNat r t) → False</pre></li><li><code>ChompLean.source_loss_opening_is_strictly_right._proof_1_5</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t c v : Nat} (a r : Nat) (hrc : Not (@LT.lt.{0} Nat instLTNat r c))
+  (hstrict : Not (@LT.lt.{0} Nat instLTNat c r)), Not (@Eq.{1} Nat r c) → False</pre></li><li><code>ChompLean.successor_loss_is_two_column_parked_relay</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t e u q : Nat}
+  (hmexEntry : ChompLean.IsMex (ChompLean.B (ChompLean.RecurrenceModel.f M) t e) (ChompLean.RecurrenceModel.f M t e))
+  (honeEntry :
+    ∀ (y z : Nat),
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →
+        @LT.lt.{0} Nat instLTNat y u →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →
+            @LT.lt.{0} Nat instLTNat z u →
+              Not (ChompLean.B (ChompLean.RecurrenceModel.f M) t e y) →
+                Not (ChompLean.B (ChompLean.RecurrenceModel.f M) t e z) → @Eq.{1} Nat y z)
+  (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)
+  (hqu : @LT.lt.{0} Nat instLTNat q u)
+  (hqOne :
+    ChompLean.B (ChompLean.RecurrenceModel.f M) t
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q)
+  (hqMissingTwo :
+    Not
+      (ChompLean.B (ChompLean.RecurrenceModel.f M) t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        q)),
+  And (ChompLean.ParkedOnly (ChompLean.RecurrenceModel.f M) t e q)
+    (And
+      (ChompLean.ParkedOnly (ChompLean.RecurrenceModel.f M) t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        q)
+      (@Exists.{1} Nat fun (a0 : Nat) =&gt;
+        @Exists.{1} Nat fun (a1 : Nat) =&gt;
+          And (ChompLean.StrictParkedHost M t e q a0)
+            (And
+              (ChompLean.StrictParkedHost M t
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                q a1)
+              (@Ne.{1} Nat a0 a1))))</pre></li><li><code>ChompLean.successor_loss_is_two_column_parked_relay._proof_1_1</code><pre class="prose">∀ {e u q : Nat},
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.successor_loss_is_two_column_parked_relay._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t e u q : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat e
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.successor_loss_is_two_column_parked_relay._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t e u q : Nat} (hmq : @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M t e) q)
+  (heq : @Eq.{1} Nat q (ChompLean.RecurrenceModel.f M t e)), False</pre></li><li><code>ChompLean.successor_loss_is_two_column_parked_relay._proof_1_4</code><pre class="prose">∀ {e u q : Nat} (a0 : Nat)
+  (hcols :
+    @Eq.{1} Nat e
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R27LowerNewLossAnatomy.lean:1</p><p>SHA-256: <code class="path">a5ef2fb1d5c4e83c107e3cfc2a4c686107db9a3aee5e164a37af4c80baf417e1</code></p></section><p><a href="../index.html#id=lean-a5ef2fb1d5c4e83c107e">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

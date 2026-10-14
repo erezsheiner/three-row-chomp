@@ -1,0 +1,61 @@
+{
+  "paperIndex": 2,
+  "id": "q-completed-lifetime-energy",
+  "original": {
+    "title": "Completed lifetimes give a weak quadratic negative-energy bound",
+    "status": "paper-reviewed",
+    "statement": "limsup Σ_{q≤N} max(−Q(q),0)/N² ≤ 179/576.",
+    "assumptions": [
+      "Canonical positive-MEX/COPY recurrence and the named banked lemmas in the source."
+    ],
+    "sourcePath": "projects/central-first-exit/work/DIRECT-Q-FIRSTHAND-20261011-001/lanes/mass/ATTEMPT.md",
+    "sourceLine": 28,
+    "sha256": "d40e1b3cde64cde59624b8449a3bfdd8bbaeca2b7b9979a6de18dac2f4cb3e59"
+  },
+  "exactAuditedStatement": "For M_N=sum_{a=0}^N(a-A(a)), C_N=sum_{p blocker, p<=2N} min(A(p)-1,(min(N, p-1)-s(p))_+), M_N<=sum_{q=0}^{2N}I_q+sum_{a=0}^NH_a+C_N. Consequently limsup C_N/N^2<=23/144, liminf sum_{q<=N}(I_q+H_q)/N^2>=13/576, and limsup sum_{q<=N}(-Q(q))_+/N^2<=179/576.",
+  "hypotheses": [
+    "Canonical recurrence and positive blocker convention.",
+    "P98 victim bound; A(x)<=floor(x/2); A(x)>=x/3-O(1); 2d(q)>=3q+5 for q>=16."
+  ],
+  "proofDependencyMap": [
+    "Shared canonical foundation: exact positive-MEX/COPY recurrence and P01-P12, independently reconstructed in ../CANONICAL-FOUNDATIONS.md with exact declaration mapping and game interpretation. DEPENDENCIES.json records the additional service lemmas. Final kernel receipts bind the source versions.",
+    "FFD/P41 give whole-history blocker sources; P98 independently reconstructed in DEPENDENCIES.json.",
+    "Exact core declarations reported by root: gameF_FloorPlus and gameFBlockerCountThrough_AFloor in R201DiagDoubleSlackCeilingChain.lean."
+  ],
+  "independentDerivationAndChecks": [
+    "Fix a and y=d(a). Older hosts alive after a split into: unique private y service before a; unique service a<t<y; or no service and death a<p<y. A survivor at row y cannot omit y from its journal: no row-y cell may equal the diagonal label y, a live old cell is>y, and positive MEX forces historical y. It cannot be an inherited seed when c<a. Birth/death endpoint equalities are excluded by injectivity and D/S disjointness.",
+    "Prebirth y source rows have d(t)>y and are distinct for different hosts, so count<=H_a. Postbirth services for a<=N occur at t<d(a)<=2a+1, hence t<=2N, and inject into actual I_t cells.",
+    "Unserved deaths inject into pairs(p, a) with s(p)<a<p<d(a). One cap is (min(N, p-1)-s(p))_+. The other is A(p)-1: exactly A(p) predeath rows serve p, while s(p) is one such row by FFD and is excluded by a>s(p). Thus the finite inequality keeps completion horizon 2N.",
+    "Write p_j for blocker rank j. P98 and count bounds give 2j<=p_j<=3j+o(j) and s_j>=j+p_j/6-o(p_j). Maximize min(j,(min(N, p)-j-p/6)_+) over p in[2j,3j]. The cap is j through5N/12, 5N/6-j through N/2, N-4j/3 through3N/4, then0. Integrals are25/288,9/288,12/288 times N^2, summing23/144. Uniform o(N) errors over O(N) ranks give o(N^2), with a finite initial segment harmless.",
+    "A<=q/2 gives M_N>=N(N+1)/4. Enlarge the H sum to2N, replace N by floor(X/2), and obtain13X^2/576-o(X^2). Put K=I+H. The lower diagonal bound gives K<=q/2-3/2<=m+1 eventually. Therefore(m+1-2K)_+<=m+1-K. Sum and use A>=q/3-o(q): coefficient1/3-13/576=179/576.",
+    "The quadratic coefficient is not a subquadratic estimate, does not meet a smaller consumer threshold, and does not prove a density improvement. No finite lifetime panel is used as an asymptotic premise."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\central-first-exit\\work\\DIRECT-Q-FIRSTHAND-20261011-001\\lanes\\mass\\ATTEMPT.md",
+      "sha256": "d40e1b3cde64cde59624b8449a3bfdd8bbaeca2b7b9979a6de18dac2f4cb3e59"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\e15c000a8625873e9bb7.md",
+      "sha256": "e15c000a8625873e9bb77211db8d66c3393595152cabda3f1fab396847f1fd3f"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\audit\\full\\CANONICAL-FOUNDATIONS.md",
+      "sha256": "88fb71f3229c40c29c5c909ce0f60734e171291e54a6c1b0634d7342d86f26fe"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#q-completed-lifetime-energy",
+    "proofTextSha256": "d40e1b3cde64cde59624b8449a3bfdd8bbaeca2b7b9979a6de18dac2f4cb3e59",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": true,
+  "sharedCanonicalFoundationReview": "../CANONICAL-FOUNDATIONS.md",
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish. If shared canonical bridge has an unresolved premise, this result remains conditional on that premise regardless of local derivation verdict."
+}

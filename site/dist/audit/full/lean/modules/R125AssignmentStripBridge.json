@@ -1,0 +1,261 @@
+{
+  "module": "R125AssignmentStripBridge",
+  "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+  "declarationCount": 17,
+  "theoremDeclarationCount": 15,
+  "proofValuedDeclarationCount": 15,
+  "scope": "All serialized module declarations including private/generated auxiliaries. These are declaration counts, not counts of independent mathematical results.",
+  "declarations": [
+    {
+      "name": "ChompLean.FreezeBand.eq_1",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (g c : Nat),\n  @Eq.{1} Prop (ChompLean.FreezeBand g c)\n    (And\n      (@LE.le.{0} Nat instLENat g\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@LE.le.{0} Nat instLENat c\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))",
+      "axioms": [],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.PreviewEnvelope.eq_1",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (g previousFreeze previewHost : Nat),\n  @Eq.{1} Prop (ChompLean.PreviewEnvelope g previousFreeze previewHost)\n    (And\n      (@LE.le.{0} Nat instLENat g\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@LE.le.{0} Nat instLENat (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost) g))",
+      "axioms": [],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.freezeBand_iff_previewEnvelope_of_maxPlus._proof_1_3",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {g previousFreeze previewHost : Nat},\n  Not\n      (Iff\n        (And\n          (@LE.le.{0} Nat instLENat g\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (And\n          (@LE.le.{0} Nat instLENat g\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          (@LE.le.{0} Nat instLENat (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost) g))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.maxPlus_lower_of_previous_and_preview_lt_freeze._proof_1_1",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {previousFreeze previewHost c : Nat} (hprevious : @LT.lt.{0} Nat instLTNat previousFreeze c)\n  (hpreview : @LT.lt.{0} Nat instLTNat previewHost c),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        c) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.oldLoss_V1_boundary_t_add_three_impossible._proof_1_1",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.oldLoss_V1_boundary_t_add_three_impossible._proof_1_2",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.oldLoss_V1_boundary_t_add_three_impossible._proof_1_3",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.oldLoss_V1_boundary_t_add_three_impossible._proof_1_4",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t : Nat} (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) t)\n  (hV1 :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hcol :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.oldLoss_t_add_four_maxPlus_previous_dominates._proof_1_1",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T c previewHost : Nat}\n  (hpreview :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) previewHost\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      T)\n  (hfreeze : @LE.le.{0} Nat instLENat T c)\n  (hmax :\n    @Eq.{1} Nat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) previewHost\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.oldLoss_t_add_four_maxPlus_previous_dominates._proof_1_2",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T c previousFreeze previewHost : Nat} (hle : Not (@LE.le.{0} Nat instLENat previousFreeze previewHost)),\n  Not (@LE.le.{0} Nat instLENat previewHost previousFreeze) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.oldLoss_t_add_four_maxPlus_previous_dominates._proof_1_3",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {T c previousFreeze previewHost : Nat}\n  (hpreview :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) previewHost\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      T)\n  (hfreeze : @LE.le.{0} Nat instLENat T c)\n  (hmax :\n    @Eq.{1} Nat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) previousFreeze\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hle : Not (@LE.le.{0} Nat instLENat previousFreeze previewHost))\n  (hmaxEq : @Eq.{1} Nat (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost) previousFreeze),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) previewHost\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        previousFreeze) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.FreezeBand",
+      "module": "R125AssignmentStripBridge",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 17,
+      "typePretty": "(g c : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.PreviewEnvelope",
+      "module": "R125AssignmentStripBridge",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 20,
+      "typePretty": "(g previousFreeze previewHost : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.freezeBand_iff_previewEnvelope_of_maxPlus",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 24,
+      "typePretty": "∀ {g c previousFreeze previewHost : Nat}\n  (hmax :\n    @Eq.{1} Nat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Iff (ChompLean.FreezeBand g c) (ChompLean.PreviewEnvelope g previousFreeze previewHost)",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.maxPlus_lower_of_previous_and_preview_lt_freeze",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 32,
+      "typePretty": "∀ {previousFreeze previewHost c : Nat} (hprevious : @LT.lt.{0} Nat instLTNat previousFreeze c)\n  (hpreview : @LT.lt.{0} Nat instLTNat previewHost c),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    c",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.oldLoss_t_add_four_maxPlus_previous_dominates",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 41,
+      "typePretty": "∀ {T c previousFreeze previewHost : Nat}\n  (hpreview :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) previewHost\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      T)\n  (hfreeze : @LE.le.{0} Nat instLENat T c)\n  (hmax :\n    @Eq.{1} Nat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  And\n    (@LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) previewHost\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      previousFreeze)\n    (@Eq.{1} Nat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) previousFreeze\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.oldLoss_V1_boundary_t_add_three_impossible",
+      "module": "R125AssignmentStripBridge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 65,
+      "typePretty": "∀ {t : Nat} (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) t)\n  (hV1 :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "314767f367aba3d9f9076d6e82c3ee514853d8fe8dabebf4e4ed6e6b377acd90",
+      "sourcePath": "lean/core/R125AssignmentStripBridge.lean",
+      "universeParameters": []
+    }
+  ],
+  "fullExpressionTrees": "audit/full/lean/declarations.jsonl"
+}

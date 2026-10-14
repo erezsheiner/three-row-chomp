@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R56 VCatch Gate · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R56 VCatch Gate</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R56VCatchGate.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R56VCatchGate.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R56VCatchGate.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 55 declarations</summary><ul class="declarations"><li><code>ChompLean.ColumnHistoryValue</code><pre class="prose">(M : ChompLean.RecurrenceModel) → (q u b : Nat) → Prop</pre></li><li><code>ChompLean.DeepBeyondLastTwoColumnHistories</code><pre class="prose">(M : ChompLean.RecurrenceModel) → (t u : Nat) → Prop</pre></li><li><code>ChompLean.PastHostColumn</code><pre class="prose">(M : ChompLean.RecurrenceModel) → (q u b : Nat) → Prop</pre></li><li><code>ChompLean.column_t_sub_one_history_exact</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),
+  Iff
+    (ChompLean.ColumnHistoryValue M
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      u
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (Or
+      (@Eq.{1} Nat
+        (ChompLean.RecurrenceModel.f M
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        u)
+      (@Eq.{1} Nat
+        (ChompLean.RecurrenceModel.f M t
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        u))</pre></li><li><code>ChompLean.column_t_sub_one_history_exact._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t) (a : Nat)
+  (hlow :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      a)
+  (hhigh :
+    @LT.lt.{0} Nat instLTNat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (Or
+        (@Eq.{1} Nat a
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@Eq.{1} Nat a t)) →
+    False</pre></li><li><code>ChompLean.column_t_sub_one_history_exact._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.column_t_sub_one_history_exact._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        t) →
+    False</pre></li><li><code>ChompLean.column_t_sub_one_history_exact._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.column_t_sub_two_history_exact</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Iff
+    (ChompLean.ColumnHistoryValue M
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      u
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (Or
+      (@Eq.{1} Nat
+        (ChompLean.RecurrenceModel.f M
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+        u)
+      (Or
+        (@Eq.{1} Nat
+          (ChompLean.RecurrenceModel.f M
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          u)
+        (@Eq.{1} Nat
+          (ChompLean.RecurrenceModel.f M t
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          u)))</pre></li><li><code>ChompLean.column_t_sub_two_history_exact._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t) (a : Nat)
+  (hlow :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      a)
+  (hhigh :
+    @LT.lt.{0} Nat instLTNat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (Or
+        (@Eq.{1} Nat a
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+        (Or
+          (@Eq.{1} Nat a
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@Eq.{1} Nat a t))) →
+    False</pre></li><li><code>ChompLean.column_t_sub_two_history_exact._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.column_t_sub_two_history_exact._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.column_t_sub_two_history_exact._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.column_t_sub_two_history_exact._proof_1_5</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        t) →
+    False</pre></li><li><code>ChompLean.column_t_sub_two_history_exact._proof_1_6</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.deep_not_columnHistory_t_sub_one</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),
+  Not
+    (ChompLean.ColumnHistoryValue M
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      u
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.deep_not_columnHistory_t_sub_one._proof_1_1</code><pre class="prose">∀ {t : Nat} (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t) → False</pre></li><li><code>ChompLean.deep_not_columnHistory_t_sub_two</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),
+  Not
+    (ChompLean.ColumnHistoryValue M
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      u
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))</pre></li><li><code>ChompLean.deep_not_pastHostColumn_last_two</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),
+  And
+    (Not
+      (ChompLean.PastHostColumn M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        u
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+    (Not
+      (ChompLean.PastHostColumn M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        u
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))</pre></li><li><code>ChompLean.diagonal_vCatch_gate</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q b : Nat} (hbq : @LT.lt.{0} Nat instLTNat b q)
+  (hhigher : @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q q) (ChompLean.RecurrenceModel.f M q b)),
+  ChompLean.PastHostColumn M q (ChompLean.RecurrenceModel.f M q q) b</pre></li><li><code>ChompLean.diagonal_vCatch_gate._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q b : Nat} (a : Nat) (haq : @LT.lt.{0} Nat instLTNat a q) (haqEq : @Eq.{1} Nat a q),
+  False</pre></li><li><code>ChompLean.diagonal_vCatch_last_two_columns_below</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (hdeep :
+    ChompLean.DeepBeyondLastTwoColumnHistories M t
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  And
+    (@LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+    (@LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))</pre></li><li><code>ChompLean.diagonal_vCatch_last_two_columns_below._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t : Nat} (a : Nat)
+  (ha :
+    @LT.lt.{0} Nat instLTNat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (haEq :
+    @Eq.{1} Nat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.left_history_of_higher_left_column_of_row_le</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)
+  (hbc : @LT.lt.{0} Nat instLTNat b c) (hqu : @LE.le.{0} Nat instLENat q u)
+  (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)
+  (hhigher : @LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b))
+  (hnotPast : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a q → @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u),
+  @Exists.{1} Nat fun (a : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat b a)
+      (And (@LT.lt.{0} Nat instLTNat a q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M a b) u))</pre></li><li><code>ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)
+  (hindex : @LT.lt.{0} Nat instLTNat c u),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u) → False</pre></li><li><code>ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)
+  (hbc : @LT.lt.{0} Nat instLTNat b c), Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hqu : @LE.le.{0} Nat instLENat q u)
+  (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)
+  (hhigher : @LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b)),
+  Not (@LT.lt.{0} Nat instLTNat q (ChompLean.RecurrenceModel.f M q b)) → False</pre></li><li><code>ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (a : Nat) (hab : Not (@LE.le.{0} Nat instLENat a b)),
+  Not (@LT.lt.{0} Nat instLTNat b a) → False</pre></li><li><code>ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_5</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (a : Nat) (hab : Not (@LE.le.{0} Nat instLENat a b)),
+  Not (@LE.le.{0} Nat instLENat b a) → False</pre></li><li><code>ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_6</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)
+  (hbc : @LT.lt.{0} Nat instLTNat b c) (r : Nat) (hrb : @LT.lt.{0} Nat instLTNat r b),
+  Not (@LE.le.{0} Nat instLENat r q) → False</pre></li><li><code>ChompLean.left_history_of_higher_left_column_of_row_le._proof_1_7</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hbc : @LT.lt.{0} Nat instLTNat b c) (r : Nat)
+  (hrb : @LT.lt.{0} Nat instLTNat r b) (hrc : @Eq.{1} Nat r c), False</pre></li><li><code>ChompLean.pastHostColumn_of_vCatch_higher</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)
+  (hbc : @LT.lt.{0} Nat instLTNat b c) (hqu : @LE.le.{0} Nat instLENat q u)
+  (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)
+  (hhigher : @LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b))
+  (hnotPast : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a q → @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u),
+  ChompLean.PastHostColumn M q u b</pre></li><li><code>ChompLean.pastHostColumn_t_sub_one_exact</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),
+  Iff
+    (ChompLean.PastHostColumn M
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      u
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (@Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M t
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)</pre></li><li><code>ChompLean.pastHostColumn_t_sub_one_exact._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t) (a : Nat)
+  (hlow :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      a)
+  (hhigh :
+    @LT.lt.{0} Nat instLTNat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@Eq.{1} Nat a t) → False</pre></li><li><code>ChompLean.pastHostColumn_t_sub_one_exact._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) t),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        t) →
+    False</pre></li><li><code>ChompLean.pastHostColumn_t_sub_one_exact._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.pastHostColumn_t_sub_two_exact</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Iff
+    (ChompLean.PastHostColumn M
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      u
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (Or
+      (@Eq.{1} Nat
+        (ChompLean.RecurrenceModel.f M
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+        u)
+      (@Eq.{1} Nat
+        (ChompLean.RecurrenceModel.f M t
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+        u))</pre></li><li><code>ChompLean.pastHostColumn_t_sub_two_exact._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t) (a : Nat)
+  (hlow :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      a)
+  (hhigh :
+    @LT.lt.{0} Nat instLTNat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (Or
+        (@Eq.{1} Nat a
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@Eq.{1} Nat a t)) →
+    False</pre></li><li><code>ChompLean.pastHostColumn_t_sub_two_exact._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.pastHostColumn_t_sub_two_exact._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.pastHostColumn_t_sub_two_exact._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        t) →
+    False</pre></li><li><code>ChompLean.pastHostColumn_t_sub_two_exact._proof_1_5</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.vCatch_at_V1_last_two_columns_below</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        t)
+      u)
+  (hnotPast :
+    ∀ (a : Nat),
+      @LT.lt.{0} Nat instLTNat a
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+        @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u)
+  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),
+  And
+    (@LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)
+    (@LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      u)</pre></li><li><code>ChompLean.vCatch_below_of_not_pastHostColumn</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)
+  (hbc : @LT.lt.{0} Nat instLTNat b c) (hqu : @LE.le.{0} Nat instLENat q u)
+  (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)
+  (hnotPast : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a q → @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u)
+  (hnoHost : Not (ChompLean.PastHostColumn M q u b)), @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q b) u</pre></li><li><code>ChompLean.vCatch_below_of_not_pastHostColumn._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hcq : @LE.le.{0} Nat instLENat c q)
+  (hbc : @LT.lt.{0} Nat instLTNat b c), Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.vCatch_below_of_not_pastHostColumn._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hbc : @LT.lt.{0} Nat instLTNat b c) (hbcEq : @Eq.{1} Nat b c), False</pre></li><li><code>ChompLean.vCatch_below_of_not_pastHostColumn._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c b : Nat} (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)
+  (hnotHigher : Not (@LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b)))
+  (hne : @Ne.{1} Nat (ChompLean.RecurrenceModel.f M q b) u),
+  Not (@LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q b) u) → False</pre></li><li><code>ChompLean.vCatch_gate</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q u c : Nat} (hcq : @LE.le.{0} Nat instLENat c q)
+  (hqu : @LE.le.{0} Nat instLENat q u) (hhost : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M q c) u)
+  (hnotPast : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a q → @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u) (b : Nat),
+  @LT.lt.{0} Nat instLTNat b c →
+    @LT.lt.{0} Nat instLTNat u (ChompLean.RecurrenceModel.f M q b) → ChompLean.PastHostColumn M q u b</pre></li><li><code>ChompLean.vCatch_gate_at_V1_host</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat}
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        t)
+      u)
+  (hnotPast :
+    ∀ (a : Nat),
+      @LT.lt.{0} Nat instLTNat a
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+        @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u)
+  (b : Nat),
+  @LT.lt.{0} Nat instLTNat b t →
+    @LT.lt.{0} Nat instLTNat u
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          b) →
+      ChompLean.PastHostColumn M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        u b</pre></li><li><code>ChompLean.vCatch_gate_at_V1_host._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat},
+  Not
+      (@LE.le.{0} Nat instLENat t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.vCatch_gate_at_V1_host._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u : Nat} (hindex : @LT.lt.{0} Nat instLTNat t u),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        u) →
+    False</pre></li><li><code>ChompLean.vCatch_last_two_columns_below</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u c : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (htc : @LE.le.{0} Nat instLENat t c)
+  (hcq :
+    @LE.le.{0} Nat instLENat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c)
+      u)
+  (hnotPast :
+    ∀ (a : Nat),
+      @LT.lt.{0} Nat instLTNat a
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+        @Ne.{1} Nat (ChompLean.RecurrenceModel.f M a a) u)
+  (hdeep : ChompLean.DeepBeyondLastTwoColumnHistories M t u),
+  And
+    (@LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      u)
+    (@LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      u)</pre></li><li><code>ChompLean.vCatch_last_two_columns_below._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u c : Nat} (htc : @LE.le.{0} Nat instLENat t c)
+  (hcq :
+    @LE.le.{0} Nat instLENat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hindex : @LT.lt.{0} Nat instLTNat c u),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        u) →
+    False</pre></li><li><code>ChompLean.vCatch_last_two_columns_below._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u c : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (htc : @LE.le.{0} Nat instLENat t c)
+  (hcq :
+    @LE.le.{0} Nat instLENat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c) →
+    False</pre></li><li><code>ChompLean.vCatch_last_two_columns_below._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {t u c : Nat}
+  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)
+  (htc : @LE.le.{0} Nat instLENat t c)
+  (hcq :
+    @LE.le.{0} Nat instLENat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        c) →
+    False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R56VCatchGate.lean:1</p><p>SHA-256: <code class="path">ceade94d9f4fcf0fdd50d2e3df59162472972b997f81dcac7c9969f72fce1710</code></p></section><p><a href="../index.html#id=lean-ceade94d9f4fcf0fdd50">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

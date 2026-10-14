@@ -1,0 +1,589 @@
+import R51Integration
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+R52: sharpen the cross-edge RM2 residuals.
+
+For nonmaximal event E, the cross-edge deficit is retained explicitly and
+split at the exact threshold where it forces a triple-prefix survivor.
+
+At maximal defect, R51 gives a linear-size triple-prefix family and shows
+that all but at most two members are completed frozen carries.  R52 names
+the two exceptional value levels separately.  Row injectivity gives at most
+one `p=s+1` next-owner terminal and at most one `p=s+2` high atom.  The high
+atom's `2 x 4` predecessor menu loses its single impossible combination,
+leaving an explicit seven-configuration menu.
+-/
+
+noncomputable def EventENextOwnerTripleBandSlots
+    (s delta c b0 : Nat) : List Nat :=
+  (EventETriplePrefixBandSlots s delta c b0).filter
+    (fun g => decide (gameF s g = s + 1))
+
+noncomputable def EventEHighTripleBandSlots
+    (s delta c b0 : Nat) : List Nat :=
+  (EventETriplePrefixBandSlots s delta c b0).filter
+    (fun g => decide (gameF s g = s + 2))
+
+/-- The seven predecessor pairs permitted by the necessary high-atom menu. -/
+def MaximalEventEHighSevenConfiguration
+    (s c b0 bz b1 b2 : Nat) : Prop :=
+  (b2 = bz /\ gameF s b1 = s + 1) \/
+  (b2 = bz /\ b1 = b0) \/
+  (b2 = bz /\ b1 = c) \/
+  (b2 = s + 1 /\ gameF s b1 = s + 1) \/
+  (b2 = s + 1 /\ b1 = b0) \/
+  (b2 = s + 1 /\ b1 = c) \/
+  (b2 = s + 1 /\ b1 = s)
+
+/-- Every existing high atom satisfies one of these seven predecessor
+combinations. No canonical realization of every combination is proved. -/
+theorem maximalEventEHighSurvivorAtom_seven_configuration
+    {s c b0 bz g b1 b2 r : Nat}
+    (hAtom : MaximalEventEHighSurvivorAtom
+      s c b0 bz g b1 b2 r) :
+    MaximalEventEHighSevenConfiguration s c b0 bz b1 b2 := by
+  rcases hAtom with
+    ⟨_hp, _hr, _hc, _hb0, _hbz, _hg, _hb2,
+      _hgb2, _hb1b2, hterminal, hmiddle,
+      hterminalRefined, _hmiddleBoundary⟩
+  rcases hterminal with hbzCase | hboundaryCase
+  · rcases hterminalRefined hbzCase with hlow | hb0Case | hcCase
+    · exact Or.inl ⟨hbzCase, hlow⟩
+    · exact Or.inr (Or.inl ⟨hbzCase, hb0Case⟩)
+    · exact Or.inr (Or.inr (Or.inl ⟨hbzCase, hcCase⟩))
+  · rcases hmiddle with hlow | hb0Case | hcCase | hsCase
+    · exact Or.inr (Or.inr (Or.inr
+        (Or.inl ⟨hboundaryCase, hlow⟩)))
+    · exact Or.inr (Or.inr (Or.inr
+        (Or.inr (Or.inl ⟨hboundaryCase, hb0Case⟩))))
+    · exact Or.inr (Or.inr (Or.inr
+        (Or.inr (Or.inr (Or.inl ⟨hboundaryCase, hcCase⟩)))))
+    · exact Or.inr (Or.inr (Or.inr
+        (Or.inr (Or.inr (Or.inr ⟨hboundaryCase, hsCase⟩)))))
+
+private theorem r52_nodup_map_of_injective_on
+    (f : Nat -> Nat) (xs : List Nat)
+    (hxs : xs.Nodup)
+    (hinj : forall x, x ∈ xs -> forall y, y ∈ xs ->
+      f x = f y -> x = y) :
+    (xs.map f).Nodup := by
+  induction xs with
+  | nil => simp
+  | cons a as ih =>
+      rw [List.nodup_cons] at hxs
+      change (f a :: as.map f).Nodup
+      rw [List.nodup_cons]
+      constructor
+      · intro hmem
+        rcases List.mem_map.mp hmem with ⟨y, hy, hay⟩
+        have hay' : a = y :=
+          hinj a (by simp) y (by simp [hy]) hay.symm
+        subst y
+        exact hxs.1 hy
+      · apply ih hxs.2
+        intro x hx y hy hxy
+        exact hinj x (by simp [hx]) y (by simp [hy]) hxy
+
+private theorem r52_constant_injective_family_length_le_one
+    (f : Nat -> Nat) (xs : List Nat) (p : Nat)
+    (hxs : xs.Nodup)
+    (hinj : forall x, x ∈ xs -> forall y, y ∈ xs ->
+      f x = f y -> x = y)
+    (hconstant : forall x, x ∈ xs -> f x = p) :
+    xs.length <= 1 := by
+  have hmapNodup : (xs.map f).Nodup :=
+    r52_nodup_map_of_injective_on f xs hxs hinj
+  have hsub : xs.map f ⊆ [p] := by
+    intro v hv
+    rcases List.mem_map.mp hv with ⟨x, hx, rfl⟩
+    simp [hconstant x hx]
+  have hbound := nodup_subset_length_le hmapNodup hsub
+  simpa using hbound
+
+/-- Nonmaximal cross-edge certificate with the exact deficit and its sharp
+zero/positive-survivor threshold. -/
+def EventENonmaxCrossEdgeThresholdCertificate
+    (s delta z c b0 : Nat) : Prop :=
+  EventECrossEdgeSurvivorCertificate s delta z c b0 /\
+  2 * delta + 7 - s <=
+    2 * (EventETriplePrefixBandSlots s delta c b0).length /\
+  (2 * delta + 7 <= s \/
+    (s < 2 * delta + 7 /\
+      1 <= (EventETriplePrefixBandSlots s delta c b0).length))
+
+def NonmaxMarginEventER52Residual (s : Nat) : Prop :=
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  MarginEventECounterexample s /\
+  EventEDefectPacketInvariant s d delta z /\
+  delta + 5 <= s /\
+  exists c b0,
+    EventENonmaxCrossEdgeThresholdCertificate s delta z c b0
+
+/-- Maximal certificate: a linear frozen family, at most one next-owner
+terminal, at most one high atom, and a seven-case description of every high
+atom. -/
+def EventEMaximalBulkSevenAtomCertificate
+    (s delta z c b0 : Nat) : Prop :=
+  EventEMaximalBulkFrozenCarryCertificate s delta z c b0 /\
+  let next := EventENextOwnerTripleBandSlots s delta c b0
+  let high := EventEHighTripleBandSlots s delta c b0
+  next.length <= 1 /\ high.length <= 1 /\
+  (forall g, g ∈ EventETriplePrefixBandSlots s delta c b0 ->
+    g ∈ EventEFrozenTripleBandSlots s delta c b0 \/
+    g ∈ next \/ g ∈ high) /\
+  (forall g, g ∈ next ->
+    EventENextOwnerGapTerminal s z g (gameF s g)) /\
+  (forall g, g ∈ high ->
+    exists bz b1 b2,
+      bz < s + 1 /\ b1 < s + 1 /\ b2 < s + 2 /\
+      gameF (s + 1) bz = z /\
+      gameF (s + 1) b1 = gameF s g /\
+      gameF (s + 2) b2 = gameF s g /\
+      MaximalEventEHighSurvivorAtom
+        s c b0 bz g b1 b2 b2 /\
+      MaximalEventEHighSevenConfiguration s c b0 bz b1 b2)
+
+def MaximalMarginEventER52Residual (s : Nat) : Prop :=
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  MarginEventECounterexample s /\
+  delta + 4 = s /\
+  exists c b0,
+    EventEMaximalBulkSevenAtomCertificate s delta z c b0
+
+/-- Every nonmaximal event E receives the exact cross-edge threshold
+certificate. -/
+theorem gameF_margin_eventE_nonmax_R52_threshold_residual
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    delta + 5 <= s ->
+      exists c b0,
+        EventENonmaxCrossEdgeThresholdCertificate s delta z c b0 := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  change delta + 5 <= s ->
+    exists c b0,
+      EventENonmaxCrossEdgeThresholdCertificate s delta z c b0
+  intro _hnonmax
+  have hcross := gameF_margin_eventE_cross_edge_survivor_bound
+    hU hdip hmargin hnextDip
+  change exists c b0,
+    EventECrossEdgeSurvivorCertificate s delta z c b0 at hcross
+  rcases hcross with ⟨c, b0, hcross⟩
+  refine ⟨c, b0, hcross, ?_, ?_⟩
+  · have hglobal := hcross.2.2
+    omega
+  · by_cases hquiet : 2 * delta + 7 <= s
+    · exact Or.inl hquiet
+    · right
+      have hglobal := hcross.2.2
+      constructor
+      · omega
+      · omega
+
+/-- Maximal event E has a linear frozen family and only two singleton
+exception levels; every high singleton is the explicit seven-case atom. -/
+theorem gameF_margin_eventE_maximal_R52_bulk_seven_atom_residual
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    delta + 4 = s ->
+      exists c b0,
+        EventEMaximalBulkSevenAtomCertificate s delta z c b0 := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  change delta + 4 = s ->
+    exists c b0,
+      EventEMaximalBulkSevenAtomCertificate s delta z c b0
+  intro hmax
+
+  have hbulk :=
+    gameF_margin_eventE_maximal_defect_bulk_frozen_carries
+      hU hdip hmargin hnextDip hmax
+  change exists c b0,
+    EventEMaximalBulkFrozenCarryCertificate s delta z c b0 at hbulk
+  rcases hbulk with ⟨c, b0, hbulkCertificate⟩
+  have hbulkFull := hbulkCertificate
+  rcases hbulkCertificate with
+    ⟨hcross, hzExact, _hhalf, _hmostlyFrozen,
+      _hbulkBound, _hfrozenTerminals⟩
+
+  have hbase := hcross.1.1.1
+  rcases hbase with
+    ⟨hc, hb0, _hcb0, hSucc, hBase,
+      hslotsNodup, _hslotsLen, hslotsProps, _hweak⟩
+
+  have hInv := gameF_margin_eventE_parametric_defect_invariant
+    hU hdip hmargin hnextDip
+  change EventEDefectPacketInvariant s d delta z at hInv
+  rcases hInv with
+    ⟨_hdeltaPos, _hdeltaUpper, hdeltaSum, hzDiag,
+      ci, bi, bz, _dc, _d0, _d1,
+      hci, hbi, hbz, _hcbi, _hbibz,
+      hSuccI, hBaseI, hHostZ, _hInvRest⟩
+  have hciEq : ci = c := by
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hci) (Nat.le_of_lt hc)
+      (hSuccI.trans hSucc.symm)
+  have hbiEq : bi = b0 := by
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hbi) (Nat.le_of_lt hb0)
+      (hBaseI.trans hBase.symm)
+  subst ci
+  subst bi
+
+  have hDiagNext : gameF (s + 1) (s + 1) = s + 4 := by
+    change d = s + 4
+    omega
+  have hunitOld := hU s hdip
+  change d + 1 = gameF s s at hunitOld
+  have hDiagOld : gameF s s = s + 5 := by omega
+  have hunitNext := hU (s + 1) hnextDip
+  change gameF (s + 2) (s + 2) + 1 = d at hunitNext
+  have hzOwner : gameF (s + 2) (s + 2) = z := by omega
+
+  let slots := EventEDefectBandSlots s delta c b0
+  let triple := EventETriplePrefixBandSlots s delta c b0
+  let frozen := EventEFrozenTripleBandSlots s delta c b0
+  let next := EventENextOwnerTripleBandSlots s delta c b0
+  let high := EventEHighTripleBandSlots s delta c b0
+
+  have hsurvivorsNodup :
+      (EventESurvivingBandSlots s delta c b0).Nodup :=
+    List.filter_sublist.nodup hslotsNodup
+  have htripleNodup : triple.Nodup :=
+    List.filter_sublist.nodup hsurvivorsNodup
+  have hnextNodup : next.Nodup :=
+    List.filter_sublist.nodup htripleNodup
+  have hhighNodup : high.Nodup :=
+    List.filter_sublist.nodup htripleNodup
+
+  have hslotOfTriple : forall g, g ∈ triple -> g ∈ slots := by
+    intro g hg
+    have hgSurv :
+        g ∈ EventESurvivingBandSlots s delta c b0 :=
+      (List.mem_filter.mp hg).1
+    exact (List.mem_filter.mp hgSurv).1
+  have hrowInjective : forall g, g ∈ triple ->
+      forall k, k ∈ triple -> gameF s g = gameF s k -> g = k := by
+    intro g hg k hk heq
+    have hgData := hslotsProps g (hslotOfTriple g hg)
+    have hkData := hslotsProps k (hslotOfTriple k hk)
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hgData.1) (Nat.le_of_lt hkData.1) heq
+  have hnextConstant : forall g, g ∈ next -> gameF s g = s + 1 := by
+    intro g hg
+    simpa [next, EventENextOwnerTripleBandSlots] using
+      (List.mem_filter.mp hg).2
+  have hhighConstant : forall g, g ∈ high -> gameF s g = s + 2 := by
+    intro g hg
+    simpa [high, EventEHighTripleBandSlots] using
+      (List.mem_filter.mp hg).2
+  have hnextBound : next.length <= 1 := by
+    apply r52_constant_injective_family_length_le_one
+      (fun g => gameF s g) next (s + 1) hnextNodup
+    · intro g hg k hk heq
+      exact hrowInjective g (List.mem_filter.mp hg).1
+        k (List.mem_filter.mp hk).1 heq
+    · exact hnextConstant
+  have hhighBound : high.length <= 1 := by
+    apply r52_constant_injective_family_length_le_one
+      (fun g => gameF s g) high (s + 2) hhighNodup
+    · intro g hg k hk heq
+      exact hrowInjective g (List.mem_filter.mp hg).1
+        k (List.mem_filter.mp hk).1 heq
+    · exact hhighConstant
+
+  have hclassification : forall g, g ∈ triple ->
+      g ∈ frozen \/ g ∈ next \/ g ∈ high := by
+    intro g hg
+    have hdata := hslotsProps g (hslotOfTriple g hg)
+    have htransition := hdata.2.2.2
+    have hpz : gameF s g < z := by
+      simpa [EventELowerTransition] using htransition.2.1
+    by_cases hpLow : gameF s g <= s
+    · left
+      apply List.mem_filter.mpr
+      exact ⟨hg, by simpa [frozen, EventEFrozenTripleBandSlots]
+        using hpLow⟩
+    · have hpCases :
+          gameF s g = s + 1 \/ gameF s g = s + 2 := by
+        omega
+      rcases hpCases with hpNext | hpHigh
+      · right
+        left
+        apply List.mem_filter.mpr
+        exact ⟨hg, by simpa [next, EventENextOwnerTripleBandSlots]
+          using hpNext⟩
+      · right
+        right
+        apply List.mem_filter.mpr
+        exact ⟨hg, by simpa [high, EventEHighTripleBandSlots]
+          using hpHigh⟩
+
+  have hnextTerminals : forall g, g ∈ next ->
+      EventENextOwnerGapTerminal s z g (gameF s g) := by
+    intro g hgNext
+    have hgTriple : g ∈ triple := (List.mem_filter.mp hgNext).1
+    have hgSurv :
+        g ∈ EventESurvivingBandSlots s delta c b0 :=
+      (List.mem_filter.mp hgTriple).1
+    have hgSlots := hslotOfTriple g hgTriple
+    have hdata := hslotsProps g hgSlots
+    have hmem1 : gameF s g ∈
+        StrictRowPrefixValues gameF (s + 1) := by
+      simpa [EventESurvivingBandSlots] using
+        (List.mem_filter.mp hgSurv).2
+    have hmem2 : gameF s g ∈
+        StrictRowPrefixValues gameF (s + 2) := by
+      simpa [triple, EventETriplePrefixBandSlots] using
+        (List.mem_filter.mp hgTriple).2
+    have hC1 := mem_strictRowPrefixValues_iff_C.mp hmem1
+    have hC2 := mem_strictRowPrefixValues_iff_C.mp hmem2
+    have htransition := hdata.2.2.2
+    have hpPos : 0 < gameF s g := by
+      simpa [EventELowerTransition] using htransition.1
+    have hpz : gameF s g < z := by
+      simpa [EventELowerTransition] using htransition.2.1
+    have hpNext := hnextConstant g hgNext
+    have hregime := gameF_three_prefix_host_freeze_regime
+      hdata.1 rfl hC1 hC2 (by omega)
+    exact threePrefixFreezeRegime_next_owner_is_gap_terminal
+      hdata.1 rfl hpPos hpz hzExact hzOwner hregime hpNext
+
+  have hcLower : 3 <= c := by
+    have hcap := high_cell_output_source_capacity
+      gameRecurrenceModel (q := s) (r := c) (m := s + 4)
+      (Nat.le_of_lt hc) (by omega) (by simpa [hzExact] using hSucc)
+    omega
+  have hb0Lower : 2 <= b0 := by
+    have hcap := high_cell_output_source_capacity
+      gameRecurrenceModel (q := s) (r := b0) (m := s + 3)
+      (Nat.le_of_lt hb0) (by omega) (by simpa [hzExact] using hBase)
+    omega
+  have hbzLower : 1 <= bz := by
+    have hcap := high_cell_output_source_capacity
+      gameRecurrenceModel (q := s + 1) (r := bz) (m := s + 3)
+      (Nat.le_of_lt hbz) (by omega)
+      (by simpa [hzExact] using hHostZ)
+    omega
+
+  have hhighAtoms : forall g, g ∈ high ->
+      exists bz' b1 b2,
+        bz' < s + 1 /\ b1 < s + 1 /\ b2 < s + 2 /\
+        gameF (s + 1) bz' = z /\
+        gameF (s + 1) b1 = gameF s g /\
+        gameF (s + 2) b2 = gameF s g /\
+        MaximalEventEHighSurvivorAtom
+          s c b0 bz' g b1 b2 b2 /\
+        MaximalEventEHighSevenConfiguration s c b0 bz' b1 b2 := by
+    intro g hgHigh
+    have hgTriple : g ∈ triple := (List.mem_filter.mp hgHigh).1
+    have hgSurv :
+        g ∈ EventESurvivingBandSlots s delta c b0 :=
+      (List.mem_filter.mp hgTriple).1
+    have hgSlots := hslotOfTriple g hgTriple
+    have hdata := hslotsProps g hgSlots
+    have hp := hhighConstant g hgHigh
+    have hmem1 : gameF s g ∈
+        StrictRowPrefixValues gameF (s + 1) := by
+      simpa [EventESurvivingBandSlots] using
+        (List.mem_filter.mp hgSurv).2
+    have hmem2 : gameF s g ∈
+        StrictRowPrefixValues gameF (s + 2) := by
+      simpa [triple, EventETriplePrefixBandSlots] using
+        (List.mem_filter.mp hgTriple).2
+    rcases mem_strictRowPrefixValues_iff_C.mp hmem1 with
+      ⟨b1, hb1, hHost1⟩
+    rcases mem_strictRowPrefixValues_iff_C.mp hmem2 with
+      ⟨b2, hb2, hHost2⟩
+    have hgeometry :=
+      gameF_three_consecutive_prefix_host_geometry
+        hdata.1 hb1 hb2 rfl hHost1 hHost2 (by omega)
+    have hgeometryData := hgeometry
+    rcases hgeometryData with
+      ⟨_hpUpper, _hgp, _hb1p, _hb2p,
+        hfirstIff, hsecondIff, _hspanIff, _hcases⟩
+    have hgb1 : g ≠ b1 := by
+      intro heq
+      have hle := hfirstIff.mp heq
+      omega
+    have hb1b2 : b1 ≠ b2 := by
+      intro heq
+      have hle := hsecondIff.mp heq
+      omega
+    have hmenu := gameF_top_three_survivor_order_and_predecessor_menu
+      hc hb0 hbz hdata.1 hb1 hb2 hgb1 hb1b2
+      (by simpa [hzExact] using hBase)
+      (by simpa [hzExact] using hSucc)
+      hDiagOld
+      (by simpa [hzExact] using hHostZ)
+      hDiagNext
+      hp (by simpa [hp] using hHost1) (by simpa [hp] using hHost2)
+    rcases hmenu with
+      ⟨hgBefore, hb1Before, hterminal, hmiddle⟩
+    have hgLower : 2 <= g := by
+      have houter := List.mem_of_mem_erase hgSlots
+      have hinner := List.mem_of_mem_erase houter
+      have hrange := List.mem_range'_1.mp hinner
+      dsimp [slots, EventEDefectBandSlots] at hgSlots
+      omega
+    have hb2Lower : 3 <= b2 := by omega
+    have hterminalRefined : b2 = bz ->
+        gameF s b1 = s + 1 \/ b1 = b0 \/ b1 = c := by
+      intro hb2z
+      rcases hmiddle with hlowMiddle | hb0Middle | hcMiddle | hsMiddle
+      · exact Or.inl hlowMiddle
+      · exact Or.inr (Or.inl hb0Middle)
+      · exact Or.inr (Or.inr hcMiddle)
+      · subst b1
+        subst b2
+        omega
+    have hmiddleBoundary : b1 = s -> b2 = s + 1 := by
+      intro hb1s
+      rcases hterminal with hb2z | hb2Boundary
+      · subst b1
+        subst b2
+        omega
+      · exact hb2Boundary
+    have hAtom : MaximalEventEHighSurvivorAtom
+        s c b0 bz g b1 b2 b2 := by
+      exact ⟨hp, rfl, hcLower, hb0Lower, hbzLower,
+        hgLower, hb2Lower, hgBefore, hb1Before,
+        hterminal, hmiddle, hterminalRefined, hmiddleBoundary⟩
+    exact ⟨bz, b1, b2, hbz, hb1, hb2, hHostZ,
+      hHost1, hHost2, hAtom,
+      maximalEventEHighSurvivorAtom_seven_configuration hAtom⟩
+
+  refine ⟨c, b0, ?_⟩
+  dsimp only [EventEMaximalBulkSevenAtomCertificate]
+  change EventEMaximalBulkFrozenCarryCertificate s delta z c b0 /\
+    next.length <= 1 /\ high.length <= 1 /\
+    (forall g, g ∈ triple ->
+      g ∈ frozen \/ g ∈ next \/ g ∈ high) /\
+    (forall g, g ∈ next ->
+      EventENextOwnerGapTerminal s z g (gameF s g)) /\
+    (forall g, g ∈ high ->
+      exists bz' b1 b2,
+        bz' < s + 1 /\ b1 < s + 1 /\ b2 < s + 2 /\
+        gameF (s + 1) bz' = z /\
+        gameF (s + 1) b1 = gameF s g /\
+        gameF (s + 2) b2 = gameF s g /\
+        MaximalEventEHighSurvivorAtom
+          s c b0 bz' g b1 b2 b2 /\
+        MaximalEventEHighSevenConfiguration s c b0 bz' b1 b2)
+  exact ⟨hbulkFull, hnextBound, hhighBound, hclassification,
+    hnextTerminals, hhighAtoms⟩
+
+/-- Exact strengthened RM2 audit under UnitDip. -/
+theorem gameF_unitDip_not_RM2_iff_R52_bulk_seven_residuals
+    (hU : UnitDip gameRecurrenceModel) :
+    Not (TwoStepDiagonalRecordLaw gameRecurrenceModel) <->
+      (exists s, NonmaxMarginEventER52Residual s) \/
+      (exists s, MaximalMarginEventER52Residual s) := by
+  constructor
+  · intro hNotRM2
+    rcases (gameF_unitDip_not_RM2_iff_exists_eventE hU).mp hNotRM2 with
+      ⟨s, hEvent⟩
+    rcases hEvent with ⟨hdip, hmargin, hnextDip⟩
+    have hEvent' : MarginEventECounterexample s :=
+      ⟨hdip, hmargin, hnextDip⟩
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    have hInv := gameF_margin_eventE_parametric_defect_invariant
+      hU hdip hmargin hnextDip
+    change EventEDefectPacketInvariant s d delta z at hInv
+    by_cases hmax : delta + 4 = s
+    · right
+      have hcert :=
+        gameF_margin_eventE_maximal_R52_bulk_seven_atom_residual
+          hU hdip hmargin hnextDip hmax
+      change exists c b0,
+        EventEMaximalBulkSevenAtomCertificate s delta z c b0 at hcert
+      exact ⟨s, hEvent', hmax, hcert⟩
+    · left
+      have hnonmax : delta + 5 <= s := by
+        have hupper := hInv.2.1
+        omega
+      have hcert :=
+        gameF_margin_eventE_nonmax_R52_threshold_residual
+          hU hdip hmargin hnextDip hnonmax
+      change exists c b0,
+        EventENonmaxCrossEdgeThresholdCertificate s delta z c b0 at hcert
+      exact ⟨s, hEvent', hInv, hnonmax, hcert⟩
+  · intro hResidual
+    apply (gameF_unitDip_not_RM2_iff_exists_eventE hU).mpr
+    rcases hResidual with hNonmax | hMax
+    · rcases hNonmax with ⟨s, hres⟩
+      exact ⟨s, hres.1⟩
+    · rcases hMax with ⟨s, hres⟩
+      exact ⟨s, hres.1⟩
+
+/-- Positive formulation: under UnitDip, RM2 is equivalent to exclusion of
+the two R52 finite residuals. -/
+theorem gameF_unitDip_RM2_iff_no_R52_bulk_seven_residuals
+    (hU : UnitDip gameRecurrenceModel) :
+    TwoStepDiagonalRecordLaw gameRecurrenceModel <->
+      (Not (exists s, NonmaxMarginEventER52Residual s) /\
+       Not (exists s, MaximalMarginEventER52Residual s)) := by
+  constructor
+  · intro hRM2
+    constructor
+    · intro hNonmax
+      exact ((gameF_unitDip_not_RM2_iff_R52_bulk_seven_residuals hU).mpr
+        (Or.inl hNonmax)) hRM2
+    · intro hMax
+      exact ((gameF_unitDip_not_RM2_iff_R52_bulk_seven_residuals hU).mpr
+        (Or.inr hMax)) hRM2
+  · rintro ⟨hNoNonmax, hNoMax⟩
+    apply Classical.byContradiction
+    intro hNotRM2
+    rcases (gameF_unitDip_not_RM2_iff_R52_bulk_seven_residuals hU).mp
+        hNotRM2 with hNonmax | hMax
+    · exact hNoNonmax hNonmax
+    · exact hNoMax hMax
+
+/-- Unconditional version, retaining the honest first-gap layer when
+UnitDip itself fails. -/
+theorem gameF_RM2_counterexample_R52_complete_audit
+    (hNotRM2 : Not (TwoStepDiagonalRecordLaw gameRecurrenceModel)) :
+    (exists s, R51FirstGapResidual s) \/
+    (exists s, NonmaxMarginEventER52Residual s) \/
+    (exists s, MaximalMarginEventER52Residual s) := by
+  classical
+  by_cases hU : UnitDip gameRecurrenceModel
+  · rcases (gameF_unitDip_not_RM2_iff_R52_bulk_seven_residuals hU).mp
+      hNotRM2 with hNonmax | hMax
+    · exact Or.inr (Or.inl hNonmax)
+    · exact Or.inr (Or.inr hMax)
+  · exact Or.inl
+      (gameF_not_unitDip_has_R51_first_gap_residual hU)
+
+end ChompLean

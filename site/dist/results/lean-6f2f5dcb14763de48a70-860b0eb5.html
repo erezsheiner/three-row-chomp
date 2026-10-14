@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R44 Future First Gap Triple Backfill Charge · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R44 Future First Gap Triple Backfill Charge</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R44FutureFirstGapTripleBackfillCharge.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R44FutureFirstGapTripleBackfillCharge.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R44FutureFirstGapTripleBackfillCharge.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 36 declarations</summary><ul class="declarations"><li><code>ChompLean.encoding_diagonal_value_not_reemitted_in_owner_column</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {i t : Nat} (hit : @LT.lt.{0} Nat instLTNat i t),
+  @Ne.{1} Nat (f t i) (f i i)</pre></li><li><code>ChompLean.future_first_gap_forces_three_past_diagonal_backfills</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (hFuture : ChompLean.DipFirstGapFutureDiagonalLoss M s),
+  @Exists.{1} (List.{0} Nat) fun (bs : List.{0} Nat) =&gt;
+    And (@List.Nodup.{0} Nat bs)
+      (And
+        (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+          (@List.length.{0} Nat bs))
+        (∀ (b : Nat),
+          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) bs b →
+            And
+              (@LT.lt.{0} Nat instLTNat b
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (And
+                (Not
+                  (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                    (ChompLean.RecurrenceModel.f M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      b)))
+                (@Exists.{1} Nat fun (i : Nat) =&gt;
+                  And (@LE.le.{0} Nat instLENat b i)
+                    (And (@LT.lt.{0} Nat instLTNat i s)
+                      (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M i i)
+                        (ChompLean.RecurrenceModel.f M
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                          b)))))))</pre></li><li><code>ChompLean.future_first_gap_forces_three_past_diagonal_backfills._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (cPrev cGap : Nat)
+  (hcarryRows :
+    ∀ (b : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (@List.filter.{0} Nat
+            (fun (b : Nat) =&gt;
+              @Decidable.decide
+                (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                  (ChompLean.RecurrenceModel.f M
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    b))
+                (Classical.propDecidable
+                  (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                    (ChompLean.RecurrenceModel.f M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      b))))
+            (List.range
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          b →
+        @Exists.{1} Nat fun (c : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat c s)
+            (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M s c)
+              (ChompLean.RecurrenceModel.f M
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                b)))
+  (hcarryLen :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (b : Nat) =&gt;
+              @Decidable.decide
+                (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                  (ChompLean.RecurrenceModel.f M
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    b))
+                (Classical.propDecidable
+                  (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                    (ChompLean.RecurrenceModel.f M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      b))))
+            (List.range
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      s)
+  (hpartition :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (b : Nat) =&gt;
+              @Decidable.decide
+                (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                  (ChompLean.RecurrenceModel.f M
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    b))
+                (Classical.propDecidable
+                  (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                    (ChompLean.RecurrenceModel.f M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      b))))
+            (List.range
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (b : Nat) =&gt;
+              @Decidable.decide
+                (Not
+                  (@Eq.{1} Bool
+                    ((fun (b : Nat) =&gt;
+                        @Decidable.decide
+                          (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                            (ChompLean.RecurrenceModel.f M
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              b))
+                          (Classical.propDecidable
+                            (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                              (ChompLean.RecurrenceModel.f M
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                b))))
+                      b)
+                    Bool.true))
+                (@instDecidableNot
+                  (@Eq.{1} Bool
+                    ((fun (b : Nat) =&gt;
+                        @Decidable.decide
+                          (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                            (ChompLean.RecurrenceModel.f M
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              b))
+                          (Classical.propDecidable
+                            (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                              (ChompLean.RecurrenceModel.f M
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                b))))
+                      b)
+                    Bool.true)
+                  (instDecidableEqBool
+                    ((fun (b : Nat) =&gt;
+                        @Decidable.decide
+                          (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                            (ChompLean.RecurrenceModel.f M
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              b))
+                          (Classical.propDecidable
+                            (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                              (ChompLean.RecurrenceModel.f M
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                b))))
+                      b)
+                    Bool.true)))
+            (List.range
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))),
+  Not
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (b : Nat) =&gt;
+              @Decidable.decide
+                (Not
+                  (@Eq.{1} Bool
+                    ((fun (b : Nat) =&gt;
+                        @Decidable.decide
+                          (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                            (ChompLean.RecurrenceModel.f M
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              b))
+                          (Classical.propDecidable
+                            (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                              (ChompLean.RecurrenceModel.f M
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                b))))
+                      b)
+                    Bool.true))
+                (@instDecidableNot
+                  (@Eq.{1} Bool
+                    ((fun (b : Nat) =&gt;
+                        @Decidable.decide
+                          (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                            (ChompLean.RecurrenceModel.f M
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              b))
+                          (Classical.propDecidable
+                            (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                              (ChompLean.RecurrenceModel.f M
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                b))))
+                      b)
+                    Bool.true)
+                  (instDecidableEqBool
+                    ((fun (b : Nat) =&gt;
+                        @Decidable.decide
+                          (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                            (ChompLean.RecurrenceModel.f M
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              b))
+                          (Classical.propDecidable
+                            (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                              (ChompLean.RecurrenceModel.f M
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                b))))
+                      b)
+                    Bool.true)))
+            (List.range
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))) →
+    False</pre></li><li><code>ChompLean.future_first_gap_forces_three_past_diagonal_backfills._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (cPrev cGap : Nat)
+  (hcarryRows :
+    ∀ (b : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (@List.filter.{0} Nat
+            (fun (b : Nat) =&gt;
+              @Decidable.decide
+                (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                  (ChompLean.RecurrenceModel.f M
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    b))
+                (Classical.propDecidable
+                  (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                    (ChompLean.RecurrenceModel.f M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      b))))
+            (List.range
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          b →
+        @Exists.{1} Nat fun (c : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat c s)
+            (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M s c)
+              (ChompLean.RecurrenceModel.f M
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                b)))
+  (b : Nat)
+  (hbRange :
+    @LT.lt.{0} Nat instLTNat b
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hcol :
+    @Eq.{1} Nat b
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.future_first_gap_forces_three_past_diagonal_backfills._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (cPrev cGap : Nat)
+  (hcarryRows :
+    ∀ (b : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (@List.filter.{0} Nat
+            (fun (b : Nat) =&gt;
+              @Decidable.decide
+                (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                  (ChompLean.RecurrenceModel.f M
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    b))
+                (Classical.propDecidable
+                  (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                    (ChompLean.RecurrenceModel.f M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      b))))
+            (List.range
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          b →
+        @Exists.{1} Nat fun (c : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat c s)
+            (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M s c)
+              (ChompLean.RecurrenceModel.f M
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                b)))
+  (b : Nat)
+  (hvLe :
+    @LE.le.{0} Nat instLENat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        b)
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hvNe :
+    @Ne.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        b)
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          b)
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.future_first_gap_forces_three_past_diagonal_backfills._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (cPrev cGap : Nat)
+  (hcarryRows :
+    ∀ (b : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (@List.filter.{0} Nat
+            (fun (b : Nat) =&gt;
+              @Decidable.decide
+                (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                  (ChompLean.RecurrenceModel.f M
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    b))
+                (Classical.propDecidable
+                  (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                    (ChompLean.RecurrenceModel.f M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      b))))
+            (List.range
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          b →
+        @Exists.{1} Nat fun (c : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat c s)
+            (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M s c)
+              (ChompLean.RecurrenceModel.f M
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                b)))
+  (b : Nat)
+  (hgt :
+    @LT.lt.{0} Nat instLTNat b
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        b)),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          b)) →
+    False</pre></li><li><code>ChompLean.future_first_gap_forces_three_past_diagonal_backfills._proof_1_5</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (cPrev cGap : Nat)
+  (hcarryRows :
+    ∀ (b : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (@List.filter.{0} Nat
+            (fun (b : Nat) =&gt;
+              @Decidable.decide
+                (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                  (ChompLean.RecurrenceModel.f M
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    b))
+                (Classical.propDecidable
+                  (ChompLean.C (ChompLean.RecurrenceModel.f M) s s
+                    (ChompLean.RecurrenceModel.f M
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      b))))
+            (List.range
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          b →
+        @Exists.{1} Nat fun (c : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat c s)
+            (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M s c)
+              (ChompLean.RecurrenceModel.f M
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                b)))
+  (b : Nat)
+  (hvNext :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        b)
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hxOld :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.RecurrenceModel.f M s s)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          b)
+        (ChompLean.RecurrenceModel.f M s s)) →
+    False</pre></li><li><code>ChompLean.future_first_gap_old_row_hosts_adjacent_pair</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (hFuture : ChompLean.DipFirstGapFutureDiagonalLoss M s),
+  @Exists.{1} Nat fun (cPrev : Nat) =&gt;
+    @Exists.{1} Nat fun (cGap : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat cPrev s)
+        (And (@LT.lt.{0} Nat instLTNat cGap s)
+          (And (@Ne.{1} Nat cPrev cGap)
+            (And
+              (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M s cPrev)
+                (ChompLean.RecurrenceModel.f M
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+              (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M s cGap) (ChompLean.DipFirstGap M s)))))</pre></li><li><code>ChompLean.future_first_gap_old_row_hosts_adjacent_pair._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat}
+  (hgt :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.future_first_gap_old_row_hosts_adjacent_pair._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat}
+  (hxOld :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.RecurrenceModel.f M s s)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (ChompLean.RecurrenceModel.f M s s)) →
+    False</pre></li><li><code>ChompLean.future_first_gap_old_row_hosts_adjacent_pair._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (i : Nat) (his : @LT.lt.{0} Nat instLTNat i s)
+  (hmin : @Eq.{1} Nat (@Min.min.{0} Nat instMinNat i s) i)
+  (hidx :
+    @Eq.{1} Nat i
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.future_first_gap_old_row_hosts_adjacent_pair._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (cPrev a : Nat)
+  (hGap :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.future_first_gap_terminal_column_is_old_prefix_carry</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (hFuture : ChompLean.DipFirstGapFutureDiagonalLoss M s),
+  @Exists.{1} Nat fun (c : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat c s)
+      (And
+        (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M s c)
+          (ChompLean.RecurrenceModel.f M
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            s))
+        (@LT.lt.{0} Nat instLTNat
+          (ChompLean.RecurrenceModel.f M
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            s)
+          (ChompLean.RecurrenceModel.f M
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))</pre></li><li><code>ChompLean.future_first_gap_terminal_column_is_old_prefix_carry._proof_1_1</code><pre class="prose">∀ {s : Nat},
+  Not
+      (@LE.le.{0} Nat instLENat s
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.future_first_gap_terminal_column_is_old_prefix_carry._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat},
+  Not
+      (@LE.le.{0} Nat instLENat s
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.future_first_gap_terminal_column_is_old_prefix_carry._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat}
+  (hcol :
+    @Eq.{1} Nat s
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.future_first_gap_terminal_column_is_old_prefix_carry._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat}
+  (hvLe :
+    @LE.le.{0} Nat instLENat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        s)
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hvNe :
+    @Ne.{1} Nat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        s)
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          s)
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.future_first_gap_terminal_column_is_old_prefix_carry._proof_1_5</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat}
+  (hgt :
+    @LT.lt.{0} Nat instLTNat s
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        s)),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          s)) →
+    False</pre></li><li><code>ChompLean.future_first_gap_terminal_column_is_old_prefix_carry._proof_1_6</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat}
+  (hvNext :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        s)
+      (ChompLean.RecurrenceModel.f M
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hxOld :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.RecurrenceModel.f M s s)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.RecurrenceModel.f M
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          s)
+        (ChompLean.RecurrenceModel.f M s s)) →
+    False</pre></li><li><code>ChompLean.future_first_gap_terminal_column_is_old_prefix_carry._proof_1_7</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (i : Nat),
+  Not
+      (@LE.le.{0} Nat instLENat s
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.game_future_first_gap_R44_reduced_window</code><pre class="prose">∀ {s : Nat} (hFuture : ChompLean.DipFirstGapFutureDiagonalLoss ChompLean.gameRecurrenceModel s),
+  And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) s)
+    (And
+      (@LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s s))
+      (@Exists.{1} Nat fun (a : Nat) =&gt;
+        And
+          (@LE.le.{0} Nat instLENat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            a)
+          (And
+            (@LE.le.{0} Nat instLENat
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s s))
+            (And
+              (@LE.le.{0} Nat instLENat a
+                (ChompLean.gameF
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+              (@Eq.{1} Nat (ChompLean.gameF a a) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))))))</pre></li><li><code>ChompLean.game_future_first_gap_forces_three_strict_diagonal_backfills</code><pre class="prose">∀ {s : Nat} (hFuture : ChompLean.DipFirstGapFutureDiagonalLoss ChompLean.gameRecurrenceModel s),
+  @Exists.{1} (List.{0} Nat) fun (bs : List.{0} Nat) =&gt;
+    And (@List.Nodup.{0} Nat bs)
+      (And
+        (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+          (@List.length.{0} Nat bs))
+        (∀ (b : Nat),
+          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) bs b →
+            And
+              (@LT.lt.{0} Nat instLTNat b
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (And
+                (Not
+                  (ChompLean.C ChompLean.gameF s s
+                    (ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      b)))
+                (@Exists.{1} Nat fun (i : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat b i)
+                    (And (@LT.lt.{0} Nat instLTNat i s)
+                      (And
+                        (@LT.lt.{0} Nat instLTNat
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                          (ChompLean.gameF i i))
+                        (And
+                          (@LT.lt.{0} Nat instLTNat s
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i))
+                          (@Eq.{1} Nat (ChompLean.gameF i i)
+                            (ChompLean.gameF
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              b)))))))))</pre></li><li><code>ChompLean.game_future_first_gap_forces_three_strict_diagonal_backfills._proof_1_1</code><pre class="prose">∀ {s : Nat} (bs : List.{0} Nat) (b i : Nat)
+  (hhigh :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.gameF i i))
+  (hcap :
+    @LE.le.{0} Nat instLENat (ChompLean.gameF i i)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LT.lt.{0} Nat instLTNat s (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i)) → False</pre></li><li><code>ChompLean.game_future_first_gap_requires_row_four</code><pre class="prose">∀ {s : Nat} (hFuture : ChompLean.DipFirstGapFutureDiagonalLoss ChompLean.gameRecurrenceModel s),
+  @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) s</pre></li><li><code>ChompLean.game_future_first_gap_requires_row_four._proof_1_1</code><pre class="prose">∀ {s : Nat} (bs : List.{0} Nat) ⦃b : Nat⦄
+  (_hbRange :
+    @LT.lt.{0} Nat instLTNat b
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (i : Nat) (hbi : @LT.lt.{0} Nat instLTNat b i) (his : @LT.lt.{0} Nat instLTNat i s)
+  (_hhalf : @LT.lt.{0} Nat instLTNat s (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i)),
+  Not
+      (@LT.lt.{0} Nat instLTNat b
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.game_future_first_gap_requires_row_four._proof_1_2</code><pre class="prose">∀ {s : Nat} (bs : List.{0} Nat)
+  (hbsLen :
+    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) (@List.length.{0} Nat bs))
+  (hcap :
+    @LE.le.{0} Nat instLENat (@List.length.{0} Nat bs)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) s) → False</pre></li><li><code>ChompLean.game_future_first_gap_requires_row_seven</code><pre class="prose">∀ {s : Nat} (hFuture : ChompLean.DipFirstGapFutureDiagonalLoss ChompLean.gameRecurrenceModel s),
+  @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) s</pre></li><li><code>ChompLean.game_future_first_gap_requires_row_seven._proof_1_1</code><pre class="prose">∀ {s : Nat} (bs : List.{0} Nat) (b₀ b₁ b₂ i₀ : Nat) (hi₀s : @LT.lt.{0} Nat instLTNat i₀ s)
+  (hi₀Half : @LT.lt.{0} Nat instLTNat s (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i₀ i₀))
+  (i₁ : Nat) (hi₁s : @LT.lt.{0} Nat instLTNat i₁ s)
+  (hi₁Half : @LT.lt.{0} Nat instLTNat s (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i₁ i₁))
+  (i₂ : Nat) (hi₂s : @LT.lt.{0} Nat instLTNat i₂ s)
+  (hi₂Half : @LT.lt.{0} Nat instLTNat s (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i₂ i₂))
+  (hi₀₁ : @Ne.{1} Nat i₀ i₁) (hi₀₂ : @Ne.{1} Nat i₀ i₂) (hi₁₂ : @Ne.{1} Nat i₁ i₂),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) s) → False</pre></li><li><code>ChompLean.game_no_future_first_gap_before_row_four</code><pre class="prose">∀ {s : Nat} (hs : @LT.lt.{0} Nat instLTNat s (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))),
+  Not (ChompLean.DipFirstGapFutureDiagonalLoss ChompLean.gameRecurrenceModel s)</pre></li><li><code>ChompLean.game_no_future_first_gap_before_row_four._proof_1_1</code><pre class="prose">∀ {s : Nat} (hs : @LT.lt.{0} Nat instLTNat s (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+  (hfour : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) s), False</pre></li><li><code>ChompLean.game_no_future_first_gap_before_row_seven</code><pre class="prose">∀ {s : Nat} (hs : @LT.lt.{0} Nat instLTNat s (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),
+  Not (ChompLean.DipFirstGapFutureDiagonalLoss ChompLean.gameRecurrenceModel s)</pre></li><li><code>ChompLean.game_no_future_first_gap_before_row_seven._proof_1_1</code><pre class="prose">∀ {s : Nat} (hs : @LT.lt.{0} Nat instLTNat s (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+  (hseven : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) s), False</pre></li><li><code>ChompLean.game_past_diagonal_reemission_is_high</code><pre class="prose">∀ {i t b : Nat} (hbt : @LE.le.{0} Nat instLENat b t) (hvalue : @Eq.{1} Nat (ChompLean.gameF i i) (ChompLean.gameF t b)),
+  @LT.lt.{0} Nat instLTNat t (ChompLean.gameF i i)</pre></li><li><code>ChompLean.game_past_diagonal_reemission_is_high._proof_1_1</code><pre class="prose">∀ {i t b : Nat} (hvalue : @Eq.{1} Nat (ChompLean.gameF i i) (ChompLean.gameF t b))
+  (hle : @GE.ge.{0} Nat instLENat t (ChompLean.gameF i i))
+  (hstrict : Not (@LT.lt.{0} Nat instLTNat (ChompLean.gameF i i) t)), Not (@Eq.{1} Nat (ChompLean.gameF i i) t) → False</pre></li><li><code>_private.R44FutureFirstGapTripleBackfillCharge.0.ChompLean.r44_nodup_length_three_extract</code><pre class="prose">∀ {xs : List.{0} Nat} (hxs : @List.Nodup.{0} Nat xs)
+  (hlen :
+    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) (@List.length.{0} Nat xs)),
+  @Exists.{1} Nat fun (x : Nat) =&gt;
+    @Exists.{1} Nat fun (y : Nat) =&gt;
+      @Exists.{1} Nat fun (z : Nat) =&gt;
+        And (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x)
+          (And (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs y)
+            (And (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs z)
+              (And (@Ne.{1} Nat x y) (And (@Ne.{1} Nat x z) (@Ne.{1} Nat y z)))))</pre></li><li><code>_private.R44FutureFirstGapTripleBackfillCharge.0.ChompLean.r44_nodup_map_of_injective_on</code><pre class="prose">∀ {alpha beta : Type} [inst : BEq.{0} alpha] [@LawfulBEq.{0} alpha inst] [inst : BEq.{0} beta]
+  [@LawfulBEq.{0} beta inst] (f : alpha → beta) (xs : List.{0} alpha) (hxs : @List.Nodup.{0} alpha xs)
+  (hinj :
+    ∀ (x : alpha),
+      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x →
+        ∀ (y : alpha),
+          @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs y →
+            @Eq.{1} beta (f x) (f y) → @Eq.{1} alpha x y),
+  @List.Nodup.{0} beta (@List.map.{0, 0} alpha beta f xs)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R44FutureFirstGapTripleBackfillCharge.lean:1</p><p>SHA-256: <code class="path">6f2f5dcb14763de48a708ddcbb89cb6499ffea1baaae5e28598d5002b65f3292</code></p></section><p><a href="../index.html#id=lean-6f2f5dcb14763de48a70">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

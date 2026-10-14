@@ -1,0 +1,39 @@
+# Exact C50 lineage identities and the young-root absence relations
+
+**Statement.** For the canonical table and positive integers m,n, put N=m+n and X=Abs_young(m,N). Then Delta_old=AbsB(m)-Abs_old(m,N)=X-[AbsB(N)-AbsB(m)], and Delta_young=AbsB(n)-X+defA(m,n). The required inclusion Hosted_q subset Pend_q is a proved consequence of the canonical frozen-blocker partition.
+
+## Complete proof and definitions
+
+- [Canonical definitions for the corrected paper proofs](../supplements/CANONICAL-DEFINITIONS.md)
+- [Block ghost identities, composed density and the C50 lineage ledger](../supplements/BLOCK-GHOSTS-AND-C50.md)
+
+The argument below and the linked full derivations form the reviewed proof. All stated hypotheses remain part of the result.
+
+## Hypotheses and scope
+
+- Canonical positive-MEX/COPY three-row Chomp history, with the structural facts proved in the shared canonical foundation review.
+- m,n>=1; Pend_q={x<q:d(x)>=q}; orbit roots are 0 and the positive blocker labels. The exact row-overlap ledger is used.
+- Hosted_q subset Pend_q is derived, not an unresolved admission. It is distinct from the direct-Q transport assertion also called A1.
+- No sublinear flux estimates or slope-existence claim are supplied. Such estimates would be additional hypotheses for an asymptotic C50 consumer.
+
+## Argument
+
+1. Repeated preimages strictly decrease because d(x)>x, so every integer has unique root0or blocker. Forward orbits are strictly increasing and unbounded. For every root r<q exactly one orbit node satisfies x<q<=d(x); hence|Pend_q|=1+A(q-1). Old root class count at N is1+A(m-1), young count A(N-1)-A(m-1).
+
+2. A hosted old-diagonal value<q would be a frozen blocker, impossible. Thus Hosted subset Pend. Above values>d(q)>q also lie in Pend, and hosted/above/absent partition Pend by row max and diag injectivity. So AbsB=1+A(q-1)-(2q+1-d(q))=d(q)-2q+A(q-1). This is a logical reconciliation of A1, not a new empirical premise.
+
+3. Subtract the old root Pend count minus Abs_old from|H_m|=1+A(m-1)-AbsB(m). Analogously subtract|H_n| from young root count minus Abs_young; the remainder is defA=A(N-1)-A(m-1)-A(n-1)-1. Both lineage identities follow.
+
+4. Abs_old+Abs_young=AbsB(N) gives X forms. Adding Delta identities gives-(1+d(N)-d(m)-d(n)). Therefore two lower flux bounds by sublinear b_old, b_young imply the Fekete defect upper bound. No reverse implication or either-sided canonical bound is proved; the source phrase "neither alone implies" is read as no implication supplied here, unless a separate counterexample is provided.
+
+5. Boundary m, n>=1is explicitly added for negative A arguments. Conditions m>=n enter only the C50 uniform-asymptotic consumer, not the finite identities. No assumption that slope exists enters.
+
+## Review and supporting evidence
+
+- Historical original-claim verdict: accepted.
+- This statement was independently audited on paper. The audit did not produce a new Lean formalization of the derived statement; its listed formal dependencies have separate verification receipts.
+- [Renewed statement and proof-completeness review](../../audit/prepublication/papers/PAPER-REVIEW.json)
+- [Full independent audit and original-claim verdict](../../audit/full/paper-a/c50-lineage-sandwich-conditional.json)
+- [Shared canonical foundation and exact Lean bridges](../../audit/full/CANONICAL-FOUNDATIONS.md)
+- [Full proof and definitions: Canonical definitions for the corrected paper proofs](../supplements/CANONICAL-DEFINITIONS.md)
+- [Full proof and definitions: Block ghost identities, composed density and the C50 lineage ledger](../supplements/BLOCK-GHOSTS-AND-C50.md)

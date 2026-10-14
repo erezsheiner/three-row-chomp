@@ -1,0 +1,27 @@
+--- before/XTauCorridorConsumer.lean
++++ after/XTauCorridorConsumer.lean
+@@ -410,7 +410,7 @@
+ jointly right-and-down when the LATER one is gated: no
+ `f(r,h) = d(t) = f(s,e)` with `h < r`, `h < e`, `e < s`, `r < s < t` and
+ `A1Gate s e (d(t))`.  Only the late appearance is required to be gated —
+-`FutureDiagonalNoRightShift` (no gate premise) is strictly stronger and NOT
++`FutureDiagonalNoRightShift` (no gate premise) is a syntactically stronger ungated requirement and NOT
+ needed by the consumer.  Kill gates for any proof attempt (report §8/§10):
+ no full pin, no atom C, no NIE/RM2, no UnitDip/DD1, no range oracle, no
+ "no earlier appearance" assumption. -/
+@@ -508,11 +508,11 @@
+ `GatedFutureDiagonalNoRightShift` implies both halves below, and the two
+ halves already suffice for the whole §7 consumer.  The split replaces the
+ `{GatedNoDeepFuture, atom C}` factor pair of the PIN by
+-`{GatedNoDeepFuture, PenultimateEchoPairKill}`.  PairKill is STRICTLY
+-WEAKER than atom C: in any echo pair `x₁ < x₂ < t` the earlier echo has
++`{GatedNoDeepFuture, PenultimateEchoPairKill}`.  PairKill is syntactically weaker than atom C: in any echo pair `x₁ < x₂ < t` the earlier echo has
+ delay `t - x₁ ≥ 2`, which atom C forbids (so atom C ⟹ PairKill —
+-compiled in `XTauExceederReduction`); conversely PairKill allows the single
+-long-delay echo that atom C kills.  [Corrected 2026-07-23 after the
++compiled in `XTauExceederReduction`); as a forbidden-pattern specification, PairKill permits a single
++long-delay echo, while atom C excludes it. This does not exhibit an actual-game
++realization separating the two assertions.  [Corrected 2026-07-23 after the
+ fidelity audit: an earlier revision of this comment wrongly called the two
+ atoms incomparable.] -/
+ 

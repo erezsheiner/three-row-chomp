@@ -1,0 +1,189 @@
+import R39MarginEventEPacketOrder
+import R14FrontierLaw
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+Publication scope: The game-specific margin Event E and RM2 specializations below retain their
+explicit UnitDip, numerical-margin, dip and residual/certificate hypotheses.
+Generic source, packing and overlap lemmas retain only the assumptions
+displayed in their own signatures.
+
+Finite source-capacity bounds for the event-E packet.
+
+The generic first lemma is just the cardinal content of `mex_no_skip`: a
+high output `m` at `(q,r)` has only `q+r` source slots available to cover the
+`m-1` positive values below it.  Applying it to the three packet cells gives
+sharp lower bounds on their columns.
+-/
+
+/-- Every high cell output satisfies the source-slot bound `m-1 <= q+r`. -/
+theorem high_cell_output_source_capacity
+    (M : RecurrenceModel) {q r m : Nat}
+    (hrq : r <= q) (hqm : q < m) (hout : M.f q r = m) :
+    m - 1 <= q + r := by
+  have hsat : LowerSaturated M.f q r m := by
+    intro k hkpos hkm
+    apply M.mex_no_skip hrq
+    · rw [hout]
+      exact hqm
+    · exact hkpos
+    · rw [hout]
+      exact hkm
+  exact lowerSaturated_card_bound hsat
+
+/-- Event E has only enough source capacity if `z+1 <= 2*s`.  The three
+displayed inequalities are the sharper per-cell form retained for later
+column localization. -/
+theorem gameF_margin_eventE_packet_source_capacity
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip : gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let z := gameF (s + 1) (s + 1) - 1
+    exists c b0 b1,
+      c < s /\ b0 < s /\ b1 < s + 1 /\
+      c ≠ b0 /\ b0 ≠ b1 /\
+      gameF s c = z + 1 /\ gameF s b0 = z /\
+      gameF (s + 1) b1 = z /\
+      z <= s + c /\ z - 1 <= s + b0 /\
+      z - 1 <= (s + 1) + b1 /\ z + 1 <= 2 * s := by
+  let z := gameF (s + 1) (s + 1) - 1
+  rcases gameF_margin_eventE_has_three_cell_entry_packet
+      hU hdip hmargin hnextDip with
+    ⟨c, b0, b1, hc, hb0, hb1, hcNe, hbNe,
+      hsucc, hbase, hhost1, hEmit⟩
+  have hs1z : s + 1 < z := by
+    have hgt := gameRecurrenceModel.diagonal_gt (s + 2)
+    change s + 2 < gameF (s + 2) (s + 2) at hgt
+    rw [hEmit] at hgt
+    omega
+  have hcapSucc : z <= s + c := by
+    have hcap := high_cell_output_source_capacity
+      gameRecurrenceModel (q := s) (r := c) (m := z + 1)
+      (by omega) (by omega) hsucc
+    omega
+  have hcapBase : z - 1 <= s + b0 :=
+    high_cell_output_source_capacity
+      gameRecurrenceModel (q := s) (r := b0) (m := z)
+      (by omega) (by omega) hbase
+  have hcapNext : z - 1 <= (s + 1) + b1 :=
+    high_cell_output_source_capacity
+      gameRecurrenceModel (q := s + 1) (r := b1) (m := z)
+      (by omega) hs1z hhost1
+  have htotal : z + 1 <= 2 * s := by omega
+  exact ⟨c, b0, b1, hc, hb0, hb1, hcNe, hbNe,
+    hsucc, hbase, hhost1, hcapSucc, hcapBase, hcapNext, htotal⟩
+
+/-- A genuine event-E subclass is impossible: the dip hole cannot lie above
+the complete `2*s` source capacity of the preceding packet row. -/
+theorem gameF_no_margin_eventE_above_source_capacity
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hTooHigh : 2 * s < gameF (s + 1) (s + 1)) :
+    Not (gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) := by
+  intro hnextDip
+  let z := gameF (s + 1) (s + 1) - 1
+  rcases gameF_margin_eventE_packet_source_capacity
+      hU hdip hmargin hnextDip with
+    ⟨_c, _b0, _b1, _hc, _hb0, _hb1, _hcNe, _hbNe,
+      _hsucc, _hbase, _hhost1, _hcapSucc, _hcapBase, _hcapNext,
+      htotal⟩
+  have hdiagPos : 0 < gameF (s + 1) (s + 1) := by
+    have hgt := gameRecurrenceModel.diagonal_gt (s + 1)
+    change s + 1 < gameF (s + 1) (s + 1) at hgt
+    omega
+  have hzDiag : z + 1 = gameF (s + 1) (s + 1) := by
+    dsimp [z]
+    omega
+  rw [hzDiag] at htotal
+  omega
+
+/-- At the extremal capacity boundary `z+1=2*s`, the first two empirical
+entry identities are forced, not assumed:
+
+`V1(s)=z+1` and `V2(s)=z`.
+
+The remaining next-row `z` host is confined to columns at least `s-3`, and
+same-lower no-repeat removes `s-2`; hence only the three columns
+`{s-3,s-1,s}` remain (written as inequalities plus the excluded column to
+avoid truncated-subtraction case splits). -/
+theorem gameF_extremal_eventE_forces_first_two_entries_and_three_column_tail
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip : gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1))
+    (hextreme :
+      (gameF (s + 1) (s + 1) - 1) + 1 = 2 * s) :
+    let z := gameF (s + 1) (s + 1) - 1
+    gameF s (s - 1) = z + 1 /\
+      gameF s (s - 2) = z /\
+      exists b1,
+        s - 3 <= b1 /\ b1 < s + 1 /\ b1 ≠ s - 2 /\
+        gameF (s + 1) b1 = z := by
+  let z := gameF (s + 1) (s + 1) - 1
+  rcases gameF_margin_eventE_packet_source_capacity
+      hU hdip hmargin hnextDip with
+    ⟨c, b0, b1, hc, hb0, hb1, hcNe, hbNe,
+      hsucc, hbase, hhost1, hcapSucc, hcapBase, hcapNext,
+      _htotal⟩
+  have hspos : 0 < s := by omega
+  have hcEq : c = s - 1 := by omega
+  have hb0Eq : b0 = s - 2 := by omega
+  have hb1Lower : s - 3 <= b1 := by omega
+  have hb1Ne : b1 ≠ s - 2 := by
+    rw [← hb0Eq]
+    exact hbNe.symm
+  rw [hcEq] at hsucc
+  rw [hb0Eq] at hbase
+  exact ⟨hsucc, hbase, b1, hb1Lower, hb1, hb1Ne, hhost1⟩
+
+/-- Disjunctive form of the extremal tail localization. -/
+theorem gameF_extremal_eventE_three_column_menu
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip : gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1))
+    (hextreme :
+      (gameF (s + 1) (s + 1) - 1) + 1 = 2 * s) :
+    let z := gameF (s + 1) (s + 1) - 1
+    gameF s (s - 1) = z + 1 /\
+      gameF s (s - 2) = z /\
+      ((gameF (s + 1) (s - 3) = z) \/
+       (gameF (s + 1) (s - 1) = z) \/
+       (gameF (s + 1) s = z)) := by
+  dsimp only
+  rcases gameF_extremal_eventE_forces_first_two_entries_and_three_column_tail
+      hU hdip hmargin hnextDip hextreme with
+    ⟨hV1, hV2, b, hbLower, hbUpper, hbNe, hhost⟩
+  have hsTwo : 2 <= s := by
+    apply Nat.le_of_not_gt
+    intro hs
+    have hcols : s - 1 = s - 2 := by omega
+    rw [hcols] at hV1
+    rw [hV2] at hV1
+    omega
+  have hcases : b = s - 3 \/ b = s - 1 \/ b = s := by omega
+  rcases hcases with rfl | rfl | rfl
+  · exact ⟨hV1, hV2, Or.inl hhost⟩
+  · exact ⟨hV1, hV2, Or.inr (Or.inl hhost)⟩
+  · exact ⟨hV1, hV2, Or.inr (Or.inr hhost)⟩
+
+#print axioms high_cell_output_source_capacity
+#print axioms gameF_margin_eventE_packet_source_capacity
+#print axioms gameF_no_margin_eventE_above_source_capacity
+#print axioms gameF_extremal_eventE_forces_first_two_entries_and_three_column_tail
+#print axioms gameF_extremal_eventE_three_column_menu
+
+end ChompLean

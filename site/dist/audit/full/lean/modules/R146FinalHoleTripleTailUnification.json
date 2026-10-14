@@ -1,0 +1,1588 @@
+{
+  "module": "R146FinalHoleTripleTailUnification",
+  "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+  "declarationCount": 111,
+  "theoremDeclarationCount": 90,
+  "proofValuedDeclarationCount": 90,
+  "scope": "All serialized module declarations including private/generated auxiliaries. These are declaration counts, not counts of independent mathematical results.",
+  "declarations": [
+    {
+      "name": "ChompLean.IsMex.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (S : Nat → Prop) (m : Nat),\n  @Eq.{1} Prop (ChompLean.IsMex S m)\n    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m)\n      (And (Not (S m))\n        (∀ (k : Nat),\n          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →\n            @LT.lt.{0} Nat instLTNat k m → S k)))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R146FinalFrame.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m x : Nat),\n  @Eq.{1} Prop (ChompLean.R146FinalFrame m x)\n    (And (ChompLean.IsMex (ChompLean.PrevSource x (ChompLean.r146FL m)) x)\n      (And\n        (ChompLean.IsMex (fun (z : Nat) => Or (ChompLean.PrevSource x (ChompLean.r146FL m) z) (@Eq.{1} Nat z x))\n          (ChompLean.r146FL m))\n        (And\n          (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m) (ChompLean.r146FL m)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146FL m)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (And\n            (ChompLean.IsMex\n              (fun (z : Nat) =>\n                Or\n                  (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m)\n                    (ChompLean.r146FL m) z)\n                  (@Eq.{1} Nat z x))\n              (ChompLean.r146FY m))\n            (And\n              (ChompLean.IsMex\n                (fun (z : Nat) =>\n                  Or\n                    (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m)\n                      (ChompLean.r146FL m) z)\n                    (Or (@Eq.{1} Nat z (ChompLean.r146FL m)) (@Eq.{1} Nat z (ChompLean.r146FY m))))\n                (ChompLean.r146FQ m))\n              (ChompLean.IsMex\n                (fun (z : Nat) =>\n                  Or\n                    (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m)\n                      (ChompLean.r146FL m) z)\n                    (Or (@Eq.{1} Nat z (ChompLean.r146FL m))\n                      (Or (@Eq.{1} Nat z (ChompLean.r146FY m)) (@Eq.{1} Nat z (ChompLean.r146FQ m)))))\n                (ChompLean.r143V m)))))))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ThreeChannelSource.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (D T P : Nat → Prop) (z : Nat), @Eq.{1} Prop (ChompLean.ThreeChannelSource D T P z) (Or (D z) (Or (T z) (P z)))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.badDiagonal_finalV1_has_no_second_hole._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t q v : Nat}\n  (hqval :\n    @Eq.{1} Nat\n      (f t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      q)\n  (z : Nat)\n  (hs :\n    @Eq.{1} Nat\n      (f t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      z),\n  Not (@Eq.{1} Nat z q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.finalPostfillHallDefect_kills_bad_diagonal._proof_1_3",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v : Nat} (hvv : @LT.lt.{0} Nat instLTNat v v), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.final_or_triple_allocationHallDefect_closes._proof_1_3",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v x0 x1 x2 : Nat} (hvv : @LT.lt.{0} Nat instLTNat v v), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isMex_below_iff_allocationHallDefect._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {bound x : Nat} (z : Nat) (hzb : @LT.lt.{0} Nat instLTNat z bound) (hzx : Not (@LT.lt.{0} Nat instLTNat z x)),\n  Not (@LT.lt.{0} Nat instLTNat x bound) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.postfillHallDefect_iff_secondFinalHole._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v q : Nat} (z : Nat) (hzq : Not ((fun (w : Nat) => @Eq.{1} Nat w q) z)) (hlt : Not (@LT.lt.{0} Nat instLTNat z q)),\n  Not (@LT.lt.{0} Nat instLTNat q z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146EarlyBlocker.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (i : Nat),\n  @Eq.{1} Nat (ChompLean.r146EarlyBlocker i)\n    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146EarlyFreeze.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (i : Nat), @Eq.{1} Nat (ChompLean.r146EarlyFreeze i) i",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FL.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m : Nat),\n  @Eq.{1} Nat (ChompLean.r146FL m)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)\n      (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FPersistX.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m : Nat),\n  @Eq.{1} Nat (ChompLean.r146FPersistX m)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FQ.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m : Nat),\n  @Eq.{1} Nat (ChompLean.r146FQ m)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)\n      (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FY.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m : Nat),\n  @Eq.{1} Nat (ChompLean.r146FY m)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FinalFreeze.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat), @Eq.{1} Nat (ChompLean.r146FinalFreeze k) (ChompLean.FrameT k)",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146LateBlocker.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k j : Nat),\n  @Eq.{1} Nat (ChompLean.r146LateBlocker k j)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146LateFreeze.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k j : Nat),\n  @Eq.{1} Nat (ChompLean.r146LateFreeze k j)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146LateRank.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k j : Nat),\n  @Eq.{1} Nat (ChompLean.r146LateRank k j)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n      j)",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146SharedC0.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat),\n  @Eq.{1} Nat (ChompLean.r146SharedC0 k)\n    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k)",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146SharedG.eq_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat),\n  @Eq.{1} Nat (ChompLean.r146SharedG k)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k)\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_Ak_drop_and_saturated_tail_unified_frame._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_Ak_drop_and_saturated_tail_unified_frame._proof_1_2",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_aligned_final_coordinates._proof_1_5",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) m)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_early_freeze_rails._proof_1_3",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i)\n  (hik :\n    @LE.le.{0} Nat instLENat i\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat i\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i))\n        (And\n          (@LE.le.{0} Nat instLENat\n            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            i)\n          (And\n            (@LE.le.{0} Nat instLENat i\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@LE.le.{0} Nat instLENat i\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) k))))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_early_is_frameBlocker._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k i : Nat}\n  (hik :\n    @LE.le.{0} Nat instLENat i\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_early_is_frameBlocker._proof_1_2",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i)\n  (hik :\n    @LE.le.{0} Nat instLENat i\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_early_is_frameBlocker._proof_1_3",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i),\n  Not\n      (@Eq.{1} Nat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) i\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_early_is_frameBlocker._proof_1_4",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k i : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        i) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_early_is_frameBlocker._proof_1_5",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i),\n  Not\n      (@Eq.{1} Nat i\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) i\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_final_diagonal_source_insert._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t : Nat} (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_final_diagonal_source_insert._proof_1_2",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {t : Nat} (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (h2 :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      t),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_final_freeze_compatibility._proof_1_4",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (And\n          (@LE.le.{0} Nat instLENat\n            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n          (And\n            (@LE.le.{0} Nat instLENat\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)))\n            (And\n              (@LE.le.{0} Nat instLENat\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)))\n              (And\n                (@LT.lt.{0} Nat instLTNat\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n                (@LT.lt.{0} Nat instLTNat\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k))))))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_final_tail_interface_separation._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m : Nat),\n  Not\n      (And\n        (@Eq.{1} Nat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) m)\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) m)\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            m))\n        (@Eq.{1} Nat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) m)\n            (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) m)\n              (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) m)\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_freeze_schedule_boundary_and_deadline._proof_1_5",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_freeze_is_birth_row_minus_one._proof_1_4",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k j : Nat),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n            j))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_freeze_rails._proof_1_4",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)\n  (hjk :\n    @LE.le.{0} Nat instLENat j\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (And\n          (@LE.le.{0} Nat instLENat\n            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j)))\n          (And\n            (@LE.le.{0} Nat instLENat\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n                    j))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@LE.le.{0} Nat instLENat\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) j))\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k))))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_is_frameBlocker._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j),\n  @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_is_frameBlocker._proof_1_2",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)\n  (hn :\n    Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))),\n  @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_is_frameBlocker._proof_1_3",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k j : Nat}\n  (hjk :\n    @LE.le.{0} Nat instLENat j\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k))\n  (hp :\n    Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))),\n  Not\n      (@Eq.{1} Nat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_is_frameBlocker._proof_1_4",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k j : Nat}\n  (hp :\n    Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))),\n  Not\n      (@Eq.{1} Nat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_is_frameBlocker._proof_1_5",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k j : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        j) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_is_frameBlocker._proof_1_6",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)\n  (hp :\n    Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))),\n  Not\n      (@Eq.{1} Nat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_is_frameBlocker._proof_1_7",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j),\n  Not\n      (@Eq.{1} Nat\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) j\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_is_frameBlocker._proof_1_8",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)\n  (hjk :\n    @LE.le.{0} Nat instLENat j\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n          j)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n            (@Min.min.{0} Nat instMinNat\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) j\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_critical_midpoint_coordinates._proof_1_3",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  Not\n      (And\n        (@Eq.{1} Nat\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)\n              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k)))\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_range_count_fits_before_midpoint._proof_1_2",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k),\n  Not\n      (And\n        (@Eq.{1} Nat\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) k)\n              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@LT.lt.{0} Nat instLTNat\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) k))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_10",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat)\n  (hs :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_11",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat)\n  (hs :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_12",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k p : Nat)\n  (hlt :\n    @LT.lt.{0} Nat instLTNat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hpv : Not (@LE.le.{0} Nat instLENat p (ChompLean.FrameV k)))\n  (hp1 :\n    Not\n      (@Eq.{1} Nat p\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@Eq.{1} Nat p\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_2",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat)\n  (h :\n    And\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (ChompLean.FrameV k))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_3",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k p : Nat)\n  (hlt :\n    @LT.lt.{0} Nat instLTNat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@LE.le.{0} Nat instLENat p (ChompLean.FrameV k)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_4",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_5",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat)\n  (h :\n    And\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (ChompLean.FrameV k))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_6",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat)\n  (hs :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_7",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k p : Nat)\n  (hlt :\n    @LT.lt.{0} Nat instLTNat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hpv : Not (@LE.le.{0} Nat instLENat p (ChompLean.FrameV k))),\n  Not\n      (@Eq.{1} Nat p\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_8",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet._proof_1_9",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (k : Nat)\n  (h :\n    And\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (ChompLean.FrameV k))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.secondFinalHole_yields_postfill_HallDefect._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v q z : Nat} (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)\n  (hqz : @LT.lt.{0} Nat instLTNat q z),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.secondFinalHole_yields_postfill_HallDefect._proof_1_2",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v q z : Nat} (hqz : @LT.lt.{0} Nat instLTNat q z), @Eq.{1} Nat z q → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.tripleAllocationHallDefect_iff_cap._proof_1_1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v x0 : Nat}\n  (this :\n    @LT.lt.{0} Nat instLTNat x0\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@LE.le.{0} Nat instLENat x0 v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.tripleAllocationHallDefect_iff_cap._proof_1_2",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v x0 : Nat} (h : @LE.le.{0} Nat instLENat x0 v),\n  Not\n      (@LT.lt.{0} Nat instLTNat x0\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ThreeChannelSource",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 26,
+      "typePretty": "(D T P : Nat → Prop) → (z : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.SourceAllocationHallDefect",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 29,
+      "typePretty": "(bound : Nat) → (D T P : Nat → Prop) → Prop",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isMex_below_iff_allocationHallDefect",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 35,
+      "typePretty": "∀ {bound x : Nat} {D T P : Nat → Prop} (hmex : ChompLean.IsMex (ChompLean.ThreeChannelSource D T P) x),\n  Iff (@LT.lt.{0} Nat instLTNat x bound) (ChompLean.SourceAllocationHallDefect bound D T P)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.TripleAllocationHallDefect",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 58,
+      "typePretty": "(v : Nat) → (D0 T0 P0 D1 T1 P1 D2 T2 P2 : Nat → Prop) → Prop",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.tripleAllocationHallDefect_iff_cap",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 65,
+      "typePretty": "∀ {v x0 x1 x2 : Nat} {D0 T0 P0 D1 T1 P1 D2 T2 P2 : Nat → Prop}\n  (h0 : ChompLean.IsMex (ChompLean.ThreeChannelSource D0 T0 P0) x0)\n  (h1 : ChompLean.IsMex (ChompLean.ThreeChannelSource D1 T1 P1) x1)\n  (h2 : ChompLean.IsMex (ChompLean.ThreeChannelSource D2 T2 P2) x2),\n  Iff (ChompLean.TripleAllocationHallDefect v D0 T0 P0 D1 T1 P1 D2 T2 P2)\n    (Or (@LE.le.{0} Nat instLENat x0 v) (Or (@LE.le.{0} Nat instLENat x1 v) (@LE.le.{0} Nat instLENat x2 v)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.final_or_triple_allocationHallDefect_closes",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 97,
+      "typePretty": "∀ {v q x0 x1 x2 : Nat} {S D0 T0 P0 D1 T1 P1 D2 T2 P2 : Nat → Prop}\n  (hdiag : ChompLean.IsMex (fun (z : Nat) => Or (S z) (@Eq.{1} Nat z q)) v)\n  (h0 : ChompLean.IsMex (ChompLean.ThreeChannelSource D0 T0 P0) x0)\n  (h1 : ChompLean.IsMex (ChompLean.ThreeChannelSource D1 T1 P1) x1)\n  (h2 : ChompLean.IsMex (ChompLean.ThreeChannelSource D2 T2 P2) x2) (hl0 : @LE.le.{0} Nat instLENat v x0)\n  (hl1 : @LE.le.{0} Nat instLENat v x1) (hl2 : @LE.le.{0} Nat instLENat v x2)\n  (hv0 : ChompLean.ThreeChannelSource D0 T0 P0 v) (hv1 : ChompLean.ThreeChannelSource D1 T1 P1 v)\n  (hv2 : ChompLean.ThreeChannelSource D2 T2 P2 v)\n  (hHall :\n    Or (ChompLean.SourceAllocationHallDefect v S (fun (x : Nat) => False) fun (z : Nat) => @Eq.{1} Nat z q)\n      (ChompLean.TripleAllocationHallDefect v D0 T0 P0 D1 T1 P1 D2 T2 P2)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_actual_midpoint_defect_iff_cap",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 132,
+      "typePretty": "∀ (f : Nat → Nat → Nat) {q c x v : Nat} (hcq : @LE.le.{0} Nat instLENat c q)\n  (hmex : ChompLean.IsMex (ChompLean.B f q c) x),\n  Iff\n    (@LT.lt.{0} Nat instLTNat x\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (ChompLean.SourceAllocationHallDefect\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.R143DiagBelow f c) (ChompLean.R143VerticalTail f q c) (ChompLean.R143RowPrefix f q c))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.finalPostfillHallDefect_kills_bad_diagonal",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 161,
+      "typePretty": "∀ {v q : Nat} {S : Nat → Prop} (hdiag : ChompLean.IsMex (fun (z : Nat) => Or (S z) (@Eq.{1} Nat z q)) v)\n  (hdef : ChompLean.SourceAllocationHallDefect v S (fun (x : Nat) => False) fun (z : Nat) => @Eq.{1} Nat z q), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.secondFinalHole_yields_postfill_HallDefect",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 175,
+      "typePretty": "∀ {v q z : Nat} {S : Nat → Prop}\n  (hq : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) q)\n  (hqz : @LT.lt.{0} Nat instLTNat q z) (hzv : @LT.lt.{0} Nat instLTNat z v) (hz : Not (S z)),\n  ChompLean.SourceAllocationHallDefect v S (fun (x : Nat) => False) fun (w : Nat) => @Eq.{1} Nat w q",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.postfillHallDefect_iff_secondFinalHole",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 185,
+      "typePretty": "∀ {v q : Nat} {S : Nat → Prop} (hV1 : ChompLean.IsMex S q),\n  Iff (ChompLean.SourceAllocationHallDefect v S (fun (x : Nat) => False) fun (w : Nat) => @Eq.{1} Nat w q)\n    (@Exists.{1} Nat fun (z : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat q z) (And (@LT.lt.{0} Nat instLTNat z v) (Not (S z))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_final_diagonal_source_insert",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 202,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t p : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t),\n  Iff (ChompLean.B f t t p)\n    (Or\n      (ChompLean.B f t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        p)\n      (@Eq.{1} Nat\n        (f t\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        p))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.badDiagonal_finalV1_has_no_second_hole",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 212,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t q v : Nat}\n  (ht : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) t)\n  (hqval :\n    @Eq.{1} Nat\n      (f t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      q)\n  (hV1 :\n    ChompLean.IsMex\n      (ChompLean.B f t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      q)\n  (hdiag : ChompLean.IsMex (ChompLean.B f t t) v),\n  Not\n    (@Exists.{1} Nat fun (z : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat q z)\n        (And (@LT.lt.{0} Nat instLTNat z v)\n          (Not\n            (ChompLean.B f t\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              z))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FY",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 240,
+      "typePretty": "(m : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FPersistX",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 241,
+      "typePretty": "(m : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FQ",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 242,
+      "typePretty": "(m : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FL",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 243,
+      "typePretty": "(m : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R146FinalFrame",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 245,
+      "typePretty": "(m x : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_aligned_final_coordinates",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 265,
+      "typePretty": "∀ (m : Nat),\n  And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FY m) (ChompLean.r146FPersistX m))\n    (And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FPersistX m) (ChompLean.r146FQ m))\n      (And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FQ m) (ChompLean.r146FL m))\n        (And\n          (@Eq.{1} Nat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146FL m)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (ChompLean.r143V m))\n          (@LT.lt.{0} Nat instLTNat (ChompLean.r143T m) (ChompLean.r146FQ m)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_final_tail_interface_separation",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 274,
+      "typePretty": "∀ (m : Nat),\n  And\n    (@Eq.{1} Nat (ChompLean.r143C0 m)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r143T m)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        m))\n    (@Eq.{1} Nat (ChompLean.r143Q m)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r143T m)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) m)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_aligned_drop_final_frame",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 282,
+      "typePretty": "∀ (m : Nat), ChompLean.R146FinalFrame m (ChompLean.r146FQ m)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_aligned_persist_final_frame",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 294,
+      "typePretty": "∀ (m : Nat), ChompLean.R146FinalFrame m (ChompLean.r146FPersistX m)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_drop_and_persist_are_genuinely_distinct",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 307,
+      "typePretty": "∀ (m : Nat),\n  And (@Eq.{1} Nat (ChompLean.r146FQ m) (ChompLean.r146FQ m))\n    (And\n      (Not\n        (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m) (ChompLean.r146FL m)\n          (ChompLean.r146FQ m)))\n      (And (@Ne.{1} Nat (ChompLean.r146FPersistX m) (ChompLean.r146FQ m))\n        (ChompLean.CrossingCore (ChompLean.r143V m) (ChompLean.r146FY m) (ChompLean.r146FQ m) (ChompLean.r146FL m)\n          (ChompLean.r146FPersistX m))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_two_row_tail_no_cap_coexists_with_drop_and_persist",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 332,
+      "typePretty": "∀ (m : Nat) (hm : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) m),\n  And (ChompLean.R146FinalFrame m (ChompLean.r146FQ m))\n    (And (ChompLean.R146FinalFrame m (ChompLean.r146FPersistX m))\n      (And\n        (And (ChompLean.IsMex (ChompLean.R144LowerSource0 m) (ChompLean.r144L0 m))\n          (And (ChompLean.IsMex (ChompLean.R144LowerSource1 m) (ChompLean.r144L1 m))\n            (And (ChompLean.IsMex (ChompLean.R144LowerSource2 m) (ChompLean.r144L2 m))\n              (And (ChompLean.IsMex (ChompLean.R144UpperSource0 m) (ChompLean.r144U0 m))\n                (And (ChompLean.IsMex (ChompLean.R144UpperSource1 m) (ChompLean.r144U1 m))\n                  (ChompLean.IsMex (ChompLean.R144UpperSource2 m) (ChompLean.r144U2 m)))))))\n        (Not\n          (Or (@LE.le.{0} Nat instLENat (ChompLean.r144U0 m) (ChompLean.r143V m))\n            (Or (@LE.le.{0} Nat instLENat (ChompLean.r144U1 m) (ChompLean.r143V m))\n              (@LE.le.{0} Nat instLENat (ChompLean.r144U2 m) (ChompLean.r143V m)))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146SharedG",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 358,
+      "typePretty": "(k : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146SharedC0",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 359,
+      "typePretty": "(k : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146EarlyBlocker",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 361,
+      "typePretty": "(i : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146EarlyFreeze",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 362,
+      "typePretty": "(i : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146LateBlocker",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 363,
+      "typePretty": "(k j : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146LateRank",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 364,
+      "typePretty": "(k j : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146LateFreeze",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 365,
+      "typePretty": "(k j : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146FinalFreeze",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 367,
+      "typePretty": "(k : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_critical_midpoint_coordinates",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 371,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  And\n    (@Eq.{1} Nat\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.r146SharedG k))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k) (ChompLean.FrameA k)))\n    (And\n      (@Eq.{1} Nat (ChompLean.r146SharedC0 k)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r146SharedG k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (And (@LT.lt.{0} Nat instLTNat (ChompLean.FrameT k) (ChompLean.r146SharedC0 k))\n        (@Eq.{1} Nat (ChompLean.FrameQ k)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.FrameV k)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_early_is_frameBlocker",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 379,
+      "typePretty": "∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i)\n  (hik :\n    @LE.le.{0} Nat instLENat i\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  ChompLean.FrameBlocker k (ChompLean.r146EarlyBlocker i)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_is_frameBlocker",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 391,
+      "typePretty": "∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)\n  (hjk :\n    @LE.le.{0} Nat instLENat j\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  ChompLean.FrameBlocker k (ChompLean.r146LateBlocker k j)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_early_freeze_rails",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 407,
+      "typePretty": "∀ {k i : Nat} (hi : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) i)\n  (hik :\n    @LE.le.{0} Nat instLENat i\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  And (@LT.lt.{0} Nat instLTNat (ChompLean.r146EarlyFreeze i) (ChompLean.r146EarlyBlocker i))\n    (And\n      (@LE.le.{0} Nat instLENat\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r146EarlyBlocker i)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (ChompLean.r146EarlyFreeze i))\n      (And\n        (@LE.le.{0} Nat instLENat (ChompLean.r146EarlyFreeze i)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) i)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@LE.le.{0} Nat instLENat (ChompLean.r146EarlyFreeze i)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) k))))",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_freeze_rails",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 416,
+      "typePretty": "∀ {k j : Nat} (hj : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) j)\n  (hjk :\n    @LE.le.{0} Nat instLENat j\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)),\n  And (@LT.lt.{0} Nat instLTNat (ChompLean.r146LateFreeze k j) (ChompLean.r146LateBlocker k j))\n    (And\n      (@LE.le.{0} Nat instLENat\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r146LateBlocker k j)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (ChompLean.r146LateFreeze k j))\n      (And\n        (@LE.le.{0} Nat instLENat (ChompLean.r146LateFreeze k j)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (ChompLean.r146LateRank k j))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@LE.le.{0} Nat instLENat (ChompLean.r146LateFreeze k j)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))) k))))",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_freeze_is_birth_row_minus_one",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 425,
+      "typePretty": "∀ (k j : Nat),\n  @Eq.{1} Nat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146LateFreeze k j)\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.r146LateBlocker k j)\n      (ChompLean.r146LateRank k j))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_late_freeze_strict",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 434,
+      "typePretty": "∀ {k i j : Nat} (hij : @LT.lt.{0} Nat instLTNat i j),\n  @LT.lt.{0} Nat instLTNat (ChompLean.r146LateFreeze k i) (ChompLean.r146LateFreeze k j)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_freeze_schedule_boundary_and_deadline",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 440,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  And\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.r146EarlyFreeze\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k))\n      (ChompLean.r146LateFreeze k (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (And\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.r146LateFreeze k\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (ChompLean.r146FinalFreeze k))\n      (And (@Eq.{1} Nat (ChompLean.r146FinalFreeze k) (ChompLean.FrameT k))\n        (@LT.lt.{0} Nat instLTNat (ChompLean.r146FinalFreeze k) (ChompLean.r146SharedC0 k))))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_final_freeze_compatibility",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 450,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  And (@LE.le.{0} Nat instLENat (ChompLean.FrameT k) (ChompLean.r146FinalFreeze k))\n    (And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FinalFreeze k) (ChompLean.FrameQ k))\n      (And\n        (@LE.le.{0} Nat instLENat\n          (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.FrameQ k)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (ChompLean.r146FinalFreeze k))\n        (And\n          (@LE.le.{0} Nat instLENat (ChompLean.r146FinalFreeze k)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (And\n            (@LE.le.{0} Nat instLENat\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.FrameQ k)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146FinalFreeze k)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (And\n              (@LT.lt.{0} Nat instLTNat\n                (ChompLean.r146LateFreeze k\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                (ChompLean.r146FinalFreeze k))\n              (@LT.lt.{0} Nat instLTNat (ChompLean.r146FinalFreeze k) (ChompLean.r146SharedC0 k)))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R146RangeAllocation",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 465,
+      "typePretty": "(k p : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R146BlockerAllocation",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 468,
+      "typePretty": "(k p : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R146SharedS0",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 471,
+      "typePretty": "(k p : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R146SharedS1",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 474,
+      "typePretty": "(k p : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R146SharedS2",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 477,
+      "typePretty": "(k p : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_range_blocker_cover",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 480,
+      "typePretty": "∀ (k p : Nat),\n  Iff (ChompLean.R146SharedS0 k p)\n    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)\n      (@LE.le.{0} Nat instLENat p (ChompLean.FrameV k)))",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_three_tail_mex_packet",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 491,
+      "typePretty": "∀ (k : Nat),\n  And\n    (ChompLean.IsMex (ChompLean.R146SharedS0 k)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (And\n      (ChompLean.IsMex (ChompLean.R146SharedS1 k)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (And\n        (ChompLean.IsMex (ChompLean.R146SharedS2 k)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n        (Not\n          (Or\n            (@LE.le.{0} Nat instLENat\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (ChompLean.FrameV k))\n            (Or\n              (@LE.le.{0} Nat instLENat\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                (ChompLean.FrameV k))\n              (@LE.le.{0} Nat instLENat\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n                (ChompLean.FrameV k)))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_shared_range_count_fits_before_midpoint",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 531,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) k),\n  And\n    (@Eq.{1} Nat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.FrameV k)\n        (ChompLean.FrameCount k (ChompLean.FrameV k)))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameT k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (@LT.lt.{0} Nat instLTNat (ChompLean.FrameT k)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.r146SharedC0 k)\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r146_Ak_drop_and_saturated_tail_unified_frame",
+      "module": "R146FinalHoleTripleTailUnification",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 542,
+      "typePretty": "∀ (k : Nat) (hk : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) k),\n  And (ChompLean.FrameBlocker k (ChompLean.FrameY k))\n    (And (ChompLean.FrameBlocker k (ChompLean.FrameQ k))\n      (And (@LT.lt.{0} Nat instLTNat (ChompLean.r146FinalFreeze k) (ChompLean.r146SharedC0 k))\n        (And\n          (And\n            (ChompLean.IsMex (ChompLean.R146SharedS0 k)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (And\n              (ChompLean.IsMex (ChompLean.R146SharedS1 k)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n              (ChompLean.IsMex (ChompLean.R146SharedS2 k)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameV k)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))))\n          (And (ChompLean.IsMex (ChompLean.PrevSource (ChompLean.FrameQ k) (ChompLean.FrameL k)) (ChompLean.FrameQ k))\n            (And\n              (ChompLean.IsMex\n                (fun (z : Nat) =>\n                  Or (ChompLean.PrevSource (ChompLean.FrameQ k) (ChompLean.FrameL k) z)\n                    (@Eq.{1} Nat z (ChompLean.FrameQ k)))\n                (ChompLean.FrameL k))\n              (And\n                (ChompLean.CrossingCore\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                  (ChompLean.FrameY k) (ChompLean.FrameQ k) (ChompLean.FrameL k)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                (And\n                  (ChompLean.IsMex\n                    (fun (z : Nat) =>\n                      Or\n                        (ChompLean.CrossingCore\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)\n                            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                          (ChompLean.FrameY k) (ChompLean.FrameQ k) (ChompLean.FrameL k) z)\n                        (@Eq.{1} Nat z (ChompLean.FrameQ k)))\n                    (ChompLean.FrameY k))\n                  (And\n                    (ChompLean.IsMex\n                      (fun (z : Nat) =>\n                        Or\n                          (ChompLean.CrossingCore\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)\n                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                            (ChompLean.FrameY k) (ChompLean.FrameQ k) (ChompLean.FrameL k) z)\n                          (Or (@Eq.{1} Nat z (ChompLean.FrameL k)) (@Eq.{1} Nat z (ChompLean.FrameY k))))\n                      (ChompLean.FrameQ k))\n                    (ChompLean.IsMex\n                      (fun (z : Nat) =>\n                        Or\n                          (ChompLean.CrossingCore\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)\n                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                            (ChompLean.FrameY k) (ChompLean.FrameQ k) (ChompLean.FrameL k) z)\n                          (Or (@Eq.{1} Nat z (ChompLean.FrameL k))\n                            (Or (@Eq.{1} Nat z (ChompLean.FrameY k)) (@Eq.{1} Nat z (ChompLean.FrameQ k)))))\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.FrameL k)\n                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "33ce8ffa36d12f1d710bd76d34a165b3b10de738367137a5c39e623353f071d4",
+      "sourcePath": "lean/core/R146FinalHoleTripleTailUnification.lean",
+      "universeParameters": []
+    }
+  ],
+  "fullExpressionTrees": "audit/full/lean/declarations.jsonl",
+  "documentationAmendment": "audit/full/lean-documentation-amendment/receipt.json"
+}

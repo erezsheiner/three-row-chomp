@@ -1,0 +1,222 @@
+{
+  "module": "R134UpperRailCleanHistoryReduction",
+  "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+  "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+  "declarationCount": 14,
+  "theoremDeclarationCount": 13,
+  "proofValuedDeclarationCount": 13,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.ColumnNotYet",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 18,
+      "typePretty": "(f : Nat → Nat → Nat) → (top c z : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.colHistPred_iff_colTail_of_no_diagPrefix",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 43,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {top c z : Nat} (hnoDiag : Not (ChompLean.DiagPrefix f top c z)),\n  Iff (ChompLean.ColHistPred f top c z) (ChompLean.ColTail f top c z)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.colHistPred_iff_colTail_of_no_diagPrefix._proof_1_1",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {top c z : Nat} (a : Nat) (hca : @LE.le.{0} Nat instLENat c a)\n  (hac : Not (@LT.lt.{0} Nat instLTNat c a)), Not (@Eq.{1} Nat a c) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.colHistPred_mono_top",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 34,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q top c z : Nat} (hqt : @LE.le.{0} Nat instLENat q top)\n  (hhist : ChompLean.ColHistPred f q c z), ChompLean.ColHistPred f top c z",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.colHistPred_mono_top._proof_1_1",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q top c z : Nat} (hqt : @LE.le.{0} Nat instLENat q top) (a : Nat)\n  (haq : @LT.lt.{0} Nat instLTNat a q), Not (@LT.lt.{0} Nat instLTNat a top) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_clean_iff_no_parkedOnly_before_freeze",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 94,
+      "typePretty": "∀ {v r c : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hcr : @LT.lt.{0} Nat instLTNat c r),\n  Iff (Not (ChompLean.ColHistPred ChompLean.gameF v c v)) (Not (ChompLean.ParkedOnly ChompLean.gameF v c v))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_parkedOnly_iff_colHistPred_before_freeze",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 74,
+      "typePretty": "∀ {v r c : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hcr : @LT.lt.{0} Nat instLTNat c r),\n  Iff (ChompLean.ParkedOnly ChompLean.gameF v c v) (ChompLean.ColHistPred ChompLean.gameF v c v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_parkedOnly_iff_colHistPred_before_freeze._proof_1_1",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r c : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (hcr : @LT.lt.{0} Nat instLTNat c r) (b : Nat) (hbc : @LT.lt.{0} Nat instLTNat b c)\n  (hvalue : @Eq.{1} Nat (ChompLean.gameF v b) v), Not (@LE.le.{0} Nat instLENat b v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_parkedOnly_iff_colHistPred_before_freeze._proof_1_2",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r c : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v) (b : Nat)\n  (hvalue : @Eq.{1} Nat (ChompLean.gameF v b) v), Not (@LE.le.{0} Nat instLENat r v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_parkedOnly_iff_colHistPred_before_freeze._proof_1_3",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r c : Nat} (hcr : @LT.lt.{0} Nat instLTNat c r) (b : Nat) (hbc : @LT.lt.{0} Nat instLTNat b c)\n  (heq : @Eq.{1} Nat b r), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.not_colHistPred_iff_columnNotYet",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 23,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {top c z : Nat}, Iff (Not (ChompLean.ColHistPred f top c z)) (ChompLean.ColumnNotYet f top c z)",
+      "axioms": [],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.old_history_unmasks_as_parkedOnly_before_freeze",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 117,
+      "typePretty": "∀ {q v r previewHost c : Nat} (hqv : @LE.le.{0} Nat instLENat q v) (hrv : @LT.lt.{0} Nat instLTNat r v)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v) (hcr : @LT.lt.{0} Nat instLTNat c r)\n  (hhc : @LT.lt.{0} Nat instLTNat previewHost c) (hhost : @Eq.{1} Nat (ChompLean.gameF q previewHost) v)\n  (hhist : ChompLean.ColHistPred ChompLean.gameF q c v),\n  And (Not (ChompLean.ParkedOnly ChompLean.gameF q c v)) (ChompLean.ParkedOnly ChompLean.gameF v c v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedOnly_iff_colHistPred_of_no_diag_no_row",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 60,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {top c z : Nat} (hnoDiag : Not (ChompLean.DiagPrefix f top c z))\n  (hnoRow : Not (ChompLean.C f top c z)), Iff (ChompLean.ParkedOnly f top c z) (ChompLean.ColHistPred f top c z)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.preview_left_not_parkedOnly",
+      "module": "R134UpperRailCleanHistoryReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 106,
+      "typePretty": "∀ {q previewHost c z : Nat} (hhc : @LT.lt.{0} Nat instLTNat previewHost c)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF q previewHost) z), Not (ChompLean.ParkedOnly ChompLean.gameF q c z)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "5beb1c7195e1b00137f67c7276403bdd25977e78ecbba564ffae9549b02438b3",
+      "sourcePath": "lean/core/R134UpperRailCleanHistoryReduction.lean",
+      "universeParameters": []
+    }
+  ]
+}

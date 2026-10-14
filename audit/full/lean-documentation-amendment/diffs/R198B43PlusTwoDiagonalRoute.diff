@@ -1,0 +1,32 @@
+--- before/R198B43PlusTwoDiagonalRoute.lean
++++ after/R198B43PlusTwoDiagonalRoute.lean
+@@ -9,12 +9,14 @@
+ /-!
+ # R198: the D/S route to the `u+2` diagonal classification
+ 
+-For a first skipped-affine continuation, the row-64 skipped-cell
+-classification already makes `u+1` a blocker.  The B31 target freeze makes
++Assuming `SkippedOffsetCellIsBlockerFrom64` and
++`GameFNoThreeConsecutiveBlockers`, the row-64 skipped-cell classification
++for a first skipped-affine continuation makes `u+1` a blocker.  The B31 target freeze makes
+ `u` a blocker independently.  Hence NoTriple rules out blocker status for
+ `u+2`, and `opening_cover` puts `u+2` in the diagonal class.
+ 
+-Only the first successor row must be at least 64.  Since the largest skipped
++In addition to those two supplied laws, the first successor row must be
++at least 64.  Since the largest skipped
+ lag is twenty, this condition is automatic for `u >= 83`.  It also classifies
+ `u+2` without assuming that the second affine successor actually occurs.
+ 
+@@ -145,8 +147,9 @@
+       _hmSkipped, hmL, _hhost, _hfirst⟩
+   exact ⟨a, by omega, hax, ha⟩
+ 
+-/-- Concrete high source reduction from the two proposed structural inputs.
+-The D/S half is discharged here; only the owner-left half remains external. -/
++/-- Under the supplied skipped-blocker and NoTriple premises, the D/S
++implication is proved here. Combining it with the separately supplied
++owner-left premise yields the high past-diagonal source conclusion. -/
+ theorem b43FirstSuccessorPastDiagonalFrom83_of_skippedBlocker_noTriple_ownerLeft
+     (hblocker : SkippedOffsetCellIsBlockerFrom64)
+     (hnoTriple : GameFNoThreeConsecutiveBlockers)

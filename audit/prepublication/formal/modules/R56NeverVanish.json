@@ -1,0 +1,194 @@
+{
+  "module": "R56NeverVanish",
+  "sourcePath": "lean/core/R56NeverVanish.lean",
+  "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+  "declarationCount": 13,
+  "theoremDeclarationCount": 10,
+  "proofValuedDeclarationCount": 10,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.PastDiagonalValueBefore",
+      "module": "R56NeverVanish",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 36,
+      "typePretty": "(M : ChompLean.RecurrenceModel) → (q v : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.PastDiagonalValueBefore.eq_1",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) (q v : Nat),\n  @Eq.{1} Prop (ChompLean.PastDiagonalValueBefore M q v)\n    (@Exists.{1} Nat fun (a : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat a q) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M a a) v))",
+      "axioms": [],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.RecurrenceModel.mk.congr_simp",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (f f_1 : Nat → Nat → Nat) (e_f : @Eq.{1} (Nat → Nat → Nat) f f_1)\n  (fixed_q_injective :\n    ∀ {q b₁ b₂ : Nat},\n      @LE.le.{0} Nat instLENat b₁ q → @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂)\n  (diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a))\n  (value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r))\n  (diagonal_general_no_attack :\n    ∀ {i s q : Nat}, @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False)\n  (diagonal_no_attack :\n    ∀ {a b p : Nat},\n      @LT.lt.{0} Nat instLTNat a b →\n        @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False)\n  (rowstart_diagonal_attack :\n    ∀ {p r a : Nat},\n      @Eq.{1} Nat (f p r) p →\n        @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False)\n  (rowstart_no_middle :\n    ∀ {p r q : Nat},\n      @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p)\n  (constant_step :\n    ∀ {q r : Nat},\n      @LT.lt.{0} Nat instLTNat r q →\n        @LT.lt.{0} Nat instLTNat (f q r)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n          @Eq.{1} Nat\n            (f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              r)\n            (f q r))\n  (mex_no_skip :\n    ∀ {q r k : Nat},\n      @LE.le.{0} Nat instLENat r q →\n        @LT.lt.{0} Nat instLTNat q (f q r) →\n          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →\n            @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k)\n  (rightmost_hole :\n    ∀ {r q p : Nat},\n      @LT.lt.{0} Nat instLTNat r q →\n        @LT.lt.{0} Nat instLTNat q p →\n          Not (ChompLean.C f q r p) →\n            (∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →\n              @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r))\n  (rowstart_not_R :\n    ∀ {p r q : Nat},\n      @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p))\n  (opening_cover :\n    ∀ {p : Nat},\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →\n        Or (@Exists.{1} Nat fun (a : Nat) => And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))\n          (@Exists.{1} Nat fun (r : Nat) => And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))),\n  @Eq.{1} ChompLean.RecurrenceModel\n    (ChompLean.RecurrenceModel.mk f fixed_q_injective diagonal_gt value_gt_index diagonal_general_no_attack\n      diagonal_no_attack rowstart_diagonal_attack rowstart_no_middle constant_step mex_no_skip rightmost_hole\n      rowstart_not_R opening_cover)\n    (ChompLean.RecurrenceModel.mk f_1\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {q b₁ b₂ : Nat},\n            @LE.le.{0} Nat instLENat b₁ q →\n              @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂)\n        fixed_q_injective f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) => ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a)) diagonal_gt f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) => ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r))\n        value_gt_index f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {i s q : Nat},\n            @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False)\n        diagonal_general_no_attack f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {a b p : Nat},\n            @LT.lt.{0} Nat instLTNat a b →\n              @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False)\n        diagonal_no_attack f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {p r a : Nat},\n            @Eq.{1} Nat (f p r) p →\n              @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False)\n        rowstart_diagonal_attack f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {p r q : Nat},\n            @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p)\n        rowstart_no_middle f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {q r : Nat},\n            @LT.lt.{0} Nat instLTNat r q →\n              @LT.lt.{0} Nat instLTNat (f q r)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n                @Eq.{1} Nat\n                  (f\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    r)\n                  (f q r))\n        constant_step f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {q r k : Nat},\n            @LE.le.{0} Nat instLENat r q →\n              @LT.lt.{0} Nat instLTNat q (f q r) →\n                @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →\n                  @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k)\n        mex_no_skip f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {r q p : Nat},\n            @LT.lt.{0} Nat instLTNat r q →\n              @LT.lt.{0} Nat instLTNat q p →\n                Not (ChompLean.C f q r p) →\n                  (∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →\n                    @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r))\n        rightmost_hole f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {p r q : Nat},\n            @Eq.{1} Nat (f p r) p →\n              @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p))\n        rowstart_not_R f_1 e_f)\n      (@Eq.ndrec.{0, 1} (Nat → Nat → Nat) f\n        (fun (f : Nat → Nat → Nat) =>\n          ∀ {p : Nat},\n            @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →\n              Or (@Exists.{1} Nat fun (a : Nat) => And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))\n                (@Exists.{1} Nat fun (r : Nat) => And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p)))\n        opening_cover f_1 e_f))",
+      "axioms": [],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.RowAbsent",
+      "module": "R56NeverVanish",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 32,
+      "typePretty": "(f : Nat → Nat → Nat) → (q v : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.RowPresent",
+      "module": "R56NeverVanish",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 27,
+      "typePretty": "(f : Nat → Nat → Nat) → (q v : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nonpast_below_next_diagonal_cannot_vanish",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 119,
+      "typePretty": "∀ {t v : Nat} (hvPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)\n  (hvBelow :\n    @LT.lt.{0} Nat instLTNat v\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hvNonpast :\n    Not\n      (@Exists.{1} Nat fun (a : Nat) =>\n        And\n          (@LT.lt.{0} Nat instLTNat a\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@Eq.{1} Nat (ChompLean.gameF a a) v))),\n  Not\n    (And (ChompLean.RowPresent ChompLean.gameF t v)\n      (ChompLean.RowAbsent ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        v))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_nonpast_below_next_diagonal_row_present",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 108,
+      "typePretty": "∀ {t v : Nat} (hvPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)\n  (hvBelow :\n    @LT.lt.{0} Nat instLTNat v\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hvNonpast :\n    Not\n      (@Exists.{1} Nat fun (a : Nat) =>\n        And\n          (@LT.lt.{0} Nat instLTNat a\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@Eq.{1} Nat (ChompLean.gameF a a) v))),\n  ChompLean.RowPresent ChompLean.gameF\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    v",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameRecurrenceModel.eq_1",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "@Eq.{1} ChompLean.RecurrenceModel ChompLean.gameRecurrenceModel\n  (ChompLean.RecurrenceModel.mk ChompLean.gameF (@ChompLean.gameRecurrenceModel._proof_1)\n    ChompLean.gameRecurrenceModel._proof_2 @ChompLean.gameRecurrenceModel._proof_3\n    @ChompLean.gameRecurrenceModel._proof_4 @ChompLean.gameRecurrenceModel._proof_5\n    @ChompLean.gameRecurrenceModel._proof_6 @ChompLean.gameRecurrenceModel._proof_7\n    @ChompLean.gameRecurrenceModel._proof_8 @ChompLean.gameRecurrenceModel._proof_9\n    @ChompLean.gameRecurrenceModel._proof_10 @ChompLean.gameRecurrenceModel._proof_11 fun {p : Nat} =>\n    @ChompLean.opening_cover_of_complete ChompLean.gameF ChompLean.game_complete p)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_nonpast_below_diagonal_row_present",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 82,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q v : Nat}\n  (hvPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)\n  (hvBelow : @LT.lt.{0} Nat instLTNat v (ChompLean.RecurrenceModel.f M q q))\n  (hvNonpast : Not (ChompLean.PastDiagonalValueBefore M q v)), ChompLean.RowPresent (ChompLean.RecurrenceModel.f M) q v",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_nonpast_below_diagonal_strict_prefix",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 59,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {q v : Nat}\n  (hvPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)\n  (hvBelow : @LT.lt.{0} Nat instLTNat v (ChompLean.RecurrenceModel.f M q q))\n  (hvNonpast : Not (ChompLean.PastDiagonalValueBefore M q v)), ChompLean.C (ChompLean.RecurrenceModel.f M) q q v",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.recurrence_nonpast_below_next_diagonal_cannot_vanish",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 93,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {t v : Nat}\n  (hvPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)\n  (hvBelow :\n    @LT.lt.{0} Nat instLTNat v\n      (ChompLean.RecurrenceModel.f M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hvNonpast :\n    Not\n      (ChompLean.PastDiagonalValueBefore M\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        v)),\n  Not\n    (And (ChompLean.RowPresent (ChompLean.RecurrenceModel.f M) t v)\n      (ChompLean.RowAbsent (ChompLean.RecurrenceModel.f M)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        v))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rowAbsent_iff_no_strict_prefix_and_not_diagonal",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 40,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q v : Nat},\n  Iff (ChompLean.RowAbsent f q v) (And (Not (ChompLean.C f q q v)) (@Ne.{1} Nat (f q q) v))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.rowAbsent_iff_no_strict_prefix_and_not_diagonal._proof_1_1",
+      "module": "R56NeverVanish",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q v : Nat} (b : Nat) (hbq : @LE.le.{0} Nat instLENat b q)\n  (hlt : Not (@LT.lt.{0} Nat instLTNat b q)), Not (@Eq.{1} Nat b q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "874f574c64e630815773c9bb5b9ee48f6561fcaf35c5f7ee6ea2768b55914e4d",
+      "sourcePath": "lean/core/R56NeverVanish.lean",
+      "universeParameters": []
+    }
+  ]
+}

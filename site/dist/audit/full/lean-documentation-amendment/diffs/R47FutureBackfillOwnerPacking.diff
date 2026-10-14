@@ -1,0 +1,16 @@
+--- before/R47FutureBackfillOwnerPacking.lean
++++ after/R47FutureBackfillOwnerPacking.lean
+@@ -29,9 +29,10 @@
+   have hcard := nodup_subset_length_le hnd hsub
+   simpa using hcard
+ 
+-/-- Quantitative upper-half packing.  This is the reusable cardinal core of
+-the `s≥7` argument: `k` distinct owners satisfying `s<2*i` force
+-`2*k+1≤s`. -/
++/-- Quantitative upper-half packing. For `s > 0`, a duplicate-free list of
++`k` owners with every owner `i < s` and `s < 2*i` satisfies `2*k+1 <= s`.
++The canonical future-first-gap application supplies at least three owners
++and `s >= 7`. -/
+ theorem nodup_strict_upper_half_length_bound
+     {xs : List Nat} {s : Nat}
+     (hs : 0 < s) (hnd : xs.Nodup)

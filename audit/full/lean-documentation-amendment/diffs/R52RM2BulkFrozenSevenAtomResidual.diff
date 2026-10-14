@@ -1,0 +1,22 @@
+--- before/R52RM2BulkFrozenSevenAtomResidual.lean
++++ after/R52RM2BulkFrozenSevenAtomResidual.lean
+@@ -28,7 +28,7 @@
+   (EventETriplePrefixBandSlots s delta c b0).filter
+     (fun g => decide (gameF s g = s + 2))
+ 
+-/-- The seven feasible predecessor pairs of the maximal high atom. -/
++/-- The seven predecessor pairs permitted by the necessary high-atom menu. -/
+ def MaximalEventEHighSevenConfiguration
+     (s c b0 bz b1 b2 : Nat) : Prop :=
+   (b2 = bz /\ gameF s b1 = s + 1) \/
+@@ -39,8 +39,8 @@
+   (b2 = s + 1 /\ b1 = c) \/
+   (b2 = s + 1 /\ b1 = s)
+ 
+-/-- The existing high atom really has seven, rather than eight, feasible
+-predecessor configurations. -/
++/-- Every existing high atom satisfies one of these seven predecessor
++combinations. No canonical realization of every combination is proved. -/
+ theorem maximalEventEHighSurvivorAtom_seven_configuration
+     {s c b0 bz g b1 b2 r : Nat}
+     (hAtom : MaximalEventEHighSurvivorAtom

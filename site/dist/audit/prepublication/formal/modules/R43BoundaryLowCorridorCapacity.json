@@ -1,0 +1,375 @@
+{
+  "module": "R43BoundaryLowCorridorCapacity",
+  "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+  "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+  "declarationCount": 23,
+  "theoremDeclarationCount": 23,
+  "proofValuedDeclarationCount": 23,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.future_diagonal_below_old_diagonal_has_old_row_host",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 27,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {s y : Nat} (hsy : @LT.lt.{0} Nat instLTNat s y)\n  (hbelow : @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M y y) (ChompLean.RecurrenceModel.f M s s)),\n  ChompLean.C (ChompLean.RecurrenceModel.f M) s s (ChompLean.RecurrenceModel.f M y y)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_diagonal_below_old_diagonal_has_old_row_host._proof_1_1",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {s y : Nat} (hsy : @LT.lt.{0} Nat instLTNat s y)\n  (this : @LT.lt.{0} Nat instLTNat y (ChompLean.RecurrenceModel.f M y y)),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (ChompLean.RecurrenceModel.f M y y)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_diagonal_below_old_diagonal_has_old_row_host._proof_1_2",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {s y : Nat} (hsy : @LT.lt.{0} Nat instLTNat s y) (a : Nat)\n  (has : @LT.lt.{0} Nat instLTNat a s) (hay : @Eq.{1} Nat a y), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_corridor_first_transition",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 192,
+      "typePretty": "∀ {s r : Nat}\n  (hnext :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      r)\n  (hcorridor :\n    ∀ (y : Nat),\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          y →\n        @LE.le.{0} Nat instLENat y r →\n          @LT.lt.{0} Nat instLTNat (ChompLean.gameF y y) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)),\n  And\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n    (Or\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (Or\n        (ChompLean.DipFirstGapPastDiagonal ChompLean.gameRecurrenceModel\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (Or\n          (ChompLean.DipFirstGapFutureDiagonalLoss ChompLean.gameRecurrenceModel\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (ChompLean.DipFirstGapLateBlockerLoss ChompLean.gameRecurrenceModel\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_corridor_first_transition._proof_1_1",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_corridor_first_transition._proof_1_2",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat}\n  (hidx :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_corridor_first_transition._proof_1_3",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat}\n  (hbelow :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hne :\n    @Ne.{1} Nat\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 71,
+      "typePretty": "∀ {s r : Nat} (hLate : ChompLean.DipFirstGapLateBlockerLoss ChompLean.gameRecurrenceModel s)\n  (hboundary :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        s)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hrLate :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (hcorridor :\n    ∀ (y : Nat),\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          y →\n        @LE.le.{0} Nat instLENat y r →\n          @LT.lt.{0} Nat instLTNat (ChompLean.gameF y y) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s s)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_1",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 : Nat)\n  (hdiag :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_10",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat}\n  (hrLate :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (_r0 v y : Nat)\n  (hyRange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        y)\n      (@LT.lt.{0} Nat instLTNat y\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r s)))),\n  Not (@LE.le.{0} Nat instLENat y r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_11",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 : Nat)\n  (_hstart0 :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n        _r0)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (v y : Nat)\n  (hgap :\n    @LT.lt.{0} Nat instLTNat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel s s))\n  (hyLow :\n    @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel y y)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)),\n  Not\n      (@LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel y y)\n        (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel s s)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_12",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 v y : Nat)\n  (hyRange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        y)\n      (@LT.lt.{0} Nat instLTNat y\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r s)))),\n  Not (@LT.lt.{0} Nat instLTNat s y) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_13",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat}\n  (hrLate :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (_r0 : Nat)\n  (hex :\n    ∀ (v : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n          (@List.cons.{0} Nat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n            (@List.cons.{0} Nat\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@List.map.{0, 0} Nat Nat (fun (y : Nat) => ChompLean.gameF y y)\n                (List.range'\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r s)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n          v →\n        @Exists.{1} Nat fun (c : Nat) => And (@LT.lt.{0} Nat instLTNat c s) (@Eq.{1} Nat (ChompLean.gameF s c) v))\n  (hraw :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r s)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      s),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s s)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_2",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 : Nat)\n  (_hstart0 :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n        _r0)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (htz :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hstartT :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        s)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hgap :\n    @LT.lt.{0} Nat instLTNat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel s s)),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel s s)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_3",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat s\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_4",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 y : Nat)\n  (hyRange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        y)\n      (@LT.lt.{0} Nat instLTNat y\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r s)))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        y) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_5",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat}\n  (hrLate :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (_r0 y : Nat)\n  (hyRange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        y)\n      (@LT.lt.{0} Nat instLTNat y\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r s)))),\n  Not (@LE.le.{0} Nat instLENat y r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_6",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 y : Nat)\n  (hyLow :\n    @LT.lt.{0} Nat instLTNat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_7",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 y : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat s\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_8",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 : Nat)\n  (_hstart0 :\n    @Eq.{1} Nat\n      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n        _r0)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (htz :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hztEq :\n    @Eq.{1} Nat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_low_diagonal_corridor_capacity._proof_1_9",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s r : Nat} (_r0 v y : Nat)\n  (hyRange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        y)\n      (@LT.lt.{0} Nat instLTNat y\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r s)))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        y) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_boundary_v1_near_midpoint_forces_short_low_corridor",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 221,
+      "typePretty": "∀ {s r : Nat} (hLate : ChompLean.DipFirstGapLateBlockerLoss ChompLean.gameRecurrenceModel s)\n  (hboundary :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        s)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hrLate :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r)\n  (hrz : @LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hstart :\n    @Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)\n      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))\n  (hnear :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)),\n  And\n    (@LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s s))\n    (∀ (y : Nat),\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          y →\n        @LE.le.{0} Nat instLENat y r →\n          @LT.lt.{0} Nat instLTNat (ChompLean.gameF y y) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R43BoundaryLowCorridorCapacity.0.ChompLean.r43_nodup_map_of_injective_on",
+      "module": "R43BoundaryLowCorridorCapacity",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 47,
+      "typePretty": "∀ {alpha beta : Type} [inst : BEq.{0} alpha] [@LawfulBEq.{0} alpha inst] [inst : BEq.{0} beta]\n  [@LawfulBEq.{0} beta inst] (f : alpha → beta) (xs : List.{0} alpha) (hxs : @List.Nodup.{0} alpha xs)\n  (hinj :\n    ∀ (x : alpha),\n      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x →\n        ∀ (y : alpha),\n          @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs y →\n            @Eq.{1} beta (f x) (f y) → @Eq.{1} alpha x y),\n  @List.Nodup.{0} beta (@List.map.{0, 0} alpha beta f xs)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "4cfb87a2a40f022453d1dfc9be0787a783df871b7dcc3138a5d206da02b8d0c8",
+      "sourcePath": "lean/core/R43BoundaryLowCorridorCapacity.lean",
+      "universeParameters": []
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+--- before/R55BandHitFourthClosure.lean
++++ after/R55BandHitFourthClosure.lean
+@@ -7,6 +7,11 @@
+ namespace ChompLean
+ 
+ /-!
++Publication scope: The game-specific margin Event E and RM2 specializations below retain their
++explicit UnitDip, numerical-margin, dip and residual/certificate hypotheses.
++Generic source, packing and overlap lemmas retain only the assumptions
++displayed in their own signatures.
++
+ R55: two genuine reductions of the remaining propagated Event-E atoms.
+ 
+ First, a fourth-edge packet hit after the no-third-dip branch is not an
+@@ -21,7 +26,7 @@
+ 
+ Second, the four-prefix propagation cannot continue as an unbounded menu.
+ Every individual four-prefix value either is (or becomes) a completed row
+-start, hence is permanent, or has a first loss edge no later than the row
++start, hence is permanent, or has a loss edge no later than the row
+ whose index is the value itself.  Since every such value is below `z`, this
+ is a finite induction horizon internal to the existing certificate.
+ 
+@@ -347,7 +352,7 @@
+         exact ⟨k, by omega, hPk, hloss⟩
+ 
+ /-- Finite fate of one four-prefix value: permanent completed row start, or
+-an exact first loss edge before `z`. -/
++an adjacent loss edge before `z`. -/
+ def EventEFourPrefixFiniteFate
+     (s z g : Nat) : Prop :=
+   (exists p r,

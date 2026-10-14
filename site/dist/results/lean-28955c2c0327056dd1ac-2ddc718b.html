@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encoding · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Uniqueness and game foundations · lean</p>
+<h1>Encoding</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/ChompLean/Encoding.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/ChompLean.Encoding.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/ChompLean.Encoding.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 90 declarations</summary><ul class="declarations"><li><code>ChompLean.CompleteEncoding</code><pre class="prose">(f : Nat → Nat → Nat) → Prop</pre></li><li><code>ChompLean.EncodedExists</code><pre class="prose">Prop</pre></li><li><code>ChompLean.EncodedPosition</code><pre class="prose">(q r p : Nat) → Prop</pre></li><li><code>ChompLean.Encodes</code><pre class="prose">(f : Nat → Nat → Nat) → Prop</pre></li><li><code>ChompLean.encodedPosition_unique</code><pre class="prose">∀ {q r p₁ p₂ : Nat} (h₁ : ChompLean.EncodedPosition q r p₁) (h₂ : ChompLean.EncodedPosition q r p₂), @Eq.{1} Nat p₁ p₂</pre></li><li><code>ChompLean.encodedPosition_unique._proof_1_1</code><pre class="prose">∀ {q r a b : Nat} (hra : @LT.lt.{0} Nat instLTNat r a),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) a) → False</pre></li><li><code>ChompLean.encodedPosition_unique._proof_1_4</code><pre class="prose">∀ {q r a b : Nat} (hab : @LT.lt.{0} Nat instLTNat a b) (hqa : @LE.le.{0} Nat instLENat q a)
+  (hbq : @LT.lt.{0} Nat instLTNat b q), False</pre></li><li><code>ChompLean.encodedPosition_unique._proof_1_5</code><pre class="prose">∀ {p₁ p₂ : Nat} (hlt : Not (@LT.lt.{0} Nat instLTNat p₁ p₂)) (hgt : Not (@LT.lt.{0} Nat instLTNat p₂ p₁)),
+  Not (@Eq.{1} Nat p₁ p₂) → False</pre></li><li><code>ChompLean.encodedValue</code><pre class="prose">(hex : ChompLean.EncodedExists) → (q r : Nat) → Nat</pre></li><li><code>ChompLean.encodedValue_complete</code><pre class="prose">∀ (hex : ChompLean.EncodedExists), ChompLean.CompleteEncoding (ChompLean.encodedValue fun {q r : Nat} =&gt; @hex q r)</pre></li><li><code>ChompLean.encodedValue_complete._proof_1_1</code><pre class="prose">∀ {p q r : Nat} (h_rp : @LT.lt.{0} Nat instLTNat r p) (h_pq : @LT.lt.{0} Nat instLTNat p q),
+  Not (@LE.le.{0} Nat instLENat r q) → False</pre></li><li><code>ChompLean.encodedValue_complete._proof_1_3</code><pre class="prose">∀ {p q r : Nat} (h_qp : @LE.le.{0} Nat instLENat q p) (h_rq : @LE.le.{0} Nat instLENat r q)
+  (hlt : Not (@LT.lt.{0} Nat instLTNat r p)), Not (@Eq.{1} Nat q p) → False</pre></li><li><code>ChompLean.encodedValue_complete._proof_1_4</code><pre class="prose">∀ {p q r : Nat} (h_rq : @LE.le.{0} Nat instLENat r q) (hlt : Not (@LT.lt.{0} Nat instLTNat r p))
+  (hq_eq : @Eq.{1} Nat q p), Not (@Eq.{1} Nat r p) → False</pre></li><li><code>ChompLean.encodedValue_encodes</code><pre class="prose">∀ (hex : ChompLean.EncodedExists), ChompLean.Encodes (ChompLean.encodedValue fun {q r : Nat} =&gt; @hex q r)</pre></li><li><code>ChompLean.encoded_exists_from_game</code><pre class="prose">ChompLean.EncodedExists</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_1</code><pre class="prose">∀ (n q r : Nat) (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n) (a : Nat)
+  (ha : @LT.lt.{0} Nat instLTNat a q) (hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r),
+  Not (@LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n) →
+    False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_10</code><pre class="prose">∀ (n : Nat)
+  (ih :
+    ∀ (m : Nat),
+      @LT.lt.{0} Nat instLTNat m n →
+        (fun (n : Nat) =&gt;
+            ∀ (q r : Nat),
+              @LE.le.{0} Nat instLENat r q →
+                @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n →
+                  @Exists.{1} Nat fun (p : Nat) =&gt; ChompLean.EncodedPosition q r p)
+          m)
+  (q r : Nat) (hrq : @LE.le.{0} Nat instLENat r q)
+  (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n)
+  (hqp :
+    @LE.le.{0} Nat instLENat q
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+              (@List.map.{0, 0} Nat Nat
+                (fun (a : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                    (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                          (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                          @Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                              n)
+                            fun
+                              (a_1 :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                    n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                          a (Nat.min a r) (Nat.min_le_left a r)
+                          (@rfl.{1} Nat
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                    fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range q))
+              (@List.map.{0, 0} Nat Nat
+                (fun (b : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                    (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                          (@Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            fun
+                              (a :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                          q b
+                          (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                            fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                          (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                    fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range r)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (a : Nat) (haq : @LT.lt.{0} Nat instLTNat a q),
+  Not
+      (@LE.le.{0} Nat instLENat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (a : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                      (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                            (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                            @Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              (Nat.decLt
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              fun
+                                (a_1 :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                      n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                            a (Nat.min a r) (Nat.min_le_left a r)
+                            (@rfl.{1} Nat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                      fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range q))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (b : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                      (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                            (@Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              fun
+                                (a :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                            q b
+                            (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                              fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                            (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                      fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range r)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_11</code><pre class="prose">∀ (n : Nat)
+  (ih :
+    ∀ (m : Nat),
+      @LT.lt.{0} Nat instLTNat m n →
+        (fun (n : Nat) =&gt;
+            ∀ (q r : Nat),
+              @LE.le.{0} Nat instLENat r q →
+                @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n →
+                  @Exists.{1} Nat fun (p : Nat) =&gt; ChompLean.EncodedPosition q r p)
+          m)
+  (q r : Nat) (hrq : @LE.le.{0} Nat instLENat r q)
+  (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n)
+  (hqp :
+    @LE.le.{0} Nat instLENat q
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+              (@List.map.{0, 0} Nat Nat
+                (fun (a : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                    (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                          (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                          @Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                              n)
+                            fun
+                              (a_1 :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                    n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                          a (Nat.min a r) (Nat.min_le_left a r)
+                          (@rfl.{1} Nat
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                    fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range q))
+              (@List.map.{0, 0} Nat Nat
+                (fun (b : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                    (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                          (@Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            fun
+                              (a :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                          q b
+                          (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                            fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                          (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                    fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range r)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (a : Nat) (haq : @LT.lt.{0} Nat instLTNat a q) (hmin : @LE.le.{0} Nat instLENat (Nat.min a r) a),
+  Not
+      (@LT.lt.{0} Nat instLTNat (Nat.min a r)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (a : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                      (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                            (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                            @Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              (Nat.decLt
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              fun
+                                (a_1 :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                      n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                            a (Nat.min a r) (Nat.min_le_left a r)
+                            (@rfl.{1} Nat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                      fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range q))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (b : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                      (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                            (@Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              fun
+                                (a :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                            q b
+                            (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                              fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                            (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                      fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range r)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_12</code><pre class="prose">∀ (n : Nat)
+  (ih :
+    ∀ (m : Nat),
+      @LT.lt.{0} Nat instLTNat m n →
+        (fun (n : Nat) =&gt;
+            ∀ (q r : Nat),
+              @LE.le.{0} Nat instLENat r q →
+                @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n →
+                  @Exists.{1} Nat fun (p : Nat) =&gt; ChompLean.EncodedPosition q r p)
+          m)
+  (q r : Nat) (hrq : @LE.le.{0} Nat instLENat r q)
+  (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n)
+  (hqp :
+    @LE.le.{0} Nat instLENat q
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+              (@List.map.{0, 0} Nat Nat
+                (fun (a : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                    (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                          (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                          @Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                              n)
+                            fun
+                              (a_1 :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                    n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                          a (Nat.min a r) (Nat.min_le_left a r)
+                          (@rfl.{1} Nat
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                    fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range q))
+              (@List.map.{0, 0} Nat Nat
+                (fun (b : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                    (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                          (@Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            fun
+                              (a :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                          q b
+                          (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                            fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                          (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                    fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range r)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (b : Nat) (hbr : @LT.lt.{0} Nat instLTNat b r), Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_13</code><pre class="prose">∀ (n : Nat)
+  (ih :
+    ∀ (m : Nat),
+      @LT.lt.{0} Nat instLTNat m n →
+        (fun (n : Nat) =&gt;
+            ∀ (q r : Nat),
+              @LE.le.{0} Nat instLENat r q →
+                @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n →
+                  @Exists.{1} Nat fun (p : Nat) =&gt; ChompLean.EncodedPosition q r p)
+          m)
+  (q r : Nat) (hrq : @LE.le.{0} Nat instLENat r q)
+  (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n)
+  (hqp :
+    @LE.le.{0} Nat instLENat q
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+              (@List.map.{0, 0} Nat Nat
+                (fun (a : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                    (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                          (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                          @Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                              n)
+                            fun
+                              (a_1 :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                    n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                          a (Nat.min a r) (Nat.min_le_left a r)
+                          (@rfl.{1} Nat
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                    fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range q))
+              (@List.map.{0, 0} Nat Nat
+                (fun (b : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                    (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                          (@Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            fun
+                              (a :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                          q b
+                          (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                            fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                          (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                    fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range r)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hrp :
+    @LT.lt.{0} Nat instLTNat r
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+              (@List.map.{0, 0} Nat Nat
+                (fun (a : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                    (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                          (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                          @Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                              n)
+                            fun
+                              (a_1 :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                    n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                          a (Nat.min a r) (Nat.min_le_left a r)
+                          (@rfl.{1} Nat
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                    fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range q))
+              (@List.map.{0, 0} Nat Nat
+                (fun (b : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                    (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                          (@Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            fun
+                              (a :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                          q b
+                          (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                            fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                          (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                    fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range r)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (b : Nat) (hbr : @LT.lt.{0} Nat instLTNat b r),
+  Not
+      (@LT.lt.{0} Nat instLTNat b
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (a : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                      (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                            (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                            @Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              (Nat.decLt
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              fun
+                                (a_1 :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                      n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                            a (Nat.min a r) (Nat.min_le_left a r)
+                            (@rfl.{1} Nat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                      fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range q))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (b : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                      (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                            (@Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              fun
+                                (a :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                            q b
+                            (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                              fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                            (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                      fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range r)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_2</code><pre class="prose">∀ (n q r : Nat) (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n) (b : Nat)
+  (hb : @LT.lt.{0} Nat instLTNat b r),
+  Not (@LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n) → False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_3</code><pre class="prose">∀ (n q r : Nat) (hrq : @LE.le.{0} Nat instLENat r q)
+  (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n) (b : Nat)
+  (hb : @LT.lt.{0} Nat instLTNat b r), Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_4</code><pre class="prose">∀ (n : Nat)
+  (ih :
+    ∀ (m : Nat),
+      @LT.lt.{0} Nat instLTNat m n →
+        (fun (n : Nat) =&gt;
+            ∀ (q r : Nat),
+              @LE.le.{0} Nat instLENat r q →
+                @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n →
+                  @Exists.{1} Nat fun (p : Nat) =&gt; ChompLean.EncodedPosition q r p)
+          m)
+  (q r : Nat) (hrq : @LE.le.{0} Nat instLENat r q)
+  (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n),
+  Not
+      (@LE.le.{0} Nat instLENat q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (a : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                      (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                            (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                            @Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              (Nat.decLt
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              fun
+                                (a_1 :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                      n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                            a (Nat.min a r) (Nat.min_le_left a r)
+                            (@rfl.{1} Nat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                      fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range q))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (b : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                      (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                            (@Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              fun
+                                (a :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                            q b
+                            (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                              fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                            (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                      fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range r)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_5</code><pre class="prose">∀ (n : Nat)
+  (ih :
+    ∀ (m : Nat),
+      @LT.lt.{0} Nat instLTNat m n →
+        (fun (n : Nat) =&gt;
+            ∀ (q r : Nat),
+              @LE.le.{0} Nat instLENat r q →
+                @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n →
+                  @Exists.{1} Nat fun (p : Nat) =&gt; ChompLean.EncodedPosition q r p)
+          m)
+  (q r : Nat) (hrq : @LE.le.{0} Nat instLENat r q)
+  (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (a : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                      (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                            (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                            @Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              (Nat.decLt
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              fun
+                                (a_1 :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                      n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                            a (Nat.min a r) (Nat.min_le_left a r)
+                            (@rfl.{1} Nat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                      fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range q))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (b : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                      (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                            (@Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              fun
+                                (a :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                            q b
+                            (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                              fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                            (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                      fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range r)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_6</code><pre class="prose">∀ (n : Nat)
+  (ih :
+    ∀ (m : Nat),
+      @LT.lt.{0} Nat instLTNat m n →
+        (fun (n : Nat) =&gt;
+            ∀ (q r : Nat),
+              @LE.le.{0} Nat instLENat r q →
+                @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n →
+                  @Exists.{1} Nat fun (p : Nat) =&gt; ChompLean.EncodedPosition q r p)
+          m)
+  (q r : Nat) (hrq : @LE.le.{0} Nat instLENat r q)
+  (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n),
+  Not
+      (@LT.lt.{0} Nat instLTNat r
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (a : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                      (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                            (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                            @Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              (Nat.decLt
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                              fun
+                                (a_1 :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                      n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                            a (Nat.min a r) (Nat.min_le_left a r)
+                            (@rfl.{1} Nat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                      fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range q))
+                (@List.map.{0, 0} Nat Nat
+                  (fun (b : Nat) =&gt;
+                    @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                      (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                        @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                          (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                            (@Decidable.byContradiction
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                              fun
+                                (a :
+                                  Not
+                                    (@LT.lt.{0} Nat instLTNat
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                            q b
+                            (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                              fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                              ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                            (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                      fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                      @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                  (List.range r)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.encoded_exists_from_game._proof_1_7</code><pre class="prose">∀ (n : Nat)
+  (ih :
+    ∀ (m : Nat),
+      @LT.lt.{0} Nat instLTNat m n →
+        (fun (n : Nat) =&gt;
+            ∀ (q r : Nat),
+              @LE.le.{0} Nat instLENat r q →
+                @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n →
+                  @Exists.{1} Nat fun (p : Nat) =&gt; ChompLean.EncodedPosition q r p)
+          m)
+  (q r : Nat) (hrq : @LE.le.{0} Nat instLENat r q)
+  (hsum : @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q r) n)
+  (hle :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+            (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+              (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+              (@List.map.{0, 0} Nat Nat
+                (fun (a : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                    (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                          (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                          @Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                              n)
+                            fun
+                              (a_1 :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                                    n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                          a (Nat.min a r) (Nat.min_le_left a r)
+                          (@rfl.{1} Nat
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                    fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range q))
+              (@List.map.{0, 0} Nat Nat
+                (fun (b : Nat) =&gt;
+                  @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                    (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                      @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                        (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                          (@Decidable.byContradiction
+                            (@LT.lt.{0} Nat instLTNat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                            fun
+                              (a :
+                                Not
+                                  (@LT.lt.{0} Nat instLTNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                          q b
+                          (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                            fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                            ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                          (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                    fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                    @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (List.range r)))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))
+        (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)
+          (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))
+          (@List.map.{0, 0} Nat Nat
+            (fun (a : Nat) =&gt;
+              @dite.{1} Nat (@LT.lt.{0} Nat instLTNat a q) (Nat.decLt a q)
+                (fun (ha : @LT.lt.{0} Nat instLTNat a q) =&gt;
+                  @Classical.choose.{1} Nat (ChompLean.EncodedPosition a (Nat.min a r))
+                    (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r))
+                      (have hmin : @LE.le.{0} Nat instLENat (Nat.min a r) r := Nat.min_le_right a r;
+                      @Decidable.byContradiction
+                        (@LT.lt.{0} Nat instLTNat
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                        (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)
+                        fun
+                          (a_1 :
+                            Not
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)) n)) =&gt;
+                        ChompLean.encoded_exists_from_game._proof_1_1 n q r hsum a ha hmin a_1)
+                      a (Nat.min a r) (Nat.min_le_left a r)
+                      (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (Nat.min a r)))))
+                fun (ha : Not (@LT.lt.{0} Nat instLTNat a q)) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            (List.range q))
+          (@List.map.{0, 0} Nat Nat
+            (fun (b : Nat) =&gt;
+              @dite.{1} Nat (@LT.lt.{0} Nat instLTNat b r) (Nat.decLt b r)
+                (fun (hb : @LT.lt.{0} Nat instLTNat b r) =&gt;
+                  @Classical.choose.{1} Nat (ChompLean.EncodedPosition q b)
+                    (ih (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                      (@Decidable.byContradiction
+                        (@LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b)
+                          n)
+                        (Nat.decLt (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)
+                        fun
+                          (a :
+                            Not
+                              (@LT.lt.{0} Nat instLTNat
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b) n)) =&gt;
+                        ChompLean.encoded_exists_from_game._proof_1_2 n q r hsum b hb a)
+                      q b
+                      (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+                        fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt;
+                        ChompLean.encoded_exists_from_game._proof_1_3 n q r hrq hsum b hb a)
+                      (@rfl.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q b))))
+                fun (hb : Not (@LT.lt.{0} Nat instLTNat b r)) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            (List.range r))))),
+  False</pre></li><li><code>ChompLean.encoded_gt</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {q r : Nat} (hrq : @LE.le.{0} Nat instLENat r q),
+  @LT.lt.{0} Nat instLTNat r (f q r)</pre></li><li><code>ChompLean.encoded_isP_of_ge</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {q r : Nat} (hrq : @LE.le.{0} Nat instLENat r q)
+  (hqp : @LE.le.{0} Nat instLENat q (f q r)), ChompLean.IsP (ChompLean.mkPos (f q r) q r hqp hrq)</pre></li><li><code>ChompLean.encoded_isP_of_ge._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hqp : @LE.le.{0} Nat instLENat q (f q r))
+  (h_pq : @LT.lt.{0} Nat instLTNat (f q r) q), False</pre></li><li><code>ChompLean.encoded_isP_of_lt</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {q r : Nat} (hrq : @LE.le.{0} Nat instLENat r q)
+  (hpq : @LT.lt.{0} Nat instLTNat (f q r) q),
+  ChompLean.IsP
+    (ChompLean.rowStartPos (f q r) r
+      (@Nat.le_of_lt r (f q r) (@ChompLean.encoded_gt f (fun {q r : Nat} =&gt; @hf q r) q r hrq)))</pre></li><li><code>ChompLean.encoded_isP_of_lt._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hpq : @LT.lt.{0} Nat instLTNat (f q r) q)
+  (h_qp : @LE.le.{0} Nat instLENat q (f q r)), False</pre></li><li><code>ChompLean.encoding_diagonal_general_no_attack</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {i s q : Nat},
+  @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False</pre></li><li><code>ChompLean.encoding_diagonal_general_no_attack._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {i s q : Nat} (heq : @Eq.{1} Nat (f i i) (f q s)) (him : @LT.lt.{0} Nat instLTNat i (f i i)),
+  Not (@LE.le.{0} Nat instLENat i (f q s)) → False</pre></li><li><code>ChompLean.encoding_diagonal_general_no_attack._proof_1_5</code><pre class="prose">∀ {f : Nat → Nat → Nat} {i s q : Nat} (heq : @Eq.{1} Nat (f i i) (f q s)) (him : @LT.lt.{0} Nat instLTNat i (f i i)),
+  Not (@LT.lt.{0} Nat instLTNat i (f q s)) → False</pre></li><li><code>ChompLean.encoding_diagonal_general_no_attack._proof_1_7</code><pre class="prose">∀ {f : Nat → Nat → Nat} {i s q : Nat} (his : @LT.lt.{0} Nat instLTNat i s) (hsq : @LE.le.{0} Nat instLENat s q),
+  Not (@LT.lt.{0} Nat instLTNat i q) → False</pre></li><li><code>ChompLean.encoding_diagonal_no_attack</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {a b p : Nat},
+  @LT.lt.{0} Nat instLTNat a b → @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False</pre></li><li><code>ChompLean.encoding_diagonal_no_attack._proof_1_3</code><pre class="prose">∀ {f : Nat → Nat → Nat} {a b p : Nat} (hbp : @LT.lt.{0} Nat instLTNat b p) (ha : @Eq.{1} Nat (f a a) p)
+  (hb : @Eq.{1} Nat (f b b) p), Not (@LE.le.{0} Nat instLENat b p) → False</pre></li><li><code>ChompLean.encoding_diagonal_no_attack._proof_1_4</code><pre class="prose">∀ {f : Nat → Nat → Nat} {a b p : Nat} (hab : @LT.lt.{0} Nat instLTNat a b) (hbp : @LT.lt.{0} Nat instLTNat b p)
+  (ha : @Eq.{1} Nat (f a a) p) (hb : @Eq.{1} Nat (f b b) p), Not (@LE.le.{0} Nat instLENat a p) → False</pre></li><li><code>ChompLean.encoding_diagonal_no_attack._proof_1_5</code><pre class="prose">∀ {f : Nat → Nat → Nat} {a b p : Nat} (hab : @LT.lt.{0} Nat instLTNat a b), Not (@LE.le.{0} Nat instLENat a b) → False</pre></li><li><code>ChompLean.encoding_fixed_q_injective</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {q b₁ b₂ : Nat},
+  @LE.le.{0} Nat instLENat b₁ q → @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂</pre></li><li><code>ChompLean.encoding_fixed_q_injective._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q b₁ b₂ s t : Nat} (hst : @LT.lt.{0} Nat instLTNat s t)
+  (htp : @LT.lt.{0} Nat instLTNat t (f q t)), Not (@LE.le.{0} Nat instLENat s (f q t)) → False</pre></li><li><code>ChompLean.encoding_fixed_q_injective._proof_1_5</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q b₁ b₂ : Nat} (hlt : Not (@LT.lt.{0} Nat instLTNat b₁ b₂))
+  (hgt : Not (@LT.lt.{0} Nat instLTNat b₂ b₁)), Not (@Eq.{1} Nat b₁ b₂) → False</pre></li><li><code>ChompLean.encoding_rowstart_diagonal_attack</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {p r a : Nat},
+  @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False</pre></li><li><code>ChompLean.encoding_rowstart_diagonal_attack._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {p r a : Nat} (hdiag : @Eq.{1} Nat (f a a) p) (this : @LT.lt.{0} Nat instLTNat a (f a a)),
+  Not (@LT.lt.{0} Nat instLTNat a p) → False</pre></li><li><code>ChompLean.encoding_rowstart_diagonal_attack._proof_1_4</code><pre class="prose">∀ {f : Nat → Nat → Nat} {p r a : Nat} (hdiag : @Eq.{1} Nat (f a a) p) (hap : @LT.lt.{0} Nat instLTNat a p),
+  Not (@LE.le.{0} Nat instLENat a p) → False</pre></li><li><code>ChompLean.encoding_rowstart_no_middle</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {p r q : Nat},
+  @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p</pre></li><li><code>ChompLean.encoding_rowstart_no_middle._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {p r q : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q) (hqp : @LT.lt.{0} Nat instLTNat q p)
+  (hmid : @Eq.{1} Nat (f q r) p), Not (@LT.lt.{0} Nat instLTNat r p) → False</pre></li><li><code>ChompLean.encoding_rowstart_no_middle._proof_1_4</code><pre class="prose">∀ {f : Nat → Nat → Nat} {p r q : Nat} (hqp : @LT.lt.{0} Nat instLTNat q p) (hmid : @Eq.{1} Nat (f q r) p),
+  Not (@LE.le.{0} Nat instLENat q p) → False</pre></li><li><code>ChompLean.encoding_same_lower_no_repeat</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {s t₁ t₂ p : Nat},
+  @LT.lt.{0} Nat instLTNat s t₁ →
+    @LT.lt.{0} Nat instLTNat t₁ t₂ →
+      @LT.lt.{0} Nat instLTNat t₂ p → @Eq.{1} Nat (f t₁ s) p → @Eq.{1} Nat (f t₂ s) p → False</pre></li><li><code>ChompLean.encoding_same_lower_no_repeat._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {s t₁ t₂ p : Nat} (hst₁ : @LT.lt.{0} Nat instLTNat s t₁)
+  (ht₁t₂ : @LT.lt.{0} Nat instLTNat t₁ t₂), Not (@LE.le.{0} Nat instLENat s t₂) → False</pre></li><li><code>ChompLean.encoding_same_lower_no_repeat._proof_1_3</code><pre class="prose">∀ {f : Nat → Nat → Nat} {s t₁ t₂ p : Nat} (ht₁t₂ : @LT.lt.{0} Nat instLTNat t₁ t₂)
+  (ht₂p : @LT.lt.{0} Nat instLTNat t₂ p) (ht₁ : @Eq.{1} Nat (f t₁ s) p) (ht₂ : @Eq.{1} Nat (f t₂ s) p),
+  Not (@LE.le.{0} Nat instLENat t₁ p) → False</pre></li><li><code>ChompLean.encoding_same_lower_no_repeat._proof_1_4</code><pre class="prose">∀ {f : Nat → Nat → Nat} {s t₁ t₂ p : Nat} (ht₁ : @Eq.{1} Nat (f t₁ s) p) (ht₂ : @Eq.{1} Nat (f t₂ s) p)
+  (ht₁_le_ft₁ : @LE.le.{0} Nat instLENat t₁ (f t₁ s)), Not (@LE.le.{0} Nat instLENat t₁ p) → False</pre></li><li><code>ChompLean.first_cut_P_encodes</code><pre class="prose">∀ {p q r u : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hqp : @LE.le.{0} Nat instLENat q p)
+  (hu0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u)
+  (_hup : @LT.lt.{0} Nat instLTNat u p) (hP : ChompLean.IsP (ChompLean.Pos.firstCut (ChompLean.mkPos p q r hqp hrq) u)),
+  ChompLean.EncodedPosition q r u</pre></li><li><code>ChompLean.interval_reply_bounds</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) (hcomplete : ChompLean.CompleteEncoding f) {r q p t s : Nat},
+  @LT.lt.{0} Nat instLTNat s r →
+    @LT.lt.{0} Nat instLTNat r q →
+      @LT.lt.{0} Nat instLTNat q t →
+        @LT.lt.{0} Nat instLTNat t p →
+          @Eq.{1} Nat (f t s) p →
+            Not (@Exists.{1} Nat fun (b : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (f q b) p)) →
+              And (@LT.lt.{0} Nat instLTNat q (f q s)) (@LT.lt.{0} Nat instLTNat (f q s) p)</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p),
+  Not (@LE.le.{0} Nat instLENat t p) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_10</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p) (u : Nat)
+  (hqu : @LT.lt.{0} Nat instLTNat q u), Not (@LE.le.{0} Nat instLENat s u) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_11</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p) (u : Nat)
+  (hup : @LT.lt.{0} Nat instLTNat u p) (hqu : @LT.lt.{0} Nat instLTNat q u) (hfqs : @Eq.{1} Nat (f q s) u),
+  Not (And (@LT.lt.{0} Nat instLTNat q (f q s)) (@LT.lt.{0} Nat instLTNat (f q s) p)) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_12</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p) (a : Nat)
+  (haq : @LT.lt.{0} Nat instLTNat a q), Not (@LT.lt.{0} Nat instLTNat a t) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_13</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p) (b : Nat),
+  Not (@LE.le.{0} Nat instLENat q p) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_14</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p) (b : Nat)
+  (hbs : @LT.lt.{0} Nat instLTNat b s), Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_15</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p) (b : Nat)
+  (hbs : @LT.lt.{0} Nat instLTNat b s), Not (@LT.lt.{0} Nat instLTNat b r) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t), Not (@LE.le.{0} Nat instLENat s t) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_3</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p)
+  (hfts : @Eq.{1} Nat (f t s) p), Not (@LE.le.{0} Nat instLENat q p) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_4</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q),
+  Not (@LE.le.{0} Nat instLENat s q) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_6</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_8</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p) (u : Nat)
+  (hqu : Not (@LT.lt.{0} Nat instLTNat q u)), Not (@LE.le.{0} Nat instLENat u t) → False</pre></li><li><code>ChompLean.interval_reply_bounds._proof_1_9</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p t s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hqt : @LT.lt.{0} Nat instLTNat q t) (htp : @LT.lt.{0} Nat instLTNat t p) (hfts : @Eq.{1} Nat (f t s) p) (u : Nat),
+  Not (@LE.le.{0} Nat instLENat s q) → False</pre></li><li><code>ChompLean.lowerSquarePos.congr_simp</code><pre class="prose">∀ (p p_1 : Nat) (e_p : @Eq.{1} Nat p p_1) (a a_1 : Nat) (e_a : @Eq.{1} Nat a a_1) (hap : @LE.le.{0} Nat instLENat a p),
+  @Eq.{1} ChompLean.Pos (ChompLean.lowerSquarePos p a hap)
+    (ChompLean.lowerSquarePos p_1 a_1
+      (@Eq.ndrec.{0, 1} Nat p (fun (p : Nat) =&gt; @LE.le.{0} Nat instLENat a_1 p)
+        (@Eq.ndrec.{0, 1} Nat a (fun (a : Nat) =&gt; @LE.le.{0} Nat instLENat a p) hap a_1 e_a) p_1 e_p))</pre></li><li><code>ChompLean.lowerSquarePos.eq_1</code><pre class="prose">∀ (p a : Nat) (hap : @LE.le.{0} Nat instLENat a p),
+  @Eq.{1} ChompLean.Pos (ChompLean.lowerSquarePos p a hap) (ChompLean.mkPos p a a hap (Nat.le_refl a))</pre></li><li><code>ChompLean.mkPos.congr_simp</code><pre class="prose">∀ (p p_1 : Nat) (e_p : @Eq.{1} Nat p p_1) (q q_1 : Nat) (e_q : @Eq.{1} Nat q q_1) (r r_1 : Nat)
+  (e_r : @Eq.{1} Nat r r_1) (hqp : @LE.le.{0} Nat instLENat q p) (hrq : @LE.le.{0} Nat instLENat r q),
+  @Eq.{1} ChompLean.Pos (ChompLean.mkPos p q r hqp hrq)
+    (ChompLean.mkPos p_1 q_1 r_1
+      (@Eq.ndrec.{0, 1} Nat p (fun (p : Nat) =&gt; @LE.le.{0} Nat instLENat q_1 p)
+        (@Eq.ndrec.{0, 1} Nat q (fun (q : Nat) =&gt; @LE.le.{0} Nat instLENat q p) hqp q_1 e_q) p_1 e_p)
+      (@Eq.ndrec.{0, 1} Nat q (fun (q : Nat) =&gt; @LE.le.{0} Nat instLENat r_1 q)
+        (@Eq.ndrec.{0, 1} Nat r (fun (r : Nat) =&gt; @LE.le.{0} Nat instLENat r q) hrq r_1 e_r) q_1 e_q))</pre></li><li><code>ChompLean.mkPos.eq_1</code><pre class="prose">∀ (p q r : Nat) (hqp : @LE.le.{0} Nat instLENat q p) (hrq : @LE.le.{0} Nat instLENat r q),
+  @Eq.{1} ChompLean.Pos (ChompLean.mkPos p q r hqp hrq) (ChompLean.Pos.mk p q r hqp hrq)</pre></li><li><code>ChompLean.move_second_to_diagonal</code><pre class="prose">∀ {p q a r : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hqp : @LE.le.{0} Nat instLENat q p)
+  (har : @LE.le.{0} Nat instLENat a r) (haq : @LT.lt.{0} Nat instLTNat a q),
+  ChompLean.Move (ChompLean.mkPos p q r hqp hrq)
+    (ChompLean.lowerSquarePos p a
+      (@Decidable.byContradiction (@LE.le.{0} Nat instLENat a p) (Nat.decLe a p)
+        fun (a_1 : Not (@LE.le.{0} Nat instLENat a p)) =&gt;
+        @ChompLean.move_second_to_same_lower._proof_1 p q a r hqp haq a_1))</pre></li><li><code>ChompLean.move_second_to_min</code><pre class="prose">∀ {p q a r : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hqp : @LE.le.{0} Nat instLENat q p)
+  (haq : @LT.lt.{0} Nat instLTNat a q),
+  ChompLean.Move (ChompLean.mkPos p q r hqp hrq)
+    (ChompLean.mkPos p a (Nat.min a r)
+      (@Decidable.byContradiction (@LE.le.{0} Nat instLENat a p) (Nat.decLe a p)
+        fun (a_1 : Not (@LE.le.{0} Nat instLENat a p)) =&gt;
+        @ChompLean.move_second_to_same_lower._proof_1 p q a r hqp haq a_1)
+      (Nat.min_le_left a r))</pre></li><li><code>ChompLean.move_second_to_same_lower</code><pre class="prose">∀ {p q a r : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hqp : @LE.le.{0} Nat instLENat q p)
+  (har : @LE.le.{0} Nat instLENat r a) (haq : @LT.lt.{0} Nat instLTNat a q),
+  ChompLean.Move (ChompLean.mkPos p q r hqp hrq)
+    (ChompLean.mkPos p a r
+      (@Decidable.byContradiction (@LE.le.{0} Nat instLENat a p) (Nat.decLe a p)
+        fun (a_1 : Not (@LE.le.{0} Nat instLENat a p)) =&gt;
+        @ChompLean.move_second_to_same_lower._proof_1 p q a r hqp haq a_1)
+      har)</pre></li><li><code>ChompLean.move_second_to_same_lower._proof_1</code><pre class="prose">∀ {p q a r : Nat} (hqp : @LE.le.{0} Nat instLENat q p) (haq : @LT.lt.{0} Nat instLTNat a q),
+  Not (@LE.le.{0} Nat instLENat a p) → False</pre></li><li><code>ChompLean.move_third_same_top</code><pre class="prose">∀ {p q b₁ b₂ : Nat} (hqp : @LE.le.{0} Nat instLENat q p) (hb₁q : @LE.le.{0} Nat instLENat b₁ q)
+  (hb₂q : @LE.le.{0} Nat instLENat b₂ q) (hb : @LT.lt.{0} Nat instLTNat b₁ b₂),
+  ChompLean.Move (ChompLean.mkPos p q b₂ hqp hb₂q) (ChompLean.mkPos p q b₁ hqp hb₁q)</pre></li><li><code>ChompLean.opening_cover_of_complete</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hcomplete : ChompLean.CompleteEncoding f) {p : Nat},
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+    Or (@Exists.{1} Nat fun (a : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+      (@Exists.{1} Nat fun (r : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))</pre></li><li><code>ChompLean.rectanglePos.eq_1</code><pre class="prose">∀ (p : Nat), @Eq.{1} ChompLean.Pos (ChompLean.rectanglePos p) (ChompLean.lowerSquarePos p p (Nat.le_refl p))</pre></li><li><code>ChompLean.rectangle_not_isP</code><pre class="prose">∀ (p : Nat) (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p),
+  Not (ChompLean.IsP (ChompLean.rectanglePos p))</pre></li><li><code>ChompLean.rectangle_to_stolen</code><pre class="prose">∀ (p : Nat) (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p),
+  ChompLean.Move (ChompLean.rectanglePos p) (ChompLean.stolenRectanglePos p)</pre></li><li><code>ChompLean.rectangle_to_stolen._proof_1_1</code><pre class="prose">∀ (p : Nat) (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        p) →
+    False</pre></li><li><code>ChompLean.rowStartPos</code><pre class="prose">(p r : Nat) → (hrp : @LE.le.{0} Nat instLENat r p) → ChompLean.Pos</pre></li><li><code>ChompLean.rowStartPos.congr_simp</code><pre class="prose">∀ (p p_1 : Nat) (e_p : @Eq.{1} Nat p p_1) (r r_1 : Nat) (e_r : @Eq.{1} Nat r r_1) (hrp : @LE.le.{0} Nat instLENat r p),
+  @Eq.{1} ChompLean.Pos (ChompLean.rowStartPos p r hrp)
+    (ChompLean.rowStartPos p_1 r_1
+      (@Eq.ndrec.{0, 1} Nat p (fun (p : Nat) =&gt; @LE.le.{0} Nat instLENat r_1 p)
+        (@Eq.ndrec.{0, 1} Nat r (fun (r : Nat) =&gt; @LE.le.{0} Nat instLENat r p) hrp r_1 e_r) p_1 e_p))</pre></li><li><code>ChompLean.rowStartPos.eq_1</code><pre class="prose">∀ (p r : Nat) (hrp : @LE.le.{0} Nat instLENat r p),
+  @Eq.{1} ChompLean.Pos (ChompLean.rowStartPos p r hrp) (ChompLean.mkPos p p r (Nat.le_refl p) hrp)</pre></li><li><code>ChompLean.stolenRectanglePos</code><pre class="prose">(p : Nat) → ChompLean.Pos</pre></li><li><code>ChompLean.stolenRectanglePos._proof_1</code><pre class="prose">∀ (p : Nat),
+  @LE.le.{0} Nat instLENat
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    p</pre></li><li><code>ChompLean.stolenRectanglePos.eq_1</code><pre class="prose">∀ (p : Nat),
+  @Eq.{1} ChompLean.Pos (ChompLean.stolenRectanglePos p)
+    (ChompLean.mkPos p p
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (Nat.le_refl p) (ChompLean.stolenRectanglePos._proof_1 p))</pre></li><li><code>ChompLean.stolen_move_lifts</code><pre class="prose">∀ {p : Nat} (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)
+  {y : ChompLean.Pos}, ChompLean.Move (ChompLean.stolenRectanglePos p) y → ChompLean.Move (ChompLean.rectanglePos p) y</pre></li><li><code>ChompLean.stolen_move_lifts._proof_1_3</code><pre class="prose">∀ {p : Nat} (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p) (a : Nat)
+  (ha_p : @LT.lt.{0} Nat instLTNat a p),
+  Not
+      (@LE.le.{0} Nat instLENat a
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.stolen_move_lifts._proof_1_6</code><pre class="prose">∀ {p : Nat} (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p) (b : Nat)
+  (hb_pred :
+    @LT.lt.{0} Nat instLTNat b
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LT.lt.{0} Nat instLTNat b p) → False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/ChompLean/Encoding.lean:1</p><p>SHA-256: <code class="path">28955c2c0327056dd1ac4ddce19830a9ac8cb144a2d0186686a049c358598268</code></p></section><p><a href="../index.html#id=lean-28955c2c0327056dd1ac">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

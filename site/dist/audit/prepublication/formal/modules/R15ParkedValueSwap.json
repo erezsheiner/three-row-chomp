@@ -1,0 +1,584 @@
+{
+  "module": "R15ParkedValueSwap",
+  "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+  "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+  "declarationCount": 40,
+  "theoremDeclarationCount": 36,
+  "proofValuedDeclarationCount": 36,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.B.eq_1",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (f : Nat → Nat → Nat) (q r p : Nat),\n  @Eq.{1} Prop (ChompLean.B f q r p) (Or (ChompLean.R f q r p) (ChompLean.C f q r p))",
+      "axioms": [],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.B_successor_exact",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 86,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Iff\n    (ChompLean.B f t\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      z)\n    (Or\n      (ChompLean.DiagPrefix f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        z)\n      (Or\n        (ChompLean.ColTail f t\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          z)\n        (Or (ChompLean.C f t e z) (@Eq.{1} Nat (f t e) z))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.B_successor_exact_delta",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 115,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Iff\n    (ChompLean.B f t\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      z)\n    (Or (ChompLean.DiagPrefix f t e z)\n      (Or\n        (And\n          (@LT.lt.{0} Nat instLTNat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            t)\n          (@Eq.{1} Nat\n            (f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            z))\n        (Or\n          (ChompLean.ColTail f t\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            z)\n          (Or (ChompLean.C f t e z) (@Eq.{1} Nat (f t e) z)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.C_successor",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 55,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Iff\n    (ChompLean.C f t\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      z)\n    (Or (ChompLean.C f t e z) (@Eq.{1} Nat (f t e) z))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.C_successor._proof_1_1",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (b : Nat)\n  (hbe :\n    @LT.lt.{0} Nat instLTNat b\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hblt : Not (@LT.lt.{0} Nat instLTNat b e)), Not (@Eq.{1} Nat b e) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.C_successor._proof_1_2",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (b : Nat) (hbe : @LT.lt.{0} Nat instLTNat b e),\n  Not\n      (@LT.lt.{0} Nat instLTNat b\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.C_successor._proof_1_3",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat e\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ColTail",
+      "module": "R15ParkedValueSwap",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 22,
+      "typePretty": "(f : Nat → Nat → Nat) → (t e z : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.DiagPrefix",
+      "module": "R15ParkedValueSwap",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 17,
+      "typePretty": "(f : Nat → Nat → Nat) → (t e z : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ParkedOnly",
+      "module": "R15ParkedValueSwap",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 27,
+      "typePretty": "(f : Nat → Nat → Nat) → (t e z : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R_iff_diagPrefix_or_colTail",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 34,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Iff (ChompLean.R f t e z) (Or (ChompLean.DiagPrefix f t e z) (ChompLean.ColTail f t e z))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.diagPrefix_successor",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 70,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Iff\n    (ChompLean.DiagPrefix f t\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      z)\n    (Or (ChompLean.DiagPrefix f t e z)\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          t)\n        (@Eq.{1} Nat\n          (f\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          z)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.diagPrefix_successor._proof_1_1",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (a : Nat)\n  (hae :\n    @LE.le.{0} Nat instLENat a\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (haold : Not (@LE.le.{0} Nat instLENat a e)),\n  Not\n      (@Eq.{1} Nat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.diagPrefix_successor._proof_1_2",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (a : Nat) (hae : @LE.le.{0} Nat instLENat a e),\n  Not\n      (@LE.le.{0} Nat instLENat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.fresh_emission_closes_next",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 240,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (hfresh : @Eq.{1} Nat (f t e) z),\n  ChompLean.B f t\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    z",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.fresh_emission_closes_next._proof_1_1",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat e\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.fresh_emission_persists_in_all_later_sources",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 256,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (hfresh : @Eq.{1} Nat (f t e) z) {r : Nat},\n  @LT.lt.{0} Nat instLTNat e r → ChompLean.B f t r z",
+      "axioms": [],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.fresh_emission_persists_in_row_prefix",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 248,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (hfresh : @Eq.{1} Nat (f t e) z) {r : Nat},\n  @LT.lt.{0} Nat instLTNat e r → ChompLean.C f t r z",
+      "axioms": [],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.omitted_new_column_channel_counterframe",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 309,
+      "typePretty": "And\n  (ChompLean.ParkedOnly ChompLean.parkedSwapCounter (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n  (And\n    (ChompLean.B ChompLean.parkedSwapCounter (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n    (And\n      (Not\n        (ChompLean.DiagPrefix ChompLean.parkedSwapCounter (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))\n      (Not\n        (ChompLean.C ChompLean.parkedSwapCounter (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedOnly_mem_current_source",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 144,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (hpark : ChompLean.ParkedOnly f t e z), ChompLean.B f t e z",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter",
+      "module": "R15ParkedValueSwap",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 266,
+      "typePretty": "(a b : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter.eq_1",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a b : Nat),\n  @Eq.{1} Nat (ChompLean.parkedSwapCounter a b)\n    (@ite.{1} Nat\n      (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n      (@ite.{1} Nat\n        (And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        (@instDecidableAnd (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (@Eq.{1} Nat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (instDecidableEqNat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (instDecidableEqNat b (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))",
+      "axioms": [],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_next_new_col",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 288,
+      "typePretty": "ChompLean.ColTail ChompLean.parkedSwapCounter (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n  (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_next_new_col._proof_1_1",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_next_new_col._proof_1_2",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_next_no_diag",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 292,
+      "typePretty": "Not\n  (ChompLean.DiagPrefix ChompLean.parkedSwapCounter (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_next_no_diag._proof_1_1",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat)\n  (hbad :\n    And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_next_no_diag._proof_1_2",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat) (ha4 : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n  (ha2 : @LE.le.{0} Nat instLENat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n  (hbad :\n    And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_next_no_diag._proof_1_3",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat)\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_next_no_row",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 304,
+      "typePretty": "Not\n  (ChompLean.C ChompLean.parkedSwapCounter (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_parked_only",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 271,
+      "typePretty": "ChompLean.ParkedOnly ChompLean.parkedSwapCounter (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n  (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_parked_only._proof_1_1",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_parked_only._proof_1_2",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "Not\n    (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) →\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_parked_only._proof_1_4",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat) (ha4 : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n  (ha1 : @LE.le.{0} Nat instLENat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n  (hbad :\n    And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_parked_only._proof_1_5",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat) (ha4 : @LT.lt.{0} Nat instLTNat a (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n  (ha1 : @LE.le.{0} Nat instLENat a (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n  (hbad :\n    And (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (@Eq.{1} Nat a (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parkedSwapCounter_parked_only._proof_1_6",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (a : Nat)\n  (hval :\n    @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parked_value_next_source_exact",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 176,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (hpark : ChompLean.ParkedOnly f t e z),\n  Iff\n    (ChompLean.B f t\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      z)\n    (Or\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          t)\n        (@Eq.{1} Nat\n          (f\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          z))\n      (Or\n        (ChompLean.ColTail f t\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          z)\n        (@Eq.{1} Nat (f t e) z)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.parked_value_swaps_out",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 202,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (hpark : ChompLean.ParkedOnly f t e z)\n  (hnewDiag :\n    Not\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          t)\n        (@Eq.{1} Nat\n          (f\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          z)))\n  (hnewCol :\n    Not\n      (ChompLean.ColTail f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        z))\n  (hfresh : Not (@Eq.{1} Nat (f t e) z)),\n  And (ChompLean.B f t e z)\n    (Not\n      (ChompLean.B f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        z))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.source_loss_iff_parked_and_no_replacement",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 218,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat},\n  Iff\n    (And (ChompLean.B f t e z)\n      (Not\n        (ChompLean.B f t\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          z)))\n    (And (ChompLean.ParkedOnly f t e z)\n      (And\n        (Not\n          (And\n            (@LT.lt.{0} Nat instLTNat\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              t)\n            (@Eq.{1} Nat\n              (f\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              z)))\n        (And\n          (Not\n            (ChompLean.ColTail f t\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              z))\n          (Not (@Eq.{1} Nat (f t e) z)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.source_loss_implies_parkedOnly",
+      "module": "R15ParkedValueSwap",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 151,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat} (hcurrent : ChompLean.B f t e z)\n  (hlost :\n    Not\n      (ChompLean.B f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        z)),\n  ChompLean.ParkedOnly f t e z",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "c1a8ea0104f7415044149168b4ff2533ae27d7d98bd6f59f52fb646c0ba26f32",
+      "sourcePath": "lean/core/R15ParkedValueSwap.lean",
+      "universeParameters": []
+    }
+  ]
+}

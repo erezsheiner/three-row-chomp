@@ -1,0 +1,49 @@
+{
+  "paperIndex": 6,
+  "id": "q-short-delay-counterexample",
+  "original": {
+    "title": "Unit transport delay does not imply pointwise sublinearity",
+    "status": "refuted",
+    "statement": "Bounded matching delay and O(n) signed inventory do not imply o(n) pointwise imbalance.",
+    "assumptions": [
+      "Abstract signed event stream; this is explicitly not a canonical Chomp history."
+    ],
+    "sourcePath": "projects/central-first-exit/work/DIRECT-Q-RESIDUAL-20261012-002/ROOT-ATTEMPT.md",
+    "sourceLine": 102,
+    "sha256": "41dbf77e09e07218ad67e90924b51654fbd2b21827f5afdc360a71798bb5977a"
+  },
+  "exactAuditedStatement": "There exists an abstract signed event stream with a capacity-one opposite-sign matching of delay exactly1 and signed crossing inventory O(n), but pointwise imbalance not o(n).",
+  "hypotheses": [
+    "Abstract dated token stream only, not a canonical Chomp realization."
+  ],
+  "proofDependencyMap": [],
+  "independentDerivationAndChecks": [
+    "For each k>=1 put2k positive tokens at2k and2k negative tokens at2k+1, pairing equal local indices. Every token has one distinct partner one row away.",
+    "Every completed two-row pair contributes zero to the signed prefix. At cut2k the prefix and crossing stock are2k; at cut2k+1 they are0. Hence stock<=n, also o(n^2).",
+    "Pointwise imbalance is2k at2k and-2k at2k+1, so its absolute value divided by n tends to1 on both subsequences. This refutes exactly the claimed inference, without asserting any canonical counterexample."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\central-first-exit\\work\\DIRECT-Q-RESIDUAL-20261012-002\\ROOT-ATTEMPT.md",
+      "sha256": "41dbf77e09e07218ad67e90924b51654fbd2b21827f5afdc360a71798bb5977a"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\16f9a54f1d26b841e57b.md",
+      "sha256": "16f9a54f1d26b841e57bbf9af8f0039b81498457f03b5818ddda6ea2c5671766"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#q-postdeath-source",
+    "proofTextSha256": "41dbf77e09e07218ad67e90924b51654fbd2b21827f5afdc360a71798bb5977a",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": false,
+  "sharedCanonicalFoundationReview": null,
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish; parent integrates the independent audit and corrections."
+}

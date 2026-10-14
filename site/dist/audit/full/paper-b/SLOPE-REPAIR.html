@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Independent completion of the existing-slope upper bound · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../../document.css"><link rel="stylesheet" href="../../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../../index.html">Search</a><a href="../../../browse.html">Browse all</a><a href="../../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="independent-completion-of-the-existing-slope-upper-bound">Independent completion of the existing-slope upper bound</h1><p>This repairs the proof package for <code>q-existing-slope-upper-bound</code>. It proves a restriction on an <strong>existing</strong> ordered slope; it does not prove convergence. Earlier paper-review assertions are not used as mathematical premises. Exact algebra is independently checked in <code>exact-algebra-checks.json</code>. The actual-game recurrence, floor/max/injectivity/partition, propagation and FFD bridges are specified in the root&#39;s <code>CANONICAL-FOUNDATIONS.md</code>; their final kernel authentication remains a separate admission requirement.</p>
+<p>Assume the canonical diagonal satisfies d(n)/n→c. Write b=1−1/c, B=c²−3c+3, D=c²+c−1 and z=2−c. Reach gives c≤2, and the checked diagonal lower bound gives c≥3/2. Value-set counting gives A(x)=bx+o(x), uniformly on bounded multiples of a growing parameter. No diagonal order beyond the assumed slope is used.</p>
+<h2 id="1-actual-service-inputs-independently-reconstructed">1. Actual service inputs, independently reconstructed</h2><p>A blocker p has exactly A(p) distinct private predeath service hosts, all strictly left of its victim. The first source row is τ(p)=min{q:d(q)&gt;p}. Victims of blockers t≤τ(p) never booked p: before τ there was no p service, and they freeze by τ. Reach also excludes a victim s(t) if t+s(t)&lt;p. These excluded victim columns lie below s(p): propagation gives s(p)≥(p−1)/2, while 2s(t)+1≤t+s(t)&lt;p. They are disjoint from p bookers. Counting the <strong>union</strong> gives</p>
+<p><code>s(p) ≥ A(p)+#{t blocker:t≤τ(p) or t+s(t)&lt;p}</code>.</p>
+<p>For p_j, the j-th blocker, all still-live columns before s_j must have booked p_j earlier; at most j−1 earlier frozen victims are present there. Hence s_j≤2j−1. The first-appearance exclusion gives s_j≥j+A(τ(p_j)). Under the existing slope, τ(p_j)=p_j/c+o(j) and p_j=j/b+o(j), so s_j≥(1+1/c)j+o(j). Thus, with I(h) the number of immortal columns strictly below h,</p>
+<p><code>1/(c+1)−o(1) ≤ I(h)/h ≤ 1/2+O(1/h)</code>.</p>
+<p>The upper bound follows because the first floor(h/2) distinct victims all lie below h. No victim ordering is assumed.</p>
+<p>At START N an immortal host h&lt;N has exactly N distinct journal labels: h inherited diagonal seeds and N−h distinct private awards. Every earlier mortal victim&#39;s blocker is excluded from that journal. Its labels are at most N+h, so the private diagonal count K_h(N) obeys</p>
+<p><code>K_h(N) ≥ N−A(N+h)−I(h)</code>.</p>
+<p>Every blocker at most d(q) is present in row q, either by pending coverage, its actual death, or its frozen copy. The row therefore has exactly q+1−A(d(q)) diagonal cells. Consequently</p>
+<p><code>S(N):=Σ_{q&lt;N}(q+1−A(d(q)))=(2−c)N²/2+o(N²)</code></p>
+<p>and every sum of K_h over distinct immortal hosts is bounded by S(N).</p>
+<p>The literal MEX journal ceiling gives the second service line. At each private award v before N, every smaller diagonal label is in the host&#39;s journal or the current prefix. The journal has h+K_h(N) diagonal labels, and the prefix has at most M_N=max_{q&lt;N}(q+1−A(d(q)))=(2−c)N+o(N). Thus R(v−1)≤h+K_h(N)+M_N. Inverting the sorted diagonal value count bounds private awards by the expression below. The inherited seeds have ceiling max_{a&lt;h}d(a)≤ch+o(N), uniformly for h&lt;N under the existing slope; since K_h(N)+(2−c)N is nonnegative, that seed ceiling is covered by the same expression. Hence the whole journal ceiling is bounded by</p>
+<p><code>c[h+K_h(N)+(2−c)N]+o(N)</code>.</p>
+<p>It also contains every excluded earlier victim&#39;s blocker, since those are below their birth diagonals among the inherited seeds. Counting available blocker entries in that ceiling yields</p>
+<p><code>c K_h(N) ≥ B N−(c−1)h−I(h)−o(N)</code>.</p>
+<p>All errors are uniform for h&lt;N. These are actual journal arguments, not arbitrary continuum schedules.</p>
+<h2 id="2-complete-exclusion-of-c158-without-a-prior-endpoint-theorem">2. Complete exclusion of c≥15/8, without a prior endpoint theorem</h2><p>Index immortal hosts by k, with I(e_k)=k−1. The lower immortal density gives e_k≤(c+1)k+o(N), uniformly in the relevant rank range. The two preceding service bounds give</p>
+<p><code>K_{e_k}(N) ≥ max(0,(N−Dk)/c,(B N−c²k)/c)−o(N)</code>.</p>
+<p>For √3&lt;c&lt;2 the nonzero lines cross at k/N=z, the old line ends at α=1/D, and the new line ends at β=B/c². The inequalities 0&lt;z&lt;α&lt;β&lt;1/(c+1) ensure every positive required rank is actually available. The last inequality is equivalent to c³−3c²+3&lt;0, already negative at √3 and nonincreasing up to2.</p>
+<p>Integrating in rank gives</p>
+<p><code>2S(N)/N² ≥ 1/(cD)+(c−1)³(c²−3)²/(c³D)+o(1)</code>.</p>
+<p>For example, direct integration of the two line segments is</p>
+<p><code>2 area = (c−1)(2−c)²/c + B²/c³</code>,</p>
+<p>which expands to the displayed expression. Hence define the necessary surplus</p>
+<p><code>F(c)=1/(cD)+(c−1)³(c²−3)²/(c³D)−(2−c) ≤0</code>.</p>
+<p>At c=15/8, exact rational evaluation gives</p>
+<p><code>F(15/8)=159327/60696000&gt;0</code>.</p>
+<p>For every c∈[15/8,2), D+cD′=3c²+2c−1≤15 and cD&gt;8, so the magnitude of the negative derivative of 1/(cD) is less than15/64. The positive additional term has logarithmic derivative</p>
+<p><code>3/(c−1)+4c/(c²−3)−3/c−D′/D</code>.</p>
+<p>On the whole interval this is at least 3+15/2−8/5−5/4=153/20&gt;0: c−1≤1, c²−3≤1, c≥15/8, and D&gt;4. Therefore F′(c)&gt;1−15/64&gt;0. No c∈[15/8,2) satisfies the necessary inequality.</p>
+<p>At c=2 the same rank bounds reduce to <code>(N−5k)/2</code> and <code>(N−4k)/2</code>. There are at least N/3−o(N) immortal hosts below N. For k≤N/4 the second line is positive and integrates to N²/16+o(N²), whereas S(N)=o(N²). This contradiction excludes c=2 directly. Thus any existing slope has c&lt;15/8. This argument avoids the earlier source&#39;s vague appeal to a separately proved P104 endpoint.</p>
+<h2 id="3-the-full-union-produces-a-logarithmic-population-gain">3. The full union produces a logarithmic population gain</h2><p>It remains to treat c∈[9/5,15/8], since smaller c already satisfies the claimed final bound. Put L=1+1/c, v_j=s_j/j and r_j=A(τ(p_j)); define m_i=A(p_i+s_i). Uniform asymptotics give r_j=j/c+o(j), m_i=i(1+bv_i)+o(i), and v_j∈[L−o(1),2]. The exact union is</p>
+<p><code>s_j ≥ j+r_j+#{i&gt;r_j:m_i&lt;j}</code>.</p>
+<p>For fixed ξ&gt;0, each sufficiently large i contributes to the last count whenever</p>
+<p><code>(1+bv_i+ξ)i &lt; j &lt; i/(1/c+ξ)</code>.</p>
+<p>Divide by j² and sum j≤J. The ranks i≤(1/c+ξ)J have their complete sufficient interval inside the sum. Omitting the other proportional tail from the desired reciprocal-weighted expression costs O_ξ(1); each integer boundary costs O(i⁻²). Let J→∞ before ξ→0. With φ(v)=[1/(1+bv)−1/c]_+, this proves</p>
+<p><code>liminf (log J)⁻¹ Σ_{i≤J}(v_i−L−φ(v_i))/i ≥0</code>.</p>
+<p>Define</p>
+<p><code>k=c(2c²−1)/[2(c²−1)(3c+2)]</code>,</p>
+<p><code>C=(5c²+5c+1)/[2(c+1)(3c+2)]</code>,</p>
+<p><code>V=1−C=(c²+5c+3)/[2(c+1)(3c+2)]</code>.</p>
+<p>The pointwise reciprocal bound is <code>1/v≤C−k(v−L−φ(v))</code> on [L,2]. To prove it, H(v)=1/v+k(v−L−φ(v)) has equal outer endpoint values C. Its second derivative is 2/v³−2kb²/(1+bv)³&gt;0 on [L,c] and 2/v³&gt;0 on [c,2]. Here k&lt;1, b&lt;1/2 and (1+bv)/v&gt;b+1/2&gt;0.9, so the first curvature dominates the second. The kink value is smaller by <code>(2−c)(k−1/(2c))≥0</code>; positivity reduces to <code>(c²−c−1)(2c²−c−2)&gt;0</code> on the stated interval. Convexity on each piece then proves the bound everywhere.</p>
+<p>Applying it to the weighted union gives</p>
+<p><code>limsup (log J)⁻¹ Σ_{i≤J}1/s_i ≤C</code>.</p>
+<p>The actual mortal-victim census M(x) satisfies</p>
+<p><code>∫_1^X M(t)t⁻²dt = Σ_{i≤X}1/s_i+O(1)</code>.</p>
+<p>Indeed exact summation over victims with s_i&lt;X gives Σ1/s_i−M(X)/X; because i≤s_i≤2i−1, replacement by indexes i≤X changes only a proportional reciprocal tail of bounded mass. Since I(x)=x−M(x),</p>
+<p><code>liminf (log X)⁻¹∫_1^X I(t)t⁻²dt ≥V</code>.</p>
+<p>This is a logarithmic mean, never a pointwise immortal-density assertion.</p>
+<h2 id="4-integrate-the-two-service-lines-before-averaging-the-population">4. Integrate the two service lines before averaging the population</h2><p>First omit the finite host h=0 from the weighted host sum. Its K_0(N)≤N contribution integrates against 2dN/N³ to O(1), so it does not affect the logarithmic coefficient. For each remaining fixed immortal physical host h&gt;0, write u=I(h)/h. The two affine service lines are</p>
+<p><code>old=N/c−b h−u h</code>,</p>
+<p><code>new=B N/c−b h−u h/c</code>.</p>
+<p>Their crossing is N=uh/z and occurs after birth and after both positivity thresholds: u≥u0−o(1), u0=1/(c+1), and u0&gt;z/(c−1) throughout this interval. Integrating the maximum of0 and these lines against 2dN/N³ gives exactly</p>
+<p><code>Ψ_c(u)/h</code>, where <code>Ψ_c(u)=B²/[c(c−1+u)]+b z²/u</code>.</p>
+<p>The first summand is the full new-line triangle. The second is the integrated old-minus-new line beyond their crossing. Truncating each host&#39;s upper integration at X costs O(1/X) per host, hence O(1) in total. Uniform service errors are first bounded by εN, giving O(ε log X), and ε is then sent to zero. Summing the actual diagonal-cell budget yields</p>
+<p><code>2−c ≥ limsup (log X)⁻¹Σ_{h&lt;X, h immortal} Ψ_c(I(h)/h)/h</code>.</p>
+<p>Stieltjes summation, using dI=u dh+h du, turns this into the logarithmic integral of</p>
+<p><code>g_c(u)=u Ψ_c(u)=(B²/c)u/(c−1+u)+b z²</code>.</p>
+<p>The remaining ∫Ψ_c(u)du is a bounded primitive evaluated at endpoints. Discrete jumps cost O(Σh⁻²); an ε-enlargement accommodates the asymptotic lower endpoint. Thus the passage uses neither a limit of u nor pointwise saturation.</p>
+<p>The function g_c is increasing and concave. Its chord on [u0,1/2], evaluated at the independently proved mean lower bound V, gives</p>
+<p><code>g_c(u0)+(V−u0)[g_c(1/2)−g_c(u0)]/(1/2−u0) ≤2−c</code>.</p>
+<p>Here V&gt;u0 because c²−c−1&gt;0, and V&lt;1/2 because 2c²−1&gt;0. The chord of u/(c−1+u) at V simplifies to</p>
+<p><code>(c³+4c²+c−1)/[c²(3c+2)(2c−1)]</code>.</p>
+<p>Clearing positive denominators gives</p>
+<p><code>(c²−3c+3)²(c³+4c²+c−1) ≤ (2−c)c²(3c+2)(2c−1)(c²−2c+2)</code>.</p>
+<p>Independent expansion of left minus right is</p>
+<p><code>P(c)=7c⁷−25c⁶+22c⁵+25c⁴−58c³+11c²+27c−9</code>.</p>
+<p>Exact Bernstein coefficients of P′ on [9/5,15/8] are all strictly positive. Endpoint signs and independent rational bisection therefore establish one unique root c_*. Its upper rational bracket is below 1.868565865679. The necessary P(c)≤0 gives c≤c_*. Together with Section2 and the trivial c&lt;9/5 branch, the restriction holds for every existing canonical slope.</p>
+<p>The proof supplies no convergence theorem, canonical signed balance, clock uniform integrability, or Q=o(n). It also does not replace the separate unconditional liminf theorem by this conditional numerical bound.</p>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

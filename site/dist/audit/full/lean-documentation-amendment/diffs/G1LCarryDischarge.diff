@@ -1,0 +1,13 @@
+--- before/G1LCarryDischarge.lean
++++ after/G1LCarryDischarge.lean
+@@ -146,8 +146,8 @@
+     hlen (carryList_carries_nodup hcq) (carryList_carries_mem hcq)
+ 
+ /-- **[FINAL] `SelectedCutNoFutureOwner`, unconditional.**  At the selected cut
+-(`q ≥ 17`, `c ≤ q`, `C = (carryList q c).length`, `T = q+C+1`), no diagonal
+-value above `q` equals any value in the closed budget `[·, T]`. -/
++(`q ≥ 17`, `c ≤ q`, `C = (carryList q c).length`, `T = q+C+1`), no future
++owner `a > q` has diagonal value `gameF a a <= T`. -/
+ theorem selectedCut_no_future_owner_unconditional
+     {q c C T : Nat} (hq : 17 ≤ q) (hcq : c ≤ q)
+     (hC : C = (carryList q c).length) (hT : T = q + C + 1) :

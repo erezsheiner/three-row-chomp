@@ -1,0 +1,961 @@
+{
+  "module": "R188Lag8PreloadTransitionObstruction",
+  "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+  "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+  "declarationCount": 60,
+  "theoremDeclarationCount": 52,
+  "proofValuedDeclarationCount": 54,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.Lag8FourValuePreloaded",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 31,
+      "typePretty": "(u d : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "inductive",
+      "isProof": false,
+      "sourceLine": 50,
+      "typePretty": "(u g d e : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.casesOn",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 50,
+      "typePretty": "{u g d e : Nat} →\n  {motive : (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) → Sort u} →\n    (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) →\n      (mk :\n          (outputBand :\n              @LE.le.{0} Nat instLENat\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e)) →\n            (outputBelowTarget :\n                @LT.lt.{0} Nat instLTNat\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e)\n                  u) →\n              (outputNotLowerHost :\n                  @Ne.{1} Nat\n                    (ChompLean.gameF\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                      e)\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n                (parkedLoss :\n                    @Exists.{1} Nat fun (j : Nat) =>\n                      And (@LE.le.{0} Nat instLENat d j)\n                        (And (@LT.lt.{0} Nat instLTNat j e)\n                          (And\n                            (ChompLean.ParkedOnly ChompLean.gameF\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                              j\n                              (ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                e))\n                            (Not\n                              (ChompLean.B ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                                (ChompLean.gameF\n                                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                  e)))))) →\n                  (rightOwnerOrCurrentFreeze :\n                      Or\n                        (@Exists.{1} Nat fun (a : Nat) =>\n                          And (@LT.lt.{0} Nat instLTNat e a)\n                            (And (@LE.le.{0} Nat instLENat a g)\n                              (@Eq.{1} Nat (ChompLean.gameF a a)\n                                (ChompLean.gameF\n                                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                  e))))\n                        (Or\n                          (@Exists.{1} Nat fun (s : Nat) =>\n                            And (@LT.lt.{0} Nat instLTNat e s)\n                              (And (@LE.le.{0} Nat instLENat s g)\n                                (And\n                                  (@LT.lt.{0} Nat instLTNat s\n                                    (ChompLean.gameF\n                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                      e))\n                                  (@Eq.{1} Nat\n                                    (ChompLean.gameF\n                                      (ChompLean.gameF\n                                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                        e)\n                                      s)\n                                    (ChompLean.gameF\n                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                      e)))))\n                          (And\n                            (@Eq.{1} Nat\n                              (ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                e)\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n                            (@Eq.{1} Nat\n                              (ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                e)\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))) →\n                    motive\n                      (@ChompLean.Lag8PreloadedSkippedTransition.mk u g d e outputBand outputBelowTarget\n                        outputNotLowerHost parkedLoss rightOwnerOrCurrentFreeze)) →\n        motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.mk",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "constructor",
+      "isProof": true,
+      "sourceLine": 51,
+      "typePretty": "∀ {u g d e : Nat}\n  (outputBand :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e))\n  (outputBelowTarget :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e)\n      u)\n  (outputNotLowerHost :\n    @Ne.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (parkedLoss :\n    @Exists.{1} Nat fun (j : Nat) =>\n      And (@LE.le.{0} Nat instLENat d j)\n        (And (@LT.lt.{0} Nat instLTNat j e)\n          (And\n            (ChompLean.ParkedOnly ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              j\n              (ChompLean.gameF\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                e))\n            (Not\n              (ChompLean.B ChompLean.gameF\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e))))))\n  (rightOwnerOrCurrentFreeze :\n    Or\n      (@Exists.{1} Nat fun (a : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat e a)\n          (And (@LE.le.{0} Nat instLENat a g)\n            (@Eq.{1} Nat (ChompLean.gameF a a)\n              (ChompLean.gameF\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                e))))\n      (Or\n        (@Exists.{1} Nat fun (s : Nat) =>\n          And (@LT.lt.{0} Nat instLTNat e s)\n            (And (@LE.le.{0} Nat instLENat s g)\n              (And\n                (@LT.lt.{0} Nat instLTNat s\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e))\n                (@Eq.{1} Nat\n                  (ChompLean.gameF\n                    (ChompLean.gameF\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                      e)\n                    s)\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e)))))\n        (And\n          (@Eq.{1} Nat\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              e)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n          (@Eq.{1} Nat\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              e)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))),\n  ChompLean.Lag8PreloadedSkippedTransition u g d e",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.mk._flat_ctor",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "definition",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u g d e : Nat}\n  (outputBand :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e))\n  (outputBelowTarget :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e)\n      u)\n  (outputNotLowerHost :\n    @Ne.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (parkedLoss :\n    @Exists.{1} Nat fun (j : Nat) =>\n      And (@LE.le.{0} Nat instLENat d j)\n        (And (@LT.lt.{0} Nat instLTNat j e)\n          (And\n            (ChompLean.ParkedOnly ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              j\n              (ChompLean.gameF\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                e))\n            (Not\n              (ChompLean.B ChompLean.gameF\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e))))))\n  (rightOwnerOrCurrentFreeze :\n    Or\n      (@Exists.{1} Nat fun (a : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat e a)\n          (And (@LE.le.{0} Nat instLENat a g)\n            (@Eq.{1} Nat (ChompLean.gameF a a)\n              (ChompLean.gameF\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                e))))\n      (Or\n        (@Exists.{1} Nat fun (s : Nat) =>\n          And (@LT.lt.{0} Nat instLTNat e s)\n            (And (@LE.le.{0} Nat instLENat s g)\n              (And\n                (@LT.lt.{0} Nat instLTNat s\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e))\n                (@Eq.{1} Nat\n                  (ChompLean.gameF\n                    (ChompLean.gameF\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                      e)\n                    s)\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e)))))\n        (And\n          (@Eq.{1} Nat\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              e)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n          (@Eq.{1} Nat\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              e)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))),\n  ChompLean.Lag8PreloadedSkippedTransition u g d e",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.outputBand",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 53,
+      "typePretty": "∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),\n  @LE.le.{0} Nat instLENat\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n    (ChompLean.gameF\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      e)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.outputBelowTarget",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 54,
+      "typePretty": "∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),\n  @LT.lt.{0} Nat instLTNat\n    (ChompLean.gameF\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      e)\n    u",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.outputNotLowerHost",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 55,
+      "typePretty": "∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),\n  @Ne.{1} Nat\n    (ChompLean.gameF\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      e)\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.parkedLoss",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 56,
+      "typePretty": "∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),\n  @Exists.{1} Nat fun (j : Nat) =>\n    And (@LE.le.{0} Nat instLENat d j)\n      (And (@LT.lt.{0} Nat instLTNat j e)\n        (And\n          (ChompLean.ParkedOnly ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            j\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              e))\n          (Not\n            (ChompLean.B ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (ChompLean.gameF\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                e)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.rec",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "recursor",
+      "isProof": false,
+      "sourceLine": 50,
+      "typePretty": "{u g d e : Nat} →\n  {motive : (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) → Sort u} →\n    (mk :\n        (outputBand :\n            @LE.le.{0} Nat instLENat\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              (ChompLean.gameF\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                e)) →\n          (outputBelowTarget :\n              @LT.lt.{0} Nat instLTNat\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e)\n                u) →\n            (outputNotLowerHost :\n                @Ne.{1} Nat\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e)\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n              (parkedLoss :\n                  @Exists.{1} Nat fun (j : Nat) =>\n                    And (@LE.le.{0} Nat instLENat d j)\n                      (And (@LT.lt.{0} Nat instLTNat j e)\n                        (And\n                          (ChompLean.ParkedOnly ChompLean.gameF\n                            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                            j\n                            (ChompLean.gameF\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                              e))\n                          (Not\n                            (ChompLean.B ChompLean.gameF\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                              (ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                e)))))) →\n                (rightOwnerOrCurrentFreeze :\n                    Or\n                      (@Exists.{1} Nat fun (a : Nat) =>\n                        And (@LT.lt.{0} Nat instLTNat e a)\n                          (And (@LE.le.{0} Nat instLENat a g)\n                            (@Eq.{1} Nat (ChompLean.gameF a a)\n                              (ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                e))))\n                      (Or\n                        (@Exists.{1} Nat fun (s : Nat) =>\n                          And (@LT.lt.{0} Nat instLTNat e s)\n                            (And (@LE.le.{0} Nat instLENat s g)\n                              (And\n                                (@LT.lt.{0} Nat instLTNat s\n                                  (ChompLean.gameF\n                                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                    e))\n                                (@Eq.{1} Nat\n                                  (ChompLean.gameF\n                                    (ChompLean.gameF\n                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                      e)\n                                    s)\n                                  (ChompLean.gameF\n                                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                    e)))))\n                        (And\n                          (@Eq.{1} Nat\n                            (ChompLean.gameF\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                              e)\n                            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n                          (@Eq.{1} Nat\n                            (ChompLean.gameF\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                              e)\n                            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))) →\n                  motive\n                    (@ChompLean.Lag8PreloadedSkippedTransition.mk u g d e outputBand outputBelowTarget\n                      outputNotLowerHost parkedLoss rightOwnerOrCurrentFreeze)) →\n      (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) → motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.recOn",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 50,
+      "typePretty": "{u g d e : Nat} →\n  {motive : (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) → Sort u} →\n    (t : ChompLean.Lag8PreloadedSkippedTransition u g d e) →\n      (mk :\n          (outputBand :\n              @LE.le.{0} Nat instLENat\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e)) →\n            (outputBelowTarget :\n                @LT.lt.{0} Nat instLTNat\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e)\n                  u) →\n              (outputNotLowerHost :\n                  @Ne.{1} Nat\n                    (ChompLean.gameF\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                      e)\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n                (parkedLoss :\n                    @Exists.{1} Nat fun (j : Nat) =>\n                      And (@LE.le.{0} Nat instLENat d j)\n                        (And (@LT.lt.{0} Nat instLTNat j e)\n                          (And\n                            (ChompLean.ParkedOnly ChompLean.gameF\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                              j\n                              (ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                e))\n                            (Not\n                              (ChompLean.B ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                                (ChompLean.gameF\n                                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                  e)))))) →\n                  (rightOwnerOrCurrentFreeze :\n                      Or\n                        (@Exists.{1} Nat fun (a : Nat) =>\n                          And (@LT.lt.{0} Nat instLTNat e a)\n                            (And (@LE.le.{0} Nat instLENat a g)\n                              (@Eq.{1} Nat (ChompLean.gameF a a)\n                                (ChompLean.gameF\n                                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                  e))))\n                        (Or\n                          (@Exists.{1} Nat fun (s : Nat) =>\n                            And (@LT.lt.{0} Nat instLTNat e s)\n                              (And (@LE.le.{0} Nat instLENat s g)\n                                (And\n                                  (@LT.lt.{0} Nat instLTNat s\n                                    (ChompLean.gameF\n                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                      e))\n                                  (@Eq.{1} Nat\n                                    (ChompLean.gameF\n                                      (ChompLean.gameF\n                                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                        e)\n                                      s)\n                                    (ChompLean.gameF\n                                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                      e)))))\n                          (And\n                            (@Eq.{1} Nat\n                              (ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                e)\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n                            (@Eq.{1} Nat\n                              (ChompLean.gameF\n                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                                e)\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))) →\n                    motive\n                      (@ChompLean.Lag8PreloadedSkippedTransition.mk u g d e outputBand outputBelowTarget\n                        outputNotLowerHost parkedLoss rightOwnerOrCurrentFreeze)) →\n        motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.Lag8PreloadedSkippedTransition.rightOwnerOrCurrentFreeze",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 60,
+      "typePretty": "∀ {u g d e : Nat} (self : ChompLean.Lag8PreloadedSkippedTransition u g d e),\n  Or\n    (@Exists.{1} Nat fun (a : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat e a)\n        (And (@LE.le.{0} Nat instLENat a g)\n          (@Eq.{1} Nat (ChompLean.gameF a a)\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              e))))\n    (Or\n      (@Exists.{1} Nat fun (s : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat e s)\n          (And (@LE.le.{0} Nat instLENat s g)\n            (And\n              (@LT.lt.{0} Nat instLTNat s\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e))\n              (@Eq.{1} Nat\n                (ChompLean.gameF\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e)\n                  s)\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e)))))\n      (And\n        (@Eq.{1} Nat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            e)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n        (@Eq.{1} Nat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            e)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 207,
+      "typePretty": "∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (howners : ChompLean.LowerOwnerCoveredBy u g)\n  (hct :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hdt :\n    @LE.le.{0} Nat instLENat d\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n  (hlower :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        d)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hdg : @LT.lt.{0} Nat instLTNat d g)\n  (hlowerFreeze :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        g)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  @Exists.{1} Nat fun (a : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat g a)\n      (And\n        (@LT.lt.{0} Nat instLTNat a\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n        (And (@Eq.{1} Nat (ChompLean.gameF a g) u)\n          (∀ (a' : Nat),\n            @LT.lt.{0} Nat instLTNat g a' →\n              @LT.lt.{0} Nat instLTNat a'\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n                @Eq.{1} Nat (ChompLean.gameF a' g) u → @Eq.{1} Nat a' a)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_1",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat g\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_2",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (hct :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n  (hlow :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        g)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),\n  Not\n      (@LE.le.{0} Nat instLENat g\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_3",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n  (hdg : @LT.lt.{0} Nat instLTNat d g)\n  (hlow :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        g)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hcol :\n    @LE.le.{0} Nat instLENat g\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_4",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n  (hdg : @LT.lt.{0} Nat instLTNat d g)\n  (hlowerFreeze :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        g)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hlowLe :\n    @LE.le.{0} Nat instLENat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        g)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hsmallFreeze :\n    And\n      (@LT.lt.{0} Nat instLTNat g\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g))\n      (@Eq.{1} Nat\n        (ChompLean.gameF\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            g)\n          g)\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_5",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat} (a : Nat) (hga : @LT.lt.{0} Nat instLTNat g a) (hag : @LE.le.{0} Nat instLENat a g), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_6",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat}\n  (hct :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hfreezeNow :\n    And\n      (@Eq.{1} Nat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          g)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n      (@Eq.{1} Nat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          g)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat g\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_last_skip_is_unique_target_relay._proof_1_7",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n  (hlowerFreeze :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        g)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hfreezeNow :\n    And\n      (@Eq.{1} Nat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          g)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n      (@Eq.{1} Nat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          g)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 253,
+      "typePretty": "∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (howners : ChompLean.LowerOwnerCoveredBy u g)\n  (hct :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hdt :\n    @LE.le.{0} Nat instLENat d\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n  (hlower :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        d)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hpreload : ChompLean.Lag8FourValuePreloaded u d)\n  (hdg :\n    @LT.lt.{0} Nat instLTNat d\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hlowerFreeze :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        g)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  Or\n    (And\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))\n    (Or\n      (@Exists.{1} Nat fun (a : Nat) =>\n        And\n          (@LT.lt.{0} Nat instLTNat\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            a)\n          (And\n            (@LT.lt.{0} Nat instLTNat a\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n            (And\n              (@Eq.{1} Nat\n                (ChompLean.gameF a\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                u)\n              (∀ (a' : Nat),\n                @LT.lt.{0} Nat instLTNat\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    a' →\n                  @LT.lt.{0} Nat instLTNat a'\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n                    @Eq.{1} Nat\n                        (ChompLean.gameF a'\n                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                        u →\n                      @Eq.{1} Nat a' a))))\n      (And\n        (ChompLean.Lag8PreloadedSkippedTransition u g d\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (Or\n          (@Eq.{1} Nat (ChompLean.gameF g g)\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n          (@Eq.{1} Nat\n            (ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_1",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat g\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_2",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_3",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat} (a : Nat)\n  (hga :\n    @LT.lt.{0} Nat instLTNat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      a)\n  (hag : @LE.le.{0} Nat instLENat a g), Not (@Eq.{1} Nat a g) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_4",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat}\n  (hlowerFreeze :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        g)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hfreeze :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        g)\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hmNe :\n    @Ne.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hmOrder :\n    Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_atomic_preloaded_penultimate_skip_menu._proof_1_5",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (hct :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      u)\n  (hlowerFreeze :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        g)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hgs :\n    @LT.lt.{0} Nat instLTNat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      g)\n  (hfreeze :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        g)\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hmNe :\n    @Ne.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hpOrder :\n    @LT.lt.{0} Nat instLTNat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) g\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat g\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 94,
+      "typePretty": "∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hdt :\n    @LE.le.{0} Nat instLENat d\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        c)\n      u)\n  (hlower :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        d)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hde : @LT.lt.{0} Nat instLTNat d e)\n  (hec : @LT.lt.{0} Nat instLTNat e c)\n  (hnotCarry :\n    Not\n      (And\n        (@LT.lt.{0} Nat instLTNat e\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n        (@LT.lt.{0} Nat instLTNat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            e)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))\n  (hnoTargetTail :\n    Not\n      (ChompLean.ColTail ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e u)),\n  ChompLean.Lag8PreloadedSkippedTransition u g d e",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_1",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d e : Nat}\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hec : @LT.lt.{0} Nat instLTNat e c),\n  Not\n      (@LE.le.{0} Nat instLENat e\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_2",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d e : Nat} (hgc : @LT.lt.{0} Nat instLTNat g c)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat g\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_3",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        c)\n      u)\n  (hec : @LT.lt.{0} Nat instLTNat e c)\n  (hnotCarry :\n    Not\n      (And\n        (@LT.lt.{0} Nat instLTNat e\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n        (@LT.lt.{0} Nat instLTNat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            e)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))\n  (heTop :\n    @LE.le.{0} Nat instLENat e\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        u) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_4",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d e : Nat} (hde : @LT.lt.{0} Nat instLTNat d e) (hcol : @Eq.{1} Nat e d), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_5",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        c)\n      u)\n  (hec : @LT.lt.{0} Nat instLTNat e c)\n  (hnotCarry :\n    Not\n      (And\n        (@LT.lt.{0} Nat instLTNat e\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n        (@LT.lt.{0} Nat instLTNat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            e)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))\n  (heTop :\n    @LE.le.{0} Nat instLENat e\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hband :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          e))\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            e)\n          u)\n        (Or\n          (@Exists.{1} Nat fun (a : Nat) =>\n            And (@LT.lt.{0} Nat instLTNat e a)\n              (And (@LE.le.{0} Nat instLENat a g)\n                (@Eq.{1} Nat (ChompLean.gameF a a)\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e))))\n          (Or\n            (@Exists.{1} Nat fun (s : Nat) =>\n              And (@LT.lt.{0} Nat instLTNat e s)\n                (And (@LE.le.{0} Nat instLENat s g)\n                  (And\n                    (@LT.lt.{0} Nat instLTNat s\n                      (ChompLean.gameF\n                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                        e))\n                    (@Eq.{1} Nat\n                      (ChompLean.gameF\n                        (ChompLean.gameF\n                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                          e)\n                        s)\n                      (ChompLean.gameF\n                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                        e)))))\n            (And\n              (@Eq.{1} Nat\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n              (@Eq.{1} Nat\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))))))\n  (hmLower :\n    @Ne.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_6",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d e : Nat}\n  (hgt :\n    @LT.lt.{0} Nat instLTNat g\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hband :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          e))\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            e)\n          u)\n        (Or\n          (@Exists.{1} Nat fun (a : Nat) =>\n            And (@LT.lt.{0} Nat instLTNat e a)\n              (And (@LE.le.{0} Nat instLENat a g)\n                (@Eq.{1} Nat (ChompLean.gameF a a)\n                  (ChompLean.gameF\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    e))))\n          (Or\n            (@Exists.{1} Nat fun (s : Nat) =>\n              And (@LT.lt.{0} Nat instLTNat e s)\n                (And (@LE.le.{0} Nat instLENat s g)\n                  (And\n                    (@LT.lt.{0} Nat instLTNat s\n                      (ChompLean.gameF\n                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                        e))\n                    (@Eq.{1} Nat\n                      (ChompLean.gameF\n                        (ChompLean.gameF\n                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                          e)\n                        s)\n                      (ChompLean.gameF\n                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                        e)))))\n            (And\n              (@Eq.{1} Nat\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n              (@Eq.{1} Nat\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  e)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          e)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_clean_skip_exact_transition._proof_1_7",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d e : Nat}\n  (hmLower :\n    @Ne.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hmBelow :\n    Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          e)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          e)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_every_skip_relay_trichotomy",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 179,
+      "typePretty": "∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hdt :\n    @LE.le.{0} Nat instLENat d\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        c)\n      u)\n  (hlower :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        d)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hde : @LT.lt.{0} Nat instLTNat d e)\n  (hec : @LT.lt.{0} Nat instLTNat e c),\n  Or\n    (And\n      (@LT.lt.{0} Nat instLTNat e\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          e)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))\n    (Or\n      (@Exists.{1} Nat fun (a : Nat) =>\n        And (@LT.lt.{0} Nat instLTNat e a)\n          (And\n            (@LT.lt.{0} Nat instLTNat a\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n            (And (@Eq.{1} Nat (ChompLean.gameF a e) u)\n              (∀ (a' : Nat),\n                @LT.lt.{0} Nat instLTNat e a' →\n                  @LT.lt.{0} Nat instLTNat a'\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n                    @Eq.{1} Nat (ChompLean.gameF a' e) u → @Eq.{1} Nat a' a))))\n      (ChompLean.Lag8PreloadedSkippedTransition u g d e))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_every_skip_trichotomy",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 152,
+      "typePretty": "∀ {u r g c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hdt :\n    @LE.le.{0} Nat instLENat d\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        c)\n      u)\n  (hlower :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        d)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hde : @LT.lt.{0} Nat instLTNat d e)\n  (hec : @LT.lt.{0} Nat instLTNat e c),\n  Or\n    (And\n      (@LT.lt.{0} Nat instLTNat e\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          e)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))\n    (Or\n      (ChompLean.ColTail ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e u)\n      (ChompLean.Lag8PreloadedSkippedTransition u g d e))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 339,
+      "typePretty": "∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hdt :\n    @LE.le.{0} Nat instLENat d\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        c)\n      u)\n  (hlower :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        d)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hdc : @LT.lt.{0} Nat instLTNat d c)\n  (hnoCarry :\n    ∀ (e : Nat),\n      @LT.lt.{0} Nat instLTNat d e →\n        @LT.lt.{0} Nat instLTNat e c →\n          Not\n            (And\n              (@LT.lt.{0} Nat instLTNat e\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n              (@LT.lt.{0} Nat instLTNat\n                (ChompLean.gameF\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                  e)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))))\n  (hnoTail :\n    ∀ (e : Nat),\n      @LT.lt.{0} Nat instLTNat d e →\n        @LT.lt.{0} Nat instLTNat e c →\n          Not\n            (ChompLean.ColTail ChompLean.gameF\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n              e u)),\n  @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_1",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d : Nat} (hdc : @LT.lt.{0} Nat instLTNat d c)\n  (i :\n    Fin\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hi :\n    @LT.lt.{0} Nat instLTNat\n      (@Fin.val\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        i)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat d\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@Fin.val\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              i)))\n        (@LT.lt.{0} Nat instLTNat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@Fin.val\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              i))\n          c)) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_2",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hpacket :\n    ∀\n      (i :\n        Fin\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n      ChompLean.Lag8PreloadedSkippedTransition u g d\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@Fin.val\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            i)))\n  ⦃i j :\n    Fin\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))⦄\n  (hi :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@Fin.val\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          i))\n      c),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@Fin.val\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            i))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_3",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hpacket :\n    ∀\n      (i :\n        Fin\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n      ChompLean.Lag8PreloadedSkippedTransition u g d\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@Fin.val\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            i)))\n  ⦃i j :\n    Fin\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))⦄\n  (hj :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@Fin.val\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          j))\n      c),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@Fin.val\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            j))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_4",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hpacket :\n    ∀\n      (i :\n        Fin\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n      ChompLean.Lag8PreloadedSkippedTransition u g d\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@Fin.val\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            i)))\n  ⦃i j :\n    Fin\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))⦄\n  (hcols :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@Fin.val\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          i))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) d\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@Fin.val\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          j))),\n  Not\n      (@Eq.{1} Nat\n        (@Fin.val\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          i)\n        (@Fin.val\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          j)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_gap_le_eight_without_carry_or_targetTail._proof_1_5",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d : Nat} (hdc : @LT.lt.{0} Nat instLTNat d c)\n  (hn :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))),\n  Not\n      (@LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_large_gap_forces_carry_or_targetTail",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 396,
+      "typePretty": "∀ {u r g c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hdt :\n    @LE.le.{0} Nat instLENat d\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        c)\n      u)\n  (hlower :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        d)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hpreload : ChompLean.Lag8FourValuePreloaded u d) (hdc : @LT.lt.{0} Nat instLTNat d c)\n  (hgap :\n    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)),\n  @Exists.{1} Nat fun (e : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat d e)\n      (And (@LT.lt.{0} Nat instLTNat e c)\n        (Or\n          (And\n            (@LT.lt.{0} Nat instLTNat e\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n            (@LT.lt.{0} Nat instLTNat\n              (ChompLean.gameF\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                e)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))\n          (ChompLean.ColTail ChompLean.gameF\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n            e u)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_large_gap_forces_carry_or_targetTail._proof_1_1",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r g c d : Nat}\n  (hgap :\n    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d))\n  (hbound :\n    @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_preloaded_skip_outputs_injective",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 308,
+      "typePretty": "∀ {u e1 e2 : Nat}\n  (he1 :\n    @LE.le.{0} Nat instLENat e1\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (he2 :\n    @LE.le.{0} Nat instLENat e2\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hout :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e1)\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e2)),\n  @Eq.{1} Nat e1 e2",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_target_colTail_has_unique_relay_row",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 69,
+      "typePretty": "∀ {u e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (htail :\n    ChompLean.ColTail ChompLean.gameF\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      e u),\n  @Exists.{1} Nat fun (a : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat e a)\n      (And\n        (@LT.lt.{0} Nat instLTNat a\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n        (And (@Eq.{1} Nat (ChompLean.gameF a e) u)\n          (∀ (a' : Nat),\n            @LT.lt.{0} Nat instLTNat e a' →\n              @LT.lt.{0} Nat instLTNat a'\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                    (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n                @Eq.{1} Nat (ChompLean.gameF a' e) u → @Eq.{1} Nat a' a)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_target_colTail_has_unique_relay_row._proof_1_1",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u) (a : Nat)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF a e) u) (a' : Nat)\n  (ha't :\n    @LT.lt.{0} Nat instLTNat a'\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hhost' : @Eq.{1} Nat (ChompLean.gameF a' e) u) (haa' : Not (@Eq.{1} Nat a a'))\n  (haa'Order : @LT.lt.{0} Nat instLTNat a a'), Not (@LT.lt.{0} Nat instLTNat a' u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_target_colTail_has_unique_relay_row._proof_1_2",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u e : Nat} (a a' : Nat) (haa' : Not (@Eq.{1} Nat a a')) (haa'Order : Not (@LT.lt.{0} Nat instLTNat a a')),\n  Not (@LT.lt.{0} Nat instLTNat a' a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_target_colTail_has_unique_relay_row._proof_1_3",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u) (a : Nat)\n  (hat :\n    @LT.lt.{0} Nat instLTNat a\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hhost : @Eq.{1} Nat (ChompLean.gameF a e) u) (a' : Nat) (hhost' : @Eq.{1} Nat (ChompLean.gameF a' e) u)\n  (haa' : Not (@Eq.{1} Nat a a')) (ha'a : @LT.lt.{0} Nat instLTNat a' a), Not (@LT.lt.{0} Nat instLTNat a u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.source_interval_loss_has_parked_edge",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 36,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t d e z : Nat} (hde : @LT.lt.{0} Nat instLTNat d e) (hloaded : ChompLean.B f t d z)\n  (hhole : Not (ChompLean.B f t e z)),\n  @Exists.{1} Nat fun (j : Nat) =>\n    And (@LE.le.{0} Nat instLENat d j)\n      (And (@LT.lt.{0} Nat instLTNat j e)\n        (And (ChompLean.ParkedOnly f t j z)\n          (Not\n            (ChompLean.B f t\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              z))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 320,
+      "typePretty": "(u m : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank.eq_1",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (u m : Nat),\n  @Eq.{1} Nat (_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank u m)\n    (@ite.{1} Nat\n      (@LT.lt.{0} Nat instLTNat m\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n      (Nat.decLt m\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 330,
+      "typePretty": "∀ {u m1 m2 : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hlo1 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m1)\n  (hhi1 : @LT.lt.{0} Nat instLTNat m1 u)\n  (hne1 :\n    @Ne.{1} Nat m1\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hlo2 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m2)\n  (hhi2 : @LT.lt.{0} Nat instLTNat m2 u)\n  (hne2 :\n    @Ne.{1} Nat m2\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hrank :\n    @Eq.{1} Nat (_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank u m1)\n      (_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank u m2)),\n  @Eq.{1} Nat m1 m2",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band._proof_1_2",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u m1 m2 : Nat}\n  (hlo1 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m1)\n  (hlo2 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m2)\n  (hrank :\n    @Eq.{1} Nat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m1\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m2\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),\n  Not (@Eq.{1} Nat m1 m2) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band._proof_1_3",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u m1 m2 : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hlo1 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m1)\n  (hlo2 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m2)\n  (hhi2 : @LT.lt.{0} Nat instLTNat m2 u)\n  (hne2 :\n    @Ne.{1} Nat m2\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  @LT.lt.{0} Nat instLTNat m1\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →\n    Not\n        (@LT.lt.{0} Nat instLTNat m2\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n      ∀\n        (hrank :\n          @Eq.{1} Nat\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m1\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m2\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n        Not (@Eq.{1} Nat m1 m2) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band._proof_1_4",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u m1 m2 : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hlo1 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m1)\n  (hhi1 : @LT.lt.{0} Nat instLTNat m1 u)\n  (hne1 :\n    @Ne.{1} Nat m1\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hlo2 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m2)\n  (hne2 :\n    @Ne.{1} Nat m2\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat m1\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    @LT.lt.{0} Nat instLTNat m2\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →\n      ∀\n        (hrank :\n          @Eq.{1} Nat\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m1\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m2\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),\n        Not (@Eq.{1} Nat m1 m2) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_injective_on_band._proof_1_5",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u m1 m2 : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hlo1 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m1)\n  (hhi1 : @LT.lt.{0} Nat instLTNat m1 u)\n  (hne1 :\n    @Ne.{1} Nat m1\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hlo2 :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m2)\n  (hhi2 : @LT.lt.{0} Nat instLTNat m2 u)\n  (hne2 :\n    @Ne.{1} Nat m2\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat m1\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    Not\n        (@LT.lt.{0} Nat instLTNat m2\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n      ∀\n        (hrank :\n          @Eq.{1} Nat\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m1\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m2\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n        Not (@Eq.{1} Nat m1 m2) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_lt",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 323,
+      "typePretty": "∀ {u m : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hlo :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m)\n  (hhi : @LT.lt.{0} Nat instLTNat m u)\n  (hne :\n    @Ne.{1} Nat m\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  @LT.lt.{0} Nat instLTNat (_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank u m)\n    (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_lt._proof_1_2",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u m : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hlo :\n    @LE.le.{0} Nat instLENat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n      m)\n  (hne :\n    @Ne.{1} Nat m\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  @LT.lt.{0} Nat instLTNat m\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →\n    Not\n        (@LT.lt.{0} Nat instLTNat\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n      False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R188Lag8PreloadTransitionObstruction.0.ChompLean.lag8SevenRank_lt._proof_1_3",
+      "module": "R188Lag8PreloadTransitionObstruction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u m : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hhi : @LT.lt.{0} Nat instLTNat m u)\n  (hne :\n    @Ne.{1} Nat m\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat m\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    Not\n        (@LT.lt.{0} Nat instLTNat\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))) →\n      False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "19a2cbe3931ee6c274f905a917817b79710d91b99fcbede88306e13843a811c3",
+      "sourcePath": "lean/core/R188Lag8PreloadTransitionObstruction.lean",
+      "universeParameters": []
+    }
+  ]
+}

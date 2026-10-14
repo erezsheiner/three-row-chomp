@@ -1,0 +1,383 @@
+{
+  "module": "R186GreedySeatDensityAudit",
+  "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+  "declarationCount": 25,
+  "theoremDeclarationCount": 23,
+  "proofValuedDeclarationCount": 23,
+  "scope": "All serialized module declarations including private/generated auxiliaries. These are declaration counts, not counts of independent mathematical results.",
+  "declarations": [
+    {
+      "name": "ChompLean.GreedyAfterHostSource.eq_1",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (p jump z : Nat),\n  @Eq.{1} Prop (ChompLean.GreedyAfterHostSource p jump z)\n    (Or (ChompLean.GreedyPreloadedSource p jump z) (@Eq.{1} Nat z p))",
+      "axioms": [],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.GreedyPreloadedSource.eq_1",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (p jump z : Nat),\n  @Eq.{1} Prop (ChompLean.GreedyPreloadedSource p jump z)\n    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)\n      (And (@LT.lt.{0} Nat instLTNat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump))\n        (@Ne.{1} Nat z p)))",
+      "axioms": [],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_before_high_rowstart_low_or_colTail._proof_1_1",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r t c e : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u) (htu : @LT.lt.{0} Nat instLTNat t u)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u)\n  (hcarry :\n    And (@LT.lt.{0} Nat instLTNat e t)\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          e)\n        t))\n  (heq :\n    @Eq.{1} Nat (ChompLean.gameF t e)\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        e)),\n  Not (@LT.lt.{0} Nat instLTNat (ChompLean.gameF t e) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_before_high_rowstart_low_or_colTail._proof_1_2",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r t c e : Nat} (hct : @LE.le.{0} Nat instLENat c t) (hec : @LT.lt.{0} Nat instLTNat e c),\n  Not (@LE.le.{0} Nat instLENat e t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_between_hosts_clean_emission._proof_1_1",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        c)\n      u),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        u) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_between_hosts_clean_emission._proof_1_2",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r c d e : Nat}\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hec : @LT.lt.{0} Nat instLTNat e c),\n  Not\n      (@LE.le.{0} Nat instLENat e\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_between_hosts_clean_emission._proof_1_3",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u r c d e : Nat} (hde : @LT.lt.{0} Nat instLTNat d e) (hcol : @Eq.{1} Nat d e), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness._proof_1_1",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u : Nat} (hu : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) u),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness._proof_1_2",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness._proof_1_3",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u : Nat} (hu : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) u),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        u) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness._proof_1_4",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u : Nat}\n  (hsum :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n      u)\n  (z : Nat)\n  (hzlo :\n    @LT.lt.{0} Nat instLTNat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n      z)\n  (hzhi : @LT.lt.{0} Nat instLTNat z u),\n  Not\n      (@LT.lt.{0} Nat instLTNat z\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_2",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (p jump : Nat) (hjump : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) jump)\n  (z : Nat) (hzp : @LT.lt.{0} Nat instLTNat z p),\n  Not (@LT.lt.{0} Nat instLTNat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_3",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (p jump z : Nat) (hzp : @LT.lt.{0} Nat instLTNat z p), @Eq.{1} Nat z p → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_4",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (p jump : Nat) (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)\n  (hjump : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) jump),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_6",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (p jump : Nat) (hjump : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) jump),\n  @Eq.{1} Nat jump (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_7",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (p jump : Nat) (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)\n  (z : Nat) (hpz : @LT.lt.{0} Nat instLTNat p z),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_preloaded_single_host_mex_jump._proof_1_8",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (p jump z : Nat) (hpz : @LT.lt.{0} Nat instLTNat p z), @Eq.{1} Nat z p → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lag8_between_host_low_value_bank_has_seven_slack._proof_1_1",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hdc : @LT.lt.{0} Nat instLTNat d c)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_before_high_rowstart_low_or_colTail",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 23,
+      "typePretty": "∀ {u r t c e : Nat} (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (hct : @LE.le.{0} Nat instLENat c t) (htu : @LT.lt.{0} Nat instLTNat t u)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u) (hec : @LT.lt.{0} Nat instLTNat e c),\n  Or (@LT.lt.{0} Nat instLTNat (ChompLean.gameF t e) u) (ChompLean.ColTail ChompLean.gameF t e u)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_lag8_between_hosts_clean_emission",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 45,
+      "typePretty": "∀ {u r c d e : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (hdt :\n    @LE.le.{0} Nat instLENat d\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))\n  (htarget :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        c)\n      u)\n  (hlower :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        d)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n  (hde : @LT.lt.{0} Nat instLTNat d e) (hec : @LT.lt.{0} Nat instLTNat e c)\n  (hclean :\n    Not\n      (ChompLean.ColTail ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e u)),\n  And\n    (@LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e)\n      u)\n    (@Ne.{1} Nat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        e)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.GreedyPreloadedSource",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 73,
+      "typePretty": "(p jump z : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.GreedyAfterHostSource",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 77,
+      "typePretty": "(p jump z : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_preloaded_single_host_mex_jump",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 81,
+      "typePretty": "∀ (p jump : Nat) (hp : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)\n  (hjump : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) jump),\n  And (ChompLean.IsMex (ChompLean.GreedyPreloadedSource p jump) p)\n    (And\n      (∀ (z : Nat),\n        Iff (ChompLean.GreedyAfterHostSource p jump z)\n          (Or (ChompLean.GreedyPreloadedSource p jump z) (@Eq.{1} Nat z p)))\n      (And\n        (ChompLean.IsMex (ChompLean.GreedyAfterHostSource p jump)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump))\n        (∀ (z : Nat),\n          @LT.lt.{0} Nat instLTNat p z →\n            @LT.lt.{0} Nat instLTNat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p jump) →\n              ChompLean.GreedyPreloadedSource p jump z)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.greedy_lag8_five_step_jump_has_no_forced_intermediate_freshness",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 109,
+      "typePretty": "∀ {u : Nat} (hu : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) u),\n  And\n    (ChompLean.IsMex\n      (ChompLean.GreedyPreloadedSource\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))\n    (And\n      (ChompLean.IsMex\n        (ChompLean.GreedyAfterHostSource\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        u)\n      (∀ (z : Nat),\n        @LT.lt.{0} Nat instLTNat\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n            z →\n          @LT.lt.{0} Nat instLTNat z u →\n            ChompLean.GreedyPreloadedSource\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n                (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) z))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lag8_between_host_low_value_bank_has_seven_slack",
+      "module": "R186GreedySeatDensityAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 126,
+      "typePretty": "∀ {u c d : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)\n  (hdc : @LT.lt.{0} Nat instLTNat d c)\n  (hct :\n    @LE.le.{0} Nat instLENat c\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) c d)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "b6fd372b050677985d73421206ef2b0ff1032afcaffbdc76acdf8e3b916962be",
+      "sourcePath": "lean/core/R186GreedySeatDensityAudit.lean",
+      "universeParameters": []
+    }
+  ],
+  "fullExpressionTrees": "audit/full/lean/declarations.jsonl"
+}

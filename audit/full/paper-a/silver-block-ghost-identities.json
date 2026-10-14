@@ -1,0 +1,59 @@
+{
+  "paperIndex": 58,
+  "id": "silver-block-ghost-identities",
+  "original": {
+    "title": "Exact block ghost laws retain the full older-diagonal history",
+    "status": "paper-reviewed",
+    "statement": "dG4(t)=2−step(t)−ΔH_t−ygh(t)+ygh2p(t); Q_t=I(t)−pool(t)+b_t−2+2H_t.",
+    "assumptions": [
+      "Canonical recurrence and P01/P02/P03/P05/P07/P10/P11/P12/P17 plus exact overlap/count coupling.",
+      "Revision2 corrections are essential. Finite corroboration is separate from the proof."
+    ],
+    "sourcePath": "projects/silver-sublinear-20261011/proof/THEOREMS-AND-CERTIFICATE.md",
+    "sourceLine": 62,
+    "sha256": "80cb4dadad01ef7de73eeeeddc63a34646e9b45971972a0cda7543ed9bd15df5"
+  },
+  "exactAuditedStatement": "For canonical rowt>=4, dG4(t)=2-step(t)-(H_t-H_(t-1))-ygh(t)+ygh2p(t); and Q_t=I(t)-pool(t)+b_t-2+2H_t, with precisely the revision2 block/young ghost definitions.",
+  "hypotheses": [
+    "dG4=G4(t)-G4p(t), which is not the other N4session Delta G.",
+    "Pool contains non-past non-diagonal row labels>=t, including death row blocker t when present; frozen labels are<t."
+  ],
+  "proofDependencyMap": [
+    "Shared canonical foundation: exact positive-MEX/COPY recurrence and P01-P12, independently reconstructed in ../CANONICAL-FOUNDATIONS.md with exact declaration mapping and game interpretation. DEPENDENCIES.json records the additional service lemmas. Final kernel receipts bind the source versions.",
+    "Exact overlap ledger and positive blocker count."
+  ],
+  "independentDerivationAndChecks": [
+    "A column copied at rowt has last recomputation r<t with val>=r but copied at r+1 means val<r+1, hence label r. P07makes r blocker; COPY keeps it forever. Conversely every blocker p<t occupies its unique victim. Thus frozen label count A(t-1), and no diagonal ghost can freeze.",
+    "Overlap ledger gives I=2t+1-d-H; subtract young ghost count for G4. The previous block on columns<=t-4 equals old block<=t-5 plus age3ghost, with no lost threshold ghost label t-1 because such label would be a blocker. Thus G4p=G4(t-1)+ygh3(t-1). Subtract row ledgers and use ygh(t-1)-ygh3=ygh2p to obtain first formula.",
+    "Row partition has A(t-1)frozen, I ghosts, pool, own diagonal, total t+1. Hence pool=t-A(t-1)-I. Substitute b_t=A(t)-A(t-1) and I=2t+1-d-H into I-pool+b_t-2+2H to obtain3t+A(t)-2d exactly.",
+    "Pool also equals A(d(t)-1)-A(t-1)+F_t by P11 and maximality. The definitional changes dG4versus Delta G cannot be dropped, and young indicator identities do not by themselves imply global density/sublinear Q. All finite corroboration outside flat data range is excluded from this proof."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\silver-sublinear-20261011\\proof\\THEOREMS-AND-CERTIFICATE.md",
+      "sha256": "80cb4dadad01ef7de73eeeeddc63a34646e9b45971972a0cda7543ed9bd15df5"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\8788ef919826f185930f.md",
+      "sha256": "8788ef919826f185930f5b6f531f687a180aec2e91ca08a2efcfb03953467d9a"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\audit\\full\\CANONICAL-FOUNDATIONS.md",
+      "sha256": "88fb71f3229c40c29c5c909ce0f60734e171291e54a6c1b0634d7342d86f26fe"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#silver-block-ghost-identities",
+    "proofTextSha256": "80cb4dadad01ef7de73eeeeddc63a34646e9b45971972a0cda7543ed9bd15df5",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": true,
+  "sharedCanonicalFoundationReview": "../CANONICAL-FOUNDATIONS.md",
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish. If shared canonical bridge has an unresolved premise, this result remains conditional on that premise regardless of local derivation verdict."
+}

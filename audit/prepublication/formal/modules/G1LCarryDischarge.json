@@ -1,0 +1,361 @@
+{
+  "module": "G1LCarryDischarge",
+  "sourcePath": "lean/core/G1LCarryDischarge.lean",
+  "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+  "declarationCount": 22,
+  "theoremDeclarationCount": 21,
+  "proofValuedDeclarationCount": 21,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.carryList",
+      "module": "G1LCarryDischarge",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 101,
+      "typePretty": "(q c : Nat) → List.{0} Nat",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.carryList.eq_1",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (q c : Nat),\n  @Eq.{1} (List.{0} Nat) (ChompLean.carryList q c)\n    (@List.filter.{0} Nat\n      (fun (j : Nat) =>\n        @Decidable.decide (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q j) q) (Nat.decLt (ChompLean.gameF q j) q))\n      (List.range c))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.carryList_carries_mem",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 123,
+      "typePretty": "∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q) (v : Nat),\n  @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n      (@List.map.{0, 0} Nat Nat (ChompLean.gameF q) (ChompLean.carryList q c)) v →\n    And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)\n      (And (@LT.lt.{0} Nat instLTNat v q) (ChompLean.S ChompLean.gameF v))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.carryList_carries_mem._proof_1_1",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q) (v j : Nat)\n  (hjmem : And (@LT.lt.{0} Nat instLTNat j c) (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q j) q)),\n  Not (@LT.lt.{0} Nat instLTNat j q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.carryList_carries_mem._proof_1_2",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c : Nat} (v j : Nat) (hjv : @Eq.{1} Nat (ChompLean.gameF q j) v) (h : @LT.lt.{0} Nat instLTNat j v),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.carryList_carries_nodup",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 114,
+      "typePretty": "∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q),\n  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat (ChompLean.gameF q) (ChompLean.carryList q c))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.carryList_carries_nodup._proof_1_1",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q) (x : Nat)\n  (hx : And (@LT.lt.{0} Nat instLTNat x c) (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q x) q)) (y : Nat),\n  Not (@LT.lt.{0} Nat instLTNat x q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.carryList_carries_nodup._proof_1_2",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q) (x y : Nat)\n  (hy : And (@LT.lt.{0} Nat instLTNat y c) (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q y) q)),\n  Not (@LT.lt.{0} Nat instLTNat y q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.carryList_count_le_blockerCount",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 137,
+      "typePretty": "∀ {q c C : Nat} (hcq : @LE.le.{0} Nat instLENat c q)\n  (hC : @Eq.{1} Nat C (@List.length.{0} Nat (ChompLean.carryList q c))),\n  @LE.le.{0} Nat instLENat C\n    (ChompLean.gameFBlockerCountThrough\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.carryList_nodup",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 110,
+      "typePretty": "∀ (q c : Nat), @List.Nodup.{0} Nat (ChompLean.carryList q c)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_carry_col_inj",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 66,
+      "typePretty": "∀ {q j j' v : Nat} (hjq : @LT.lt.{0} Nat instLTNat j q) (hj'q : @LT.lt.{0} Nat instLTNat j' q)\n  (hval : @Eq.{1} Nat (ChompLean.gameF q j) v) (hval' : @Eq.{1} Nat (ChompLean.gameF q j') v)\n  (hvq : @LT.lt.{0} Nat instLTNat v q), @Eq.{1} Nat j j'",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_carry_descends_to_rowStart",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 43,
+      "typePretty": "∀ {q j v : Nat} (hjq : @LT.lt.{0} Nat instLTNat j q) (hval : @Eq.{1} Nat (ChompLean.gameF q j) v)\n  (hvq : @LT.lt.{0} Nat instLTNat v q), @Eq.{1} Nat (ChompLean.gameF v j) v",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_carry_descends_to_rowStart._proof_1_1",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q j v : Nat} (hvq : @LT.lt.{0} Nat instLTNat v q), Not (@LE.le.{0} Nat instLENat v q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_carry_is_rowStart",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 55,
+      "typePretty": "∀ {q j v : Nat} (hjq : @LT.lt.{0} Nat instLTNat j q) (hval : @Eq.{1} Nat (ChompLean.gameF q j) v)\n  (hvq : @LT.lt.{0} Nat instLTNat v q), ChompLean.S ChompLean.gameF v",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_carry_is_rowStart._proof_1_1",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q j v : Nat} (hvq : @LT.lt.{0} Nat instLTNat v q), Not (@LE.le.{0} Nat instLENat v q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mem_carryList",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 106,
+      "typePretty": "∀ {q c j : Nat},\n  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.carryList q c) j)\n    (And (@LT.lt.{0} Nat instLTNat j c) (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q j) q))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mem_carryList._simp_1_2",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {α : Type u_1} {p : α → Bool} {as : List.{u_1} α} {x : α},\n  @Eq.{1} Prop\n    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.filter.{u_1} α p as) x)\n    (And (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) as x)\n      (@Eq.{1} Bool (p x) Bool.true))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.mem_carryList._simp_1_3",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {m n : Nat},\n  @Eq.{1} Prop (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (List.range n) m)\n    (@LT.lt.{0} Nat instLTNat m n)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.selectedCut_future_owner_empty_unconditional",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 157,
+      "typePretty": "∀ {q c C T w : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))) q)\n  (hcq : @LE.le.{0} Nat instLENat c q) (hC : @Eq.{1} Nat C (@List.length.{0} Nat (ChompLean.carryList q c)))\n  (hT :\n    @Eq.{1} Nat T\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q C)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hwT : @LE.le.{0} Nat instLENat w T),\n  Not\n    (@Exists.{1} Nat fun (a : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat q a) (And (@LT.lt.{0} Nat instLTNat a w) (@Eq.{1} Nat (ChompLean.gameF a a) w)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.selectedCut_no_future_owner_unconditional",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 148,
+      "typePretty": "∀ {q c C T : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))) q)\n  (hcq : @LE.le.{0} Nat instLENat c q) (hC : @Eq.{1} Nat C (@List.length.{0} Nat (ChompLean.carryList q c)))\n  (hT :\n    @Eq.{1} Nat T\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q C)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (x : Nat),\n  @LE.le.{0} Nat instLENat x T → ∀ (a : Nat), @LT.lt.{0} Nat instLTNat q a → @Ne.{1} Nat (ChompLean.gameF a a) x",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.selectedCut_opening_dichotomy_unconditional",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 165,
+      "typePretty": "∀ {q c C T e w : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))) q)\n  (hcq : @LE.le.{0} Nat instLENat c q) (hC : @Eq.{1} Nat C (@List.length.{0} Nat (ChompLean.carryList q c)))\n  (hT :\n    @Eq.{1} Nat T\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q C)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hwT : @LE.le.{0} Nat instLENat w T) (heq : @LT.lt.{0} Nat instLTNat e q)\n  (hvalue : @Eq.{1} Nat (ChompLean.gameF q e) w) (hqw : @LT.lt.{0} Nat instLTNat q w),\n  Or\n    (@Exists.{1} Nat fun (a : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat e a) (And (@LT.lt.{0} Nat instLTNat a q) (@Eq.{1} Nat (ChompLean.gameF a a) w)))\n    (@Exists.{1} Nat fun (cc : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat e cc) (And (@LT.lt.{0} Nat instLTNat cc w) (@Eq.{1} Nat (ChompLean.gameF w cc) w)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.G1LCarryDischarge.0.ChompLean.nodup_map_inj_on",
+      "module": "G1LCarryDischarge",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 84,
+      "typePretty": "∀ {f : Nat → Nat} {xs : List.{0} Nat} (hxs : @List.Nodup.{0} Nat xs)\n  (hinj :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →\n        ∀ (y : Nat),\n          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs y →\n            @Eq.{1} Nat (f x) (f y) → @Eq.{1} Nat x y),\n  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat f xs)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8",
+      "sourcePath": "lean/core/G1LCarryDischarge.lean",
+      "universeParameters": []
+    }
+  ]
+}

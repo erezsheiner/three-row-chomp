@@ -1,0 +1,115 @@
+{
+  "module": "ChompLean.Game",
+  "sourcePath": "lean/core/ChompLean/Game.lean",
+  "sourceSha256": "92e370d7e8849e77a81f8ea70aa740609ab47a05ae37ffe9a734057986204233",
+  "declarationCount": 7,
+  "theoremDeclarationCount": 7,
+  "proofValuedDeclarationCount": 7,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.IsP.eq_1",
+      "module": "ChompLean.Game",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (x : ChompLean.Pos),\n  @Eq.{1} Prop (ChompLean.IsP x)\n    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.Pos.p x))\n      (∀ (y : ChompLean.Pos), ChompLean.Move x y → Not (ChompLean.IsP y)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "92e370d7e8849e77a81f8ea70aa740609ab47a05ae37ffe9a734057986204233",
+      "sourcePath": "lean/core/ChompLean/Game.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Pos.ext",
+      "module": "ChompLean.Game",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 9,
+      "typePretty": "∀ {x y : ChompLean.Pos} (hp : @Eq.{1} Nat (ChompLean.Pos.p x) (ChompLean.Pos.p y))\n  (hq : @Eq.{1} Nat (ChompLean.Pos.q x) (ChompLean.Pos.q y)) (hr : @Eq.{1} Nat (ChompLean.Pos.r x) (ChompLean.Pos.r y)),\n  @Eq.{1} ChompLean.Pos x y",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "92e370d7e8849e77a81f8ea70aa740609ab47a05ae37ffe9a734057986204233",
+      "sourcePath": "lean/core/ChompLean/Game.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.Pos.ext_iff",
+      "module": "ChompLean.Game",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 9,
+      "typePretty": "∀ {x y : ChompLean.Pos},\n  Iff (@Eq.{1} ChompLean.Pos x y)\n    (And (@Eq.{1} Nat (ChompLean.Pos.p x) (ChompLean.Pos.p y))\n      (And (@Eq.{1} Nat (ChompLean.Pos.q x) (ChompLean.Pos.q y)) (@Eq.{1} Nat (ChompLean.Pos.r x) (ChompLean.Pos.r y))))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "92e370d7e8849e77a81f8ea70aa740609ab47a05ae37ffe9a734057986204233",
+      "sourcePath": "lean/core/ChompLean/Game.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isP_no_move_to_P",
+      "module": "ChompLean.Game",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 22,
+      "typePretty": "∀ {x y : ChompLean.Pos} (hx : ChompLean.IsP x) (hxy : ChompLean.Move x y), Not (ChompLean.IsP y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "92e370d7e8849e77a81f8ea70aa740609ab47a05ae37ffe9a734057986204233",
+      "sourcePath": "lean/core/ChompLean/Game.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isP_of_no_cut_replies",
+      "module": "ChompLean.Game",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 39,
+      "typePretty": "∀ (x : ChompLean.Pos)\n  (hpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.Pos.p x))\n  (hfirst :\n    ∀ (a : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) a →\n        @LT.lt.{0} Nat instLTNat a (ChompLean.Pos.p x) → Not (ChompLean.IsP (ChompLean.Pos.firstCut x a)))\n  (hsecond :\n    ∀ (a : Nat) (ha : @LT.lt.{0} Nat instLTNat a (ChompLean.Pos.q x)),\n      Not (ChompLean.IsP (ChompLean.Pos.secondCut x a (@Nat.le_of_lt a (ChompLean.Pos.q x) ha))))\n  (hthird :\n    ∀ (b : Nat) (hb : @LT.lt.{0} Nat instLTNat b (ChompLean.Pos.r x)),\n      Not (ChompLean.IsP (ChompLean.Pos.thirdCut x b (@Nat.le_of_lt b (ChompLean.Pos.r x) hb)))),\n  ChompLean.IsP x",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "92e370d7e8849e77a81f8ea70aa740609ab47a05ae37ffe9a734057986204233",
+      "sourcePath": "lean/core/ChompLean/Game.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isP_pos",
+      "module": "ChompLean.Game",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 18,
+      "typePretty": "∀ {x : ChompLean.Pos} (hx : ChompLean.IsP x),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.Pos.p x)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "92e370d7e8849e77a81f8ea70aa740609ab47a05ae37ffe9a734057986204233",
+      "sourcePath": "lean/core/ChompLean/Game.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.not_isP_has_move_to_P",
+      "module": "ChompLean.Game",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 27,
+      "typePretty": "∀ {x : ChompLean.Pos}\n  (hpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.Pos.p x))\n  (hnp : Not (ChompLean.IsP x)),\n  @Exists.{1} ChompLean.Pos fun (y : ChompLean.Pos) => And (ChompLean.Move x y) (ChompLean.IsP y)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e370d7e8849e77a81f8ea70aa740609ab47a05ae37ffe9a734057986204233",
+      "sourcePath": "lean/core/ChompLean/Game.lean",
+      "universeParameters": []
+    }
+  ]
+}

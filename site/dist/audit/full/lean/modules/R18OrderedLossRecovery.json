@@ -1,0 +1,115 @@
+{
+  "module": "R18OrderedLossRecovery",
+  "sourceSha256": "67ee1cae1c1d10970f0e3e403714bce3b0a865f2b832326f7929f43b211f336a",
+  "declarationCount": 7,
+  "theoremDeclarationCount": 6,
+  "proofValuedDeclarationCount": 6,
+  "scope": "All serialized module declarations including private/generated auxiliaries. These are declaration counts, not counts of independent mathematical results.",
+  "declarations": [
+    {
+      "name": "ChompLean.entry_double_two_step._proof_1_1",
+      "module": "R18OrderedLossRecovery",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e y z : Nat}\n  (hy : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y)\n  (hyz : @LT.lt.{0} Nat instLTNat y z)\n  (hserveY :\n    @Eq.{1} Nat\n      (f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      y),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "67ee1cae1c1d10970f0e3e403714bce3b0a865f2b832326f7929f43b211f336a",
+      "sourcePath": "lean/core/R18OrderedLossRecovery.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lost_then_recovered_iff_immediate_channels._proof_1_1",
+      "module": "R18OrderedLossRecovery",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {e : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "67ee1cae1c1d10970f0e3e403714bce3b0a865f2b832326f7929f43b211f336a",
+      "sourcePath": "lean/core/R18OrderedLossRecovery.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ImmediateRecoveryChannels",
+      "module": "R18OrderedLossRecovery",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 15,
+      "typePretty": "(f : Nat → Nat → Nat) → (t e z : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "67ee1cae1c1d10970f0e3e403714bce3b0a865f2b832326f7929f43b211f336a",
+      "sourcePath": "lean/core/R18OrderedLossRecovery.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lost_then_recovered_iff_immediate_channels",
+      "module": "R18OrderedLossRecovery",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 25,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e z : Nat}\n  (hlost :\n    Not\n      (ChompLean.B f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        z)),\n  Iff\n    (ChompLean.B f t\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      z)\n    (ChompLean.ImmediateRecoveryChannels f t e z)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "67ee1cae1c1d10970f0e3e403714bce3b0a865f2b832326f7929f43b211f336a",
+      "sourcePath": "lean/core/R18OrderedLossRecovery.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.ordered_B_window_closure_of_upper_recovery_channels",
+      "module": "R18OrderedLossRecovery",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 50,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t lo n u : Nat}\n  (hn : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) n)\n  (hbase :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u →\n          Not (ChompLean.B f t lo z) →\n            ChompLean.B f t\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              z)\n  (hmex :\n    ∀ (k : Nat),\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          n →\n        ChompLean.IsMex\n          (ChompLean.B f t\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n          (f t\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n  (hupperRecovery :\n    ∀ (k y z : Nat),\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          n →\n        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →\n          @LT.lt.{0} Nat instLTNat y z →\n            @LT.lt.{0} Nat instLTNat z u →\n              ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k) y →\n                Not\n                    (ChompLean.B f t\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                      y) →\n                  ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k) z →\n                    Not\n                        (ChompLean.B f t\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k\n                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                          z) →\n                      ChompLean.ImmediateRecoveryChannels f t\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo k) z)\n  (hlast :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u →\n          ChompLean.B f t\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              z →\n            ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo n) z)\n  (z : Nat),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n    @LT.lt.{0} Nat instLTNat z u →\n      ChompLean.B f t (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo n) z",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "67ee1cae1c1d10970f0e3e403714bce3b0a865f2b832326f7929f43b211f336a",
+      "sourcePath": "lean/core/R18OrderedLossRecovery.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.entry_double_two_step",
+      "module": "R18OrderedLossRecovery",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 92,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e y z : Nat}\n  (hy : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y)\n  (hyz : @LT.lt.{0} Nat instLTNat y z)\n  (hmexY :\n    ChompLean.IsMex\n      (ChompLean.B f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hyMissing :\n    Not\n      (ChompLean.B f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        y))\n  (hlowerY :\n    ∀ (w : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) w →\n        @LT.lt.{0} Nat instLTNat w y →\n          ChompLean.B f t\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            w)\n  (hmexZ :\n    ChompLean.IsMex\n      (ChompLean.B f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))\n  (hzMissing :\n    Not\n      (ChompLean.B f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        z))\n  (hlowerZ :\n    ∀ (w : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) w →\n        @LT.lt.{0} Nat instLTNat w z →\n          ChompLean.B f t\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            w),\n  And\n    (@Eq.{1} Nat\n      (f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      y)\n    (And\n      (ChompLean.B f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        y)\n      (And\n        (@Eq.{1} Nat\n          (f t\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          z)\n        (ChompLean.B f t\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          z)))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "67ee1cae1c1d10970f0e3e403714bce3b0a865f2b832326f7929f43b211f336a",
+      "sourcePath": "lean/core/R18OrderedLossRecovery.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.penultimate_one_hole_mex_closure",
+      "module": "R18OrderedLossRecovery",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 120,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {t e u : Nat} (hmex : ChompLean.IsMex (ChompLean.B f t e) (f t e))\n  (hone :\n    ∀ (y z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) y →\n        @LT.lt.{0} Nat instLTNat y u →\n          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n            @LT.lt.{0} Nat instLTNat z u → Not (ChompLean.B f t e y) → Not (ChompLean.B f t e z) → @Eq.{1} Nat y z)\n  (hseal :\n    ∀ (z : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n        @LT.lt.{0} Nat instLTNat z u →\n          ChompLean.B f t e z →\n            ChompLean.B f t\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              z)\n  (z : Nat),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z →\n    @LT.lt.{0} Nat instLTNat z u →\n      ChompLean.B f t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        z",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "67ee1cae1c1d10970f0e3e403714bce3b0a865f2b832326f7929f43b211f336a",
+      "sourcePath": "lean/core/R18OrderedLossRecovery.lean",
+      "universeParameters": []
+    }
+  ],
+  "fullExpressionTrees": "audit/full/lean/declarations.jsonl"
+}

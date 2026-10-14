@@ -1,0 +1,1675 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unique winning opening in positive three-row rectangles · Three-Row Chomp</title>
+<meta name="description" content="For every n &gt; 0, the three-row n-by-3 rectangle has exactly one legal non-poison target that is a losing position for the next player.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Uniqueness and game foundations · lean</p>
+<h1>Unique winning opening in positive three-row rectangles</h1><p class="lead">For every n &gt; 0, the three-row n-by-3 rectangle has exactly one legal non-poison target that is a losing position for the next player.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/ChompLean/Proof.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/ChompLean.Proof.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/ChompLean.Proof.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a> <a href="../audit/full/paper-a/FINAL-AMENDMENT-REVIEW.json">Historical 13 October evidence: Independent review of corrected source prose</a> <a href="../audit/full/lean/MAIN-CLAIM-MAPPING.md">Historical 13 October evidence: Exact mathematical correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Only n &gt; 0 remains in the final mathematical statement. All recurrence-model fields are discharged from the recursively defined actual game.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">gameF is built from the actual P-position encoding. game_encodes, game_complete and game_lower_blocked discharge the model rather than assume the desired uniqueness. actualWins_iff_wins connects its diagonal/second-cut opening representation to actual P-targets. uniqueActualWinningTarget_checked expands the exact quantified claim. The independent review checks the move-to-target correspondence and poison convention.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 196 declarations</summary><ul class="declarations"><li><code>ChompLean.ActualWins</code><pre class="prose">(n : Nat) → ChompLean.OpeningMove → Prop</pre></li><li><code>ChompLean.B</code><pre class="prose">(f : Nat → Nat → Nat) → (q r p : Nat) → Prop</pre></li><li><code>ChompLean.BrouwerLowerBlocked</code><pre class="prose">(f : Nat → Nat → Nat) → Prop</pre></li><li><code>ChompLean.BrouwerMexBranch</code><pre class="prose">(f : Nat → Nat → Nat) → Prop</pre></li><li><code>ChompLean.BrouwerRecurrence</code><pre class="prose">(f : Nat → Nat → Nat) → Prop</pre></li><li><code>ChompLean.C</code><pre class="prose">(f : Nat → Nat → Nat) → (q r p : Nat) → Prop</pre></li><li><code>ChompLean.D</code><pre class="prose">(f : Nat → Nat → Nat) → (p : Nat) → Prop</pre></li><li><code>ChompLean.IntervalBlocking</code><pre class="prose">(f : Nat → Nat → Nat) → Prop</pre></li><li><code>ChompLean.IsMex</code><pre class="prose">(S : Nat → Prop) → (m : Nat) → Prop</pre></li><li><code>ChompLean.OpeningMove</code><pre class="prose">Type</pre></li><li><code>ChompLean.OpeningMove._sizeOf_1</code><pre class="prose">(t : ChompLean.OpeningMove) → Nat</pre></li><li><code>ChompLean.OpeningMove._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.OpeningMove</pre></li><li><code>ChompLean.OpeningMove.casesOn</code><pre class="prose">{motive : (t : ChompLean.OpeningMove) → Sort u} →
+  (t : ChompLean.OpeningMove) →
+    (toDiagonal : (a : Nat) → motive (ChompLean.OpeningMove.toDiagonal a)) →
+      (toRowStart : (r : Nat) → motive (ChompLean.OpeningMove.toRowStart r)) → motive t</pre></li><li><code>ChompLean.OpeningMove.ctorElim</code><pre class="prose">{motive : (t : ChompLean.OpeningMove) → Sort u} →
+  (ctorIdx : Nat) →
+    (t : ChompLean.OpeningMove) →
+      (h : @Eq.{1} Nat ctorIdx (ChompLean.OpeningMove.ctorIdx t)) →
+        (k : @ChompLean.OpeningMove.ctorElimType.{u} motive ctorIdx) → motive t</pre></li><li><code>ChompLean.OpeningMove.ctorElimType</code><pre class="prose">{motive : (t : ChompLean.OpeningMove) → Sort u} → (ctorIdx : Nat) → Sort (max 1 u)</pre></li><li><code>ChompLean.OpeningMove.ctorIdx</code><pre class="prose">ChompLean.OpeningMove → Nat</pre></li><li><code>ChompLean.OpeningMove.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.OpeningMove} →
+    (eq : @Eq.{1} ChompLean.OpeningMove t t&#x27;) → ChompLean.OpeningMove.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.OpeningMove.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.OpeningMove) → Sort u</pre></li><li><code>ChompLean.OpeningMove.rec</code><pre class="prose">{motive : (t : ChompLean.OpeningMove) → Sort u} →
+  (toDiagonal : (a : Nat) → motive (ChompLean.OpeningMove.toDiagonal a)) →
+    (toRowStart : (r : Nat) → motive (ChompLean.OpeningMove.toRowStart r)) → (t : ChompLean.OpeningMove) → motive t</pre></li><li><code>ChompLean.OpeningMove.recOn</code><pre class="prose">{motive : (t : ChompLean.OpeningMove) → Sort u} →
+  (t : ChompLean.OpeningMove) →
+    (toDiagonal : (a : Nat) → motive (ChompLean.OpeningMove.toDiagonal a)) →
+      (toRowStart : (r : Nat) → motive (ChompLean.OpeningMove.toRowStart r)) → motive t</pre></li><li><code>ChompLean.OpeningMove.toDiagonal</code><pre class="prose">(a : Nat) → ChompLean.OpeningMove</pre></li><li><code>ChompLean.OpeningMove.toDiagonal.elim</code><pre class="prose">{motive : (t : ChompLean.OpeningMove) → Sort u} →
+  (t : ChompLean.OpeningMove) →
+    (h : @Eq.{1} Nat (ChompLean.OpeningMove.ctorIdx t) (nat_lit 0)) →
+      (toDiagonal : (a : Nat) → motive (ChompLean.OpeningMove.toDiagonal a)) → motive t</pre></li><li><code>ChompLean.OpeningMove.toDiagonal.inj</code><pre class="prose">∀ {a a_1 : Nat},
+  @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toDiagonal a) (ChompLean.OpeningMove.toDiagonal a_1) →
+    @Eq.{1} Nat a a_1</pre></li><li><code>ChompLean.OpeningMove.toDiagonal.injEq</code><pre class="prose">∀ (a a_1 : Nat),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toDiagonal a) (ChompLean.OpeningMove.toDiagonal a_1))
+    (@Eq.{1} Nat a a_1)</pre></li><li><code>ChompLean.OpeningMove.toDiagonal.noConfusion</code><pre class="prose">{P : Sort u} →
+  {a a&#x27; : Nat} →
+    (eq : @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toDiagonal a) (ChompLean.OpeningMove.toDiagonal a&#x27;)) →
+      (k : (a_eq : @Eq.{1} Nat a a&#x27;) → P) → P</pre></li><li><code>ChompLean.OpeningMove.toDiagonal.sizeOf_spec</code><pre class="prose">∀ (a : Nat),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OpeningMove ChompLean.OpeningMove._sizeOf_inst (ChompLean.OpeningMove.toDiagonal a))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) (@SizeOf.sizeOf.{1} Nat instSizeOfNat a))</pre></li><li><code>ChompLean.OpeningMove.toRowStart</code><pre class="prose">(r : Nat) → ChompLean.OpeningMove</pre></li><li><code>ChompLean.OpeningMove.toRowStart.elim</code><pre class="prose">{motive : (t : ChompLean.OpeningMove) → Sort u} →
+  (t : ChompLean.OpeningMove) →
+    (h : @Eq.{1} Nat (ChompLean.OpeningMove.ctorIdx t) (nat_lit 1)) →
+      (toRowStart : (r : Nat) → motive (ChompLean.OpeningMove.toRowStart r)) → motive t</pre></li><li><code>ChompLean.OpeningMove.toRowStart.inj</code><pre class="prose">∀ {r r_1 : Nat},
+  @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toRowStart r) (ChompLean.OpeningMove.toRowStart r_1) →
+    @Eq.{1} Nat r r_1</pre></li><li><code>ChompLean.OpeningMove.toRowStart.injEq</code><pre class="prose">∀ (r r_1 : Nat),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toRowStart r) (ChompLean.OpeningMove.toRowStart r_1))
+    (@Eq.{1} Nat r r_1)</pre></li><li><code>ChompLean.OpeningMove.toRowStart.noConfusion</code><pre class="prose">{P : Sort u} →
+  {r r&#x27; : Nat} →
+    (eq : @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toRowStart r) (ChompLean.OpeningMove.toRowStart r&#x27;)) →
+      (k : (r_eq : @Eq.{1} Nat r r&#x27;) → P) → P</pre></li><li><code>ChompLean.OpeningMove.toRowStart.sizeOf_spec</code><pre class="prose">∀ (r : Nat),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.OpeningMove ChompLean.OpeningMove._sizeOf_inst (ChompLean.OpeningMove.toRowStart r))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) (@SizeOf.sizeOf.{1} Nat instSizeOfNat r))</pre></li><li><code>ChompLean.R</code><pre class="prose">(f : Nat → Nat → Nat) → (q r p : Nat) → Prop</pre></li><li><code>ChompLean.RecurrenceModel</code><pre class="prose">Type</pre></li><li><code>ChompLean.RecurrenceModel._sizeOf_1</code><pre class="prose">(t : ChompLean.RecurrenceModel) → Nat</pre></li><li><code>ChompLean.RecurrenceModel._sizeOf_inst</code><pre class="prose">SizeOf.{1} ChompLean.RecurrenceModel</pre></li><li><code>ChompLean.RecurrenceModel.casesOn</code><pre class="prose">{motive : (t : ChompLean.RecurrenceModel) → Sort u} →
+  (t : ChompLean.RecurrenceModel) →
+    (mk :
+        (f : Nat → Nat → Nat) →
+          (fixed_q_injective :
+              ∀ {q b₁ b₂ : Nat},
+                @LE.le.{0} Nat instLENat b₁ q →
+                  @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂) →
+            (diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a)) →
+              (value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r)) →
+                (diagonal_general_no_attack :
+                    ∀ {i s q : Nat},
+                      @LT.lt.{0} Nat instLTNat i s →
+                        @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False) →
+                  (diagonal_no_attack :
+                      ∀ {a b p : Nat},
+                        @LT.lt.{0} Nat instLTNat a b →
+                          @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False) →
+                    (rowstart_diagonal_attack :
+                        ∀ {p r a : Nat},
+                          @Eq.{1} Nat (f p r) p →
+                            @LT.lt.{0} Nat instLTNat r p →
+                              @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False) →
+                      (rowstart_no_middle :
+                          ∀ {p r q : Nat},
+                            @Eq.{1} Nat (f p r) p →
+                              @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p) →
+                        (constant_step :
+                            ∀ {q r : Nat},
+                              @LT.lt.{0} Nat instLTNat r q →
+                                @LT.lt.{0} Nat instLTNat (f q r)
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+                                  @Eq.{1} Nat
+                                    (f
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                      r)
+                                    (f q r)) →
+                          (mex_no_skip :
+                              ∀ {q r k : Nat},
+                                @LE.le.{0} Nat instLENat r q →
+                                  @LT.lt.{0} Nat instLTNat q (f q r) →
+                                    @LT.lt.{0} Nat instLTNat
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+                                      @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k) →
+                            (rightmost_hole :
+                                ∀ {r q p : Nat},
+                                  @LT.lt.{0} Nat instLTNat r q →
+                                    @LT.lt.{0} Nat instLTNat q p →
+                                      Not (ChompLean.C f q r p) →
+                                        (∀ (t : Nat),
+                                            @LT.lt.{0} Nat instLTNat q t →
+                                              @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+                                          @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r)) →
+                              (rowstart_not_R :
+                                  ∀ {p r q : Nat},
+                                    @Eq.{1} Nat (f p r) p →
+                                      @LT.lt.{0} Nat instLTNat r p →
+                                        @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p)) →
+                                (opening_cover :
+                                    ∀ {p : Nat},
+                                      @LT.lt.{0} Nat instLTNat
+                                          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+                                        Or
+                                          (@Exists.{1} Nat fun (a : Nat) =&gt;
+                                            And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+                                          (@Exists.{1} Nat fun (r : Nat) =&gt;
+                                            And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))) →
+                                  motive
+                                    (ChompLean.RecurrenceModel.mk f fixed_q_injective diagonal_gt value_gt_index
+                                      diagonal_general_no_attack diagonal_no_attack rowstart_diagonal_attack
+                                      rowstart_no_middle constant_step mex_no_skip rightmost_hole rowstart_not_R
+                                      opening_cover)) →
+      motive t</pre></li><li><code>ChompLean.RecurrenceModel.constant_step</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {q r : Nat},
+  @LT.lt.{0} Nat instLTNat r q →
+    @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f self q r)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+      @Eq.{1} Nat
+        (ChompLean.RecurrenceModel.f self
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          r)
+        (ChompLean.RecurrenceModel.f self q r)</pre></li><li><code>ChompLean.RecurrenceModel.ctorIdx</code><pre class="prose">ChompLean.RecurrenceModel → Nat</pre></li><li><code>ChompLean.RecurrenceModel.diagonal_general_no_attack</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {i s q : Nat},
+  @LT.lt.{0} Nat instLTNat i s →
+    @LE.le.{0} Nat instLENat s q →
+      @Eq.{1} Nat (ChompLean.RecurrenceModel.f self i i) (ChompLean.RecurrenceModel.f self q s) → False</pre></li><li><code>ChompLean.RecurrenceModel.diagonal_gt</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) (a : Nat), @LT.lt.{0} Nat instLTNat a (ChompLean.RecurrenceModel.f self a a)</pre></li><li><code>ChompLean.RecurrenceModel.diagonal_no_attack</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {a b p : Nat},
+  @LT.lt.{0} Nat instLTNat a b →
+    @LT.lt.{0} Nat instLTNat b p →
+      @Eq.{1} Nat (ChompLean.RecurrenceModel.f self a a) p →
+        @Eq.{1} Nat (ChompLean.RecurrenceModel.f self b b) p → False</pre></li><li><code>ChompLean.RecurrenceModel.f</code><pre class="prose">(self : ChompLean.RecurrenceModel) → Nat → Nat → Nat</pre></li><li><code>ChompLean.RecurrenceModel.fixed_q_injective</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {q b₁ b₂ : Nat},
+  @LE.le.{0} Nat instLENat b₁ q →
+    @LE.le.{0} Nat instLENat b₂ q →
+      @Eq.{1} Nat (ChompLean.RecurrenceModel.f self q b₁) (ChompLean.RecurrenceModel.f self q b₂) → @Eq.{1} Nat b₁ b₂</pre></li><li><code>ChompLean.RecurrenceModel.mex_no_skip</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {q r k : Nat},
+  @LE.le.{0} Nat instLENat r q →
+    @LT.lt.{0} Nat instLTNat q (ChompLean.RecurrenceModel.f self q r) →
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+        @LT.lt.{0} Nat instLTNat k (ChompLean.RecurrenceModel.f self q r) →
+          ChompLean.B (ChompLean.RecurrenceModel.f self) q r k</pre></li><li><code>ChompLean.RecurrenceModel.mk</code><pre class="prose">(f : Nat → Nat → Nat) →
+  (fixed_q_injective :
+      ∀ {q b₁ b₂ : Nat},
+        @LE.le.{0} Nat instLENat b₁ q →
+          @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂) →
+    (diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a)) →
+      (value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r)) →
+        (diagonal_general_no_attack :
+            ∀ {i s q : Nat},
+              @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False) →
+          (diagonal_no_attack :
+              ∀ {a b p : Nat},
+                @LT.lt.{0} Nat instLTNat a b →
+                  @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False) →
+            (rowstart_diagonal_attack :
+                ∀ {p r a : Nat},
+                  @Eq.{1} Nat (f p r) p →
+                    @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False) →
+              (rowstart_no_middle :
+                  ∀ {p r q : Nat},
+                    @Eq.{1} Nat (f p r) p →
+                      @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p) →
+                (constant_step :
+                    ∀ {q r : Nat},
+                      @LT.lt.{0} Nat instLTNat r q →
+                        @LT.lt.{0} Nat instLTNat (f q r)
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+                          @Eq.{1} Nat
+                            (f
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              r)
+                            (f q r)) →
+                  (mex_no_skip :
+                      ∀ {q r k : Nat},
+                        @LE.le.{0} Nat instLENat r q →
+                          @LT.lt.{0} Nat instLTNat q (f q r) →
+                            @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+                              @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k) →
+                    (rightmost_hole :
+                        ∀ {r q p : Nat},
+                          @LT.lt.{0} Nat instLTNat r q →
+                            @LT.lt.{0} Nat instLTNat q p →
+                              Not (ChompLean.C f q r p) →
+                                (∀ (t : Nat),
+                                    @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+                                  @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r)) →
+                      (rowstart_not_R :
+                          ∀ {p r q : Nat},
+                            @Eq.{1} Nat (f p r) p →
+                              @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p)) →
+                        (opening_cover :
+                            ∀ {p : Nat},
+                              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+                                Or
+                                  (@Exists.{1} Nat fun (a : Nat) =&gt;
+                                    And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+                                  (@Exists.{1} Nat fun (r : Nat) =&gt;
+                                    And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))) →
+                          ChompLean.RecurrenceModel</pre></li><li><code>ChompLean.RecurrenceModel.mk._flat_ctor</code><pre class="prose">(f : Nat → Nat → Nat) →
+  (fixed_q_injective :
+      ∀ {q b₁ b₂ : Nat},
+        @LE.le.{0} Nat instLENat b₁ q →
+          @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂) →
+    (diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a)) →
+      (value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r)) →
+        (diagonal_general_no_attack :
+            ∀ {i s q : Nat},
+              @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False) →
+          (diagonal_no_attack :
+              ∀ {a b p : Nat},
+                @LT.lt.{0} Nat instLTNat a b →
+                  @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False) →
+            (rowstart_diagonal_attack :
+                ∀ {p r a : Nat},
+                  @Eq.{1} Nat (f p r) p →
+                    @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False) →
+              (rowstart_no_middle :
+                  ∀ {p r q : Nat},
+                    @Eq.{1} Nat (f p r) p →
+                      @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p) →
+                (constant_step :
+                    ∀ {q r : Nat},
+                      @LT.lt.{0} Nat instLTNat r q →
+                        @LT.lt.{0} Nat instLTNat (f q r)
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+                          @Eq.{1} Nat
+                            (f
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                              r)
+                            (f q r)) →
+                  (mex_no_skip :
+                      ∀ {q r k : Nat},
+                        @LE.le.{0} Nat instLENat r q →
+                          @LT.lt.{0} Nat instLTNat q (f q r) →
+                            @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+                              @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k) →
+                    (rightmost_hole :
+                        ∀ {r q p : Nat},
+                          @LT.lt.{0} Nat instLTNat r q →
+                            @LT.lt.{0} Nat instLTNat q p →
+                              Not (ChompLean.C f q r p) →
+                                (∀ (t : Nat),
+                                    @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+                                  @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r)) →
+                      (rowstart_not_R :
+                          ∀ {p r q : Nat},
+                            @Eq.{1} Nat (f p r) p →
+                              @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p)) →
+                        (opening_cover :
+                            ∀ {p : Nat},
+                              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+                                Or
+                                  (@Exists.{1} Nat fun (a : Nat) =&gt;
+                                    And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+                                  (@Exists.{1} Nat fun (r : Nat) =&gt;
+                                    And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))) →
+                          ChompLean.RecurrenceModel</pre></li><li><code>ChompLean.RecurrenceModel.mk.inj</code><pre class="prose">∀ {f : Nat → Nat → Nat}
+  {fixed_q_injective :
+    ∀ {q b₁ b₂ : Nat},
+      @LE.le.{0} Nat instLENat b₁ q → @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂}
+  {diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a)}
+  {value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r)}
+  {diagonal_general_no_attack :
+    ∀ {i s q : Nat}, @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False}
+  {diagonal_no_attack :
+    ∀ {a b p : Nat},
+      @LT.lt.{0} Nat instLTNat a b →
+        @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False}
+  {rowstart_diagonal_attack :
+    ∀ {p r a : Nat},
+      @Eq.{1} Nat (f p r) p →
+        @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False}
+  {rowstart_no_middle :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p}
+  {constant_step :
+    ∀ {q r : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat (f q r)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+          @Eq.{1} Nat
+            (f
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              r)
+            (f q r)}
+  {mex_no_skip :
+    ∀ {q r k : Nat},
+      @LE.le.{0} Nat instLENat r q →
+        @LT.lt.{0} Nat instLTNat q (f q r) →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+            @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k}
+  {rightmost_hole :
+    ∀ {r q p : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat q p →
+          Not (ChompLean.C f q r p) →
+            (∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+              @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r)}
+  {rowstart_not_R :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p)}
+  {opening_cover :
+    ∀ {p : Nat},
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+        Or (@Exists.{1} Nat fun (a : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+          (@Exists.{1} Nat fun (r : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))}
+  {f_1 : Nat → Nat → Nat}
+  {fixed_q_injective_1 :
+    ∀ {q b₁ b₂ : Nat},
+      @LE.le.{0} Nat instLENat b₁ q →
+        @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f_1 q b₁) (f_1 q b₂) → @Eq.{1} Nat b₁ b₂}
+  {diagonal_gt_1 : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f_1 a a)}
+  {value_gt_index_1 : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f_1 q r)}
+  {diagonal_general_no_attack_1 :
+    ∀ {i s q : Nat},
+      @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f_1 i i) (f_1 q s) → False}
+  {diagonal_no_attack_1 :
+    ∀ {a b p : Nat},
+      @LT.lt.{0} Nat instLTNat a b →
+        @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f_1 a a) p → @Eq.{1} Nat (f_1 b b) p → False}
+  {rowstart_diagonal_attack_1 :
+    ∀ {p r a : Nat},
+      @Eq.{1} Nat (f_1 p r) p →
+        @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f_1 a a) p → @LE.le.{0} Nat instLENat a r → False}
+  {rowstart_no_middle_1 :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f_1 p r) p → @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f_1 q r) p}
+  {constant_step_1 :
+    ∀ {q r : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat (f_1 q r)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+          @Eq.{1} Nat
+            (f_1
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              r)
+            (f_1 q r)}
+  {mex_no_skip_1 :
+    ∀ {q r k : Nat},
+      @LE.le.{0} Nat instLENat r q →
+        @LT.lt.{0} Nat instLTNat q (f_1 q r) →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+            @LT.lt.{0} Nat instLTNat k (f_1 q r) → ChompLean.B f_1 q r k}
+  {rightmost_hole_1 :
+    ∀ {r q p : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat q p →
+          Not (ChompLean.C f_1 q r p) →
+            (∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f_1 t r p) →
+              @LT.lt.{0} Nat instLTNat q (f_1 q r) → @LE.le.{0} Nat instLENat p (f_1 q r)}
+  {rowstart_not_R_1 :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f_1 p r) p →
+        @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f_1 q r p)}
+  {opening_cover_1 :
+    ∀ {p : Nat},
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+        Or (@Exists.{1} Nat fun (a : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f_1 a a) p))
+          (@Exists.{1} Nat fun (r : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f_1 p r) p))},
+  @Eq.{1} ChompLean.RecurrenceModel
+      (ChompLean.RecurrenceModel.mk f fixed_q_injective diagonal_gt value_gt_index diagonal_general_no_attack
+        diagonal_no_attack rowstart_diagonal_attack rowstart_no_middle constant_step mex_no_skip rightmost_hole
+        rowstart_not_R opening_cover)
+      (ChompLean.RecurrenceModel.mk f_1 fixed_q_injective_1 diagonal_gt_1 value_gt_index_1 diagonal_general_no_attack_1
+        diagonal_no_attack_1 rowstart_diagonal_attack_1 rowstart_no_middle_1 constant_step_1 mex_no_skip_1
+        rightmost_hole_1 rowstart_not_R_1 opening_cover_1) →
+    @Eq.{1} (Nat → Nat → Nat) f f_1</pre></li><li><code>ChompLean.RecurrenceModel.mk.injEq</code><pre class="prose">∀ (f : Nat → Nat → Nat)
+  (fixed_q_injective :
+    ∀ {q b₁ b₂ : Nat},
+      @LE.le.{0} Nat instLENat b₁ q → @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂)
+  (diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a))
+  (value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r))
+  (diagonal_general_no_attack :
+    ∀ {i s q : Nat}, @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False)
+  (diagonal_no_attack :
+    ∀ {a b p : Nat},
+      @LT.lt.{0} Nat instLTNat a b →
+        @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False)
+  (rowstart_diagonal_attack :
+    ∀ {p r a : Nat},
+      @Eq.{1} Nat (f p r) p →
+        @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False)
+  (rowstart_no_middle :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p)
+  (constant_step :
+    ∀ {q r : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat (f q r)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+          @Eq.{1} Nat
+            (f
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              r)
+            (f q r))
+  (mex_no_skip :
+    ∀ {q r k : Nat},
+      @LE.le.{0} Nat instLENat r q →
+        @LT.lt.{0} Nat instLTNat q (f q r) →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+            @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k)
+  (rightmost_hole :
+    ∀ {r q p : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat q p →
+          Not (ChompLean.C f q r p) →
+            (∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+              @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r))
+  (rowstart_not_R :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p))
+  (opening_cover :
+    ∀ {p : Nat},
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+        Or (@Exists.{1} Nat fun (a : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+          (@Exists.{1} Nat fun (r : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p)))
+  (f_1 : Nat → Nat → Nat)
+  (fixed_q_injective_1 :
+    ∀ {q b₁ b₂ : Nat},
+      @LE.le.{0} Nat instLENat b₁ q →
+        @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f_1 q b₁) (f_1 q b₂) → @Eq.{1} Nat b₁ b₂)
+  (diagonal_gt_1 : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f_1 a a))
+  (value_gt_index_1 : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f_1 q r))
+  (diagonal_general_no_attack_1 :
+    ∀ {i s q : Nat},
+      @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f_1 i i) (f_1 q s) → False)
+  (diagonal_no_attack_1 :
+    ∀ {a b p : Nat},
+      @LT.lt.{0} Nat instLTNat a b →
+        @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f_1 a a) p → @Eq.{1} Nat (f_1 b b) p → False)
+  (rowstart_diagonal_attack_1 :
+    ∀ {p r a : Nat},
+      @Eq.{1} Nat (f_1 p r) p →
+        @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f_1 a a) p → @LE.le.{0} Nat instLENat a r → False)
+  (rowstart_no_middle_1 :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f_1 p r) p → @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f_1 q r) p)
+  (constant_step_1 :
+    ∀ {q r : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat (f_1 q r)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+          @Eq.{1} Nat
+            (f_1
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              r)
+            (f_1 q r))
+  (mex_no_skip_1 :
+    ∀ {q r k : Nat},
+      @LE.le.{0} Nat instLENat r q →
+        @LT.lt.{0} Nat instLTNat q (f_1 q r) →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+            @LT.lt.{0} Nat instLTNat k (f_1 q r) → ChompLean.B f_1 q r k)
+  (rightmost_hole_1 :
+    ∀ {r q p : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat q p →
+          Not (ChompLean.C f_1 q r p) →
+            (∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f_1 t r p) →
+              @LT.lt.{0} Nat instLTNat q (f_1 q r) → @LE.le.{0} Nat instLENat p (f_1 q r))
+  (rowstart_not_R_1 :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f_1 p r) p →
+        @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f_1 q r p))
+  (opening_cover_1 :
+    ∀ {p : Nat},
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+        Or (@Exists.{1} Nat fun (a : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f_1 a a) p))
+          (@Exists.{1} Nat fun (r : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f_1 p r) p))),
+  @Eq.{1} Prop
+    (@Eq.{1} ChompLean.RecurrenceModel
+      (ChompLean.RecurrenceModel.mk f fixed_q_injective diagonal_gt value_gt_index diagonal_general_no_attack
+        diagonal_no_attack rowstart_diagonal_attack rowstart_no_middle constant_step mex_no_skip rightmost_hole
+        rowstart_not_R opening_cover)
+      (ChompLean.RecurrenceModel.mk f_1 fixed_q_injective_1 diagonal_gt_1 value_gt_index_1 diagonal_general_no_attack_1
+        diagonal_no_attack_1 rowstart_diagonal_attack_1 rowstart_no_middle_1 constant_step_1 mex_no_skip_1
+        rightmost_hole_1 rowstart_not_R_1 opening_cover_1))
+    (@Eq.{1} (Nat → Nat → Nat) f f_1)</pre></li><li><code>ChompLean.RecurrenceModel.mk.noConfusion</code><pre class="prose">{P : Sort u} →
+  {f : Nat → Nat → Nat} →
+    {fixed_q_injective :
+        ∀ {q b₁ b₂ : Nat},
+          @LE.le.{0} Nat instLENat b₁ q →
+            @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂} →
+      {diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a)} →
+        {value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r)} →
+          {diagonal_general_no_attack :
+              ∀ {i s q : Nat},
+                @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False} →
+            {diagonal_no_attack :
+                ∀ {a b p : Nat},
+                  @LT.lt.{0} Nat instLTNat a b →
+                    @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False} →
+              {rowstart_diagonal_attack :
+                  ∀ {p r a : Nat},
+                    @Eq.{1} Nat (f p r) p →
+                      @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False} →
+                {rowstart_no_middle :
+                    ∀ {p r q : Nat},
+                      @Eq.{1} Nat (f p r) p →
+                        @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p} →
+                  {constant_step :
+                      ∀ {q r : Nat},
+                        @LT.lt.{0} Nat instLTNat r q →
+                          @LT.lt.{0} Nat instLTNat (f q r)
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+                            @Eq.{1} Nat
+                              (f
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                r)
+                              (f q r)} →
+                    {mex_no_skip :
+                        ∀ {q r k : Nat},
+                          @LE.le.{0} Nat instLENat r q →
+                            @LT.lt.{0} Nat instLTNat q (f q r) →
+                              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+                                @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k} →
+                      {rightmost_hole :
+                          ∀ {r q p : Nat},
+                            @LT.lt.{0} Nat instLTNat r q →
+                              @LT.lt.{0} Nat instLTNat q p →
+                                Not (ChompLean.C f q r p) →
+                                  (∀ (t : Nat),
+                                      @LT.lt.{0} Nat instLTNat q t →
+                                        @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+                                    @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r)} →
+                        {rowstart_not_R :
+                            ∀ {p r q : Nat},
+                              @Eq.{1} Nat (f p r) p →
+                                @LT.lt.{0} Nat instLTNat r p →
+                                  @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p)} →
+                          {opening_cover :
+                              ∀ {p : Nat},
+                                @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                                    p →
+                                  Or
+                                    (@Exists.{1} Nat fun (a : Nat) =&gt;
+                                      And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+                                    (@Exists.{1} Nat fun (r : Nat) =&gt;
+                                      And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))} →
+                            {f&#x27; : Nat → Nat → Nat} →
+                              {fixed_q_injective&#x27; :
+                                  ∀ {q b₁ b₂ : Nat},
+                                    @LE.le.{0} Nat instLENat b₁ q →
+                                      @LE.le.{0} Nat instLENat b₂ q →
+                                        @Eq.{1} Nat (f&#x27; q b₁) (f&#x27; q b₂) → @Eq.{1} Nat b₁ b₂} →
+                                {diagonal_gt&#x27; : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f&#x27; a a)} →
+                                  {value_gt_index&#x27; :
+                                      ∀ {q r : Nat},
+                                        @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f&#x27; q r)} →
+                                    {diagonal_general_no_attack&#x27; :
+                                        ∀ {i s q : Nat},
+                                          @LT.lt.{0} Nat instLTNat i s →
+                                            @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f&#x27; i i) (f&#x27; q s) → False} →
+                                      {diagonal_no_attack&#x27; :
+                                          ∀ {a b p : Nat},
+                                            @LT.lt.{0} Nat instLTNat a b →
+                                              @LT.lt.{0} Nat instLTNat b p →
+                                                @Eq.{1} Nat (f&#x27; a a) p → @Eq.{1} Nat (f&#x27; b b) p → False} →
+                                        {rowstart_diagonal_attack&#x27; :
+                                            ∀ {p r a : Nat},
+                                              @Eq.{1} Nat (f&#x27; p r) p →
+                                                @LT.lt.{0} Nat instLTNat r p →
+                                                  @Eq.{1} Nat (f&#x27; a a) p → @LE.le.{0} Nat instLENat a r → False} →
+                                          {rowstart_no_middle&#x27; :
+                                              ∀ {p r q : Nat},
+                                                @Eq.{1} Nat (f&#x27; p r) p →
+                                                  @LT.lt.{0} Nat instLTNat r q →
+                                                    @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f&#x27; q r) p} →
+                                            {constant_step&#x27; :
+                                                ∀ {q r : Nat},
+                                                  @LT.lt.{0} Nat instLTNat r q →
+                                                    @LT.lt.{0} Nat instLTNat (f&#x27; q r)
+                                                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                                                          q
+                                                          (@OfNat.ofNat.{0} Nat (nat_lit 1)
+                                                            (instOfNatNat (nat_lit 1)))) →
+                                                      @Eq.{1} Nat
+                                                        (f&#x27;
+                                                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat
+                                                            (@instHAdd.{0} Nat instAddNat) q
+                                                            (@OfNat.ofNat.{0} Nat (nat_lit 1)
+                                                              (instOfNatNat (nat_lit 1))))
+                                                          r)
+                                                        (f&#x27; q r)} →
+                                              {mex_no_skip&#x27; :
+                                                  ∀ {q r k : Nat},
+                                                    @LE.le.{0} Nat instLENat r q →
+                                                      @LT.lt.{0} Nat instLTNat q (f&#x27; q r) →
+                                                        @LT.lt.{0} Nat instLTNat
+                                                            (@OfNat.ofNat.{0} Nat (nat_lit 0)
+                                                              (instOfNatNat (nat_lit 0)))
+                                                            k →
+                                                          @LT.lt.{0} Nat instLTNat k (f&#x27; q r) → ChompLean.B f&#x27; q r k} →
+                                                {rightmost_hole&#x27; :
+                                                    ∀ {r q p : Nat},
+                                                      @LT.lt.{0} Nat instLTNat r q →
+                                                        @LT.lt.{0} Nat instLTNat q p →
+                                                          Not (ChompLean.C f&#x27; q r p) →
+                                                            (∀ (t : Nat),
+                                                                @LT.lt.{0} Nat instLTNat q t →
+                                                                  @LT.lt.{0} Nat instLTNat t p → ChompLean.C f&#x27; t r p) →
+                                                              @LT.lt.{0} Nat instLTNat q (f&#x27; q r) →
+                                                                @LE.le.{0} Nat instLENat p (f&#x27; q r)} →
+                                                  {rowstart_not_R&#x27; :
+                                                      ∀ {p r q : Nat},
+                                                        @Eq.{1} Nat (f&#x27; p r) p →
+                                                          @LT.lt.{0} Nat instLTNat r p →
+                                                            @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f&#x27; q r p)} →
+                                                    {opening_cover&#x27; :
+                                                        ∀ {p : Nat},
+                                                          @LT.lt.{0} Nat instLTNat
+                                                              (@OfNat.ofNat.{0} Nat (nat_lit 0)
+                                                                (instOfNatNat (nat_lit 0)))
+                                                              p →
+                                                            Or
+                                                              (@Exists.{1} Nat fun (a : Nat) =&gt;
+                                                                And (@LT.lt.{0} Nat instLTNat a p)
+                                                                  (@Eq.{1} Nat (f&#x27; a a) p))
+                                                              (@Exists.{1} Nat fun (r : Nat) =&gt;
+                                                                And (@LT.lt.{0} Nat instLTNat r p)
+                                                                  (@Eq.{1} Nat (f&#x27; p r) p))} →
+                                                      (eq :
+                                                          @Eq.{1} ChompLean.RecurrenceModel
+                                                            (ChompLean.RecurrenceModel.mk f fixed_q_injective
+                                                              diagonal_gt value_gt_index diagonal_general_no_attack
+                                                              diagonal_no_attack rowstart_diagonal_attack
+                                                              rowstart_no_middle constant_step mex_no_skip
+                                                              rightmost_hole rowstart_not_R opening_cover)
+                                                            (ChompLean.RecurrenceModel.mk f&#x27; fixed_q_injective&#x27;
+                                                              diagonal_gt&#x27; value_gt_index&#x27; diagonal_general_no_attack&#x27;
+                                                              diagonal_no_attack&#x27; rowstart_diagonal_attack&#x27;
+                                                              rowstart_no_middle&#x27; constant_step&#x27; mex_no_skip&#x27;
+                                                              rightmost_hole&#x27; rowstart_not_R&#x27; opening_cover&#x27;)) →
+                                                        (k : (f_eq : @Eq.{1} (Nat → Nat → Nat) f f&#x27;) → P) → P</pre></li><li><code>ChompLean.RecurrenceModel.mk.sizeOf_spec</code><pre class="prose">∀ (f : Nat → Nat → Nat)
+  (fixed_q_injective :
+    ∀ {q b₁ b₂ : Nat},
+      @LE.le.{0} Nat instLENat b₁ q → @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂)
+  (diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a))
+  (value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r))
+  (diagonal_general_no_attack :
+    ∀ {i s q : Nat}, @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False)
+  (diagonal_no_attack :
+    ∀ {a b p : Nat},
+      @LT.lt.{0} Nat instLTNat a b →
+        @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False)
+  (rowstart_diagonal_attack :
+    ∀ {p r a : Nat},
+      @Eq.{1} Nat (f p r) p →
+        @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False)
+  (rowstart_no_middle :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p)
+  (constant_step :
+    ∀ {q r : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat (f q r)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+          @Eq.{1} Nat
+            (f
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              r)
+            (f q r))
+  (mex_no_skip :
+    ∀ {q r k : Nat},
+      @LE.le.{0} Nat instLENat r q →
+        @LT.lt.{0} Nat instLTNat q (f q r) →
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+            @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k)
+  (rightmost_hole :
+    ∀ {r q p : Nat},
+      @LT.lt.{0} Nat instLTNat r q →
+        @LT.lt.{0} Nat instLTNat q p →
+          Not (ChompLean.C f q r p) →
+            (∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+              @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r))
+  (rowstart_not_R :
+    ∀ {p r q : Nat},
+      @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p))
+  (opening_cover :
+    ∀ {p : Nat},
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+        Or (@Exists.{1} Nat fun (a : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+          (@Exists.{1} Nat fun (r : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))),
+  @Eq.{1} Nat
+    (@SizeOf.sizeOf.{1} ChompLean.RecurrenceModel ChompLean.RecurrenceModel._sizeOf_inst
+      (ChompLean.RecurrenceModel.mk f fixed_q_injective diagonal_gt value_gt_index diagonal_general_no_attack
+        diagonal_no_attack rowstart_diagonal_attack rowstart_no_middle constant_step mex_no_skip rightmost_hole
+        rowstart_not_R opening_cover))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))</pre></li><li><code>ChompLean.RecurrenceModel.noConfusion</code><pre class="prose">{P : Sort u} →
+  {t t&#x27; : ChompLean.RecurrenceModel} →
+    (eq : @Eq.{1} ChompLean.RecurrenceModel t t&#x27;) → ChompLean.RecurrenceModel.noConfusionType.{u} P t t&#x27;</pre></li><li><code>ChompLean.RecurrenceModel.noConfusionType</code><pre class="prose">(P : Sort u) → (t t&#x27; : ChompLean.RecurrenceModel) → Sort u</pre></li><li><code>ChompLean.RecurrenceModel.opening_cover</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {p : Nat},
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+    Or
+      (@Exists.{1} Nat fun (a : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f self a a) p))
+      (@Exists.{1} Nat fun (r : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f self p r) p))</pre></li><li><code>ChompLean.RecurrenceModel.rec</code><pre class="prose">{motive : (t : ChompLean.RecurrenceModel) → Sort u} →
+  (mk :
+      (f : Nat → Nat → Nat) →
+        (fixed_q_injective :
+            ∀ {q b₁ b₂ : Nat},
+              @LE.le.{0} Nat instLENat b₁ q →
+                @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂) →
+          (diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a)) →
+            (value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r)) →
+              (diagonal_general_no_attack :
+                  ∀ {i s q : Nat},
+                    @LT.lt.{0} Nat instLTNat i s → @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False) →
+                (diagonal_no_attack :
+                    ∀ {a b p : Nat},
+                      @LT.lt.{0} Nat instLTNat a b →
+                        @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False) →
+                  (rowstart_diagonal_attack :
+                      ∀ {p r a : Nat},
+                        @Eq.{1} Nat (f p r) p →
+                          @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False) →
+                    (rowstart_no_middle :
+                        ∀ {p r q : Nat},
+                          @Eq.{1} Nat (f p r) p →
+                            @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p) →
+                      (constant_step :
+                          ∀ {q r : Nat},
+                            @LT.lt.{0} Nat instLTNat r q →
+                              @LT.lt.{0} Nat instLTNat (f q r)
+                                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+                                @Eq.{1} Nat
+                                  (f
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                    r)
+                                  (f q r)) →
+                        (mex_no_skip :
+                            ∀ {q r k : Nat},
+                              @LE.le.{0} Nat instLENat r q →
+                                @LT.lt.{0} Nat instLTNat q (f q r) →
+                                  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                                      k →
+                                    @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k) →
+                          (rightmost_hole :
+                              ∀ {r q p : Nat},
+                                @LT.lt.{0} Nat instLTNat r q →
+                                  @LT.lt.{0} Nat instLTNat q p →
+                                    Not (ChompLean.C f q r p) →
+                                      (∀ (t : Nat),
+                                          @LT.lt.{0} Nat instLTNat q t →
+                                            @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+                                        @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r)) →
+                            (rowstart_not_R :
+                                ∀ {p r q : Nat},
+                                  @Eq.{1} Nat (f p r) p →
+                                    @LT.lt.{0} Nat instLTNat r p →
+                                      @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p)) →
+                              (opening_cover :
+                                  ∀ {p : Nat},
+                                    @LT.lt.{0} Nat instLTNat
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+                                      Or
+                                        (@Exists.{1} Nat fun (a : Nat) =&gt;
+                                          And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+                                        (@Exists.{1} Nat fun (r : Nat) =&gt;
+                                          And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))) →
+                                motive
+                                  (ChompLean.RecurrenceModel.mk f fixed_q_injective diagonal_gt value_gt_index
+                                    diagonal_general_no_attack diagonal_no_attack rowstart_diagonal_attack
+                                    rowstart_no_middle constant_step mex_no_skip rightmost_hole rowstart_not_R
+                                    opening_cover)) →
+    (t : ChompLean.RecurrenceModel) → motive t</pre></li><li><code>ChompLean.RecurrenceModel.recOn</code><pre class="prose">{motive : (t : ChompLean.RecurrenceModel) → Sort u} →
+  (t : ChompLean.RecurrenceModel) →
+    (mk :
+        (f : Nat → Nat → Nat) →
+          (fixed_q_injective :
+              ∀ {q b₁ b₂ : Nat},
+                @LE.le.{0} Nat instLENat b₁ q →
+                  @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (f q b₁) (f q b₂) → @Eq.{1} Nat b₁ b₂) →
+            (diagonal_gt : ∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (f a a)) →
+              (value_gt_index : ∀ {q r : Nat}, @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (f q r)) →
+                (diagonal_general_no_attack :
+                    ∀ {i s q : Nat},
+                      @LT.lt.{0} Nat instLTNat i s →
+                        @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (f i i) (f q s) → False) →
+                  (diagonal_no_attack :
+                      ∀ {a b p : Nat},
+                        @LT.lt.{0} Nat instLTNat a b →
+                          @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (f a a) p → @Eq.{1} Nat (f b b) p → False) →
+                    (rowstart_diagonal_attack :
+                        ∀ {p r a : Nat},
+                          @Eq.{1} Nat (f p r) p →
+                            @LT.lt.{0} Nat instLTNat r p →
+                              @Eq.{1} Nat (f a a) p → @LE.le.{0} Nat instLENat a r → False) →
+                      (rowstart_no_middle :
+                          ∀ {p r q : Nat},
+                            @Eq.{1} Nat (f p r) p →
+                              @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (f q r) p) →
+                        (constant_step :
+                            ∀ {q r : Nat},
+                              @LT.lt.{0} Nat instLTNat r q →
+                                @LT.lt.{0} Nat instLTNat (f q r)
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+                                  @Eq.{1} Nat
+                                    (f
+                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                      r)
+                                    (f q r)) →
+                          (mex_no_skip :
+                              ∀ {q r k : Nat},
+                                @LE.le.{0} Nat instLENat r q →
+                                  @LT.lt.{0} Nat instLTNat q (f q r) →
+                                    @LT.lt.{0} Nat instLTNat
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+                                      @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k) →
+                            (rightmost_hole :
+                                ∀ {r q p : Nat},
+                                  @LT.lt.{0} Nat instLTNat r q →
+                                    @LT.lt.{0} Nat instLTNat q p →
+                                      Not (ChompLean.C f q r p) →
+                                        (∀ (t : Nat),
+                                            @LT.lt.{0} Nat instLTNat q t →
+                                              @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+                                          @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r)) →
+                              (rowstart_not_R :
+                                  ∀ {p r q : Nat},
+                                    @Eq.{1} Nat (f p r) p →
+                                      @LT.lt.{0} Nat instLTNat r p →
+                                        @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p)) →
+                                (opening_cover :
+                                    ∀ {p : Nat},
+                                      @LT.lt.{0} Nat instLTNat
+                                          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p →
+                                        Or
+                                          (@Exists.{1} Nat fun (a : Nat) =&gt;
+                                            And (@LT.lt.{0} Nat instLTNat a p) (@Eq.{1} Nat (f a a) p))
+                                          (@Exists.{1} Nat fun (r : Nat) =&gt;
+                                            And (@LT.lt.{0} Nat instLTNat r p) (@Eq.{1} Nat (f p r) p))) →
+                                  motive
+                                    (ChompLean.RecurrenceModel.mk f fixed_q_injective diagonal_gt value_gt_index
+                                      diagonal_general_no_attack diagonal_no_attack rowstart_diagonal_attack
+                                      rowstart_no_middle constant_step mex_no_skip rightmost_hole rowstart_not_R
+                                      opening_cover)) →
+      motive t</pre></li><li><code>ChompLean.RecurrenceModel.rightmost_hole</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {r q p : Nat},
+  @LT.lt.{0} Nat instLTNat r q →
+    @LT.lt.{0} Nat instLTNat q p →
+      Not (ChompLean.C (ChompLean.RecurrenceModel.f self) q r p) →
+        (∀ (t : Nat),
+            @LT.lt.{0} Nat instLTNat q t →
+              @LT.lt.{0} Nat instLTNat t p → ChompLean.C (ChompLean.RecurrenceModel.f self) t r p) →
+          @LT.lt.{0} Nat instLTNat q (ChompLean.RecurrenceModel.f self q r) →
+            @LE.le.{0} Nat instLENat p (ChompLean.RecurrenceModel.f self q r)</pre></li><li><code>ChompLean.RecurrenceModel.rowstart_diagonal_attack</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {p r a : Nat},
+  @Eq.{1} Nat (ChompLean.RecurrenceModel.f self p r) p →
+    @LT.lt.{0} Nat instLTNat r p →
+      @Eq.{1} Nat (ChompLean.RecurrenceModel.f self a a) p → @LE.le.{0} Nat instLENat a r → False</pre></li><li><code>ChompLean.RecurrenceModel.rowstart_no_middle</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {p r q : Nat},
+  @Eq.{1} Nat (ChompLean.RecurrenceModel.f self p r) p →
+    @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (ChompLean.RecurrenceModel.f self q r) p</pre></li><li><code>ChompLean.RecurrenceModel.rowstart_not_R</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {p r q : Nat},
+  @Eq.{1} Nat (ChompLean.RecurrenceModel.f self p r) p →
+    @LT.lt.{0} Nat instLTNat r p →
+      @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R (ChompLean.RecurrenceModel.f self) q r p)</pre></li><li><code>ChompLean.RecurrenceModel.value_gt_index</code><pre class="prose">∀ (self : ChompLean.RecurrenceModel) {q r : Nat},
+  @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat r (ChompLean.RecurrenceModel.f self q r)</pre></li><li><code>ChompLean.S</code><pre class="prose">(f : Nat → Nat → Nat) → (p : Nat) → Prop</pre></li><li><code>ChompLean.Wins</code><pre class="prose">(M : ChompLean.RecurrenceModel) → (n : Nat) → ChompLean.OpeningMove → Prop</pre></li><li><code>ChompLean.Wins.match_1</code><pre class="prose">(motive : ChompLean.OpeningMove → Sort u_1) →
+  (x : ChompLean.OpeningMove) →
+    (h_1 : (a : Nat) → motive (ChompLean.OpeningMove.toDiagonal a)) →
+      (h_2 : (r : Nat) → motive (ChompLean.OpeningMove.toRowStart r)) → motive x</pre></li><li><code>ChompLean.actualWins_iff_wins</code><pre class="prose">∀ {n : Nat} (m : ChompLean.OpeningMove),
+  Iff (ChompLean.ActualWins n m) (ChompLean.Wins ChompLean.gameRecurrenceModel n m)</pre></li><li><code>ChompLean.actualWins_iff_wins.match_1_1</code><pre class="prose">∀ (motive : ChompLean.OpeningMove → Prop) (x : ChompLean.OpeningMove)
+  (h_1 : ∀ (a : Nat), motive (ChompLean.OpeningMove.toDiagonal a))
+  (h_2 : ∀ (r : Nat), motive (ChompLean.OpeningMove.toRowStart r)), motive x</pre></li><li><code>ChompLean.constant_from</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q r : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hsmall :
+    @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q r)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (d : Nat),
+  @Eq.{1} Nat (ChompLean.RecurrenceModel.f M (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d) r)
+    (ChompLean.RecurrenceModel.f M q r)</pre></li><li><code>ChompLean.constant_from._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q r : Nat} (d : Nat),
+  Not
+      (@Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q (Nat.succ d))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.constant_from._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q r : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q) (d : Nat),
+  Not (@LT.lt.{0} Nat instLTNat r (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d)) → False</pre></li><li><code>ChompLean.constant_from._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q r : Nat}
+  (hsmall :
+    @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q r)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (d : Nat)
+  (ih :
+    @Eq.{1} Nat (ChompLean.RecurrenceModel.f M (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d) r)
+      (ChompLean.RecurrenceModel.f M q r)),
+  Not
+      (@LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q r)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q d)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.diagonalMaximal</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (hsq : @LE.le.{0} Nat instLENat s q),
+  @LE.le.{0} Nat instLENat (ChompLean.RecurrenceModel.f M q s) (ChompLean.RecurrenceModel.f M q q)</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat}
+  (hlt0 : @GT.gt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q s) (ChompLean.RecurrenceModel.f M q q)) (r : Nat)
+  (hr_ge_s : @LE.le.{0} Nat instLENat (ChompLean.RecurrenceModel.f M q s) (ChompLean.RecurrenceModel.f M q r)),
+  Not (@LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q q) (ChompLean.RecurrenceModel.f M q r)) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_10</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r t&#x27; a : Nat) (har : @LE.le.{0} Nat instLENat a r),
+  Not (@Eq.{1} Nat (@Min.min.{0} Nat instMinNat a r) a) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_11</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r t&#x27; : Nat) (hrt&#x27; : @LT.lt.{0} Nat instLTNat r t&#x27;) (a : Nat)
+  (har : @LE.le.{0} Nat instLENat a r), Not (@LT.lt.{0} Nat instLTNat a t&#x27;) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_12</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r t&#x27; a : Nat) (har : Not (@LE.le.{0} Nat instLENat a r)),
+  Not (@Eq.{1} Nat (@Min.min.{0} Nat instMinNat a r) r) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_13</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r t&#x27; a : Nat) (har : Not (@LE.le.{0} Nat instLENat a r)),
+  Not (@LT.lt.{0} Nat instLTNat r a) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_14</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r x : Nat)
+  (hxq1 :
+    @LT.lt.{0} Nat instLTNat x
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LE.le.{0} Nat instLENat x q) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_15</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r : Nat)
+  (placement :
+    ∀ (t&#x27; : Nat),
+      @LT.lt.{0} Nat instLTNat r t&#x27; →
+        @LE.le.{0} Nat instLENat t&#x27; q →
+          @Exists.{1} Nat fun (u : Nat) =&gt;
+            And (@LT.lt.{0} Nat instLTNat r u)
+              (And (@LT.lt.{0} Nat instLTNat u q)
+                (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M u r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+  (x : Nat)
+  (h2 :
+    @LT.lt.{0} Nat instLTNat
+      ((fun (t&#x27; : Nat) =&gt;
+          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))
+            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) (Nat.decLt r t&#x27;)
+              (Nat.decLe t&#x27; q))
+            (fun (h : And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q)) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat r x)
+                    (And (@LT.lt.{0} Nat instLTNat x q)
+                      (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M x r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+                (placement t&#x27; (@And.left (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)
+                  (@And.right (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)))
+            fun (h : Not (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))) =&gt;
+            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        x)
+      q),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t&#x27; : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) (Nat.decLt r t&#x27;)
+                (Nat.decLe t&#x27; q))
+              (fun (h : And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q)) =&gt;
+                @Classical.choose.{1} Nat
+                  (fun (x : Nat) =&gt;
+                    And (@LT.lt.{0} Nat instLTNat r x)
+                      (And (@LT.lt.{0} Nat instLTNat x q)
+                        (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M x r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+                  (placement t&#x27; (@And.left (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)
+                    (@And.right (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)))
+              fun (h : Not (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          x)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_16</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r : Nat)
+  (placement :
+    ∀ (t&#x27; : Nat),
+      @LT.lt.{0} Nat instLTNat r t&#x27; →
+        @LE.le.{0} Nat instLENat t&#x27; q →
+          @Exists.{1} Nat fun (u : Nat) =&gt;
+            And (@LT.lt.{0} Nat instLTNat r u)
+              (And (@LT.lt.{0} Nat instLTNat u q)
+                (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M u r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+  (x y : Nat)
+  (hxq1 :
+    @LT.lt.{0} Nat instLTNat x
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LE.le.{0} Nat instLENat x q) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_17</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r : Nat)
+  (placement :
+    ∀ (t&#x27; : Nat),
+      @LT.lt.{0} Nat instLTNat r t&#x27; →
+        @LE.le.{0} Nat instLENat t&#x27; q →
+          @Exists.{1} Nat fun (u : Nat) =&gt;
+            And (@LT.lt.{0} Nat instLTNat r u)
+              (And (@LT.lt.{0} Nat instLTNat u q)
+                (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M u r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+  (x y : Nat)
+  (hyq1 :
+    @LT.lt.{0} Nat instLTNat y
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LE.le.{0} Nat instLENat y q) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_18</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r : Nat) (hr_lt_q : @LT.lt.{0} Nat instLTNat r q),
+  Not
+      (@LT.lt.{0} Nat instLTNat r
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_19</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {s : Nat} (r : Nat)
+  (hlt0 : @GT.gt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M r s) (ChompLean.RecurrenceModel.f M r r))
+  (hr_ge_s : @LE.le.{0} Nat instLENat (ChompLean.RecurrenceModel.f M r s) (ChompLean.RecurrenceModel.f M r r)), False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_20</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r : Nat)
+  (placement :
+    ∀ (t&#x27; : Nat),
+      @LT.lt.{0} Nat instLTNat r t&#x27; →
+        @LE.le.{0} Nat instLENat t&#x27; q →
+          @Exists.{1} Nat fun (u : Nat) =&gt;
+            And (@LT.lt.{0} Nat instLTNat r u)
+              (And (@LT.lt.{0} Nat instLTNat u q)
+                (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M u r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+  (x : Nat)
+  (hxq1 :
+    @LT.lt.{0} Nat instLTNat x
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hpx :
+    @Eq.{1} Nat
+      ((fun (t&#x27; : Nat) =&gt;
+          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))
+            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) (Nat.decLt r t&#x27;)
+              (Nat.decLe t&#x27; q))
+            (fun (h : And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q)) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat r x)
+                    (And (@LT.lt.{0} Nat instLTNat x q)
+                      (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M x r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+                (placement t&#x27; (@And.left (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)
+                  (@And.right (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)))
+            fun (h : Not (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))) =&gt;
+            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        x)
+      q),
+  Not (@LE.le.{0} Nat instLENat x q) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_21</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r : Nat)
+  (placement :
+    ∀ (t&#x27; : Nat),
+      @LT.lt.{0} Nat instLTNat r t&#x27; →
+        @LE.le.{0} Nat instLENat t&#x27; q →
+          @Exists.{1} Nat fun (u : Nat) =&gt;
+            And (@LT.lt.{0} Nat instLTNat r u)
+              (And (@LT.lt.{0} Nat instLTNat u q)
+                (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M u r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+  (x : Nat)
+  (hpx :
+    @Eq.{1} Nat
+      ((fun (t&#x27; : Nat) =&gt;
+          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))
+            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) (Nat.decLt r t&#x27;)
+              (Nat.decLe t&#x27; q))
+            (fun (h : And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q)) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat r x)
+                    (And (@LT.lt.{0} Nat instLTNat x q)
+                      (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M x r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+                (placement t&#x27; (@And.left (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)
+                  (@And.right (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)))
+            fun (h : Not (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))) =&gt;
+            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        x)
+      q)
+  (hb :
+    @LT.lt.{0} Nat instLTNat
+      ((fun (t&#x27; : Nat) =&gt;
+          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))
+            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) (Nat.decLt r t&#x27;)
+              (Nat.decLe t&#x27; q))
+            (fun (h : And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q)) =&gt;
+              @Classical.choose.{1} Nat
+                (fun (x : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat r x)
+                    (And (@LT.lt.{0} Nat instLTNat x q)
+                      (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M x r) (ChompLean.RecurrenceModel.f M q t&#x27;))))
+                (placement t&#x27; (@And.left (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)
+                  (@And.right (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q) h)))
+            fun (h : Not (And (@LT.lt.{0} Nat instLTNat r t&#x27;) (@LE.le.{0} Nat instLENat t&#x27; q))) =&gt;
+            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        x)
+      q),
+  False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r : Nat) (hr_le : @LE.le.{0} Nat instLENat r q) (hne : @Ne.{1} Nat r q),
+  Not (@LT.lt.{0} Nat instLTNat r q) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r : Nat)
+  (hr_gt_qq : @LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q q) (ChompLean.RecurrenceModel.f M q r))
+  (hqq_gt : @LT.lt.{0} Nat instLTNat q (ChompLean.RecurrenceModel.f M q q)),
+  Not (@LT.lt.{0} Nat instLTNat q (ChompLean.RecurrenceModel.f M q r)) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_5</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r t&#x27; : Nat) (hrt&#x27; : @LT.lt.{0} Nat instLTNat r t&#x27;)
+  (hgt : @LT.lt.{0} Nat instLTNat t&#x27; (ChompLean.RecurrenceModel.f M q t&#x27;)),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (ChompLean.RecurrenceModel.f M q t&#x27;)) →
+    False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_6</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r t&#x27; : Nat) (hrt&#x27; : @LT.lt.{0} Nat instLTNat r t&#x27;)
+  (this : @Eq.{1} Nat t&#x27; r), False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_7</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r t&#x27; : Nat)
+  (hv_le : @LE.le.{0} Nat instLENat (ChompLean.RecurrenceModel.f M q t&#x27;) (ChompLean.RecurrenceModel.f M q r))
+  (hv_ne : @Ne.{1} Nat (ChompLean.RecurrenceModel.f M q t&#x27;) (ChompLean.RecurrenceModel.f M q r)),
+  Not (@LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q t&#x27;) (ChompLean.RecurrenceModel.f M q r)) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_8</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r t&#x27; : Nat) (hrt&#x27; : @LT.lt.{0} Nat instLTNat r t&#x27;)
+  (ht&#x27;q : @LE.le.{0} Nat instLENat t&#x27; q) (b : Nat) (hbr : @LT.lt.{0} Nat instLTNat b r),
+  Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.diagonalMaximal._proof_1_9</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {q s : Nat} (r t&#x27; : Nat) (hrt&#x27; : @LT.lt.{0} Nat instLTNat r t&#x27;) (b : Nat)
+  (hbr : @LT.lt.{0} Nat instLTNat b r) (hbt : @Eq.{1} Nat b t&#x27;), False</pre></li><li><code>ChompLean.diagonal_injective</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {a b : Nat}
+  (h : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M a a) (ChompLean.RecurrenceModel.f M b b)), @Eq.{1} Nat a b</pre></li><li><code>ChompLean.diagonal_injective._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {a b : Nat} (hab : Not (@Eq.{1} Nat a b)) (hle : @LE.le.{0} Nat instLENat a b),
+  Not (@LT.lt.{0} Nat instLTNat a b) → False</pre></li><li><code>ChompLean.disjoint_D_S</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p : Nat} (hpD : ChompLean.D (ChompLean.RecurrenceModel.f M) p)
+  (hpS : ChompLean.S (ChompLean.RecurrenceModel.f M) p), False</pre></li><li><code>ChompLean.disjoint_D_S._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p : Nat} (a r : Nat) (har : Not (@LE.le.{0} Nat instLENat a r)) (b : Nat)
+  (hbr : @LT.lt.{0} Nat instLTNat b r), Not (@LE.le.{0} Nat instLENat b a) → False</pre></li><li><code>ChompLean.disjoint_D_S._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p : Nat} (a r : Nat) (har : Not (@LE.le.{0} Nat instLENat a r)) (b : Nat)
+  (hbr : @LT.lt.{0} Nat instLTNat b r) (hba : @Eq.{1} Nat b a), False</pre></li><li><code>ChompLean.encoded_ge_not_blocked</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {q r : Nat} (hrq : @LE.le.{0} Nat instLENat r q)
+  (hge : @LE.le.{0} Nat instLENat q (f q r)), Not (ChompLean.B f q r (f q r))</pre></li><li><code>ChompLean.encoded_ge_not_blocked._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hge : @LE.le.{0} Nat instLENat q (f q r)) (a : Nat)
+  (haq : @LT.lt.{0} Nat instLTNat a q) (hfa : @Eq.{1} Nat (f a (@Min.min.{0} Nat instMinNat a r)) (f q r)),
+  Not (@LE.le.{0} Nat instLENat a (f q r)) → False</pre></li><li><code>ChompLean.encoded_ge_not_blocked._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (b : Nat) (hbr : @LT.lt.{0} Nat instLTNat b r),
+  Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.encoding_rowstart_not_R</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) {p r q : Nat},
+  @Eq.{1} Nat (f p r) p → @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R f q r p)</pre></li><li><code>ChompLean.encoding_rowstart_not_R._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {p r q : Nat} (hqp : @LT.lt.{0} Nat instLTNat q p) (a : Nat)
+  (haq : @LT.lt.{0} Nat instLTNat a q) (hfa : @Eq.{1} Nat (f a (@Min.min.{0} Nat instMinNat a r)) p),
+  Not (@LT.lt.{0} Nat instLTNat a p) → False</pre></li><li><code>ChompLean.encoding_rowstart_not_R._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {p r q : Nat} (a : Nat) (hfa : @Eq.{1} Nat (f a (@Min.min.{0} Nat instMinNat a r)) p)
+  (hap : @LT.lt.{0} Nat instLTNat a p), Not (@LE.le.{0} Nat instLENat a p) → False</pre></li><li><code>ChompLean.exists_max_index</code><pre class="prose">∀ (g : Nat → Nat) (q : Nat),
+  @Exists.{1} Nat fun (r : Nat) =&gt;
+    And (@LE.le.{0} Nat instLENat r q)
+      (∀ (s : Nat), @LE.le.{0} Nat instLENat s q → @LE.le.{0} Nat instLENat (g s) (g r))</pre></li><li><code>ChompLean.exists_max_index._proof_1_1</code><pre class="prose">∀ (s : Nat) (hs : @LE.le.{0} Nat instLENat s (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))),
+  Not (@Eq.{1} Nat s (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) → False</pre></li><li><code>ChompLean.exists_max_index._proof_1_2</code><pre class="prose">∀ (g : Nat → Nat) (q r0 s : Nat)
+  (hs :
+    @LE.le.{0} Nat instLENat s
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hsq : Not (@LE.le.{0} Nat instLENat s q)),
+  Not
+      (@Eq.{1} Nat s
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.exists_max_index._proof_1_3</code><pre class="prose">∀ (g : Nat → Nat) (q r0 : Nat) (hr0_le : @LE.le.{0} Nat instLENat r0 q),
+  Not
+      (@LE.le.{0} Nat instLENat r0
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.exists_max_index._proof_1_4</code><pre class="prose">∀ (g : Nat → Nat) (q r0 : Nat)
+  (hcmp :
+    Not
+      (@LE.le.{0} Nat instLENat (g r0)
+        (g
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (g
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (g r0)) →
+    False</pre></li><li><code>ChompLean.first_branch_of_encoding</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) (hcomplete : ChompLean.CompleteEncoding f) {q r : Nat},
+  @LT.lt.{0} Nat instLTNat r q →
+    @LT.lt.{0} Nat instLTNat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          r)
+        q →
+      @Eq.{1} Nat (f q r)
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          r)</pre></li><li><code>ChompLean.first_branch_of_encoding._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hlt :
+    @LT.lt.{0} Nat instLTNat
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)
+      q),
+  Not
+      (@LE.le.{0} Nat instLENat r
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.first_branch_of_encoding._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat}
+  (hlt :
+    @LT.lt.{0} Nat instLTNat
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)
+      q)
+  (h_pred_le_k :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)),
+  Not
+      (@Eq.{1} Nat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          r)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF</code><pre class="prose">Nat → Nat → Nat</pre></li><li><code>ChompLean.gameRecurrenceModel</code><pre class="prose">ChompLean.RecurrenceModel</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_1</code><pre class="prose">∀ {q b₁ b₂ : Nat},
+  @LE.le.{0} Nat instLENat b₁ q →
+    @LE.le.{0} Nat instLENat b₂ q → @Eq.{1} Nat (ChompLean.gameF q b₁) (ChompLean.gameF q b₂) → @Eq.{1} Nat b₁ b₂</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_10</code><pre class="prose">∀ {r q p : Nat},
+  @LT.lt.{0} Nat instLTNat r q →
+    @LT.lt.{0} Nat instLTNat q p →
+      Not (ChompLean.C ChompLean.gameF q r p) →
+        (∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C ChompLean.gameF t r p) →
+          @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q r) → @LE.le.{0} Nat instLENat p (ChompLean.gameF q r)</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_11</code><pre class="prose">∀ {p r q : Nat},
+  @Eq.{1} Nat (ChompLean.gameF p r) p →
+    @LT.lt.{0} Nat instLTNat r p → @LT.lt.{0} Nat instLTNat q p → Not (ChompLean.R ChompLean.gameF q r p)</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_2</code><pre class="prose">∀ (a : Nat), @LT.lt.{0} Nat instLTNat a (ChompLean.gameF a a)</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_3</code><pre class="prose">∀ {q r : Nat} (hrq : @LE.le.{0} Nat instLENat r q), @LT.lt.{0} Nat instLTNat r (ChompLean.gameF q r)</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_4</code><pre class="prose">∀ {i s q : Nat},
+  @LT.lt.{0} Nat instLTNat i s →
+    @LE.le.{0} Nat instLENat s q → @Eq.{1} Nat (ChompLean.gameF i i) (ChompLean.gameF q s) → False</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_5</code><pre class="prose">∀ {a b p : Nat},
+  @LT.lt.{0} Nat instLTNat a b →
+    @LT.lt.{0} Nat instLTNat b p → @Eq.{1} Nat (ChompLean.gameF a a) p → @Eq.{1} Nat (ChompLean.gameF b b) p → False</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_6</code><pre class="prose">∀ {p r a : Nat},
+  @Eq.{1} Nat (ChompLean.gameF p r) p →
+    @LT.lt.{0} Nat instLTNat r p → @Eq.{1} Nat (ChompLean.gameF a a) p → @LE.le.{0} Nat instLENat a r → False</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_7</code><pre class="prose">∀ {p r q : Nat},
+  @Eq.{1} Nat (ChompLean.gameF p r) p →
+    @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → @Ne.{1} Nat (ChompLean.gameF q r) p</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_8</code><pre class="prose">∀ {q r : Nat},
+  @LT.lt.{0} Nat instLTNat r q →
+    @LT.lt.{0} Nat instLTNat (ChompLean.gameF q r)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+      @Eq.{1} Nat
+        (ChompLean.gameF
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          r)
+        (ChompLean.gameF q r)</pre></li><li><code>ChompLean.gameRecurrenceModel._proof_9</code><pre class="prose">∀ {q r k : Nat},
+  @LE.le.{0} Nat instLENat r q →
+    @LT.lt.{0} Nat instLTNat q (ChompLean.gameF q r) →
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+        @LT.lt.{0} Nat instLTNat k (ChompLean.gameF q r) → ChompLean.B ChompLean.gameF q r k</pre></li><li><code>ChompLean.game_complete</code><pre class="prose">ChompLean.CompleteEncoding ChompLean.gameF</pre></li><li><code>ChompLean.game_diagonal_maximal</code><pre class="prose">∀ {q s : Nat} (hsq : @LE.le.{0} Nat instLENat s q), @LE.le.{0} Nat instLENat (ChompLean.gameF q s) (ChompLean.gameF q q)</pre></li><li><code>ChompLean.game_encodes</code><pre class="prose">ChompLean.Encodes ChompLean.gameF</pre></li><li><code>ChompLean.game_lower_blocked</code><pre class="prose">ChompLean.BrouwerLowerBlocked ChompLean.gameF</pre></li><li><code>ChompLean.instDecidableEqOpeningMove</code><pre class="prose">DecidableEq.{1} ChompLean.OpeningMove</pre></li><li><code>ChompLean.instDecidableEqOpeningMove.decEq</code><pre class="prose">(x x_1 : ChompLean.OpeningMove) → Decidable (@Eq.{1} ChompLean.OpeningMove x x_1)</pre></li><li><code>ChompLean.instDecidableEqOpeningMove.decEq._proof_1</code><pre class="prose">∀ (a : Nat), @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toDiagonal a) (ChompLean.OpeningMove.toDiagonal a)</pre></li><li><code>ChompLean.instDecidableEqOpeningMove.decEq._proof_2</code><pre class="prose">∀ (a b : Nat),
+  Not (@Eq.{1} Nat a b) →
+    @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toDiagonal a) (ChompLean.OpeningMove.toDiagonal b) → False</pre></li><li><code>ChompLean.instDecidableEqOpeningMove.decEq._proof_3</code><pre class="prose">∀ (a r : Nat),
+  @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toDiagonal a) (ChompLean.OpeningMove.toRowStart r) → False</pre></li><li><code>ChompLean.instDecidableEqOpeningMove.decEq._proof_4</code><pre class="prose">∀ (r a : Nat),
+  @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toRowStart r) (ChompLean.OpeningMove.toDiagonal a) → False</pre></li><li><code>ChompLean.instDecidableEqOpeningMove.decEq._proof_5</code><pre class="prose">∀ (a : Nat), @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toRowStart a) (ChompLean.OpeningMove.toRowStart a)</pre></li><li><code>ChompLean.instDecidableEqOpeningMove.decEq._proof_6</code><pre class="prose">∀ (a b : Nat),
+  Not (@Eq.{1} Nat a b) →
+    @Eq.{1} ChompLean.OpeningMove (ChompLean.OpeningMove.toRowStart a) (ChompLean.OpeningMove.toRowStart b) → False</pre></li><li><code>ChompLean.instDecidableEqOpeningMove.decEq.match_1</code><pre class="prose">(motive : ChompLean.OpeningMove → ChompLean.OpeningMove → Sort u_1) →
+  (x x_1 : ChompLean.OpeningMove) →
+    (h_1 : (a b : Nat) → motive (ChompLean.OpeningMove.toDiagonal a) (ChompLean.OpeningMove.toDiagonal b)) →
+      (h_2 : (a r : Nat) → motive (ChompLean.OpeningMove.toDiagonal a) (ChompLean.OpeningMove.toRowStart r)) →
+        (h_3 : (r a : Nat) → motive (ChompLean.OpeningMove.toRowStart r) (ChompLean.OpeningMove.toDiagonal a)) →
+          (h_4 : (a b : Nat) → motive (ChompLean.OpeningMove.toRowStart a) (ChompLean.OpeningMove.toRowStart b)) →
+            motive x x_1</pre></li><li><code>ChompLean.interval_blocking_of_encoding</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) (hcomplete : ChompLean.CompleteEncoding f),
+  ChompLean.IntervalBlocking f</pre></li><li><code>ChompLean.interval_blocking_of_encoding._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hall : ∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p)
+  (k t₁ t₂ : Nat)
+  (hs₁ :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                (Nat.decLt t p))
+              (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                  (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                    (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+              fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t₁)
+        r)
+      (@Eq.{1} Nat
+        (f t₁
+          ((fun (t : Nat) =&gt;
+              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                  (Nat.decLt t p))
+                (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                    (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                      (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+                fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            t₁))
+        p)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                (Nat.decLt t p))
+              (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                  (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                    (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+              fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t₁)
+        q) →
+    False</pre></li><li><code>ChompLean.interval_blocking_of_encoding._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hall : ∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p)
+  (k t₁ t₂ : Nat)
+  (hs₂ :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                (Nat.decLt t p))
+              (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                  (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                    (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+              fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t₂)
+        r)
+      (@Eq.{1} Nat
+        (f t₂
+          ((fun (t : Nat) =&gt;
+              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                  (Nat.decLt t p))
+                (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                    (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                      (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+                fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            t₂))
+        p)),
+  Not
+      (@LE.le.{0} Nat instLENat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                (Nat.decLt t p))
+              (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                  (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                    (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+              fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t₂)
+        q) →
+    False</pre></li><li><code>ChompLean.interval_blocking_of_encoding._proof_1_3</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hall : ∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p)
+  (k t₁ t₂ : Nat) (hqt₁ : @LT.lt.{0} Nat instLTNat q t₁)
+  (hs₂ :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                (Nat.decLt t p))
+              (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                  (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                    (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+              fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t₂)
+        r)
+      (@Eq.{1} Nat
+        (f t₂
+          ((fun (t : Nat) =&gt;
+              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                  (Nat.decLt t p))
+                (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                    (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                      (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+                fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            t₂))
+        p))
+  (hs_eq :
+    @Eq.{1} Nat
+      ((fun (t : Nat) =&gt;
+          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+              (Nat.decLt t p))
+            (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+              @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                  (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+            fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        t₁)
+      ((fun (t : Nat) =&gt;
+          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+              (Nat.decLt t p))
+            (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+              @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                  (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+            fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        t₂)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                (Nat.decLt t p))
+              (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                  (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                    (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+              fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t₁)
+        t₁) →
+    False</pre></li><li><code>ChompLean.interval_blocking_of_encoding._proof_1_4</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q)
+  (hall : ∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p)
+  (k t₁ t₂ : Nat) (hqt₂ : @LT.lt.{0} Nat instLTNat q t₂)
+  (hs₂ :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                (Nat.decLt t p))
+              (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                  (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                    (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+              fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t₂)
+        r)
+      (@Eq.{1} Nat
+        (f t₂
+          ((fun (t : Nat) =&gt;
+              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                  (Nat.decLt t p))
+                (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                  @Classical.choose.{1} Nat
+                    (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                    (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                      (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+                fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+            t₂))
+        p)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (t : Nat) =&gt;
+            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))
+              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) (Nat.decLt q t)
+                (Nat.decLt t p))
+              (fun (h : And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p)) =&gt;
+                @Classical.choose.{1} Nat (fun (x : Nat) =&gt; And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (f t x) p))
+                  (hall t (@And.left (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)
+                    (@And.right (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p) h)))
+              fun (h : Not (And (@LT.lt.{0} Nat instLTNat q t) (@LT.lt.{0} Nat instLTNat t p))) =&gt;
+              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          t₂)
+        t₂) →
+    False</pre></li><li><code>ChompLean.interval_blocking_of_encoding._proof_1_5</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p : Nat}
+  (hall : ∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p)
+  (k t₁ t₂ : Nat) (hlt : Not (@LT.lt.{0} Nat instLTNat t₁ t₂)) (hgt : Not (@LT.lt.{0} Nat instLTNat t₂ t₁)),
+  Not (@Eq.{1} Nat t₁ t₂) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) (hcomplete : ChompLean.CompleteEncoding f),
+  ChompLean.BrouwerLowerBlocked f</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hklt : @LT.lt.{0} Nat instLTNat k (f q r))
+  (hkq : @LE.le.{0} Nat instLENat q k) (a : Nat) (hak_k : @LT.lt.{0} Nat instLTNat a k) (heq : @Eq.{1} Nat (f q r) a),
+  False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_10</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hrk : @LT.lt.{0} Nat instLTNat r k) (b : Nat)
+  (hbr : @LT.lt.{0} Nat instLTNat b r), Not (@LE.le.{0} Nat instLENat b k) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_11</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hrk : @LT.lt.{0} Nat instLTNat r k) (b : Nat)
+  (hbr : @LT.lt.{0} Nat instLTNat b r), Not (@LT.lt.{0} Nat instLTNat b k) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_12</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (a : Nat) (hak : @LT.lt.{0} Nat instLTNat a k),
+  Not (@LE.le.{0} Nat instLENat a k) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_13</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hkq : Not (@LE.le.{0} Nat instLENat q k)) (a : Nat)
+  (hak : @LT.lt.{0} Nat instLTNat a k) (hfaa : @Eq.{1} Nat (f a a) k), Not (@LT.lt.{0} Nat instLTNat a q) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_14</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hrk : Not (@LT.lt.{0} Nat instLTNat r k)) (a : Nat)
+  (hak : @LT.lt.{0} Nat instLTNat a k) (hfaa : @Eq.{1} Nat (f a a) k), Not (@LE.le.{0} Nat instLENat a r) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_15</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hrk : Not (@LT.lt.{0} Nat instLTNat r k)) (b : Nat)
+  (hbk : @LT.lt.{0} Nat instLTNat b k) (hfqb : @Eq.{1} Nat (f q b) k), Not (@LT.lt.{0} Nat instLTNat b r) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hkq : @LE.le.{0} Nat instLENat q k)
+  (a : Nat) (haq : @LT.lt.{0} Nat instLTNat a q), Not (@LE.le.{0} Nat instLENat a k) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_3</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hkq : @LE.le.{0} Nat instLENat q k)
+  (b : Nat) (hbr : @LT.lt.{0} Nat instLTNat b r), Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_4</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hklt : @LT.lt.{0} Nat instLTNat k (f q r)) (hf_eq : @Eq.{1} Nat (f q r) k), False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_5</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat}
+  (hk0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+  (hkq : Not (@LE.le.{0} Nat instLENat q k)) (hrk : @LT.lt.{0} Nat instLTNat r k) (a : Nat)
+  (hak_k : @LT.lt.{0} Nat instLTNat a k),
+  Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_6</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hkq : Not (@LE.le.{0} Nat instLENat q k))
+  (hrk : @LT.lt.{0} Nat instLTNat r k) (a : Nat), Not (@LT.lt.{0} Nat instLTNat r q) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_7</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hkq : Not (@LE.le.{0} Nat instLENat q k)) (hrk : @LT.lt.{0} Nat instLTNat r k)
+  (a : Nat) (hak_k : @LT.lt.{0} Nat instLTNat a k)
+  (hprev :
+    @Eq.{1} Nat
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)
+      a),
+  Not (@LT.lt.{0} Nat instLTNat a q) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_8</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hrk : @LT.lt.{0} Nat instLTNat r k) (a : Nat)
+  (hak : @LT.lt.{0} Nat instLTNat a k), Not (@LE.le.{0} Nat instLENat a k) → False</pre></li><li><code>ChompLean.lower_blocked_of_encoding._proof_1_9</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hkq : Not (@LE.le.{0} Nat instLENat q k)) (hrk : @LT.lt.{0} Nat instLTNat r k)
+  (a : Nat) (hak : @LT.lt.{0} Nat instLTNat a k) (hfa : @Eq.{1} Nat (f a (Nat.min a r)) k),
+  Not (@LT.lt.{0} Nat instLTNat a q) → False</pre></li><li><code>ChompLean.mex_branch_of_encoding_and_lower</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) (hcomplete : ChompLean.CompleteEncoding f)
+  (hlower : ChompLean.BrouwerLowerBlocked f), ChompLean.BrouwerMexBranch f</pre></li><li><code>ChompLean.mex_branch_of_encoding_and_lower._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hrf : @LT.lt.{0} Nat instLTNat r (f q r)),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (f q r)) → False</pre></li><li><code>ChompLean.not_blocked_no_second_cut_P</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hcomplete : ChompLean.CompleteEncoding f) {p q r a : Nat} (hqp : @LE.le.{0} Nat instLENat q p)
+  (hnotB : Not (ChompLean.B f q r p)) (haq : @LT.lt.{0} Nat instLTNat a q),
+  Not
+    (ChompLean.IsP
+      (ChompLean.mkPos p a (Nat.min a r)
+        (@Decidable.byContradiction (@LE.le.{0} Nat instLENat a p) (Nat.decLe a p)
+          fun (a_1 : Not (@LE.le.{0} Nat instLENat a p)) =&gt; @ChompLean.second_cut_P_blocks._proof_1 p q a hqp haq a_1)
+        (Nat.min_le_left a r)))</pre></li><li><code>ChompLean.not_blocked_no_third_cut_P</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hcomplete : ChompLean.CompleteEncoding f) {p q r b : Nat} (hqp : @LE.le.{0} Nat instLENat q p)
+  (hrq : @LE.le.{0} Nat instLENat r q) (hnotB : Not (ChompLean.B f q r p)) (hbr : @LT.lt.{0} Nat instLTNat b r),
+  Not
+    (ChompLean.IsP
+      (ChompLean.mkPos p q b hqp
+        (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+          fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt; @ChompLean.third_cut_P_blocks._proof_1 p q r b hrq hbr a)))</pre></li><li><code>ChompLean.not_first_implies_ge_of_encoding</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) (hcomplete : ChompLean.CompleteEncoding f) {q r : Nat},
+  @LE.le.{0} Nat instLENat r q →
+    Not
+        (And (@LT.lt.{0} Nat instLTNat r q)
+          (@LT.lt.{0} Nat instLTNat
+            (f
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              r)
+            q)) →
+      @LE.le.{0} Nat instLENat q (f q r)</pre></li><li><code>ChompLean.not_first_implies_ge_of_encoding._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hlt : @LT.lt.{0} Nat instLTNat (f q r) q)
+  (hrf : @LT.lt.{0} Nat instLTNat r (f q r)), Not (@LT.lt.{0} Nat instLTNat r q) → False</pre></li><li><code>ChompLean.not_first_implies_ge_of_encoding._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hlt : @LT.lt.{0} Nat instLTNat (f q r) q)
+  (hp_lt_pred :
+    Not
+      (@LT.lt.{0} Nat instLTNat (f q r)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@Eq.{1} Nat (f q r)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.not_first_implies_ge_of_encoding._proof_1_3</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat}
+  (hp_eq_pred :
+    @Eq.{1} Nat (f q r)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (f q r)) →
+    False</pre></li><li><code>ChompLean.not_first_implies_ge_of_encoding._proof_1_4</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hlt : @LT.lt.{0} Nat instLTNat (f q r) q) (hrlt : @LT.lt.{0} Nat instLTNat r q)
+  (hp_eq_pred :
+    @Eq.{1} Nat (f q r)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LE.le.{0} Nat instLENat r
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.recurrence_constant_step</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {q r : Nat},
+  @LT.lt.{0} Nat instLTNat r q →
+    @LT.lt.{0} Nat instLTNat (f q r)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+      @Eq.{1} Nat
+        (f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          r)
+        (f q r)</pre></li><li><code>ChompLean.recurrence_constant_step._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q),
+  Not
+      (@LT.lt.{0} Nat instLTNat r
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.recurrence_mex_absent</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {q r : Nat},
+  @LE.le.{0} Nat instLENat r q → @LT.lt.{0} Nat instLTNat q (f q r) → Not (ChompLean.B f q r (f q r))</pre></li><li><code>ChompLean.recurrence_mex_absent._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r : Nat} (hlarge : @LT.lt.{0} Nat instLTNat q (f q r))
+  (hprev :
+    @LT.lt.{0} Nat instLTNat
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)
+      q)
+  (heq :
+    @Eq.{1} Nat (f q r)
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)),
+  False</pre></li><li><code>ChompLean.recurrence_mex_no_skip</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) {q r k : Nat},
+  @LE.le.{0} Nat instLENat r q →
+    @LT.lt.{0} Nat instLTNat q (f q r) →
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+        @LT.lt.{0} Nat instLTNat k (f q r) → ChompLean.B f q r k</pre></li><li><code>ChompLean.recurrence_mex_no_skip._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q r k : Nat} (hlarge : @LT.lt.{0} Nat instLTNat q (f q r))
+  (hprev :
+    @LT.lt.{0} Nat instLTNat
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)
+      q)
+  (heq :
+    @Eq.{1} Nat (f q r)
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r)),
+  False</pre></li><li><code>ChompLean.recurrence_of_encoding_and_mex</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hf : ChompLean.Encodes f) (hcomplete : ChompLean.CompleteEncoding f)
+  (hmex : ChompLean.BrouwerMexBranch f), ChompLean.BrouwerRecurrence f</pre></li><li><code>ChompLean.rightmost_hole_of_interval</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hrec : ChompLean.BrouwerRecurrence f) (hib : ChompLean.IntervalBlocking f) {r q p : Nat},
+  @LT.lt.{0} Nat instLTNat r q →
+    @LT.lt.{0} Nat instLTNat q p →
+      Not (ChompLean.C f q r p) →
+        (∀ (t : Nat), @LT.lt.{0} Nat instLTNat q t → @LT.lt.{0} Nat instLTNat t p → ChompLean.C f t r p) →
+          @LT.lt.{0} Nat instLTNat q (f q r) → @LE.le.{0} Nat instLENat p (f q r)</pre></li><li><code>ChompLean.rightmost_hole_of_interval._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r q p : Nat} (hrq : @LT.lt.{0} Nat instLTNat r q), Not (@LE.le.{0} Nat instLENat r q) → False</pre></li><li><code>ChompLean.rowStartPropagation</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p r : Nat} (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M p r) p)
+  (hrp : @LT.lt.{0} Nat instLTNat r p) {q : Nat},
+  @LT.lt.{0} Nat instLTNat r q → @LT.lt.{0} Nat instLTNat q p → ChompLean.C (ChompLean.RecurrenceModel.f M) q r p</pre></li><li><code>ChompLean.rowStartPropagation._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p r : Nat} (d q : Nat)
+  (hd : @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p q) d)
+  (hqp : @LT.lt.{0} Nat instLTNat q p) (t : Nat) (hqt : @LT.lt.{0} Nat instLTNat q t)
+  (htp : @LT.lt.{0} Nat instLTNat t p),
+  Not (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p t) d) → False</pre></li><li><code>ChompLean.rowStartPropagation._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p r : Nat} (d q : Nat) (hrq : @LT.lt.{0} Nat instLTNat r q) (t : Nat)
+  (hqt : @LT.lt.{0} Nat instLTNat q t), Not (@LT.lt.{0} Nat instLTNat r t) → False</pre></li><li><code>ChompLean.rowStartPropagation._proof_1_3</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p r : Nat} (d q : Nat)
+  (hgt : Not (@LT.lt.{0} Nat instLTNat q (ChompLean.RecurrenceModel.f M q r))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (ChompLean.RecurrenceModel.f M q r)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.rowStartPropagation._proof_1_4</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p r : Nat} (d q : Nat)
+  (hd : @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p q) d)
+  (hqp : @LT.lt.{0} Nat instLTNat q p),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p q))
+        p) →
+    False</pre></li><li><code>ChompLean.rowStartPropagation._proof_1_5</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p r : Nat} (d q : Nat) (hqp : @LT.lt.{0} Nat instLTNat q p)
+  (hgt : Not (@LT.lt.{0} Nat instLTNat q (ChompLean.RecurrenceModel.f M q r)))
+  (hp_eq : @Eq.{1} Nat p (ChompLean.RecurrenceModel.f M q r)), False</pre></li><li><code>ChompLean.rowStartPropagation._proof_1_6</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p r : Nat} (hstart : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M p r) p)
+  (hrp : @LT.lt.{0} Nat instLTNat r p) (d q : Nat),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p) → False</pre></li><li><code>ChompLean.rowStartPropagation._proof_1_7</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {p r : Nat} (d q : Nat) (hrq : @LT.lt.{0} Nat instLTNat r q),
+  Not (@LE.le.{0} Nat instLENat r q) → False</pre></li><li><code>ChompLean.second_cut_P_blocks</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hcomplete : ChompLean.CompleteEncoding f) {p q r a : Nat} (hqp : @LE.le.{0} Nat instLENat q p)
+  (haq : @LT.lt.{0} Nat instLTNat a q)
+  (hP :
+    ChompLean.IsP
+      (ChompLean.mkPos p a (Nat.min a r)
+        (@Decidable.byContradiction (@LE.le.{0} Nat instLENat a p) (Nat.decLe a p)
+          fun (a_1 : Not (@LE.le.{0} Nat instLENat a p)) =&gt; @ChompLean.second_cut_P_blocks._proof_1 p q a hqp haq a_1)
+        (Nat.min_le_left a r))),
+  ChompLean.R f q r p</pre></li><li><code>ChompLean.second_cut_P_blocks._proof_1</code><pre class="prose">∀ {p q a : Nat} (hqp : @LE.le.{0} Nat instLENat q p) (haq : @LT.lt.{0} Nat instLTNat a q),
+  Not (@LE.le.{0} Nat instLENat a p) → False</pre></li><li><code>ChompLean.third_cut_P_blocks</code><pre class="prose">∀ {f : Nat → Nat → Nat} (hcomplete : ChompLean.CompleteEncoding f) {p q r b : Nat} (hqp : @LE.le.{0} Nat instLENat q p)
+  (hrq : @LE.le.{0} Nat instLENat r q) (hbr : @LT.lt.{0} Nat instLTNat b r)
+  (hP :
+    ChompLean.IsP
+      (ChompLean.mkPos p q b hqp
+        (@Decidable.byContradiction (@LE.le.{0} Nat instLENat b q) (Nat.decLe b q)
+          fun (a : Not (@LE.le.{0} Nat instLENat b q)) =&gt; @ChompLean.third_cut_P_blocks._proof_1 p q r b hrq hbr a))),
+  ChompLean.C f q r p</pre></li><li><code>ChompLean.third_cut_P_blocks._proof_1</code><pre class="prose">∀ {p q r b : Nat} (hrq : @LE.le.{0} Nat instLENat r q) (hbr : @LT.lt.{0} Nat instLTNat b r),
+  Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.uniqueActualWinningOpening</code><pre class="prose">∀ {n : Nat} (hn : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n),
+  @Exists.{1} ChompLean.OpeningMove fun (m : ChompLean.OpeningMove) =&gt;
+    And (ChompLean.ActualWins n m)
+      (∀ (m&#x27; : ChompLean.OpeningMove), ChompLean.ActualWins n m&#x27; → @Eq.{1} ChompLean.OpeningMove m&#x27; m)</pre></li><li><code>ChompLean.uniqueActualWinningTarget</code><pre class="prose">∀ {n : Nat} (hn : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n),
+  @Exists.{1} ChompLean.Pos fun (y : ChompLean.Pos) =&gt;
+    And (ChompLean.Move (ChompLean.rectanglePos n) y)
+      (And (ChompLean.IsP y)
+        (∀ (y&#x27; : ChompLean.Pos),
+          ChompLean.Move (ChompLean.rectanglePos n) y&#x27; → ChompLean.IsP y&#x27; → @Eq.{1} ChompLean.Pos y&#x27; y))</pre></li><li><code>ChompLean.uniqueActualWinningTarget_checked</code><pre class="prose">ChompLean.UniqueActualWinningTargetClaim</pre></li><li><code>ChompLean.uniqueWinningOpening</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {n : Nat}
+  (hn : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n),
+  @Exists.{1} ChompLean.OpeningMove fun (m : ChompLean.OpeningMove) =&gt;
+    And (ChompLean.Wins M n m)
+      (∀ (m&#x27; : ChompLean.OpeningMove), ChompLean.Wins M n m&#x27; → @Eq.{1} ChompLean.OpeningMove m&#x27; m)</pre></li><li><code>ChompLean.uniqueWinningOpening._proof_1_1</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {n : Nat} (r : Nat) (hr_eq : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M n r) n)
+  (s : Nat) (hs_lt : @LT.lt.{0} Nat instLTNat s n) (hs_eq : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M n s) n),
+  Not (@LE.le.{0} Nat instLENat s n) → False</pre></li><li><code>ChompLean.uniqueWinningOpening._proof_1_2</code><pre class="prose">∀ (M : ChompLean.RecurrenceModel) {n : Nat} (r : Nat) (hr_lt : @LT.lt.{0} Nat instLTNat r n)
+  (hr_eq : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M n r) n) (s : Nat)
+  (hs_eq : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M n s) n), Not (@LE.le.{0} Nat instLENat r n) → False</pre></li><li><code>ChompLean.uniqueWinningOpeningGame</code><pre class="prose">∀ {n : Nat} (hn : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n),
+  @Exists.{1} ChompLean.OpeningMove fun (m : ChompLean.OpeningMove) =&gt;
+    And (ChompLean.Wins ChompLean.gameRecurrenceModel n m)
+      (∀ (m&#x27; : ChompLean.OpeningMove),
+        ChompLean.Wins ChompLean.gameRecurrenceModel n m&#x27; → @Eq.{1} ChompLean.OpeningMove m&#x27; m)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/ChompLean/Proof.lean:1</p><p>SHA-256: <code class="path">80da597b2eeca3b185c14e74e0222ed300d0b7cbc2533c033c6d88b8497ccf44</code></p></section><p><a href="../index.html#id=lean-1901e75c943286a6f1ae">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

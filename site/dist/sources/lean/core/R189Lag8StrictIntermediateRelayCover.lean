@@ -1,0 +1,284 @@
+import R187Lag8SevenRailGreedyCollapse
+import R188Lag8PreloadTransitionObstruction
+import R174TerminalRelayHallSaturation
+import EarlyCol15ConstantRail
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+# Atomic lag eight: strict-intermediate relay cover
+
+The seven-rail greedy collapse can be stated without a candidate filter.
+Under the displayed atomic lag-eight frame with `q >= 26`, every column
+strictly between the lag-three host of `u-5` and the lag-eight host of `u`
+satisfies at least one of:
+
+* an old carry;
+* the current row's freeze cell; or
+* an old same-column relay of `u`.
+
+No mutual exclusion of the old-carry and old-target-relay predicates is
+asserted. The old-relay arm has a unique witness row.  The terminal Hall certificate
+then identifies every post-terminal witness with the canonical active relay
+schedule.  The early rails sharpen its chronology once more: a strict
+intermediate relay witness cannot lie at lag nine, so it is at least ten
+rows old.
+
+The final definition records the genuinely missing input for the empirical
+four-row menu.  It is scoped only to strict intermediate columns; no claim
+is made at the lower host column itself.
+-/
+
+/-- With the constant rails through column fifteen available, the W4 lower
+lag-three host is strictly to their right. -/
+theorem gameF_lag8_lowerHost_column_gt_fifteen
+    {q d : Nat}
+    (hq : 26 <= q)
+    (hdt : d <= q - 5)
+    (hlower : gameF (q - 5) d = q - 2) :
+    15 < d := by
+  have hd11 : 11 < d :=
+    gameF_lag8_lowerHost_column_gt_eleven (by omega) hdt hlower
+  apply Nat.lt_of_not_ge
+  intro hd15
+  have hcases : d = 12 \/ d = 13 \/ d = 14 \/ d = 15 := by
+    omega
+  rcases hcases with rfl | rfl | rfl | rfl
+  · rw [gameF_col12_rail (q := q - 5) (by omega)] at hlower
+    omega
+  · rw [gameF_col13_rail (q := q - 5) (by omega)] at hlower
+    omega
+  · rw [gameF_col14_rail (q := q - 5) (by omega)] at hlower
+    omega
+  · by_cases hq26 : q = 26
+    · subst q
+      rw [gameF_twentyone_fifteen] at hlower
+      omega
+    · rw [gameF_col15_rail (q := q - 5) (by omega)] at hlower
+      omega
+
+/-- Pointwise all-index form of the R187 collapse.  No liveness premise is
+hidden: failure of liveness is exposed as the old-carry arm. -/
+theorem gameF_lag8_between_hosts_carry_or_freeze_or_targetTail
+    {q r g d e : Nat}
+    (hq : 26 <= q)
+    (hrv : r < q + 3)
+    (hstart : gameF (q + 3) r = q + 3)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hatomic : r = g + 2)
+    (hra : r <= q - 5)
+    (hburn : gameF (q - 5) (r - 1) = q + 3)
+    (hdt : d <= q - 5)
+    (hlower : gameF (q - 5) d = q - 2)
+    (hde : d < e)
+    (hec : e < r - 1) :
+    (e < q - 5 /\ gameF ((q - 5) - 1) e < q - 5) \/
+      gameF (q - 5) e = q - 5 \/
+      ColTail gameF (q - 5) e (q + 3) := by
+  by_cases hcarry :
+      e < q - 5 /\ gameF ((q - 5) - 1) e < q - 5
+  · exact Or.inl hcarry
+  · right
+    by_cases htail : ColTail gameF (q - 5) e (q + 3)
+    · exact Or.inr htail
+    · exact Or.inl
+        (gameF_lag8_between_hosts_live_nonTail_is_currentFreeze
+          hq hrv hstart howners hatomic hra hburn hdt hlower
+            hde hec hcarry htail)
+
+/-- A target tail strictly after the lower host is at least ten rows old.
+
+`ColTail` already makes its witness older than the lag-eight row.  The only
+possible lag-nine row is `u-9 = q-6`; but on that row the affine column-14
+rail already hosts `u=q+3`.  Since the lower host and hence the strict
+intermediate column are to the right of 15, fixed-row injectivity excludes
+that row. -/
+theorem gameF_lag8_strict_targetTail_witness_at_least_ten_rows_old
+    {q d e a : Nat}
+    (hq : 26 <= q)
+    (hdt : d <= q - 5)
+    (hlower : gameF (q - 5) d = q - 2)
+    (hde : d < e)
+    (hea : e < a)
+    (hat : a < q - 5)
+    (hhost : gameF a e = q + 3) :
+    a <= q + 3 - 10 := by
+  have hd15 : 15 < d :=
+    gameF_lag8_lowerHost_column_gt_fifteen hq hdt hlower
+  apply Nat.le_of_not_gt
+  intro htooRecent
+  have ha : a = q - 6 := by
+    omega
+  subst a
+  have hrow : 20 <= q - 6 := by omega
+  have heq : gameF (q - 6) e = gameF (q - 6) 14 := by
+    rw [hhost, gameF_col14_rail (q := q - 6) hrow]
+    omega
+  have he14 : e = 14 :=
+    gameRecurrenceModel.fixed_q_injective
+      (by omega) (by omega) heq
+  omega
+
+/-- Distinct target-tail columns have distinct witness rows.  This is the
+exact injection behind any finite history-row capacity argument. -/
+theorem gameF_targetTail_distinct_columns_have_distinct_rows
+    {u e1 e2 a1 a2 : Nat}
+    (he1a1 : e1 < a1)
+    (he2a2 : e2 < a2)
+    (hhost1 : gameF a1 e1 = u)
+    (hhost2 : gameF a2 e2 = u)
+    (hne : e1 ≠ e2) :
+    a1 ≠ a2 := by
+  intro haa
+  subst a2
+  have heq : e1 = e2 :=
+    gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt he1a1) (Nat.le_of_lt he2a2)
+      (hhost1.trans hhost2.symm)
+  exact hne heq
+
+/-- Strong intrinsic W4 cover.  The lower blocker supplies its unique
+lag-three host `d`.  Every strict intermediate column is a carry, the one
+possible freeze-now seat, or a target relay with a unique witness row of
+age at least ten.  If that witness is after the terminal cutoff, R174's
+canonical terminal relay schedule owns the column exactly. -/
+theorem gameF_lag8_atomic_strict_intermediate_relay_cover
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (hrv : r < q + 3)
+    (hstart : gameF (q + 3) r = q + 3)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hatomic : r = g + 2)
+    (hra : r <= q - 5)
+    (hburn : gameF (q - 5) (r - 1) = q + 3)
+    (hsecond : gameF (q - 2) g = q - 2) :
+    exists d host,
+      d < g /\
+      gameF (q - 5) d = q - 2 /\
+      (forall d', d' <= q - 5 ->
+        gameF (q - 5) d' = q - 2 -> d' = d) /\
+      TerminalRelayHallCertificate (q + 3) r host /\
+      forall e, d < e -> e < r - 1 ->
+        (e < q - 5 /\ gameF ((q - 5) - 1) e < q - 5) \/
+        gameF (q - 5) e = q - 5 \/
+        exists a,
+          e < a /\ a < q - 5 /\ gameF a e = q + 3 /\
+          a <= q + 3 - 10 /\
+          (forall a', e < a' -> a' < q - 5 ->
+            gameF a' e = q + 3 -> a' = a) /\
+          (a <= r \/ (r < a /\ host a = e)) := by
+  rcases gameF_lag8_atomic_exact_next_unpinned_seat
+      (by omega) hrv hstart howners hatomic hra hburn hsecond with
+      ⟨d, hdg, hdlower, hdunique, _hnext⟩
+  rcases gameF_terminal_freeze_relay_hall_certificate
+      hrv hstart with ⟨host, hcert⟩
+  refine ⟨d, host, hdg, hdlower, hdunique, hcert, ?_⟩
+  intro e hde hec
+  have hdrow : d <= q - 5 := by omega
+  rcases gameF_lag8_between_hosts_carry_or_freeze_or_targetTail
+      (by omega) hrv hstart howners hatomic hra hburn
+      hdrow hdlower hde hec with hcarry | hfreeze | htail
+  · exact Or.inl hcarry
+  · exact Or.inr (Or.inl hfreeze)
+  · right
+    right
+    have htailRaw : ColTail gameF ((q + 3) - 8) e (q + 3) := by
+      simpa only [show q + 3 - 8 = q - 5 by omega] using htail
+    rcases gameF_lag8_target_colTail_has_unique_relay_row
+        (u := q + 3) (e := e) (by omega) htailRaw with
+        ⟨a, hea, hatRaw, hahost, hauniqueRaw⟩
+    have hat : a < q - 5 := by
+      simpa only [show q + 3 - 8 = q - 5 by omega] using hatRaw
+    have haunique : forall a', e < a' -> a' < q - 5 ->
+        gameF a' e = q + 3 -> a' = a := by
+      intro a' hea' ha't ha'host
+      exact hauniqueRaw a' hea'
+        (by simpa only [show q + 3 - 8 = q - 5 by omega] using ha't)
+        ha'host
+    have hage : a <= q + 3 - 10 :=
+      gameF_lag8_strict_targetTail_witness_at_least_ten_rows_old
+        hq hdrow hdlower hde hea hat hahost
+    have htrajectory : a <= r \/ (r < a /\ host a = e) := by
+      by_cases har : a <= r
+      · exact Or.inl har
+      · have hra' : r < a := Nat.lt_of_not_ge har
+        have hav : a < q + 3 := by omega
+        have her : e < r := by omega
+        have hehost : e = host a :=
+          hcert.uniqueOnRow a hra' hav e her hahost
+        exact Or.inr ⟨hra', hehost.symm⟩
+    exact ⟨a, hea, hat, hahost, hage, haunique, htrajectory⟩
+
+/-! ## The exact remaining chronology atom
+
+The actual theorems above give uniqueness, row injection, the canonical
+active trajectory, and the sharp lower age `10`.  None of R157's terminal-
+predecessor recency, R165's later six fixed rails, or R174's Hall injection
+selects the age of an old relay strictly before the lag-eight row.  The
+remaining empirical assertion is therefore exactly the following scoped
+four-age classifier. -/
+
+def Lag8AtomicStrictRelayFourAgeLaw : Prop :=
+  forall {q r g d e a : Nat},
+    26 <= q ->
+    r < q + 3 ->
+    gameF (q + 3) r = q + 3 ->
+    LowerOwnerCoveredBy (q + 3) g ->
+    r = g + 2 ->
+    r <= q - 5 ->
+    gameF (q - 5) (r - 1) = q + 3 ->
+    gameF (q - 2) g = q - 2 ->
+    d <= q - 5 ->
+    gameF (q - 5) d = q - 2 ->
+    d < e -> e < r - 1 ->
+    e < a -> a < q - 5 -> gameF a e = q + 3 ->
+    a = q + 3 - 10 \/ a = q + 3 - 13 \/
+      a = q + 3 - 18 \/ a = q + 3 - 20
+
+/-- Conditional expansion showing precisely what the four-age chronology
+would add to the actual relay cover.  Notice again the strict `d<e`; this
+statement deliberately says nothing about the empirically exceptional
+lower host column `d` itself. -/
+theorem gameF_lag8_strict_intermediate_fourAge_menu_of_law
+    (hfour : Lag8AtomicStrictRelayFourAgeLaw)
+    {q r g d e : Nat}
+    (hq : 26 <= q)
+    (hrv : r < q + 3)
+    (hstart : gameF (q + 3) r = q + 3)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hatomic : r = g + 2)
+    (hra : r <= q - 5)
+    (hburn : gameF (q - 5) (r - 1) = q + 3)
+    (hsecond : gameF (q - 2) g = q - 2)
+    (hdt : d <= q - 5)
+    (hlower : gameF (q - 5) d = q - 2)
+    (hde : d < e)
+    (hec : e < r - 1) :
+    (e < q - 5 /\ gameF ((q - 5) - 1) e < q - 5) \/
+      gameF (q - 5) e = q - 5 \/
+      exists a,
+        e < a /\ a < q - 5 /\ gameF a e = q + 3 /\
+        (a = q + 3 - 10 \/ a = q + 3 - 13 \/
+          a = q + 3 - 18 \/ a = q + 3 - 20) := by
+  rcases gameF_lag8_between_hosts_carry_or_freeze_or_targetTail
+      (by omega) hrv hstart howners hatomic hra hburn
+      hdt hlower hde hec with hcarry | hfreeze | htail
+  · exact Or.inl hcarry
+  · exact Or.inr (Or.inl hfreeze)
+  · right
+    right
+    rcases htail with ⟨a, hat, hea, hahost⟩
+    exact ⟨a, hea, hat, hahost,
+      hfour hq hrv hstart howners hatomic hra hburn hsecond
+        hdt hlower hde hec hea hat hahost⟩
+
+#print axioms gameF_lag8_lowerHost_column_gt_fifteen
+#print axioms gameF_lag8_between_hosts_carry_or_freeze_or_targetTail
+#print axioms gameF_lag8_strict_targetTail_witness_at_least_ten_rows_old
+#print axioms gameF_targetTail_distinct_columns_have_distinct_rows
+#print axioms gameF_lag8_atomic_strict_intermediate_relay_cover
+#print axioms gameF_lag8_strict_intermediate_fourAge_menu_of_law
+
+end ChompLean

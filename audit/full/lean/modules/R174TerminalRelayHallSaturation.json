@@ -1,0 +1,715 @@
+{
+  "module": "R174TerminalRelayHallSaturation",
+  "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+  "declarationCount": 44,
+  "theoremDeclarationCount": 38,
+  "proofValuedDeclarationCount": 40,
+  "scope": "All serialized module declarations including private/generated auxiliaries. These are declaration counts, not counts of independent mathematical results.",
+  "declarations": [
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.mk._flat_ctor",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "definition",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat} {host : Nat → Nat}\n  (hosted :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z))\n  (uniqueOnRow :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          ∀ (c : Nat), @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t))\n  (hostMex :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z)\n  (noReuse :\n    ∀ (t1 t2 : Nat),\n      @LT.lt.{0} Nat instLTNat r t1 →\n        @LT.lt.{0} Nat instLTNat t1 t2 → @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2))\n  (capacity :\n    @LE.le.{0} Nat instLENat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (saturatedBijection :\n    @Eq.{1} Nat z\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n      ∀ (c : Nat),\n        @LT.lt.{0} Nat instLTNat c r →\n          @Exists.{1} Nat fun (t : Nat) =>\n            And (And (@LT.lt.{0} Nat instLTNat r t) (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))\n              (∀ (y : Nat),\n                And (@LT.lt.{0} Nat instLTNat r y) (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →\n                  @Eq.{1} Nat y t)),\n  ChompLean.TerminalRelayHallCertificate z r host",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_boundary_oldHost_strict_capacity._proof_1_1",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r g : Nat}\n  (this :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_1",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a : Nat}\n  (hext :\n    @Eq.{1} Nat v\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hcap : @LE.le.{0} Nat instLENat v (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_2",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a : Nat} (hra : @LE.le.{0} Nat instLENat r a) (har : Not (@Eq.{1} Nat a r)),\n  Not (@LT.lt.{0} Nat instLTNat r a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_3",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a : Nat}\n  (hext :\n    @Eq.{1} Nat v\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hadeep :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      v),\n  Not (@LT.lt.{0} Nat instLTNat a v) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_4",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a : Nat}\n  (hext :\n    @Eq.{1} Nat v\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hraStrict : @LT.lt.{0} Nat instLTNat r a) (hav : @LT.lt.{0} Nat instLTNat a v) (t : Nat)\n  (hrt : @LT.lt.{0} Nat instLTNat r t),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_5",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a : Nat} (t : Nat) (hta : Not (@Eq.{1} Nat t a)) (htaOrder : Not (@LT.lt.{0} Nat instLTNat t a)),\n  Not (@LT.lt.{0} Nat instLTNat a t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin._proof_1_6",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a : Nat}\n  (hext :\n    @Eq.{1} Nat v\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hraStrict : @LT.lt.{0} Nat instLTNat r a) (hav : @LT.lt.{0} Nat instLTNat a v) (t : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        a) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_prefreeze_host_sharpens_terminal_relay_capacity._proof_1_1",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r s b : Nat} (hbs : @LT.lt.{0} Nat instLTNat b s) (hsr : @LE.le.{0} Nat instLENat s r),\n  Not (@LT.lt.{0} Nat instLTNat b r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_prefreeze_host_sharpens_terminal_relay_capacity._proof_1_2",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r s b : Nat} (hsr : @LE.le.{0} Nat instLENat s r) (host : Nat → Nat) (t : Nat)\n  (ht : And (@LT.lt.{0} Nat instLTNat r t) (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) b))),\n  Not (@LT.lt.{0} Nat instLTNat s t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_prefreeze_host_sharpens_terminal_relay_capacity._proof_1_3",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r s b : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)\n  (hext :\n    Not\n      (@Eq.{1} Nat z\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hcap :\n    @LE.le.{0} Nat instLENat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@LE.le.{0} Nat instLENat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_1",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat}\n  (hExists :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          @Exists.{1} Nat fun (c : Nat) => And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))\n  (t : Nat) (hrt : @LT.lt.{0} Nat instLTNat r t) (c : Nat) (hcr : @LT.lt.{0} Nat instLTNat c r),\n  Not (@LE.le.{0} Nat instLENat c t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_10",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat}\n  (hExists :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          @Exists.{1} Nat fun (c : Nat) => And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))\n  (c x y : Nat) (heq : Not (@Eq.{1} Nat x y)) (hxyOrder : Not (@LT.lt.{0} Nat instLTNat x y)),\n  Not (@LT.lt.{0} Nat instLTNat y x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_11",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)\n  (hext :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (c : Nat),\n  Not\n      (@Eq.{1} Nat r\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_12",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat}\n  (hExists :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          @Exists.{1} Nat fun (c : Nat) => And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))\n  (c t y : Nat) (hyt : Not (@Eq.{1} Nat y t)) (hytOrder : Not (@LT.lt.{0} Nat instLTNat y t)),\n  Not (@LT.lt.{0} Nat instLTNat t y) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_2",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat}\n  (hExists :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          @Exists.{1} Nat fun (c : Nat) => And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))\n  (t : Nat) (hrt : @LT.lt.{0} Nat instLTNat r t) (c : Nat)\n  (hh :\n    And\n      (@LT.lt.{0} Nat instLTNat\n        ((fun (t : Nat) =>\n            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n                (Nat.decLt t z))\n              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n                @Classical.choose.{1} Nat\n                  (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          t)\n        r)\n      (@Eq.{1} Nat\n        (ChompLean.gameF t\n          ((fun (t : Nat) =>\n              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n                  (Nat.decLt t z))\n                (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n                  @Classical.choose.{1} Nat\n                    (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                    (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                      (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n                fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            t))\n        z)),\n  Not\n      (@LE.le.{0} Nat instLENat\n        ((fun (t : Nat) =>\n            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n                (Nat.decLt t z))\n              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n                @Classical.choose.{1} Nat\n                  (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          t)\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_3",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat}\n  (hExists :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          @Exists.{1} Nat fun (c : Nat) => And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))\n  (t : Nat) (hrt : @LT.lt.{0} Nat instLTNat r t)\n  (hh :\n    And\n      (@LT.lt.{0} Nat instLTNat\n        ((fun (t : Nat) =>\n            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n                (Nat.decLt t z))\n              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n                @Classical.choose.{1} Nat\n                  (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          t)\n        r)\n      (@Eq.{1} Nat\n        (ChompLean.gameF t\n          ((fun (t : Nat) =>\n              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n                  (Nat.decLt t z))\n                (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n                  @Classical.choose.{1} Nat\n                    (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                    (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                      (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n                fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            t))\n        z)),\n  Not\n      (@LE.le.{0} Nat instLENat\n        ((fun (t : Nat) =>\n            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n                (Nat.decLt t z))\n              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n                @Classical.choose.{1} Nat\n                  (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          t)\n        t) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_4",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)\n  (hExists :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          @Exists.{1} Nat fun (c : Nat) => And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))\n  (t1 t2 : Nat) (ht12 : @LT.lt.{0} Nat instLTNat t1 t2) (ht2z : @LT.lt.{0} Nat instLTNat t2 z),\n  Not (@LT.lt.{0} Nat instLTNat t1 z) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_5",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat}\n  (hExists :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          @Exists.{1} Nat fun (c : Nat) => And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))\n  (t1 t2 : Nat) (hrt1 : @LT.lt.{0} Nat instLTNat r t1) (ht12 : @LT.lt.{0} Nat instLTNat t1 t2),\n  Not (@LT.lt.{0} Nat instLTNat r t2) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_6",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat}\n  (hExists :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          @Exists.{1} Nat fun (c : Nat) => And (@LT.lt.{0} Nat instLTNat c r) (@Eq.{1} Nat (ChompLean.gameF t c) z))\n  (t1 t2 : Nat) (hrt1 : @LT.lt.{0} Nat instLTNat r t1)\n  (heq :\n    @Eq.{1} Nat\n      ((fun (t : Nat) =>\n          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n              (Nat.decLt t z))\n            (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n              @Classical.choose.{1} Nat\n                (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                  (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n            fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        t1)\n      ((fun (t : Nat) =>\n          @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n            (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n              (Nat.decLt t z))\n            (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n              @Classical.choose.{1} Nat\n                (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                  (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n            fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n            @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        t2))\n  (h1 :\n    And\n      (@LT.lt.{0} Nat instLTNat\n        ((fun (t : Nat) =>\n            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n                (Nat.decLt t z))\n              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n                @Classical.choose.{1} Nat\n                  (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          t1)\n        r)\n      (@Eq.{1} Nat\n        (ChompLean.gameF t1\n          ((fun (t : Nat) =>\n              @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n                (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n                  (Nat.decLt t z))\n                (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n                  @Classical.choose.{1} Nat\n                    (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                    (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                      (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n                fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n                @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n            t1))\n        z)),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        ((fun (t : Nat) =>\n            @dite.{1} Nat (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))\n              (@instDecidableAnd (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) (Nat.decLt r t)\n                (Nat.decLt t z))\n              (fun (ht : And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) =>\n                @Classical.choose.{1} Nat\n                  (fun (x : Nat) => And (@LT.lt.{0} Nat instLTNat x r) (@Eq.{1} Nat (ChompLean.gameF t x) z))\n                  (hExists t (@And.left (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)\n                    (@And.right (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z) ht)))\n              fun (ht : Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z))) =>\n              @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          t1)\n        t1) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_7",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)\n  (htooLarge :\n    @GT.gt.{0} Nat instLTNat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_8",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat} (t c : Nat)\n  (hc0 : @LT.lt.{0} Nat instLTNat c (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate._proof_1_9",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)\n  (hext :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (c t : Nat)\n  (htrange :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        t)\n      (@LT.lt.{0} Nat instLTNat t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not (And (@LT.lt.{0} Nat instLTNat r t) (@LT.lt.{0} Nat instLTNat t z)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R174TerminalRelayHallSaturation.0.ChompLean.r174_exact_cover_of_nodup_subset_length._proof_1_2",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {target raw : List.{0} Nat} (hcard : @Eq.{1} Nat (@List.length.{0} Nat raw) (@List.length.{0} Nat target))\n  (hle :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat target)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@List.length.{0} Nat raw)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R174TerminalRelayHallSaturation.0.ChompLean.r174_exact_cover_of_nodup_subset_length._simp_1_1",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {α : Type u_1} {b : α} {l : List.{u_1} α} {a : α},\n  @Eq.{1} Prop (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.cons.{u_1} α b l) a)\n    (Or (@Eq.{u_1 + 1} α a b) (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) l a))",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "inductive",
+      "isProof": false,
+      "sourceLine": 25,
+      "typePretty": "(z r : Nat) → (host : Nat → Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.casesOn",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 25,
+      "typePretty": "{z r : Nat} →\n  {host : Nat → Nat} →\n    {motive : (t : ChompLean.TerminalRelayHallCertificate z r host) → Sort u} →\n      (t : ChompLean.TerminalRelayHallCertificate z r host) →\n        (mk :\n            (hosted :\n                ∀ (t : Nat),\n                  @LT.lt.{0} Nat instLTNat r t →\n                    @LT.lt.{0} Nat instLTNat t z →\n                      And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z)) →\n              (uniqueOnRow :\n                  ∀ (t : Nat),\n                    @LT.lt.{0} Nat instLTNat r t →\n                      @LT.lt.{0} Nat instLTNat t z →\n                        ∀ (c : Nat),\n                          @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t)) →\n                (hostMex :\n                    ∀ (t : Nat),\n                      @LT.lt.{0} Nat instLTNat r t →\n                        @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z) →\n                  (noReuse :\n                      ∀ (t1 t2 : Nat),\n                        @LT.lt.{0} Nat instLTNat r t1 →\n                          @LT.lt.{0} Nat instLTNat t1 t2 →\n                            @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2)) →\n                    (capacity :\n                        @LE.le.{0} Nat instLENat z\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n                      (saturatedBijection :\n                          @Eq.{1} Nat z\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n                            ∀ (c : Nat),\n                              @LT.lt.{0} Nat instLTNat c r →\n                                @Exists.{1} Nat fun (t : Nat) =>\n                                  And\n                                    (And (@LT.lt.{0} Nat instLTNat r t)\n                                      (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))\n                                    (∀ (y : Nat),\n                                      And (@LT.lt.{0} Nat instLTNat r y)\n                                          (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →\n                                        @Eq.{1} Nat y t)) →\n                        motive\n                          (@ChompLean.TerminalRelayHallCertificate.mk z r host hosted uniqueOnRow hostMex noReuse\n                            capacity saturatedBijection)) →\n          motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.rec",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "recursor",
+      "isProof": false,
+      "sourceLine": 25,
+      "typePretty": "{z r : Nat} →\n  {host : Nat → Nat} →\n    {motive : (t : ChompLean.TerminalRelayHallCertificate z r host) → Sort u} →\n      (mk :\n          (hosted :\n              ∀ (t : Nat),\n                @LT.lt.{0} Nat instLTNat r t →\n                  @LT.lt.{0} Nat instLTNat t z →\n                    And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z)) →\n            (uniqueOnRow :\n                ∀ (t : Nat),\n                  @LT.lt.{0} Nat instLTNat r t →\n                    @LT.lt.{0} Nat instLTNat t z →\n                      ∀ (c : Nat),\n                        @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t)) →\n              (hostMex :\n                  ∀ (t : Nat),\n                    @LT.lt.{0} Nat instLTNat r t →\n                      @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z) →\n                (noReuse :\n                    ∀ (t1 t2 : Nat),\n                      @LT.lt.{0} Nat instLTNat r t1 →\n                        @LT.lt.{0} Nat instLTNat t1 t2 →\n                          @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2)) →\n                  (capacity :\n                      @LE.le.{0} Nat instLENat z\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n                    (saturatedBijection :\n                        @Eq.{1} Nat z\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n                          ∀ (c : Nat),\n                            @LT.lt.{0} Nat instLTNat c r →\n                              @Exists.{1} Nat fun (t : Nat) =>\n                                And\n                                  (And (@LT.lt.{0} Nat instLTNat r t)\n                                    (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))\n                                  (∀ (y : Nat),\n                                    And (@LT.lt.{0} Nat instLTNat r y)\n                                        (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →\n                                      @Eq.{1} Nat y t)) →\n                      motive\n                        (@ChompLean.TerminalRelayHallCertificate.mk z r host hosted uniqueOnRow hostMex noReuse capacity\n                          saturatedBijection)) →\n        (t : ChompLean.TerminalRelayHallCertificate z r host) → motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.recOn",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 25,
+      "typePretty": "{z r : Nat} →\n  {host : Nat → Nat} →\n    {motive : (t : ChompLean.TerminalRelayHallCertificate z r host) → Sort u} →\n      (t : ChompLean.TerminalRelayHallCertificate z r host) →\n        (mk :\n            (hosted :\n                ∀ (t : Nat),\n                  @LT.lt.{0} Nat instLTNat r t →\n                    @LT.lt.{0} Nat instLTNat t z →\n                      And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z)) →\n              (uniqueOnRow :\n                  ∀ (t : Nat),\n                    @LT.lt.{0} Nat instLTNat r t →\n                      @LT.lt.{0} Nat instLTNat t z →\n                        ∀ (c : Nat),\n                          @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t)) →\n                (hostMex :\n                    ∀ (t : Nat),\n                      @LT.lt.{0} Nat instLTNat r t →\n                        @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z) →\n                  (noReuse :\n                      ∀ (t1 t2 : Nat),\n                        @LT.lt.{0} Nat instLTNat r t1 →\n                          @LT.lt.{0} Nat instLTNat t1 t2 →\n                            @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2)) →\n                    (capacity :\n                        @LE.le.{0} Nat instLENat z\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n                      (saturatedBijection :\n                          @Eq.{1} Nat z\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n                            ∀ (c : Nat),\n                              @LT.lt.{0} Nat instLTNat c r →\n                                @Exists.{1} Nat fun (t : Nat) =>\n                                  And\n                                    (And (@LT.lt.{0} Nat instLTNat r t)\n                                      (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))\n                                    (∀ (y : Nat),\n                                      And (@LT.lt.{0} Nat instLTNat r y)\n                                          (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →\n                                        @Eq.{1} Nat y t)) →\n                        motive\n                          (@ChompLean.TerminalRelayHallCertificate.mk z r host hosted uniqueOnRow hostMex noReuse\n                            capacity saturatedBijection)) →\n          motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.mk",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "constructor",
+      "isProof": true,
+      "sourceLine": 28,
+      "typePretty": "∀ {z r : Nat} {host : Nat → Nat}\n  (hosted :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z))\n  (uniqueOnRow :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z →\n          ∀ (c : Nat), @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t))\n  (hostMex :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z)\n  (noReuse :\n    ∀ (t1 t2 : Nat),\n      @LT.lt.{0} Nat instLTNat r t1 →\n        @LT.lt.{0} Nat instLTNat t1 t2 → @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2))\n  (capacity :\n    @LE.le.{0} Nat instLENat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (saturatedBijection :\n    @Eq.{1} Nat z\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n      ∀ (c : Nat),\n        @LT.lt.{0} Nat instLTNat c r →\n          @Exists.{1} Nat fun (t : Nat) =>\n            And (And (@LT.lt.{0} Nat instLTNat r t) (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))\n              (∀ (y : Nat),\n                And (@LT.lt.{0} Nat instLTNat r y) (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →\n                  @Eq.{1} Nat y t)),\n  ChompLean.TerminalRelayHallCertificate z r host",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.hosted",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 30,
+      "typePretty": "∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host) (t : Nat),\n  @LT.lt.{0} Nat instLTNat r t →\n    @LT.lt.{0} Nat instLTNat t z →\n      And (@LT.lt.{0} Nat instLTNat (host t) r) (@Eq.{1} Nat (ChompLean.gameF t (host t)) z)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.uniqueOnRow",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 32,
+      "typePretty": "∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host) (t : Nat),\n  @LT.lt.{0} Nat instLTNat r t →\n    @LT.lt.{0} Nat instLTNat t z →\n      ∀ (c : Nat), @LT.lt.{0} Nat instLTNat c r → @Eq.{1} Nat (ChompLean.gameF t c) z → @Eq.{1} Nat c (host t)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.hostMex",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 34,
+      "typePretty": "∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host) (t : Nat),\n  @LT.lt.{0} Nat instLTNat r t →\n    @LT.lt.{0} Nat instLTNat t z → ChompLean.IsMex (ChompLean.B ChompLean.gameF t (host t)) z",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.noReuse",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 36,
+      "typePretty": "∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host) (t1 t2 : Nat),\n  @LT.lt.{0} Nat instLTNat r t1 →\n    @LT.lt.{0} Nat instLTNat t1 t2 → @LT.lt.{0} Nat instLTNat t2 z → @Ne.{1} Nat (host t1) (host t2)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.capacity",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 38,
+      "typePretty": "∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host),\n  @LE.le.{0} Nat instLENat z\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.TerminalRelayHallCertificate.saturatedBijection",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 39,
+      "typePretty": "∀ {z r : Nat} {host : Nat → Nat} (self : ChompLean.TerminalRelayHallCertificate z r host),\n  @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n    ∀ (c : Nat),\n      @LT.lt.{0} Nat instLTNat c r →\n        @Exists.{1} Nat fun (t : Nat) =>\n          And (And (@LT.lt.{0} Nat instLTNat r t) (And (@LT.lt.{0} Nat instLTNat t z) (@Eq.{1} Nat (host t) c)))\n            (∀ (y : Nat),\n              And (@LT.lt.{0} Nat instLTNat r y) (And (@LT.lt.{0} Nat instLTNat y z) (@Eq.{1} Nat (host y) c)) →\n                @Eq.{1} Nat y t)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R174TerminalRelayHallSaturation.0.ChompLean.r174_nodup_map_of_injective_on",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 44,
+      "typePretty": "∀ {alpha beta : Type} [inst : BEq.{0} alpha] [@LawfulBEq.{0} alpha inst] [inst : BEq.{0} beta]\n  [@LawfulBEq.{0} beta inst] (f : alpha → beta) (xs : List.{0} alpha) (hxs : @List.Nodup.{0} alpha xs)\n  (hinj :\n    ∀ (x : alpha),\n      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x →\n        ∀ (y : alpha),\n          @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs y →\n            @Eq.{1} beta (f x) (f y) → @Eq.{1} alpha x y),\n  @List.Nodup.{0} beta (@List.map.{0, 0} alpha beta f xs)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R174TerminalRelayHallSaturation.0.ChompLean.r174_exact_cover_of_nodup_subset_length",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 70,
+      "typePretty": "∀ {target raw : List.{0} Nat} (hTarget : @List.Nodup.{0} Nat target)\n  (hsub : @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) target raw)\n  (hcard : @Eq.{1} Nat (@List.length.{0} Nat raw) (@List.length.{0} Nat target)) (x : Nat),\n  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) raw x)\n    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) target x)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_relay_hall_certificate",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 98,
+      "typePretty": "∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),\n  @Exists.{1} (Nat → Nat) fun (host : Nat → Nat) => ChompLean.TerminalRelayHallCertificate z r host",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_terminal_freeze_value_le_twice_column_plus_one",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 216,
+      "typePretty": "∀ {z r : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),\n  @LE.le.{0} Nat instLENat z\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_prefreeze_host_sharpens_terminal_relay_capacity",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 226,
+      "typePretty": "∀ {z r s b : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)\n  (hbs : @LT.lt.{0} Nat instLTNat b s) (hsr : @LE.le.{0} Nat instLENat s r)\n  (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z),\n  @LE.le.{0} Nat instLENat z (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_global_relay_hall",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 251,
+      "typePretty": "∀ {v r g a : Nat} (hbraid : ChompLean.FailedTerminalDeepHistoryHighBraidPacket v r g a),\n  @Exists.{1} (Nat → Nat) fun (host : Nat → Nat) => ChompLean.TerminalRelayHallCertificate v r host",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_boundary_oldHost_strict_capacity",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 261,
+      "typePretty": "∀ {v r g a : Nat} (hbraid : ChompLean.FailedTerminalDeepHistoryHighBraidPacket v r g a) (har : @Eq.{1} Nat a r),\n  @LE.le.{0} Nat instLENat v (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_failedTerminalHighBraid_extremal_rightmost_relay_pin",
+      "module": "R174TerminalRelayHallSaturation",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 273,
+      "typePretty": "∀ {v r g a : Nat} (hbraid : ChompLean.FailedTerminalDeepHistoryHighBraidPacket v r g a)\n  (hext :\n    @Eq.{1} Nat v\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  And (@LT.lt.{0} Nat instLTNat r a)\n    (∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t v →\n          @Eq.{1} Nat\n              (ChompLean.gameF t\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              v →\n            @Eq.{1} Nat t a)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "2cc48d7c1db1f601f6c0538dd53bf8fa3f9cc3a0ca2cd943db5bbd55e02bb536",
+      "sourcePath": "lean/core/R174TerminalRelayHallSaturation.lean",
+      "universeParameters": []
+    }
+  ],
+  "fullExpressionTrees": "audit/full/lean/declarations.jsonl"
+}

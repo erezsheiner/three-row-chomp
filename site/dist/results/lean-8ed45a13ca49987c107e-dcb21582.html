@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R50 High QSource Gap Well Founded Iteration · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R50 High QSource Gap Well Founded Iteration</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R50HighQSourceGapWellFoundedIteration.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R50HighQSourceGapWellFoundedIteration.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R50HighQSourceGapWellFoundedIteration.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 24 declarations</summary><ul class="declarations"><li><code>ChompLean.HighQGapIterationRun</code><pre class="prose">(c z r start length : Nat) → Prop</pre></li><li><code>ChompLean.HighQGapIterationStep</code><pre class="prose">(c z r next current : Nat) → Prop</pre></li><li><code>ChompLean.HighQGapIterationTerminal</code><pre class="prose">(c z r current : Nat) → Prop</pre></li><li><code>ChompLean.HighQGapLandingTerminal</code><pre class="prose">(c z r x : Nat) → Prop</pre></li><li><code>ChompLean.HighQGapSeed</code><pre class="prose">(c z t : Nat) → Prop</pre></li><li><code>ChompLean.LateBlockerHighQIterativeNormalForm</code><pre class="prose">(s : Nat) → Prop</pre></li><li><code>ChompLean.gameF_descent_to_high_q_internal_iteration_global_bound</code><pre class="prose">∀ {s n : Nat} (hrun : ChompLean.LateBlockerDescentRun s n)
+  (hHigh : ChompLean.LateBlockerHighQGapPacket (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)),
+  @Exists.{1} Nat fun (r : Nat) =&gt;
+    @Exists.{1} Nat fun (x : Nat) =&gt;
+      And
+        (@LE.le.{0} Nat instLENat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          r)
+        (And
+          (@LT.lt.{0} Nat instLTNat r
+            (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))
+          (And
+            (@Eq.{1} Nat
+              (ChompLean.gameF
+                (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)) r)
+              (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))
+            (And
+              (@LT.lt.{0} Nat instLTNat
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                x)
+              (And
+                (@LT.lt.{0} Nat instLTNat x
+                  (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))
+                (And
+                  (Not
+                    (ChompLean.C ChompLean.gameF x (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+                      (ChompLean.LateBlockerValue
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))))
+                  (Or
+                    (ChompLean.HighQGapLandingTerminal
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+                      (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))
+                      r x)
+                    (And
+                      (ChompLean.HighQGapSeed (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+                        (ChompLean.LateBlockerValue
+                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))
+                        x)
+                      (And
+                        (@LT.lt.{0} Nat instLTNat
+                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                            (ChompLean.LateBlockerValue
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))
+                            x)
+                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                            (ChompLean.LateBlockerValue
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))
+                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+                        (∀ (length : Nat),
+                          ChompLean.HighQGapIterationRun
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+                              (ChompLean.LateBlockerValue
+                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))
+                              r x length →
+                            @LE.le.{0} Nat instLENat
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n length)
+                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                                (ChompLean.LateBlockerValue s)
+                                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                                  (ChompLean.LateBlockerValue
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))
+                                  x)))))))))))</pre></li><li><code>ChompLean.gameF_descent_to_high_q_internal_iteration_global_bound._proof_1_1</code><pre class="prose">∀ {s n : Nat} (r x : Nat)
+  (hrLate :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      r)
+  (hrz :
+    @LT.lt.{0} Nat instLTNat r
+      (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))
+  (hstart :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)) r)
+      (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)))
+  (hxLate :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      x)
+  (hxz :
+    @LT.lt.{0} Nat instLTNat x
+      (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)) x)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (ChompLean.LateBlockerValue (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.gameF_high_q_gap_iteration_run_length_bound</code><pre class="prose">∀ {c z r : Nat} (length start : Nat),
+  ChompLean.HighQGapIterationRun c z r start length →
+    @LE.le.{0} Nat instLENat length (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z start)</pre></li><li><code>ChompLean.gameF_high_q_gap_iteration_run_length_bound._proof_1_1</code><pre class="prose">∀ {z : Nat} (start : Nat),
+  Not
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z start)) →
+    False</pre></li><li><code>ChompLean.gameF_high_q_gap_iteration_run_length_bound._proof_1_2</code><pre class="prose">∀ (length start : Nat) (state : Nat → Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) length
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_high_q_gap_iteration_run_length_bound._proof_1_3</code><pre class="prose">∀ {z : Nat} (length start : Nat) (state : Nat → Nat) (k : Nat) (hk : @LT.lt.{0} Nat instLTNat k length),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) length
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_high_q_gap_iteration_run_length_bound._proof_1_4</code><pre class="prose">∀ {z : Nat} (length start : Nat) (state : Nat → Nat)
+  (hmeasure :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z
+        (state (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z start))
+  (htailBound :
+    @LE.le.{0} Nat instLENat length
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z
+        (state (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) length
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z start)) →
+    False</pre></li><li><code>ChompLean.gameF_high_q_gap_iteration_step_strict_measure</code><pre class="prose">∀ {c z r next current : Nat} (hstep : ChompLean.HighQGapIterationStep c z r next current),
+  @LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z next)
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z current)</pre></li><li><code>ChompLean.gameF_high_q_gap_iteration_step_strict_measure._proof_1_1</code><pre class="prose">∀ {c z r next current : Nat}
+  (hstep :
+    And (@LT.lt.{0} Nat instLTNat current next)
+      (And (@LT.lt.{0} Nat instLTNat r next)
+        (And (@LT.lt.{0} Nat instLTNat c next)
+          (And (@LT.lt.{0} Nat instLTNat next (ChompLean.gameF next c))
+            (And (@LT.lt.{0} Nat instLTNat (ChompLean.gameF next c) z)
+              (Not (ChompLean.C ChompLean.gameF next c z))))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z next)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z current)) →
+    False</pre></li><li><code>ChompLean.gameF_high_q_gap_iteration_wellFounded</code><pre class="prose">∀ (c z r : Nat), @WellFounded.{1} Nat (ChompLean.HighQGapIterationStep c z r)</pre></li><li><code>ChompLean.gameF_high_q_gap_seed_terminal_or_strict_step</code><pre class="prose">∀ {c z r current : Nat} (hSeed : ChompLean.HighQGapSeed c z current) (hrz : @LT.lt.{0} Nat instLTNat r z)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),
+  Or (ChompLean.HighQGapIterationTerminal c z r current)
+    (@Exists.{1} Nat fun (next : Nat) =&gt; ChompLean.HighQGapIterationStep c z r next current)</pre></li><li><code>ChompLean.gameF_high_q_gap_seed_terminal_or_strict_step._proof_1_1</code><pre class="prose">∀ {c z r current : Nat} (next : Nat) (hpre : Not (@LE.le.{0} Nat instLENat next r)),
+  Not (@LT.lt.{0} Nat instLTNat r next) → False</pre></li><li><code>ChompLean.gameF_high_q_gap_seed_terminal_or_strict_step._proof_1_2</code><pre class="prose">∀ {c z r current : Nat} (hct : @LT.lt.{0} Nat instLTNat c current) (next : Nat)
+  (hnext : @LT.lt.{0} Nat instLTNat current next), Not (@LT.lt.{0} Nat instLTNat c next) → False</pre></li><li><code>ChompLean.gameF_high_q_terminal_iterative_normal_form</code><pre class="prose">∀ {s : Nat} (hHigh : ChompLean.LateBlockerHighQGapPacket s), ChompLean.LateBlockerHighQIterativeNormalForm s</pre></li><li><code>ChompLean.gameF_high_q_terminal_iterative_normal_form._proof_1_1</code><pre class="prose">∀ {s : Nat} (b r x : Nat)
+  (hxLate :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      x),
+  Not (@LE.le.{0} Nat instLENat s x) → False</pre></li><li><code>ChompLean.gameF_high_q_terminal_iterative_normal_form._proof_1_2</code><pre class="prose">∀ {s : Nat} (b r x : Nat) (hrz : @LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (hstart :
+    @Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)
+      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (hhalf :
+    @LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)) →
+    False</pre></li><li><code>ChompLean.gameF_high_q_terminal_iterative_normal_form._proof_1_3</code><pre class="prose">∀ {s : Nat} (b r x : Nat)
+  (hxLate :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      x),
+  Not (@LT.lt.{0} Nat instLTNat s x) → False</pre></li><li><code>ChompLean.gameF_late_blocker_terminal_certificate_R50_reduction</code><pre class="prose">∀ {s : Nat} (hTerminal : ChompLean.LateBlockerTerminalCertificate s),
+  Or (ChompLean.LateBlockerHighQIterativeNormalForm s)
+    (And (ChompLean.BoundaryLateBlockerParametricNormalForm s) (Not (ChompLean.BoundaryCorridorSmallerLateBlocker s)))</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R50HighQSourceGapWellFoundedIteration.lean:1</p><p>SHA-256: <code class="path">8ed45a13ca49987c107e4c882e5c1d3cc99f15d87ec4da651cffc110357b3990</code></p></section><p><a href="../index.html#id=lean-8ed45a13ca49987c107e">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantitative incompatibility of the two counting extremizers · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../document.css"><link rel="stylesheet" href="../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../index.html">Search</a><a href="../../browse.html">Browse all</a><a href="../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="quantitative-incompatibility-of-the-two-counting-extremizers">Quantitative incompatibility of the two counting extremizers</h1><p>The complete argument below defines every optimization variable and retains the finite counting inequalities and order of limits. Read it together with the <a href="counting-service-budget.html">finite service-budget proof</a> and the <a href="../../audit/full/CANONICAL-FOUNDATIONS.html">canonical foundation</a>.</p>
+<h2 id="1-result">1. Result</h2><p>Let A(x) count positive S-labels at most x, and d(n) be the diagonal of the
+canonical positive-mex/carry recurrence for three-row Chomp. Define</p>
+<pre><code>Q(b) = 12496 +112497b -24984b^2 -524992b^3 -237524b^4
+             +249993b^5 +87520b^6 -100006b^7 +25000b^8.
+</code></pre>
+<p>Let b_new be the unique zero of Q in [.469,.471]. Then</p>
+<pre><code>liminf A(n)/n &lt;= b_new,
+liminf d(n)/n &lt;= 1/(1-b_new) &lt; 1.886593095.
+</code></pre>
+<p>Exact rational root isolation gives approximately</p>
+<pre><code>b_new              = .4699439942048371,
+1/(1-b_new)         = 1.8865930940634306.
+</code></pre>
+<p>No existence of a limit, limsup ceiling, or fast algorithm follows.</p>
+<h2 id="2-inputs-and-notation">2. Inputs and notation</h2><p>The <a href="counting-service-budget.html">finite service-budget proof</a> supplies the complete baseline argument. Its sections 2 and 3 define U_N exactly and prove the finite service budget; section 5 derives the discrete square identity; sections 6 and 7 supply the baseline optimizer and bound. Thus the numbered inputs below are included in this release, rather than referred to an unavailable draft.</p>
+<p>Write S={p_1&lt;p_2&lt;...}, and s_j for the column that retires at p_j.
+The canonical facts needed for the new part are:</p>
+<pre><code>s_j &lt;= 2j-1,
+the s_j are distinct,
+s_j &gt;= j + #{i : p_i+s_i &lt; p_j}.                         (1)
+</code></pre>
+<p>The last fact counts the j distinct predeath booker columns and the
+chronologically unusable columns, all strictly below s_j. These two sets
+are disjoint. The service-budget proof derives these facts from the actual recurrence in its sections 1 and 4.</p>
+<p>Fix</p>
+<pre><code>469/1000 &lt;= a &lt;= 471/1000,
+A(x) &gt;= a*x-C for all x&gt;=0, with a fixed C&gt;=0.
+</code></pre>
+<p>Put</p>
+<pre><code>E(x)=A(x)-a*x+C &gt;=0,    e_j=E(p_j),
+h=1+2a,  g=1+a,  lambda=1-a.
+</code></pre>
+<p>At the START of row N put</p>
+<pre><code>m=R(N-1),  R(x)=x-A(x),
+u=#live columns r&lt;m,    W=sum of their indices,
+K=m-u,
+I={j:p_j&lt;N and s_j&lt;m},  |I|=K,
+S_N=sum_{p_j&lt;N} e_j,
+B_ret=hW+gK^2-hm^2/2,
+B_peak=(m-2g*u)_+^2/(2lambda).
+</code></pre>
+<p>All uses of the symbol S_N below refer to this weighted sum, not the set S.</p>
+<p>For these quantities the linked service-budget proof supplies, under its high-sample range
+condition, the finite inequalities</p>
+<pre><code>U_N &gt;= m*u-a*W-u^2/2 + L_N,                              (2)
+L_N &gt;= S_N/a - E(N-1)^2/(2a) - O(N),                    (3)
+U_N = (1-2a)/(2(1-a))*N^2 + O(N).
+</code></pre>
+<p>The fixed-parameter constants in O(N) can depend on a,C. Equation (3)
+is the exact discrete square identity with its linear terms bounded.</p>
+<h2 id="3-a-nonnegative-slack-for-each-deadline">3. A nonnegative slack for each deadline</h2><p>Define</p>
+<pre><code>delta_j = e_j-2g*j+h*s_j+h.
+</code></pre>
+<p>Then delta_j&gt;=0. To see this, e_i&gt;=0 and s_i&lt;=2i-1 give</p>
+<pre><code>a*(p_i+s_i) &lt;= h*i+C-a.
+</code></pre>
+<p>Consequently every positive i&lt;=floor((j-e_j)/h) satisfies
+p_i+s_i&lt;p_j. If that floor is negative, it remains a valid lower bound
+on the number of such i. Inserting this count into (1) gives</p>
+<pre><code>delta_j &gt;= h*floor((j-e_j)/h)-(j-e_j)+h &gt;=0.             (4)
+</code></pre>
+<p>There is a useful stronger version. If G further ranks lie above
+(j-e_j)/h and obey p_i+s_i&lt;p_j, the same proof gives</p>
+<pre><code>delta_j &gt;= h*G.                                        (5)
+</code></pre>
+<p>These extra ranks must be distinct from the baseline ranks; this
+disjointness will be checked explicitly below.</p>
+<p>Put</p>
+<pre><code>Gamma = sum_{j in I}j - K(K+1)/2 &gt;=0,
+X = S_N-B_ret.
+</code></pre>
+<p>Since sum_{j in I}s_j=m(m-1)/2-W, exact expansion gives</p>
+<pre><code>X = sum_{j in I}delta_j +2g*Gamma
+    +sum_{j not in I,p_j&lt;N}e_j +hm/2-a*K.
+</code></pre>
+<p>The last term is at least m/2. In particular,</p>
+<pre><code>X&gt;=0,   sum_{j in I}delta_j&lt;=X,   Gamma&lt;=X/(2g).         (6)
+</code></pre>
+<p>If an interval of ranks lies below b<em>m&lt;K, the number of its ranks absent
+from I is at most Gamma/(K-b</em>m). Indeed, every omitted rank j&lt;=K
+must be replaced by a rank above K, costing at least K+1-j in Gamma.
+This argument needs no monotonicity of the physical victim columns.</p>
+<h2 id="4-the-backward-ramp-leaves-a-separate-budget-for-early-ranks">4. The backward ramp leaves a separate budget for early ranks</h2><p>For this section and the next assume</p>
+<pre><code>332/1000 &lt;= u/m &lt;= 336/1000.                            (7)
+</code></pre>
+<p>Thus K&gt;=.664m&gt;0. Let J be the largest rank in I. It obeys J&gt;=K.
+From (4) and s_J&lt;=m-1,</p>
+<pre><code>e_J &gt;= 2g*J-hm.
+</code></pre>
+<p>The deadline labels are distinct integers, so, for j&lt;=J,</p>
+<pre><code>e_J-e_j &lt;= lambda*(J-j).
+</code></pre>
+<p>It follows for j&lt;=K that</p>
+<pre><code>e_j &gt;= R_j :=
+  ((2g-lambda)*K-hm+lambda*j)_+.
+</code></pre>
+<p>Set H=m-2g*u and</p>
+<pre><code>j0=K-H/lambda=(-a+(1+3a)*u/m)*m/lambda.
+</code></pre>
+<p>Throughout the parameter rectangle (7), .58m&lt;j0&lt;K. The first inequality
+is certified rationally; H&gt;0 gives the second. Thus R_j vanishes for
+j&lt;=.58m. Since R_j is increasing, its right-endpoint sum dominates its
+integral:</p>
+<pre><code>sum_{j=1}^K R_j &gt;= H^2/(2lambda)=B_peak.
+</code></pre>
+<p>All these deadlines occur before N, because J is a past deadline.
+Therefore, putting Y=S_N-B_peak,</p>
+<pre><code>Y&gt;=0,   sum_{.56m&lt;=j&lt;=.58m}e_j &lt;=Y.                    (8)
+</code></pre>
+<p>This uses the SAME excess mass as the old proof. It does not add two
+overlapping lower bounds: it identifies mass outside the ramp&#39;s support.</p>
+<h2 id="5-two-rank-intervals-force-additional-chronological-exclusions">5. Two rank intervals force additional chronological exclusions</h2><p>Call a source rank good when</p>
+<pre><code>.30m&lt;=i&lt;=.31m,  i in I,  delta_i&lt;=m/20,
+</code></pre>
+<p>and a target rank good when</p>
+<pre><code>.56m&lt;=j&lt;=.58m,  j in I,  e_j&lt;=m/100.
+</code></pre>
+<p>Let their counts be G_s,G_t. The missing-rank estimate following (6),
+Markov&#39;s counting inequality, and (8) give</p>
+<pre><code>G_s &gt;= (.01m-2-21X/m)_+,
+G_t &gt;= (.02m-2-4.1X/m-100Y/m)_+.                       (9)
+</code></pre>
+<p>Here the missing-rank coefficients use, on the entire parameter rectangle,</p>
+<pre><code>2g*(.664-.31)&gt;1,
+4.1*2g*(.664-.58)&gt;1.
+</code></pre>
+<p>The two subtracted units safely cover rounding of interval endpoints.</p>
+<p>Every good source is an EXTRA unusable predecessor for every good target.
+Indeed, set D=1+2ag/h. The definition of delta_i gives exactly</p>
+<pre><code>i+a*s_i-e_i
+  =D*i+(a/h)*delta_i-(1+a/h)*e_i-a
+  &lt;= .31D*m + a*m/(20h)
+  &lt; .55m
+  &lt;= j-e_j.
+</code></pre>
+<p>Since a*p_i=i+C-e_i, this is precisely p_i+s_i&lt;p_j.
+Also i&gt;=.30m&gt;.58m/h&gt;=j/h&gt;=(j-e_j)/h. Hence these sources
+are disjoint from the baseline ranks in (4). The two needed strict
+numeric inequalities hold throughout [.469,.471], by the exact rational polynomial checks linked below.</p>
+<p>Equation (5) and then (6) now imply</p>
+<pre><code>X &gt;= h*G_s*G_t &gt;= (969/500)*G_s*G_t.
+</code></pre>
+<p>For x,y,l_1,l_2&gt;=0,</p>
+<pre><code>(x-l_1)_+*(y-l_2)_+ &gt;= xy-y*l_1-x*l_2.
+</code></pre>
+<p>Apply this to (9). With h0=969/500,</p>
+<pre><code>X &gt;= h0*(m^2/5000 - .461X - Y - .06m).
+</code></pre>
+<p>The coefficient comparison 1+.461h0&lt;=h0 is strict:</p>
+<pre><code>h0*(1-.461)-1 = 22291/500000 &gt;0.
+</code></pre>
+<p>As X&gt;=0, it follows that</p>
+<pre><code>X+Y &gt;= m^2/5000 - .06m.
+</code></pre>
+<p>We have proved the new finite inequality</p>
+<pre><code>S_N &gt;= (B_ret+B_peak)/2 + m^2/10000 - .03m.             (10)
+</code></pre>
+<p>Its premises are exactly the stated canonical facts, nonnegative E, and
+the parameter rectangle. No density limit or victim-order premise enters.</p>
+<h2 id="6-a-uniform-improvement-of-the-old-relaxed-minimum">6. A uniform improvement of the old relaxed minimum</h2><p>Put v=u/m, z=W/m^2, q=S_N/m^2,
+r=B_ret/m^2 and p=B_peak/m^2. Inside (7), (10) says</p>
+<pre><code>r&lt;=2q-p-1/5000+.06/m,   q&gt;=p.
+</code></pre>
+<p>As 1/a-2a/h&gt;0, substituting this inequality for r=hz+g(1-v)^2-h/2
+shows</p>
+<pre><code>v-v^2/2-a*z+q/a
+  &gt;= J_a(v)+a/(5000h)-.06a/(hm),                        (11)
+</code></pre>
+<p>where the old relaxed objective is</p>
+<pre><code>J_a(v)=a/(2h)+k*(v-v^2/2)+w*(1-2g*v)_+^2/2,
+k=(1-2a^2)/h,
+w=(h-a^2)/(a*h*(1-a)).
+</code></pre>
+<p>Its old minimum is</p>
+<pre><code>M(a)=V(a)/(2D0(a)),
+V(a)=3+7a+a^2-5a^3-2a^4+2a^5,
+D0(a)=4+15a+17a^2+2a^3-6a^4.
+</code></pre>
+<p>On all [.469,.471], exact polynomial certificates establish:</p>
+<ul>
+<li>the unique minimizing v_* lies strictly between .332 and .336;</li>
+<li>J_a(.332)-M(a)&gt;1/25000;</li>
+<li>J_a(.336)-M(a)&gt;1/25000;</li>
+<li>a/(5000h)&gt;1/25000.</li>
+</ul>
+<p>Below 1/(2g), J is strictly convex. Above that breakpoint it is
+nondecreasing on v&lt;=1, and the breakpoint exceeds .336. Thus outside
+(7) the old bound already gains 1/25000. Inside (7), (11) gains at
+least that much, with an O(m) error before normalization.</p>
+<p>Combining (2),(3) with these two cases yields</p>
+<pre><code>U_N &gt;= m^2*(M(a)+1/25000)
+           -E(N-1)^2/(2a)-O(N).                       (12)
+</code></pre>
+<p>This is a uniform positive improvement of the relaxed minimum in the
+stated interval of a. It is not just nonattainment at one exact optimizer.</p>
+<h2 id="7-limit-order-and-diagonal-transfer">7. Limit order and diagonal transfer</h2><p>Let beta=liminf A(n)/n. The old theorem gives beta&lt;=.46995152763790.
+If beta&lt;=.469, the new conclusion is automatic. Otherwise fix
+.469&lt;a&lt;beta. A global constant C with E&gt;=0 exists.</p>
+<p>Take a subsequence A(N)/N-&gt;beta. Then</p>
+<pre><code>m/N-&gt;1-beta,  E(N-1)/N-&gt;beta-a.
+</code></pre>
+<p>The old high-sample range condition holds eventually along this sequence;
+its endpoint is B=floor((N-C)/(1-a)) and N+m-1&lt;=B.
+Applying (12) at FIXED a gives</p>
+<pre><code>(1-2a)/(2(1-a))
+  &gt;=(1-beta)^2*(M(a)+1/25000)-(beta-a)^2/(2a).
+</code></pre>
+<p>Only now let a increase to beta. No error estimate uniform in C or in
+a-&gt;beta is needed. We obtain</p>
+<pre><code>P(beta) &gt;= (1-beta)^3*D0(beta)/12500,
+</code></pre>
+<p>where the old polynomial is</p>
+<pre><code>P(b)=1+9b-2b^2-42b^3-19b^4+20b^5+7b^6-8b^7+2b^8.
+</code></pre>
+<p>Thus Q(beta)=12500P(beta)-(1-beta)^3D0(beta)&gt;=0.
+Exact rational polynomial checks show Q is strictly decreasing on [.469,.471]
+and has one zero there, namely b_new. Hence beta&lt;=b_new.</p>
+<p>Finally, if liminf d(n)/n&gt;1/(1-b_new), choose c strictly between them.
+The eventual bound d(n)&gt;=c*n-O(1), together with injectivity, implies
+R(x)&lt;=x/c+O(1). Then liminf A(x)/x&gt;=1-1/c&gt;b_new, a contradiction.</p>
+<h2 id="exact-algebra-and-reproducibility">Exact algebra and reproducibility</h2><p>All decimal constants appearing in interval endpoints, thresholds and margins are terminating decimals and therefore exact rational numbers. Polynomial coefficients are in ascending order in the checker. A polynomial is transformed from [l,r] to [0,1] and written in the Bernstein basis. Strict positivity of every Bernstein coefficient proves positivity throughout the full interval.</p>
+<p>The <a href="../../audit/prepublication/root/check_algebra.py">checker</a> verifies the displayed degree-eight expansion, positivity of the optimizer denominator, both vertex bounds, the ramp support and its positivity, the source-time margin, baseline disjointness, missing-rank constants, objective slopes, both outer gains and strict monotonicity of Q. It also isolates the unique root by exact rational bisection and verifies 1/(1-b_new) &lt; 1.886593095. The <a href="../../audit/prepublication/root/exact-algebra-checks.json">fresh result</a> records those checks. This algebra supplements the counting proof; it does not replace it.</p>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ordered dyadic cycle completion controls crossings · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../document.css"><link rel="stylesheet" href="../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../index.html">Search</a><a href="../../browse.html">Browse all</a><a href="../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="ordered-dyadic-cycle-completion-controls-crossings">Ordered dyadic cycle completion controls crossings</h1><p><strong>Statement.</strong> W_G(n)≤2W_M(n)+2⌈log₂(2κ)⌉; κ=4 gives +6.</p>
+<h2 id="complete-proof-and-definitions">Complete proof and definitions</h2><ul>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/FINITE-MEX-AND-WINDOW-MODELS.html">Finite MEX insertion, periodic queues and window graph conventions</a></li>
+</ul>
+<p>The argument below and the linked full derivations form the reviewed proof. All stated hypotheses remain part of the result.</p>
+<h2 id="hypotheses-and-scope">Hypotheses and scope</h2><ul>
+<li>One fixed matching of opposite-sign tokens with positive, locally finite dates, matched endpoint ratio at most κ≥1.</li>
+<li>In each bucket indexed by floor(log₂ minimum endpoint date), matched pairs are ordered by positive endpoint date before cyclic completion.</li>
+</ul>
+<h2 id="argument">Argument</h2><ol>
+<li><p>Bucket each matched pair by k=floor(log2 minimum date). Endpoint ratioκ places the entire pair in [2^k,2κ2^k), so each bucket is finite.</p>
+</li>
+<li><p>At cut n, x_i=1[P_i≤n] is nonincreasing under the specified positive-date sorting, while z_i=1[M_i≤n]. For a cyclic bucket, triangle inequality gives Σ|x_i−z_(i+1)|≤Σ|x_i−x_(i+1)|+Σ|x_(i+1)−z_(i+1)|.</p>
+</li>
+<li><p>The last sum is the bucket’s original matching crossings. The cyclic x transition count is0 if constant and2 otherwise. Every nonconstant bucket has 2^k≤n and2κ2^k&gt;n.</p>
+</li>
+<li><p>The half-open scale interval n/(2κ)&lt;2^k≤n has at most ceil(log2(2κ)) powers of2. Adding original and added crossings yields W_G≤2W_M+2ceil(log2(2κ)). Singleton buckets add nothing; tied positive dates do not change monotonicity.</p>
+</li>
+<li><p>For κ=4 the correction is6. This bound requires the chosen order; it does not hold by this argument for arbitrary bucket permutations.</p>
+</li>
+</ol>
+<h2 id="review-and-supporting-evidence">Review and supporting evidence</h2><ul>
+<li>Historical original-claim verdict: accepted.</li>
+<li>This entry has a paper audit with an explicit verdict. Its formal dependencies have separate Lean receipts; this audit did not produce a Lean formalization of the derived statement.</li>
+<li><a href="../../audit/prepublication/papers/PAPER-REVIEW.json">Renewed statement and proof-completeness review</a></li>
+<li><a href="../../audit/full/paper-b/q-ordered-cycle-crossing.json">Full independent audit and original-claim verdict</a></li>
+<li><a href="../../audit/full/CANONICAL-FOUNDATIONS.html">Shared canonical foundation and exact Lean bridges</a></li>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Full proof and definitions: Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/FINITE-MEX-AND-WINDOW-MODELS.html">Full proof and definitions: Finite MEX insertion, periodic queues and window graph conventions</a></li>
+</ul>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

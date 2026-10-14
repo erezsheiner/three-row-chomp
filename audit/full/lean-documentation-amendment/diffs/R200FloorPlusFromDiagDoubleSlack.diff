@@ -1,0 +1,22 @@
+--- before/R200FloorPlusFromDiagDoubleSlack.lean
++++ after/R200FloorPlusFromDiagDoubleSlack.lean
+@@ -15,8 +15,7 @@
+ 
+ The exact-slot half is unconditional from the already proved overlap
+ ledger.  The blocker-count ceiling is proved from a single explicit input:
+-the still-unformalized all-index `DiagDoubleSlack` theorem.  Thus this file
+-isolates the only missing machine supplier.
++the all-index `ActualDiagDoubleSlack` input. This file proves the conditional composition; `R201DiagDoubleSlackCeilingChain` supplies that input in the present package.
+ -/
+ 
+ /-- Subtraction-free form of `d(a) <= 2*a-2` on its sharp tail. -/
+@@ -162,8 +161,7 @@
+   dsimp [xs] at hcap
+   omega
+ 
+-/-- The actual bank-domain Floor+ theorem, conditional only on the exact
+-machine gap `ActualDiagDoubleSlack`. -/
++/-- The actual bank-domain Floor+ theorem, conditional only on the `ActualDiagDoubleSlack` supplier, proved later in `R201DiagDoubleSlackCeilingChain`. -/
+ theorem gameF_FloorPlus_of_diagDoubleSlack
+     (hDDS : ActualDiagDoubleSlack) :
+     forall {a k}, 16 <= a -> gameF a a = k ->

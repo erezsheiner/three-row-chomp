@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XTau Window Law · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>XTau Window Law</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/XTauWindowLaw.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/XTauWindowLaw.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/XTauWindowLaw.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 62 declarations</summary><ul class="declarations"><li><code>ChompLean.A1Gate</code><pre class="prose">(b e V : Nat) → Prop</pre></li><li><code>ChompLean.GatedFutureDiagonalPin</code><pre class="prose">Prop</pre></li><li><code>ChompLean.LiveLe</code><pre class="prose">(b c V : Nat) → Prop</pre></li><li><code>ChompLean.a1Gate_anchor_mass</code><pre class="prose">∀ {b e V : Nat} (_hanchor : @Eq.{1} Nat (ChompLean.gameF b e) V) (heb : @LT.lt.{0} Nat instLTNat e b)
+  (hbV : @LE.le.{0} Nat instLENat b V) (hgate : ChompLean.A1Gate b e V),
+  @Eq.{1} Nat
+    (@List.length.{0} Nat
+      (@List.filter.{0} Nat
+        (fun (c : Nat) =&gt;
+          @Decidable.decide (@LE.le.{0} Nat instLENat b (ChompLean.gameF b c)) (Nat.decLe b (ChompLean.gameF b c)))
+        (List.range&#x27;
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) b e)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) b e)</pre></li><li><code>ChompLean.a1Gate_anchor_mass._proof_1_1</code><pre class="prose">∀ {b e V : Nat} (c : Nat)
+  (hc1 :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c),
+  Not (@LT.lt.{0} Nat instLTNat e c) → False</pre></li><li><code>ChompLean.a1Gate_anchor_mass._proof_1_2</code><pre class="prose">∀ {b e V : Nat} (heb : @LT.lt.{0} Nat instLTNat e b) (c : Nat)
+  (hc2 :
+    @LT.lt.{0} Nat instLTNat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) b e))),
+  Not (@LE.le.{0} Nat instLENat c b) → False</pre></li><li><code>ChompLean.a1Gate_iff_lowerOwnerCoveredBy</code><pre class="prose">∀ {V cV : Nat} (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V),
+  Iff (ChompLean.A1Gate V cV V) (ChompLean.LowerOwnerCoveredBy V cV)</pre></li><li><code>ChompLean.a1Gate_no_break</code><pre class="prose">∀ {b e V : Nat} (hgate : ChompLean.A1Gate b e V) {c : Nat} (hec : @LT.lt.{0} Nat instLTNat e c),
+  Not (ChompLean.LiveLe b c V)</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy</code><pre class="prose">∀ {V cV : Nat} (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)
+  (hcov : ChompLean.LowerOwnerCoveredBy V cV), ChompLean.A1Gate V cV V</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_1</code><pre class="prose">∀ {V cV : Nat} (hcVV : @LT.lt.{0} Nat instLTNat cV V) (q : Nat)
+  (hkV :
+    @Eq.{1} Nat
+      (ChompLean.gameF V
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      V),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        V) →
+    False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_10</code><pre class="prose">∀ {V cV : Nat} (q r : Nat)
+  (hrk :
+    @LT.lt.{0} Nat instLTNat r
+      (ChompLean.gameF q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hstartk :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (ChompLean.gameF q
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        r)
+      (ChompLean.gameF q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hqk :
+    @Eq.{1} Nat q
+      (ChompLean.gameF q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hstartk&#x27; : @Eq.{1} Nat (ChompLean.gameF q r) q), Not (@LE.le.{0} Nat instLENat r q) → False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_11</code><pre class="prose">∀ {V cV : Nat} (q r : Nat) (hrcV : @LE.le.{0} Nat instLENat r cV)
+  (this :
+    @Eq.{1} Nat r
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_12</code><pre class="prose">∀ {V cV : Nat} (q : Nat)
+  (hqlive :
+    @LE.le.{0} Nat instLENat q
+      (ChompLean.gameF q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (r : Nat)
+  (hstartk :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (ChompLean.gameF q
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        r)
+      (ChompLean.gameF q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hqk :
+    Not
+      (@Eq.{1} Nat q
+        (ChompLean.gameF q
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat q
+        (ChompLean.gameF q
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_13</code><pre class="prose">∀ {V cV : Nat} (q : Nat)
+  (hcq :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q)
+  (r : Nat) (hrcV : @LE.le.{0} Nat instLENat r cV), Not (@LT.lt.{0} Nat instLTNat r q) → False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_14</code><pre class="prose">∀ {V cV : Nat} (q : Nat)
+  (hcq :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q)
+  (r : Nat) (hrcV : @LE.le.{0} Nat instLENat r cV) (bb : Nat) (hbbr : @LT.lt.{0} Nat instLTNat bb r),
+  Not (@LE.le.{0} Nat instLENat bb q) → False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_15</code><pre class="prose">∀ {V cV : Nat} (q r : Nat) (hrcV : @LE.le.{0} Nat instLENat r cV) (bb : Nat) (hbbr : @LT.lt.{0} Nat instLTNat bb r)
+  (this :
+    @Eq.{1} Nat bb
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_2</code><pre class="prose">∀ {V cV : Nat} (q : Nat)
+  (this :
+    @Eq.{1} Nat cV
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_3</code><pre class="prose">∀ {V cV : Nat} (q : Nat)
+  (hqlive :
+    @LE.le.{0} Nat instLENat q
+      (ChompLean.gameF q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hkV :
+    @Eq.{1} Nat
+      (ChompLean.gameF q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      V)
+  (hqeqV : Not (@Eq.{1} Nat q V)), Not (@LT.lt.{0} Nat instLTNat q V) → False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_4</code><pre class="prose">∀ {V cV : Nat} (q : Nat)
+  (hcq :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q),
+  Not (@LT.lt.{0} Nat instLTNat cV q) → False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_5</code><pre class="prose">∀ {V cV : Nat} (q : Nat)
+  (hcq :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q)
+  (bb : Nat) (hbbcV : @LT.lt.{0} Nat instLTNat bb cV), Not (@LE.le.{0} Nat instLENat bb q) → False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_6</code><pre class="prose">∀ {V cV : Nat} (q bb : Nat) (hbbcV : @LT.lt.{0} Nat instLTNat bb cV)
+  (this :
+    @Eq.{1} Nat bb
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_7</code><pre class="prose">∀ {V cV : Nat} (q : Nat)
+  (hqval :
+    @LE.le.{0} Nat instLENat
+      (ChompLean.gameF q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      V)
+  (hkV :
+    Not
+      (@Eq.{1} Nat
+        (ChompLean.gameF q
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        V)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF q
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        V) →
+    False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_8</code><pre class="prose">∀ {V cV : Nat} (q : Nat)
+  (this :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (ChompLean.gameF q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (ChompLean.gameF q
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_9</code><pre class="prose">∀ {V cV : Nat} (q a : Nat) (hacV : @LE.le.{0} Nat instLENat a cV),
+  Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.a1Gate_window_full</code><pre class="prose">∀ {b e V : Nat} (hgate : ChompLean.A1Gate b e V) (hbV : @LE.le.{0} Nat instLENat b V) (c : Nat),
+  @LT.lt.{0} Nat instLTNat e c → @LE.le.{0} Nat instLENat c b → @LE.le.{0} Nat instLENat b (ChompLean.gameF b c)</pre></li><li><code>ChompLean.a1Gate_window_full._proof_1_1</code><pre class="prose">∀ {b e V : Nat} (c : Nat) (hcb : @LE.le.{0} Nat instLENat c b) (hwb : @LT.lt.{0} Nat instLTNat (ChompLean.gameF b c) b)
+  (hcw : @LT.lt.{0} Nat instLTNat c (ChompLean.gameF b c)), Not (@LT.lt.{0} Nat instLTNat c b) → False</pre></li><li><code>ChompLean.a1Gate_window_full._proof_1_2</code><pre class="prose">∀ {b e V : Nat} (c : Nat) (hwb : @LT.lt.{0} Nat instLTNat (ChompLean.gameF b c) b)
+  (hdesc : @Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF b c) c) (ChompLean.gameF b c)),
+  Not (@LE.le.{0} Nat instLENat (ChompLean.gameF b c) b) → False</pre></li><li><code>ChompLean.a1Gate_window_full._proof_1_3</code><pre class="prose">∀ {b e V : Nat} (hbV : @LE.le.{0} Nat instLENat b V) (c : Nat) (hwb : @LT.lt.{0} Nat instLTNat (ChompLean.gameF b c) b)
+  (hdesc : @Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF b c) c) (ChompLean.gameF b c)),
+  Not (@LE.le.{0} Nat instLENat (ChompLean.gameF b c) V) → False</pre></li><li><code>ChompLean.blocker_freeze_anchor_threshold</code><pre class="prose">∀ {V cV : Nat} (hV : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) V)
+  (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)
+  (hgate : ChompLean.A1Gate V cV V),
+  And
+    (@LE.le.{0} Nat instLENat cV
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (And
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V cV))
+      (@Eq.{1} Nat
+        (@List.length.{0} Nat
+          (@List.filter.{0} Nat
+            (fun (c : Nat) =&gt;
+              @Decidable.decide (@LE.le.{0} Nat instLENat V (ChompLean.gameF V c)) (Nat.decLe V (ChompLean.gameF V c)))
+            (List.range&#x27;
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V cV)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V cV)))</pre></li><li><code>ChompLean.blocker_freeze_anchor_threshold._proof_1_1</code><pre class="prose">∀ {V cV : Nat} (hV : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) V)
+  (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)
+  (h :
+    @LT.lt.{0} Nat instLTNat cV
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LE.le.{0} Nat instLENat cV
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →
+    False</pre></li><li><code>ChompLean.blocker_freeze_anchor_threshold._proof_1_2</code><pre class="prose">∀ {V cV : Nat} (hV : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) V)
+  (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)
+  (h :
+    @GE.ge.{0} Nat instLENat cV
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@Eq.{1} Nat cV
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.blocker_freeze_anchor_threshold._proof_1_3</code><pre class="prose">∀ {V cV : Nat} (hV : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) V)
+  (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)
+  (hcV2 :
+    @LE.le.{0} Nat instLENat cV
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),
+  Not
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V cV)) →
+    False</pre></li><li><code>ChompLean.gameF_adjacent_live_shadow</code><pre class="prose">∀ {e a p : Nat} (hea : @LT.lt.{0} Nat instLTNat e a) (hap : @LE.le.{0} Nat instLENat a p)
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.gameF a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      p),
+  @Exists.{1} Nat fun (r : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat e r)
+      (And (@LE.le.{0} Nat instLENat r a)
+        (And (@LE.le.{0} Nat instLENat r (ChompLean.gameF r e)) (@LE.le.{0} Nat instLENat (ChompLean.gameF r e) p)))</pre></li><li><code>ChompLean.gameF_adjacent_live_shadow._proof_1_1</code><pre class="prose">∀ {e a p : Nat} (hap : @LE.le.{0} Nat instLENat a p)
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.gameF a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      p)
+  (hLp : Not (@LE.le.{0} Nat instLENat (ChompLean.gameF a e) p))
+  (hprev :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)
+      a)
+  (hcarry :
+    @Eq.{1} Nat (ChompLean.gameF a e)
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)),
+  False</pre></li><li><code>ChompLean.gameF_adjacent_live_shadow._proof_1_2</code><pre class="prose">∀ {e a p : Nat} (hea : @LT.lt.{0} Nat instLTNat e a) (hap : @LE.le.{0} Nat instLENat a p)
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.gameF a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      p),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p) → False</pre></li><li><code>ChompLean.gameF_adjacent_live_shadow._proof_1_3</code><pre class="prose">∀ {e a p : Nat} (t : Nat) (hte : @LE.le.{0} Nat instLENat t e),
+  Not
+      (@LT.lt.{0} Nat instLTNat t
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_adjacent_live_shadow._proof_1_4</code><pre class="prose">∀ {e a p : Nat} (hea : @LT.lt.{0} Nat instLTNat e a) (t : Nat),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        a) →
+    False</pre></li><li><code>ChompLean.gameF_adjacent_live_shadow._proof_1_5</code><pre class="prose">∀ {e a p : Nat} (hap : @LE.le.{0} Nat instLENat a p)
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.gameF a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      p)
+  (t : Nat) (hta : @LT.lt.{0} Nat instLTNat t a) (hft : @Eq.{1} Nat (ChompLean.gameF t e) p),
+  Not (@LE.le.{0} Nat instLENat t p) → False</pre></li><li><code>ChompLean.gameF_adjacent_live_shadow._proof_1_6</code><pre class="prose">∀ {e a p : Nat} (hea : @LT.lt.{0} Nat instLTNat e a) (bcol : Nat) (hbe : @LT.lt.{0} Nat instLTNat bcol e),
+  Not (@LE.le.{0} Nat instLENat bcol a) → False</pre></li><li><code>ChompLean.gameF_adjacent_live_shadow._proof_1_7</code><pre class="prose">∀ {e a p : Nat} (bcol : Nat) (hbe : @LT.lt.{0} Nat instLTNat bcol e)
+  (this :
+    @Eq.{1} Nat bcol
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.gameF_penultimate_gate_auto</code><pre class="prose">∀ {x : Nat} (hx : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x),
+  ChompLean.A1Gate x
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (ChompLean.gameF x
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.gameF_penultimate_gate_auto._proof_1_1</code><pre class="prose">∀ {x : Nat} (hx : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x) (q : Nat)
+  (hcq :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q)
+  (hqb : @LE.le.{0} Nat instLENat q x),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        x) →
+    False</pre></li><li><code>ChompLean.gameF_penultimate_gate_auto._proof_1_2</code><pre class="prose">∀ {x : Nat} (q : Nat) (hcq : @LE.le.{0} Nat instLENat x q) (hqb : @LE.le.{0} Nat instLENat q x),
+  Not (@Eq.{1} Nat q x) → False</pre></li><li><code>ChompLean.gameF_penultimate_gate_auto._proof_1_3</code><pre class="prose">∀ {x : Nat} (q : Nat)
+  (hqval :
+    @LE.le.{0} Nat instLENat (ChompLean.gameF x x)
+      (ChompLean.gameF x
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hlt :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF x
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (ChompLean.gameF x x)),
+  False</pre></li><li><code>ChompLean.gated_range_anchor_is_future_preview</code><pre class="prose">∀ {x e t : Nat} (hanchor : @Eq.{1} Nat (ChompLean.gameF x e) (ChompLean.gameF t t)) (hex : @LT.lt.{0} Nat instLTNat e x)
+  (hxV : @LE.le.{0} Nat instLENat x (ChompLean.gameF t t)) (hgate : ChompLean.A1Gate x e (ChompLean.gameF t t)),
+  @LT.lt.{0} Nat instLTNat x t</pre></li><li><code>ChompLean.gated_range_anchor_is_future_preview._proof_1_1</code><pre class="prose">∀ {x e t : Nat} (hanchor : @Eq.{1} Nat (ChompLean.gameF x e) (ChompLean.gameF t t))
+  (hxV : @LE.le.{0} Nat instLENat x (ChompLean.gameF t t))
+  (hprev :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)
+      x)
+  (hcarry :
+    @Eq.{1} Nat (ChompLean.gameF x e)
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)),
+  False</pre></li><li><code>ChompLean.gated_range_anchor_is_future_preview._proof_1_2</code><pre class="prose">∀ {x e t : Nat} (hex : @LT.lt.{0} Nat instLTNat e x) (htx&#x27; : @GE.ge.{0} Nat instLENat x t)
+  (hte : @LE.le.{0} Nat instLENat t e), Not (@LT.lt.{0} Nat instLTNat t x) → False</pre></li><li><code>ChompLean.gated_range_anchor_unique_of_pin</code><pre class="prose">∀ (hpin : ChompLean.GatedFutureDiagonalPin) {x e t : Nat}
+  (hanchor : @Eq.{1} Nat (ChompLean.gameF x e) (ChompLean.gameF t t)) (hex : @LT.lt.{0} Nat instLTNat e x)
+  (hxV : @LE.le.{0} Nat instLENat x (ChompLean.gameF t t)) (hgate : ChompLean.A1Gate x e (ChompLean.gameF t t)),
+  And
+    (@Eq.{1} Nat x
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (And
+      (@Eq.{1} Nat e
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (@Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x e)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.gated_range_anchor_unique_of_pin._proof_1_1</code><pre class="prose">∀ {x e t : Nat} (hex : @LT.lt.{0} Nat instLTNat e x)
+  (ht :
+    @Eq.{1} Nat t
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (he :
+    @Eq.{1} Nat e
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (And
+        (@Eq.{1} Nat x
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (And
+          (@Eq.{1} Nat e
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          (@Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x e)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.liveLe_mono</code><pre class="prose">∀ {b V c c&#x27; : Nat}, @LE.le.{0} Nat instLENat c&#x27; c → ChompLean.LiveLe b c V → ChompLean.LiveLe b c&#x27; V</pre></li><li><code>ChompLean.liveLe_mono._proof_1_1</code><pre class="prose">∀ (n : Nat) {c&#x27; : Nat}
+  (hc :
+    @LE.le.{0} Nat instLENat c&#x27;
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hceq :
+    Not
+      (@Eq.{1} Nat c&#x27;
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not (@LE.le.{0} Nat instLENat c&#x27; n) → False</pre></li><li><code>ChompLean.liveLe_mono_left</code><pre class="prose">∀ {b c V : Nat}
+  (h :
+    ChompLean.LiveLe b
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      V),
+  ChompLean.LiveLe b c V</pre></li><li><code>ChompLean.liveLe_mono_left._proof_1_1</code><pre class="prose">∀ {b c V : Nat} (q : Nat)
+  (hcq :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      q),
+  Not (@LT.lt.{0} Nat instLTNat c q) → False</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_of_a1Gate</code><pre class="prose">∀ {V cV : Nat} (hgate : ChompLean.A1Gate V cV V), ChompLean.LowerOwnerCoveredBy V cV</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_of_a1Gate._proof_1_1</code><pre class="prose">∀ {V cV : Nat} (k : Nat) (hkV : @LT.lt.{0} Nat instLTNat k V) (a : Nat) (hak : @LT.lt.{0} Nat instLTNat a k)
+  (hdiagk : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)
+  (hdiagk&#x27; : @Eq.{1} Nat (ChompLean.gameF a a) k), Not (@LE.le.{0} Nat instLENat a V) → False</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_of_a1Gate._proof_1_2</code><pre class="prose">∀ {V cV : Nat} (k : Nat) (hkV : @LT.lt.{0} Nat instLTNat k V) (a : Nat)
+  (hdiagk : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)
+  (hdiagk&#x27; : @Eq.{1} Nat (ChompLean.gameF a a) k), Not (@LE.le.{0} Nat instLENat (ChompLean.gameF a a) V) → False</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_of_a1Gate._proof_1_3</code><pre class="prose">∀ {V cV : Nat} (k : Nat) (hkV : @LT.lt.{0} Nat instLTNat k V) (r : Nat)
+  (hstartk : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel k r) k)
+  (hstartk&#x27; : @Eq.{1} Nat (ChompLean.gameF k r) k), Not (@LE.le.{0} Nat instLENat k V) → False</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_of_a1Gate._proof_1_4</code><pre class="prose">∀ {V cV : Nat} (k : Nat) (hkV : @LT.lt.{0} Nat instLTNat k V) (r : Nat)
+  (hstartk : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel k r) k)
+  (hstartk&#x27; : @Eq.{1} Nat (ChompLean.gameF k r) k), Not (@LE.le.{0} Nat instLENat (ChompLean.gameF k r) V) → False</pre></li><li><code>_private.XTauWindowLaw.0.ChompLean.filter_all_length</code><pre class="prose">∀ (p : Nat → Bool) (n s : Nat),
+  (∀ (c : Nat),
+      @LE.le.{0} Nat instLENat s c →
+        @LT.lt.{0} Nat instLTNat c (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n) →
+          @Eq.{1} Bool (p c) Bool.true) →
+    @Eq.{1} Nat
+      (@List.length.{0} Nat
+        (@List.filter.{0} Nat p (List.range&#x27; s n (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      n</pre></li><li><code>_private.XTauWindowLaw.0.ChompLean.filter_all_length._proof_1_1</code><pre class="prose">∀ (m s : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat s
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) m
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>_private.XTauWindowLaw.0.ChompLean.filter_all_length._proof_1_2</code><pre class="prose">∀ (m s c : Nat)
+  (hc1 :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c),
+  Not (@LE.le.{0} Nat instLENat s c) → False</pre></li><li><code>_private.XTauWindowLaw.0.ChompLean.filter_all_length._proof_1_3</code><pre class="prose">∀ (m s c : Nat)
+  (hc2 :
+    @LT.lt.{0} Nat instLTNat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        m)),
+  Not
+      (@LT.lt.{0} Nat instLTNat c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) m
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/XTauWindowLaw.lean:1</p><p>SHA-256: <code class="path">cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842</code></p></section><p><a href="../index.html#id=lean-bd64a47bb6759acd0620">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

@@ -1,0 +1,56 @@
+{
+  "paperIndex": 30,
+  "id": "q-count-clock-consumer",
+  "original": {
+    "title": "Signed cumulative balance plus downward blocker-clock regularity implies Q=o(n)",
+    "status": "conditional",
+    "statement": "Σ_{n<N}Q(n)=o(N²) and lim_{K→∞} limsup_{N→∞} N⁻¹Σ_{n≤N}(u_n−K)₊=0 ⇒ Q(n)=o(n).",
+    "assumptions": [
+      "Injective positive-integer d with n<d(n)≤2n+1 and complementary count A.",
+      "Signed prefix balance SB.",
+      "Uniform integrability CU of u_n=(A(d(n−1))−A(d(n)))₊.",
+      "Canonical SB and CU are OPEN. No limiting density is assumed."
+    ],
+    "sourcePath": "projects/central-first-exit/work/DIRECT-Q-DATED-BLOCK-20261013-011/lanes/macro/COUNT-CLOCK-CONSUMER.md",
+    "sourceLine": 5,
+    "sha256": "1ecbf094240d763dfe9d090c70c480f1e668d1c09b6f1cb6999320592366479b"
+  },
+  "exactAuditedStatement": "For an injective positive-integer sequence d(n) satisfying n<d(n)<=2n+1, with A complementary count and Q(n)=3n+A(n)-2d(n), signed prefix balance sum_{n<N}Q(n)=o(N^2) and lim_{K->infinity}limsup_N N^-1 sum_{n<=N}(u_n-K)_+=0, u_n=(A(d(n-1))-A(d(n)))_+, imply Q(n)=o(n).",
+  "hypotheses": [
+    "A is the complement count of the entire range, linearly interpolated at real arguments.",
+    "Both quantitative hypotheses are genuinely assumed; canonical SB and CU remain open."
+  ],
+  "proofDependencyMap": [],
+  "independentDerivationAndChecks": [
+    "Let g=(3n+A(n))/2 and E=A(d(n))-A(g(n)). Since A is increasing1-Lipschitz and1.5<=Delta g<=2, E(n-1)-E(n)<=K+2+(u_n-K)_+. For a positive E spike eta N choose fixed K with tail through2N<=eta N/4 and fixed window delta N with(K+2)delta<=eta/4. E remains>=eta N/2 forward, hence Q<=-eta N throughout. Negative E spikes persist backward with Q>=eta N. Either contradicts SB because proportional-window sums are differences of o(N^2) prefixes. Thus E=o(n), uniformly in prefix maxima through C N.",
+    "Complementarity gives M_N=sum_{q<N}(q-A(q))=sum_{i<N}(N-d(i))_+ and sum_{i<N}d(i)=N^2-M_N+Dhead. Algebra yields sum_{n<N}(Q(n)+2)=M_N-2Dhead. There are A(N-1)+1 emitted values>=N, each<=2N-1, so Dhead<=N(A(N)+1). Also M_N>=N(N-1)/2-NA(N). Therefore A(N)>=N/6-5/6-S2(N)/(3N), and SB implies liminf A(N)/N>=1/6.",
+    "Along any scaling subsequence, one-Lipschitz a_N(x)=A(Nx)/N has a locally uniform limit a by compactness/diagonal extraction; a(x)>=x/6. If it has a nontrivial plateau, its maximal level set[l, r] has0<l<r<infinity. For smallε, the interior label interval contains(r-l-2ε)N+o(N) distinct diagonal labels.",
+    "Their distinct owners i<rN have uniform E(i)=o(N), forcing g(i)/N in(l-ε, r+ε), since a(l-ε) and a(r+ε) lie strictly below/above the plateau. But g increments>=3/2 permit at most(2/3)(r-l+2ε)N+1 owners. Takingε<(r-l)/20 contradicts cardinality. Thus every scaling limit a is strictly increasing.",
+    "A Q spike gives separated subsequential limits z=d(N)/N and w=g(N)/N. Clock tracking and local uniform convergence imply a(z)=a(w); strict increase forces z=w, contradicting the spike. No density, monotonicity, absolute-energy or canonical service hypothesis entered this argument.",
+    "Checked endpoints: d(0)=1 follows from reach; all d-values<=x have owners<x; A(0)=0; forward/backward windows stay nonnegative for delta<1/2. The compactness proof does not assume uniqueness of scaling limits."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\central-first-exit\\work\\DIRECT-Q-DATED-BLOCK-20261013-011\\lanes\\macro\\COUNT-CLOCK-CONSUMER.md",
+      "sha256": "1ecbf094240d763dfe9d090c70c480f1e668d1c09b6f1cb6999320592366479b"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\cf36e050a5cfa7217387.md",
+      "sha256": "cf36e050a5cfa721738771b2b45c7948c7478e853b781f57a0de212e113b90d1"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#q-count-clock-consumer",
+    "proofTextSha256": "1ecbf094240d763dfe9d090c70c480f1e668d1c09b6f1cb6999320592366479b",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": false,
+  "sharedCanonicalFoundationReview": null,
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish; parent integrates the independent audit and corrections."
+}

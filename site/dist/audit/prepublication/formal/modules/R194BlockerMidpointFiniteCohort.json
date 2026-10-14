@@ -1,0 +1,533 @@
+{
+  "module": "R194BlockerMidpointFiniteCohort",
+  "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+  "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+  "declarationCount": 35,
+  "theoremDeclarationCount": 32,
+  "proofValuedDeclarationCount": 32,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.NatMonotone",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 31,
+      "typePretty": "(f : Nat → Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.UnitIncrement01",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 28,
+      "typePretty": "(A : Nat → Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_equal_fiber_distance_le_one",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 81,
+      "typePretty": "∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A) {a b : Nat}\n  (heq : @Eq.{1} Nat (ChompLean.countMidpoint A a) (ChompLean.countMidpoint A b)),\n  @LE.le.{0} Nat instLENat b\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_equal_fiber_distance_le_one._proof_1_1",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {A : Nat → Nat} {a b : Nat}\n  (hfar :\n    @GT.gt.{0} Nat instLTNat b\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        b) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_equal_fiber_distance_le_one._proof_1_2",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {A : Nat → Nat} {a b : Nat} (heq : @Eq.{1} Nat (ChompLean.countMidpoint A a) (ChompLean.countMidpoint A b))\n  (hstrict :\n    @LT.lt.{0} Nat instLTNat (ChompLean.countMidpoint A a)\n      (ChompLean.countMidpoint A\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))\n  (htail :\n    @LE.le.{0} Nat instLENat\n      (ChompLean.countMidpoint A\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.countMidpoint A b)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_fiber_list_length_le_two",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 166,
+      "typePretty": "∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A) {y : Nat} (xs : List.{0} Nat)\n  (hpair : @List.Pairwise.{0} Nat (fun (a b : Nat) => @LT.lt.{0} Nat instLTNat a b) xs)\n  (hfiber :\n    ∀ (v : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs v →\n        @Eq.{1} Nat (ChompLean.countMidpoint A v) y),\n  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs) (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_fiber_list_length_le_two._proof_1_1",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {A : Nat → Nat} {y : Nat} (v : Nat) (heq : @Eq.{1} Nat (ChompLean.countMidpoint A v) y),\n  Not\n      (And (@LE.le.{0} Nat instLENat y (ChompLean.countMidpoint A v))\n        (@LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v) y)) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_middle_cohort_length_le",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 186,
+      "typePretty": "∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A) {r K : Nat} (xs : List.{0} Nat)\n  (hpair : @List.Pairwise.{0} Nat (fun (a b : Nat) => @LT.lt.{0} Nat instLTNat a b) xs)\n  (hcohort :\n    ∀ (v : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs v →\n        And\n          (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n            (ChompLean.countMidpoint A v))\n          (@LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))),\n  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) K)\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_middle_cohort_length_le._proof_1_1",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {A : Nat → Nat} {r K : Nat} (v : Nat)\n  (h :\n    And\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n        (ChompLean.countMidpoint A v))\n      (@LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))),\n  Not\n      (And\n        (@LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K)\n          (ChompLean.countMidpoint A v))\n        (@LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_middle_cohort_length_le._proof_1_2",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r K : Nat} (xs : List.{0} Nat)\n  (h :\n    @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r K)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r K))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))) K)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_monotone_of_unitIncrement01",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 50,
+      "typePretty": "∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A), ChompLean.NatMonotone (ChompLean.countMidpoint A)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_strict_after_two",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 61,
+      "typePretty": "∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A) (v : Nat),\n  @LT.lt.{0} Nat instLTNat (ChompLean.countMidpoint A v)\n    (ChompLean.countMidpoint A\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_strict_after_two._proof_1_1",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (v : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blockerMidpoint_strict_after_two._proof_1_2",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {A : Nat → Nat} (v : Nat)\n  (hA :\n    @LE.le.{0} Nat instLENat\n      (A\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (A\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n            (A\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n            (A\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.countMidpoint",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 34,
+      "typePretty": "(A : Nat → Nat) → (v : Nat) → Nat",
+      "axioms": [],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.countMidpoint.eq_1",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (A : Nat → Nat) (v : Nat),\n  @Eq.{1} Nat (ChompLean.countMidpoint A v)\n    (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n        (A\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))",
+      "axioms": [],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.countMidpoint_index_lt_of_le",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 72,
+      "typePretty": "∀ {A : Nat → Nat} {v R : Nat} (hupper : @LE.le.{0} Nat instLENat (ChompLean.countMidpoint A v) R),\n  @LT.lt.{0} Nat instLTNat v\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) R)\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.countMidpoint_index_lt_of_le._proof_1_1",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {A : Nat → Nat} {v R : Nat}\n  (hupper :\n    @LE.le.{0} Nat instLENat\n      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n          (A\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      R),\n  Not\n      (@LT.lt.{0} Nat instLTNat v\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) R)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.middle_cohort_can_contain_future_index",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 224,
+      "typePretty": "∀ {r : Nat} (hr : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r),\n  And\n    (@LT.lt.{0} Nat instLTNat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.countMidpoint (fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)))\n    (And\n      (@LE.le.{0} Nat instLENat\n        (ChompLean.countMidpoint (fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@LT.lt.{0} Nat instLTNat r\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.middle_cohort_can_contain_future_index._proof_1_2",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat},\n  Not\n      (@Eq.{1} Nat\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.middle_cohort_can_contain_future_index._proof_1_3",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r : Nat} (hr : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r)\n  (hhalf :\n    @Eq.{1} Nat\n      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      r),\n  Not\n      (And\n        (@LT.lt.{0} Nat instLTNat\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          r)\n        (And\n          (@LE.le.{0} Nat instLENat r\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@LT.lt.{0} Nat instLTNat r\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepStrict_pairwise_band_length_le",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 94,
+      "typePretty": "∀ (g : Nat → Nat) (hmono : ChompLean.NatMonotone g)\n  (hstrict2 :\n    ∀ (v : Nat),\n      @LT.lt.{0} Nat instLTNat (g v)\n        (g\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))\n  {lo hi : Nat} (xs : List.{0} Nat)\n  (hpair : @List.Pairwise.{0} Nat (fun (a b : Nat) => @LT.lt.{0} Nat instLTNat a b) xs)\n  (hband :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →\n        And (@LE.le.{0} Nat instLENat lo (g x)) (@LE.le.{0} Nat instLENat (g x) hi)),\n  @LE.le.{0} Nat instLENat (@List.length.{0} Nat xs)\n    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_1",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (g : Nat → Nat) (n lo hi a : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_2",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (n a b : Nat) (rest : List.{0} Nat) (hab : @LT.lt.{0} Nat instLTNat a b) (z : Nat)\n  (hbz : @LT.lt.{0} Nat instLTNat b z),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        z) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_3",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (g : Nat → Nat) (n a b : Nat) (rest : List.{0} Nat) (z : Nat)\n  (hgaz :\n    @LE.le.{0} Nat instLENat\n      (g\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (g z))\n  (hga2 :\n    @LT.lt.{0} Nat instLTNat (g a)\n      (g\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (g a)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (g z)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_4",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (g : Nat → Nat) (n lo hi a b : Nat) (rest : List.{0} Nat)\n  (hlen :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat rest)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      n),\n  Not (@LT.lt.{0} Nat instLTNat (@List.length.{0} Nat rest) n) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_5",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (g : Nat → Nat) (n lo hi a b : Nat) (rest : List.{0} Nat)\n  (haBounds : And (@LE.le.{0} Nat instLENat lo (g a)) (@LE.le.{0} Nat instLENat (g a) hi))\n  (hahi : @LT.lt.{0} Nat instLTNat (g a) hi)\n  (hrec :\n    @LE.le.{0} Nat instLENat (@List.length.{0} Nat rest)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (g a)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat rest)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_6",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (g : Nat → Nat) (n lo hi a b : Nat) (rest : List.{0} Nat)\n  (haBounds : And (@LE.le.{0} Nat instLENat lo (g a)) (@LE.le.{0} Nat instLENat (g a) hi))\n  (hahi : Not (@LT.lt.{0} Nat instLTNat (g a) hi)), Not (@Eq.{1} Nat (g a) hi) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_7",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (g : Nat → Nat) (n lo hi a b : Nat)\n  (haBounds : And (@LE.le.{0} Nat instLENat lo (g a)) (@LE.le.{0} Nat instLENat (g a) hi))\n  (hahi : Not (@LT.lt.{0} Nat instLTNat (g a) hi)) (z : Nat) (zs : List.{0} Nat)\n  (hzLower :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (g a)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (g z))\n  (hzUpper : @LE.le.{0} Nat instLENat (g z) hi), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.twoStepStrict_pairwise_band_length_le._proof_1_8",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (g : Nat → Nat) (n lo hi a b : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) hi lo)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.unitIncrement01_monotone",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 37,
+      "typePretty": "∀ {A : Nat → Nat} (hstep : ChompLean.UnitIncrement01 A), ChompLean.NatMonotone A",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.unitIncrement01_monotone._proof_1_1",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {a : Nat} (n : Nat),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.unitIncrement01_monotone._proof_1_2",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {A : Nat → Nat} {a : Nat} (n : Nat)\n  (ih :\n    ∀ (hab : @LE.le.{0} Nat instLENat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)),\n      @LE.le.{0} Nat instLENat (A a) (A (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)))\n  (hs :\n    @Eq.{1} Nat\n      (A\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (A (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n))),\n  Not\n      (@LE.le.{0} Nat instLENat (A a)\n        (A\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.unitIncrement01_monotone._proof_1_3",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {A : Nat → Nat} {a : Nat} (n : Nat)\n  (ih :\n    ∀ (hab : @LE.le.{0} Nat instLENat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)),\n      @LE.le.{0} Nat instLENat (A a) (A (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)))\n  (hs :\n    @Eq.{1} Nat\n      (A\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (A (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat (A a)\n        (A\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.unitIncrement01_zero",
+      "module": "R194BlockerMidpointFiniteCohort",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 219,
+      "typePretty": "ChompLean.UnitIncrement01 fun (x : Nat) => @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))",
+      "axioms": [],
+      "sourceSha256": "fff8f2f6470dea53c6ed9e7229d9b759f80a618376e69e4e628280204075beb9",
+      "sourcePath": "lean/core/R194BlockerMidpointFiniteCohort.lean",
+      "universeParameters": []
+    }
+  ]
+}

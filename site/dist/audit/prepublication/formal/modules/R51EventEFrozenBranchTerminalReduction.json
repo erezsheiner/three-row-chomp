@@ -1,0 +1,378 @@
+{
+  "module": "R51EventEFrozenBranchTerminalReduction",
+  "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+  "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+  "declarationCount": 23,
+  "theoremDeclarationCount": 21,
+  "proofValuedDeclarationCount": 21,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.EventEFrozenCarryTerminal",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 81,
+      "typePretty": "(s z g p : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.EventENextOwnerGapTerminal",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 93,
+      "typePretty": "(s z g p : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.completed_rowstart_eventELowerTransition_no_diagonal",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 62,
+      "typePretty": "∀ {s z g p r : Nat} (hOld : @Eq.{1} Nat (ChompLean.gameF s g) p) (hrp : @LT.lt.{0} Nat instLTNat r p)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF p r) p) (htransition : ChompLean.EventELowerTransition s z g),\n  Or\n    (And (@LT.lt.{0} Nat instLTNat p s)\n      (@Eq.{1} Nat\n        (ChompLean.gameF\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          g)\n        p))\n    (ChompLean.C ChompLean.gameF\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      p)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_diagonal_C_gap_is_source_gap_or_boundary_owner",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 33,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c x a z : Nat} (haOwner : @Eq.{1} Nat (ChompLean.RecurrenceModel.f M a a) z)\n  (hxa : @LE.le.{0} Nat instLENat x a) (hxgap : Not (ChompLean.C (ChompLean.RecurrenceModel.f M) x c z)),\n  Or (Not (ChompLean.B (ChompLean.RecurrenceModel.f M) x c z))\n    (@Exists.{1} Nat fun (i : Nat) =>\n      And (@LT.lt.{0} Nat instLTNat c i)\n        (And (@LT.lt.{0} Nat instLTNat i x) (@Eq.{1} Nat (ChompLean.RecurrenceModel.f M i c) z)))",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.future_diagonal_C_gap_is_source_gap_or_boundary_owner._proof_1_1",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (M : ChompLean.RecurrenceModel) {c x a z : Nat} (hxa : @LE.le.{0} Nat instLENat x a) (i : Nat)\n  (hix : @LT.lt.{0} Nat instLTNat i x) (hia : @Eq.{1} Nat i a), False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_margin_eventE_maximal_frozen_branches_terminal_reduction",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 200,
+      "typePretty": "∀ (hU : ChompLean.UnitDip ChompLean.gameRecurrenceModel) {s : Nat}\n  (hdip :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF s s))\n  (hmargin :\n    Or (@Eq.{1} Nat s (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n      (@Exists.{1} Nat fun (j : Nat) =>\n        And\n          (@Eq.{1} Nat s\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) j\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@LT.lt.{0} Nat instLTNat (ChompLean.RMax ChompLean.gameRecurrenceModel j)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n              (ChompLean.gameF\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n  (hnextDip :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  have d : Nat :=\n    ChompLean.gameF\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))));\n  have delta : Nat :=\n    @HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) s)\n      d;\n  have z : Nat :=\n    @HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) d\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)));\n  @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) delta\n        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n      s →\n    @Exists.{1} Nat fun (c : Nat) =>\n      @Exists.{1} Nat fun (b0 : Nat) =>\n        @Exists.{1} Nat fun (b1 : Nat) =>\n          @Exists.{1} Nat fun (g : Nat) =>\n            @Exists.{1} Nat fun (p : Nat) =>\n              @Exists.{1} Nat fun (r : Nat) =>\n                And (@LT.lt.{0} Nat instLTNat c s)\n                  (And (@LT.lt.{0} Nat instLTNat b0 s)\n                    (And\n                      (@LT.lt.{0} Nat instLTNat b1\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                      (And\n                        (@Eq.{1} Nat (ChompLean.gameF s c)\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z\n                            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                        (And (@Eq.{1} Nat (ChompLean.gameF s b0) z)\n                          (And\n                            (@Eq.{1} Nat\n                              (ChompLean.gameF\n                                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                                b1)\n                              z)\n                            (And\n                              (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n                                (ChompLean.EventEDefectBandSlots s delta c b0) g)\n                              (And (@LT.lt.{0} Nat instLTNat g s)\n                                (And (@Ne.{1} Nat g c)\n                                  (And (@Ne.{1} Nat g b0)\n                                    (And (@Eq.{1} Nat p (ChompLean.gameF s g))\n                                      (And\n                                        (@LT.lt.{0} Nat instLTNat\n                                          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)\n                                        (And (@LT.lt.{0} Nat instLTNat p z)\n                                          (And\n                                            (@LE.le.{0} Nat instLENat p\n                                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                                                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                                            (And (@LT.lt.{0} Nat instLTNat r p)\n                                              (And (@Eq.{1} Nat (ChompLean.gameF p r) p)\n                                                (And (ChompLean.EventELowerTransition s z g)\n                                                  (Or\n                                                    (@Eq.{1} Nat p\n                                                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n                                                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                                                    (Or (ChompLean.EventEFrozenCarryTerminal s z g p)\n                                                      (ChompLean.EventENextOwnerGapTerminal s z g p)))))))))))))))))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_margin_eventE_maximal_frozen_branches_terminal_reduction._proof_1_1",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat}\n  (hmax :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) s)\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n      s)\n  (c b0 b1 g p r : Nat) (hgc : @Ne.{1} Nat g c) (hgb0 : @Ne.{1} Nat g b0)\n  (hsum :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) s)\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) s))\n  (hzSucc :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@Eq.{1} Nat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_margin_eventE_maximal_frozen_branches_terminal_reduction._proof_1_2",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (c b0 b1 g p r : Nat)\n  (hsum :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) s)\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) s))\n  (hzSucc :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hunitNext :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@Eq.{1} Nat\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_margin_eventE_maximal_frozen_branches_terminal_reduction._proof_1_3",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s : Nat} (c b0 b1 g p r : Nat) (hpEq : @Eq.{1} Nat p (ChompLean.gameF s g))\n  (hpUpper :\n    @LE.le.{0} Nat instLENat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n  (hstart : @Eq.{1} Nat (ChompLean.gameF p r) p)\n  (hzExact :\n    @Eq.{1} Nat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n        (ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),\n  Not\n      (Or (@LE.le.{0} Nat instLENat p s)\n        (Or\n          (@Eq.{1} Nat p\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@Eq.{1} Nat p\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_low_is_carry_terminal",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 108,
+      "typePretty": "∀ {s z g p : Nat} (hg : @LT.lt.{0} Nat instLTNat g s) (hOld : @Eq.{1} Nat (ChompLean.gameF s g) p)\n  (hpPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)\n  (hpz : @LT.lt.{0} Nat instLTNat p z) (hregime : ChompLean.ThreePrefixHostFreezeRegime s g p)\n  (hpLow : @LE.le.{0} Nat instLENat p s), ChompLean.EventEFrozenCarryTerminal s z g p",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_low_is_carry_terminal._proof_1_1",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat p\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_low_is_carry_terminal._proof_1_2",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat} (hg : @LT.lt.{0} Nat instLTNat g s)\n  (hpPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF p g) p)\n  (hHostU :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        g)\n      p)\n  (hHostV :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        g)\n      p)\n  (hps : @LT.lt.{0} Nat instLTNat p s),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) s\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            p))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_low_is_carry_terminal._proof_1_3",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat} (hpz : @LT.lt.{0} Nat instLTNat p z) (hstart : @Eq.{1} Nat (ChompLean.gameF p g) p)\n  (hHostU :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        g)\n      p)\n  (hHostV :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        g)\n      p)\n  (hgp : @LT.lt.{0} Nat instLTNat g p),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z p)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z g)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_low_is_carry_terminal._proof_1_4",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat} (hpLow : @LE.le.{0} Nat instLENat p s) (u v : Nat)\n  (hHostU :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u)\n      p)\n  (hHostV :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        v)\n      p)\n  (hp :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_low_is_carry_terminal._proof_1_5",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat} (hpLow : @LE.le.{0} Nat instLENat p s) (u v : Nat)\n  (hHostU :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u)\n      p)\n  (hHostV :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        v)\n      p)\n  (hp :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_next_owner_is_gap_terminal",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 151,
+      "typePretty": "∀ {s z g p : Nat} (hg : @LT.lt.{0} Nat instLTNat g s) (hOld : @Eq.{1} Nat (ChompLean.gameF s g) p)\n  (hpPos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)\n  (hpz : @LT.lt.{0} Nat instLTNat p z)\n  (hzExact :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hzOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (hregime : ChompLean.ThreePrefixHostFreezeRegime s g p)\n  (hpNext :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  ChompLean.EventENextOwnerGapTerminal s z g p",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_next_owner_is_gap_terminal._proof_1_1",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat}\n  (hzExact :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hzOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (hpNext :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (u v : Nat) (hp : @LE.le.{0} Nat instLENat p s), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_next_owner_is_gap_terminal._proof_1_2",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat}\n  (hzExact :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hzOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (hpNext :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (u : Nat)\n  (hu :\n    @LT.lt.{0} Nat instLTNat u\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hHostU :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u)\n      p)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF p u) p)\n  (hHostV :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        u)\n      p),\n  Not (@LT.lt.{0} Nat instLTNat u p) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_next_owner_is_gap_terminal._proof_1_3",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat}\n  (hzExact :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hzOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (hpNext :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (u : Nat), Not (@LT.lt.{0} Nat instLTNat s p) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_next_owner_is_gap_terminal._proof_1_4",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat}\n  (hzExact :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hzOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (hpNext :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (u : Nat)\n  (hHostU :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u)\n      p)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF p u) p)\n  (hHostV :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        u)\n      p)\n  (x : Nat) (hsx : @LT.lt.{0} Nat instLTNat s x) (hxz : @LT.lt.{0} Nat instLTNat x z),\n  Not\n      (@LE.le.{0} Nat instLENat x\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_next_owner_is_gap_terminal._proof_1_5",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat}\n  (hzExact :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hzOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (hpNext :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (u : Nat)\n  (hHostU :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u)\n      p)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF p u) p)\n  (hHostV :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        u)\n      p)\n  (x : Nat) (hsx : @LT.lt.{0} Nat instLTNat s x) (hxz : @LT.lt.{0} Nat instLTNat x z),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z x)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z s)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_next_owner_is_gap_terminal._proof_1_6",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat} (hg : @LT.lt.{0} Nat instLTNat g s)\n  (hzExact :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hzOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (hpNext :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (u : Nat)\n  (hHostU :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        u)\n      p)\n  (hstart : @Eq.{1} Nat (ChompLean.gameF p u) p)\n  (hHostV :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        u)\n      p),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z p)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z g)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.threePrefixFreezeRegime_next_owner_is_gap_terminal._proof_1_7",
+      "module": "R51EventEFrozenBranchTerminalReduction",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z g p : Nat}\n  (hzExact :\n    @Eq.{1} Nat z\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))\n  (hzOwner :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (hpNext :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (u v : Nat)\n  (hp :\n    @Eq.{1} Nat p\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "d623c88c516edd8f0a4f52d4b3eb47f62d7ae2f03af393f8d853f81f043572f5",
+      "sourcePath": "lean/core/R51EventEFrozenBranchTerminalReduction.lean",
+      "universeParameters": []
+    }
+  ]
+}

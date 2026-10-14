@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R37 Unit Dip Late Blocker Charge · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R37 Unit Dip Late Blocker Charge</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R37UnitDipLateBlockerCharge.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R37UnitDipLateBlockerCharge.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R37UnitDipLateBlockerCharge.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 26 declarations</summary><ul class="declarations"><li><code>ChompLean.gameF_active_hosts_unique_and_avoid_preview</code><pre class="prose">∀ {s b r z : Nat} (hbs : @LT.lt.{0} Nat instLTNat b s) (hsr : @LT.lt.{0} Nat instLTNat s r)
+  (hrz : @LT.lt.{0} Nat instLTNat r z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (x : Nat),
+  @LT.lt.{0} Nat instLTNat r x →
+    @LT.lt.{0} Nat instLTNat x z →
+      @Exists.{1} Nat fun (c : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat c r)
+          (And (@Ne.{1} Nat c b)
+            (And (@Eq.{1} Nat (ChompLean.gameF x c) z)
+              (∀ (c&#x27; : Nat), @LT.lt.{0} Nat instLTNat c&#x27; r → @Eq.{1} Nat (ChompLean.gameF x c&#x27;) z → @Eq.{1} Nat c&#x27; c)))</pre></li><li><code>ChompLean.gameF_active_hosts_unique_and_avoid_preview._proof_1_1</code><pre class="prose">∀ {s b r z : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (x : Nat) (hrx : @LT.lt.{0} Nat instLTNat r x),
+  Not (@LT.lt.{0} Nat instLTNat s x) → False</pre></li><li><code>ChompLean.gameF_active_hosts_unique_and_avoid_preview._proof_1_2</code><pre class="prose">∀ {s b r z : Nat} (x : Nat) (hrx : @LT.lt.{0} Nat instLTNat r x) (c c&#x27; : Nat) (hc&#x27;r : @LT.lt.{0} Nat instLTNat c&#x27; r),
+  Not (@LE.le.{0} Nat instLENat c&#x27; x) → False</pre></li><li><code>ChompLean.gameF_active_hosts_unique_and_avoid_preview._proof_1_3</code><pre class="prose">∀ {s b r z : Nat} (x : Nat) (hrx : @LT.lt.{0} Nat instLTNat r x) (c : Nat) (hcr : @LT.lt.{0} Nat instLTNat c r)
+  (c&#x27; : Nat), Not (@LE.le.{0} Nat instLENat c x) → False</pre></li><li><code>ChompLean.gameF_dip_first_gap_late_blocker_has_no_early_freeze</code><pre class="prose">∀ {s : Nat} (hLate : ChompLean.DipFirstGapLateBlockerLoss ChompLean.gameRecurrenceModel s),
+  Not
+    (@Exists.{1} Nat fun (r : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+        (And
+          (@Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)
+            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+          (@LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))))</pre></li><li><code>ChompLean.gameF_dip_first_gap_late_blocker_has_no_early_freeze._proof_1_1</code><pre class="prose">∀ {s : Nat} (_b r : Nat)
+  (_hpreview : @Eq.{1} Nat (ChompLean.gameF s _b) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (hstart :
+    @Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)
+      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (hhalf :
+    @LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r))
+  (r&#x27; : Nat)
+  (hstart&#x27; :
+    @Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r&#x27;)
+      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (hearly :
+    @LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r&#x27; r&#x27;)
+      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (hrr&#x27; : @Eq.{1} Nat r r&#x27;), False</pre></li><li><code>ChompLean.gameF_dip_first_gap_late_blocker_sharp_coordinates</code><pre class="prose">∀ {s : Nat} (hLate : ChompLean.DipFirstGapLateBlockerLoss ChompLean.gameRecurrenceModel s),
+  @Exists.{1} Nat fun (b : Nat) =&gt;
+    @Exists.{1} Nat fun (r : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat b s)
+        (And
+          (@LE.le.{0} Nat instLENat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            r)
+          (And (@LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+            (And (@Eq.{1} Nat (ChompLean.gameF s b) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+              (And
+                (@Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)
+                  (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+                (And
+                  (Not
+                    (ChompLean.B ChompLean.gameF
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)))
+                  (And
+                    (@LE.le.{0} Nat instLENat
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                        (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)
+                      r)
+                    (And
+                      (@LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)
+                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r))
+                      (∀ (x : Nat),
+                        @LT.lt.{0} Nat instLTNat r x →
+                          @LT.lt.{0} Nat instLTNat x (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) →
+                            @Exists.{1} Nat fun (c : Nat) =&gt;
+                              And (@LT.lt.{0} Nat instLTNat c r)
+                                (And (@Ne.{1} Nat c b)
+                                  (And
+                                    (@Eq.{1} Nat (ChompLean.gameF x c)
+                                      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+                                    (∀ (c&#x27; : Nat),
+                                      @LT.lt.{0} Nat instLTNat c&#x27; r →
+                                        @Eq.{1} Nat (ChompLean.gameF x c&#x27;)
+                                            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) →
+                                          @Eq.{1} Nat c&#x27; c)))))))))))</pre></li><li><code>ChompLean.gameF_dip_first_gap_late_blocker_sharp_coordinates._proof_1_1</code><pre class="prose">∀ {s : Nat} (r : Nat)
+  (hrLate :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      r)
+  (b : Nat), Not (@LT.lt.{0} Nat instLTNat s r) → False</pre></li><li><code>ChompLean.gameF_dip_first_gap_late_blocker_sharp_coordinates._proof_1_2</code><pre class="prose">∀ {s : Nat} (r : Nat) (hrz : @LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (hstart :
+    @Eq.{1} Nat
+      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)
+        r)
+      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (b : Nat)
+  (hpreview :
+    @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel s b)
+      (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+  (hcap :
+    @LE.le.{0} Nat instLENat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)
+      r),
+  Not
+      (@LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)) →
+    False</pre></li><li><code>ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap</code><pre class="prose">∀ {s : Nat} (hLate : ChompLean.DipFirstGapLateBlockerLoss ChompLean.gameRecurrenceModel s),
+  have z : Nat := ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s;
+  have q : Nat :=
+    ChompLean.gameF
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      s;
+  @Exists.{1} Nat fun (r : Nat) =&gt;
+    And (@LT.lt.{0} Nat instLTNat r z)
+      (And (@Eq.{1} Nat (ChompLean.gameF z r) z)
+        (Or
+          (@Eq.{1} Nat q
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (And
+            (@LT.lt.{0} Nat instLTNat
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              q)
+            (And (@LT.lt.{0} Nat instLTNat q z)
+              (@Exists.{1} Nat fun (x : Nat) =&gt;
+                And
+                  (@LT.lt.{0} Nat instLTNat
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                    x)
+                  (And (@LT.lt.{0} Nat instLTNat x z)
+                    (And (Not (ChompLean.C ChompLean.gameF x s z))
+                      (Or (@LE.le.{0} Nat instLENat x r)
+                        (Or (Not (ChompLean.B ChompLean.gameF x s z))
+                          (@Exists.{1} Nat fun (a : Nat) =&gt;
+                            And (@LT.lt.{0} Nat instLTNat s a)
+                              (And (@LT.lt.{0} Nat instLTNat a x) (@Eq.{1} Nat (ChompLean.gameF a s) z))))))))))))</pre></li><li><code>ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_1</code><pre class="prose">∀ {s : Nat} (r : Nat),
+  Not
+      (@LE.le.{0} Nat instLENat s
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_2</code><pre class="prose">∀ {s : Nat} (r : Nat)
+  (hqMax :
+    @LE.le.{0} Nat instLENat
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        s)
+      (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          s)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_3</code><pre class="prose">∀ {s : Nat} (r : Nat)
+  (hqLower :
+    @LT.lt.{0} Nat instLTNat s
+      (ChompLean.gameF
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        s))
+  (hboundary :
+    Not
+      (@Eq.{1} Nat
+        (ChompLean.gameF
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          s)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.gameF
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          s)) →
+    False</pre></li><li><code>ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_4</code><pre class="prose">∀ {s : Nat} (r b : Nat) (hbs : @LT.lt.{0} Nat instLTNat b s),
+  Not
+      (@LT.lt.{0} Nat instLTNat b
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_late_blocker_first_gap_v1_boundary_or_R27_gap._proof_1_5</code><pre class="prose">∀ {s : Nat} (r : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat s
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_owner_free_nonunit_dip_has_halfway_late_freeze</code><pre class="prose">∀ {s : Nat}
+  (hgap : @LT.lt.{0} Nat instLTNat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) (ChompLean.gameF s s))
+  (hNoDiagonal :
+    ∀ (a : Nat), @Ne.{1} Nat (ChompLean.gameF a a) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)),
+  @Exists.{1} Nat fun (b : Nat) =&gt;
+    @Exists.{1} Nat fun (r : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat b s)
+        (And
+          (@LE.le.{0} Nat instLENat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            r)
+          (And (@LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+            (And (@Eq.{1} Nat (ChompLean.gameF s b) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+              (And
+                (@Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)
+                  (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+                (@LE.le.{0} Nat instLENat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r))))))</pre></li><li><code>ChompLean.gameF_owner_free_nonunit_dip_has_no_early_freeze</code><pre class="prose">∀ {s : Nat}
+  (hgap : @LT.lt.{0} Nat instLTNat (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) (ChompLean.gameF s s))
+  (hNoDiagonal :
+    ∀ (a : Nat), @Ne.{1} Nat (ChompLean.gameF a a) (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s)),
+  Not
+    (@Exists.{1} Nat fun (r : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat r (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+        (And
+          (@Eq.{1} Nat (ChompLean.gameF (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s) r)
+            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))
+          (@LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r r)
+            (ChompLean.DipFirstGap ChompLean.gameRecurrenceModel s))))</pre></li><li><code>ChompLean.gameF_preview_plus_active_hosts_capacity</code><pre class="prose">∀ {s b r z : Nat} (hbs : @LT.lt.{0} Nat instLTNat b s) (hsr : @LT.lt.{0} Nat instLTNat s r)
+  (hrz : @LT.lt.{0} Nat instLTNat r z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z),
+  @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r) r</pre></li><li><code>ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_1</code><pre class="prose">∀ {s b r z : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (x : Nat)
+  (hrange :
+    And
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        x)
+      (@LT.lt.{0} Nat instLTNat x
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not (And (@LT.lt.{0} Nat instLTNat r x) (@LT.lt.{0} Nat instLTNat x z)) → False</pre></li><li><code>ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_2</code><pre class="prose">∀ {s b r z : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r)
+  (hrange :
+    And
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        s)
+      (@LT.lt.{0} Nat instLTNat s
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  False</pre></li><li><code>ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_3</code><pre class="prose">∀ {b r z : Nat} (x : Nat) (hbs : @LT.lt.{0} Nat instLTNat b x) (hsr : @LT.lt.{0} Nat instLTNat x r),
+  Not (@LT.lt.{0} Nat instLTNat b r) → False</pre></li><li><code>ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_4</code><pre class="prose">∀ {s b r z : Nat} (x : Nat) (hxActive : And (@LT.lt.{0} Nat instLTNat r x) (@LT.lt.{0} Nat instLTNat x z)) (c : Nat)
+  (hcr : @LT.lt.{0} Nat instLTNat c r), Not (@LT.lt.{0} Nat instLTNat c x) → False</pre></li><li><code>ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_5</code><pre class="prose">∀ {b r z : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z) (x : Nat)
+  (hsr : @LT.lt.{0} Nat instLTNat x r) (hpreview : @Eq.{1} Nat (ChompLean.gameF x b) z),
+  Not (@LT.lt.{0} Nat instLTNat x z) → False</pre></li><li><code>ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_6</code><pre class="prose">∀ {s b r z : Nat}
+  (hex :
+    ∀ (x : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (@List.cons.{0} Nat s
+            (List.range&#x27;
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          x →
+        @Exists.{1} Nat fun (c : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat c r) (And (@LT.lt.{0} Nat instLTNat c x) (@Eq.{1} Nat (ChompLean.gameF x c) z)))
+  (x y : Nat) (hEq : Not (@Eq.{1} Nat x y)) (hlt : Not (@LT.lt.{0} Nat instLTNat x y)),
+  Not (@LT.lt.{0} Nat instLTNat y x) → False</pre></li><li><code>ChompLean.gameF_preview_plus_active_hosts_capacity._proof_1_7</code><pre class="prose">∀ {s b r z : Nat} (hrz : @LT.lt.{0} Nat instLTNat r z) (hpreview : @Eq.{1} Nat (ChompLean.gameF s b) z)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF z r) z)
+  (hex :
+    ∀ (x : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+          (@List.cons.{0} Nat s
+            (List.range&#x27;
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          x →
+        @Exists.{1} Nat fun (c : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat c r)
+            (And (@LT.lt.{0} Nat instLTNat c x) (@Eq.{1} Nat (ChompLean.gameF x c) z))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) z r)) →
+    False</pre></li><li><code>_private.R37UnitDipLateBlockerCharge.0.ChompLean.r37_nodup_map_of_injective_on</code><pre class="prose">∀ {alpha beta : Type} [inst : BEq.{0} alpha] [@LawfulBEq.{0} alpha inst] [inst : BEq.{0} beta]
+  [@LawfulBEq.{0} beta inst] (f : alpha → beta) (xs : List.{0} alpha) (hxs : @List.Nodup.{0} alpha xs)
+  (hinj :
+    ∀ (x : alpha),
+      @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs x →
+        ∀ (y : alpha),
+          @Membership.mem.{0, 0} alpha (List.{0} alpha) (@List.instMembership.{0} alpha) xs y →
+            @Eq.{1} beta (f x) (f y) → @Eq.{1} alpha x y),
+  @List.Nodup.{0} beta (@List.map.{0, 0} alpha beta f xs)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R37UnitDipLateBlockerCharge.lean:1</p><p>SHA-256: <code class="path">3011d3f7c11480c39c6cccdad27524f115eb08ba5f97b1877a78c8ec272b700c</code></p></section><p><a href="../index.html#id=lean-3011d3f7c11480c39c6c">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

@@ -1,0 +1,148 @@
+{
+  "module": "SparseDualFailures",
+  "sourcePath": "lean/core/SparseDualFailures.lean",
+  "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+  "declarationCount": 9,
+  "theoremDeclarationCount": 9,
+  "proofValuedDeclarationCount": 9,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.sparseDualFailures_bracket",
+      "module": "SparseDualFailures",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 24,
+      "typePretty": "∀ {x : Nat → Nat} {bad : Nat → Prop}\n  (hzero :\n    @Eq.{1} Nat (x (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (hlip :\n    ∀ (i j : Nat),\n      @LE.le.{0} Nat instLENat i j →\n        @LE.le.{0} Nat instLENat (x j)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (x i)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) j i))))\n  (hgood :\n    ∀ (a : Nat),\n      Not (bad a) → @LE.le.{0} Nat instLENat (x a) (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n  {N B r : Nat} (hrN : @LE.le.{0} Nat instLENat r N)\n  (hbadBudget :\n    Not\n      (@Exists.{1}\n        (Fin\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n          Nat)\n        fun\n          (f :\n            Fin\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n              Nat) =>\n        And\n          (@Function.Injective.{1, 1}\n            (Fin\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            Nat f)\n          (∀\n            (j :\n              Fin\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n            And (@LE.le.{0} Nat instLENat (f j) N) (bad (f j))))),\n  @LE.le.{0} Nat instLENat (x r)\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) B)\n      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+      "sourcePath": "lean/core/SparseDualFailures.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.sparseDualFailures_bracket._proof_1_1",
+      "module": "SparseDualFailures",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat → Nat} {N B r : Nat}\n  (hbound :\n    Not\n      (@LE.le.{0} Nat instLENat (x r)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) B)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))\n  (hxr :\n    @LE.le.{0} Nat instLENat (x r)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r)),\n  Not (@LT.lt.{0} Nat instLTNat B r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+      "sourcePath": "lean/core/SparseDualFailures.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.sparseDualFailures_bracket._proof_1_2",
+      "module": "SparseDualFailures",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat → Nat} {N B r : Nat}\n  (hbound :\n    Not\n      (@LE.le.{0} Nat instLENat (x r)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) B)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))\n  (hxr :\n    @LE.le.{0} Nat instLENat (x r)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r))\n  (j :\n    Fin\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@Fin.val\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          j)\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+      "sourcePath": "lean/core/SparseDualFailures.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.sparseDualFailures_bracket._proof_1_3",
+      "module": "SparseDualFailures",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat → Nat} {N B r : Nat}\n  (j :\n    Fin\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hjr :\n    @LE.le.{0} Nat instLENat\n      (@Fin.val\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        j)\n      r),\n  Not\n      (@Eq.{1} Nat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@Fin.val\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              j)))\n        (@Fin.val\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          j)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+      "sourcePath": "lean/core/SparseDualFailures.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.sparseDualFailures_bracket._proof_1_4",
+      "module": "SparseDualFailures",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat → Nat} {N B r : Nat}\n  (hbound :\n    Not\n      (@LE.le.{0} Nat instLENat (x r)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) B)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))\n  (j :\n    Fin\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hxsmall :\n    @LE.le.{0} Nat instLENat\n      (x\n        ((fun\n              (j :\n                Fin\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) =>\n            @HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n              (@Fin.val\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                j))\n          j))\n      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n  (hmove :\n    @LE.le.{0} Nat instLENat (x r)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (x\n          ((fun\n                (j :\n                  Fin\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) =>\n              @HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                (@Fin.val\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                  j))\n            j))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@Fin.val\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            j))))\n  (hdist :\n    @Eq.{1} Nat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        ((fun\n              (j :\n                Fin\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) =>\n            @HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n              (@Fin.val\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                j))\n          j))\n      (@Fin.val\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        j)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+      "sourcePath": "lean/core/SparseDualFailures.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.sparseDualFailures_bracket._proof_1_5",
+      "module": "SparseDualFailures",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat → Nat} {N B r : Nat}\n  (hbound :\n    Not\n      (@LE.le.{0} Nat instLENat (x r)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) B)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))\n  (hxr :\n    @LE.le.{0} Nat instLENat (x r)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r))\n  ⦃i j :\n    Fin\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))⦄,\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@Fin.val\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          i)\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+      "sourcePath": "lean/core/SparseDualFailures.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.sparseDualFailures_bracket._proof_1_6",
+      "module": "SparseDualFailures",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat → Nat} {N B r : Nat}\n  (hbound :\n    Not\n      (@LE.le.{0} Nat instLENat (x r)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) B)\n          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))\n  (hxr :\n    @LE.le.{0} Nat instLENat (x r)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) r))\n  ⦃i j :\n    Fin\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))⦄,\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@Fin.val\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          j)\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+      "sourcePath": "lean/core/SparseDualFailures.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.sparseDualFailures_bracket._proof_1_7",
+      "module": "SparseDualFailures",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat → Nat} {N B r : Nat}\n  ⦃i j :\n    Fin\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))⦄\n  (hval :\n    @Eq.{1} Nat\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@Fin.val\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          i))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@Fin.val\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          j)))\n  (hir :\n    @LE.le.{0} Nat instLENat\n      (@Fin.val\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        i)\n      r)\n  (hjr :\n    @LE.le.{0} Nat instLENat\n      (@Fin.val\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        j)\n      r),\n  Not\n      (@Eq.{1} Nat\n        (@Fin.val\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          i)\n        (@Fin.val\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          j)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+      "sourcePath": "lean/core/SparseDualFailures.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.sparseDualFailures_uniform",
+      "module": "SparseDualFailures",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 75,
+      "typePretty": "∀ {x : Nat → Nat} {bad : Nat → Prop}\n  (hzero :\n    @Eq.{1} Nat (x (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n  (hlip :\n    ∀ (i j : Nat),\n      @LE.le.{0} Nat instLENat i j →\n        @LE.le.{0} Nat instLENat (x j)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (x i)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) j i))))\n  (hgood :\n    ∀ (a : Nat),\n      Not (bad a) → @LE.le.{0} Nat instLENat (x a) (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n  {N B : Nat}\n  (hbadBudget :\n    Not\n      (@Exists.{1}\n        (Fin\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n          Nat)\n        fun\n          (f :\n            Fin\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →\n              Nat) =>\n        And\n          (@Function.Injective.{1, 1}\n            (Fin\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            Nat f)\n          (∀\n            (j :\n              Fin\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) B\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n            And (@LE.le.{0} Nat instLENat (f j) N) (bad (f j)))))\n  (r : Nat),\n  @LE.le.{0} Nat instLENat r N →\n    @LE.le.{0} Nat instLENat (x r)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) B)\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "49ec5fc20e9efc22651acc10f4604b957d97b6f07239a0d866874cf30d0b2f22",
+      "sourcePath": "lean/core/SparseDualFailures.lean",
+      "universeParameters": []
+    }
+  ]
+}

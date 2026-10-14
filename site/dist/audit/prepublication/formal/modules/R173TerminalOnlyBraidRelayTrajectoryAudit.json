@@ -1,0 +1,694 @@
+{
+  "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+  "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+  "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+  "declarationCount": 42,
+  "theoremDeclarationCount": 28,
+  "proofValuedDeclarationCount": 32,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.R173AllAscentBraidHasUnreplacedParkedWitness",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 203,
+      "typePretty": "Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173NoAllInteriorAscentFailedTerminalHighBraid",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 50,
+      "typePretty": "Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "inductive",
+      "isProof": false,
+      "sourceLine": 74,
+      "typePretty": "(v r : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory.activeHost",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 79,
+      "typePretty": "∀ {v r : Nat} (self : ChompLean.R173TerminalFreezeRelayTrajectory v r) (t : Nat),\n  @LT.lt.{0} Nat instLTNat r t →\n    @LT.lt.{0} Nat instLTNat t v →\n      @Exists.{1} Nat fun (b : Nat) => And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF t b) v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory.activeHostColumnNoRepeat",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 81,
+      "typePretty": "∀ {v r : Nat} (self : ChompLean.R173TerminalFreezeRelayTrajectory v r) {t1 t2 b : Nat},\n  @LT.lt.{0} Nat instLTNat r t1 →\n    @LT.lt.{0} Nat instLTNat t1 t2 →\n      @LT.lt.{0} Nat instLTNat t2 v →\n        @LT.lt.{0} Nat instLTNat b r →\n          @Eq.{1} Nat (ChompLean.gameF t1 b) v → @Eq.{1} Nat (ChompLean.gameF t2 b) v → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory.casesOn",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 74,
+      "typePretty": "{v r : Nat} →\n  {motive : (t : ChompLean.R173TerminalFreezeRelayTrajectory v r) → Sort u} →\n    (t : ChompLean.R173TerminalFreezeRelayTrajectory v r) →\n      (mk :\n          (terminal : And (@LT.lt.{0} Nat instLTNat r v) (@Eq.{1} Nat (ChompLean.gameF v r) v)) →\n            (activeHost :\n                ∀ (t : Nat),\n                  @LT.lt.{0} Nat instLTNat r t →\n                    @LT.lt.{0} Nat instLTNat t v →\n                      @Exists.{1} Nat fun (b : Nat) =>\n                        And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF t b) v)) →\n              (activeHostColumnNoRepeat :\n                  ∀ {t1 t2 b : Nat},\n                    @LT.lt.{0} Nat instLTNat r t1 →\n                      @LT.lt.{0} Nat instLTNat t1 t2 →\n                        @LT.lt.{0} Nat instLTNat t2 v →\n                          @LT.lt.{0} Nat instLTNat b r →\n                            @Eq.{1} Nat (ChompLean.gameF t1 b) v → @Eq.{1} Nat (ChompLean.gameF t2 b) v → False) →\n                (rightHistoryEmpty :\n                    ∀ (t : Nat), @LT.lt.{0} Nat instLTNat t v → Not (ChompLean.R ChompLean.gameF t r v)) →\n                  motive\n                    (@ChompLean.R173TerminalFreezeRelayTrajectory.mk v r terminal activeHost activeHostColumnNoRepeat\n                      rightHistoryEmpty)) →\n        motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory.mk",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "constructor",
+      "isProof": true,
+      "sourceLine": 77,
+      "typePretty": "∀ {v r : Nat} (terminal : And (@LT.lt.{0} Nat instLTNat r v) (@Eq.{1} Nat (ChompLean.gameF v r) v))\n  (activeHost :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t v →\n          @Exists.{1} Nat fun (b : Nat) => And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF t b) v))\n  (activeHostColumnNoRepeat :\n    ∀ {t1 t2 b : Nat},\n      @LT.lt.{0} Nat instLTNat r t1 →\n        @LT.lt.{0} Nat instLTNat t1 t2 →\n          @LT.lt.{0} Nat instLTNat t2 v →\n            @LT.lt.{0} Nat instLTNat b r →\n              @Eq.{1} Nat (ChompLean.gameF t1 b) v → @Eq.{1} Nat (ChompLean.gameF t2 b) v → False)\n  (rightHistoryEmpty : ∀ (t : Nat), @LT.lt.{0} Nat instLTNat t v → Not (ChompLean.R ChompLean.gameF t r v)),\n  ChompLean.R173TerminalFreezeRelayTrajectory v r",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory.mk._flat_ctor",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "definition",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r : Nat} (terminal : And (@LT.lt.{0} Nat instLTNat r v) (@Eq.{1} Nat (ChompLean.gameF v r) v))\n  (activeHost :\n    ∀ (t : Nat),\n      @LT.lt.{0} Nat instLTNat r t →\n        @LT.lt.{0} Nat instLTNat t v →\n          @Exists.{1} Nat fun (b : Nat) => And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF t b) v))\n  (activeHostColumnNoRepeat :\n    ∀ {t1 t2 b : Nat},\n      @LT.lt.{0} Nat instLTNat r t1 →\n        @LT.lt.{0} Nat instLTNat t1 t2 →\n          @LT.lt.{0} Nat instLTNat t2 v →\n            @LT.lt.{0} Nat instLTNat b r →\n              @Eq.{1} Nat (ChompLean.gameF t1 b) v → @Eq.{1} Nat (ChompLean.gameF t2 b) v → False)\n  (rightHistoryEmpty : ∀ (t : Nat), @LT.lt.{0} Nat instLTNat t v → Not (ChompLean.R ChompLean.gameF t r v)),\n  ChompLean.R173TerminalFreezeRelayTrajectory v r",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory.rec",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "recursor",
+      "isProof": false,
+      "sourceLine": 74,
+      "typePretty": "{v r : Nat} →\n  {motive : (t : ChompLean.R173TerminalFreezeRelayTrajectory v r) → Sort u} →\n    (mk :\n        (terminal : And (@LT.lt.{0} Nat instLTNat r v) (@Eq.{1} Nat (ChompLean.gameF v r) v)) →\n          (activeHost :\n              ∀ (t : Nat),\n                @LT.lt.{0} Nat instLTNat r t →\n                  @LT.lt.{0} Nat instLTNat t v →\n                    @Exists.{1} Nat fun (b : Nat) =>\n                      And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF t b) v)) →\n            (activeHostColumnNoRepeat :\n                ∀ {t1 t2 b : Nat},\n                  @LT.lt.{0} Nat instLTNat r t1 →\n                    @LT.lt.{0} Nat instLTNat t1 t2 →\n                      @LT.lt.{0} Nat instLTNat t2 v →\n                        @LT.lt.{0} Nat instLTNat b r →\n                          @Eq.{1} Nat (ChompLean.gameF t1 b) v → @Eq.{1} Nat (ChompLean.gameF t2 b) v → False) →\n              (rightHistoryEmpty :\n                  ∀ (t : Nat), @LT.lt.{0} Nat instLTNat t v → Not (ChompLean.R ChompLean.gameF t r v)) →\n                motive\n                  (@ChompLean.R173TerminalFreezeRelayTrajectory.mk v r terminal activeHost activeHostColumnNoRepeat\n                    rightHistoryEmpty)) →\n      (t : ChompLean.R173TerminalFreezeRelayTrajectory v r) → motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory.recOn",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 74,
+      "typePretty": "{v r : Nat} →\n  {motive : (t : ChompLean.R173TerminalFreezeRelayTrajectory v r) → Sort u} →\n    (t : ChompLean.R173TerminalFreezeRelayTrajectory v r) →\n      (mk :\n          (terminal : And (@LT.lt.{0} Nat instLTNat r v) (@Eq.{1} Nat (ChompLean.gameF v r) v)) →\n            (activeHost :\n                ∀ (t : Nat),\n                  @LT.lt.{0} Nat instLTNat r t →\n                    @LT.lt.{0} Nat instLTNat t v →\n                      @Exists.{1} Nat fun (b : Nat) =>\n                        And (@LT.lt.{0} Nat instLTNat b r) (@Eq.{1} Nat (ChompLean.gameF t b) v)) →\n              (activeHostColumnNoRepeat :\n                  ∀ {t1 t2 b : Nat},\n                    @LT.lt.{0} Nat instLTNat r t1 →\n                      @LT.lt.{0} Nat instLTNat t1 t2 →\n                        @LT.lt.{0} Nat instLTNat t2 v →\n                          @LT.lt.{0} Nat instLTNat b r →\n                            @Eq.{1} Nat (ChompLean.gameF t1 b) v → @Eq.{1} Nat (ChompLean.gameF t2 b) v → False) →\n                (rightHistoryEmpty :\n                    ∀ (t : Nat), @LT.lt.{0} Nat instLTNat t v → Not (ChompLean.R ChompLean.gameF t r v)) →\n                  motive\n                    (@ChompLean.R173TerminalFreezeRelayTrajectory.mk v r terminal activeHost activeHostColumnNoRepeat\n                      rightHistoryEmpty)) →\n        motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory.rightHistoryEmpty",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 84,
+      "typePretty": "∀ {v r : Nat} (self : ChompLean.R173TerminalFreezeRelayTrajectory v r) (t : Nat),\n  @LT.lt.{0} Nat instLTNat t v → Not (ChompLean.R ChompLean.gameF t r v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalFreezeRelayTrajectory.terminal",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 78,
+      "typePretty": "∀ {v r : Nat} (self : ChompLean.R173TerminalFreezeRelayTrajectory v r),\n  And (@LT.lt.{0} Nat instLTNat r v) (@Eq.{1} Nat (ChompLean.gameF v r) v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "inductive",
+      "isProof": false,
+      "sourceLine": 108,
+      "typePretty": "(v r a t : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.casesOn",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 108,
+      "typePretty": "{v r a t : Nat} →\n  {motive : (t : ChompLean.R173TerminalTargetInteriorChannels v r a t) → Sort u} →\n    (t_1 : ChompLean.R173TerminalTargetInteriorChannels v r a t) →\n      (mk :\n          (rowRange : And (@LT.lt.{0} Nat instLTNat a t) (@LT.lt.{0} Nat instLTNat t v)) →\n            (targetRelay :\n                @Exists.{1} Nat fun (b : Nat) =>\n                  And\n                    (@LT.lt.{0} Nat instLTNat b\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                    (And (@Eq.{1} Nat (ChompLean.gameF t b) v)\n                      (∀ (b' : Nat),\n                        @LE.le.{0} Nat instLENat b' t → @Eq.{1} Nat (ChompLean.gameF t b') v → @Eq.{1} Nat b' b))) →\n              (leftHistory :\n                  ChompLean.R ChompLean.gameF t\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    v) →\n                (leftPrefix :\n                    ChompLean.C ChompLean.gameF t\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                      v) →\n                  (rightHistoryEmpty : Not (ChompLean.R ChompLean.gameF t r v)) →\n                    (rightPrefix : ChompLean.C ChompLean.gameF t r v) →\n                      (leftMex :\n                          ChompLean.IsMex\n                            (ChompLean.B ChompLean.gameF t\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                            (ChompLean.gameF t\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n                        (rightMex : ChompLean.IsMex (ChompLean.B ChompLean.gameF t r) (ChompLean.gameF t r)) →\n                          (strandsAboveTarget :\n                              And\n                                (@LT.lt.{0} Nat instLTNat v\n                                  (ChompLean.gameF t\n                                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n                                (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF t r))) →\n                            motive\n                              (@ChompLean.R173TerminalTargetInteriorChannels.mk v r a t rowRange targetRelay leftHistory\n                                leftPrefix rightHistoryEmpty rightPrefix leftMex rightMex strandsAboveTarget)) →\n        motive t_1",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.leftHistory",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 118,
+      "typePretty": "∀ {v r a t : Nat} (self : ChompLean.R173TerminalTargetInteriorChannels v r a t),\n  ChompLean.R ChompLean.gameF t\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    v",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.leftMex",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 122,
+      "typePretty": "∀ {v r a t : Nat} (self : ChompLean.R173TerminalTargetInteriorChannels v r a t),\n  ChompLean.IsMex\n    (ChompLean.B ChompLean.gameF t\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (ChompLean.gameF t\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.leftPrefix",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 119,
+      "typePretty": "∀ {v r a t : Nat} (self : ChompLean.R173TerminalTargetInteriorChannels v r a t),\n  ChompLean.C ChompLean.gameF t\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    v",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.mk",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "constructor",
+      "isProof": true,
+      "sourceLine": 111,
+      "typePretty": "∀ {v r a t : Nat} (rowRange : And (@LT.lt.{0} Nat instLTNat a t) (@LT.lt.{0} Nat instLTNat t v))\n  (targetRelay :\n    @Exists.{1} Nat fun (b : Nat) =>\n      And\n        (@LT.lt.{0} Nat instLTNat b\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (And (@Eq.{1} Nat (ChompLean.gameF t b) v)\n          (∀ (b' : Nat), @LE.le.{0} Nat instLENat b' t → @Eq.{1} Nat (ChompLean.gameF t b') v → @Eq.{1} Nat b' b)))\n  (leftHistory :\n    ChompLean.R ChompLean.gameF t\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      v)\n  (leftPrefix :\n    ChompLean.C ChompLean.gameF t\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      v)\n  (rightHistoryEmpty : Not (ChompLean.R ChompLean.gameF t r v)) (rightPrefix : ChompLean.C ChompLean.gameF t r v)\n  (leftMex :\n    ChompLean.IsMex\n      (ChompLean.B ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (rightMex : ChompLean.IsMex (ChompLean.B ChompLean.gameF t r) (ChompLean.gameF t r))\n  (strandsAboveTarget :\n    And\n      (@LT.lt.{0} Nat instLTNat v\n        (ChompLean.gameF t\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF t r))),\n  ChompLean.R173TerminalTargetInteriorChannels v r a t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.mk._flat_ctor",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "definition",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a t : Nat} (rowRange : And (@LT.lt.{0} Nat instLTNat a t) (@LT.lt.{0} Nat instLTNat t v))\n  (targetRelay :\n    @Exists.{1} Nat fun (b : Nat) =>\n      And\n        (@LT.lt.{0} Nat instLTNat b\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (And (@Eq.{1} Nat (ChompLean.gameF t b) v)\n          (∀ (b' : Nat), @LE.le.{0} Nat instLENat b' t → @Eq.{1} Nat (ChompLean.gameF t b') v → @Eq.{1} Nat b' b)))\n  (leftHistory :\n    ChompLean.R ChompLean.gameF t\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      v)\n  (leftPrefix :\n    ChompLean.C ChompLean.gameF t\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      v)\n  (rightHistoryEmpty : Not (ChompLean.R ChompLean.gameF t r v)) (rightPrefix : ChompLean.C ChompLean.gameF t r v)\n  (leftMex :\n    ChompLean.IsMex\n      (ChompLean.B ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (rightMex : ChompLean.IsMex (ChompLean.B ChompLean.gameF t r) (ChompLean.gameF t r))\n  (strandsAboveTarget :\n    And\n      (@LT.lt.{0} Nat instLTNat v\n        (ChompLean.gameF t\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF t r))),\n  ChompLean.R173TerminalTargetInteriorChannels v r a t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.rec",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "recursor",
+      "isProof": false,
+      "sourceLine": 108,
+      "typePretty": "{v r a t : Nat} →\n  {motive : (t : ChompLean.R173TerminalTargetInteriorChannels v r a t) → Sort u} →\n    (mk :\n        (rowRange : And (@LT.lt.{0} Nat instLTNat a t) (@LT.lt.{0} Nat instLTNat t v)) →\n          (targetRelay :\n              @Exists.{1} Nat fun (b : Nat) =>\n                And\n                  (@LT.lt.{0} Nat instLTNat b\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                  (And (@Eq.{1} Nat (ChompLean.gameF t b) v)\n                    (∀ (b' : Nat),\n                      @LE.le.{0} Nat instLENat b' t → @Eq.{1} Nat (ChompLean.gameF t b') v → @Eq.{1} Nat b' b))) →\n            (leftHistory :\n                ChompLean.R ChompLean.gameF t\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                  v) →\n              (leftPrefix :\n                  ChompLean.C ChompLean.gameF t\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    v) →\n                (rightHistoryEmpty : Not (ChompLean.R ChompLean.gameF t r v)) →\n                  (rightPrefix : ChompLean.C ChompLean.gameF t r v) →\n                    (leftMex :\n                        ChompLean.IsMex\n                          (ChompLean.B ChompLean.gameF t\n                            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                          (ChompLean.gameF t\n                            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n                      (rightMex : ChompLean.IsMex (ChompLean.B ChompLean.gameF t r) (ChompLean.gameF t r)) →\n                        (strandsAboveTarget :\n                            And\n                              (@LT.lt.{0} Nat instLTNat v\n                                (ChompLean.gameF t\n                                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n                              (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF t r))) →\n                          motive\n                            (@ChompLean.R173TerminalTargetInteriorChannels.mk v r a t rowRange targetRelay leftHistory\n                              leftPrefix rightHistoryEmpty rightPrefix leftMex rightMex strandsAboveTarget)) →\n      (t : ChompLean.R173TerminalTargetInteriorChannels v r a t) → motive t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.recOn",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 108,
+      "typePretty": "{v r a t : Nat} →\n  {motive : (t : ChompLean.R173TerminalTargetInteriorChannels v r a t) → Sort u} →\n    (t_1 : ChompLean.R173TerminalTargetInteriorChannels v r a t) →\n      (mk :\n          (rowRange : And (@LT.lt.{0} Nat instLTNat a t) (@LT.lt.{0} Nat instLTNat t v)) →\n            (targetRelay :\n                @Exists.{1} Nat fun (b : Nat) =>\n                  And\n                    (@LT.lt.{0} Nat instLTNat b\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                    (And (@Eq.{1} Nat (ChompLean.gameF t b) v)\n                      (∀ (b' : Nat),\n                        @LE.le.{0} Nat instLENat b' t → @Eq.{1} Nat (ChompLean.gameF t b') v → @Eq.{1} Nat b' b))) →\n              (leftHistory :\n                  ChompLean.R ChompLean.gameF t\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    v) →\n                (leftPrefix :\n                    ChompLean.C ChompLean.gameF t\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                      v) →\n                  (rightHistoryEmpty : Not (ChompLean.R ChompLean.gameF t r v)) →\n                    (rightPrefix : ChompLean.C ChompLean.gameF t r v) →\n                      (leftMex :\n                          ChompLean.IsMex\n                            (ChompLean.B ChompLean.gameF t\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                            (ChompLean.gameF t\n                              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n                        (rightMex : ChompLean.IsMex (ChompLean.B ChompLean.gameF t r) (ChompLean.gameF t r)) →\n                          (strandsAboveTarget :\n                              And\n                                (@LT.lt.{0} Nat instLTNat v\n                                  (ChompLean.gameF t\n                                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n                                (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF t r))) →\n                            motive\n                              (@ChompLean.R173TerminalTargetInteriorChannels.mk v r a t rowRange targetRelay leftHistory\n                                leftPrefix rightHistoryEmpty rightPrefix leftMex rightMex strandsAboveTarget)) →\n        motive t_1",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": [
+        "u"
+      ]
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.rightHistoryEmpty",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 120,
+      "typePretty": "∀ {v r a t : Nat} (self : ChompLean.R173TerminalTargetInteriorChannels v r a t), Not (ChompLean.R ChompLean.gameF t r v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.rightMex",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 123,
+      "typePretty": "∀ {v r a t : Nat} (self : ChompLean.R173TerminalTargetInteriorChannels v r a t),\n  ChompLean.IsMex (ChompLean.B ChompLean.gameF t r) (ChompLean.gameF t r)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.rightPrefix",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 121,
+      "typePretty": "∀ {v r a t : Nat} (self : ChompLean.R173TerminalTargetInteriorChannels v r a t), ChompLean.C ChompLean.gameF t r v",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.rowRange",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 113,
+      "typePretty": "∀ {v r a t : Nat} (self : ChompLean.R173TerminalTargetInteriorChannels v r a t),\n  And (@LT.lt.{0} Nat instLTNat a t) (@LT.lt.{0} Nat instLTNat t v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.strandsAboveTarget",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 124,
+      "typePretty": "∀ {v r a t : Nat} (self : ChompLean.R173TerminalTargetInteriorChannels v r a t),\n  And\n    (@LT.lt.{0} Nat instLTNat v\n      (ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n    (@LT.lt.{0} Nat instLTNat v (ChompLean.gameF t r))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.R173TerminalTargetInteriorChannels.targetRelay",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 114,
+      "typePretty": "∀ {v r a t : Nat} (self : ChompLean.R173TerminalTargetInteriorChannels v r a t),\n  @Exists.{1} Nat fun (b : Nat) =>\n    And\n      (@LT.lt.{0} Nat instLTNat b\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (And (@Eq.{1} Nat (ChompLean.gameF t b) v)\n        (∀ (b' : Nat), @LE.le.{0} Nat instLENat b' t → @Eq.{1} Nat (ChompLean.gameF t b') v → @Eq.{1} Nat b' b))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_allAscent_interior_parked_replacement",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 170,
+      "typePretty": "∀ {v r g a t z : Nat} (hbraid : ChompLean.FailedTerminalDeepHistoryHighBraidPacket v r g a)\n  (hat : @LT.lt.{0} Nat instLTNat a t) (htv : @LT.lt.{0} Nat instLTNat t v)\n  (hascent :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF t r))\n  (hzpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)\n  (hzlt :\n    @LT.lt.{0} Nat instLTNat z\n      (ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hpark :\n    ChompLean.ParkedOnly ChompLean.gameF t\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      z),\n  Or (And (@LT.lt.{0} Nat instLTNat r t) (@Eq.{1} Nat (ChompLean.gameF r r) z))\n    (ChompLean.ColTail ChompLean.gameF t r z)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_allAscent_interior_parked_replacement._proof_1_1",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a t z : Nat}\n  (hascent :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF t r))\n  (hzlt :\n    @LT.lt.{0} Nat instLTNat z\n      (ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not (@LT.lt.{0} Nat instLTNat z (ChompLean.gameF t r)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_allAscent_interior_parked_replacement._proof_1_2",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r g a t z : Nat}\n  (hfailure :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) g\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_allAscent_interior_parked_replacement._proof_1_3",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a t z : Nat} (hrpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) r),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        r) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_allAscent_interior_parked_replacement._proof_1_4",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a t z : Nat}\n  (hzlt :\n    @LT.lt.{0} Nat instLTNat z\n      (ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hfresh :\n    @Eq.{1} Nat\n      (ChompLean.gameF t\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      z),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_failedTerminalHighBraid_interior_targetChannels",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 127,
+      "typePretty": "∀ {v r g a t : Nat} (hbraid : ChompLean.FailedTerminalDeepHistoryHighBraidPacket v r g a)\n  (hat : @LT.lt.{0} Nat instLTNat a t) (htv : @LT.lt.{0} Nat instLTNat t v),\n  ChompLean.R173TerminalTargetInteriorChannels v r a t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_failedTerminalHighBraid_interior_targetChannels._proof_1_1",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a t : Nat} (hat : @LT.lt.{0} Nat instLTNat a t) (hra : @LE.le.{0} Nat instLENat r a) (b : Nat)\n  (hbc :\n    @LT.lt.{0} Nat instLTNat b\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@LE.le.{0} Nat instLENat b t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_failedTerminalHighBraid_interior_targetChannels._proof_1_2",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a t : Nat} (hra : @LE.le.{0} Nat instLENat r a) (b : Nat)\n  (hbc :\n    @LT.lt.{0} Nat instLTNat b\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        a) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_failedTerminalHighBraid_interior_targetChannels._proof_1_3",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r a t : Nat} (b : Nat)\n  (hbc :\n    @LT.lt.{0} Nat instLTNat b\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@LT.lt.{0} Nat instLTNat b r) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_noAllInteriorAscentFailedBraid_of_unreplacedParkedWitness",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 221,
+      "typePretty": "∀ (hwitness : ChompLean.R173AllAscentBraidHasUnreplacedParkedWitness),\n  ChompLean.R173NoAllInteriorAscentFailedTerminalHighBraid",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_relayForcesRightHistory_iff_noAllInteriorAscentFailedBraid",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 59,
+      "typePretty": "Iff ChompLean.TerminalOnlyHighBraidRelayForcesRightHistory ChompLean.R173NoAllInteriorAscentFailedTerminalHighBraid",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_terminalFreeze_relayTrajectory",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 86,
+      "typePretty": "∀ {v r : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v),\n  ChompLean.R173TerminalFreezeRelayTrajectory v r",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_terminalFreeze_rightHistory_empty",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 29,
+      "typePretty": "∀ {v r t : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)\n  (htv : @LT.lt.{0} Nat instLTNat t v), Not (ChompLean.R ChompLean.gameF t r v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_terminalOnlyPacket_rightHistory_impossible",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 40,
+      "typePretty": "∀ {v r g a : Nat} (hpacket : ChompLean.TerminalOnlyHighBraidLastTwoRowsPacket v r g a),\n  Not\n    (ChompLean.R ChompLean.gameF\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      r v)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.r173_terminalOnlyPacket_rightHistory_impossible._proof_1_1",
+      "module": "R173TerminalOnlyBraidRelayTrajectoryAudit",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {v r : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        v) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "eced14992260d0b0b76d4a0a5626722f4f31c775f3680ec3dfee6708ab5345dd",
+      "sourcePath": "lean/core/R173TerminalOnlyBraidRelayTrajectoryAudit.lean",
+      "universeParameters": []
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "result": "PASS",
+  "scope": "Read-only review of release admission and ZIP packaging; authorized narrow remediation of the Pages export workflow. This receipt is code-review evidence, not release approval or evidence that GitHub deployment has run.",
+  "originalFinding": {
+    "severity": "material",
+    "issue": "The previous Pages workflow rebuilt after approval and uploaded all of site/dist, while the release gate authenticated listed hashes but did not reject unlisted files. A new docs page or stale static file could therefore be uploaded without an approved hash.",
+    "resolution": "Pages now invokes the approval gate and exports only the sealed website manifest plus the two fixed approval-envelope files into a fresh directory. The workflow uploads only this directory and performs no rebuild after approval."
+  },
+  "checks": [
+    "The release gate binds INPUTS, required renewed formal/semantic/paper/second-review receipts and the exact RELEASE-FILES manifest; it rejects changed approved repository files and inconsistent root/website approval envelopes.",
+    "ZIP packaging authenticates the release gate, copies only the repository/website allowlists and fixed approval envelopes, verifies source hashes before packaging, and verifies every archived byte and file-set equality afterward.",
+    "The deployment exporter authenticates the gate; rejects preexisting output, root escapes, noncanonical paths, case collisions, links/reparse points and missing or altered inputs; authenticates exact copied bytes; and verifies the final output allowlist.",
+    "The Pages workflow uploads only the fresh allowlist export, without rebuilding or injecting a deployment URL into approved pages.",
+    "The separate validation workflow may rebuild for testing; it has no deployment job or Pages write permission.",
+    ".gitattributes disables Git text normalization, preserving the line endings included in the audited hashes.",
+    "HOSTING describes sealed-byte deployment and explicitly requires renewed display/link checks and resealing for address-specific canonical links or sitemap changes."
+  ],
+  "isolatedExporterChecks": {
+    "result": "PASS",
+    "count": 14,
+    "receipt": "APPROVED-EXPORTER-TESTS.json",
+    "sha256": "79db70feb2502acc37047e766d4abd3a83696b0224208058f8f52a77523f8263"
+  },
+  "realCliNegativeControl": "The current CLI rejected the changed, not-yet-resealed Pages workflow at INPUTS verification and created no output directory.",
+  "remainingReleaseSteps": [
+    "Root must reseal the changed helper, workflow and hosting documentation and its rendered view.",
+    "Root must run the exporter against the completed approval envelope and verify the resulting deployment directory before delivery."
+  ],
+  "unresolvedMaterialCodeFindings": [],
+  "reviewedFiles": {
+    "scripts/check_release_gate.py": "2b9fb819b0365c20c0691e0374fa30dde2667aa418cf533270564b5236e7d4f9",
+    "scripts/check_review_inputs.py": "5ba2fc5108972f57cc30cd9d5689d69c2580855a06483750420740fe80be8e93",
+    "scripts/package_publication.py": "af41f7d8a56024be5d6d2a1bac023e72af8afeda3267255fda0d8e369085b339",
+    "scripts/export_approved_site.py": "7106817fe23dad73647267537e74a88bc0b0315c5d4074f1868e080101e2132a",
+    ".github/workflows/check.yml": "91d15017cc4c5bb6a42edf1642da490a9a49a7f1c21a5f752192788e22750aa2",
+    ".github/workflows/pages.yml": "6595ff6f24dd9597bd856a8ce6a042ca7854b473fb4b78517db44e4d6b529739",
+    "docs/HOSTING.md": "8a58c085a5e8e4e88d2d2b5afb19a9db51c523f152b0eab04073f88da924eed5",
+    ".gitattributes": "763c7c397d352e1d6cfd43334b0560aaa322c4b47a2adc64be606c53f6b0004d"
+  }
+}

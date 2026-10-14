@@ -1,0 +1,572 @@
+import R143CriticalMidpointThreeMexCounterframe
+import LineHolePreservation
+import EventEPacketSourceCapacity
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+R144: depth-two audit of CRITICAL-TRIPLE-CAP.
+
+The exact next-row source law is
+
+  B f (r+1) c p <-> R f r c p \/ f r c = p \/ C f (r+1) c p.
+
+The counterframe below uses precisely this three-channel form at the three
+critical columns.  Both consecutive rows have exact positive MEX outputs,
+fixed-row injectivity, the full critical record packet, and even the
+defect-nine form of the cell ceiling.  Nevertheless all three outputs in
+row `v-3` are strictly above `v`.
+-/
+
+def r144R (m : Nat) : Nat := r143V m - 4
+
+def R144Base (m p : Nat) : Prop :=
+  0 < p /\ p <= r143V m
+
+/-- Four values deliberately supplied by each replacement row prefix. -/
+def R144Gap4 (m p : Nat) : Prop :=
+  p = r143T m \/ p = r143T m + 1 \/
+    p = r143T m + 2 \/ p = r143T m + 3
+
+/-- The persistent old-history component: `[1,v]` minus four prefix values. -/
+def R144History (m p : Nat) : Prop :=
+  R144Base m p /\ Not (R144Gap4 m p)
+
+/-- Exact value set of the first `c0` entries in either displayed row.
+It is realized by the injective prefix word `1,2,...,c0`. -/
+def R144PrefixBase (m p : Nat) : Prop :=
+  0 < p /\ p <= r143C0 m
+
+def r144L0 (m : Nat) : Nat := r143V m + 1
+def r144L1 (m : Nat) : Nat := r143V m + 2
+def r144L2 (m : Nat) : Nat := r143V m + 3
+
+def r144U0 (m : Nat) : Nat := r143V m + 2
+def r144U1 (m : Nat) : Nat := r143V m + 1
+def r144U2 (m : Nat) : Nat := r143V m + 4
+
+/-! Prefixes in row `v-4`.  Advancing a column inserts the preceding output. -/
+
+def R144LowerPrefix0 (m p : Nat) : Prop := R144PrefixBase m p
+def R144LowerPrefix1 (m p : Nat) : Prop :=
+  R144LowerPrefix0 m p \/ p = r144L0 m
+def R144LowerPrefix2 (m p : Nat) : Prop :=
+  R144LowerPrefix1 m p \/ p = r144L1 m
+
+/-! Prefixes in row `v-3`, with the same exact insertion rule. -/
+
+def R144UpperPrefix0 (m p : Nat) : Prop := R144PrefixBase m p
+def R144UpperPrefix1 (m p : Nat) : Prop :=
+  R144UpperPrefix0 m p \/ p = r144U0 m
+def R144UpperPrefix2 (m p : Nat) : Prop :=
+  R144UpperPrefix1 m p \/ p = r144U1 m
+
+/-! Lower-row sources: persistent history plus the current lower prefix. -/
+
+def R144LowerSource0 (m p : Nat) : Prop :=
+  R144History m p \/ R144LowerPrefix0 m p
+def R144LowerSource1 (m p : Nat) : Prop :=
+  R144History m p \/ R144LowerPrefix1 m p
+def R144LowerSource2 (m p : Nat) : Prop :=
+  R144History m p \/ R144LowerPrefix2 m p
+
+/-!
+Upper-row sources use the literal next-row schema:
+
+  persistent lower history \/ same-column lower submitter \/ new upper prefix.
+-/
+
+def R144UpperSource0 (m p : Nat) : Prop :=
+  R144History m p \/ p = r144L0 m \/ R144UpperPrefix0 m p
+def R144UpperSource1 (m p : Nat) : Prop :=
+  R144History m p \/ p = r144L1 m \/ R144UpperPrefix1 m p
+def R144UpperSource2 (m p : Nat) : Prop :=
+  R144History m p \/ p = r144L2 m \/ R144UpperPrefix2 m p
+
+/-- The real recurrence source has exactly the row-replacement schema used
+by the counterframe. -/
+theorem r144_actual_next_row_source_expansion
+    {f : Nat -> Nat -> Nat} {r c p : Nat} (hcr : c <= r) :
+    B f (r + 1) c p <->
+      R f r c p \/ f r c = p \/ C f (r + 1) c p :=
+  next_row_source_expansion hcr
+
+theorem r144_gap4_inside_base
+    (m p : Nat) (hm : 2 <= m) (hgap : R144Gap4 m p) :
+    R144Base m p := by
+  rcases hgap with h | h | h | h <;>
+    simp [R144Base, r143T, r143V] at * <;> omega
+
+theorem r144_history_or_gap_iff_base
+    (m p : Nat) (hm : 2 <= m) :
+    (R144History m p \/ R144Gap4 m p) <-> R144Base m p := by
+  constructor
+  · rintro (h | h)
+    · exact h.1
+    · exact r144_gap4_inside_base m p hm h
+  · intro hbase
+    by_cases hgap : R144Gap4 m p
+    · exact Or.inr hgap
+    · exact Or.inl ⟨hbase, hgap⟩
+
+theorem r144_gap4_inside_prefix
+    (m p : Nat) (hm : 4 <= m) (hgap : R144Gap4 m p) :
+    R144PrefixBase m p := by
+  rcases hgap with h | h | h | h <;>
+    simp [R144PrefixBase, r143T, r143C0, r143G] at * <;>
+      omega
+
+/-- The persistent history plus the exact injective prefix still covers
+precisely `[1,v]`.  The four omitted history values lie in the prefix once
+`m>=4`. -/
+theorem r144_history_or_prefix_iff_base
+    (m p : Nat) (hm : 4 <= m) :
+    (R144History m p \/ R144PrefixBase m p) <-> R144Base m p := by
+  constructor
+  · rintro (h | h)
+    · exact h.1
+    · rcases h with ⟨hp, hpc⟩
+      refine ⟨hp, ?_⟩
+      have hc : r143C0 m <= r143V m := by
+        simp [r143C0, r143G, r143V]
+        omega
+      exact Nat.le_trans hpc hc
+  · intro hbase
+    by_cases hgap : R144Gap4 m p
+    · exact Or.inr (r144_gap4_inside_prefix m p hm hgap)
+    · exact Or.inl ⟨hbase, hgap⟩
+
+/-- The prefix predicate has the literal row realization `f(b)=b+1`. -/
+theorem r144_prefix_base_exact_realization
+    (m p : Nat) :
+    R144PrefixBase m p <->
+      exists b, b < r143C0 m /\ b + 1 = p := by
+  constructor
+  · intro h
+    rcases h with ⟨hp, hpc⟩
+    exact ⟨p - 1, by omega, by omega⟩
+  · rintro ⟨b, hb, rfl⟩
+    change 0 < b + 1 /\ b + 1 <= r143C0 m
+    exact ⟨by omega, by omega⟩
+
+theorem r144_prefix_word_injective
+    {b b' : Nat} (h : b + 1 = b' + 1) : b = b' := by
+  omega
+
+/-- Concrete displayed row words.  Before `c0` both rows use the injective
+low prefix `b+1`; the three target cells use their respective MEX packets. -/
+def R144LowerRowValue (m b : Nat) : Nat :=
+  if b < r143C0 m then b + 1
+  else if b = r143C0 m then r144L0 m
+  else if b = r143C1 m then r144L1 m
+  else r144L2 m
+
+def R144UpperRowValue (m b : Nat) : Nat :=
+  if b < r143C0 m then b + 1
+  else if b = r143C0 m then r144U0 m
+  else if b = r143C1 m then r144U1 m
+  else r144U2 m
+
+theorem r144_displayed_column_trichotomy
+    {m b : Nat} (_hm : 4 <= m)
+    (hb : b <= r143C2 m) (hnot : Not (b < r143C0 m)) :
+    b = r143C0 m \/ b = r143C1 m \/ b = r143C2 m := by
+  simp [r143C0, r143C1, r143C2, r143G] at *
+  omega
+
+theorem r144_prefix_position_value_le_v
+    {m b : Nat} (hb : b < r143C0 m) :
+    b + 1 <= r143V m := by
+  simp [r143C0, r143G, r143V] at hb ⊢
+  omega
+
+theorem r144_lower_target_value_gt_v
+    {m b : Nat} (hm : 4 <= m)
+    (hb : b <= r143C2 m) (hnot : Not (b < r143C0 m)) :
+    r143V m < R144LowerRowValue m b := by
+  rcases r144_displayed_column_trichotomy hm hb hnot with
+      h0 | h1 | h2 <;> subst b <;>
+    simp [R144LowerRowValue, r144L0, r144L1, r144L2,
+      r143C0, r143C1, r143C2, r143G, r143V] <;> omega
+
+theorem r144_upper_target_value_gt_v
+    {m b : Nat} (hm : 4 <= m)
+    (hb : b <= r143C2 m) (hnot : Not (b < r143C0 m)) :
+    r143V m < R144UpperRowValue m b := by
+  rcases r144_displayed_column_trichotomy hm hb hnot with
+      h0 | h1 | h2 <;> subst b <;>
+    simp [R144UpperRowValue, r144U0, r144U1, r144U2,
+      r143C0, r143C1, r143C2, r143G, r143V] <;> omega
+
+theorem r144_lower_displayed_row_injective
+    {m b b' : Nat} (hm : 4 <= m)
+    (hb : b <= r143C2 m) (hb' : b' <= r143C2 m)
+    (heq : R144LowerRowValue m b = R144LowerRowValue m b') :
+    b = b' := by
+  by_cases hlow : b < r143C0 m
+  · by_cases hlow' : b' < r143C0 m
+    · simp [R144LowerRowValue, hlow, hlow'] at heq
+      omega
+    · have hleft : R144LowerRowValue m b <= r143V m := by
+        simpa [R144LowerRowValue, hlow] using
+          (r144_prefix_position_value_le_v hlow)
+      have hright : r143V m < R144LowerRowValue m b' :=
+        r144_lower_target_value_gt_v hm hb' hlow'
+      omega
+  · by_cases hlow' : b' < r143C0 m
+    · have hleft : r143V m < R144LowerRowValue m b :=
+        r144_lower_target_value_gt_v hm hb hlow
+      have hright : R144LowerRowValue m b' <= r143V m := by
+        simpa [R144LowerRowValue, hlow'] using
+          (r144_prefix_position_value_le_v hlow')
+      omega
+    · rcases r144_displayed_column_trichotomy hm hb hlow with
+        h0 | h1 | h2 <;> subst b <;>
+      rcases r144_displayed_column_trichotomy hm hb' hlow' with
+        h0' | h1' | h2' <;> subst b' <;>
+        simp [R144LowerRowValue, r144L0, r144L1, r144L2,
+          r143C0, r143C1, r143C2, r143G, r143V] at heq ⊢ <;> omega
+
+theorem r144_upper_displayed_row_injective
+    {m b b' : Nat} (hm : 4 <= m)
+    (hb : b <= r143C2 m) (hb' : b' <= r143C2 m)
+    (heq : R144UpperRowValue m b = R144UpperRowValue m b') :
+    b = b' := by
+  by_cases hlow : b < r143C0 m
+  · by_cases hlow' : b' < r143C0 m
+    · simp [R144UpperRowValue, hlow, hlow'] at heq
+      omega
+    · have hleft : R144UpperRowValue m b <= r143V m := by
+        simpa [R144UpperRowValue, hlow] using
+          (r144_prefix_position_value_le_v hlow)
+      have hright : r143V m < R144UpperRowValue m b' :=
+        r144_upper_target_value_gt_v hm hb' hlow'
+      omega
+  · by_cases hlow' : b' < r143C0 m
+    · have hleft : r143V m < R144UpperRowValue m b :=
+        r144_upper_target_value_gt_v hm hb hlow
+      have hright : R144UpperRowValue m b' <= r143V m := by
+        simpa [R144UpperRowValue, hlow'] using
+          (r144_prefix_position_value_le_v hlow')
+      omega
+    · rcases r144_displayed_column_trichotomy hm hb hlow with
+        h0 | h1 | h2 <;> subst b <;>
+      rcases r144_displayed_column_trichotomy hm hb' hlow' with
+        h0' | h1' | h2' <;> subst b' <;>
+        simp [R144UpperRowValue, r144U0, r144U1, r144U2,
+          r143C0, r143C1, r143C2, r143G, r143V] at heq ⊢ <;> omega
+
+/-- Every value in the pinned diagonal trace belongs to the persistent
+history component; none is one of the four replacement-prefix values. -/
+theorem r144_record_trace_in_history
+    {m i p : Nat} (hm : 2 <= m) (htrace : R143DiagAt m i p) :
+    R144History m p := by
+  rcases htrace with h | h | h <;>
+    simp [R144History, R144Base, R144Gap4, r143T, r143V] at * <;>
+      omega
+
+theorem r144_lower_prefix_transitions
+    (m p : Nat) :
+    (R144LowerPrefix1 m p <->
+      R144LowerPrefix0 m p \/ p = r144L0 m) /\
+    (R144LowerPrefix2 m p <->
+      R144LowerPrefix1 m p \/ p = r144L1 m) := by
+  exact ⟨Iff.rfl, Iff.rfl⟩
+
+theorem r144_upper_prefix_transitions
+    (m p : Nat) :
+    (R144UpperPrefix1 m p <->
+      R144UpperPrefix0 m p \/ p = r144U0 m) /\
+    (R144UpperPrefix2 m p <->
+      R144UpperPrefix1 m p \/ p = r144U1 m) := by
+  exact ⟨Iff.rfl, Iff.rfl⟩
+
+theorem r144_upper_sources_have_exact_next_row_shape
+    (m p : Nat) :
+    (R144UpperSource0 m p <->
+      R144History m p \/ p = r144L0 m \/ R144UpperPrefix0 m p) /\
+    (R144UpperSource1 m p <->
+      R144History m p \/ p = r144L1 m \/ R144UpperPrefix1 m p) /\
+    (R144UpperSource2 m p <->
+      R144History m p \/ p = r144L2 m \/ R144UpperPrefix2 m p) := by
+  exact ⟨Iff.rfl, Iff.rfl, Iff.rfl⟩
+
+/-! ## Exact source characterizations -/
+
+theorem r144_lower_source_characterization
+    (m p : Nat) (hm : 4 <= m) :
+    (R144LowerSource0 m p <-> R144Base m p) /\
+    (R144LowerSource1 m p <->
+      R144Base m p \/ p = r143V m + 1) /\
+    (R144LowerSource2 m p <->
+      R144Base m p \/ p = r143V m + 1 \/ p = r143V m + 2) := by
+  have hbase := r144_history_or_prefix_iff_base m p hm
+  constructor
+  · simpa [R144LowerSource0, R144LowerPrefix0] using hbase
+  constructor
+  · change (R144History m p \/ R144PrefixBase m p \/ p = r143V m + 1) <-> _
+    constructor
+    · intro h
+      rcases h with hH | hrest
+      · exact Or.inl hH.1
+      · rcases hrest with hG | heq
+        · exact Or.inl (hbase.mp (Or.inr hG))
+        · exact Or.inr heq
+    · intro h
+      rcases h with hB | heq
+      · rcases hbase.mpr hB with hH | hG
+        · exact Or.inl hH
+        · exact Or.inr (Or.inl hG)
+      · exact Or.inr (Or.inr heq)
+  · change
+      (R144History m p \/
+        (R144PrefixBase m p \/ p = r143V m + 1) \/ p = r143V m + 2) <-> _
+    constructor
+    · intro h
+      rcases h with hH | hrest
+      · exact Or.inl hH.1
+      · rcases hrest with hP1 | heq2
+        · rcases hP1 with hG | heq1
+          · exact Or.inl (hbase.mp (Or.inr hG))
+          · exact Or.inr (Or.inl heq1)
+        · exact Or.inr (Or.inr heq2)
+    · intro h
+      rcases h with hB | hrest
+      · rcases hbase.mpr hB with hH | hG
+        · exact Or.inl hH
+        · exact Or.inr (Or.inl (Or.inl hG))
+      · rcases hrest with heq1 | heq2
+        · exact Or.inr (Or.inl (Or.inr heq1))
+        · exact Or.inr (Or.inr heq2)
+
+theorem r144_upper_source_characterization
+    (m p : Nat) (hm : 4 <= m) :
+    (R144UpperSource0 m p <->
+      R144Base m p \/ p = r143V m + 1) /\
+    (R144UpperSource1 m p <->
+      R144Base m p \/ p = r143V m + 2) /\
+    (R144UpperSource2 m p <->
+      R144Base m p \/ p = r143V m + 1 \/
+        p = r143V m + 2 \/ p = r143V m + 3) := by
+  have hbase := r144_history_or_prefix_iff_base m p hm
+  constructor
+  · change
+      (R144History m p \/ p = r143V m + 1 \/ R144PrefixBase m p) <-> _
+    constructor
+    · intro h
+      rcases h with hH | hrest
+      · exact Or.inl hH.1
+      · rcases hrest with heq | hG
+        · exact Or.inr heq
+        · exact Or.inl (hbase.mp (Or.inr hG))
+    · intro h
+      rcases h with hB | heq
+      · rcases hbase.mpr hB with hH | hG
+        · exact Or.inl hH
+        · exact Or.inr (Or.inr hG)
+      · exact Or.inr (Or.inl heq)
+  constructor
+  · change
+      (R144History m p \/ p = r143V m + 2 \/
+        (R144PrefixBase m p \/ p = r143V m + 2)) <-> _
+    constructor
+    · intro h
+      rcases h with hH | hrest
+      · exact Or.inl hH.1
+      · rcases hrest with heq | hP
+        · exact Or.inr heq
+        · rcases hP with hG | heq'
+          · exact Or.inl (hbase.mp (Or.inr hG))
+          · exact Or.inr heq'
+    · intro h
+      rcases h with hB | heq
+      · rcases hbase.mpr hB with hH | hG
+        · exact Or.inl hH
+        · exact Or.inr (Or.inr (Or.inl hG))
+      · exact Or.inr (Or.inl heq)
+  · change
+      (R144History m p \/ p = r143V m + 3 \/
+        ((R144PrefixBase m p \/ p = r143V m + 2) \/
+          p = r143V m + 1)) <-> _
+    constructor
+    · intro h
+      rcases h with hH | hrest
+      · exact Or.inl hH.1
+      · rcases hrest with heq3 | hP2
+        · exact Or.inr (Or.inr (Or.inr heq3))
+        · rcases hP2 with hP1 | heq1
+          · rcases hP1 with hG | heq2
+            · exact Or.inl (hbase.mp (Or.inr hG))
+            · exact Or.inr (Or.inr (Or.inl heq2))
+          · exact Or.inr (Or.inl heq1)
+    · intro h
+      rcases h with hB | hrest
+      · rcases hbase.mpr hB with hH | hG
+        · exact Or.inl hH
+        · exact Or.inr (Or.inr (Or.inl (Or.inl hG)))
+      · rcases hrest with heq1 | hrest
+        · exact Or.inr (Or.inr (Or.inr heq1))
+        · rcases hrest with heq2 | heq3
+          · exact Or.inr (Or.inr (Or.inl (Or.inr heq2)))
+          · exact Or.inr (Or.inl heq3)
+
+/-! ## Six exact MEX equations -/
+
+theorem r144_two_row_mex_packet (m : Nat) (hm : 4 <= m) :
+    IsMex (R144LowerSource0 m) (r144L0 m) /\
+    IsMex (R144LowerSource1 m) (r144L1 m) /\
+    IsMex (R144LowerSource2 m) (r144L2 m) /\
+    IsMex (R144UpperSource0 m) (r144U0 m) /\
+    IsMex (R144UpperSource1 m) (r144U1 m) /\
+    IsMex (R144UpperSource2 m) (r144U2 m) := by
+  have hL0 := (r144_lower_source_characterization m (r144L0 m) hm).1
+  have hL1 := (r144_lower_source_characterization m (r144L1 m) hm).2.1
+  have hL2 := (r144_lower_source_characterization m (r144L2 m) hm).2.2
+  have hU0 := (r144_upper_source_characterization m (r144U0 m) hm).1
+  have hU1 := (r144_upper_source_characterization m (r144U1 m) hm).2.1
+  have hU2 := (r144_upper_source_characterization m (r144U2 m) hm).2.2
+  have mexL0 : IsMex (R144LowerSource0 m) (r144L0 m) := by
+    refine ⟨by simp [r144L0, r143V], ?_, ?_⟩
+    · intro hs
+      have := hL0.mp hs
+      simp [R144Base, r144L0, r143V] at this
+    · intro p hp hlt
+      apply (r144_lower_source_characterization m p hm).1.mpr
+      exact ⟨hp, by simp [r144L0] at hlt ⊢; omega⟩
+  have mexL1 : IsMex (R144LowerSource1 m) (r144L1 m) := by
+    refine ⟨by simp [r144L1, r143V], ?_, ?_⟩
+    · intro hs
+      have := hL1.mp hs
+      rcases this with this | this
+      · simp [R144Base, r144L1, r143V] at this
+      · simp [r144L1, r143V] at this
+    · intro p hp hlt
+      apply (r144_lower_source_characterization m p hm).2.1.mpr
+      by_cases hpv : p <= r143V m
+      · exact Or.inl ⟨hp, hpv⟩
+      · exact Or.inr (by simp [r144L1] at hlt; omega)
+  have mexL2 : IsMex (R144LowerSource2 m) (r144L2 m) := by
+    refine ⟨by simp [r144L2, r143V], ?_, ?_⟩
+    · intro hs
+      have := hL2.mp hs
+      rcases this with this | this | this
+      · simp [R144Base, r144L2, r143V] at this
+      · simp [r144L2, r143V] at this
+      · simp [r144L2, r143V] at this
+    · intro p hp hlt
+      apply (r144_lower_source_characterization m p hm).2.2.mpr
+      by_cases hpv : p <= r143V m
+      · exact Or.inl ⟨hp, hpv⟩
+      · by_cases hp1 : p = r143V m + 1
+        · exact Or.inr (Or.inl hp1)
+        · exact Or.inr (Or.inr (by simp [r144L2] at hlt; omega))
+  have mexU0 : IsMex (R144UpperSource0 m) (r144U0 m) := by
+    refine ⟨by simp [r144U0, r143V], ?_, ?_⟩
+    · intro hs
+      have := hU0.mp hs
+      rcases this with this | this
+      · simp [R144Base, r144U0, r143V] at this
+      · simp [r144U0, r143V] at this
+    · intro p hp hlt
+      apply (r144_upper_source_characterization m p hm).1.mpr
+      by_cases hpv : p <= r143V m
+      · exact Or.inl ⟨hp, hpv⟩
+      · exact Or.inr (by simp [r144U0] at hlt; omega)
+  have mexU1 : IsMex (R144UpperSource1 m) (r144U1 m) := by
+    refine ⟨by simp [r144U1, r143V], ?_, ?_⟩
+    · intro hs
+      have := hU1.mp hs
+      rcases this with this | this
+      · simp [R144Base, r144U1, r143V] at this
+      · simp [r144U1, r143V] at this
+    · intro p hp hlt
+      apply (r144_upper_source_characterization m p hm).2.1.mpr
+      exact Or.inl ⟨hp, by simp [r144U1] at hlt; omega⟩
+  have mexU2 : IsMex (R144UpperSource2 m) (r144U2 m) := by
+    refine ⟨by simp [r144U2, r143V], ?_, ?_⟩
+    · intro hs
+      have := hU2.mp hs
+      rcases this with this | this | this | this
+      · simp [R144Base, r144U2, r143V] at this
+      · simp [r144U2, r143V] at this
+      · simp [r144U2, r143V] at this
+      · simp [r144U2, r143V] at this
+    · intro p hp hlt
+      apply (r144_upper_source_characterization m p hm).2.2.mpr
+      by_cases hpv : p <= r143V m
+      · exact Or.inl ⟨hp, hpv⟩
+      · by_cases hp1 : p = r143V m + 1
+        · exact Or.inr (Or.inl hp1)
+        · by_cases hp2 : p = r143V m + 2
+          · exact Or.inr (Or.inr (Or.inl hp2))
+          · exact Or.inr (Or.inr (Or.inr (by
+              simp [r144U2] at hlt
+              omega)))
+  exact ⟨mexL0, mexL1, mexL2, mexU0, mexU1, mexU2⟩
+
+/-! ## Injectivity and ceilings -/
+
+theorem r144_two_target_rows_injective_and_upper_no_cap (m : Nat) :
+    (r144L0 m ≠ r144L1 m) /\
+    (r144L0 m ≠ r144L2 m) /\
+    (r144L1 m ≠ r144L2 m) /\
+    (r144U0 m ≠ r144U1 m) /\
+    (r144U0 m ≠ r144U2 m) /\
+    (r144U1 m ≠ r144U2 m) /\
+    r143V m < r144U0 m /\
+    r143V m < r144U1 m /\
+    r143V m < r144U2 m /\
+    Not (r144U0 m <= r143V m \/
+      r144U1 m <= r143V m \/ r144U2 m <= r143V m) := by
+  simp [r144L0, r144L1, r144L2, r144U0, r144U1, r144U2]
+
+/-- All six displayed target cells satisfy even the defect-nine pointwise
+ceiling `output <= row+column-9`, hence a fortiori the ordinary cell/source
+capacity ceiling. -/
+theorem r144_six_target_defect9_cell_ceilings
+    (m : Nat) (hm : 2 <= m) :
+    r144L0 m <= r144R m + r143C0 m - 9 /\
+    r144L1 m <= r144R m + r143C1 m - 9 /\
+    r144L2 m <= r144R m + r143C2 m - 9 /\
+    r144U0 m <= r143Q m + r143C0 m - 9 /\
+    r144U1 m <= r143Q m + r143C1 m - 9 /\
+    r144U2 m <= r143Q m + r143C2 m - 9 := by
+  simp [r144L0, r144L1, r144L2, r144U0, r144U1, r144U2,
+    r144R, r143V, r143Q, r143C0, r143C1, r143C2, r143G]
+  omega
+
+theorem r144_six_target_source_capacity_bounds
+    (m : Nat) (hm : 2 <= m) :
+    r144L0 m - 1 <= r144R m + r143C0 m /\
+    r144L1 m - 1 <= r144R m + r143C1 m /\
+    r144L2 m - 1 <= r144R m + r143C2 m /\
+    r144U0 m - 1 <= r143Q m + r143C0 m /\
+    r144U1 m - 1 <= r143Q m + r143C1 m /\
+    r144U2 m - 1 <= r143Q m + r143C2 m := by
+  simp [r144L0, r144L1, r144L2, r144U0, r144U1, r144U2,
+    r144R, r143V, r143Q, r143C0, r143C1, r143C2, r143G]
+  omega
+
+/-- The two target rows really are consecutive and both three-column
+windows lie in their triangular domains. -/
+theorem r144_two_row_geometry (m : Nat) (hm : 2 <= m) :
+    r144R m + 1 = r143Q m /\
+    r143C2 m <= r144R m /\
+    r143C2 m <= r143Q m := by
+  simp [r144R, r143Q, r143C2, r143G, r143V]
+  omega
+
+#print axioms r144_actual_next_row_source_expansion
+#print axioms r144_record_trace_in_history
+#print axioms r144_prefix_base_exact_realization
+#print axioms r144_lower_displayed_row_injective
+#print axioms r144_upper_displayed_row_injective
+#print axioms r144_two_row_mex_packet
+#print axioms r144_two_target_rows_injective_and_upper_no_cap
+#print axioms r144_six_target_defect9_cell_ceilings
+#print axioms r144_six_target_source_capacity_bounds
+#print axioms r144_two_row_geometry
+
+end ChompLean

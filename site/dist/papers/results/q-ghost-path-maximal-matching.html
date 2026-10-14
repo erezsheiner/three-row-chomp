@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optimal blocker matching on one ghost path · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../document.css"><link rel="stylesheet" href="../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../index.html">Search</a><a href="../../browse.html">Browse all</a><a href="../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="optimal-blocker-matching-on-one-ghost-path">Optimal blocker matching on one ghost path</h1><p><strong>Statement.</strong> A ghost path with e edges and k available blocker vertices has maximum matching size min(e,k).</p>
+<h2 id="complete-proof-and-definitions">Complete proof and definitions</h2><ul>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/GHOST-TOKENS-AND-OWNER-TRANSPORT.html">Ghost tokens, owner transport and the exact unpaid endpoints</a></li>
+</ul>
+<p>The argument below and the linked full derivations form the reviewed proof. All stated hypotheses remain part of the result.</p>
+<h2 id="hypotheses-and-scope">Hypotheses and scope</h2><ul>
+<li>Canonical positive-MEX/COPY table, with d the diagonal map and A the count of positive labels not in its image; token and service inventories use the attached proof definitions.</li>
+</ul>
+<h2 id="argument">Argument</h2><ol>
+<li><p>A path v0→…→ve has e candidate ghost edges, and k available endpoint vertices. Capacity one on edges and vertices bounds every matching by min(e,k).</p>
+</li>
+<li><p>If all e+1 vertices are available, assign each edge to its target, obtaining e matches.</p>
+</li>
+<li><p>Otherwise choose a nonavailable vj. Assign every available vi with i&lt;j to edge i and every available vi with i&gt;j to edge i−1. On either side edge indexes are distinct, and the two sets are disjoint, so all k available vertices are saturated.</p>
+</li>
+<li><p>There are e+1−k nonavailable vertices, hence unmatched edge count max(0,e−k)=max(0,r−1). An available non-source vertex is exactly a surviving mortal echo owner, since q&lt;σ_a&lt;d(a)&lt;d(q) gives its actual blocker service.</p>
+</li>
+<li><p>Owner-only matching already uses every available target. The source gains one additional match precisely when it is available and some target is unavailable. This proves μ=L+T and the stated U,V,Q formulas, without any asymptotic assertion.</p>
+</li>
+</ol>
+<h2 id="review-and-supporting-evidence">Review and supporting evidence</h2><ul>
+<li>Historical original-claim verdict: accepted.</li>
+<li>This entry has a paper audit with an explicit verdict. Its formal dependencies have separate Lean receipts; this audit did not produce a Lean formalization of the derived statement.</li>
+<li><a href="../../audit/prepublication/papers/PAPER-REVIEW.json">Renewed statement and proof-completeness review</a></li>
+<li><a href="../../audit/full/paper-b/q-ghost-path-maximal-matching.json">Full independent audit and original-claim verdict</a></li>
+<li><a href="../../audit/full/CANONICAL-FOUNDATIONS.html">Shared canonical foundation and exact Lean bridges</a></li>
+<li><a href="../supplements/CANONICAL-DEFINITIONS.html">Full proof and definitions: Canonical definitions for the corrected paper proofs</a></li>
+<li><a href="../supplements/GHOST-TOKENS-AND-OWNER-TRANSPORT.html">Full proof and definitions: Ghost tokens, owner transport and the exact unpaid endpoints</a></li>
+</ul>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

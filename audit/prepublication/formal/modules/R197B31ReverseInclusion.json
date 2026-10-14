@@ -1,0 +1,1067 @@
+{
+  "module": "R197B31ReverseInclusion",
+  "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+  "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+  "declarationCount": 66,
+  "theoremDeclarationCount": 64,
+  "proofValuedDeclarationCount": 64,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.B31RelevantSkippedSeatAtDepth",
+      "module": "R197B31ReverseInclusion",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 34,
+      "typePretty": "(u L x : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.B31SettledImmortalObstruction",
+      "module": "R197B31ReverseInclusion",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 40,
+      "typePretty": "(u L x : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b30FateCandidateAt_iff_mortal_or_notSettled_of_future_high_host",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 60,
+      "typePretty": "∀ {r t x u : Nat} (hrt : @LE.le.{0} Nat instLENat r t) (htu : @LT.lt.{0} Nat instLTNat t u)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF t x) u),\n  Iff (ChompLean.B30FateCandidateAt r x) (Or (ChompLean.B30ColumnMortal x) (Not (ChompLean.ColumnAffineSettledBy r x)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_is_candidate_of_fate_frontier",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 269,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)\n  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)\n  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x)\n  (hfate :\n    Or (ChompLean.B30ColumnMortal x)\n      (Not (ChompLean.ColumnAffineSettledBy (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) x))),\n  ChompLean.B30PhysicalCacheCandidateAtDepth u L c x",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_is_candidate_of_immortal_notSettled",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 285,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)\n  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)\n  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x)\n  (himmortal :\n    Not (ChompLean.B30ColumnMortal x) →\n      Not (ChompLean.ColumnAffineSettledBy (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) x)),\n  ChompLean.B30PhysicalCacheCandidateAtDepth u L c x",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_fate_frontier",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 139,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)\n  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)\n  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x),\n  Iff (ChompLean.B30PhysicalCacheCandidateAtDepth u L c x)\n    (Or (ChompLean.B30ColumnMortal x)\n      (Not (ChompLean.ColumnAffineSettledBy (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) x)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_fate_frontier._proof_1_1",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_fate_frontier._proof_1_2",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_fate_frontier._proof_1_3",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_fate_frontier._proof_1_4",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_fate_frontier._proof_1_5",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_fate_frontier._proof_1_6",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_fate_frontier._proof_1_7",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)\n  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u) (m : Nat) (hmL : @LE.le.{0} Nat instLENat m L)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) x) u)\n  (hmLower : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) m),\n  Not (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_fate_frontier._proof_1_8",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)\n  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u) (m : Nat)\n  (hmSkipped :\n    Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))\n            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))\n              (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))))))\n  (hmL : @LE.le.{0} Nat instLENat m L)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) x) u)\n  (hmLower : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) m),\n  Not\n      (@LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_no_obstruction",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 175,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)\n  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)\n  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x),\n  Iff (ChompLean.B30PhysicalCacheCandidateAtDepth u L c x) (Not (ChompLean.B31SettledImmortalObstruction u L x))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 83,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)\n  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)\n  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x),\n  And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) x)\n    (And (@LT.lt.{0} Nat instLTNat x c)\n      (Not\n        (ChompLean.ColTail ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) x u)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_1",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_10",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_11",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_12",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u) (m : Nat)\n  (hmSkipped :\n    Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))\n            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))\n              (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))))))\n  (hmL : @LE.le.{0} Nat instLENat m L)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) x) u)\n  (hmLower : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) m)\n  (hmUpper : @LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))),\n  Not\n      (@LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_13",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u) (m : Nat)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) x) u)\n  (hmLower : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) m)\n  (hmUpper : @LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))),\n  Not (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_14",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat}\n  (hxHorizon : @LE.le.{0} Nat instLENat x (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L))\n  (m : Nat)\n  (hrowOrder :\n    @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)),\n  Not (@LE.le.{0} Nat instLENat x (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_15",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat} (m : Nat)\n  (hxHostRow : @LE.le.{0} Nat instLENat x (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m))\n  (heq : Not (@Eq.{1} Nat x (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m))),\n  Not (@LT.lt.{0} Nat instLTNat x (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_16",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat} (m : Nat)\n  (hge : Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) x)),\n  Not\n      (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n        (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_17",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)\n  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u) (m : Nat)\n  (hmLower : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) m)\n  (hmUpper : @LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hhost :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      u),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_18",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c : Nat} (m : Nat)\n  (hxHostRowStrict :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_19",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u) (m : Nat)\n  (hhost : @Eq.{1} Nat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) u), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_2",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_20",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u) (m : Nat)\n  (hmLower : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) m)\n  (hmUpper : @LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hxHorizon :\n    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L))\n  (hhost :\n    @Eq.{1} Nat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      u),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_21",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat} (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u) (m : Nat)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) x) u)\n  (hhostRowLt : @LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) u),\n  Not (@LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_22",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat} (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u) (m : Nat)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) x) u)\n  (hhostRowLt : @LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) u)\n  (hboundary :\n    And (@Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) u) (@Eq.{1} Nat x c)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_23",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat} (m : Nat)\n  (hrowOrder :\n    @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m))\n  (a : Nat)\n  (haHorizon : @LT.lt.{0} Nat instLTNat a (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)),\n  Not (@LT.lt.{0} Nat instLTNat a (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_3",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_4",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_5",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_6",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_7",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_8",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_relevantSkippedSeat_static_candidate_guards._proof_1_9",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settledImmortalObstruction_creates_skipped_affine_rail",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 254,
+      "typePretty": "∀ {u L x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x) (hbad : ChompLean.B31SettledImmortalObstruction u L x),\n  @Exists.{1} Nat fun (m : Nat) =>\n    And\n      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))\n              (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))\n                (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))))))\n      (And (@LE.le.{0} Nat instLENat m L)\n        (∀ (q : Nat),\n          @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) q →\n            @Eq.{1} Nat (ChompLean.gameF q x) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q m)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settled_relevantSkippedSeat_affine_tail_has_skipped_offset",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 228,
+      "typePretty": "∀ {u L x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x)\n  (hsettled : ChompLean.ColumnAffineSettledBy (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) x),\n  @Exists.{1} Nat fun (m : Nat) =>\n    And\n      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))\n              (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))\n                (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))))))\n      (And (@LE.le.{0} Nat instLENat m L)\n        (∀ (q : Nat),\n          @LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) q →\n            @Eq.{1} Nat (ChompLean.gameF q x) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q m)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settled_relevantSkippedSeat_affine_tail_has_skipped_offset._proof_1_1",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settled_relevantSkippedSeat_affine_tail_has_skipped_offset._proof_1_2",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settled_relevantSkippedSeat_affine_tail_has_skipped_offset._proof_1_3",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settled_relevantSkippedSeat_affine_tail_has_skipped_offset._proof_1_4",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settled_relevantSkippedSeat_affine_tail_has_skipped_offset._proof_1_5",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settled_relevantSkippedSeat_affine_tail_has_skipped_offset._proof_1_6",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settled_relevantSkippedSeat_affine_tail_has_skipped_offset._proof_1_7",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (m : Nat)\n  (hmSkipped :\n    Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))\n        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))\n            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))\n              (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))))))\n  (hmL : @LE.le.{0} Nat instLENat m L)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) x) u)\n  (hmUpper : @LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))),\n  Not\n      (@LE.le.{0} Nat instLENat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_settled_relevantSkippedSeat_affine_tail_has_skipped_offset._proof_1_8",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u L x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (m : Nat)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) x) u)\n  (k : Nat) (hmUpper : @LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hatHost :\n    @Eq.{1} Nat u\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u m) k)),\n  Not (@Eq.{1} Nat k m) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_skippedSeat20_reverseInclusion_iff_fate_frontier",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 331,
+      "typePretty": "∀ {u c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)\n  (hx20 :\n    @LE.le.{0} Nat instLENat x\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))\n  (hseat : ChompLean.SkippedSeat20 u x),\n  Iff (ChompLean.B30PhysicalCacheCandidate20 u c x)\n    (Or (ChompLean.B30ColumnMortal x)\n      (Not\n        (ChompLean.ColumnAffineSettledBy\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n            (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n          x)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_skippedSeat20_reverseInclusion_iff_fate_frontier._proof_1_1",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u c x : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_skippedSeat20_reverseInclusion_iff_fate_frontier._proof_1_2",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u c x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_skippedSeat20_reverseInclusion_iff_physical_and_no_obstruction",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 348,
+      "typePretty": "∀ {u c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)\n  (hseat : ChompLean.SkippedSeat20 u x),\n  Iff (ChompLean.B30PhysicalCacheCandidate20 u c x)\n    (And\n      (@LE.le.{0} Nat instLENat x\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u\n          (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))\n      (Not\n        (ChompLean.B31SettledImmortalObstruction u (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))) x)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_skippedSeat20_reverseInclusion_iff_physical_and_no_obstruction._proof_1_1",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u c : Nat},\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_skippedSeat20_reverseInclusion_iff_physical_and_no_obstruction._proof_1_2",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u c : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.b31_skippedSeatAtDepth_reverseInclusion_iff_physical_and_no_obstruction",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 202,
+      "typePretty": "∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)\n  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)\n  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))\n  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)\n  (hseat : ChompLean.B30SkippedSeatAtDepth u L x),\n  Iff (ChompLean.B30PhysicalCacheCandidateAtDepth u L c x)\n    (And (@LE.le.{0} Nat instLENat x (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L))\n      (Not (ChompLean.B31SettledImmortalObstruction u L x)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_host_columnLive_at_earlier_horizon",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 46,
+      "typePretty": "∀ {r t x u : Nat} (hrt : @LE.le.{0} Nat instLENat r t) (htu : @LT.lt.{0} Nat instLTNat t u)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF t x) u),\n  ChompLean.ColumnLiveBelow\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    x",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_host_columnLive_at_earlier_horizon._proof_1_1",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r t x u : Nat} (hrt : @LE.le.{0} Nat instLENat r t) (w : Nat)\n  (hwr :\n    @LT.lt.{0} Nat instLTNat w\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF w x) w), Not (@LE.le.{0} Nat instLENat w t) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_high_host_columnLive_at_earlier_horizon._proof_1_2",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {r t x u : Nat} (hrt : @LE.le.{0} Nat instLENat r t) (htu : @LT.lt.{0} Nat instLTNat t u)\n  (hhost : @Eq.{1} Nat (ChompLean.gameF t x) u) (w : Nat)\n  (hwr :\n    @LT.lt.{0} Nat instLTNat w\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF w x) w) (hpersist : @Eq.{1} Nat (ChompLean.gameF t x) w), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.skippedSeat20_iff_b30SkippedSeatAtDepth_twenty",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 306,
+      "typePretty": "∀ {u x : Nat},\n  Iff (ChompLean.SkippedSeat20 u x)\n    (ChompLean.B30SkippedSeatAtDepth u (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))) x)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.skippedSeat20_iff_b30SkippedSeatAtDepth_twenty._proof_1_1",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.skippedSeat20_iff_b30SkippedSeatAtDepth_twenty._proof_1_2",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.skippedSeat20_iff_b30SkippedSeatAtDepth_twenty._proof_1_3",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.skippedSeat20_iff_b30SkippedSeatAtDepth_twenty._proof_1_4",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.skippedSeat20_iff_b30SkippedSeatAtDepth_twenty._proof_1_5",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.skippedSeat20_iff_b30SkippedSeatAtDepth_twenty._proof_1_6",
+      "module": "R197B31ReverseInclusion",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {u x : Nat},\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "e58e539a2abe12b8292a7aeea7e8fe6bcfb586cfe4f6ab32dfe9c46e5acf0e08",
+      "sourcePath": "lean/core/R197B31ReverseInclusion.lean",
+      "universeParameters": []
+    }
+  ]
+}

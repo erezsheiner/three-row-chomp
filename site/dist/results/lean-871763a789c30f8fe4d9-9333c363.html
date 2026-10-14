@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finite Interval · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Uniqueness and game foundations · lean</p>
+<h1>Finite Interval</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/ChompLean/FiniteInterval.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/ChompLean.FiniteInterval.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/ChompLean.FiniteInterval.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 23 declarations</summary><ul class="declarations"><li><code>ChompLean.List.mem_le_sum</code><pre class="prose">∀ {x : Nat} {xs : List.{0} Nat} (h : @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x),
+  @LE.le.{0} Nat instLENat x (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0))) xs)</pre></li><li><code>ChompLean.List.mem_le_sum._proof_1_1</code><pre class="prose">∀ {x : Nat} (a : Nat) (xs : List.{0} Nat)
+  (hx_le&#x27; :
+    @LE.le.{0} Nat instLENat x
+      (@List.foldr.{0, 0} Nat Nat
+        (fun (x y : Nat) =&gt; @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x y)
+        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs)),
+  Not
+      (@LE.le.{0} Nat instLENat x
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a
+          (@List.foldr.{0, 0} Nat Nat
+            (fun (x1 x2 : Nat) =&gt; @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x1 x2)
+            (@OfNat.ofNat.{0} Nat (nat_lit 0)
+              (@Zero.toOfNat0.{0} Nat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0)))))
+            xs))) →
+    False</pre></li><li><code>ChompLean.exists_nat_not_mem_list_ge</code><pre class="prose">∀ (q : Nat) (xs : List.{0} Nat),
+  @Exists.{1} Nat fun (p : Nat) =&gt;
+    And (@LE.le.{0} Nat instLENat q p)
+      (Not (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs p))</pre></li><li><code>ChompLean.exists_nat_not_mem_list_ge._proof_1_1</code><pre class="prose">∀ (q : Nat) (xs : List.{0} Nat),
+  Not
+      (@LE.le.{0} Nat instLENat q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0))) xs))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.exists_nat_not_mem_list_ge._proof_1_2</code><pre class="prose">∀ (q : Nat) (xs : List.{0} Nat)
+  (hle :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0))) xs))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (@List.sum.{0} Nat instAddNat (@Zero.ofOfNat0.{0} Nat (instOfNatNat (nat_lit 0))) xs)),
+  False</pre></li><li><code>ChompLean.interval_inj_surj</code><pre class="prose">∀ {q p : Nat} (hqp : @LT.lt.{0} Nat instLTNat q p) (g : Nat → Nat)
+  (hmap :
+    ∀ (x : Nat),
+      @LT.lt.{0} Nat instLTNat q x →
+        @LT.lt.{0} Nat instLTNat x p → And (@LT.lt.{0} Nat instLTNat q (g x)) (@LT.lt.{0} Nat instLTNat (g x) p))
+  (hinj :
+    ∀ (x y : Nat),
+      @LT.lt.{0} Nat instLTNat q x →
+        @LT.lt.{0} Nat instLTNat x p →
+          @LT.lt.{0} Nat instLTNat q y → @LT.lt.{0} Nat instLTNat y p → @Eq.{1} Nat (g x) (g y) → @Eq.{1} Nat x y)
+  (k : Nat),
+  @LT.lt.{0} Nat instLTNat q k →
+    @LT.lt.{0} Nat instLTNat k p →
+      @Exists.{1} Nat fun (x : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat q x) (And (@LT.lt.{0} Nat instLTNat x p) (@Eq.{1} Nat (g x) k))</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_1</code><pre class="prose">∀ {q p : Nat} (d q p : Nat) (hqp : @LT.lt.{0} Nat instLTNat q p) (k : Nat) (hqk : @LT.lt.{0} Nat instLTNat q k)
+  (hkp : @LT.lt.{0} Nat instLTNat k p)
+  (hsmall :
+    @LE.le.{0} Nat instLENat p
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_10</code><pre class="prose">∀ {q p : Nat} (d q p : Nat)
+  (hdiff : @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p q) d) (g : Nat → Nat)
+  (k : Nat)
+  (hsmall :
+    Not
+      (@LE.le.{0} Nat instLENat p
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hlast_gt :
+    @LT.lt.{0} Nat instLTNat q
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (h_last :
+    @Eq.{1} Nat
+      ((fun (x : Nat) =&gt;
+          ChompLean.swapNat
+            (g
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (g x))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (y : Nat)
+  (hylast :
+    Not
+      (@Eq.{1} Nat y
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hyltlast :
+    @LT.lt.{0} Nat instLTNat y
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          q)
+        d) →
+    False</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_2</code><pre class="prose">∀ {q p : Nat} (d q p k : Nat) (hkp : @LT.lt.{0} Nat instLTNat k p)
+  (hsmall :
+    Not
+      (@LE.le.{0} Nat instLENat p
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat q
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_3</code><pre class="prose">∀ {q p : Nat} (d q p k : Nat) (hkp : @LT.lt.{0} Nat instLTNat k p),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        p) →
+    False</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_4</code><pre class="prose">∀ {q p : Nat} (d q p : Nat) (g : Nat → Nat) (k : Nat)
+  (hlast_lt :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      p)
+  (h_last :
+    @Eq.{1} Nat
+      ((fun (x : Nat) =&gt;
+          ChompLean.swapNat
+            (g
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (g x))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (x : Nat)
+  (hxl :
+    @LT.lt.{0} Nat instLTNat x
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LT.lt.{0} Nat instLTNat x p) → False</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_5</code><pre class="prose">∀ {q p : Nat} (d q p : Nat) (g : Nat → Nat) (k : Nat)
+  (h_last :
+    @Eq.{1} Nat
+      ((fun (x : Nat) =&gt;
+          ChompLean.swapNat
+            (g
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (g x))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (x : Nat)
+  (hxl :
+    @LT.lt.{0} Nat instLTNat x
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hxlast :
+    @Eq.{1} Nat
+      ((fun (x : Nat) =&gt;
+          ChompLean.swapNat
+            (g
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (g x))
+        x)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hx_eq_last :
+    @Eq.{1} Nat x
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  False</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_6</code><pre class="prose">∀ {q p : Nat} (d q p : Nat) (g : Nat → Nat) (k : Nat)
+  (h_last :
+    @Eq.{1} Nat
+      ((fun (x : Nat) =&gt;
+          ChompLean.swapNat
+            (g
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (g x))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (x : Nat)
+  (hx_int :
+    And
+      (@LT.lt.{0} Nat instLTNat q
+        ((fun (x : Nat) =&gt;
+            ChompLean.swapNat
+              (g
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (g x))
+          x))
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (x : Nat) =&gt;
+            ChompLean.swapNat
+              (g
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (g x))
+          x)
+        p))
+  (h_ne_last :
+    @Ne.{1} Nat
+      ((fun (x : Nat) =&gt;
+          ChompLean.swapNat
+            (g
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (g x))
+        x)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        ((fun (x : Nat) =&gt;
+            ChompLean.swapNat
+              (g
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (g x))
+          x)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_7</code><pre class="prose">∀ {q p : Nat} (d q p : Nat) (g : Nat → Nat) (k : Nat)
+  (hlast_lt :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      p)
+  (h_last :
+    @Eq.{1} Nat
+      ((fun (x : Nat) =&gt;
+          ChompLean.swapNat
+            (g
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (g x))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (x y : Nat)
+  (hxl :
+    @LT.lt.{0} Nat instLTNat x
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LT.lt.{0} Nat instLTNat x p) → False</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_8</code><pre class="prose">∀ {q p : Nat} (d q p : Nat) (g : Nat → Nat) (k : Nat)
+  (hlast_lt :
+    @LT.lt.{0} Nat instLTNat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      p)
+  (h_last :
+    @Eq.{1} Nat
+      ((fun (x : Nat) =&gt;
+          ChompLean.swapNat
+            (g
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (g x))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (x y : Nat)
+  (hyl :
+    @LT.lt.{0} Nat instLTNat y
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),
+  Not (@LT.lt.{0} Nat instLTNat y p) → False</pre></li><li><code>ChompLean.interval_inj_surj._proof_1_9</code><pre class="prose">∀ {q p : Nat} (d q p : Nat) (g : Nat → Nat) (k : Nat)
+  (h_last :
+    @Eq.{1} Nat
+      ((fun (x : Nat) =&gt;
+          ChompLean.swapNat
+            (g
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (g x))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (y : Nat) (hyp : @LT.lt.{0} Nat instLTNat y p)
+  (hylast :
+    Not
+      (@Eq.{1} Nat y
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat y
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) p
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.swapNat</code><pre class="prose">(a b x : Nat) → Nat</pre></li><li><code>ChompLean.swapNat.eq_1</code><pre class="prose">∀ (a b x : Nat),
+  @Eq.{1} Nat (ChompLean.swapNat a b x)
+    (@ite.{1} Nat (@Eq.{1} Nat x a) (instDecidableEqNat x a) b
+      (@ite.{1} Nat (@Eq.{1} Nat x b) (instDecidableEqNat x b) a x))</pre></li><li><code>ChompLean.swapNat_injective</code><pre class="prose">∀ (a b : Nat), @Function.Injective.{1, 1} Nat Nat (ChompLean.swapNat a b)</pre></li><li><code>ChompLean.swapNat_involutive</code><pre class="prose">∀ (a b x : Nat), @Eq.{1} Nat (ChompLean.swapNat a b (ChompLean.swapNat a b x)) x</pre></li><li><code>ChompLean.swapNat_left</code><pre class="prose">∀ (a b : Nat), @Eq.{1} Nat (ChompLean.swapNat a b a) b</pre></li><li><code>ChompLean.swapNat_maps_interval</code><pre class="prose">∀ {q p a b x : Nat} (ha : And (@LT.lt.{0} Nat instLTNat q a) (@LT.lt.{0} Nat instLTNat a p))
+  (hb : And (@LT.lt.{0} Nat instLTNat q b) (@LT.lt.{0} Nat instLTNat b p))
+  (hx : And (@LT.lt.{0} Nat instLTNat q x) (@LT.lt.{0} Nat instLTNat x p)),
+  And (@LT.lt.{0} Nat instLTNat q (ChompLean.swapNat a b x)) (@LT.lt.{0} Nat instLTNat (ChompLean.swapNat a b x) p)</pre></li><li><code>ChompLean.swapNat_right</code><pre class="prose">∀ (a b : Nat), @Eq.{1} Nat (ChompLean.swapNat a b b) a</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/ChompLean/FiniteInterval.lean:1</p><p>SHA-256: <code class="path">871763a789c30f8fe4d93a4b7a32ccba682ff3a43a8d5f5e5d6033ab0d9bd1ec</code></p></section><p><a href="../index.html#id=lean-871763a789c30f8fe4d9">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

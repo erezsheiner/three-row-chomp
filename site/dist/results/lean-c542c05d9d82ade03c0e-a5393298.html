@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deadline cuts with explicit low-offset thresholds · Three-Row Chomp</title>
+<meta name="description" content="Partitions a diagonal owner of q+k into disjoint old and new arms. For q &gt;= 3 and k &lt; 3, q+k is a blocker exactly when it has no old diagonal owner.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>Deadline cuts with explicit low-offset thresholds</h1><p class="lead">Partitions a diagonal owner of q+k into disjoint old and new arms. For q &gt;= 3 and k &lt; 3, q+k is a blocker exactly when it has no old diagonal owner.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/XDeadlineCutYoungDiag.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/XDeadlineCutYoungDiag.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/XDeadlineCutYoungDiag.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a> <a href="../audit/full/paper-b/FINAL-AMENDMENT-REVIEW.json">Historical 13 October evidence: Independent review of corrected source prose</a> <a href="../audit/full/lean/MAIN-CLAIM-MAPPING.md">Historical 13 October evidence: Exact mathematical correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>The general blocker complement requires q+k &gt; 0. The low-offset simplification requires q &gt;= 3 and k &lt; 3; finite landing-window statements retain k &lt; H.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">YoungDiag means an owner a&lt;q with d(a)=q+k; NewDiagAfterCut means an owner q+i with i&lt;k. Injectivity and d(a)&gt;a make this an exhaustive disjoint split. D/S partition supplies the positive blocker complement. The absence of a new owner at k&lt;3 is a separate thresholded game theorem, not a general NoTriple assumption.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 83 declarations</summary><ul class="declarations"><li><code>ChompLean.NewDiagAfterCut</code><pre class="prose">(q k : Nat) → Prop</pre></li><li><code>ChompLean.NewDiagAfterCut.eq_1</code><pre class="prose">∀ (q k : Nat),
+  @Eq.{1} Prop (ChompLean.NewDiagAfterCut q k)
+    (@Exists.{1} Nat fun (i : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat i k)
+        (@Eq.{1} Nat
+          (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)))</pre></li><li><code>ChompLean.YoungDiag</code><pre class="prose">(q k : Nat) → Prop</pre></li><li><code>ChompLean.actualBlockerMidpoint_eq_diagPrefixCertificate</code><pre class="prose">∀ (v : Nat),
+  @Eq.{1} Nat (ChompLean.actualBlockerMidpoint v)
+    (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) v
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (ChompLean.gameFDiagonalPrefixCount
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))</pre></li><li><code>ChompLean.blocker_iff_cut_deadline_absent</code><pre class="prose">∀ {q k : Nat}
+  (hpositive :
+    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  Iff (ChompLean.S ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))
+    (And (Not (ChompLean.YoungDiag q k))
+      (∀ (i : Nat),
+        @LT.lt.{0} Nat instLTNat i k →
+          @Ne.{1} Nat
+            (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)))</pre></li><li><code>ChompLean.blocker_iff_cut_deadline_absent._simp_1_2</code><pre class="prose">∀ {p q : Prop}, @Eq.{1} Prop (Not (Or p q)) (And (Not p) (Not q))</pre></li><li><code>ChompLean.blocker_iff_cut_deadline_absent._simp_1_3</code><pre class="prose">∀ {α : Sort u_1} {p : α → Prop}, @Eq.{1} Prop (Not (@Exists.{u_1} α fun (x : α) =&gt; p x)) (∀ (x : α), Not (p x))</pre></li><li><code>ChompLean.blocker_iff_cut_deadline_absent._simp_1_4</code><pre class="prose">∀ {a b : Prop}, @Eq.{1} Prop (Not (And a b)) (a → Not b)</pre></li><li><code>ChompLean.blocker_iff_cut_lags_miss</code><pre class="prose">∀ {q k : Nat}
+  (hpositive :
+    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  Iff (ChompLean.S ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))
+    (And (Not (ChompLean.YoungDiag q k))
+      (∀ (i : Nat),
+        @LT.lt.{0} Nat instLTNat i k →
+          @Ne.{1} Nat (ChompLean.gameFDiagonalLag (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k i)))</pre></li><li><code>ChompLean.blocker_iff_cut_lags_miss._simp_1_1</code><pre class="prose">∀ {p q : Prop}, @Eq.{1} Prop (Not (Or p q)) (And (Not p) (Not q))</pre></li><li><code>ChompLean.blocker_iff_cut_lags_miss._simp_1_2</code><pre class="prose">∀ {α : Sort u_1} {p : α → Prop}, @Eq.{1} Prop (Not (@Exists.{u_1} α fun (x : α) =&gt; p x)) (∀ (x : α), Not (p x))</pre></li><li><code>ChompLean.blocker_iff_cut_lags_miss._simp_1_3</code><pre class="prose">∀ {a b : Prop}, @Eq.{1} Prop (Not (And a b)) (a → Not b)</pre></li><li><code>ChompLean.blocker_iff_not_youngDiag_of_lt_three</code><pre class="prose">∀ {q k : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) q)
+  (hk : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))),
+  Iff (ChompLean.S ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))
+    (Not (ChompLean.YoungDiag q k))</pre></li><li><code>ChompLean.blocker_iff_not_youngDiag_of_lt_three._proof_1_1</code><pre class="prose">∀ {q k : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) q)
+  (hk : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)) →
+    False</pre></li><li><code>ChompLean.blocker_q_add_one_iff_not_youngDiag_one</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) q),
+  Iff
+    (ChompLean.S ChompLean.gameF
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+    (Not (ChompLean.YoungDiag q (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.blocker_q_add_one_iff_not_youngDiag_one._proof_1_1</code><pre class="prose">∀ {q : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →
+    False</pre></li><li><code>ChompLean.blocker_q_add_two_iff_not_youngDiag_two</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) q),
+  Iff
+    (ChompLean.S ChompLean.gameF
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (Not (ChompLean.YoungDiag q (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))</pre></li><li><code>ChompLean.blocker_q_add_two_iff_not_youngDiag_two._proof_1_1</code><pre class="prose">∀ {q : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →
+    False</pre></li><li><code>ChompLean.blocker_q_iff_not_youngDiag_zero</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) q),
+  Iff (ChompLean.S ChompLean.gameF q)
+    (Not (ChompLean.YoungDiag q (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))</pre></li><li><code>ChompLean.blocker_q_iff_not_youngDiag_zero._proof_1_1</code><pre class="prose">∀ {q : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →
+    False</pre></li><li><code>ChompLean.diagonalOwner_cut_partition</code><pre class="prose">∀ (q k : Nat),
+  Iff (ChompLean.D ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))
+    (Or (ChompLean.YoungDiag q k) (ChompLean.NewDiagAfterCut q k))</pre></li><li><code>ChompLean.diagonalOwner_cut_partition._proof_1_1</code><pre class="prose">∀ (q k a : Nat) (haq : Not (@LT.lt.{0} Nat instLTNat a q))
+  (hgt : @LT.lt.{0} Nat instLTNat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  Not (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q) k) → False</pre></li><li><code>ChompLean.diagonalOwner_cut_partition._proof_1_2</code><pre class="prose">∀ (q k a : Nat) (haq : Not (@LT.lt.{0} Nat instLTNat a q)),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q))
+        a) →
+    False</pre></li><li><code>ChompLean.gameFBlockerCountThrough_eq_diagPrefixComplement</code><pre class="prose">∀ (n : Nat),
+  @Eq.{1} Nat (ChompLean.gameFBlockerCountThrough n)
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n (ChompLean.gameFDiagonalPrefixCount n))</pre></li><li><code>ChompLean.gameFBlockerCountThrough_eq_diagPrefixComplement._proof_1_1</code><pre class="prose">∀ (n : Nat)
+  (hpartition :
+    @Eq.{1} Nat n
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameFBlockerCountThrough n)
+        (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList n))))
+  (hlength :
+    @Eq.{1} Nat (ChompLean.gameFDiagonalPrefixCount n)
+      (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList n))),
+  Not
+      (@Eq.{1} Nat (ChompLean.gameFBlockerCountThrough n)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n (ChompLean.gameFDiagonalPrefixCount n))) →
+    False</pre></li><li><code>ChompLean.gameFDiagonalLag</code><pre class="prose">(a : Nat) → Nat</pre></li><li><code>ChompLean.gameFDiagonalLag.eq_1</code><pre class="prose">∀ (a : Nat),
+  @Eq.{1} Nat (ChompLean.gameFDiagonalLag a)
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF a a) a)</pre></li><li><code>ChompLean.gameFDiagonalOwnersLandingInWindow</code><pre class="prose">(q H : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFDiagonalOwnersLandingInWindow.eq_1</code><pre class="prose">∀ (q H : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.gameFDiagonalOwnersLandingInWindow q H)
+    (@List.filter.{0} Nat
+      (fun (a : Nat) =&gt;
+        @Decidable.decide
+          (And (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+            (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))
+          (@instDecidableAnd (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+            (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H))
+            (Nat.decLe q (ChompLean.gameF a a))
+            (Nat.decLt (ChompLean.gameF a a) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H))))
+      (List.range (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))</pre></li><li><code>ChompLean.gameFDiagonalPrefixCount</code><pre class="prose">(n : Nat) → Nat</pre></li><li><code>ChompLean.gameFDiagonalValuesThroughList</code><pre class="prose">(n : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFDiagonalValuesThroughList.eq_1</code><pre class="prose">∀ (n : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.gameFDiagonalValuesThroughList n)
+    (@List.filter.{0} Nat (fun (k : Nat) =&gt; @Decidable.decide (@LE.le.{0} Nat instLENat k n) (Nat.decLe k n))
+      (@List.map.{0, 0} Nat Nat (fun (a : Nat) =&gt; ChompLean.gameF a a) (List.range n)))</pre></li><li><code>ChompLean.gameFNewDiagonalLandingOffsets</code><pre class="prose">(q H : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFNewDiagonalOwnersLandingInWindow</code><pre class="prose">(q H : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFNewDiagonalOwnersLandingInWindow.eq_1</code><pre class="prose">∀ (q H : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.gameFNewDiagonalOwnersLandingInWindow q H)
+    (@List.filter.{0} Nat
+      (fun (a : Nat) =&gt;
+        @Decidable.decide
+          (And (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+            (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))
+          (@instDecidableAnd (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+            (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H))
+            (Nat.decLe q (ChompLean.gameF a a))
+            (Nat.decLt (ChompLean.gameF a a) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H))))
+      (List.range&#x27; q H (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.gameFOldDiagonalLandingOffsets</code><pre class="prose">(q H : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFOldDiagonalOwnersLandingInWindow</code><pre class="prose">(q H : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.gameFOldDiagonalOwnersLandingInWindow.eq_1</code><pre class="prose">∀ (q H : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.gameFOldDiagonalOwnersLandingInWindow q H)
+    (@List.filter.{0} Nat
+      (fun (a : Nat) =&gt;
+        @Decidable.decide
+          (And (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+            (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))
+          (@instDecidableAnd (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+            (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H))
+            (Nat.decLe q (ChompLean.gameF a a))
+            (Nat.decLt (ChompLean.gameF a a) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H))))
+      (List.range q))</pre></li><li><code>ChompLean.gameF_deadlineLandingOffset_cut_iff</code><pre class="prose">∀ {q H k : Nat},
+  Iff
+    (Or
+      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+        (ChompLean.gameFOldDiagonalLandingOffsets q H) k)
+      (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+        (ChompLean.gameFNewDiagonalLandingOffsets q H) k))
+    (And (@LT.lt.{0} Nat instLTNat k H) (Or (ChompLean.YoungDiag q k) (ChompLean.NewDiagAfterCut q k)))</pre></li><li><code>ChompLean.gameF_diagonalOwnerLandingWindow_cut_count</code><pre class="prose">∀ (q H : Nat),
+  @Eq.{1} Nat (@List.length.{0} Nat (ChompLean.gameFDiagonalOwnersLandingInWindow q H))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@List.length.{0} Nat (ChompLean.gameFOldDiagonalOwnersLandingInWindow q H))
+      (@List.length.{0} Nat (ChompLean.gameFNewDiagonalOwnersLandingInWindow q H)))</pre></li><li><code>ChompLean.gameF_diagonalPrefixCount_eq_nonblockers</code><pre class="prose">∀ (n : Nat),
+  @Eq.{1} Nat (ChompLean.gameFDiagonalPrefixCount n) (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList n))</pre></li><li><code>ChompLean.gameF_diagonalPrefixCount_eq_nonblockers._proof_1_1</code><pre class="prose">∀ (n : Nat)
+  (hleAB :
+    @LE.le.{0} Nat instLENat (@List.length.{0} Nat (ChompLean.gameFDiagonalValuesThroughList n))
+      (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList n)))
+  (hleBA :
+    @LE.le.{0} Nat instLENat (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList n))
+      (@List.length.{0} Nat (ChompLean.gameFDiagonalValuesThroughList n))),
+  Not
+      (@Eq.{1} Nat (@List.length.{0} Nat (ChompLean.gameFDiagonalValuesThroughList n))
+        (@List.length.{0} Nat (ChompLean.gameFNonblockersThroughList n))) →
+    False</pre></li><li><code>ChompLean.gameF_diagonalValuesThroughList_nodup</code><pre class="prose">∀ (n : Nat), @List.Nodup.{0} Nat (ChompLean.gameFDiagonalValuesThroughList n)</pre></li><li><code>ChompLean.gameF_mem_diagonalValuesThroughList</code><pre class="prose">∀ {n k : Nat},
+  Iff
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.gameFDiagonalValuesThroughList n) k)
+    (And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+      (And (@LE.le.{0} Nat instLENat k n) (@Exists.{1} Nat fun (a : Nat) =&gt; @Eq.{1} Nat (ChompLean.gameF a a) k)))</pre></li><li><code>ChompLean.gameF_mem_diagonalValuesThroughList._proof_1_5</code><pre class="prose">∀ {n : Nat} (a : Nat) (hgt : @LT.lt.{0} Nat instLTNat a (ChompLean.gameF a a)),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (ChompLean.gameF a a)) →
+    False</pre></li><li><code>ChompLean.gameF_mem_diagonalValuesThroughList._proof_1_6</code><pre class="prose">∀ {n k : Nat} (hle : @LE.le.{0} Nat instLENat k n) (a : Nat) (hvalue : @Eq.{1} Nat (ChompLean.gameF a a) k)
+  (hgt : @LT.lt.{0} Nat instLTNat a (ChompLean.gameF a a)), Not (@LT.lt.{0} Nat instLTNat a n) → False</pre></li><li><code>ChompLean.gameF_mem_diagonalValuesThroughList._simp_1_2</code><pre class="prose">∀ {α : Type u_1} {p : α → Bool} {as : List.{u_1} α} {x : α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.filter.{u_1} α p as) x)
+    (And (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) as x)
+      (@Eq.{1} Bool (p x) Bool.true))</pre></li><li><code>ChompLean.gameF_mem_diagonalValuesThroughList._simp_1_3</code><pre class="prose">∀ {α : Type u_1} {β : Type u_2} {b : β} {f : α → β} {l : List.{u_1} α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_2, u_2} β (List.{u_2} β) (@List.instMembership.{u_2} β) (@List.map.{u_1, u_2} α β f l) b)
+    (@Exists.{u_1 + 1} α fun (a : α) =&gt;
+      And (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) l a) (@Eq.{u_2 + 1} β (f a) b))</pre></li><li><code>ChompLean.gameF_mem_diagonalValuesThroughList._simp_1_4</code><pre class="prose">∀ {m n : Nat},
+  @Eq.{1} Prop (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (List.range n) m)
+    (@LT.lt.{0} Nat instLTNat m n)</pre></li><li><code>ChompLean.gameF_mem_diagonalValuesThroughList_iff_nonblocker</code><pre class="prose">∀ {n k : Nat},
+  Iff
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.gameFDiagonalValuesThroughList n) k)
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.gameFNonblockersThroughList n)
+      k)</pre></li><li><code>ChompLean.gameF_mem_newDiagonalLandingOffsets_iff</code><pre class="prose">∀ {q H k : Nat},
+  Iff
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.gameFNewDiagonalLandingOffsets q H) k)
+    (And (@LT.lt.{0} Nat instLTNat k H) (ChompLean.NewDiagAfterCut q k))</pre></li><li><code>ChompLean.gameF_mem_newDiagonalLandingOffsets_iff._proof_1_2</code><pre class="prose">∀ {q H k : Nat} (a : Nat)
+  (haData :
+    And
+      (And (@LE.le.{0} Nat instLENat q a)
+        (@LT.lt.{0} Nat instLTNat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))
+      (And (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+        (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q))
+        a) →
+    False</pre></li><li><code>ChompLean.gameF_mem_newDiagonalLandingOffsets_iff._proof_1_3</code><pre class="prose">∀ {q H k : Nat} (a : Nat)
+  (hak : @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF a a) q) k)
+  (haData :
+    And
+      (And (@LE.le.{0} Nat instLENat q a)
+        (@LT.lt.{0} Nat instLTNat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))
+      (And (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+        (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H))))
+  (hai :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q))
+      a),
+  Not (@LT.lt.{0} Nat instLTNat k H) → False</pre></li><li><code>ChompLean.gameF_mem_newDiagonalLandingOffsets_iff._proof_1_4</code><pre class="prose">∀ {q H k : Nat} (a : Nat)
+  (hak : @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF a a) q) k)
+  (haData :
+    And
+      (And (@LE.le.{0} Nat instLENat q a)
+        (@LT.lt.{0} Nat instLTNat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))
+      (And (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+        (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H))))
+  (hgt : @LT.lt.{0} Nat instLTNat a (ChompLean.gameF a a))
+  (hai :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q))
+      a),
+  Not (@LT.lt.{0} Nat instLTNat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q) k) → False</pre></li><li><code>ChompLean.gameF_mem_newDiagonalLandingOffsets_iff._proof_1_5</code><pre class="prose">∀ {q H k : Nat} (a : Nat)
+  (hak : @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF a a) q) k)
+  (haData :
+    And
+      (And (@LE.le.{0} Nat instLENat q a)
+        (@LT.lt.{0} Nat instLTNat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))
+      (And (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+        (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H))))
+  (hai :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a q))
+      a),
+  Not (@Eq.{1} Nat (ChompLean.gameF a a) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)) → False</pre></li><li><code>ChompLean.gameF_mem_newDiagonalLandingOffsets_iff._proof_1_6</code><pre class="prose">∀ {q H k : Nat} (hkH : @LT.lt.{0} Nat instLTNat k H) (i : Nat) (hik : @LT.lt.{0} Nat instLTNat i k)
+  (hvalue :
+    @Eq.{1} Nat
+      (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  Not (And (@LT.lt.{0} Nat instLTNat i H) (@LT.lt.{0} Nat instLTNat k H)) → False</pre></li><li><code>ChompLean.gameF_mem_newDiagonalLandingOffsets_iff._proof_1_7</code><pre class="prose">∀ {q H k : Nat} (i : Nat)
+  (hvalue :
+    @Eq.{1} Nat
+      (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k) q)
+        k) →
+    False</pre></li><li><code>ChompLean.gameF_mem_oldDiagonalLandingOffsets_iff</code><pre class="prose">∀ {q H k : Nat},
+  Iff
+    (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.gameFOldDiagonalLandingOffsets q H) k)
+    (And (@LT.lt.{0} Nat instLTNat k H) (ChompLean.YoungDiag q k))</pre></li><li><code>ChompLean.gameF_mem_oldDiagonalLandingOffsets_iff._proof_1_2</code><pre class="prose">∀ {q H k : Nat} (a : Nat)
+  (hak : @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF a a) q) k)
+  (haData :
+    And (@LT.lt.{0} Nat instLTNat a q)
+      (And (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+        (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))),
+  Not (@LT.lt.{0} Nat instLTNat k H) → False</pre></li><li><code>ChompLean.gameF_mem_oldDiagonalLandingOffsets_iff._proof_1_3</code><pre class="prose">∀ {q H k : Nat} (a : Nat)
+  (hak : @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF a a) q) k)
+  (haData :
+    And (@LT.lt.{0} Nat instLTNat a q)
+      (And (@LE.le.{0} Nat instLENat q (ChompLean.gameF a a))
+        (@LT.lt.{0} Nat instLTNat (ChompLean.gameF a a)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q H)))),
+  Not (@Eq.{1} Nat (ChompLean.gameF a a) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)) → False</pre></li><li><code>ChompLean.gameF_mem_oldDiagonalLandingOffsets_iff._proof_1_4</code><pre class="prose">∀ {q H k : Nat} (a : Nat)
+  (hvalue : @Eq.{1} Nat (ChompLean.gameF a a) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k) q)
+        k) →
+    False</pre></li><li><code>ChompLean.gameF_newDiagonalLandingOffsets_nodup</code><pre class="prose">∀ (q H : Nat), @List.Nodup.{0} Nat (ChompLean.gameFNewDiagonalLandingOffsets q H)</pre></li><li><code>ChompLean.gameF_newDiagonalLandingOffsets_nodup._proof_1_1</code><pre class="prose">∀ (q x y : Nat)
+  (hxy :
+    @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF x x) q)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF y y) q))
+  (hxData : @LE.le.{0} Nat instLENat q (ChompLean.gameF x x))
+  (hyData : @LE.le.{0} Nat instLENat q (ChompLean.gameF y y)),
+  Not (@Eq.{1} Nat (ChompLean.gameF x x) (ChompLean.gameF y y)) → False</pre></li><li><code>ChompLean.gameF_oldDiagonalLandingOffsets_nodup</code><pre class="prose">∀ (q H : Nat), @List.Nodup.{0} Nat (ChompLean.gameFOldDiagonalLandingOffsets q H)</pre></li><li><code>ChompLean.gameF_oldDiagonalLandingOffsets_nodup._proof_1_1</code><pre class="prose">∀ (q x y : Nat)
+  (hxy :
+    @Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF x x) q)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (ChompLean.gameF y y) q))
+  (hxData : @LE.le.{0} Nat instLENat q (ChompLean.gameF x x))
+  (hyData : @LE.le.{0} Nat instLENat q (ChompLean.gameF y y)),
+  Not (@Eq.{1} Nat (ChompLean.gameF x x) (ChompLean.gameF y y)) → False</pre></li><li><code>ChompLean.gameF_old_new_landingOffsets_disjoint</code><pre class="prose">∀ {q H k : Nat}
+  (hold :
+    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.gameFOldDiagonalLandingOffsets q H) k)
+  (hnew :
+    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (ChompLean.gameFNewDiagonalLandingOffsets q H) k),
+  False</pre></li><li><code>ChompLean.newDiagAfterCut_iff_lag</code><pre class="prose">∀ (q k : Nat),
+  Iff (ChompLean.NewDiagAfterCut q k)
+    (@Exists.{1} Nat fun (i : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat i k)
+        (@Eq.{1} Nat (ChompLean.gameFDiagonalLag (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k i)))</pre></li><li><code>ChompLean.newDiagAfterCut_iff_lag._proof_1_2</code><pre class="prose">∀ (q k i : Nat) (hi : @LT.lt.{0} Nat instLTNat i k)
+  (hvalue :
+    @Eq.{1} Nat
+      (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  Not
+      (@Eq.{1} Nat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k i)) →
+    False</pre></li><li><code>ChompLean.newDiagAfterCut_iff_lag._proof_1_3</code><pre class="prose">∀ (q k i : Nat) (hi : @LT.lt.{0} Nat instLTNat i k)
+  (hlag :
+    @Eq.{1} Nat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+        (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) k i))
+  (hgt :
+    @LT.lt.{0} Nat instLTNat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+      (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))),
+  Not
+      (@Eq.{1} Nat
+        (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)) →
+    False</pre></li><li><code>ChompLean.newDiagAfterCut_witness_unique</code><pre class="prose">∀ {q k i j : Nat} (_hi : @LT.lt.{0} Nat instLTNat i k)
+  (hvi :
+    @Eq.{1} Nat
+      (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))
+  (_hj : @LT.lt.{0} Nat instLTNat j k)
+  (hvj :
+    @Eq.{1} Nat
+      (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q j)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q j))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  @Eq.{1} Nat i j</pre></li><li><code>ChompLean.newDiagAfterCut_witness_unique._proof_1_1</code><pre class="prose">∀ {q k i j : Nat}
+  (hij :
+    @Eq.{1} Nat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q j)),
+  Not (@Eq.{1} Nat i j) → False</pre></li><li><code>ChompLean.no_newDiagAfterCut_of_lt_three</code><pre class="prose">∀ {q k : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) q)
+  (hk : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))),
+  Not (ChompLean.NewDiagAfterCut q k)</pre></li><li><code>ChompLean.no_newDiagAfterCut_of_lt_three._proof_1_1</code><pre class="prose">∀ {q k : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) q) (i : Nat)
+  (hvalue :
+    @Eq.{1} Nat
+      (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  Not
+      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)) →
+    False</pre></li><li><code>ChompLean.no_newDiagAfterCut_of_lt_three._proof_1_2</code><pre class="prose">∀ {q k : Nat} (hk : @LT.lt.{0} Nat instLTNat k (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) (i : Nat)
+  (hlow :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  False</pre></li><li><code>ChompLean.youngDiag_disjoint_newDiagAfterCut</code><pre class="prose">∀ (q k : Nat), Not (And (ChompLean.YoungDiag q k) (ChompLean.NewDiagAfterCut q k))</pre></li><li><code>ChompLean.youngDiag_disjoint_newDiagAfterCut._proof_1_1</code><pre class="prose">∀ (q k a : Nat) (haq : @LT.lt.{0} Nat instLTNat a q)
+  (hold : @Eq.{1} Nat (ChompLean.gameF a a) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))
+  (i : Nat)
+  (hnew :
+    @Eq.{1} Nat
+      (ChompLean.gameF (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))
+  (hai : @Eq.{1} Nat a (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q i)), False</pre></li><li><code>ChompLean.youngDiag_succ_iff</code><pre class="prose">∀ (q k : Nat),
+  Iff
+    (ChompLean.YoungDiag
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      k)
+    (Or
+      (ChompLean.YoungDiag q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      (@Eq.{1} Nat (ChompLean.gameF q q)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          k)))</pre></li><li><code>ChompLean.youngDiag_succ_iff._proof_1_1</code><pre class="prose">∀ (q k a : Nat)
+  (ha :
+    @LT.lt.{0} Nat instLTNat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hvalue :
+    @Eq.{1} Nat (ChompLean.gameF a a)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        k))
+  (haq : Not (@Eq.{1} Nat a q)), Not (@LT.lt.{0} Nat instLTNat a q) → False</pre></li><li><code>ChompLean.youngDiag_succ_iff._proof_1_2</code><pre class="prose">∀ (q k a : Nat) (ha : @LT.lt.{0} Nat instLTNat a q)
+  (hvalue :
+    @Eq.{1} Nat (ChompLean.gameF a a)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.youngDiag_succ_iff._proof_1_3</code><pre class="prose">∀ (q k : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat q
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.youngDiag_witness_unique</code><pre class="prose">∀ {q k a b : Nat} (_ha : @LT.lt.{0} Nat instLTNat a q)
+  (hva : @Eq.{1} Nat (ChompLean.gameF a a) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k))
+  (_hb : @LT.lt.{0} Nat instLTNat b q)
+  (hvb : @Eq.{1} Nat (ChompLean.gameF b b) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  @Eq.{1} Nat a b</pre></li><li><code>_private.XDeadlineCutYoungDiag.0.ChompLean.gameF_nonblockersThroughList_nodup_xdclf</code><pre class="prose">∀ (n : Nat), @List.Nodup.{0} Nat (ChompLean.gameFNonblockersThroughList n)</pre></li><li><code>_private.XDeadlineCutYoungDiag.0.ChompLean.xdclf_nodup_map_of_injective_on</code><pre class="prose">∀ (f : Nat → Nat) (xs : List.{0} Nat) (hxs : @List.Nodup.{0} Nat xs)
+  (hinj :
+    ∀ (x : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →
+        ∀ (y : Nat),
+          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs y →
+            @Eq.{1} Nat (f x) (f y) → @Eq.{1} Nat x y),
+  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat f xs)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/XDeadlineCutYoungDiag.lean:1</p><p>SHA-256: <code class="path">368bba2e39e7f7fbe068631e6127fb9103d41083ef0a532a115020190a41e3f9</code></p></section><p><a href="../index.html#id=lean-c542c05d9d82ade03c0e">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

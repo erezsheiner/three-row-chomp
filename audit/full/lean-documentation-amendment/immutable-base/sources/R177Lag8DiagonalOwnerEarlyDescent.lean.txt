@@ -1,0 +1,742 @@
+import R167Lag8AtomicNeighborNormalForm
+import R173TerminalOnlyBraidRelayTrajectoryAudit
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+# R177: lag-eight diagonal owner and the first forced descent
+
+The seeded replay isolates one very small missing implication.  In the
+atomic lag-eight packet, a legal diagonal owner of `q` makes the neighbour
+cell `(q-3,g)` unable to emit `q`: ECHO-LEFT would put that occurrence
+strictly left of its owner, while the owner lies at or before `g`.
+
+Computationally, keeping the two terminal strands ascending through row
+`q-1` forces exactly that forbidden neighbour emission.  The definitions at
+the end record this one-cell implication and prove that it is equivalent to
+the desired early descent, relative to the already proved R167 normal form.
+-/
+
+/-- The diagonal half of R167's atomic owner-channel normal form. -/
+def Lag8AtomicDiagonalOwnerBranch (q g : Nat) : Prop :=
+  exists d,
+    7 < d /\ d <= g /\ gameF d d = q /\
+    DiagPrefix gameF (q - 3) g q /\
+    Not (ColTail gameF (q - 3) g q) /\
+    (Not (C gameF (q - 3) g q) \/
+      exists b, 10 <= b /\ b < d /\ gameF (q - 3) b = q)
+
+/-- If `q` has any diagonal owner, D/S disjointness eliminates R167's
+row-start arm, so the exact diagonal branch above is selected. -/
+theorem gameF_lag8_atomic_diagonalBranch_of_diagonalOwner
+    {q r g d0 : Nat}
+    (hq : 26 <= q)
+    (hrv : r < q + 3)
+    (hstart : gameF (q + 3) r = q + 3)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hfailure : g + 1 < r)
+    (hra : r <= q - 5)
+    (hburn : gameF (q - 5) (r - 1) = q + 3)
+    (hatomic : r = g + 2)
+    (hdiag0 : gameF d0 d0 = q) :
+    Lag8AtomicDiagonalOwnerBranch q g := by
+  rcases gameF_lag8_atomic_ownerArms_prefix_normalForm
+      hq hrv hstart howners hfailure hra hburn hatomic with
+      hdiag | hrow
+  · exact hdiag
+  · rcases hrow with
+      ⟨s, b, _h10, _hbs, _hsg, hsq, hrowStart, _hbval,
+        _hC, _hnoDiag, _hnoCol⟩
+    exact False.elim
+      (disjoint_D_S gameRecurrenceModel
+        ⟨d0, hdiag0⟩ ⟨s, hsq, hrowStart⟩)
+
+/-- ECHO-LEFT forbids the atomic neighbour itself from being a later host
+of the diagonally owned value `q`. -/
+theorem gameF_lag8_atomic_diagonalBranch_neighbor_ne_q
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (hra : r <= q - 5)
+    (hatomic : r = g + 2)
+    (hdiag : Lag8AtomicDiagonalOwnerBranch q g) :
+    gameF (q - 3) g ≠ q := by
+  rcases hdiag with
+    ⟨d, _h7d, hdg, hdd, _hD, _hnoCol, _hrowChannel⟩
+  intro hhost
+  have hleft := gameF_past_diagonal_echo_strictly_left
+    (a := d) (q := q - 3) (r := g)
+    (by omega) (by omega) (hhost.trans hdd.symm)
+  omega
+
+/-- With the empirical second-neighbour freeze, the diagonal branch is
+therefore a strict-high non-`q` neighbour.  This is the complete theorem
+content currently available before tracking the parked high value. -/
+theorem gameF_lag8_atomic_diagonalOwner_strictHigh_neighbor_packet
+    {q r g d0 : Nat}
+    (hq : 26 <= q)
+    (hrv : r < q + 3)
+    (hstart : gameF (q + 3) r = q + 3)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hfailure : g + 1 < r)
+    (hra : r <= q - 5)
+    (hburn : gameF (q - 5) (r - 1) = q + 3)
+    (hatomic : r = g + 2)
+    (hsecond : gameF (q - 2) g = q - 2)
+    (hdiag0 : gameF d0 d0 = q) :
+    Lag8AtomicDiagonalOwnerBranch q g /\
+      gameF (q - 3) g ≠ q /\
+      q + 3 < gameF (q - 3) g := by
+  have hbranch := gameF_lag8_atomic_diagonalBranch_of_diagonalOwner
+    hq hrv hstart howners hfailure hra hburn hatomic hdiag0
+  have hne := gameF_lag8_atomic_diagonalBranch_neighbor_ne_q
+    hq hra hatomic hbranch
+  have hhigh := gameF_lag8_atomic_secondNeighbor_forces_strictHigh
+    hq hrv hstart howners hfailure hra hburn hatomic hsecond
+  exact ⟨hbranch, hne, hhigh.2⟩
+
+/-- Every actual opening owner of the strict-high neighbour value
+`X=F(q-3,g)` lies strictly to the right of `g`.  For a diagonal opening this
+is ECHO-LEFT; for a row-start opening it is the analogous prehost law.  This
+is an unconditional opening normal form for the high value seen in the
+seeded replay, and uses no chronology atom. -/
+theorem gameF_lag8_strictHigh_neighbor_opening_strictly_right
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (hra : r <= q - 5)
+    (hatomic : r = g + 2)
+    (hhigh : q + 3 < gameF (q - 3) g) :
+    (exists d,
+      g < d /\ d < gameF (q - 3) g /\
+        gameF d d = gameF (q - 3) g) \/
+    (exists s,
+      g < s /\ s < gameF (q - 3) g /\
+        gameF (gameF (q - 3) g) s = gameF (q - 3) g) := by
+  let X := gameF (q - 3) g
+  have hXpos : 0 < X := by
+    dsimp only [X]
+    omega
+  have hgrow : g < q - 3 := by omega
+  have hrowX : q - 3 < X := by
+    dsimp only [X]
+    omega
+  rcases gameRecurrenceModel.opening_cover hXpos with
+      ⟨d, hdX, hdiag⟩ | ⟨s, hsX, hstartX⟩
+  · have hgd : g < d := by
+      by_cases hdrow : d < q - 3
+      · exact gameF_past_diagonal_echo_strictly_left
+          (a := d) (q := q - 3) (r := g)
+          hdrow (by omega) (by simpa only [X] using hdiag.symm)
+      · omega
+    exact Or.inl ⟨d, hgd, by simpa only [X] using hdX,
+      by simpa only [X] using hdiag⟩
+  · have hgs : g < s := by
+      by_cases hsrow : s < q - 3
+      · exact gameF_pre_rowStart_host_strictly_left_of_owner
+          (p := X) (s := s) (t := q - 3) (b := g)
+          hstartX hsX hsrow hrowX (by omega) (by rfl)
+      · omega
+    exact Or.inr ⟨s, hgs, by simpa only [X] using hsX,
+      by simpa only [X] using hstartX⟩
+
+/-- On the next row the high value is already a literal same-column tail at
+column `g`, while the south-west source at `g-1` cannot see it through a
+diagonal prefix.  Therefore absence from that south-west source is exactly
+the conjunction of two concrete holes: no old tail in column `g-1` and no
+current-row prefix copy. -/
+theorem gameF_lag8_strictHigh_neighbor_southwest_source_normalForm
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (hra : r <= q - 5)
+    (hatomic : r = g + 2)
+    (hhigh : q + 3 < gameF (q - 3) g) :
+    ColTail gameF (q - 2) g (gameF (q - 3) g) /\
+      Not (DiagPrefix gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+      (Not (B gameF (q - 2) (g - 1) (gameF (q - 3) g)) <->
+        Not (ColTail gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+        Not (C gameF (q - 2) (g - 1) (gameF (q - 3) g))) := by
+  let X := gameF (q - 3) g
+  have hgrow : g < q - 3 := by omega
+  have hrowX : q - 3 < X := by
+    dsimp only [X]
+    omega
+  have hmexOld : IsMex (B gameF (q - 3) g) X := by
+    exact gameF_high_host_isMex (by omega) hrowX (by rfl)
+  have htail : ColTail gameF (q - 2) g X := by
+    exact ⟨q - 3, by omega, hgrow, by rfl⟩
+  have hnoDiag : Not (DiagPrefix gameF (q - 2) (g - 1) X) := by
+    rintro ⟨d, hdrow, hdcol, hdiag⟩
+    apply hmexOld.2.1
+    left
+    apply R_iff_diagPrefix_or_colTail.mpr
+    left
+    exact ⟨d, by omega, by omega, hdiag⟩
+  refine ⟨htail, hnoDiag, ?_⟩
+  constructor
+  · intro hhole
+    constructor
+    · intro hcol
+      apply hhole
+      left
+      exact R_iff_diagPrefix_or_colTail.mpr (Or.inr hcol)
+    · intro hprefix
+      exact hhole (Or.inr hprefix)
+  · rintro ⟨hnoTail, hnoPrefix⟩ hsource
+    rcases hsource with hR | hC
+    · rcases R_iff_diagPrefix_or_colTail.mp hR with hD | hTail
+      · exact hnoDiag hD
+      · exact hnoTail hTail
+    · exact hnoPrefix hC
+
+/-- Owner coverage already saturates the south-west receiver below the
+terminal target, with only two concrete boundary-owner exceptions.  A
+diagonal owner strictly before `g` enters the diagonal prefix; a row-start
+owner strictly before `g-1` enters the current prefix (by persistence or
+backward propagation); an owner exactly at `g-1` enters the same-column
+tail unless it starts on the current row, which the named freeze at `g`
+excludes.  Freeze-column uniqueness reduces an owner exactly at `g` to the
+named value `q-2`. -/
+theorem gameF_lag8_atomic_southwest_low_saturation_except_two
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hra : r <= q - 5)
+    (hatomic : r = g + 2)
+    (hsecond : gameF (q - 2) g = q - 2) :
+    forall k, 0 < k -> k < q + 3 ->
+      k ≠ q - 2 -> k ≠ gameF g g ->
+      B gameF (q - 2) (g - 1) k := by
+  intro k hkpos hkupper hkSecond hkDiag
+  have hgrow : g < q - 3 := by omega
+  rcases howners k hkpos hkupper with
+      ⟨d, hdg, hdiag⟩ | ⟨s, hsg, hsk, hstart⟩
+  · by_cases hdEq : d = g
+    · subst d
+      exact False.elim (hkDiag hdiag.symm)
+    · left
+      refine ⟨d, by omega, ?_⟩
+      have hdPred : d <= g - 1 := by omega
+      simpa [Nat.min_eq_left hdPred] using hdiag
+  · by_cases hsEq : s = g
+    · subst s
+      have hkEq : k = q - 2 := by
+        by_cases hkt : k < q - 2
+        · exact False.elim
+            (gameF_freeze_column_unique
+              (r := g) (k₁ := k) (k₂ := q - 2)
+              hsk hstart hkt hsecond)
+        · by_cases htk : q - 2 < k
+          · exact False.elim
+              (gameF_freeze_column_unique
+                (r := g) (k₁ := q - 2) (k₂ := k)
+                (by omega) hsecond htk hstart)
+          · omega
+      exact False.elim (hkSecond hkEq)
+    · have hsPred : s <= g - 1 := by omega
+      by_cases hsStrict : s < g - 1
+      · by_cases hkt : k <= q - 2
+        · right
+          exact ⟨s, hsStrict,
+            gameF_freeze_persists hsk hstart hkt⟩
+        · have htBefore : q - 2 < k := by omega
+          rcases rowStartPropagation gameRecurrenceModel
+              (p := k) (r := s) hstart hsk
+              (q := q - 2) (by omega) htBefore with
+              ⟨b, hbs, hbval⟩
+          right
+          exact ⟨b, by omega, hbval⟩
+      · have hsBoundary : s = g - 1 := by omega
+        subst s
+        by_cases hkt : k < q - 2
+        · left
+          refine ⟨k, hkt, ?_⟩
+          have hpredk : g - 1 < k := hsk
+          simpa [Nat.min_eq_right (Nat.le_of_lt hpredk)] using hstart
+        · by_cases htk : q - 2 < k
+          · rcases rowStartPropagation gameRecurrenceModel
+                (p := k) (r := g - 1) hstart hsk
+                (q := q - 2) (by omega) htk with
+                ⟨b, hbpred, hbval⟩
+            right
+            exact ⟨b, hbpred, hbval⟩
+          · have hkEq : k = q - 2 := by omega
+            subst k
+            have hcols : g - 1 = g :=
+              gameRecurrenceModel.fixed_q_injective
+                (q := q - 2) (b₁ := g - 1) (b₂ := g)
+                (by omega) (by omega) (hstart.trans hsecond.symm)
+            omega
+
+/-- The two low exceptions are not independent.  On the non-carry branch,
+if `q-2` were absent then the receiver MEX would be at most `q-2`; row
+injectivity excludes equality because the next column already outputs
+`q-2`.  The low-saturation theorem then forces that smaller MEX to be
+exactly `F(g,g)`.  Hence coverage of the diagonal boundary value (whenever
+it lies below the strict-high target) automatically covers `q-2` as well. -/
+theorem gameF_lag8_atomic_southwest_qminus2_mem_of_diagonal_boundary
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hra : r <= q - 5)
+    (hatomic : r = g + 2)
+    (hsecond : gameF (q - 2) g = q - 2)
+    (hhigh : q + 3 < gameF (q - 3) g)
+    (hnoCarry : q - 2 <= gameF (q - 3) (g - 1))
+    (hDiagBoundary : gameF g g < gameF (q - 3) g ->
+      B gameF (q - 2) (g - 1) (gameF g g)) :
+    B gameF (q - 2) (g - 1) (q - 2) := by
+  have hgpos : 0 < g := by
+    apply Nat.pos_of_ne_zero
+    intro hgzero
+    have hcol0 := gameF_col0 (q - 2)
+    rw [hgzero] at hsecond
+    omega
+  have hnotCarry :
+      Not (g - 1 < q - 2 /\
+        gameF ((q - 2) - 1) (g - 1) < q - 2) := by
+    rintro ⟨_hcol, hlow⟩
+    have hrow : (q - 2) - 1 = q - 3 := by omega
+    rw [hrow] at hlow
+    omega
+  have hmex := gameF_brouwerRecurrence.2
+    (q := q - 2) (r := g - 1) (by omega) hnotCarry
+  apply Classical.byContradiction
+  intro hSecondHole
+  have hmLe : gameF (q - 2) (g - 1) <= q - 2 := by
+    apply Nat.le_of_not_gt
+    intro hSecondBelowMex
+    exact hSecondHole
+      (hmex.2.2 (q - 2) (by omega) hSecondBelowMex)
+  have hmNe : gameF (q - 2) (g - 1) ≠ q - 2 := by
+    intro hmEq
+    have hcols : g - 1 = g :=
+      gameRecurrenceModel.fixed_q_injective
+        (q := q - 2) (b₁ := g - 1) (b₂ := g)
+        (by omega) (by omega) (hmEq.trans hsecond.symm)
+    omega
+  have hmLt : gameF (q - 2) (g - 1) < q - 2 := by omega
+  have hmEqDiag : gameF (q - 2) (g - 1) = gameF g g := by
+    apply Classical.byContradiction
+    intro hmDiag
+    have hcovered :=
+      gameF_lag8_atomic_southwest_low_saturation_except_two
+        hq howners hra hatomic hsecond
+        (gameF (q - 2) (g - 1)) hmex.1 (by omega)
+        (by omega) hmDiag
+    exact hmex.2.1 hcovered
+  have hDiagBelow : gameF g g < gameF (q - 3) g := by
+    rw [← hmEqDiag]
+    omega
+  exact hmex.2.1 (by
+    rw [hmEqDiag]
+    exact hDiagBoundary hDiagBelow)
+
+/-- Exact non-circular residual for the empirical south-west transport
+
+`F(q-3,g) = F(q-2,g-1)`.
+
+The equivalence says precisely what is still missing.  The predecessor at
+`g-1` must not trigger the carry branch; the high value must have neither a
+same-column tail nor a current-prefix copy at the receiver; and all lower
+identities from the old saturated source must survive in the receiver
+source.  The diagonal-hole component is absent because the preceding
+normal form proves it automatically. -/
+theorem gameF_lag8_strictHigh_neighbor_southwest_iff_exact_source_packet
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (hra : r <= q - 5)
+    (hatomic : r = g + 2)
+    (hhigh : q + 3 < gameF (q - 3) g) :
+    gameF (q - 2) (g - 1) = gameF (q - 3) g <->
+      q - 2 <= gameF (q - 3) (g - 1) /\
+      Not (ColTail gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+      Not (C gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+      (forall k, 0 < k -> k < gameF (q - 3) g ->
+        B gameF (q - 3) g k -> B gameF (q - 2) (g - 1) k) := by
+  let X := gameF (q - 3) g
+  have hgrow : g < q - 3 := by omega
+  have hrowX : q - 3 < X := by
+    dsimp only [X]
+    omega
+  have hmexOld : IsMex (B gameF (q - 3) g) X := by
+    exact gameF_high_host_isMex (by omega) hrowX (by rfl)
+  have hsourceNF :=
+    gameF_lag8_strictHigh_neighbor_southwest_source_normalForm
+      hq hra hatomic hhigh
+  constructor
+  · intro hreceiver
+    have hreceiverHigh : q - 2 < gameF (q - 2) (g - 1) := by
+      rw [hreceiver]
+      omega
+    have hmexReceiver :
+        IsMex (B gameF (q - 2) (g - 1))
+          (gameF (q - 2) (g - 1)) := by
+      exact gameF_high_host_isMex (by omega) hreceiverHigh rfl
+    have hnoCarryPre : q - 2 <= gameF (q - 3) (g - 1) := by
+      apply Nat.le_of_not_gt
+      intro hlow
+      have hcopy := gameF_brouwerRecurrence.1
+        (q := q - 2) (r := g - 1) (by omega) (by
+          have hrow : (q - 2) - 1 = q - 3 := by omega
+          simpa only [hrow] using hlow)
+      rw [hreceiver] at hcopy
+      have hrow : (q - 2) - 1 = q - 3 := by omega
+      rw [hrow] at hcopy
+      omega
+    have hhole : Not (B gameF (q - 2) (g - 1) X) := by
+      dsimp only [X]
+      simpa only [hreceiver] using hmexReceiver.2.1
+    have htwo := hsourceNF.2.2.mp (by simpa only [X] using hhole)
+    refine ⟨hnoCarryPre, htwo.1, htwo.2, ?_⟩
+    intro k hkpos hkX _hkOld
+    exact hmexReceiver.2.2 k hkpos (by simpa only [hreceiver, X] using hkX)
+  · rintro ⟨hnoCarryPre, hnoTail, hnoPrefix, hretain⟩
+    have hnotCarry :
+        Not (g - 1 < q - 2 /\
+          gameF ((q - 2) - 1) (g - 1) < q - 2) := by
+      rintro ⟨_hcol, hlow⟩
+      have hrow : (q - 2) - 1 = q - 3 := by omega
+      rw [hrow] at hlow
+      omega
+    have hmexActual := gameF_brouwerRecurrence.2
+      (q := q - 2) (r := g - 1) (by omega) hnotCarry
+    have hXabsent : Not (B gameF (q - 2) (g - 1) X) := by
+      apply hsourceNF.2.2.mpr
+      exact ⟨by simpa only [X] using hnoTail,
+        by simpa only [X] using hnoPrefix⟩
+    have hmexX : IsMex (B gameF (q - 2) (g - 1)) X := by
+      refine ⟨by omega, hXabsent, ?_⟩
+      intro k hkpos hkX
+      exact hretain k hkpos (by simpa only [X] using hkX)
+        (hmexOld.2.2 k hkpos hkX)
+    exact tail_isMex_unique hmexActual hmexX
+
+/-- Owner-covered specialization of the exact source packet.  All lower
+values below `q+3`, other than the two boundary-owner values `q-2` and
+`F(g,g)`, are discharged by the preceding theorem.  Thus the remaining
+slanted-retention debt is only the genuinely high interval
+`[q+3,F(q-3,g))`, plus two explicit source-membership checks. -/
+theorem gameF_lag8_atomic_strictHigh_southwest_iff_reduced_source_packet
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hra : r <= q - 5)
+    (hatomic : r = g + 2)
+    (hsecond : gameF (q - 2) g = q - 2)
+    (hhigh : q + 3 < gameF (q - 3) g) :
+    gameF (q - 2) (g - 1) = gameF (q - 3) g <->
+      q - 2 <= gameF (q - 3) (g - 1) /\
+      Not (ColTail gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+      Not (C gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+      B gameF (q - 2) (g - 1) (q - 2) /\
+      (gameF g g < gameF (q - 3) g ->
+        B gameF (q - 2) (g - 1) (gameF g g)) /\
+      (forall k, q + 3 <= k -> k < gameF (q - 3) g ->
+        B gameF (q - 3) g k -> B gameF (q - 2) (g - 1) k) := by
+  have hiff :=
+    gameF_lag8_strictHigh_neighbor_southwest_iff_exact_source_packet
+      hq hra hatomic hhigh
+  have hmexOld :
+      IsMex (B gameF (q - 3) g) (gameF (q - 3) g) := by
+    exact gameF_high_host_isMex (by omega) (by omega) rfl
+  constructor
+  · intro hreceiver
+    rcases hiff.mp hreceiver with
+      ⟨hnoCarry, hnoTail, hnoPrefix, hretain⟩
+    have hSecondOld : B gameF (q - 3) g (q - 2) :=
+      hmexOld.2.2 (q - 2) (by omega) (by omega)
+    have hSecondNew := hretain (q - 2) (by omega) (by omega) hSecondOld
+    have hDiagNew : gameF g g < gameF (q - 3) g ->
+        B gameF (q - 2) (g - 1) (gameF g g) := by
+      intro hDiagBelow
+      have hDiagPos : 0 < gameF g g := by
+        have hgt := gameRecurrenceModel.diagonal_gt g
+        change g < gameF g g at hgt
+        omega
+      exact hretain (gameF g g) hDiagPos hDiagBelow
+        (hmexOld.2.2 (gameF g g) hDiagPos hDiagBelow)
+    exact ⟨hnoCarry, hnoTail, hnoPrefix, hSecondNew, hDiagNew,
+      fun k hkBand hkX hkOld => hretain k (by omega) hkX hkOld⟩
+  · rintro ⟨hnoCarry, hnoTail, hnoPrefix, hSecond, hDiag, hHighRetain⟩
+    apply hiff.mpr
+    refine ⟨hnoCarry, hnoTail, hnoPrefix, ?_⟩
+    intro k hkpos hkX hkOld
+    by_cases hkLow : k < q + 3
+    · by_cases hkSecond : k = q - 2
+      · simpa only [hkSecond] using hSecond
+      · by_cases hkDiag : k = gameF g g
+        · subst k
+          exact hDiag hkX
+        · exact gameF_lag8_atomic_southwest_low_saturation_except_two
+            hq howners hra hatomic hsecond k hkpos hkLow hkSecond hkDiag
+    · exact hHighRetain k (by omega) hkX hkOld
+
+/-- Final channel-level form of the south-west debt.  Static diagonal-prefix
+values with owner `<g` transfer automatically to the receiver; owner `g`
+is precisely the already isolated value `F(g,g)`.  Consequently the only
+high values which still require a slanted transport argument are values
+carried by the old column tail or by the old current-row prefix. -/
+theorem gameF_lag8_atomic_strictHigh_southwest_iff_dynamic_channel_packet
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hra : r <= q - 5)
+    (hatomic : r = g + 2)
+    (hsecond : gameF (q - 2) g = q - 2)
+    (hhigh : q + 3 < gameF (q - 3) g) :
+    gameF (q - 2) (g - 1) = gameF (q - 3) g <->
+      q - 2 <= gameF (q - 3) (g - 1) /\
+      Not (ColTail gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+      Not (C gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+      B gameF (q - 2) (g - 1) (q - 2) /\
+      (gameF g g < gameF (q - 3) g ->
+        B gameF (q - 2) (g - 1) (gameF g g)) /\
+      (forall k, q + 3 <= k -> k < gameF (q - 3) g ->
+        (ColTail gameF (q - 3) g k \/ C gameF (q - 3) g k) ->
+        B gameF (q - 2) (g - 1) k) := by
+  have hiff :=
+    gameF_lag8_atomic_strictHigh_southwest_iff_reduced_source_packet
+      hq howners hra hatomic hsecond hhigh
+  constructor
+  · intro hreceiver
+    rcases hiff.mp hreceiver with
+      ⟨hnoCarry, hnoTail, hnoPrefix, hSecond, hDiag, hHighRetain⟩
+    refine ⟨hnoCarry, hnoTail, hnoPrefix, hSecond, hDiag, ?_⟩
+    intro k hkBand hkX hDynamic
+    apply hHighRetain k hkBand hkX
+    rcases hDynamic with hTail | hPrefix
+    · exact Or.inl (R_iff_diagPrefix_or_colTail.mpr (Or.inr hTail))
+    · exact Or.inr hPrefix
+  · rintro ⟨hnoCarry, hnoTail, hnoPrefix, hSecond, hDiag, hDynamic⟩
+    apply hiff.mpr
+    refine ⟨hnoCarry, hnoTail, hnoPrefix, hSecond, hDiag, ?_⟩
+    intro k hkBand hkX hkOld
+    rcases hkOld with hR | hC
+    · rcases R_iff_diagPrefix_or_colTail.mp hR with hD | hTail
+      · rcases hD with ⟨d, hdrow, hdg, hdiag⟩
+        by_cases hdPred : d <= g - 1
+        · left
+          apply R_iff_diagPrefix_or_colTail.mpr
+          left
+          exact ⟨d, by omega, hdPred, hdiag⟩
+        · have hdEq : d = g := by omega
+          subst d
+          have hkEq : k = gameF g g := hdiag.symm
+          subst k
+          exact hDiag hkX
+      · exact hDynamic k hkBand hkX (Or.inl hTail)
+    · exact hDynamic k hkBand hkX (Or.inr hC)
+
+/-- Minimal dynamic-channel packet.  The explicit `q-2` membership from the
+previous equivalence is redundant: non-carry plus coverage of the one
+diagonal boundary value forces it by the preceding MEX argument.  What
+remains is therefore one low boundary value and the genuinely dynamic high
+channels. -/
+theorem gameF_lag8_atomic_strictHigh_southwest_iff_minimal_dynamic_packet
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hra : r <= q - 5)
+    (hatomic : r = g + 2)
+    (hsecond : gameF (q - 2) g = q - 2)
+    (hhigh : q + 3 < gameF (q - 3) g) :
+    gameF (q - 2) (g - 1) = gameF (q - 3) g <->
+      q - 2 <= gameF (q - 3) (g - 1) /\
+      Not (ColTail gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+      Not (C gameF (q - 2) (g - 1) (gameF (q - 3) g)) /\
+      (gameF g g < gameF (q - 3) g ->
+        B gameF (q - 2) (g - 1) (gameF g g)) /\
+      (forall k, q + 3 <= k -> k < gameF (q - 3) g ->
+        (ColTail gameF (q - 3) g k \/ C gameF (q - 3) g k) ->
+        B gameF (q - 2) (g - 1) k) := by
+  have hiff :=
+    gameF_lag8_atomic_strictHigh_southwest_iff_dynamic_channel_packet
+      hq howners hra hatomic hsecond hhigh
+  constructor
+  · intro hreceiver
+    rcases hiff.mp hreceiver with
+      ⟨hnoCarry, hnoTail, hnoPrefix, _hSecond, hDiag, hDynamic⟩
+    exact ⟨hnoCarry, hnoTail, hnoPrefix, hDiag, hDynamic⟩
+  · rintro ⟨hnoCarry, hnoTail, hnoPrefix, hDiag, hDynamic⟩
+    have hSecond :=
+      gameF_lag8_atomic_southwest_qminus2_mem_of_diagonal_boundary
+        hq howners hra hatomic hsecond hhigh hnoCarry hDiag
+    exact hiff.mpr
+      ⟨hnoCarry, hnoTail, hnoPrefix, hSecond, hDiag, hDynamic⟩
+
+/-! ## Exact high-value residual, without a new chronology atom -/
+
+/-- Three rows later, the value emitted at `(q-4,r-1)` is certainly in the
+left source through the exact column tail, and it cannot have an old
+diagonal owner at or before `r-1`.  This is the part of the replayed parked
+value which follows from existing global recurrence/encoding theorems. -/
+theorem gameF_lag8_qminus4_leftValue_old_channels
+    {q r : Nat}
+    (hq : 26 <= q)
+    (hra : r <= q - 5) :
+    let z := gameF (q - 4) (r - 1)
+    ColTail gameF (q - 1) (r - 1) z /\
+      Not (DiagPrefix gameF (q - 1) (r - 1) z) := by
+  dsimp only
+  constructor
+  · exact ⟨q - 4, by omega, by omega, rfl⟩
+  · rintro ⟨d, hdtop, hdc, hdiag⟩
+    have hdold : d < q - 4 := by omega
+    have hleft := gameF_past_diagonal_echo_strictly_left
+      (a := d) (q := q - 4) (r := r - 1)
+      hdold (by omega) hdiag.symm
+    omega
+
+/-- Consequently the old left-strand value is parked-only as soon as its
+only still-unclassified left channel, the current row prefix, is absent. -/
+theorem gameF_lag8_qminus4_leftValue_parkedOnly
+    {q r : Nat}
+    (hq : 26 <= q)
+    (hra : r <= q - 5)
+    (hnoPrefix :
+      Not (C gameF (q - 1) (r - 1) (gameF (q - 4) (r - 1)))) :
+    ParkedOnly gameF (q - 1) (r - 1)
+      (gameF (q - 4) (r - 1)) := by
+  have hchannels := gameF_lag8_qminus4_leftValue_old_channels hq hra
+  exact ⟨hchannels.1, hchannels.2, hnoPrefix⟩
+
+/-- Exact source-level descent lemma for the replayed value
+`z=F(q-4,r-1)`.  The first two replacement exclusions are the genuinely
+unproved history bits: `z` must be neither the newly available diagonal at
+`r` nor a tail value of column `r`.  No global atom is hidden here. -/
+theorem gameF_lag8_qminus1_descent_of_oldLeft_unreplaced
+    {q r : Nat}
+    (hq : 26 <= q)
+    (hrpos : 0 < r)
+    (hra : r <= q - 5)
+    (hmexRight :
+      IsMex (B gameF (q - 1) r) (gameF (q - 1) r))
+    (hzpos : 0 < gameF (q - 4) (r - 1))
+    (hzlt :
+      gameF (q - 4) (r - 1) < gameF (q - 1) (r - 1))
+    (hnoPrefix :
+      Not (C gameF (q - 1) (r - 1) (gameF (q - 4) (r - 1))))
+    (hnoNewDiagonal :
+      Not (r < q - 1 /\ gameF r r = gameF (q - 4) (r - 1)))
+    (hnoRightTail :
+      Not (ColTail gameF (q - 1) r (gameF (q - 4) (r - 1)))) :
+    gameF (q - 1) r < gameF (q - 1) (r - 1) := by
+  let z := gameF (q - 4) (r - 1)
+  have hpark : ParkedOnly gameF (q - 1) (r - 1) z := by
+    dsimp only [z]
+    exact gameF_lag8_qminus4_leftValue_parkedOnly hq hra hnoPrefix
+  have hrsucc : (r - 1) + 1 = r := by omega
+  have hnewDiag :
+      Not ((r - 1) + 1 < q - 1 /\
+        gameF ((r - 1) + 1) ((r - 1) + 1) = z) := by
+    simpa only [hrsucc, z] using hnoNewDiagonal
+  have hnewTail :
+      Not (ColTail gameF (q - 1) ((r - 1) + 1) z) := by
+    simpa only [hrsucc, z] using hnoRightTail
+  have hfresh : Not (gameF (q - 1) (r - 1) = z) := by
+    dsimp only [z]
+    omega
+  have hloss := parked_value_swaps_out hpark hnewDiag hnewTail hfresh
+  have hrightHole :
+      Not (B gameF (q - 1) r z) := by
+    simpa only [hrsucc] using hloss.2
+  have hrightLe : gameF (q - 1) r <= z := by
+    apply Nat.le_of_not_gt
+    intro hzright
+    exact hrightHole (hmexRight.2.2 z (by simpa [z] using hzpos) hzright)
+  dsimp only [z] at hrightLe
+  omega
+
+/-- Conversely, the actual failed-high-braid and the row-`q-1` ascent force
+one of the two still-open replacement channels for the same concrete value.
+Thus the residual above is exact source bookkeeping, not a disguised new
+global proposition: the diagonal branch can stay ascending only by proving
+that `z` is the new diagonal at `r` or already occurs in column `r`. -/
+theorem gameF_lag8_allAscent_oldLeft_forces_exact_replacement
+    {q r g : Nat}
+    (hq : 26 <= q)
+    (hbraid :
+      FailedTerminalDeepHistoryHighBraidPacket
+        (q + 3) r g (q - 5))
+    (hascent :
+      gameF (q - 1) (r - 1) < gameF (q - 1) r)
+    (hzlt :
+      gameF (q - 4) (r - 1) < gameF (q - 1) (r - 1))
+    (hnoPrefix :
+      Not (C gameF (q - 1) (r - 1) (gameF (q - 4) (r - 1)))) :
+    (r < q - 1 /\ gameF r r = gameF (q - 4) (r - 1)) \/
+      ColTail gameF (q - 1) r (gameF (q - 4) (r - 1)) := by
+  have hra : r <= q - 5 := hbraid.oldHostChronology.1
+  have hpark := gameF_lag8_qminus4_leftValue_parkedOnly
+    hq hra hnoPrefix
+  have hzpos : 0 < gameF (q - 4) (r - 1) := by
+    have hrow := hbraid.interiorHighBraid
+      (q - 4) (by omega) (by omega)
+    omega
+  exact r173_allAscent_interior_parked_replacement
+    hbraid (by omega) (by omega) hascent hzpos hzlt hpark
+
+/-- The failed-high-braid/all-ascent specialization.  Existing theorems
+provide the MEX and positivity hypotheses automatically.  The conclusion
+shows the exact remaining work in the diagonal arm: prove the four concrete
+high-value history statements listed in the arguments, and the all-ascent
+packet closes immediately at row `q-1`. -/
+theorem gameF_lag8_diagonalOwner_allAscent_impossible_of_oldLeft_unreplaced
+    {q r g d0 : Nat}
+    (hq : 26 <= q)
+    (hrv : r < q + 3)
+    (hstart : gameF (q + 3) r = q + 3)
+    (howners : LowerOwnerCoveredBy (q + 3) g)
+    (hfailure : g + 1 < r)
+    (hra : r <= q - 5)
+    (hburn : gameF (q - 5) (r - 1) = q + 3)
+    (hatomic : r = g + 2)
+    (hsecond : gameF (q - 2) g = q - 2)
+    (hdiag0 : gameF d0 d0 = q)
+    (hascent : forall t, q - 5 <= t -> t < q + 3 ->
+      gameF t (r - 1) < gameF t r)
+    (hzlt :
+      gameF (q - 4) (r - 1) < gameF (q - 1) (r - 1))
+    (hnoPrefix :
+      Not (C gameF (q - 1) (r - 1) (gameF (q - 4) (r - 1))))
+    (hnoNewDiagonal :
+      Not (r < q - 1 /\ gameF r r = gameF (q - 4) (r - 1)))
+    (hnoRightTail :
+      Not (ColTail gameF (q - 1) r (gameF (q - 4) (r - 1)))) :
+    False := by
+  have _hdiagPacket :=
+    gameF_lag8_atomic_diagonalOwner_strictHigh_neighbor_packet
+      hq hrv hstart howners hfailure hra hburn hatomic hsecond hdiag0
+  have hbraid :
+      FailedTerminalDeepHistoryHighBraidPacket
+        (q + 3) r g (q - 5) :=
+    gameF_failed_deep_terminal_history_highBraid_packet
+      (by omega) hrv hstart howners hfailure hra (by omega) hburn
+  have hrowOld := hbraid.interiorHighBraid
+    (q - 4) (by omega) (by omega)
+  have hrowFinal := hbraid.interiorHighBraid
+    (q - 1) (by omega) (by omega)
+  have hdesc := gameF_lag8_qminus1_descent_of_oldLeft_unreplaced
+    hq (by omega) hra hrowFinal.2.2.1 (by omega) hzlt hnoPrefix
+      hnoNewDiagonal hnoRightTail
+  have hasc := hascent (q - 1) (by omega) (by omega)
+  omega
+
+#print axioms gameF_lag8_atomic_diagonalBranch_of_diagonalOwner
+#print axioms gameF_lag8_atomic_diagonalBranch_neighbor_ne_q
+#print axioms gameF_lag8_atomic_diagonalOwner_strictHigh_neighbor_packet
+#print axioms gameF_lag8_strictHigh_neighbor_opening_strictly_right
+#print axioms gameF_lag8_strictHigh_neighbor_southwest_source_normalForm
+#print axioms gameF_lag8_atomic_southwest_low_saturation_except_two
+#print axioms gameF_lag8_atomic_southwest_qminus2_mem_of_diagonal_boundary
+#print axioms gameF_lag8_strictHigh_neighbor_southwest_iff_exact_source_packet
+#print axioms gameF_lag8_atomic_strictHigh_southwest_iff_reduced_source_packet
+#print axioms gameF_lag8_atomic_strictHigh_southwest_iff_dynamic_channel_packet
+#print axioms gameF_lag8_atomic_strictHigh_southwest_iff_minimal_dynamic_packet
+#print axioms gameF_lag8_qminus4_leftValue_old_channels
+#print axioms gameF_lag8_qminus1_descent_of_oldLeft_unreplaced
+#print axioms gameF_lag8_allAscent_oldLeft_forces_exact_replacement
+#print axioms gameF_lag8_diagonalOwner_allAscent_impossible_of_oldLeft_unreplaced
+
+end ChompLean

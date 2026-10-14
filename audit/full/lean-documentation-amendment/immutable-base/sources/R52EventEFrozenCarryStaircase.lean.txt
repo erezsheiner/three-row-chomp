@@ -1,0 +1,268 @@
+import R51EventEMaximalBulkFrozenCarry
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+R52: aggregate the maximal Event-E frozen carries by owner cutoff.
+
+The frozen terminal itself does not give a cross-row no-reuse law: after
+its row start, repeating the value in the same column is exactly the legal
+constant-carry mechanism.  What it does give is an injective matching
+`g ↦ gameF s g` from frozen columns to completed owner times.  Consequently
+only `s-t` of the owners can lie strictly after a cutoff `t ≤ s`; every
+other frozen atom already persists on row `t`.
+
+This produces a reusable staircase certificate.  The final arithmetic
+counterframe records that the bare matching constraints allow `s-2`
+atoms, so no upper bound near `s/2` follows from those constraints alone.
+-/
+
+noncomputable def EventEFrozenCarryCutoffSlots
+    (s delta c b0 t : Nat) : List Nat :=
+  (EventEFrozenTripleBandSlots s delta c b0).filter
+    (fun g => decide (gameF s g <= t))
+
+private theorem r52_nodup_map_of_injective_on
+    (f : Nat -> Nat) (xs : List Nat)
+    (hxs : xs.Nodup)
+    (hinj : forall x, x ∈ xs -> forall y, y ∈ xs ->
+      f x = f y -> x = y) :
+    (xs.map f).Nodup := by
+  induction xs with
+  | nil => simp
+  | cons a as ih =>
+      rw [List.nodup_cons] at hxs
+      change (f a :: as.map f).Nodup
+      rw [List.nodup_cons]
+      constructor
+      · intro hmem
+        rcases List.mem_map.mp hmem with ⟨y, hy, hay⟩
+        have hay' : a = y :=
+          hinj a (by simp) y (by simp [hy]) hay.symm
+        subst y
+        exact hxs.1 hy
+      · apply ih hxs.2
+        intro x hx y hy hxy
+        exact hinj x (by simp [hx]) y (by simp [hy]) hxy
+
+/-- Aggregate cutoff law for any duplicate-free family of frozen
+terminals.  The low-owner subfamily is already present on row `t`, and
+the complementary high-owner subfamily has capacity at most `s-t`. -/
+theorem frozen_carry_terminal_cutoff_staircase
+    {s z t : Nat} {xs : List Nat}
+    (hts : t <= s)
+    (hxsNodup : xs.Nodup)
+    (hterminal : forall g, g ∈ xs ->
+      EventEFrozenCarryTerminal s z g (gameF s g)) :
+    let low := xs.filter (fun g => decide (gameF s g <= t))
+    xs.length <= low.length + (s - t) /\
+    low.Nodup /\
+    (low.map (fun g => gameF s g)).Nodup /\
+    forall g, g ∈ low -> gameF t g = gameF s g := by
+  let low := xs.filter (fun g => decide (gameF s g <= t))
+  let high := xs.filter (fun g => decide (t < gameF s g))
+  have hlowNodup : low.Nodup :=
+    List.filter_sublist.nodup hxsNodup
+  have hhighNodup : high.Nodup :=
+    List.filter_sublist.nodup hxsNodup
+  have hlowValuesNodup :
+      (low.map (fun g => gameF s g)).Nodup := by
+    apply r52_nodup_map_of_injective_on
+      (fun g => gameF s g) low hlowNodup
+    intro g hg k hk hEq
+    have hgXs : g ∈ xs := (List.mem_filter.mp hg).1
+    have hkXs : k ∈ xs := (List.mem_filter.mp hk).1
+    have hgTerm := hterminal g hgXs
+    have hkTerm := hterminal k hkXs
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_trans (Nat.le_of_lt hgTerm.1) hgTerm.2.1)
+      (Nat.le_trans (Nat.le_of_lt hkTerm.1) hkTerm.2.1) hEq
+  have hhighValuesNodup :
+      (high.map (fun g => gameF s g)).Nodup := by
+    apply r52_nodup_map_of_injective_on
+      (fun g => gameF s g) high hhighNodup
+    intro g hg k hk hEq
+    have hgXs : g ∈ xs := (List.mem_filter.mp hg).1
+    have hkXs : k ∈ xs := (List.mem_filter.mp hk).1
+    have hgTerm := hterminal g hgXs
+    have hkTerm := hterminal k hkXs
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_trans (Nat.le_of_lt hgTerm.1) hgTerm.2.1)
+      (Nat.le_trans (Nat.le_of_lt hkTerm.1) hkTerm.2.1) hEq
+  have hhighValuesSub : high.map (fun g => gameF s g) ⊆
+      List.range' (t + 1) (s - t) := by
+    intro p hp
+    rcases List.mem_map.mp hp with ⟨g, hgHigh, rfl⟩
+    have hgXs : g ∈ xs := (List.mem_filter.mp hgHigh).1
+    have htg : t < gameF s g := by
+      simpa [high] using (List.mem_filter.mp hgHigh).2
+    have hgs : gameF s g <= s := (hterminal g hgXs).2.1
+    apply List.mem_range'_1.mpr
+    constructor <;> omega
+  have hhighCap :=
+    nodup_subset_length_le hhighValuesNodup hhighValuesSub
+  simp only [List.length_map, List.length_range'] at hhighCap
+  have hpartitionRaw := List.length_eq_countP_add_countP
+    (fun g => decide (gameF s g <= t)) (l := xs)
+  simp only [List.countP_eq_length_filter] at hpartitionRaw
+  have hpartition : xs.length = low.length + high.length := by
+    simpa [low, high] using hpartitionRaw
+  have hcapacity : xs.length <= low.length + (s - t) := by
+    omega
+  have hpersist : forall g, g ∈ low ->
+      gameF t g = gameF s g := by
+    intro g hgLow
+    have hgXs : g ∈ xs := (List.mem_filter.mp hgLow).1
+    have hpt : gameF s g <= t := by
+      simpa [low] using (List.mem_filter.mp hgLow).2
+    have hterm := hterminal g hgXs
+    have hgp : g < gameF s g := hterm.1
+    have hstart : gameF (gameF s g) g = gameF s g :=
+      hterm.2.2.2.2.1
+    have hsmall :
+        gameF (gameF s g) g < gameF s g + 1 := by
+      omega
+    have hconst := constant_from gameRecurrenceModel
+      hgp hsmall (t - gameF s g)
+    have hsum : gameF s g + (t - gameF s g) = t := by
+      omega
+    rw [hsum] at hconst
+    change gameF t g = gameF (gameF s g) g at hconst
+    exact hconst.trans hstart
+  exact ⟨hcapacity, hlowNodup, hlowValuesNodup, hpersist⟩
+
+/-- The bulk maximal-defect family, together with its owner-cutoff
+staircase.  In particular, at least the bulk lower bound minus `s-t`
+atoms have already appeared by row `t`. -/
+def EventEMaximalFrozenCarryStaircaseCertificate
+    (s delta z c b0 t : Nat) : Prop :=
+  EventEMaximalBulkFrozenCarryCertificate s delta z c b0 /\
+  (EventEFrozenTripleBandSlots s delta c b0).length <=
+    (EventEFrozenCarryCutoffSlots s delta c b0 t).length + (s - t) /\
+  s / 2 <=
+    (EventEFrozenCarryCutoffSlots s delta c b0 t).length +
+      (s - t) + 2 /\
+  (EventEFrozenCarryCutoffSlots s delta c b0 t).Nodup /\
+  ((EventEFrozenCarryCutoffSlots s delta c b0 t).map
+    (fun g => gameF s g)).Nodup /\
+  forall g, g ∈ EventEFrozenCarryCutoffSlots s delta c b0 t ->
+    2 <= g /\ g ≠ c /\ g ≠ b0 /\
+    EventEFrozenCarryTerminal s z g (gameF s g) /\
+    gameF t g = gameF s g
+
+/-- Maximal Event E forces the full frozen staircase at every cutoff
+`t ≤ s`.  This is unconditional beyond the assumptions already used by
+the maximal-defect bulk theorem. -/
+theorem gameF_margin_eventE_maximal_defect_frozen_carry_staircase
+    (hU : UnitDip gameRecurrenceModel) {s t : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1))
+    (hts : t <= s) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    delta + 4 = s ->
+      exists c b0,
+        EventEMaximalFrozenCarryStaircaseCertificate
+          s delta z c b0 t := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  intro hmax
+  have hbulk := gameF_margin_eventE_maximal_defect_bulk_frozen_carries
+    hU hdip hmargin hnextDip hmax
+  change exists c b0,
+    EventEMaximalBulkFrozenCarryCertificate s delta z c b0 at hbulk
+  rcases hbulk with ⟨c, b0, hcert⟩
+  let frozen := EventEFrozenTripleBandSlots s delta c b0
+  let low := EventEFrozenCarryCutoffSlots s delta c b0 t
+  have hcross : EventECrossEdgeSurvivorCertificate
+      s delta z c b0 := hcert.1
+  have hbase := hcross.1.1.1
+  rcases hbase with
+    ⟨_hc, _hb0, _hcNe, _hSucc, _hBase,
+      hslotsNodup, _hslotsLen, hslotsProps, _hweak⟩
+  have hsurvivorsNodup :
+      (EventESurvivingBandSlots s delta c b0).Nodup :=
+    List.filter_sublist.nodup hslotsNodup
+  have htripleNodup :
+      (EventETriplePrefixBandSlots s delta c b0).Nodup :=
+    List.filter_sublist.nodup hsurvivorsNodup
+  have hfrozenNodup : frozen.Nodup :=
+    List.filter_sublist.nodup htripleNodup
+  have hterminals : forall g, g ∈ frozen ->
+      EventEFrozenCarryTerminal s z g (gameF s g) :=
+    hcert.2.2.2.2.2
+  have hstairs := frozen_carry_terminal_cutoff_staircase
+    hts hfrozenNodup hterminals
+  change frozen.length <= low.length + (s - t) /\
+    low.Nodup /\
+    (low.map (fun g => gameF s g)).Nodup /\
+    forall g, g ∈ low -> gameF t g = gameF s g at hstairs
+  have hbulkLower : s / 2 <= frozen.length + 2 :=
+    hcert.2.2.2.2.1
+  have hcutoffLower : s / 2 <= low.length + (s - t) + 2 := by
+    omega
+  refine ⟨c, b0, hcert, hstairs.1, hcutoffLower,
+    hstairs.2.1, hstairs.2.2.1, ?_⟩
+  intro g hgLow
+  have hgFrozen : g ∈ frozen :=
+    (List.mem_filter.mp hgLow).1
+  have hgTriple : g ∈ EventETriplePrefixBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgFrozen).1
+  have hgSurvivor : g ∈ EventESurvivingBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgTriple).1
+  have hgSlots : g ∈ EventEDefectBandSlots s delta c b0 :=
+    (List.mem_filter.mp hgSurvivor).1
+  have hgData := hslotsProps g hgSlots
+  have houter := List.mem_of_mem_erase hgSlots
+  have hinner := List.mem_of_mem_erase houter
+  have hgrange := List.mem_range'_1.mp hinner
+  have hgLower : 2 <= g := by
+    dsimp [EventEDefectBandSlots] at hgSlots
+    omega
+  exact ⟨hgLower, hgData.2.1, hgData.2.2.1,
+    hterminals g hgFrozen, hstairs.2.2.2 g hgLow⟩
+
+/-- Arithmetic projection of the terminal constraints: columns
+`2,...,s-1` can be matched injectively to owners `3,...,s` by `p=g+1`.
+Thus the bare facts `g<p≤s`, column injectivity, and owner injectivity
+permit `s-2` atoms. -/
+theorem frozen_carry_projection_capacity_counterframe
+    {s : Nat} (hs : 2 <= s) :
+    let cols := List.range' 2 (s - 2)
+    let owners := cols.map (fun g => g + 1)
+    cols.Nodup /\
+    cols.length = s - 2 /\
+    owners.Nodup /\
+    forall g, g ∈ cols ->
+      2 <= g /\ g < g + 1 /\ g + 1 <= s := by
+  let cols := List.range' 2 (s - 2)
+  let owners := cols.map (fun g => g + 1)
+  have hcolsNodup : cols.Nodup := by
+    simpa [cols] using (List.nodup_range' (s := 2) (n := s - 2))
+  have hownersNodup : owners.Nodup := by
+    apply r52_nodup_map_of_injective_on
+      (fun g => g + 1) cols hcolsNodup
+    intro x _hx y _hy hEq
+    omega
+  refine ⟨hcolsNodup, ?_, hownersNodup, ?_⟩
+  · simp
+  · intro g hg
+    have hgrange := List.mem_range'_1.mp hg
+    constructor
+    · exact hgrange.1
+    constructor <;> omega
+
+#print axioms frozen_carry_terminal_cutoff_staircase
+#print axioms gameF_margin_eventE_maximal_defect_frozen_carry_staircase
+#print axioms frozen_carry_projection_capacity_counterframe
+
+end ChompLean

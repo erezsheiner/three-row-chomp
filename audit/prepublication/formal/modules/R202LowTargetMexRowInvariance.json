@@ -1,0 +1,278 @@
+{
+  "module": "R202LowTargetMexRowInvariance",
+  "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+  "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+  "declarationCount": 18,
+  "theoremDeclarationCount": 17,
+  "proofValuedDeclarationCount": 17,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.VerticalSourceAgreeThrough",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 48,
+      "typePretty": "(f g : Nat → Nat → Nat) → (q u : Nat) → Prop",
+      "axioms": [],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isMex_eq_of_source_agree_through",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 24,
+      "typePretty": "∀ {P Q : Nat → Prop} {m n u : Nat} (hmex : ChompLean.IsMex P m) (hnex : ChompLean.IsMex Q n)\n  (hagree :\n    ∀ (k : Nat),\n      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →\n        @LE.le.{0} Nat instLENat k u → Iff (P k) (Q k))\n  (hlow : Or (@LE.le.{0} Nat instLENat m u) (@LE.le.{0} Nat instLENat n u)), @Eq.{1} Nat m n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isMex_eq_of_source_agree_through._proof_1_1",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {m n u : Nat} (hmn : @LT.lt.{0} Nat instLTNat m n) (hnu : @LE.le.{0} Nat instLENat n u),\n  Not (@LE.le.{0} Nat instLENat m u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.isMex_eq_of_source_agree_through._proof_1_2",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {m n u : Nat} (hnm : @LT.lt.{0} Nat instLTNat n m) (hmu : @LE.le.{0} Nat instLENat m u),\n  Not (@LE.le.{0} Nat instLENat n u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mexRow_low_host_iff",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 97,
+      "typePretty": "∀ {f g : Nat → Nat → Nat} {q u k c : Nat} (hvertical : ChompLean.VerticalSourceAgreeThrough f g q u)\n  (hmexF : ∀ (x : Nat), @LE.le.{0} Nat instLENat x q → ChompLean.IsMex (ChompLean.B f q x) (f q x))\n  (hmexG : ∀ (x : Nat), @LE.le.{0} Nat instLENat x q → ChompLean.IsMex (ChompLean.B g q x) (g q x))\n  (hcq : @LE.le.{0} Nat instLENat c q) (hku : @LE.le.{0} Nat instLENat k u),\n  Iff (@Eq.{1} Nat (f q c) k) (@Eq.{1} Nat (g q c) k)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mexRow_low_host_iff._proof_1_1",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q u k c : Nat} (hku : @LE.le.{0} Nat instLENat k u) (hfk : @Eq.{1} Nat (f q c) k),\n  Not (@LE.le.{0} Nat instLENat (f q c) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mexRow_low_host_iff._proof_1_2",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f g : Nat → Nat → Nat} {q u k c : Nat} (hfk : @Eq.{1} Nat (f q c) k) (heq : @Eq.{1} Nat (f q c) (g q c)),\n  Not (@Eq.{1} Nat (g q c) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mexRow_low_host_iff._proof_1_3",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f g : Nat → Nat → Nat} {q u k c : Nat} (hgk : @Eq.{1} Nat (g q c) k) (heq : @Eq.{1} Nat (f q c) (g q c)),\n  Not (@Eq.{1} Nat (f q c) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mexRow_low_output_invariant",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 55,
+      "typePretty": "∀ {f g : Nat → Nat → Nat} {q u : Nat} (hvertical : ChompLean.VerticalSourceAgreeThrough f g q u)\n  (hmexF : ∀ (c : Nat), @LE.le.{0} Nat instLENat c q → ChompLean.IsMex (ChompLean.B f q c) (f q c))\n  (hmexG : ∀ (c : Nat), @LE.le.{0} Nat instLENat c q → ChompLean.IsMex (ChompLean.B g q c) (g q c)) (c : Nat),\n  @LE.le.{0} Nat instLENat c q →\n    Or (@LE.le.{0} Nat instLENat (f q c) u) (@LE.le.{0} Nat instLENat (g q c) u) → @Eq.{1} Nat (f q c) (g q c)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mexRow_low_output_invariant._proof_1_1",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q u : Nat} (c : Nat) (hcq : @LE.le.{0} Nat instLENat c q) (k b : Nat)\n  (hbc : @LT.lt.{0} Nat instLTNat b c), Not (@LE.le.{0} Nat instLENat b q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mexRow_low_output_invariant._proof_1_2",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q u : Nat} (c k : Nat) (hku : @LE.le.{0} Nat instLENat k u) (b : Nat)\n  (hfb : @Eq.{1} Nat (f q b) k), Not (@LE.le.{0} Nat instLENat (f q b) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mixedRow_low_host_iff",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 161,
+      "typePretty": "∀ {f g : Nat → Nat → Nat} {q u k c : Nat} (hvertical : ChompLean.VerticalSourceAgreeThrough f g q u)\n  (hstep :\n    ∀ (x : Nat),\n      @LE.le.{0} Nat instLENat x q →\n        Or (@Eq.{1} Nat (f q x) (g q x))\n          (And (ChompLean.IsMex (ChompLean.B f q x) (f q x)) (ChompLean.IsMex (ChompLean.B g q x) (g q x))))\n  (hcq : @LE.le.{0} Nat instLENat c q) (hku : @LE.le.{0} Nat instLENat k u),\n  Iff (@Eq.{1} Nat (f q c) k) (@Eq.{1} Nat (g q c) k)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mixedRow_low_host_iff._proof_1_1",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q u k c : Nat} (hku : @LE.le.{0} Nat instLENat k u) (hfk : @Eq.{1} Nat (f q c) k),\n  Not (@LE.le.{0} Nat instLENat (f q c) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mixedRow_low_host_iff._proof_1_2",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f g : Nat → Nat → Nat} {q u k c : Nat} (hfk : @Eq.{1} Nat (f q c) k) (heq : @Eq.{1} Nat (f q c) (g q c)),\n  Not (@Eq.{1} Nat (g q c) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mixedRow_low_host_iff._proof_1_3",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f g : Nat → Nat → Nat} {q u k c : Nat} (hgk : @Eq.{1} Nat (g q c) k) (heq : @Eq.{1} Nat (f q c) (g q c)),\n  Not (@Eq.{1} Nat (f q c) k) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mixedRow_low_output_invariant",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 117,
+      "typePretty": "∀ {f g : Nat → Nat → Nat} {q u : Nat} (hvertical : ChompLean.VerticalSourceAgreeThrough f g q u)\n  (hstep :\n    ∀ (c : Nat),\n      @LE.le.{0} Nat instLENat c q →\n        Or (@Eq.{1} Nat (f q c) (g q c))\n          (And (ChompLean.IsMex (ChompLean.B f q c) (f q c)) (ChompLean.IsMex (ChompLean.B g q c) (g q c))))\n  (c : Nat),\n  @LE.le.{0} Nat instLENat c q →\n    Or (@LE.le.{0} Nat instLENat (f q c) u) (@LE.le.{0} Nat instLENat (g q c) u) → @Eq.{1} Nat (f q c) (g q c)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mixedRow_low_output_invariant._proof_1_1",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q u : Nat} (c : Nat) (hcq : @LE.le.{0} Nat instLENat c q) (k b : Nat)\n  (hbc : @LT.lt.{0} Nat instLTNat b c), Not (@LE.le.{0} Nat instLENat b q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.mixedRow_low_output_invariant._proof_1_2",
+      "module": "R202LowTargetMexRowInvariance",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {f : Nat → Nat → Nat} {q u : Nat} (c k : Nat) (hku : @LE.le.{0} Nat instLENat k u) (b : Nat)\n  (hfb : @Eq.{1} Nat (f q b) k), Not (@LE.le.{0} Nat instLENat (f q b) u) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "0e20bc7bbce2a8a50c3d932fb66fad8c181806690485b000efbd6587fc6115b6",
+      "sourcePath": "lean/core/R202LowTargetMexRowInvariance.lean",
+      "universeParameters": []
+    }
+  ]
+}

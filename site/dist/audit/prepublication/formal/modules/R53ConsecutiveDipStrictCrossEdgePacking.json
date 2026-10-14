@@ -1,0 +1,282 @@
+{
+  "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+  "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+  "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+  "declarationCount": 17,
+  "theoremDeclarationCount": 17,
+  "proofValuedDeclarationCount": 17,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.gameF_eventE_strict_cross_edge_missing_bound",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 206,
+      "typePretty": "∀ {s delta z c b0 b1 : Nat}\n  (hdip0 :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF s s))\n  (hdip1 :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hc : @LT.lt.{0} Nat instLTNat c s)\n  (hSucc :\n    @Eq.{1} Nat (ChompLean.gameF s c)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hNextDiag :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hb1 :\n    @LT.lt.{0} Nat instLTNat b1\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hHost1 :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        b1)\n      z)\n  (hEmit :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      z)\n  (hslotsNodup : @List.Nodup.{0} Nat (ChompLean.EventEDefectBandSlots s delta c b0))\n  (hslotsData :\n    ∀ (g : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n          (ChompLean.EventEDefectBandSlots s delta c b0) g →\n        And (@LT.lt.{0} Nat instLTNat g s) (@LT.lt.{0} Nat instLTNat (ChompLean.gameF s g) z)),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@List.length.{0} Nat (ChompLean.EventEMissingBandSlots s delta c b0))\n          (@List.length.{0} Nat (ChompLean.EventESecondMissingBandSlots s delta c b0))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))\n    s",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eventE_strict_cross_edge_missing_bound._proof_1_2",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z c b1 : Nat}\n  (hHost1 :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        b1)\n      z)\n  (g : Nat)\n  (hw :\n    @Eq.{1} Nat (ChompLean.gameF s g)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hLower : @LT.lt.{0} Nat instLTNat (ChompLean.gameF s g) z), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eventE_strict_cross_edge_missing_bound._proof_1_3",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s z c b1 : Nat}\n  (hHost1 :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        b1)\n      z)\n  (g : Nat) (hw : @Eq.{1} Nat (ChompLean.gameF s g) z) (hLower : @LT.lt.{0} Nat instLTNat (ChompLean.gameF s g) z),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eventE_strict_cross_edge_missing_bound._proof_1_4",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {s delta z c b0 b1 : Nat}\n  (hbound :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@List.length.{0} Nat\n              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))\n                (@List.map.{0, 0} Nat Nat (fun (g : Nat) => ChompLean.gameF s g)\n                  (ChompLean.EventEMissingBandSlots s delta c b0))\n                (@List.cons.{0} Nat\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                  (@List.nil.{0} Nat))))\n            (@List.length.{0} Nat\n              (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n                (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))\n                (@List.map.{0, 0} Nat Nat (fun (g : Nat) => ChompLean.gameF s g)\n                  (ChompLean.EventESecondMissingBandSlots s delta c b0))\n                (@List.cons.{0} Nat z (@List.nil.{0} Nat))))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n      s)\n  (hlen0 :\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n          (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))\n          (@List.map.{0, 0} Nat Nat (fun (g : Nat) => ChompLean.gameF s g)\n            (ChompLean.EventEMissingBandSlots s delta c b0))\n          (@List.cons.{0} Nat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            (@List.nil.{0} Nat))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} Nat (ChompLean.EventEMissingBandSlots s delta c b0))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hlen1 :\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (@HAppend.hAppend.{0, 0, 0} (List.{0} Nat) (List.{0} Nat) (List.{0} Nat)\n          (@instHAppendOfAppend.{0} (List.{0} Nat) (@List.instAppend.{0} Nat))\n          (@List.map.{0, 0} Nat Nat (fun (g : Nat) => ChompLean.gameF s g)\n            (ChompLean.EventESecondMissingBandSlots s delta c b0))\n          (@List.cons.{0} Nat z (@List.nil.{0} Nat))))\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@List.length.{0} Nat (ChompLean.EventESecondMissingBandSlots s delta c b0))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@List.length.{0} Nat (ChompLean.EventEMissingBandSlots s delta c b0))\n              (@List.length.{0} Nat (ChompLean.EventESecondMissingBandSlots s delta c b0))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))\n        s) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_eventE_strict_cross_edge_missing_bound._simp_1_1",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {α : Type u_1} {a b : α},\n  @Eq.{1} Prop\n    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α)\n      (@List.cons.{u_1} α b (@List.nil.{u_1} α)) a)\n    (@Eq.{u_1 + 1} α a b)",
+      "axioms": [
+        "propext"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": [
+        "u_1"
+      ]
+    },
+    {
+      "name": "ChompLean.game_consecutive_dips_combined_backfill_owner_strict_packing",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 70,
+      "typePretty": "∀ {q : Nat}\n  (hdip0 :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF q q))\n  (hdip1 :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  have back0 : List.{0} Nat :=\n    ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)\n      (ChompLean.StrictRowPrefixValues ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))));\n  have back1 : List.{0} Nat :=\n    ChompLean.PrefixBackfillValues\n      (ChompLean.StrictRowPrefixValues ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.StrictRowPrefixValues ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))));\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat back0)\n          (@List.length.{0} Nat back1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    q",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_consecutive_dips_combined_backfill_owner_strict_packing._proof_1_1",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (v i b : Nat)\n  (hhigh :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.gameF i i))\n  (hcap :\n    @LE.le.{0} Nat instLENat (ChompLean.gameF i i)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@LT.lt.{0} Nat instLTNat q (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_consecutive_dips_combined_backfill_owner_strict_packing._proof_1_2",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} (v i b : Nat)\n  (hhigh :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n      (ChompLean.gameF i i))\n  (hcap :\n    @LE.le.{0} Nat instLENat (ChompLean.gameF i i)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not (@LT.lt.{0} Nat instLTNat q (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i i)) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_consecutive_dips_combined_backfill_owner_strict_packing._proof_1_3",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat}\n  (hpkg :\n    And\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@List.length.{0} Nat\n          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)\n            (ChompLean.StrictRowPrefixValues ChompLean.gameF\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))\n      (And\n        (@List.Nodup.{0} Nat\n          (ChompLean.PrefixBackfillValues\n            (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel) q)\n            (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n        (∀ (v : Nat),\n          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n              (ChompLean.PrefixBackfillValues\n                (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel) q)\n                (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n              v →\n            @Exists.{1} Nat fun (i : Nat) =>\n              And (@LT.lt.{0} Nat instLTNat i q)\n                (@Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel i i) v)))),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@List.length.{0} Nat\n          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)\n            (ChompLean.StrictRowPrefixValues ChompLean.gameF\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_consecutive_dips_combined_backfill_owner_strict_packing._proof_1_4",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat}\n  (hback0Positive :\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n      (@List.length.{0} Nat\n        (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)\n          (ChompLean.StrictRowPrefixValues ChompLean.gameF\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@List.length.{0} Nat\n            (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)\n              (ChompLean.StrictRowPrefixValues ChompLean.gameF\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n          (@List.length.{0} Nat\n            (ChompLean.PrefixBackfillValues\n              (ChompLean.StrictRowPrefixValues ChompLean.gameF\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n              (ChompLean.StrictRowPrefixValues ChompLean.gameF\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_consecutive_dips_two_forbidden_packets_strict_amortized_bound",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 175,
+      "typePretty": "∀ {q : Nat} {forbidden0 forbidden1 : List.{0} Nat}\n  (hdip0 :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF q q))\n  (hdip1 :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hforbidden0 : @List.Nodup.{0} Nat forbidden0)\n  (hsub0 :\n    @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) forbidden0\n      (ChompLean.StrictRowPrefixValues ChompLean.gameF q))\n  (hmissing0 :\n    ∀ (v : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) forbidden0 v →\n        Not\n          (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n            (ChompLean.StrictRowPrefixValues ChompLean.gameF\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            v))\n  (hforbidden1 : @List.Nodup.{0} Nat forbidden1)\n  (hsub1 :\n    @HasSubset.Subset.{0} (List.{0} Nat) (@List.instHasSubset.{0} Nat) forbidden1\n      (ChompLean.StrictRowPrefixValues ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hmissing1 :\n    ∀ (v : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) forbidden1 v →\n        Not\n          (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n            (ChompLean.StrictRowPrefixValues ChompLean.gameF\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n            v)),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden0)\n          (@List.length.{0} Nat forbidden1)))\n      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n    q",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.game_consecutive_dips_two_forbidden_packets_strict_amortized_bound._proof_1_1",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q : Nat} {forbidden0 forbidden1 : List.{0} Nat}\n  (hpkg0 :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden0)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@List.length.{0} Nat\n          (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)\n            (ChompLean.StrictRowPrefixValues ChompLean.gameF\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))))\n      (And\n        (@List.Nodup.{0} Nat\n          (ChompLean.PrefixBackfillValues\n            (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel) q)\n            (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n        (∀ (v : Nat),\n          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n              (ChompLean.PrefixBackfillValues\n                (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel) q)\n                (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n              v →\n            @Exists.{1} Nat fun (i : Nat) =>\n              And (@LT.lt.{0} Nat instLTNat i q)\n                (@Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel i i) v))))\n  (hpkg1 :\n    And\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden1)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@List.length.{0} Nat\n          (ChompLean.PrefixBackfillValues\n            (ChompLean.StrictRowPrefixValues ChompLean.gameF\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (ChompLean.StrictRowPrefixValues ChompLean.gameF\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))))\n      (And\n        (@List.Nodup.{0} Nat\n          (ChompLean.PrefixBackfillValues\n            (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n        (∀ (v : Nat),\n          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n              (ChompLean.PrefixBackfillValues\n                (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                (ChompLean.StrictRowPrefixValues (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n              v →\n            @Exists.{1} Nat fun (i : Nat) =>\n              And\n                (@LT.lt.{0} Nat instLTNat i\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                (@Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel i i) v))))\n  (hpack :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@List.length.{0} Nat\n              (ChompLean.PrefixBackfillValues (ChompLean.StrictRowPrefixValues ChompLean.gameF q)\n                (ChompLean.StrictRowPrefixValues ChompLean.gameF\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))))\n            (@List.length.{0} Nat\n              (ChompLean.PrefixBackfillValues\n                (ChompLean.StrictRowPrefixValues ChompLean.gameF\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                (ChompLean.StrictRowPrefixValues ChompLean.gameF\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      q),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@List.length.{0} Nat forbidden0)\n              (@List.length.{0} Nat forbidden1)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        q) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.second_consecutive_dip_backfill_owner_lt_first_row",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 41,
+      "typePretty": "∀ {q i v : Nat}\n  (hdip0 :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF q q))\n  (hdip1 :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hv :\n    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n      (ChompLean.PrefixBackfillValues\n        (ChompLean.StrictRowPrefixValues ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (ChompLean.StrictRowPrefixValues ChompLean.gameF\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))\n      v)\n  (hi :\n    @LT.lt.{0} Nat instLTNat i\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hdiag : @Eq.{1} Nat (ChompLean.gameF i i) v), @LT.lt.{0} Nat instLTNat i q",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.second_consecutive_dip_backfill_owner_lt_first_row._proof_1_1",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q i v : Nat}\n  (hi :\n    @LT.lt.{0} Nat instLTNat i\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (b : Nat), Not (@LE.le.{0} Nat instLENat i q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.second_consecutive_dip_backfill_owner_lt_first_row._proof_1_2",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q v : Nat} (b : Nat)\n  (hcell :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        b)\n      v)\n  (hrowMax :\n    @LE.le.{0} Nat instLENat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        b)\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))\n  (htwoDrop :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (ChompLean.gameF q q))\n  (hdiag : @Eq.{1} Nat (ChompLean.gameF q q) v), False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.second_consecutive_dip_backfill_owner_lt_first_row._proof_1_3",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {q i v : Nat}\n  (hi :\n    @LT.lt.{0} Nat instLTNat i\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (b : Nat) (hiNe : Not (@Eq.{1} Nat i q)), Not (@LT.lt.{0} Nat instLTNat i q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.R53ConsecutiveDipStrictCrossEdgePacking.0.ChompLean.r53_nodup_map_of_injective_on",
+      "module": "R53ConsecutiveDipStrictCrossEdgePacking",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 18,
+      "typePretty": "∀ (f : Nat → Nat) (xs : List.{0} Nat) (hxs : @List.Nodup.{0} Nat xs)\n  (hinj :\n    ∀ (x : Nat),\n      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →\n        ∀ (y : Nat),\n          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs y →\n            @Eq.{1} Nat (f x) (f y) → @Eq.{1} Nat x y),\n  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat f xs)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "92e52dafccbefff9762c149ca553336875733744a28c8bbda1457dfa4182183a",
+      "sourcePath": "lean/core/R53ConsecutiveDipStrictCrossEdgePacking.lean",
+      "universeParameters": []
+    }
+  ]
+}

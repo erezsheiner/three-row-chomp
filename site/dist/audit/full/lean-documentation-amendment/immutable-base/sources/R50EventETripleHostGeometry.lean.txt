@@ -1,0 +1,258 @@
+import R49EventETwoEdgeTriplePrefix
+import R50EventETripleHostFreezeNormalForm
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+R50: exact host-column geometry of the maximal-defect triple-prefix value.
+
+A value `p<s+3` occurring in the strict prefixes of three consecutive rows
+has a host-change pattern determined exactly by the row at which its
+row-start owner is reached:
+
+* `p<=s`: no change;
+* `p=s+1`: one change, then the host freezes;
+* `p=s+2`: two changes and three pairwise-distinct hosts.
+
+The low branches are recurrence carries.  The change at the owner row is
+forced by `rowstart_no_middle`; the pre-owner change is forced by the
+same-lower no-repeat law.
+-/
+
+/-- Exact owner-time host-change invariant for three consecutive rows. -/
+def ThreeConsecutiveHostGeometry
+    (s p g b1 b2 : Nat) : Prop :=
+  p ≤ s + 2 ∧ g < p ∧ b1 < p ∧ b2 < p ∧
+    (g = b1 ↔ p ≤ s) ∧
+    (b1 = b2 ↔ p ≤ s + 1) ∧
+    (g = b2 ↔ p ≤ s) ∧
+    ((p ≤ s ∧ g = b1 ∧ b1 = b2) ∨
+      (p = s + 1 ∧ g ≠ b1 ∧ b1 = b2) ∨
+      (p = s + 2 ∧ g ≠ b1 ∧ b1 ≠ b2 ∧ g ≠ b2))
+
+/-- Generic three-row host theorem for the actual game.  This is independent
+of event E and only assumes that the common value lies below `s+3`. -/
+theorem gameF_three_consecutive_prefix_host_geometry
+    {s p g b1 b2 : Nat}
+    (hg : g < s) (hb1 : b1 < s + 1) (hb2 : b2 < s + 2)
+    (h0 : gameF s g = p)
+    (h1 : gameF (s + 1) b1 = p)
+    (h2 : gameF (s + 2) b2 = p)
+    (hceil : p < s + 3) :
+    ThreeConsecutiveHostGeometry s p g b1 b2 := by
+  have hgp : g < p := by
+    have hgt := gameRecurrenceModel.value_gt_index
+      (q := s) (r := g) (Nat.le_of_lt hg)
+    change g < gameF s g at hgt
+    rw [h0] at hgt
+    exact hgt
+  have hb1p : b1 < p := by
+    have hgt := gameRecurrenceModel.value_gt_index
+      (q := s + 1) (r := b1) (Nat.le_of_lt hb1)
+    change b1 < gameF (s + 1) b1 at hgt
+    rw [h1] at hgt
+    exact hgt
+  have hb2p : b2 < p := by
+    have hgt := gameRecurrenceModel.value_gt_index
+      (q := s + 2) (r := b2) (Nat.le_of_lt hb2)
+    change b2 < gameF (s + 2) b2 at hgt
+    rw [h2] at hgt
+    exact hgt
+  have hpBound : p ≤ s + 2 := by omega
+  have hcases : p ≤ s ∨ p = s + 1 ∨ p = s + 2 := by omega
+  rcases hcases with hpLow | hpCases
+  · have hcarry1 : gameF (s + 1) g = p := by
+      have hsmall : gameRecurrenceModel.f s g < s + 1 := by
+        change gameF s g < s + 1
+        rw [h0]
+        omega
+      have hconst := constant_from gameRecurrenceModel
+        hg hsmall 1
+      change gameF (s + 1) g = gameF s g at hconst
+      rw [h0] at hconst
+      exact hconst
+    have hcarry2 : gameF (s + 2) g = p := by
+      have hsmall : gameRecurrenceModel.f s g < s + 1 := by
+        change gameF s g < s + 1
+        rw [h0]
+        omega
+      have hconst := constant_from gameRecurrenceModel
+        hg hsmall 2
+      change gameF (s + 2) g = gameF s g at hconst
+      rw [h0] at hconst
+      exact hconst
+    have hgb1 : g = b1 :=
+      gameRecurrenceModel.fixed_q_injective
+        (q := s + 1) (b₁ := g) (b₂ := b1)
+        (by omega) (Nat.le_of_lt hb1) (hcarry1.trans h1.symm)
+    have hgb2 : g = b2 :=
+      gameRecurrenceModel.fixed_q_injective
+        (q := s + 2) (b₁ := g) (b₂ := b2)
+        (by omega) (Nat.le_of_lt hb2) (hcarry2.trans h2.symm)
+    have hb1b2 : b1 = b2 := hgb1.symm.trans hgb2
+    exact ⟨hpBound, hgp, hb1p, hb2p,
+      ⟨fun _ => hpLow, fun _ => hgb1⟩,
+      ⟨fun _ => by omega, fun _ => hb1b2⟩,
+      ⟨fun _ => hpLow, fun _ => hgb2⟩,
+      Or.inl ⟨hpLow, hgb1, hb1b2⟩⟩
+  · rcases hpCases with hpOwner1 | hpOwner2
+    · have hgb1 : g ≠ b1 := by
+        intro heq
+        subst b1
+        have hstart : gameF (s + 1) g = s + 1 := by
+          simpa [hpOwner1] using h1
+        have hmiddle : gameF s g ≠ s + 1 :=
+          gameRecurrenceModel.rowstart_no_middle
+            hstart hg (by omega)
+        exact hmiddle (by simpa [hpOwner1] using h0)
+      have hcarry2 : gameF (s + 2) b1 = p := by
+        have hsmall : gameRecurrenceModel.f (s + 1) b1 < s + 2 := by
+          change gameF (s + 1) b1 < s + 2
+          rw [h1]
+          omega
+        have hconst := constant_from gameRecurrenceModel
+          hb1 hsmall 1
+        change gameF (s + 2) b1 = gameF (s + 1) b1 at hconst
+        rw [h1] at hconst
+        exact hconst
+      have hb1b2 : b1 = b2 :=
+        gameRecurrenceModel.fixed_q_injective
+          (q := s + 2) (b₁ := b1) (b₂ := b2)
+          (by omega) (Nat.le_of_lt hb2) (hcarry2.trans h2.symm)
+      have hgb2 : g ≠ b2 := by
+        intro heq
+        apply hgb1
+        exact heq.trans hb1b2.symm
+      exact ⟨hpBound, hgp, hb1p, hb2p,
+        ⟨fun heq => False.elim (hgb1 heq), fun hle => by omega⟩,
+        ⟨fun _ => by omega, fun _ => hb1b2⟩,
+        ⟨fun heq => False.elim (hgb2 heq), fun hle => by omega⟩,
+        Or.inr (Or.inl ⟨hpOwner1, hgb1, hb1b2⟩)⟩
+    · have hgb1 : g ≠ b1 := by
+        intro heq
+        subst b1
+        exact encoding_same_lower_no_repeat game_encodes
+          hg (by omega) (by omega) h0 h1
+      have hb1b2 : b1 ≠ b2 := by
+        intro heq
+        subst b2
+        have hstart : gameF (s + 2) b1 = s + 2 := by
+          simpa [hpOwner2] using h2
+        have hmiddle : gameF (s + 1) b1 ≠ s + 2 :=
+          gameRecurrenceModel.rowstart_no_middle
+            hstart hb1 (by omega)
+        exact hmiddle (by simpa [hpOwner2] using h1)
+      have hgb2 : g ≠ b2 := by
+        intro heq
+        subst b2
+        have hstart : gameF (s + 2) g = s + 2 := by
+          simpa [hpOwner2] using h2
+        have hmiddle : gameF s g ≠ s + 2 :=
+          gameRecurrenceModel.rowstart_no_middle
+            hstart hg (by omega)
+        exact hmiddle (by simpa [hpOwner2] using h0)
+      exact ⟨hpBound, hgp, hb1p, hb2p,
+        ⟨fun heq => False.elim (hgb1 heq), fun hle => by omega⟩,
+        ⟨fun heq => False.elim (hb1b2 heq), fun hle => by omega⟩,
+        ⟨fun heq => False.elim (hgb2 heq), fun hle => by omega⟩,
+        Or.inr (Or.inr ⟨hpOwner2, hgb1, hb1b2, hgb2⟩)⟩
+
+/-- Quantitative form: the three occurrences use exactly `p-s+1` distinct
+host columns (one, two, or three in the three owner-time branches). -/
+theorem threeConsecutiveHostGeometry_distinct_column_count
+    {s p g b1 b2 : Nat}
+    (hgeo : ThreeConsecutiveHostGeometry s p g b1 b2) :
+    ([g, b1, b2].eraseDups).length = p - s + 1 := by
+  rcases hgeo with
+    ⟨_hpBound, _hgp, _hb1p, _hb2p,
+      _hfirstIff, _hsecondIff, _hspanIff, hcases⟩
+  rcases hcases with hlow | howner1 | howner2
+  · rcases hlow with ⟨hps, hgb1, hb1b2⟩
+    subst b1
+    subst b2
+    simp [List.eraseDups_cons]
+    omega
+  · rcases howner1 with ⟨hp, hgb1, hb1b2⟩
+    subst p
+    subst b2
+    have hb1g : b1 ≠ g := Ne.symm hgb1
+    simp [List.eraseDups_cons, hb1g]
+  · rcases howner2 with ⟨hp, hgb1, hb1b2, hgb2⟩
+    subst p
+    have hb1g : b1 ≠ g := Ne.symm hgb1
+    have hb2g : b2 ≠ g := Ne.symm hgb2
+    have hb2b1 : b2 ≠ b1 := Ne.symm hb1b2
+    simp [List.eraseDups_cons, hb1g, hb2g, hb2b1]
+
+/-- Maximal-defect event-E specialization.  The R49 survivor receives
+concrete hosts on rows `s+1,s+2`, and their equality/change pattern is exact,
+not merely a disjunction of possible rehosts. -/
+theorem gameF_margin_eventE_maximal_defect_triple_host_geometry
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 ∨
+      ∃ j, s = j + 1 ∧
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    delta + 4 = s →
+      ∃ c b0 bz g b1 b2 r,
+        z = s + 3 ∧
+        c < s ∧ b0 < s ∧ bz < s + 1 ∧
+        gameF s c = z + 1 ∧ gameF s b0 = z ∧
+        gameF (s + 1) bz = z ∧
+        g ∈ EventEDefectBandSlots s delta c b0 ∧
+        g < s ∧ g ≠ c ∧ g ≠ b0 ∧
+        b1 < s + 1 ∧ b2 < s + 2 ∧
+        gameF (s + 1) b1 = gameF s g ∧
+        gameF (s + 2) b2 = gameF s g ∧
+        0 < gameF s g ∧ gameF s g < z ∧
+        r < gameF s g ∧
+        gameF (gameF s g) r = gameF s g ∧
+        ([g, b1, b2].eraseDups).length = gameF s g - s + 1 ∧
+        ThreeConsecutiveHostGeometry s (gameF s g) g b1 b2 := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  intro hmax
+  have htriple :=
+    gameF_margin_eventE_maximal_defect_forces_triple_prefix_value
+      hU hdip hmargin hnextDip hmax
+  rcases htriple with
+    ⟨c, b0, bz, g, hc, hb0, hbz,
+      hSucc, hBase, hHostZ, hgBand,
+      hgs, hgc, hgb0, hqPos, hqz, hC1, hC2⟩
+  rcases hC1 with ⟨b1, hb1, hHost1⟩
+  rcases hC2 with ⟨b2, hb2, hHost2⟩
+  have hInv := gameF_margin_eventE_parametric_defect_invariant
+    hU hdip hmargin hnextDip
+  change EventEDefectPacketInvariant s d delta z at hInv
+  rcases hInv with
+    ⟨_hdeltaPos, _hdeltaUpper, hdeltaSum, hzDiag, _rest⟩
+  have hzMax : z = s + 3 := by omega
+  have hgeometry :
+      ThreeConsecutiveHostGeometry s (gameF s g) g b1 b2 := by
+    apply gameF_three_consecutive_prefix_host_geometry
+      hgs hb1 hb2 rfl hHost1 hHost2
+    omega
+  rcases gameF_three_prefix_value_has_completed_rowstart
+      hgs rfl ⟨b1, hb1, hHost1⟩ ⟨b2, hb2, hHost2⟩ hgeometry.1 with
+    ⟨r, hr, hstart, _hfreezeRegime⟩
+  have hcount :=
+    threeConsecutiveHostGeometry_distinct_column_count hgeometry
+  exact ⟨c, b0, bz, g, b1, b2, r, hzMax,
+    hc, hb0, hbz, hSucc, hBase, hHostZ,
+    hgBand, hgs, hgc, hgb0, hb1, hb2,
+    hHost1, hHost2, hqPos, hqz, hr, hstart, hcount, hgeometry⟩
+
+#print axioms gameF_three_consecutive_prefix_host_geometry
+#print axioms threeConsecutiveHostGeometry_distinct_column_count
+#print axioms gameF_margin_eventE_maximal_defect_triple_host_geometry
+
+end ChompLean

@@ -1,0 +1,54 @@
+{
+  "paperIndex": 48,
+  "id": "component-signed-overlap",
+  "original": {
+    "title": "Component-local signed overlap identity",
+    "status": "conditional",
+    "statement": "For the partial injection between two retained rows, a path's change in overlap with past diagonal labels is the indicator of ownership of its exit minus that of its root; a cycle contributes zero. Under a diagonal drop, every exit is owned and the global overlap gain equals the count of unowned roots lost from the row.",
+    "assumptions": [
+      "Injective old and new rows on the same domain; canonical diagonal maximality and old-diagonal MEX cover for drop consequence. UnitDip remains open."
+    ],
+    "sourcePath": "projects/sentence-miner-20261001/runs/firsthand-oldrow-transfer-20261008/PROOF-NOTES.txt",
+    "sourceLine": 41,
+    "sha256": "b97ac9246c605b9961291da9da391bd3bc9f8d5a7c8fc2412d04ab81ecd03dd6"
+  },
+  "exactAuditedStatement": "For old/new injective rows a, b on the same finite column set U, edges c->d when b_c=a_d form paths/cycles. For path root old label x and exit new label z, overlap with fixed O changes by1_O(z)-1_O(x); cycles contribute0. If every new label is below old D and every positive label below D lies in O union A, then all path exits owned and |B intersect O|-|A intersect O|=|(A minus B)minus O|.",
+  "hypotheses": [
+    "Identical retained domain U={0,..., q-2}, q>=2.",
+    "Drop corollary uses positivity, strict new diagonal maximum<old D and old diagonal MEX cover."
+  ],
+  "proofDependencyMap": [
+    "Row injectivity only for generic component theorem.",
+    "Canonical maximality/positive-MEX cover for drop instance; root foundation needed only for instantiation."
+  ],
+  "independentDerivationAndChecks": [
+    "Injectivity bounds in/outdegrees by1. A root with indegree0 cannot enter a cycle: the first cycle entry would have an external predecessor besides its cycle predecessor. Distinct root paths cannot merge by the same indegree bound. Finite components are paths or cycles.",
+    "On path c0->...->ck, b_ci=a_c(i+1) for i<k. Internal old/new labels cancel as sets; exactly x=a_c0 is lost and z=b_ck gained. Cycle label sets coincide. This does not require monotonic labels along edges.",
+    "Every exit belongs B minus A globally: otherwise it would have an outgoing edge. Under drop z<D and positive, old MEX coverage forces z in O. Root labels are exactly A minus B; thus owned roots contribute0 and unowned roots1. Sum components for global formula.",
+    "The old penultimate p belongs A but is notin the project strict old source; actual LowLoss excludes p and D-1and requires absence/nonpast guards. The identity cannot replace all those guards or bound eligible paths by1."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\sentence-miner-20261001\\runs\\firsthand-oldrow-transfer-20261008\\PROOF-NOTES.txt",
+      "sha256": "b97ac9246c605b9961291da9da391bd3bc9f8d5a7c8fc2412d04ab81ecd03dd6"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\374becc5c82b4b0e0314.json",
+      "sha256": "374becc5c82b4b0e031416add0e6bd649cd3dd97824c189ccafbc6fab724671e"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#component-signed-overlap",
+    "proofTextSha256": "b97ac9246c605b9961291da9da391bd3bc9f8d5a7c8fc2412d04ab81ecd03dd6",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": false,
+  "sharedCanonicalFoundationReview": null,
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish; parent integrates the independent audit and corrections."
+}

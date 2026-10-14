@@ -1,0 +1,41 @@
+import R56VCatchCount
+import R56NeverVanish
+import R56FirstHoleRetention
+import R56EchoLeft
+import R56WindowLocalPath
+import R56Arc12ColumnDichotomy
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+#check gameF_top_two_positive_holes
+#check gameF_nextRow_top_two_positive_holes
+
+#check left_history_of_higher_left_column_of_row_le
+#check gameF_first_hole_vCatch_gate
+#check gameF_first_hole_last_two_columns_below
+#check gameF_first_hole_gap_minus_flicker_count
+
+#check recurrence_nonpast_below_diagonal_strict_prefix
+#check gameF_nonpast_below_next_diagonal_cannot_vanish
+
+#check gameF_past_diagonal_echo_strictly_left
+#check gameF_past_diagonal_not_echoed_at_or_right_of_owner
+
+#check window_local_successor_owner
+#check window_local_successor_owner_bounds
+#check window_local_successor_owner_anatomy
+
+#check gameF_first_hole_v2_below_or_previous_v1
+#check gameF_first_hole_three_back_dichotomy
+
+#print axioms gameF_top_two_positive_holes
+#print axioms gameF_first_hole_vCatch_gate
+#print axioms gameF_first_hole_gap_minus_flicker_count
+#print axioms gameF_nonpast_below_next_diagonal_cannot_vanish
+#print axioms gameF_past_diagonal_echo_strictly_left
+#print axioms window_local_successor_owner
+#print axioms gameF_first_hole_three_back_dichotomy
+
+end ChompLean

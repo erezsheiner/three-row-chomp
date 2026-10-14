@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R130 Assignment No Gap Reduction · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R130 Assignment No Gap Reduction</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R130AssignmentNoGapReduction.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R130AssignmentNoGapReduction.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R130AssignmentNoGapReduction.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 24 declarations</summary><ul class="declarations"><li><code>ChompLean.LowerOwnerCoveredBy</code><pre class="prose">(v s : Nat) → Prop</pre></li><li><code>ChompLean.gameF_candidate_clean_of_causal_depth_three</code><pre class="prose">∀ {q c : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q)
+  (hc : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) c)
+  (hold :
+    Not
+      (ChompLean.ColHistPred ChompLean.gameF q c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))
+  (hpreview :
+    @Ne.{1} Nat (ChompLean.gameF q c)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))),
+  Not
+    (ChompLean.ColHistPred ChompLean.gameF
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))</pre></li><li><code>ChompLean.gameF_candidate_clean_of_old_history_and_distinct_preview</code><pre class="prose">∀ {q previewHost c : Nat}
+  (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) q)
+  (hpreviewLe : @LE.le.{0} Nat instLENat previewHost q)
+  (hc : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) c)
+  (hhost :
+    @Eq.{1} Nat (ChompLean.gameF q previewHost)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+  (hne : @Ne.{1} Nat c previewHost)
+  (hold :
+    Not
+      (ChompLean.ColHistPred ChompLean.gameF q c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))),
+  Not
+    (ChompLean.ColHistPred ChompLean.gameF
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ</code><pre class="prose">∀ {v r s : Nat} (hvpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+  (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)
+  (hsr : @LT.lt.{0} Nat instLTNat s r) (howners : ChompLean.LowerOwnerCoveredBy v s)
+  (hclean :
+    Not
+      (ChompLean.ColHistPred ChompLean.gameF v
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        v)),
+  @Eq.{1} Nat r
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ._proof_1_1</code><pre class="prose">∀ {v r s : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)
+  (hsr : @LT.lt.{0} Nat instLTNat s r),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        v) →
+    False</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ._proof_1_2</code><pre class="prose">∀ {v r s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r) →
+    False</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ._proof_1_3</code><pre class="prose">∀ {v r s : Nat} (hvpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)
+  (hcvlt :
+    @LT.lt.{0} Nat instLTNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      v),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ._proof_1_4</code><pre class="prose">∀ {v r s : Nat} (hvpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)
+  (hprevLow :
+    @LT.lt.{0} Nat instLTNat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+      v),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ._proof_1_5</code><pre class="prose">∀ {v r s : Nat}
+  (hrow :
+    And
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+      (@Eq.{1} Nat
+        (ChompLean.gameF
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →
+    False</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ._proof_1_6</code><pre class="prose">∀ {v r s : Nat} (r&#x27; : Nat) (hr&#x27;s : @LE.le.{0} Nat instLENat r&#x27; s)
+  (hcc&#x27; :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      r&#x27;),
+  False</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ._proof_1_7</code><pre class="prose">∀ {v r s : Nat} (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)
+  (hsr : @LT.lt.{0} Nat instLTNat s r) (b : Nat)
+  (hbc :
+    @LT.lt.{0} Nat instLTNat b
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hvalue : @Eq.{1} Nat (ChompLean.gameF v b) v), Not (@LE.le.{0} Nat instLENat b v) → False</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ._proof_1_8</code><pre class="prose">∀ {v r s : Nat} (hsr : @LT.lt.{0} Nat instLTNat s r) (b : Nat)
+  (hbc :
+    @LT.lt.{0} Nat instLTNat b
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hbr : @Eq.{1} Nat b r), False</pre></li><li><code>ChompLean.gameF_freeze_eq_frontier_succ._proof_1_9</code><pre class="prose">∀ {v r s : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)
+  (hcv :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      v),
+  Not (@LT.lt.{0} Nat instLTNat s v) → False</pre></li><li><code>ChompLean.gameF_freeze_eq_preview_maxPlus</code><pre class="prose">∀ {v r previousFreeze previewHost : Nat}
+  (hvpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+  (hrv : @LT.lt.{0} Nat instLTNat r v) (hstart : @Eq.{1} Nat (ChompLean.gameF v r) v)
+  (hprevious : @LT.lt.{0} Nat instLTNat previousFreeze r) (hpreview : @LT.lt.{0} Nat instLTNat previewHost r)
+  (howners : ChompLean.LowerOwnerCoveredBy v (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost))
+  (hclean :
+    Not
+      (ChompLean.ColHistPred ChompLean.gameF v
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        v)),
+  @Eq.{1} Nat r
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))</pre></li><li><code>ChompLean.gameF_freeze_eq_preview_maxPlus._proof_1_1</code><pre class="prose">∀ {v r previousFreeze previewHost : Nat} (hprevious : @LT.lt.{0} Nat instLTNat previousFreeze r)
+  (hpreview : @LT.lt.{0} Nat instLTNat previewHost r),
+  Not (@LT.lt.{0} Nat instLTNat (@Max.max.{0} Nat Nat.instMax previousFreeze previewHost) r) → False</pre></li><li><code>ChompLean.gameF_low_cell_has_rowstart</code><pre class="prose">∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q) (hlow : @LE.le.{0} Nat instLENat (ChompLean.gameF q c) q),
+  And (@LT.lt.{0} Nat instLTNat c (ChompLean.gameF q c))
+    (@Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF q c) c) (ChompLean.gameF q c))</pre></li><li><code>ChompLean.gameF_low_cell_has_rowstart._proof_1_1</code><pre class="prose">∀ {q c : Nat} (hlow : @LE.le.{0} Nat instLENat (ChompLean.gameF q c) q)
+  (heq : Not (@Eq.{1} Nat (ChompLean.gameF q c) q)), Not (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q c) q) → False</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_of_owner_bounds</code><pre class="prose">∀ {v s : Nat}
+  (hdiag :
+    ∀ {k a : Nat},
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+        @LT.lt.{0} Nat instLTNat k v →
+          @LT.lt.{0} Nat instLTNat a k → @Eq.{1} Nat (ChompLean.gameF a a) k → @LE.le.{0} Nat instLENat a s)
+  (hfreeze :
+    ∀ {k r : Nat},
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+        @LT.lt.{0} Nat instLTNat k v →
+          @LT.lt.{0} Nat instLTNat r k → @Eq.{1} Nat (ChompLean.gameF k r) k → @LE.le.{0} Nat instLENat r s),
+  ChompLean.LowerOwnerCoveredBy v s</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_source_saturation</code><pre class="prose">∀ {v s : Nat} (hsv : @LT.lt.{0} Nat instLTNat s v) (howners : ChompLean.LowerOwnerCoveredBy v s) (k : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k →
+    @LT.lt.{0} Nat instLTNat k v →
+      ChompLean.B ChompLean.gameF v
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        k</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_source_saturation._proof_1_1</code><pre class="prose">∀ {v s : Nat} (hsv : @LT.lt.{0} Nat instLTNat s v) (k a : Nat) (has : @LE.le.{0} Nat instLENat a s),
+  Not (@LT.lt.{0} Nat instLTNat a v) → False</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_source_saturation._proof_1_2</code><pre class="prose">∀ {v s : Nat} (k a : Nat) (has : @LE.le.{0} Nat instLENat a s),
+  Not
+      (@LE.le.{0} Nat instLENat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_source_saturation._proof_1_3</code><pre class="prose">∀ {v s : Nat} (k r : Nat) (hrs : @LE.le.{0} Nat instLENat r s),
+  Not
+      (@LT.lt.{0} Nat instLTNat r
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_source_saturation._proof_1_4</code><pre class="prose">∀ {v s : Nat} (k r : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat k
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.lowerOwnerCoveredBy_source_saturation._proof_1_5</code><pre class="prose">∀ {v s : Nat} (k : Nat) (hkv : @LT.lt.{0} Nat instLTNat k v) (r : Nat) (hstart : @Eq.{1} Nat (ChompLean.gameF k r) k),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) v k))
+        v) →
+    False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R130AssignmentNoGapReduction.lean:1</p><p>SHA-256: <code class="path">842ff611eea5c1b88025dcde6aef0de9e2b734fddf9f3e917f38f83b3b7bcfc3</code></p></section><p><a href="../index.html#id=lean-842ff611eea5c1b88025">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

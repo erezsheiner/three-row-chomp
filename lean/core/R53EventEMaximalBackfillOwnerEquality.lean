@@ -1,0 +1,644 @@
+import R52EventEMaximalSurvivorDiagonalSqueeze
+import R53ConsecutiveDipStrictCrossEdgePacking
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+Publication scope: The game-specific margin Event E and RM2 specializations below retain their
+explicit UnitDip, numerical-margin, dip and residual/certificate hypotheses.
+Generic source, packing and overlap lemmas retain only the assumptions
+displayed in their own signatures.
+
+R53: equality in the two-edge backfill owner packing at maximal Event E.
+
+The R51 proof chose an upper-half diagonal owner locally for every
+backfill value and used only the resulting inequality.  Here the choice is
+made into a reusable definition.  R52's exact missing/survivor count then
+forces equality: all strict-upper-half owner rows occur, with no spare row.
+-/
+
+/-- The complete value packet newly entering across the two consecutive
+prefix edges `q→q+1` and `q+1→q+2`. -/
+noncomputable def ConsecutiveBackfillValues (q : Nat) : List Nat :=
+  PrefixBackfillValues
+      (StrictRowPrefixValues gameF q)
+      (StrictRowPrefixValues gameF (q + 1)) ++
+    PrefixBackfillValues
+      (StrictRowPrefixValues gameF (q + 1))
+      (StrictRowPrefixValues gameF (q + 2))
+
+/-- Canonical chosen upper-half diagonal owner of a two-edge backfill
+value.  Under the consecutive-dip hypotheses the positive branch is
+always selected for values in `ConsecutiveBackfillValues`. -/
+noncomputable def ConsecutiveBackfillOwner (q v : Nat) : Nat :=
+  if h : exists i,
+      i <= q /\ q < i + i /\ gameF i i = v then
+    Classical.choose h
+  else 0
+
+noncomputable def ConsecutiveBackfillOwners (q : Nat) : List Nat :=
+  (ConsecutiveBackfillValues q).map (ConsecutiveBackfillOwner q)
+
+/-- Explicit list of all `i≤q` in the strict upper half `q<2i`.
+Its length is `ceil(q/2)=(q+1)/2`, uniformly in the parity of `q`. -/
+def StrictUpperHalfOwnerRows (q : Nat) : List Nat :=
+  List.range' (q / 2 + 1) ((q + 1) / 2)
+
+private theorem r53_nodup_map_of_injective_on
+    (f : Nat -> Nat) (xs : List Nat)
+    (hxs : xs.Nodup)
+    (hinj : forall x, x ∈ xs -> forall y, y ∈ xs ->
+      f x = f y -> x = y) :
+    (xs.map f).Nodup := by
+  induction xs with
+  | nil => simp
+  | cons a as ih =>
+      rw [List.nodup_cons] at hxs
+      change (f a :: as.map f).Nodup
+      rw [List.nodup_cons]
+      constructor
+      · intro hmem
+        rcases List.mem_map.mp hmem with ⟨y, hy, hay⟩
+        have hay' : a = y :=
+          hinj a (by simp) y (by simp [hy]) hay.symm
+        subst y
+        exact hxs.1 hy
+      · apply ih hxs.2
+        intro x hx y hy hxy
+        exact hinj x (by simp [hx]) y (by simp [hy]) hxy
+
+/-- A duplicate-free cover with no spare target slots is a permutation. -/
+private theorem r53_perm_of_nodup_subset_length_le
+    {xs ys : List Nat}
+    (hnd : xs.Nodup) (hsub : xs ⊆ ys)
+    (hlen : ys.length <= xs.length) :
+    xs.Perm ys := by
+  induction xs generalizing ys with
+  | nil =>
+      cases ys with
+      | nil => exact List.Perm.nil
+      | cons y ys => simp at hlen
+  | cons a xs ih =>
+      have hndParts := List.nodup_cons.mp hnd
+      have ha : a ∈ ys := hsub (by simp)
+      have hsubErase : xs ⊆ ys.erase a := by
+        intro x hx
+        have hxy : x ∈ ys := hsub (by simp [hx])
+        have hxa : x ≠ a := by
+          intro hxa
+          apply hndParts.1
+          simpa [hxa] using hx
+        exact (List.mem_erase_of_ne hxa).mpr hxy
+      have hlenErase : (ys.erase a).length <= xs.length := by
+        have herase := List.length_erase_of_mem ha
+        simp only [List.length_cons] at hlen
+        omega
+      have htail : xs.Perm (ys.erase a) :=
+        ih hndParts.2 hsubErase hlenErase
+      exact (htail.cons a).trans (List.perm_cons_erase ha).symm
+
+theorem mem_strictUpperHalfOwnerRows_iff
+    {q i : Nat} :
+    i ∈ StrictUpperHalfOwnerRows q <->
+      i <= q /\ q < i + i := by
+  change i ∈ List.range' (q / 2 + 1) ((q + 1) / 2) <-> _
+  rw [List.mem_range'_1]
+  constructor
+  · intro h
+    constructor <;> omega
+  · intro h
+    constructor <;> omega
+
+/-- The two consecutive backfill value packets are jointly duplicate-free. -/
+theorem consecutiveBackfillValues_nodup (q : Nat) :
+    (ConsecutiveBackfillValues q).Nodup := by
+  let back0 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF q)
+    (StrictRowPrefixValues gameF (q + 1))
+  let back1 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF (q + 1))
+    (StrictRowPrefixValues gameF (q + 2))
+  have hback0Nodup : back0.Nodup :=
+    List.filter_sublist.nodup
+      (strictRowPrefixValues_nodup gameRecurrenceModel (q + 1))
+  have hback1Nodup : back1.Nodup :=
+    List.filter_sublist.nodup
+      (strictRowPrefixValues_nodup gameRecurrenceModel (q + 2))
+  have hcross : forall a, a ∈ back0 -> forall b, b ∈ back1 ->
+      a ≠ b := by
+    intro a ha b hb hEq
+    subst b
+    exact consecutive_prefix_backfill_packets_disjoint q a ha hb
+  change (back0 ++ back1).Nodup
+  exact List.nodup_append.mpr ⟨hback0Nodup, hback1Nodup, hcross⟩
+
+/-- Every value in the combined packet has a diagonal owner in the weak
+upper half with right endpoint `q` included. -/
+theorem consecutiveBackfillValue_has_upperHalfOwner
+    {q v : Nat}
+    (hdip0 : gameF (q + 1) (q + 1) < gameF q q)
+    (hdip1 : gameF (q + 2) (q + 2) < gameF (q + 1) (q + 1))
+    (hv : v ∈ ConsecutiveBackfillValues q) :
+    exists i, i <= q /\ q < i + i /\ gameF i i = v := by
+  let back0 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF q)
+    (StrictRowPrefixValues gameF (q + 1))
+  let back1 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF (q + 1))
+    (StrictRowPrefixValues gameF (q + 2))
+  change v ∈ back0 ++ back1 at hv
+  rcases List.mem_append.mp hv with hv0 | hv1
+  · rcases adjacent_dip_backfill_has_past_diagonal_owner
+      gameRecurrenceModel hdip0 hv0 with ⟨i, hiq, hdiag⟩
+    have hvNew := (List.mem_filter.mp hv0).1
+    rcases mem_strictRowPrefixValues_iff_C.mp hvNew with
+      ⟨b, hb, hcell⟩
+    have hhigh := game_past_diagonal_reemission_is_high
+      (i := i) (t := q + 1) (b := b)
+      (Nat.le_of_lt hb) (hdiag.trans hcell.symm)
+    have hcap := recurrence_diagonal_source_capacity
+      gameRecurrenceModel i
+    change gameF i i <= i + i + 1 at hcap
+    exact ⟨i, by omega, by omega, hdiag⟩
+  · rcases adjacent_dip_backfill_has_past_diagonal_owner
+      gameRecurrenceModel hdip1 hv1 with ⟨i, hiq, hdiag⟩
+    have hvNew := (List.mem_filter.mp hv1).1
+    rcases mem_strictRowPrefixValues_iff_C.mp hvNew with
+      ⟨b, hb, hcell⟩
+    have hhigh := game_past_diagonal_reemission_is_high
+      (i := i) (t := q + 2) (b := b)
+      (Nat.le_of_lt hb) (hdiag.trans hcell.symm)
+    have hcap := recurrence_diagonal_source_capacity
+      gameRecurrenceModel i
+    change gameF i i <= i + i + 1 at hcap
+    exact ⟨i, by omega, by omega, hdiag⟩
+
+theorem consecutiveBackfillOwner_spec
+    {q v : Nat}
+    (hdip0 : gameF (q + 1) (q + 1) < gameF q q)
+    (hdip1 : gameF (q + 2) (q + 2) < gameF (q + 1) (q + 1))
+    (hv : v ∈ ConsecutiveBackfillValues q) :
+    ConsecutiveBackfillOwner q v <= q /\
+    q < ConsecutiveBackfillOwner q v + ConsecutiveBackfillOwner q v /\
+    gameF (ConsecutiveBackfillOwner q v)
+      (ConsecutiveBackfillOwner q v) = v := by
+  have hex := consecutiveBackfillValue_has_upperHalfOwner
+    hdip0 hdip1 hv
+  dsimp [ConsecutiveBackfillOwner]
+  rw [dif_pos hex]
+  exact Classical.choose_spec hex
+
+/-- The strengthened R53 cross-edge geometry removes the weak endpoint:
+the chosen owner of every value in the combined packet is strictly before
+the first row `q`. -/
+theorem consecutiveBackfillOwner_lt_firstRow
+    {q v : Nat}
+    (hdip0 : gameF (q + 1) (q + 1) < gameF q q)
+    (hdip1 : gameF (q + 2) (q + 2) < gameF (q + 1) (q + 1))
+    (hv : v ∈ ConsecutiveBackfillValues q) :
+    ConsecutiveBackfillOwner q v < q := by
+  let back0 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF q)
+    (StrictRowPrefixValues gameF (q + 1))
+  let back1 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF (q + 1))
+    (StrictRowPrefixValues gameF (q + 2))
+  have hchosen := consecutiveBackfillOwner_spec hdip0 hdip1 hv
+  change v ∈ back0 ++ back1 at hv
+  rcases List.mem_append.mp hv with hv0 | hv1
+  · rcases adjacent_dip_backfill_has_past_diagonal_owner
+      gameRecurrenceModel hdip0 hv0 with ⟨i, hiq, hdiag⟩
+    have hEq : ConsecutiveBackfillOwner q v = i :=
+      diagonal_injective gameRecurrenceModel
+        (hchosen.2.2.trans hdiag.symm)
+    omega
+  · exact second_consecutive_dip_backfill_owner_lt_first_row
+      hdip0 hdip1 hv1 (by omega) hchosen.2.2
+
+theorem consecutiveBackfillOwners_nodup
+    {q : Nat}
+    (hdip0 : gameF (q + 1) (q + 1) < gameF q q)
+    (hdip1 : gameF (q + 2) (q + 2) < gameF (q + 1) (q + 1)) :
+    (ConsecutiveBackfillOwners q).Nodup := by
+  apply r53_nodup_map_of_injective_on
+    (ConsecutiveBackfillOwner q) (ConsecutiveBackfillValues q)
+    (consecutiveBackfillValues_nodup q)
+  intro v hv w hw hEq
+  have hvDiag := (consecutiveBackfillOwner_spec hdip0 hdip1 hv).2.2
+  have hwDiag := (consecutiveBackfillOwner_spec hdip0 hdip1 hw).2.2
+  rw [hEq] at hvDiag
+  exact hvDiag.symm.trans hwDiag
+
+/-- Equality in weak-upper-half capacity upgrades the owner injection to
+an exact permutation of the parity-uniform explicit interval. -/
+theorem consecutiveBackfillOwners_perm_strictUpperHalf
+    {q : Nat}
+    (hdip0 : gameF (q + 1) (q + 1) < gameF q q)
+    (hdip1 : gameF (q + 2) (q + 2) < gameF (q + 1) (q + 1))
+    (hexact : (ConsecutiveBackfillValues q).length = (q + 1) / 2) :
+    (ConsecutiveBackfillOwners q).Perm
+      (StrictUpperHalfOwnerRows q) := by
+  have hownersNodup := consecutiveBackfillOwners_nodup hdip0 hdip1
+  have hsub : ConsecutiveBackfillOwners q ⊆
+      StrictUpperHalfOwnerRows q := by
+    intro i hi
+    rcases List.mem_map.mp hi with ⟨v, hv, rfl⟩
+    exact mem_strictUpperHalfOwnerRows_iff.mpr
+      ⟨(consecutiveBackfillOwner_spec hdip0 hdip1 hv).1,
+       (consecutiveBackfillOwner_spec hdip0 hdip1 hv).2.1⟩
+  have hlen : (StrictUpperHalfOwnerRows q).length <=
+      (ConsecutiveBackfillOwners q).length := by
+    simp [StrictUpperHalfOwnerRows, ConsecutiveBackfillOwners, hexact]
+  exact r53_perm_of_nodup_subset_length_le hownersNodup hsub hlen
+
+/-- With the endpoint removed, the combined packet can never attain the
+old weak capacity `ceil(q/2)`. -/
+theorem consecutiveBackfillValues_ne_weakUpperHalfCapacity
+    {q : Nat}
+    (hdip0 : gameF (q + 1) (q + 1) < gameF q q)
+    (hdip1 : gameF (q + 2) (q + 2) < gameF (q + 1) (q + 1)) :
+    (ConsecutiveBackfillValues q).length ≠ (q + 1) / 2 := by
+  intro hexact
+  have hstrict :=
+    game_consecutive_dips_combined_backfill_owner_strict_packing
+      hdip0 hdip1
+  have hstrict' :
+      2 * (ConsecutiveBackfillValues q).length + 1 <= q := by
+    simpa [ConsecutiveBackfillValues, List.length_append] using hstrict
+  omega
+
+/-- The two Event-E forbidden packets separately force `m₀+2` and
+`m₁+2` genuine backfills.  R51 used their sum only inside the packing
+inequality; exposing both lower bounds lets the maximal equality case be
+recovered exactly. -/
+theorem gameF_eventE_two_backfill_packet_lower_bounds
+    {s delta z c b0 b1 : Nat}
+    (hdip0 : gameF (s + 1) (s + 1) < gameF s s)
+    (hdip1 : gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1))
+    (hc : c < s) (hSucc : gameF s c = z + 1)
+    (hNextDiag : gameF (s + 1) (s + 1) = z + 1)
+    (hb1 : b1 < s + 1) (hHost1 : gameF (s + 1) b1 = z)
+    (hEmit : gameF (s + 2) (s + 2) = z)
+    (hslotsNodup : (EventEDefectBandSlots s delta c b0).Nodup)
+    (hslotsData : forall g,
+      g ∈ EventEDefectBandSlots s delta c b0 ->
+      g < s /\ gameF s g < z) :
+    let back0 := PrefixBackfillValues
+      (StrictRowPrefixValues gameF s)
+      (StrictRowPrefixValues gameF (s + 1))
+    let back1 := PrefixBackfillValues
+      (StrictRowPrefixValues gameF (s + 1))
+      (StrictRowPrefixValues gameF (s + 2))
+    (EventEMissingBandSlots s delta c b0).length + 2 <= back0.length /\
+    (EventESecondMissingBandSlots s delta c b0).length + 2 <=
+      back1.length := by
+  dsimp only
+  let slots := EventEDefectBandSlots s delta c b0
+  let missing0 := EventEMissingBandSlots s delta c b0
+  let survivors := EventESurvivingBandSlots s delta c b0
+  let missing1 := EventESecondMissingBandSlots s delta c b0
+  let low0 := missing0.map (fun g => gameF s g)
+  let low1 := missing1.map (fun g => gameF s g)
+  let forbidden0 := low0 ++ [z + 1]
+  let forbidden1 := low1 ++ [z]
+  let back0 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF s)
+    (StrictRowPrefixValues gameF (s + 1))
+  let back1 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF (s + 1))
+    (StrictRowPrefixValues gameF (s + 2))
+
+  have hmissing0Nodup : missing0.Nodup :=
+    List.filter_sublist.nodup hslotsNodup
+  have hsurvivorsNodup : survivors.Nodup :=
+    List.filter_sublist.nodup hslotsNodup
+  have hmissing1Nodup : missing1.Nodup :=
+    List.filter_sublist.nodup hsurvivorsNodup
+  have hlow0Nodup : low0.Nodup := by
+    apply r53_nodup_map_of_injective_on
+      (fun g => gameF s g) missing0 hmissing0Nodup
+    intro g hg k hk heq
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+    have hkSlots : k ∈ slots := (List.mem_filter.mp hk).1
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt (hslotsData g hgSlots).1)
+      (Nat.le_of_lt (hslotsData k hkSlots).1) heq
+  have hlow1Nodup : low1.Nodup := by
+    apply r53_nodup_map_of_injective_on
+      (fun g => gameF s g) missing1 hmissing1Nodup
+    intro g hg k hk heq
+    have hgSurv : g ∈ survivors := (List.mem_filter.mp hg).1
+    have hkSurv : k ∈ survivors := (List.mem_filter.mp hk).1
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hgSurv).1
+    have hkSlots : k ∈ slots := (List.mem_filter.mp hkSurv).1
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt (hslotsData g hgSlots).1)
+      (Nat.le_of_lt (hslotsData k hkSlots).1) heq
+  have hdisjoint0 : forall v, v ∈ low0 ->
+      forall w, w ∈ [z + 1] -> v ≠ w := by
+    intro v hv w hw hEq
+    simp only [List.mem_singleton] at hw
+    subst w
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+    have hLower := (hslotsData g hgSlots).2
+    omega
+  have hdisjoint1 : forall v, v ∈ low1 ->
+      forall w, w ∈ [z] -> v ≠ w := by
+    intro v hv w hw hEq
+    simp only [List.mem_singleton] at hw
+    subst w
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hgSurv : g ∈ survivors := (List.mem_filter.mp hg).1
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hgSurv).1
+    have hLower := (hslotsData g hgSlots).2
+    omega
+  have hforbidden0Nodup : forbidden0.Nodup :=
+    List.nodup_append.mpr ⟨hlow0Nodup, by simp, hdisjoint0⟩
+  have hforbidden1Nodup : forbidden1.Nodup :=
+    List.nodup_append.mpr ⟨hlow1Nodup, by simp, hdisjoint1⟩
+
+  have hsub0 : forbidden0 ⊆ StrictRowPrefixValues gameF s := by
+    intro v hv
+    rcases List.mem_append.mp hv with hvLow | hvHigh
+    · rcases List.mem_map.mp hvLow with ⟨g, hg, rfl⟩
+      have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+      exact List.mem_map.mpr
+        ⟨g, List.mem_range.mpr (hslotsData g hgSlots).1, rfl⟩
+    · simp only [List.mem_singleton] at hvHigh
+      subst v
+      exact List.mem_map.mpr
+        ⟨c, List.mem_range.mpr hc, hSucc⟩
+  have hmissing0 : forall v, v ∈ forbidden0 ->
+      v ∉ StrictRowPrefixValues gameF (s + 1) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hvLow | hvHigh
+    · rcases List.mem_map.mp hvLow with ⟨g, hg, rfl⟩
+      have hfilter := (List.mem_filter.mp hg).2
+      simpa [missing0, EventEMissingBandSlots] using hfilter
+    · simp only [List.mem_singleton] at hvHigh
+      subst v
+      rw [← hNextDiag]
+      exact diagonal_value_absent_strict_prefix
+        gameRecurrenceModel (s + 1)
+  have hsub1 : forbidden1 ⊆
+      StrictRowPrefixValues gameF (s + 1) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hvLow | hvHigh
+    · rcases List.mem_map.mp hvLow with ⟨g, hg, rfl⟩
+      have hgSurv : g ∈ survivors := (List.mem_filter.mp hg).1
+      have hfilter := (List.mem_filter.mp hgSurv).2
+      simpa [survivors, EventESurvivingBandSlots] using hfilter
+    · simp only [List.mem_singleton] at hvHigh
+      subst v
+      exact List.mem_map.mpr
+        ⟨b1, List.mem_range.mpr hb1, hHost1⟩
+  have hmissing1 : forall v, v ∈ forbidden1 ->
+      v ∉ StrictRowPrefixValues gameF (s + 2) := by
+    intro v hv
+    rcases List.mem_append.mp hv with hvLow | hvHigh
+    · rcases List.mem_map.mp hvLow with ⟨g, hg, rfl⟩
+      have hfilter := (List.mem_filter.mp hg).2
+      simpa [missing1, EventESecondMissingBandSlots] using hfilter
+    · simp only [List.mem_singleton] at hvHigh
+      subst v
+      rw [← hEmit]
+      exact diagonal_value_absent_strict_prefix
+        gameRecurrenceModel (s + 2)
+
+  have hpkg0 := adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills
+    gameRecurrenceModel hdip0 hforbidden0Nodup hsub0 hmissing0
+  change forbidden0.length + 1 <= back0.length /\ _ at hpkg0
+  have hpkg1 := adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills
+    gameRecurrenceModel hdip1 hforbidden1Nodup hsub1 hmissing1
+  change forbidden1.length + 1 <= back1.length /\ _ at hpkg1
+  have hlen0 : forbidden0.length = missing0.length + 1 := by
+    simp [forbidden0, low0]
+  have hlen1 : forbidden1.length = missing1.length + 1 := by
+    simp [forbidden1, low1]
+  change missing0.length + 2 <= back0.length /\
+    missing1.length + 2 <= back1.length
+  constructor <;> omega
+
+/-- Exact equality package for the complete two-edge backfill population. -/
+def ConsecutiveBackfillOwnerEqualityCertificate (q : Nat) : Prop :=
+  (ConsecutiveBackfillValues q).Nodup /\
+  (ConsecutiveBackfillOwners q).Nodup /\
+  (ConsecutiveBackfillValues q).length = (q + 1) / 2 /\
+  (ConsecutiveBackfillOwners q).length = (q + 1) / 2 /\
+  (forall v, v ∈ ConsecutiveBackfillValues q ->
+    ConsecutiveBackfillOwner q v <= q /\
+    q < ConsecutiveBackfillOwner q v + ConsecutiveBackfillOwner q v /\
+    gameF (ConsecutiveBackfillOwner q v)
+      (ConsecutiveBackfillOwner q v) = v) /\
+  (ConsecutiveBackfillOwners q).Perm (StrictUpperHalfOwnerRows q) /\
+  forall i, i <= q -> q < i + i ->
+    gameF i i ∈ ConsecutiveBackfillValues q
+
+theorem consecutiveBackfill_owner_equality_certificate
+    {q : Nat}
+    (hdip0 : gameF (q + 1) (q + 1) < gameF q q)
+    (hdip1 : gameF (q + 2) (q + 2) < gameF (q + 1) (q + 1))
+    (hexact : (ConsecutiveBackfillValues q).length = (q + 1) / 2) :
+    ConsecutiveBackfillOwnerEqualityCertificate q := by
+  have hvaluesNodup := consecutiveBackfillValues_nodup q
+  have hownersNodup := consecutiveBackfillOwners_nodup hdip0 hdip1
+  have hownersLen :
+      (ConsecutiveBackfillOwners q).length = (q + 1) / 2 := by
+    simpa [ConsecutiveBackfillOwners] using hexact
+  have hperm := consecutiveBackfillOwners_perm_strictUpperHalf
+    hdip0 hdip1 hexact
+  have hforced : forall i, i <= q -> q < i + i ->
+      gameF i i ∈ ConsecutiveBackfillValues q := by
+    intro i hiq hhalf
+    have hiRows : i ∈ StrictUpperHalfOwnerRows q :=
+      mem_strictUpperHalfOwnerRows_iff.mpr ⟨hiq, hhalf⟩
+    have hiOwners : i ∈ ConsecutiveBackfillOwners q :=
+      hperm.mem_iff.mpr hiRows
+    rcases List.mem_map.mp hiOwners with ⟨v, hv, hvOwner⟩
+    have hvDiag := (consecutiveBackfillOwner_spec
+      hdip0 hdip1 hv).2.2
+    have hiDiag : gameF i i = v := by
+      simpa [hvOwner] using hvDiag
+    rw [hiDiag]
+    exact hv
+  exact ⟨hvaluesNodup, hownersNodup, hexact, hownersLen,
+    fun v hv => consecutiveBackfillOwner_spec hdip0 hdip1 hv,
+    hperm, hforced⟩
+
+/-- Maximal Event E together with the exact missing count and the saturated
+combined backfill-owner permutation. -/
+def EventEMaximalBackfillOwnerEqualityCertificate
+    (s delta z c b0 : Nat) : Prop :=
+  EventEMaximalSurvivorDiagonalSqueezeCertificate s delta z c b0 /\
+  (EventEMissingBandSlots s delta c b0).length +
+      (EventESecondMissingBandSlots s delta c b0).length + 4 =
+    (s + 1) / 2 /\
+  ConsecutiveBackfillOwnerEqualityCertificate s
+
+/-- At maximal Event E the complete two-edge backfill population has
+exactly `ceil(s/2)` values and its diagonal owners are exactly all rows
+`i≤s` with `s<2i`. -/
+theorem gameF_margin_eventE_maximal_backfill_owner_equality
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    delta + 4 = s ->
+      exists c b0,
+        EventEMaximalBackfillOwnerEqualityCertificate
+          s delta z c b0 := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  intro hmax
+  have hmissing := gameF_margin_eventE_maximal_missing_total_exact
+    hU hdip hmargin hnextDip hmax
+  change exists c b0,
+    EventEMaximalSurvivorDiagonalSqueezeCertificate s delta z c b0 /\
+    (EventEMissingBandSlots s delta c b0).length +
+      (EventESecondMissingBandSlots s delta c b0).length + 4 =
+        (s + 1) / 2 at hmissing
+  rcases hmissing with ⟨c, b0, hsqueeze, hmissingExact⟩
+  have hcross : EventECrossEdgeSurvivorCertificate
+      s delta z c b0 := hsqueeze.1
+  have hbase := hcross.1.1.1
+  rcases hbase with
+    ⟨hc, hb0, _hcNe, hSucc, hBase,
+      hslotsNodup, _hslotsLen, hslotsProps, _hweak⟩
+
+  have hInv := gameF_margin_eventE_parametric_defect_invariant
+    hU hdip hmargin hnextDip
+  change EventEDefectPacketInvariant s d delta z at hInv
+  rcases hInv with
+    ⟨_hdeltaPos, _hdeltaUpper, _hdeltaSum, hzDiag,
+      ci, bi, b1, _dc, _d0, _d1,
+      hci, hbi, hb1, _hciNe, _hbiNe,
+      hSuccI, hBaseI, hHost1, _rest⟩
+  have hciEq : ci = c := by
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hci) (Nat.le_of_lt hc)
+      (hSuccI.trans hSucc.symm)
+  have hbiEq : bi = b0 := by
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hbi) (Nat.le_of_lt hb0)
+      (hBaseI.trans hBase.symm)
+  subst ci
+  subst bi
+  have hNextDiag : gameF (s + 1) (s + 1) = z + 1 := by
+    change d = z + 1
+    omega
+  have hunitNext := hU (s + 1) hnextDip
+  change gameF (s + 2) (s + 2) + 1 = d at hunitNext
+  have hEmit : gameF (s + 2) (s + 2) = z := by
+    omega
+  have hslotsData : forall g,
+      g ∈ EventEDefectBandSlots s delta c b0 ->
+      g < s /\ gameF s g < z := by
+    intro g hg
+    have hdata := hslotsProps g hg
+    have htransition := hdata.2.2.2
+    have hLower : gameF s g < z := by
+      simpa [EventELowerTransition] using htransition.2.1
+    exact ⟨hdata.1, hLower⟩
+  have hpackets := gameF_eventE_two_backfill_packet_lower_bounds
+    hdip hnextDip hc hSucc hNextDiag hb1 hHost1 hEmit
+      hslotsNodup hslotsData
+  let back0 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF s)
+    (StrictRowPrefixValues gameF (s + 1))
+  let back1 := PrefixBackfillValues
+    (StrictRowPrefixValues gameF (s + 1))
+    (StrictRowPrefixValues gameF (s + 2))
+  change (EventEMissingBandSlots s delta c b0).length + 2 <=
+      back0.length /\
+    (EventESecondMissingBandSlots s delta c b0).length + 2 <=
+      back1.length at hpackets
+  have hpacking := game_consecutive_dips_combined_backfill_owner_packing
+    hdip hnextDip
+  change 2 * (back0.length + back1.length) <= s + 1 at hpacking
+  have hbackExact : back0.length + back1.length = (s + 1) / 2 := by
+    omega
+  have hvalueExact :
+      (ConsecutiveBackfillValues s).length = (s + 1) / 2 := by
+    change (back0 ++ back1).length = (s + 1) / 2
+    simpa using hbackExact
+  have hequality := consecutiveBackfill_owner_equality_certificate
+    hdip hnextDip hvalueExact
+  exact ⟨c, b0, hsqueeze, hmissingExact, hequality⟩
+
+/-- Honest frozen/backfill interaction furnished by owner saturation.  If
+the owner time `p` of a frozen carry lies in the strict upper half, then
+row `p` is necessarily also the diagonal owner of one of the two backfill
+values.  The diagonal value is different from the row-start value `p`, so
+this is a forced two-channel row configuration, not by itself a
+contradiction. -/
+theorem upperHalf_frozenCarry_forces_backfill_diagonal
+    {s z g p : Nat}
+    (hequality : ConsecutiveBackfillOwnerEqualityCertificate s)
+    (hterminal : EventEFrozenCarryTerminal s z g p)
+    (hupper : s < p + p) :
+    gameF p p ∈ ConsecutiveBackfillValues s /\
+    gameF p p ≠ p /\
+    gameF p g = p := by
+  have hforced := hequality.2.2.2.2.2.2
+  have hdiagMem : gameF p p ∈ ConsecutiveBackfillValues s :=
+    hforced p hterminal.2.1 hupper
+  have hdiagGt := gameRecurrenceModel.diagonal_gt p
+  change p < gameF p p at hdiagGt
+  exact ⟨hdiagMem, by omega, hterminal.2.2.2.2.1⟩
+
+/-- The maximal Event-E defect is impossible.  R52 plus the two forced
+packets makes the combined backfill population attain the old weak
+capacity `(s+1)/2`; strict cross-edge packing proves that this capacity
+cannot be attained because owner row `s` is unavailable. -/
+theorem gameF_margin_eventE_maximal_defect_impossible
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 \/
+      exists j, s = j + 1 /\
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    delta + 4 = s -> False := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  intro hmax
+  have hequality := gameF_margin_eventE_maximal_backfill_owner_equality
+    hU hdip hmargin hnextDip hmax
+  change exists c b0,
+    EventEMaximalBackfillOwnerEqualityCertificate
+      s delta z c b0 at hequality
+  rcases hequality with ⟨c, b0, hcert⟩
+  have hownerEquality : ConsecutiveBackfillOwnerEqualityCertificate s :=
+    hcert.2.2
+  have hvalueExact :
+      (ConsecutiveBackfillValues s).length = (s + 1) / 2 :=
+    hownerEquality.2.2.1
+  exact consecutiveBackfillValues_ne_weakUpperHalfCapacity
+    hdip hnextDip hvalueExact
+
+#print axioms mem_strictUpperHalfOwnerRows_iff
+#print axioms consecutiveBackfillOwner_spec
+#print axioms consecutiveBackfillOwner_lt_firstRow
+#print axioms consecutiveBackfillOwners_perm_strictUpperHalf
+#print axioms consecutiveBackfillValues_ne_weakUpperHalfCapacity
+#print axioms gameF_eventE_two_backfill_packet_lower_bounds
+#print axioms gameF_margin_eventE_maximal_backfill_owner_equality
+#print axioms upperHalf_frozenCarry_forces_backfill_diagonal
+#print axioms gameF_margin_eventE_maximal_defect_impossible
+
+end ChompLean

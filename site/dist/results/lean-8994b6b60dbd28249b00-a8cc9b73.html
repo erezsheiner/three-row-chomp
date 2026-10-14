@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R185 Greedy Target Seat Ledger · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R185 Greedy Target Seat Ledger</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R185GreedyTargetSeatLedger.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R185GreedyTargetSeatLedger.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R185GreedyTargetSeatLedger.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 53 declarations</summary><ul class="declarations"><li><code>ChompLean.gameF_before_high_rowstart_carry_or_colTail_or_lowerHole</code><pre class="prose">∀ {u r t c e : Nat} (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hct : @LE.le.{0} Nat instLENat c t) (htu : @LT.lt.{0} Nat instLTNat t u)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u) (hec : @LT.lt.{0} Nat instLTNat e c),
+  Or
+    (And (@LT.lt.{0} Nat instLTNat e t)
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        t))
+    (Or (ChompLean.ColTail ChompLean.gameF t e u) (ChompLean.HasLowerHole ChompLean.gameF t e u))</pre></li><li><code>ChompLean.gameF_before_high_rowstart_ownerWindow_ledger</code><pre class="prose">∀ {u r g t c e : Nat} (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgt : @LT.lt.{0} Nat instLTNat g t)
+  (hct : @LE.le.{0} Nat instLENat c t) (htu : @LT.lt.{0} Nat instLTNat t u)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u) (hec : @LT.lt.{0} Nat instLTNat e c),
+  Or
+    (And (@LT.lt.{0} Nat instLTNat e t)
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        t))
+    (Or (ChompLean.ColTail ChompLean.gameF t e u)
+      (@Exists.{1} Nat fun (z : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+          (And (@LT.lt.{0} Nat instLTNat z u)
+            (Or
+              (@Exists.{1} Nat fun (a : Nat) =&gt;
+                And (@LT.lt.{0} Nat instLTNat e a)
+                  (And (@LE.le.{0} Nat instLENat a g) (@Eq.{1} Nat (ChompLean.gameF a a) z)))
+              (Or
+                (@Exists.{1} Nat fun (s : Nat) =&gt;
+                  And (@LT.lt.{0} Nat instLTNat e s)
+                    (And (@LE.le.{0} Nat instLENat s g)
+                      (And (@LT.lt.{0} Nat instLTNat s z) (@Eq.{1} Nat (ChompLean.gameF z s) z))))
+                (And (@Eq.{1} Nat z t) (@Eq.{1} Nat (ChompLean.gameF t e) t)))))))</pre></li><li><code>ChompLean.gameF_before_high_target_carry_or_R_or_lowerHole</code><pre class="prose">∀ {t c e u : Nat} (hct : @LE.le.{0} Nat instLENat c t) (htu : @LT.lt.{0} Nat instLTNat t u)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u) (hec : @LT.lt.{0} Nat instLTNat e c),
+  Or
+    (And (@LT.lt.{0} Nat instLTNat e t)
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        t))
+    (Or (ChompLean.R ChompLean.gameF t e u) (ChompLean.HasLowerHole ChompLean.gameF t e u))</pre></li><li><code>ChompLean.gameF_before_high_target_carry_or_R_or_lowerHole._proof_1_1</code><pre class="prose">∀ {t c e u : Nat} (hct : @LE.le.{0} Nat instLENat c t) (hec : @LT.lt.{0} Nat instLTNat e c) (b : Nat)
+  (hbe : @LT.lt.{0} Nat instLTNat b e), Not (@LE.le.{0} Nat instLENat b t) → False</pre></li><li><code>ChompLean.gameF_before_high_target_carry_or_R_or_lowerHole._proof_1_2</code><pre class="prose">∀ {t c e u : Nat} (hec : @LT.lt.{0} Nat instLTNat e c) (b : Nat) (hbe : @LT.lt.{0} Nat instLTNat b e)
+  (hbc : @Eq.{1} Nat b c), False</pre></li><li><code>ChompLean.gameF_before_high_target_carry_or_R_or_lowerHole._proof_1_3</code><pre class="prose">∀ {t c e u : Nat} (hct : @LE.le.{0} Nat instLENat c t) (hec : @LT.lt.{0} Nat instLTNat e c),
+  Not (@LE.le.{0} Nat instLENat e t) → False</pre></li><li><code>ChompLean.gameF_before_high_target_carry_or_R_or_lowerHole._proof_1_4</code><pre class="prose">∀ {t c e u : Nat} (htu : @LT.lt.{0} Nat instLTNat t u) (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u) → False</pre></li><li><code>ChompLean.gameF_before_high_target_carry_or_R_or_lowerHole._proof_1_5</code><pre class="prose">∀ {t c e u : Nat} (hec : @LT.lt.{0} Nat instLTNat e c) (hecEq : @Eq.{1} Nat e c), False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow</code><pre class="prose">∀ {u g t c e : Nat} (howners : ChompLean.LowerOwnerCoveredBy u g) (hgt : @LT.lt.{0} Nat instLTNat g t)
+  (hct : @LE.le.{0} Nat instLENat c t) (htu : @LT.lt.{0} Nat instLTNat t u)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u) (hec : @LT.lt.{0} Nat instLTNat e c)
+  (hnotCarry :
+    Not
+      (And (@LT.lt.{0} Nat instLTNat e t)
+        (@LT.lt.{0} Nat instLTNat
+          (ChompLean.gameF
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            e)
+          t)))
+  (hRclean : Not (ChompLean.R ChompLean.gameF t e u)),
+  And (@LE.le.{0} Nat instLENat t (ChompLean.gameF t e))
+    (And (@LT.lt.{0} Nat instLTNat (ChompLean.gameF t e) u)
+      (Or
+        (@Exists.{1} Nat fun (a : Nat) =&gt;
+          And (@LT.lt.{0} Nat instLTNat e a)
+            (And (@LE.le.{0} Nat instLENat a g) (@Eq.{1} Nat (ChompLean.gameF a a) (ChompLean.gameF t e))))
+        (Or
+          (@Exists.{1} Nat fun (s : Nat) =&gt;
+            And (@LT.lt.{0} Nat instLTNat e s)
+              (And (@LE.le.{0} Nat instLENat s g)
+                (And (@LT.lt.{0} Nat instLTNat s (ChompLean.gameF t e))
+                  (@Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF t e) s) (ChompLean.gameF t e)))))
+          (And (@Eq.{1} Nat (ChompLean.gameF t e) t) (@Eq.{1} Nat (ChompLean.gameF t e) t)))))</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_1</code><pre class="prose">∀ {u g t c e : Nat} (hct : @LE.le.{0} Nat instLENat c t) (hec : @LT.lt.{0} Nat instLTNat e c) (b : Nat)
+  (hbe : @LT.lt.{0} Nat instLTNat b e), Not (@LE.le.{0} Nat instLENat b t) → False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_10</code><pre class="prose">∀ {u g t c e : Nat} (houtLow : @GT.gt.{0} Nat instLTNat t (ChompLean.gameF t e))
+  (hlowStart :
+    And (@LT.lt.{0} Nat instLTNat e (ChompLean.gameF t e))
+      (@Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF t e) e) (ChompLean.gameF t e)))
+  (hsum :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameF t e)
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (ChompLean.gameF t e)))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hpersist :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        e)
+      (ChompLean.gameF t e)),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (ChompLean.gameF
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          e)
+        t) →
+    False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_2</code><pre class="prose">∀ {u g t c e : Nat} (hec : @LT.lt.{0} Nat instLTNat e c) (b : Nat) (hbe : @LT.lt.{0} Nat instLTNat b e)
+  (hbc : @Eq.{1} Nat b c), False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_3</code><pre class="prose">∀ {u g t c e : Nat} (hct : @LE.le.{0} Nat instLENat c t) (hec : @LT.lt.{0} Nat instLTNat e c),
+  Not (@LE.le.{0} Nat instLENat e t) → False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_4</code><pre class="prose">∀ {u g t c e : Nat} (hgt : @LT.lt.{0} Nat instLTNat g t) (htu : @LT.lt.{0} Nat instLTNat t u)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) u) → False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_5</code><pre class="prose">∀ {u g t c e : Nat} (hec : @LT.lt.{0} Nat instLTNat e c) (heq : @Eq.{1} Nat e c), False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_6</code><pre class="prose">∀ {u g t c e : Nat} (houtLow : @GT.gt.{0} Nat instLTNat t (ChompLean.gameF t e)),
+  Not (@LE.le.{0} Nat instLENat (ChompLean.gameF t e) t) → False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_7</code><pre class="prose">∀ {u g t c e : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (ChompLean.gameF t e)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameF t e)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_8</code><pre class="prose">∀ {u g t c e : Nat} (hgt : @LT.lt.{0} Nat instLTNat g t) (houtLow : @GT.gt.{0} Nat instLTNat t (ChompLean.gameF t e))
+  (hlowStart :
+    And (@LT.lt.{0} Nat instLTNat e (ChompLean.gameF t e))
+      (@Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF t e) e) (ChompLean.gameF t e))),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ChompLean.gameF t e)
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            (ChompLean.gameF t e)))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_clean_noncarry_before_target_outputBand_and_ownerWindow._proof_1_9</code><pre class="prose">∀ {u g t c e : Nat} (hct : @LE.le.{0} Nat instLENat c t) (hec : @LT.lt.{0} Nat instLTNat e c),
+  Not (@LT.lt.{0} Nat instLTNat e t) → False</pre></li><li><code>ChompLean.gameF_high_target_exact_greedy_seat</code><pre class="prose">∀ {t c u : Nat} (hct : @LE.le.{0} Nat instLENat c t) (htu : @LT.lt.{0} Nat instLTNat t u)
+  (hhost : @Eq.{1} Nat (ChompLean.gameF t c) u),
+  And (ChompLean.IsMex (ChompLean.B ChompLean.gameF t c) u)
+    (And (Not (ChompLean.R ChompLean.gameF t c u))
+      (And (Not (ChompLean.C ChompLean.gameF t c u)) (ChompLean.LowerSaturated ChompLean.gameF t c u)))</pre></li><li><code>ChompLean.gameF_lag8_lowerBlocker_host_precedes_target</code><pre class="prose">∀ {u c d s : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hsp :
+    @LT.lt.{0} Nat instLTNat s
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hsc : @LE.le.{0} Nat instLENat s c)
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  @LT.lt.{0} Nat instLTNat d c</pre></li><li><code>ChompLean.gameF_lag8_lowerBlocker_host_precedes_target._proof_1_1</code><pre class="prose">∀ {u c d s : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_lowerBlocker_host_precedes_target._proof_1_2</code><pre class="prose">∀ {u c d s : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        u) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_lowerBlocker_host_precedes_target._proof_1_3</code><pre class="prose">∀ {u c d s : Nat}
+  (hsp :
+    @LT.lt.{0} Nat instLTNat s
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_lowerBlocker_host_precedes_target._proof_1_4</code><pre class="prose">∀ {u c d s : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        u) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_target_host_greedy_ledger</code><pre class="prose">∀ {u r c : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u),
+  And
+    (ChompLean.IsMex
+      (ChompLean.B ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+    (And
+      (ChompLean.LowerSaturated ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c u)
+      (∀ (e : Nat),
+        @LT.lt.{0} Nat instLTNat e c →
+          Or
+            (And
+              (@LT.lt.{0} Nat instLTNat e
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+              (@LT.lt.{0} Nat instLTNat
+                (ChompLean.gameF
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  e)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))))
+            (Or
+              (ChompLean.ColTail ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                e u)
+              (ChompLean.HasLowerHole ChompLean.gameF
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+                  (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                e u))))</pre></li><li><code>ChompLean.gameF_lag8_target_host_greedy_ledger._proof_1_1</code><pre class="prose">∀ {u r c : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        u) →
+    False</pre></li><li><code>ChompLean.gameF_lag8_target_host_greedy_ledger._proof_1_2</code><pre class="prose">∀ {u r c : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u)
+  (hhost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (e : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        u) →
+    False</pre></li><li><code>ChompLean.gameF_lower_sameRow_host_precedes_high_target_of_R_clean</code><pre class="prose">∀ {t c d p u : Nat} (hct : @LE.le.{0} Nat instLENat c t) (hdt : @LE.le.{0} Nat instLENat d t)
+  (htu : @LT.lt.{0} Nat instLTNat t u)
+  (hp0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p)
+  (hpu : @LT.lt.{0} Nat instLTNat p u) (hu : @Eq.{1} Nat (ChompLean.gameF t c) u)
+  (hp : @Eq.{1} Nat (ChompLean.gameF t d) p) (hRclean : Not (ChompLean.R ChompLean.gameF t c p)),
+  @LT.lt.{0} Nat instLTNat d c</pre></li><li><code>ChompLean.gameF_lower_sameRow_host_precedes_high_target_of_R_clean._proof_1_1</code><pre class="prose">∀ {t c d p u : Nat} (hct : @LE.le.{0} Nat instLENat c t) (b : Nat) (hbc : @LT.lt.{0} Nat instLTNat b c),
+  Not (@LE.le.{0} Nat instLENat b t) → False</pre></li><li><code>ChompLean.gameF_lower_sameRow_host_precedes_high_target_of_R_clean._proof_1_2</code><pre class="prose">∀ {t c d p u : Nat} (b : Nat) (hbc : @LT.lt.{0} Nat instLTNat b c) (hbd : @Eq.{1} Nat b d),
+  Not (@LT.lt.{0} Nat instLTNat d c) → False</pre></li><li><code>ChompLean.gameF_ownerCovered_lag8_lowerBlocker_staircase</code><pre class="prose">∀ {u g c d s : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (howners : ChompLean.LowerOwnerCoveredBy u g) (hgc : @LT.lt.{0} Nat instLTNat g c)
+  (hct :
+    @LE.le.{0} Nat instLENat c
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hsp :
+    @LT.lt.{0} Nat instLTNat s
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  And (@LT.lt.{0} Nat instLTNat d s) (And (@LE.le.{0} Nat instLENat s g) (@LT.lt.{0} Nat instLTNat g c))</pre></li><li><code>ChompLean.gameF_ownerCovered_lag8_lowerBlocker_staircase._proof_1_1</code><pre class="prose">∀ {u g c d s : Nat}
+  (hsp :
+    @LT.lt.{0} Nat instLTNat s
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.gameF_ownerCovered_lag8_lowerBlocker_staircase._proof_1_2</code><pre class="prose">∀ {u g c d s : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        u) →
+    False</pre></li><li><code>ChompLean.gameF_ownerCovered_lag8_lowerBlocker_staircase._proof_1_3</code><pre class="prose">∀ {u g c d s : Nat} (s&#x27; : Nat) (hs&#x27;g : @LE.le.{0} Nat instLENat s&#x27; g) (hss&#x27; : @Eq.{1} Nat s s&#x27;),
+  Not (@LE.le.{0} Nat instLENat s g) → False</pre></li><li><code>ChompLean.gameF_ownerCovered_lag8_lowerBlocker_staircase._proof_1_4</code><pre class="prose">∀ {u g c d s : Nat}
+  (hdt :
+    @LE.le.{0} Nat instLENat d
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+  (hd :
+    Not
+      (@LT.lt.{0} Nat instLTNat d
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),
+  Not
+      (@Eq.{1} Nat d
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))) →
+    False</pre></li><li><code>ChompLean.gameF_ownerCovered_lag8_lowerBlocker_staircase._proof_1_5</code><pre class="prose">∀ {u g c d s : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  Not
+      (@LE.le.{0} Nat instLENat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))) →
+    False</pre></li><li><code>ChompLean.gameF_ownerCovered_lag8_lowerBlocker_staircase._proof_1_6</code><pre class="prose">∀ {u g c d s : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) u)
+  (htarget :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        c)
+      u)
+  (hfreeze :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+        s)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (hlowerHost :
+    @Eq.{1} Nat
+      (ChompLean.gameF
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+          (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        d)
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+  (htp :
+    @Eq.{1} Nat
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u
+        (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))),
+  False</pre></li><li><code>ChompLean.gameF_ownerCovered_lag8_lowerBlocker_staircase._proof_1_7</code><pre class="prose">∀ {u g c d s : Nat} (hgc : @LT.lt.{0} Nat instLTNat g c) (hsg : @LE.le.{0} Nat instLENat s g),
+  Not (@LE.le.{0} Nat instLENat s c) → False</pre></li><li><code>ChompLean.gameF_ownerCovered_lowerHole_localizes_rightOwner_or_currentFreeze</code><pre class="prose">∀ {v g t e z : Nat} (howners : ChompLean.LowerOwnerCoveredBy v g) (hgt : @LT.lt.{0} Nat instLTNat g t)
+  (hz0 : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) z)
+  (hzv : @LT.lt.{0} Nat instLTNat z v) (hhole : Not (ChompLean.B ChompLean.gameF t e z)),
+  Or
+    (@Exists.{1} Nat fun (a : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat e a) (And (@LE.le.{0} Nat instLENat a g) (@Eq.{1} Nat (ChompLean.gameF a a) z)))
+    (Or
+      (@Exists.{1} Nat fun (s : Nat) =&gt;
+        And (@LT.lt.{0} Nat instLTNat e s)
+          (And (@LE.le.{0} Nat instLENat s g)
+            (And (@LT.lt.{0} Nat instLTNat s z) (@Eq.{1} Nat (ChompLean.gameF z s) z))))
+      (And (@Eq.{1} Nat z t) (@Eq.{1} Nat (ChompLean.gameF t e) t)))</pre></li><li><code>ChompLean.gameF_ownerCovered_lowerHole_localizes_rightOwner_or_currentFreeze._proof_1_1</code><pre class="prose">∀ {v g t e z : Nat} (hgt : @LT.lt.{0} Nat instLTNat g t) (a : Nat) (hag : @LE.le.{0} Nat instLENat a g),
+  Not (@LT.lt.{0} Nat instLTNat a t) → False</pre></li><li><code>ChompLean.gameF_ownerCovered_lowerHole_localizes_rightOwner_or_currentFreeze._proof_1_2</code><pre class="prose">∀ {v g t e z : Nat} (s : Nat) (hes : Not (@LT.lt.{0} Nat instLTNat e s)) (b : Nat) (hbs : @LT.lt.{0} Nat instLTNat b s),
+  Not (@LT.lt.{0} Nat instLTNat b e) → False</pre></li><li><code>ChompLean.gameF_ownerCovered_lowerHole_localizes_rightOwner_or_currentFreeze._proof_1_3</code><pre class="prose">∀ {v g t e z : Nat} (s : Nat),
+  Not
+      (@LT.lt.{0} Nat instLTNat z
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.gameF_ownerCovered_lowerHole_localizes_rightOwner_or_currentFreeze._proof_1_4</code><pre class="prose">∀ {v g t e z : Nat} (s : Nat) (hstart : @Eq.{1} Nat (ChompLean.gameF z s) z) (hztStrict : @LT.lt.{0} Nat instLTNat z t),
+  Not
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) z
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t z))
+        t) →
+    False</pre></li><li><code>ChompLean.gameF_ownerCovered_lowerHole_localizes_rightOwner_or_currentFreeze._proof_1_5</code><pre class="prose">∀ {v g t e z : Nat} (s : Nat) (hes : Not (@LT.lt.{0} Nat instLTNat e s))
+  (hseStrict : Not (@LT.lt.{0} Nat instLTNat s e)), Not (@Eq.{1} Nat s e) → False</pre></li><li><code>ChompLean.gameF_ownerCovered_lowerHole_localizes_rightOwner_or_currentFreeze._proof_1_6</code><pre class="prose">∀ {v g t e z : Nat} (hsz : @LT.lt.{0} Nat instLTNat e z) (hstart : @Eq.{1} Nat (ChompLean.gameF z e) z),
+  Not (@LE.le.{0} Nat instLENat e z) → False</pre></li><li><code>ChompLean.gameF_ownerCovered_lowerHole_localizes_rightOwner_or_currentFreeze._proof_1_7</code><pre class="prose">∀ {v g t e z : Nat} (s : Nat) (hstart : @Eq.{1} Nat (ChompLean.gameF z s) z) (htz : Not (@LT.lt.{0} Nat instLTNat t z))
+  (hztStrict : Not (@LT.lt.{0} Nat instLTNat z t)), Not (@Eq.{1} Nat z t) → False</pre></li><li><code>ChompLean.gameF_ownerCovered_lowerHole_localizes_rightOwner_or_currentFreeze._proof_1_8</code><pre class="prose">∀ {v g t e : Nat} (s : Nat) (hes : Not (@LT.lt.{0} Nat instLTNat e s)) (hseStrict : Not (@LT.lt.{0} Nat instLTNat s e)),
+  Not (@Eq.{1} Nat s e) → False</pre></li><li><code>ChompLean.gameF_rowstart_R_clean_at_or_right_of_freeze_before_start</code><pre class="prose">∀ {p s t c : Nat} (hsp : @LT.lt.{0} Nat instLTNat s p) (hstart : @Eq.{1} Nat (ChompLean.gameF p s) p)
+  (htp : @LT.lt.{0} Nat instLTNat t p) (hsc : @LE.le.{0} Nat instLENat s c), Not (ChompLean.R ChompLean.gameF t c p)</pre></li><li><code>ChompLean.gameF_rowstart_R_clean_at_or_right_of_freeze_before_start._proof_1_1</code><pre class="prose">∀ {p s t c : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF p s) p) (htp : @LT.lt.{0} Nat instLTNat t p) (a : Nat)
+  (hat : @LT.lt.{0} Nat instLTNat a t) (hhost : @Eq.{1} Nat (ChompLean.gameF a c) p),
+  Not (@LE.le.{0} Nat instLENat a p) → False</pre></li><li><code>ChompLean.gameF_rowstart_R_clean_at_or_right_of_freeze_before_start._proof_1_2</code><pre class="prose">∀ {p s t c : Nat} (hsc : @LE.le.{0} Nat instLENat s c) (a : Nat) (hcs : @LT.lt.{0} Nat instLTNat c s), False</pre></li><li><code>ChompLean.gameF_rowstart_R_clean_at_or_right_of_freeze_before_start._proof_1_3</code><pre class="prose">∀ {p s t c : Nat} (hstart : @Eq.{1} Nat (ChompLean.gameF p s) p) (htp : @LT.lt.{0} Nat instLTNat t p) (a : Nat)
+  (hat : @LT.lt.{0} Nat instLTNat a t) (hhost : @Eq.{1} Nat (ChompLean.gameF a c) p) (hap : @Eq.{1} Nat a p), False</pre></li><li><code>ChompLean.gameF_rowstart_R_iff_colTail</code><pre class="prose">∀ {u r t e : Nat} (hru : @LT.lt.{0} Nat instLTNat r u) (hstart : @Eq.{1} Nat (ChompLean.gameF u r) u),
+  Iff (ChompLean.R ChompLean.gameF t e u) (ChompLean.ColTail ChompLean.gameF t e u)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R185GreedyTargetSeatLedger.lean:1</p><p>SHA-256: <code class="path">8994b6b60dbd28249b000f80e9b9af29ef32c5a7d8dc70fafad73221f25dffb6</code></p></section><p><a href="../index.html#id=lean-8994b6b60dbd28249b00">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

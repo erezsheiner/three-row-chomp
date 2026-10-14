@@ -1,0 +1,998 @@
+{
+  "module": "XTauWindowLaw",
+  "sourcePath": "lean/core/XTauWindowLaw.lean",
+  "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+  "declarationCount": 62,
+  "theoremDeclarationCount": 59,
+  "proofValuedDeclarationCount": 59,
+  "scope": "All serialized module declarations including private/generated auxiliaries; not independent theorem counts. Fresh final-source ranges and exact elaborated types.",
+  "declarations": [
+    {
+      "name": "ChompLean.A1Gate",
+      "module": "XTauWindowLaw",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 69,
+      "typePretty": "(b e V : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.GatedFutureDiagonalPin",
+      "module": "XTauWindowLaw",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 252,
+      "typePretty": "Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.LiveLe",
+      "module": "XTauWindowLaw",
+      "kind": "definition",
+      "isProof": false,
+      "sourceLine": 64,
+      "typePretty": "(b c V : Nat) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_anchor_mass",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 190,
+      "typePretty": "∀ {b e V : Nat} (_hanchor : @Eq.{1} Nat (ChompLean.gameF b e) V) (heb : @LT.lt.{0} Nat instLTNat e b)\n  (hbV : @LE.le.{0} Nat instLENat b V) (hgate : ChompLean.A1Gate b e V),\n  @Eq.{1} Nat\n    (@List.length.{0} Nat\n      (@List.filter.{0} Nat\n        (fun (c : Nat) =>\n          @Decidable.decide (@LE.le.{0} Nat instLENat b (ChompLean.gameF b c)) (Nat.decLe b (ChompLean.gameF b c)))\n        (List.range'\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) b e)\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) b e)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_anchor_mass._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {b e V : Nat} (c : Nat)\n  (hc1 :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c),\n  Not (@LT.lt.{0} Nat instLTNat e c) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_anchor_mass._proof_1_2",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {b e V : Nat} (heb : @LT.lt.{0} Nat instLTNat e b) (c : Nat)\n  (hc2 :\n    @LT.lt.{0} Nat instLTNat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) b e))),\n  Not (@LE.le.{0} Nat instLENat c b) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_iff_lowerOwnerCoveredBy",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 346,
+      "typePretty": "∀ {V cV : Nat} (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V),\n  Iff (ChompLean.A1Gate V cV V) (ChompLean.LowerOwnerCoveredBy V cV)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_no_break",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 152,
+      "typePretty": "∀ {b e V : Nat} (hgate : ChompLean.A1Gate b e V) {c : Nat} (hec : @LT.lt.{0} Nat instLTNat e c),\n  Not (ChompLean.LiveLe b c V)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 275,
+      "typePretty": "∀ {V cV : Nat} (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)\n  (hcov : ChompLean.LowerOwnerCoveredBy V cV), ChompLean.A1Gate V cV V",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (hcVV : @LT.lt.{0} Nat instLTNat cV V) (q : Nat)\n  (hkV :\n    @Eq.{1} Nat\n      (ChompLean.gameF V\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      V),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        V) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_10",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q r : Nat)\n  (hrk :\n    @LT.lt.{0} Nat instLTNat r\n      (ChompLean.gameF q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hstartk :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (ChompLean.gameF q\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        r)\n      (ChompLean.gameF q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hqk :\n    @Eq.{1} Nat q\n      (ChompLean.gameF q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hstartk' : @Eq.{1} Nat (ChompLean.gameF q r) q), Not (@LE.le.{0} Nat instLENat r q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_11",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q r : Nat) (hrcV : @LE.le.{0} Nat instLENat r cV)\n  (this :\n    @Eq.{1} Nat r\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_12",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q : Nat)\n  (hqlive :\n    @LE.le.{0} Nat instLENat q\n      (ChompLean.gameF q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (r : Nat)\n  (hstartk :\n    @Eq.{1} Nat\n      (ChompLean.gameF\n        (ChompLean.gameF q\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        r)\n      (ChompLean.gameF q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hqk :\n    Not\n      (@Eq.{1} Nat q\n        (ChompLean.gameF q\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat q\n        (ChompLean.gameF q\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_13",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q : Nat)\n  (hcq :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      q)\n  (r : Nat) (hrcV : @LE.le.{0} Nat instLENat r cV), Not (@LT.lt.{0} Nat instLTNat r q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_14",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q : Nat)\n  (hcq :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      q)\n  (r : Nat) (hrcV : @LE.le.{0} Nat instLENat r cV) (bb : Nat) (hbbr : @LT.lt.{0} Nat instLTNat bb r),\n  Not (@LE.le.{0} Nat instLENat bb q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_15",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q r : Nat) (hrcV : @LE.le.{0} Nat instLENat r cV) (bb : Nat) (hbbr : @LT.lt.{0} Nat instLTNat bb r)\n  (this :\n    @Eq.{1} Nat bb\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_2",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q : Nat)\n  (this :\n    @Eq.{1} Nat cV\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_3",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q : Nat)\n  (hqlive :\n    @LE.le.{0} Nat instLENat q\n      (ChompLean.gameF q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hkV :\n    @Eq.{1} Nat\n      (ChompLean.gameF q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      V)\n  (hqeqV : Not (@Eq.{1} Nat q V)), Not (@LT.lt.{0} Nat instLTNat q V) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_4",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q : Nat)\n  (hcq :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      q),\n  Not (@LT.lt.{0} Nat instLTNat cV q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_5",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q : Nat)\n  (hcq :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      q)\n  (bb : Nat) (hbbcV : @LT.lt.{0} Nat instLTNat bb cV), Not (@LE.le.{0} Nat instLENat bb q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_6",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q bb : Nat) (hbbcV : @LT.lt.{0} Nat instLTNat bb cV)\n  (this :\n    @Eq.{1} Nat bb\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_7",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q : Nat)\n  (hqval :\n    @LE.le.{0} Nat instLENat\n      (ChompLean.gameF q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      V)\n  (hkV :\n    Not\n      (@Eq.{1} Nat\n        (ChompLean.gameF q\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        V)),\n  Not\n      (@LT.lt.{0} Nat instLTNat\n        (ChompLean.gameF q\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        V) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_8",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q : Nat)\n  (this :\n    @LT.lt.{0} Nat instLTNat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      (ChompLean.gameF q\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not\n      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (ChompLean.gameF q\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_of_lowerOwnerCoveredBy._proof_1_9",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (q a : Nat) (hacV : @LE.le.{0} Nat instLENat a cV),\n  Not\n      (@LT.lt.{0} Nat instLTNat a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_window_full",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 159,
+      "typePretty": "∀ {b e V : Nat} (hgate : ChompLean.A1Gate b e V) (hbV : @LE.le.{0} Nat instLENat b V) (c : Nat),\n  @LT.lt.{0} Nat instLTNat e c → @LE.le.{0} Nat instLENat c b → @LE.le.{0} Nat instLENat b (ChompLean.gameF b c)",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_window_full._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {b e V : Nat} (c : Nat) (hcb : @LE.le.{0} Nat instLENat c b) (hwb : @LT.lt.{0} Nat instLTNat (ChompLean.gameF b c) b)\n  (hcw : @LT.lt.{0} Nat instLTNat c (ChompLean.gameF b c)), Not (@LT.lt.{0} Nat instLTNat c b) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_window_full._proof_1_2",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {b e V : Nat} (c : Nat) (hwb : @LT.lt.{0} Nat instLTNat (ChompLean.gameF b c) b)\n  (hdesc : @Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF b c) c) (ChompLean.gameF b c)),\n  Not (@LE.le.{0} Nat instLENat (ChompLean.gameF b c) b) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.a1Gate_window_full._proof_1_3",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {b e V : Nat} (hbV : @LE.le.{0} Nat instLENat b V) (c : Nat) (hwb : @LT.lt.{0} Nat instLTNat (ChompLean.gameF b c) b)\n  (hdesc : @Eq.{1} Nat (ChompLean.gameF (ChompLean.gameF b c) c) (ChompLean.gameF b c)),\n  Not (@LE.le.{0} Nat instLENat (ChompLean.gameF b c) V) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blocker_freeze_anchor_threshold",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 353,
+      "typePretty": "∀ {V cV : Nat} (hV : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) V)\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)\n  (hgate : ChompLean.A1Gate V cV V),\n  And\n    (@LE.le.{0} Nat instLENat cV\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n    (And\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V cV))\n      (@Eq.{1} Nat\n        (@List.length.{0} Nat\n          (@List.filter.{0} Nat\n            (fun (c : Nat) =>\n              @Decidable.decide (@LE.le.{0} Nat instLENat V (ChompLean.gameF V c)) (Nat.decLe V (ChompLean.gameF V c)))\n            (List.range'\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cV\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V cV)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V cV)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blocker_freeze_anchor_threshold._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (hV : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) V)\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)\n  (h :\n    @LT.lt.{0} Nat instLTNat cV\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@LE.le.{0} Nat instLENat cV\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blocker_freeze_anchor_threshold._proof_1_2",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (hV : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) V)\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)\n  (h :\n    @GE.ge.{0} Nat instLENat cV\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (@Eq.{1} Nat cV\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.blocker_freeze_anchor_threshold._proof_1_3",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (hV : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) V)\n  (hfreeze : @Eq.{1} Nat (ChompLean.gameF V cV) V) (hcVV : @LT.lt.{0} Nat instLTNat cV V)\n  (hcV2 :\n    @LE.le.{0} Nat instLENat cV\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))),\n  Not\n      (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) V cV)) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_adjacent_live_shadow",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 74,
+      "typePretty": "∀ {e a p : Nat} (hea : @LT.lt.{0} Nat instLTNat e a) (hap : @LE.le.{0} Nat instLENat a p)\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.gameF a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      p),\n  @Exists.{1} Nat fun (r : Nat) =>\n    And (@LT.lt.{0} Nat instLTNat e r)\n      (And (@LE.le.{0} Nat instLENat r a)\n        (And (@LE.le.{0} Nat instLENat r (ChompLean.gameF r e)) (@LE.le.{0} Nat instLENat (ChompLean.gameF r e) p)))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_adjacent_live_shadow._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {e a p : Nat} (hap : @LE.le.{0} Nat instLENat a p)\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.gameF a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      p)\n  (hLp : Not (@LE.le.{0} Nat instLENat (ChompLean.gameF a e) p))\n  (hprev :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        e)\n      a)\n  (hcarry :\n    @Eq.{1} Nat (ChompLean.gameF a e)\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        e)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_adjacent_live_shadow._proof_1_2",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {e a p : Nat} (hea : @LT.lt.{0} Nat instLTNat e a) (hap : @LE.le.{0} Nat instLENat a p)\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.gameF a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      p),\n  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) p) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_adjacent_live_shadow._proof_1_3",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {e a p : Nat} (t : Nat) (hte : @LE.le.{0} Nat instLENat t e),\n  Not\n      (@LT.lt.{0} Nat instLTNat t\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_adjacent_live_shadow._proof_1_4",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {e a p : Nat} (hea : @LT.lt.{0} Nat instLTNat e a) (t : Nat),\n  Not\n      (@LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        a) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_adjacent_live_shadow._proof_1_5",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {e a p : Nat} (hap : @LE.le.{0} Nat instLENat a p)\n  (hhost :\n    @Eq.{1} Nat\n      (ChompLean.gameF a\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      p)\n  (t : Nat) (hta : @LT.lt.{0} Nat instLTNat t a) (hft : @Eq.{1} Nat (ChompLean.gameF t e) p),\n  Not (@LE.le.{0} Nat instLENat t p) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_adjacent_live_shadow._proof_1_6",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {e a p : Nat} (hea : @LT.lt.{0} Nat instLTNat e a) (bcol : Nat) (hbe : @LT.lt.{0} Nat instLTNat bcol e),\n  Not (@LE.le.{0} Nat instLENat bcol a) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_adjacent_live_shadow._proof_1_7",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {e a p : Nat} (bcol : Nat) (hbe : @LT.lt.{0} Nat instLTNat bcol e)\n  (this :\n    @Eq.{1} Nat bcol\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) e\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_penultimate_gate_auto",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 237,
+      "typePretty": "∀ {x : Nat} (hx : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x),\n  ChompLean.A1Gate x\n    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x\n      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n    (ChompLean.gameF x\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_penultimate_gate_auto._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat} (hx : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x) (q : Nat)\n  (hcq :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      q)\n  (hqb : @LE.le.{0} Nat instLENat q x),\n  Not\n      (@Eq.{1} Nat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        x) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_penultimate_gate_auto._proof_1_2",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat} (q : Nat) (hcq : @LE.le.{0} Nat instLENat x q) (hqb : @LE.le.{0} Nat instLENat q x),\n  Not (@Eq.{1} Nat q x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gameF_penultimate_gate_auto._proof_1_3",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x : Nat} (q : Nat)\n  (hqval :\n    @LE.le.{0} Nat instLENat (ChompLean.gameF x x)\n      (ChompLean.gameF x\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n  (hlt :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF x\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n      (ChompLean.gameF x x)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gated_range_anchor_is_future_preview",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 206,
+      "typePretty": "∀ {x e t : Nat} (hanchor : @Eq.{1} Nat (ChompLean.gameF x e) (ChompLean.gameF t t)) (hex : @LT.lt.{0} Nat instLTNat e x)\n  (hxV : @LE.le.{0} Nat instLENat x (ChompLean.gameF t t)) (hgate : ChompLean.A1Gate x e (ChompLean.gameF t t)),\n  @LT.lt.{0} Nat instLTNat x t",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gated_range_anchor_is_future_preview._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x e t : Nat} (hanchor : @Eq.{1} Nat (ChompLean.gameF x e) (ChompLean.gameF t t))\n  (hxV : @LE.le.{0} Nat instLENat x (ChompLean.gameF t t))\n  (hprev :\n    @LT.lt.{0} Nat instLTNat\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        e)\n      x)\n  (hcarry :\n    @Eq.{1} Nat (ChompLean.gameF x e)\n      (ChompLean.gameF\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        e)),\n  False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gated_range_anchor_is_future_preview._proof_1_2",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x e t : Nat} (hex : @LT.lt.{0} Nat instLTNat e x) (htx' : @GE.ge.{0} Nat instLENat x t)\n  (hte : @LE.le.{0} Nat instLENat t e), Not (@LT.lt.{0} Nat instLTNat t x) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gated_range_anchor_unique_of_pin",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 261,
+      "typePretty": "∀ (hpin : ChompLean.GatedFutureDiagonalPin) {x e t : Nat}\n  (hanchor : @Eq.{1} Nat (ChompLean.gameF x e) (ChompLean.gameF t t)) (hex : @LT.lt.{0} Nat instLTNat e x)\n  (hxV : @LE.le.{0} Nat instLENat x (ChompLean.gameF t t)) (hgate : ChompLean.A1Gate x e (ChompLean.gameF t t)),\n  And\n    (@Eq.{1} Nat x\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n    (And\n      (@Eq.{1} Nat e\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x e)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.gated_range_anchor_unique_of_pin._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {x e t : Nat} (hex : @LT.lt.{0} Nat instLTNat e x)\n  (ht :\n    @Eq.{1} Nat t\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) x\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (he :\n    @Eq.{1} Nat e\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))),\n  Not\n      (And\n        (@Eq.{1} Nat x\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n        (And\n          (@Eq.{1} Nat e\n            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) t\n              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n          (@Eq.{1} Nat (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) x e)\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.liveLe_mono",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 137,
+      "typePretty": "∀ {b V c c' : Nat}, @LE.le.{0} Nat instLENat c' c → ChompLean.LiveLe b c V → ChompLean.LiveLe b c' V",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.liveLe_mono._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (n : Nat) {c' : Nat}\n  (hc :\n    @LE.le.{0} Nat instLENat c'\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (hceq :\n    Not\n      (@Eq.{1} Nat c'\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))),\n  Not (@LE.le.{0} Nat instLENat c' n) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.liveLe_mono_left",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 126,
+      "typePretty": "∀ {b c V : Nat}\n  (h :\n    ChompLean.LiveLe b\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      V),\n  ChompLean.LiveLe b c V",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.liveLe_mono_left._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {b c V : Nat} (q : Nat)\n  (hcq :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) c\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      q),\n  Not (@LT.lt.{0} Nat instLTNat c q) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lowerOwnerCoveredBy_of_a1Gate",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 319,
+      "typePretty": "∀ {V cV : Nat} (hgate : ChompLean.A1Gate V cV V), ChompLean.LowerOwnerCoveredBy V cV",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lowerOwnerCoveredBy_of_a1Gate._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (k : Nat) (hkV : @LT.lt.{0} Nat instLTNat k V) (a : Nat) (hak : @LT.lt.{0} Nat instLTNat a k)\n  (hdiagk : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)\n  (hdiagk' : @Eq.{1} Nat (ChompLean.gameF a a) k), Not (@LE.le.{0} Nat instLENat a V) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lowerOwnerCoveredBy_of_a1Gate._proof_1_2",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (k : Nat) (hkV : @LT.lt.{0} Nat instLTNat k V) (a : Nat)\n  (hdiagk : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel a a) k)\n  (hdiagk' : @Eq.{1} Nat (ChompLean.gameF a a) k), Not (@LE.le.{0} Nat instLENat (ChompLean.gameF a a) V) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lowerOwnerCoveredBy_of_a1Gate._proof_1_3",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (k : Nat) (hkV : @LT.lt.{0} Nat instLTNat k V) (r : Nat)\n  (hstartk : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel k r) k)\n  (hstartk' : @Eq.{1} Nat (ChompLean.gameF k r) k), Not (@LE.le.{0} Nat instLENat k V) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "ChompLean.lowerOwnerCoveredBy_of_a1Gate._proof_1_4",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ {V cV : Nat} (k : Nat) (hkV : @LT.lt.{0} Nat instLTNat k V) (r : Nat)\n  (hstartk : @Eq.{1} Nat (ChompLean.RecurrenceModel.f ChompLean.gameRecurrenceModel k r) k)\n  (hstartk' : @Eq.{1} Nat (ChompLean.gameF k r) k), Not (@LE.le.{0} Nat instLENat (ChompLean.gameF k r) V) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.XTauWindowLaw.0.ChompLean.filter_all_length",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": 176,
+      "typePretty": "∀ (p : Nat → Bool) (n s : Nat),\n  (∀ (c : Nat),\n      @LE.le.{0} Nat instLENat s c →\n        @LT.lt.{0} Nat instLTNat c (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s n) →\n          @Eq.{1} Bool (p c) Bool.true) →\n    @Eq.{1} Nat\n      (@List.length.{0} Nat\n        (@List.filter.{0} Nat p (List.range' s n (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n      n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.XTauWindowLaw.0.ChompLean.filter_all_length._proof_1_1",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m s : Nat),\n  Not\n      (@LT.lt.{0} Nat instLTNat s\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) m\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.XTauWindowLaw.0.ChompLean.filter_all_length._proof_1_2",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m s c : Nat)\n  (hc1 :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n      c),\n  Not (@LE.le.{0} Nat instLENat s c) → False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    },
+    {
+      "name": "_private.XTauWindowLaw.0.ChompLean.filter_all_length._proof_1_3",
+      "module": "XTauWindowLaw",
+      "kind": "theorem",
+      "isProof": true,
+      "sourceLine": null,
+      "typePretty": "∀ (m s c : Nat)\n  (hc2 :\n    @LT.lt.{0} Nat instLTNat c\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        m)),\n  Not\n      (@LT.lt.{0} Nat instLTNat c\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) s\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) m\n            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) →\n    False",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sourceSha256": "cad5cc4d7f0d9132c9ccae43f346d92356122f23aa5e89f15f0a757674039842",
+      "sourcePath": "lean/core/XTauWindowLaw.lean",
+      "universeParameters": []
+    }
+  ]
+}

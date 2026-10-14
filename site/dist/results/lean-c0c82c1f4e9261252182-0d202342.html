@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R198 B43 Affine Offset Frontier · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>R198 B43 Affine Offset Frontier</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/R198B43AffineOffsetFrontier.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/R198B43AffineOffsetFrontier.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/R198B43AffineOffsetFrontier.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 58 declarations</summary><ul class="declarations"><li><code>ChompLean.NoSkippedAffineTail20</code><pre class="prose">Prop</pre></li><li><code>ChompLean.SkippedAffineOffset20</code><pre class="prose">(m : Nat) → Prop</pre></li><li><code>ChompLean.SmallAffineOffsetColumnBound20</code><pre class="prose">Prop</pre></li><li><code>ChompLean.SmallAffineOffsetSpectrum20</code><pre class="prose">Prop</pre></li><li><code>ChompLean.SmallColumnFate20At</code><pre class="prose">(q x : Nat) → Prop</pre></li><li><code>ChompLean.SmallColumnFate20At.eq_1</code><pre class="prose">∀ (q x : Nat),
+  @Eq.{1} Prop (ChompLean.SmallColumnFate20At q x)
+    (Or
+      (@Exists.{1} Nat fun (w : Nat) =&gt;
+        And (@LE.le.{0} Nat instLENat w (@OfNat.ofNat.{0} Nat (nat_lit 43) (instOfNatNat (nat_lit 43))))
+          (@Eq.{1} Nat (ChompLean.gameF q x) w))
+      (@Exists.{1} Nat fun (m : Nat) =&gt;
+        And (ChompLean.RealizedLag20 m)
+          (@Eq.{1} Nat (ChompLean.gameF q x) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q m))))</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_notSettled_of_noSkippedAffineTail20</code><pre class="prose">∀ (hgap : ChompLean.NoSkippedAffineTail20) {u L x : Nat}
+  (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)
+  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x),
+  Not (ChompLean.ColumnAffineSettledBy (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) x)</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_reverseInclusion_iff_notSettled</code><pre class="prose">∀ {u L c x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)
+  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)
+  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))
+  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)
+  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x),
+  Iff (ChompLean.B30PhysicalCacheCandidateAtDepth u L c x)
+    (Not (ChompLean.ColumnAffineSettledBy (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) x))</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_reverseInclusion_of_noSkippedAffineTail20</code><pre class="prose">∀ (hgap : ChompLean.NoSkippedAffineTail20) {u L c x : Nat}
+  (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)
+  (hLpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) L)
+  (hL20 : @LE.le.{0} Nat instLENat L (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))
+  (hcu : @LT.lt.{0} Nat instLTNat c u) (hfreeze : @Eq.{1} Nat (ChompLean.gameF u c) u)
+  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x), ChompLean.B30PhysicalCacheCandidateAtDepth u L c x</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_settled_not_b30ColumnMortal</code><pre class="prose">∀ {u L x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)
+  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x)
+  (hsettled : ChompLean.ColumnAffineSettledBy (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) x),
+  Not (ChompLean.B30ColumnMortal x)</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_settled_not_b30ColumnMortal._proof_1_1</code><pre class="prose">∀ {u L : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) →
+    False</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_settled_not_b30ColumnMortal._proof_1_2</code><pre class="prose">∀ {u L : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))) →
+    False</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_settled_not_b30ColumnMortal._proof_1_3</code><pre class="prose">∀ {u L : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10)))) →
+    False</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_settled_not_b30ColumnMortal._proof_1_4</code><pre class="prose">∀ {u L : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13)))) →
+    False</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_settled_not_b30ColumnMortal._proof_1_5</code><pre class="prose">∀ {u L : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18)))) →
+    False</pre></li><li><code>ChompLean.b31_relevantSkippedSeat_settled_not_b30ColumnMortal._proof_1_6</code><pre class="prose">∀ {u L : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) →
+    False</pre></li><li><code>ChompLean.b31_settledImmortalObstruction_iff_settled</code><pre class="prose">∀ {u L x : Nat} (hu : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 64) (instOfNatNat (nat_lit 64))) u)
+  (hrelevant : ChompLean.B31RelevantSkippedSeatAtDepth u L x),
+  Iff (ChompLean.B31SettledImmortalObstruction u L x)
+    (ChompLean.ColumnAffineSettledBy (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) u L) x)</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne</code><pre class="prose">∀ {q x : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q)
+  (hx : @LE.le.{0} Nat instLENat x (@OfNat.ofNat.{0} Nat (nat_lit 31) (instOfNatNat (nat_lit 31)))),
+  ChompLean.SmallColumnFate20At q x</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_1</code><pre class="prose">∀ {q x : Nat} (hx : @LE.le.{0} Nat instLENat x (@OfNat.ofNat.{0} Nat (nat_lit 31) (instOfNatNat (nat_lit 31)))),
+  Not
+      (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+                (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                  (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                    (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                      (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+                        (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                          (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+                            (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))
+                              (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))))
+                                (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))
+                                  (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14))))
+                                    (Or (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 15) (instOfNatNat (nat_lit 15))))
+                                      (Or
+                                        (@Eq.{1} Nat x (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))))
+                                        (Or
+                                          (@Eq.{1} Nat x
+                                            (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))))
+                                          (Or
+                                            (@Eq.{1} Nat x
+                                              (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))
+                                            (Or
+                                              (@Eq.{1} Nat x
+                                                (@OfNat.ofNat.{0} Nat (nat_lit 19) (instOfNatNat (nat_lit 19))))
+                                              (Or
+                                                (@Eq.{1} Nat x
+                                                  (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))
+                                                (Or
+                                                  (@Eq.{1} Nat x
+                                                    (@OfNat.ofNat.{0} Nat (nat_lit 21) (instOfNatNat (nat_lit 21))))
+                                                  (Or
+                                                    (@Eq.{1} Nat x
+                                                      (@OfNat.ofNat.{0} Nat (nat_lit 22) (instOfNatNat (nat_lit 22))))
+                                                    (Or
+                                                      (@Eq.{1} Nat x
+                                                        (@OfNat.ofNat.{0} Nat (nat_lit 23) (instOfNatNat (nat_lit 23))))
+                                                      (Or
+                                                        (@Eq.{1} Nat x
+                                                          (@OfNat.ofNat.{0} Nat (nat_lit 24)
+                                                            (instOfNatNat (nat_lit 24))))
+                                                        (Or
+                                                          (@Eq.{1} Nat x
+                                                            (@OfNat.ofNat.{0} Nat (nat_lit 25)
+                                                              (instOfNatNat (nat_lit 25))))
+                                                          (Or
+                                                            (@Eq.{1} Nat x
+                                                              (@OfNat.ofNat.{0} Nat (nat_lit 26)
+                                                                (instOfNatNat (nat_lit 26))))
+                                                            (Or
+                                                              (@Eq.{1} Nat x
+                                                                (@OfNat.ofNat.{0} Nat (nat_lit 27)
+                                                                  (instOfNatNat (nat_lit 27))))
+                                                              (Or
+                                                                (@Eq.{1} Nat x
+                                                                  (@OfNat.ofNat.{0} Nat (nat_lit 28)
+                                                                    (instOfNatNat (nat_lit 28))))
+                                                                (Or
+                                                                  (@Eq.{1} Nat x
+                                                                    (@OfNat.ofNat.{0} Nat (nat_lit 29)
+                                                                      (instOfNatNat (nat_lit 29))))
+                                                                  (Or
+                                                                    (@Eq.{1} Nat x
+                                                                      (@OfNat.ofNat.{0} Nat (nat_lit 30)
+                                                                        (instOfNatNat (nat_lit 30))))
+                                                                    (@Eq.{1} Nat x
+                                                                      (@OfNat.ofNat.{0} Nat (nat_lit 31)
+                                                                        (instOfNatNat
+                                                                          (nat_lit
+                                                                            31))))))))))))))))))))))))))))))))))) →
+    False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_10</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 19) (instOfNatNat (nat_lit 19))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_11</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_12</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_13</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 22) (instOfNatNat (nat_lit 22))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_14</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 23) (instOfNatNat (nat_lit 23))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_15</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 24) (instOfNatNat (nat_lit 24))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_16</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_17</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 27) (instOfNatNat (nat_lit 27))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_18</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 29) (instOfNatNat (nat_lit 29))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_19</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 31) (instOfNatNat (nat_lit 31))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_20</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_21</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 34) (instOfNatNat (nat_lit 34))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_22</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 36) (instOfNatNat (nat_lit 36))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_23</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 38) (instOfNatNat (nat_lit 38))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_24</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 39) (instOfNatNat (nat_lit 39))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_25</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 41) (instOfNatNat (nat_lit 41))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_26</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 43) (instOfNatNat (nat_lit 43))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_3</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_4</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_5</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_6</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_7</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_8</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))) q) → False</pre></li><li><code>ChompLean.gameF_smallColumnFate20At_of_le_thirtyOne._proof_1_9</code><pre class="prose">∀ {q : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))) q),
+  Not (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14))) q) → False</pre></li><li><code>ChompLean.noSkippedAffineTail20_of_columnBound</code><pre class="prose">∀ (hbound : ChompLean.SmallAffineOffsetColumnBound20), ChompLean.NoSkippedAffineTail20</pre></li><li><code>ChompLean.positive_affine_tail_not_b30ColumnMortal</code><pre class="prose">∀ {r x k : Nat} (hk : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+  (htail :
+    ∀ (q : Nat),
+      @LE.le.{0} Nat instLENat r q →
+        @Eq.{1} Nat (ChompLean.gameF q x) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q k)),
+  Not (ChompLean.B30ColumnMortal x)</pre></li><li><code>ChompLean.positive_affine_tail_not_b30ColumnMortal._proof_1_1</code><pre class="prose">∀ {r x k : Nat} (hk : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+  (w : Nat) (hfreeze : @Eq.{1} Nat (ChompLean.gameF w x) w) (hwr : @LE.le.{0} Nat instLENat w r)
+  (hpersist : @Eq.{1} Nat (ChompLean.gameF r x) w)
+  (haffine : @Eq.{1} Nat (ChompLean.gameF r x) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r k)),
+  False</pre></li><li><code>ChompLean.positive_affine_tail_not_b30ColumnMortal._proof_1_2</code><pre class="prose">∀ {r x k : Nat} (w : Nat) (hfreeze : @Eq.{1} Nat (ChompLean.gameF w x) w) (hwr : Not (@LE.le.{0} Nat instLENat w r)),
+  Not (@LE.le.{0} Nat instLENat r w) → False</pre></li><li><code>ChompLean.positive_affine_tail_not_b30ColumnMortal._proof_1_3</code><pre class="prose">∀ {r x k : Nat} (hk : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) k)
+  (w : Nat) (hfreeze : @Eq.{1} Nat (ChompLean.gameF w x) w)
+  (haffine : @Eq.{1} Nat (ChompLean.gameF w x) (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) w k)),
+  False</pre></li><li><code>ChompLean.realizedLag20_not_skippedAffineOffset20</code><pre class="prose">∀ {m : Nat} (hm : ChompLean.RealizedLag20 m), Not (ChompLean.SkippedAffineOffset20 m)</pre></li><li><code>ChompLean.realizedLag20_not_skippedAffineOffset20._proof_1_1</code><pre class="prose">∀ {m : Nat}
+  (hm :
+    Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+              (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                  (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))
+                    (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))))
+                      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14))))
+                        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 15) (instOfNatNat (nat_lit 15))))
+                          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))))
+                            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))))
+                              (@Eq.{1} Nat m
+                                (@OfNat.ofNat.{0} Nat (nat_lit 19) (instOfNatNat (nat_lit 19))))))))))))))))),
+  Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))
+            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))
+              (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))))) →
+    False</pre></li><li><code>ChompLean.realizedLag20_or_skippedAffineOffset20</code><pre class="prose">∀ {m : Nat} (hmpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m)
+  (hm20 : @LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))),
+  Or (ChompLean.RealizedLag20 m) (ChompLean.SkippedAffineOffset20 m)</pre></li><li><code>ChompLean.realizedLag20_or_skippedAffineOffset20._proof_1_1</code><pre class="prose">∀ {m : Nat} (hmpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m)
+  (hm20 : @LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))),
+  Not
+      (Or
+        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))
+              (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+                (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))
+                  (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7))))
+                    (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+                      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 11) (instOfNatNat (nat_lit 11))))
+                        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 12) (instOfNatNat (nat_lit 12))))
+                          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 14) (instOfNatNat (nat_lit 14))))
+                            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 15) (instOfNatNat (nat_lit 15))))
+                              (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))))
+                                (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))))
+                                  (@Eq.{1} Nat m
+                                    (@OfNat.ofNat.{0} Nat (nat_lit 19) (instOfNatNat (nat_lit 19)))))))))))))))))
+        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+              (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))
+                (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))
+                  (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))))))))) →
+    False</pre></li><li><code>ChompLean.smallAffineOffsetSpectrum20_iff_noSkippedAffineTail20</code><pre class="prose">Iff ChompLean.SmallAffineOffsetSpectrum20 ChompLean.NoSkippedAffineTail20</pre></li><li><code>ChompLean.smallAffineOffsetSpectrum20_iff_noSkippedAffineTail20._proof_1_1</code><pre class="prose">∀ (m : Nat)
+  (hskipped :
+    Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))
+            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))
+              (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))))))),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m) → False</pre></li><li><code>ChompLean.smallAffineOffsetSpectrum20_iff_noSkippedAffineTail20._proof_1_2</code><pre class="prose">∀ (m : Nat)
+  (hskipped :
+    Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))))
+        (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+          (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 13) (instOfNatNat (nat_lit 13))))
+            (Or (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 18) (instOfNatNat (nat_lit 18))))
+              (@Eq.{1} Nat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))))))),
+  Not (@LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20)))) → False</pre></li><li><code>ChompLean.smallAffineOffsetSpectrum20_of_columnBound</code><pre class="prose">∀ (hbound : ChompLean.SmallAffineOffsetColumnBound20), ChompLean.SmallAffineOffsetSpectrum20</pre></li><li><code>ChompLean.smallAffineOffsetSpectrum20_of_columnBound._proof_1_1</code><pre class="prose">∀ (r x m : Nat) (hmpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m)
+  (hm20 : @LE.le.{0} Nat instLENat m (@OfNat.ofNat.{0} Nat (nat_lit 20) (instOfNatNat (nat_lit 20))))
+  (hrq :
+    @LE.le.{0} Nat instLENat r
+      (@Max.max.{0} Nat Nat.instMax r (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44)))))
+  (hq44 :
+    @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44)))
+      (@Max.max.{0} Nat Nat.instMax r (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44)))))
+  (w : Nat)
+  (haffine :
+    @Eq.{1} Nat w
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@Max.max.{0} Nat Nat.instMax r (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44)))) m))
+  (hw43 : @LE.le.{0} Nat instLENat w (@OfNat.ofNat.{0} Nat (nat_lit 43) (instOfNatNat (nat_lit 43))))
+  (hw :
+    @Eq.{1} Nat
+      (ChompLean.gameF (@Max.max.{0} Nat Nat.instMax r (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44))))
+        x)
+      w),
+  False</pre></li><li><code>ChompLean.smallAffineOffsetSpectrum20_of_columnBound._proof_1_2</code><pre class="prose">∀ (r x m d : Nat)
+  (haffine :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@Max.max.{0} Nat Nat.instMax r (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44)))) d)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@Max.max.{0} Nat Nat.instMax r (@OfNat.ofNat.{0} Nat (nat_lit 44) (instOfNatNat (nat_lit 44)))) m)),
+  Not (@Eq.{1} Nat d m) → False</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/R198B43AffineOffsetFrontier.lean:1</p><p>SHA-256: <code class="path">c0c82c1f4e9261252182c050cd5bb3c350898a2e67afa4bebd881fc3011f415b</code></p></section><p><a href="../index.html#id=lean-c0c82c1f4e9261252182">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

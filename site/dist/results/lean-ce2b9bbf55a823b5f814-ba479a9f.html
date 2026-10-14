@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Line Hole Preservation · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>Line Hole Preservation</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/LineHolePreservation.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/LineHolePreservation.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/LineHolePreservation.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-a/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 50 declarations</summary><ul class="declarations"><li><code>ChompLean.PrefixGuardRay</code><pre class="prose">(f : Nat → Nat → Nat) → (q c lo : Nat) → Prop</pre></li><li><code>ChompLean.mex_le_positive_hole</code><pre class="prose">∀ {S : Nat → Prop} {m x : Nat}
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxhole : Not (S x)) (hmex : ChompLean.IsMex S m), @LE.le.{0} Nat instLENat m x</pre></li><li><code>ChompLean.mex_line_step_covered_iff_replacement_prefix</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y))
+  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)),
+  Iff
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)
+    (ChompLean.C f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)</pre></li><li><code>ChompLean.mex_line_step_covered_iff_replacement_prefix_min</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y))
+  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)),
+  Iff
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)
+    (ChompLean.C f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)</pre></li><li><code>ChompLean.mex_line_step_hole_iff_replacement_prefix_hole</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y))
+  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)),
+  Iff
+    (Not
+      (ChompLean.B f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))
+    (Not
+      (ChompLean.C f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))</pre></li><li><code>ChompLean.mex_line_step_hole_iff_replacement_prefix_hole_min</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y))
+  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)),
+  Iff
+    (Not
+      (ChompLean.B f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))
+    (Not
+      (ChompLean.C f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))</pre></li><li><code>ChompLean.mex_lower_hole_forbids_submitter</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat}
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x))
+  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)), @Ne.{1} Nat (f r c) y</pre></li><li><code>ChompLean.mex_lower_hole_forbids_submitter._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hxy : @LT.lt.{0} Nat instLTNat x y) (hout : @Eq.{1} Nat (f r c) y),
+  Not (@LT.lt.{0} Nat instLTNat x (f r c)) → False</pre></li><li><code>ChompLean.mex_preserves_staircase_above_floor</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hcr : @LE.le.{0} Nat instLENat c r)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))
+  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c))
+  (hprefix :
+    ∀ (y : Nat),
+      @LT.lt.{0} Nat instLTNat lo y →
+        @LE.le.{0} Nat instLENat y hi →
+          Not
+            (ChompLean.C f
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              c y))
+  (y : Nat),
+  @LT.lt.{0} Nat instLTNat lo y →
+    @LE.le.{0} Nat instLENat y hi →
+      Not
+        (ChompLean.B f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c y)</pre></li><li><code>ChompLean.mex_staircase_step_covered_iff_replacement_prefix</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hcr : @LE.le.{0} Nat instLENat c r)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))
+  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c)) (y : Nat),
+  @LT.lt.{0} Nat instLTNat lo y →
+    @LE.le.{0} Nat instLENat y hi →
+      Iff
+        (ChompLean.B f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c y)
+        (ChompLean.C f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c y)</pre></li><li><code>ChompLean.mex_staircase_step_covered_iff_replacement_prefix._proof_1_1</code><pre class="prose">∀ {r c lo hi : Nat} (y : Nat), Not (@LE.le.{0} Nat instLENat lo lo) → False</pre></li><li><code>ChompLean.mex_staircase_step_covered_iff_replacement_prefix._proof_1_2</code><pre class="prose">∀ {r c lo hi : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y) (hyhi : @LE.le.{0} Nat instLENat y hi),
+  Not (@LE.le.{0} Nat instLENat lo hi) → False</pre></li><li><code>ChompLean.mex_staircase_step_covered_iff_replacement_prefix._proof_1_3</code><pre class="prose">∀ {r c lo hi : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y), Not (@LE.le.{0} Nat instLENat lo y) → False</pre></li><li><code>ChompLean.next_row_history_expansion</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r),
+  Iff
+    (ChompLean.R f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)
+    (Or (ChompLean.R f r c y) (@Eq.{1} Nat (f r c) y))</pre></li><li><code>ChompLean.next_row_history_expansion._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c y : Nat} (a : Nat)
+  (ha :
+    @LT.lt.{0} Nat instLTNat a
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (har : Not (@LT.lt.{0} Nat instLTNat a r)), Not (@Eq.{1} Nat a r) → False</pre></li><li><code>ChompLean.next_row_history_expansion._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c y : Nat} (a : Nat) (har : @LT.lt.{0} Nat instLTNat a r),
+  Not
+      (@LT.lt.{0} Nat instLTNat a
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.next_row_history_expansion._proof_1_3</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c y : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat r
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.next_row_hole_iff_three_exclusions</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r),
+  Iff
+    (Not
+      (ChompLean.B f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))
+    (And (Not (ChompLean.R f r c y))
+      (And (@Ne.{1} Nat (f r c) y)
+        (Not
+          (ChompLean.C f
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            c y))))</pre></li><li><code>ChompLean.next_row_source_expansion</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r),
+  Iff
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)
+    (Or (ChompLean.R f r c y)
+      (Or (@Eq.{1} Nat (f r c) y)
+        (ChompLean.C f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c y)))</pre></li><li><code>ChompLean.old_hole_next_covered_iff_submitter_or_prefix</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r) (hyold : Not (ChompLean.B f r c y)),
+  Iff
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)
+    (Or (@Eq.{1} Nat (f r c) y)
+      (ChompLean.C f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))</pre></li><li><code>ChompLean.old_hole_next_hole_iff_submitter_and_prefix</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c y : Nat} (hcr : @LE.le.{0} Nat instLENat c r) (hyold : Not (ChompLean.B f r c y)),
+  Iff
+    (Not
+      (ChompLean.B f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))
+    (And (@Ne.{1} Nat (f r c) y)
+      (Not
+        (ChompLean.C f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c y)))</pre></li><li><code>ChompLean.prefix_cap_kills_values_above_floor</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo : Nat}
+  (hcap :
+    ∀ (b : Nat),
+      @LT.lt.{0} Nat instLTNat b c →
+        @LE.le.{0} Nat instLENat
+          (f
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            b)
+          lo)
+  (y : Nat),
+  @LT.lt.{0} Nat instLTNat lo y →
+    Not
+      (ChompLean.C f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y)</pre></li><li><code>ChompLean.prefix_cap_kills_values_above_floor._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y) (b : Nat)
+  (hby :
+    @Eq.{1} Nat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        b)
+      y)
+  (hble :
+    @LE.le.{0} Nat instLENat
+      (f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        b)
+      lo),
+  False</pre></li><li><code>ChompLean.prefix_cap_preserves_next_line_value</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo : Nat} (hcr : @LE.le.{0} Nat instLENat c r)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hlohole : Not (ChompLean.B f r c lo))
+  (hnextOldHole :
+    Not
+      (ChompLean.B f r c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c))
+  (hcap :
+    ∀ (b : Nat),
+      @LT.lt.{0} Nat instLTNat b c →
+        @LE.le.{0} Nat instLENat
+          (f
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            b)
+          lo),
+  Not
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.prefix_cap_preserves_next_line_value._proof_1_1</code><pre class="prose">∀ {r c lo : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat lo
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.prefix_cap_preserves_staircase</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hcr : @LE.le.{0} Nat instLENat c r)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))
+  (hmex : ChompLean.IsMex (ChompLean.B f r c) (f r c))
+  (hcap :
+    ∀ (b : Nat),
+      @LT.lt.{0} Nat instLTNat b c →
+        @LE.le.{0} Nat instLENat
+          (f
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            b)
+          lo)
+  (y : Nat),
+  @LT.lt.{0} Nat instLTNat lo y →
+    @LE.le.{0} Nat instLENat y hi →
+      Not
+        (ChompLean.B f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c y)</pre></li><li><code>ChompLean.prefix_guard_ray_implies_prefix_cap</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q c lo : Nat} (hrec : ChompLean.BrouwerRecurrence f)
+  (hcq :
+    @LE.le.{0} Nat instLENat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hqlo : @LE.le.{0} Nat instLENat q lo)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hray : ChompLean.PrefixGuardRay f q c lo) (b : Nat),
+  @LT.lt.{0} Nat instLTNat b c → @LE.le.{0} Nat instLENat (f q b) lo</pre></li><li><code>ChompLean.prefix_guard_ray_implies_prefix_cap._proof_1_1</code><pre class="prose">∀ {q c lo : Nat}
+  (hcq :
+    @LE.le.{0} Nat instLENat c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (b : Nat) (hbc : @LT.lt.{0} Nat instLTNat b c), Not (@LE.le.{0} Nat instLENat b q) → False</pre></li><li><code>ChompLean.prefix_guard_ray_preserves_next_line_value</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hnextRowLe :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      lo)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hlohole : Not (ChompLean.B f r c lo))
+  (hnextOldHole :
+    Not
+      (ChompLean.B f r c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hray :
+    ChompLean.PrefixGuardRay f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c lo),
+  Not
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.prefix_guard_ray_preserves_next_line_value._proof_1_1</code><pre class="prose">∀ {r c lo : Nat} (hcr : @LE.le.{0} Nat instLENat c r),
+  Not
+      (@LE.le.{0} Nat instLENat c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.prefix_guard_ray_preserves_staircase</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hnextRowLe :
+    @LE.le.{0} Nat instLENat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      lo)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))
+  (hray :
+    ChompLean.PrefixGuardRay f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c lo)
+  (y : Nat),
+  @LT.lt.{0} Nat instLTNat lo y →
+    @LE.le.{0} Nat instLENat y hi →
+      Not
+        (ChompLean.B f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c y)</pre></li><li><code>ChompLean.prefix_guard_ray_preserves_staircase._proof_1_1</code><pre class="prose">∀ {r c lo : Nat} (hcr : @LE.le.{0} Nat instLENat c r),
+  Not
+      (@LE.le.{0} Nat instLENat c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.recurrence_guard_hole_bounds_cell</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q b lo : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hbq : @LE.le.{0} Nat instLENat b q)
+  (hqlo : @LE.le.{0} Nat instLENat q lo)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hguard : Not (ChompLean.B f q b lo)), @LE.le.{0} Nat instLENat (f q b) lo</pre></li><li><code>ChompLean.recurrence_guard_hole_bounds_cell._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {q b lo : Nat} (hqlo : @LE.le.{0} Nat instLENat q lo)
+  (hcopy :
+    And (@LT.lt.{0} Nat instLTNat b q)
+      (@LT.lt.{0} Nat instLTNat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          b)
+        q))
+  (hout :
+    @Eq.{1} Nat (f q b)
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        b)),
+  Not (@LE.le.{0} Nat instLENat (f q b) lo) → False</pre></li><li><code>ChompLean.recurrence_line_step_covered_iff_replacement_prefix</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y)),
+  Iff
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)
+    (ChompLean.C f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)</pre></li><li><code>ChompLean.recurrence_line_step_covered_iff_replacement_prefix_min</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y)),
+  Iff
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)
+    (ChompLean.C f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)</pre></li><li><code>ChompLean.recurrence_line_step_hole_iff_replacement_prefix_hole</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y)),
+  Iff
+    (Not
+      (ChompLean.B f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))
+    (Not
+      (ChompLean.C f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))</pre></li><li><code>ChompLean.recurrence_line_step_hole_iff_replacement_prefix_hole_min</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y)),
+  Iff
+    (Not
+      (ChompLean.B f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))
+    (Not
+      (ChompLean.C f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y))</pre></li><li><code>ChompLean.recurrence_lower_hole_and_history_gap_forbid_submitter</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhistory : Not (ChompLean.R f r c y)),
+  @Ne.{1} Nat (f r c) y</pre></li><li><code>ChompLean.recurrence_lower_hole_and_history_gap_forbid_submitter._proof_1_1</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat}
+  (hout :
+    @Eq.{1} Nat (f r c)
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c))
+  (hry : @Eq.{1} Nat (f r c) y),
+  Not
+      (@Eq.{1} Nat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c)
+        y) →
+    False</pre></li><li><code>ChompLean.recurrence_lower_hole_and_history_gap_forbid_submitter._proof_1_2</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat}
+  (hcopy :
+    And (@LT.lt.{0} Nat instLTNat c r)
+      (@LT.lt.{0} Nat instLTNat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c)
+        r))
+  (hout :
+    @Eq.{1} Nat (f r c)
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c))
+  (hry : @Eq.{1} Nat (f r c) y),
+  Not
+      (@LT.lt.{0} Nat instLTNat
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        r) →
+    False</pre></li><li><code>ChompLean.recurrence_lower_hole_and_history_gap_forbid_submitter._proof_1_3</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat}
+  (hcopy :
+    And (@LT.lt.{0} Nat instLTNat c r)
+      (@LT.lt.{0} Nat instLTNat
+        (f
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c)
+        r))
+  (hout :
+    @Eq.{1} Nat (f r c)
+      (f
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c))
+  (hry : @Eq.{1} Nat (f r c) y),
+  Not
+      (@LE.le.{0} Nat instLENat c
+        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.recurrence_prefix_cap_preserves_next_line_value</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hlohole : Not (ChompLean.B f r c lo))
+  (hnextOldHole :
+    Not
+      (ChompLean.B f r c
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+  (hcap :
+    ∀ (b : Nat),
+      @LT.lt.{0} Nat instLTNat b c →
+        @LE.le.{0} Nat instLENat
+          (f
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            b)
+          lo),
+  Not
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.recurrence_prefix_cap_preserves_next_line_value._proof_1_1</code><pre class="prose">∀ {r c lo : Nat},
+  Not
+      (@LT.lt.{0} Nat instLTNat lo
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) lo
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) →
+    False</pre></li><li><code>ChompLean.recurrence_prefix_cap_preserves_staircase</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c lo hi : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hlopos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) lo)
+  (hholes : ∀ (z : Nat), @LE.le.{0} Nat instLENat lo z → @LE.le.{0} Nat instLENat z hi → Not (ChompLean.B f r c z))
+  (hcap :
+    ∀ (b : Nat),
+      @LT.lt.{0} Nat instLTNat b c →
+        @LE.le.{0} Nat instLENat
+          (f
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+            b)
+          lo)
+  (y : Nat),
+  @LT.lt.{0} Nat instLTNat lo y →
+    @LE.le.{0} Nat instLENat y hi →
+      Not
+        (ChompLean.B f
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+          c y)</pre></li><li><code>ChompLean.recurrence_prefix_cap_preserves_staircase._proof_1_1</code><pre class="prose">∀ {r c lo hi : Nat} (y : Nat), Not (@LE.le.{0} Nat instLENat lo lo) → False</pre></li><li><code>ChompLean.recurrence_prefix_cap_preserves_staircase._proof_1_2</code><pre class="prose">∀ {r c lo hi : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y) (hyhi : @LE.le.{0} Nat instLENat y hi),
+  Not (@LE.le.{0} Nat instLENat lo hi) → False</pre></li><li><code>ChompLean.recurrence_prefix_cap_preserves_staircase._proof_1_3</code><pre class="prose">∀ {r c lo hi : Nat} (y : Nat) (hloy : @LT.lt.{0} Nat instLTNat lo y), Not (@LE.le.{0} Nat instLENat lo y) → False</pre></li><li><code>ChompLean.recurrence_preserves_next_line_hole</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y))
+  (hreplacement :
+    Not
+      (ChompLean.C f
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+        c y)),
+  Not
+    (ChompLean.B f
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) r
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+      c y)</pre></li><li><code>ChompLean.recurrence_two_old_holes_forbid_submitter</code><pre class="prose">∀ {f : Nat → Nat → Nat} {r c x y : Nat} (hrec : ChompLean.BrouwerRecurrence f) (hcr : @LE.le.{0} Nat instLENat c r)
+  (hxpos : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) x)
+  (hxy : @LT.lt.{0} Nat instLTNat x y) (hxhole : Not (ChompLean.B f r c x)) (hyhole : Not (ChompLean.B f r c y)),
+  @Ne.{1} Nat (f r c) y</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/LineHolePreservation.lean:1</p><p>SHA-256: <code class="path">ce2b9bbf55a823b5f814f998a5d877e5edd523daa406a11a96dc2853308c021a</code></p></section><p><a href="../index.html#id=lean-ce2b9bbf55a823b5f814">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

@@ -1,0 +1,14 @@
+--- before/R51EventECrossEdgeSurvivorExplosion.lean
++++ after/R51EventECrossEdgeSurvivorExplosion.lean
+@@ -172,8 +172,9 @@
+     2 * delta + 7 <= s +
+       2 * (EventETriplePrefixBandSlots s delta c b0).length
+ 
+-/-- Every event E satisfies the stronger cross-edge survivor inequality
+-`2*delta+7 <= s+2*|T|`. -/
++/-- Under `UnitDip` and the displayed numerical-margin consecutive-dip
++frame, the canonical Event-E packet satisfies the cross-edge survivor
++inequality `2*delta+7 <= s+2*|T|`. -/
+ theorem gameF_margin_eventE_cross_edge_survivor_bound
+     (hU : UnitDip gameRecurrenceModel) {s : Nat}
+     (hdip : gameF (s + 1) (s + 1) < gameF s s)

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G1 LCarry Discharge · Three-Row Chomp</title>
+<meta name="description" content="Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.">
+<link rel="stylesheet" href="../document.css"><link rel="stylesheet" href="../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../index.html">Search</a><a href="../browse.html">Browse all</a><a href="../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><p class="eyebrow">Canonical research core · lean</p>
+<h1>G1 LCarry Discharge</h1><p class="lead">Audited Lean source module. The complete elaborated declaration types, hypotheses and proof dependencies are provided with the source.</p>
+<p class="badge">Lean verified (stated scope)</p>
+<p class="evidence">Verification applies only to the recorded source snapshot and check scope. Consult the coverage report for build and axiom-check details.</p><div class="source-links"><a href="../audit/prepublication/formal/FINAL-REVIEW.json">Verification receipt</a> <a class="button" href="../sources/lean/core/G1LCarryDischarge.lean">Audited Lean source</a> <a href="../audit/prepublication/formal/modules/G1LCarryDischarge.json">Fresh complete declaration types and dependencies</a> <a href="../audit/full/lean/modules/G1LCarryDischarge.json">Historical 13 October evidence: Complete exact declaration types and axiom dependencies</a> <a href="../audit/full/lean/REPORT.md">Historical 13 October evidence: Full Lean audit report</a> <a href="../audit/full/lean/final-source-manifest.json">Historical 13 October evidence: Final audited source manifest</a> <a href="../audit/full/paper-b/LEAN-SOURCE-PROSE-REVIEW.json">Historical 13 October evidence: Complete source-prose correspondence review</a> <a href="../audit/full/paper-b/FINAL-AMENDMENT-REVIEW.json">Historical 13 October evidence: Independent review of corrected source prose</a></div>
+<section><h2>Scientific review</h2><p>Review verdict: passed. Evidence and exact scope are linked above.</p></section><section><h2>Hypotheses and scope</h2><ul><li>Every declaration retains its exact explicit and implicit hypotheses in the attached elaborated type. The generic module summary is inventory metadata, not an unconditional mathematical theorem.</li></ul></section><section><h2>Formalization correspondence</h2><pre class="prose">This entry indexes a source module. Each formal declaration has exactly the hypotheses shown in its elaborated type; the module itself is not an additional mathematical theorem.</pre></section><section><h2>Verification evidence</h2><pre class="prose">This corrected source snapshot passed a new clean strict build, exhaustive serialized and elaborated declaration/axiom census, and five fresh Lean kernel replays. Exact source/type correspondence and unchanged logical declarations after the documented comment corrections were checked separately. Only the standard propext, Classical.choice and Quot.sound axioms were observed. Module and compiler-declaration counts are not counts of independent mathematical theorems.</pre></section><section><h2>Formal declarations</h2><p>These are exact elaborated statement types from the full kernel audit, including private and generated declarations. Generated helper statements are not separate mathematical results.</p><details><summary>Browse 22 declarations</summary><ul class="declarations"><li><code>ChompLean.carryList</code><pre class="prose">(q c : Nat) → List.{0} Nat</pre></li><li><code>ChompLean.carryList.eq_1</code><pre class="prose">∀ (q c : Nat),
+  @Eq.{1} (List.{0} Nat) (ChompLean.carryList q c)
+    (@List.filter.{0} Nat
+      (fun (j : Nat) =&gt;
+        @Decidable.decide (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q j) q) (Nat.decLt (ChompLean.gameF q j) q))
+      (List.range c))</pre></li><li><code>ChompLean.carryList_carries_mem</code><pre class="prose">∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q) (v : Nat),
+  @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)
+      (@List.map.{0, 0} Nat Nat (ChompLean.gameF q) (ChompLean.carryList q c)) v →
+    And (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v)
+      (And (@LT.lt.{0} Nat instLTNat v q) (ChompLean.S ChompLean.gameF v))</pre></li><li><code>ChompLean.carryList_carries_mem._proof_1_1</code><pre class="prose">∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q) (v j : Nat)
+  (hjmem : And (@LT.lt.{0} Nat instLTNat j c) (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q j) q)),
+  Not (@LT.lt.{0} Nat instLTNat j q) → False</pre></li><li><code>ChompLean.carryList_carries_mem._proof_1_2</code><pre class="prose">∀ {q c : Nat} (v j : Nat) (hjv : @Eq.{1} Nat (ChompLean.gameF q j) v) (h : @LT.lt.{0} Nat instLTNat j v),
+  Not (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) v) → False</pre></li><li><code>ChompLean.carryList_carries_nodup</code><pre class="prose">∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q),
+  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat (ChompLean.gameF q) (ChompLean.carryList q c))</pre></li><li><code>ChompLean.carryList_carries_nodup._proof_1_1</code><pre class="prose">∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q) (x : Nat)
+  (hx : And (@LT.lt.{0} Nat instLTNat x c) (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q x) q)) (y : Nat),
+  Not (@LT.lt.{0} Nat instLTNat x q) → False</pre></li><li><code>ChompLean.carryList_carries_nodup._proof_1_2</code><pre class="prose">∀ {q c : Nat} (hcq : @LE.le.{0} Nat instLENat c q) (x y : Nat)
+  (hy : And (@LT.lt.{0} Nat instLTNat y c) (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q y) q)),
+  Not (@LT.lt.{0} Nat instLTNat y q) → False</pre></li><li><code>ChompLean.carryList_count_le_blockerCount</code><pre class="prose">∀ {q c C : Nat} (hcq : @LE.le.{0} Nat instLENat c q)
+  (hC : @Eq.{1} Nat C (@List.length.{0} Nat (ChompLean.carryList q c))),
+  @LE.le.{0} Nat instLENat C
+    (ChompLean.gameFBlockerCountThrough
+      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))</pre></li><li><code>ChompLean.carryList_nodup</code><pre class="prose">∀ (q c : Nat), @List.Nodup.{0} Nat (ChompLean.carryList q c)</pre></li><li><code>ChompLean.gameF_carry_col_inj</code><pre class="prose">∀ {q j j&#x27; v : Nat} (hjq : @LT.lt.{0} Nat instLTNat j q) (hj&#x27;q : @LT.lt.{0} Nat instLTNat j&#x27; q)
+  (hval : @Eq.{1} Nat (ChompLean.gameF q j) v) (hval&#x27; : @Eq.{1} Nat (ChompLean.gameF q j&#x27;) v)
+  (hvq : @LT.lt.{0} Nat instLTNat v q), @Eq.{1} Nat j j&#x27;</pre></li><li><code>ChompLean.gameF_carry_descends_to_rowStart</code><pre class="prose">∀ {q j v : Nat} (hjq : @LT.lt.{0} Nat instLTNat j q) (hval : @Eq.{1} Nat (ChompLean.gameF q j) v)
+  (hvq : @LT.lt.{0} Nat instLTNat v q), @Eq.{1} Nat (ChompLean.gameF v j) v</pre></li><li><code>ChompLean.gameF_carry_descends_to_rowStart._proof_1_1</code><pre class="prose">∀ {q j v : Nat} (hvq : @LT.lt.{0} Nat instLTNat v q), Not (@LE.le.{0} Nat instLENat v q) → False</pre></li><li><code>ChompLean.gameF_carry_is_rowStart</code><pre class="prose">∀ {q j v : Nat} (hjq : @LT.lt.{0} Nat instLTNat j q) (hval : @Eq.{1} Nat (ChompLean.gameF q j) v)
+  (hvq : @LT.lt.{0} Nat instLTNat v q), ChompLean.S ChompLean.gameF v</pre></li><li><code>ChompLean.gameF_carry_is_rowStart._proof_1_1</code><pre class="prose">∀ {q j v : Nat} (hvq : @LT.lt.{0} Nat instLTNat v q), Not (@LE.le.{0} Nat instLENat v q) → False</pre></li><li><code>ChompLean.mem_carryList</code><pre class="prose">∀ {q c j : Nat},
+  Iff (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (ChompLean.carryList q c) j)
+    (And (@LT.lt.{0} Nat instLTNat j c) (@LT.lt.{0} Nat instLTNat (ChompLean.gameF q j) q))</pre></li><li><code>ChompLean.mem_carryList._simp_1_2</code><pre class="prose">∀ {α : Type u_1} {p : α → Bool} {as : List.{u_1} α} {x : α},
+  @Eq.{1} Prop
+    (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) (@List.filter.{u_1} α p as) x)
+    (And (@Membership.mem.{u_1, u_1} α (List.{u_1} α) (@List.instMembership.{u_1} α) as x)
+      (@Eq.{1} Bool (p x) Bool.true))</pre></li><li><code>ChompLean.mem_carryList._simp_1_3</code><pre class="prose">∀ {m n : Nat},
+  @Eq.{1} Prop (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) (List.range n) m)
+    (@LT.lt.{0} Nat instLTNat m n)</pre></li><li><code>ChompLean.selectedCut_future_owner_empty_unconditional</code><pre class="prose">∀ {q c C T w : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))) q)
+  (hcq : @LE.le.{0} Nat instLENat c q) (hC : @Eq.{1} Nat C (@List.length.{0} Nat (ChompLean.carryList q c)))
+  (hT :
+    @Eq.{1} Nat T
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q C)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hwT : @LE.le.{0} Nat instLENat w T),
+  Not
+    (@Exists.{1} Nat fun (a : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat q a) (And (@LT.lt.{0} Nat instLTNat a w) (@Eq.{1} Nat (ChompLean.gameF a a) w)))</pre></li><li><code>ChompLean.selectedCut_no_future_owner_unconditional</code><pre class="prose">∀ {q c C T : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))) q)
+  (hcq : @LE.le.{0} Nat instLENat c q) (hC : @Eq.{1} Nat C (@List.length.{0} Nat (ChompLean.carryList q c)))
+  (hT :
+    @Eq.{1} Nat T
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q C)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (x : Nat),
+  @LE.le.{0} Nat instLENat x T → ∀ (a : Nat), @LT.lt.{0} Nat instLTNat q a → @Ne.{1} Nat (ChompLean.gameF a a) x</pre></li><li><code>ChompLean.selectedCut_opening_dichotomy_unconditional</code><pre class="prose">∀ {q c C T e w : Nat} (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))) q)
+  (hcq : @LE.le.{0} Nat instLENat c q) (hC : @Eq.{1} Nat C (@List.length.{0} Nat (ChompLean.carryList q c)))
+  (hT :
+    @Eq.{1} Nat T
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q C)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+  (hwT : @LE.le.{0} Nat instLENat w T) (heq : @LT.lt.{0} Nat instLTNat e q)
+  (hvalue : @Eq.{1} Nat (ChompLean.gameF q e) w) (hqw : @LT.lt.{0} Nat instLTNat q w),
+  Or
+    (@Exists.{1} Nat fun (a : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat e a) (And (@LT.lt.{0} Nat instLTNat a q) (@Eq.{1} Nat (ChompLean.gameF a a) w)))
+    (@Exists.{1} Nat fun (cc : Nat) =&gt;
+      And (@LT.lt.{0} Nat instLTNat e cc) (And (@LT.lt.{0} Nat instLTNat cc w) (@Eq.{1} Nat (ChompLean.gameF w cc) w)))</pre></li><li><code>_private.G1LCarryDischarge.0.ChompLean.nodup_map_inj_on</code><pre class="prose">∀ {f : Nat → Nat} {xs : List.{0} Nat} (hxs : @List.Nodup.{0} Nat xs)
+  (hinj :
+    ∀ (x : Nat),
+      @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs x →
+        ∀ (y : Nat),
+          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) xs y →
+            @Eq.{1} Nat (f x) (f y) → @Eq.{1} Nat x y),
+  @List.Nodup.{0} Nat (@List.map.{0, 0} Nat Nat f xs)</pre></li></ul></details></section><section><h2>Provenance</h2><p class="path">lean/core/G1LCarryDischarge.lean:1</p><p>SHA-256: <code class="path">fc811d8ce0e42f179bfd6f7044afe63e41f92f0ae903c789eaa01f312a27fec8</code></p></section><p><a href="../index.html#id=lean-9924a3009e33762cf0ec">Find this record in the search interface →</a></p></main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

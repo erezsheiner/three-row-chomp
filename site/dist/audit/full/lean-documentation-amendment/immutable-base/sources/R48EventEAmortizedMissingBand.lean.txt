@@ -1,0 +1,323 @@
+import R47ParametricEventEDefectWindow
+import R47ReusablePrefixBackfillCharge
+import R47FutureBackfillOwnerPacking
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+/-!
+R48: apply the prefix-exchange amortized bound to the parametric event-E
+defect band.
+
+For an adjacent actual-game dip, `k` old-prefix values missing from the new
+prefix force at least `k+1` new-only values.  Every such value is a past
+diagonal re-emitted on the new row, hence is high; its owner lies in the
+strict upper half of the old row.  Owner packing therefore gives the general
+bound `2*k+3 <= q`.
+
+For event E, the last `delta+2` old-row columns contain the two high packet
+hosts.  Removing them leaves exactly `delta` canonical lower slots.  R48
+applies the general bound to the subfamily of those slots whose values are
+actually absent from the new strict prefix.
+-/
+
+private theorem r48_nodup_map_of_injective_on
+    {alpha beta : Type} [BEq alpha] [LawfulBEq alpha]
+    [BEq beta] [LawfulBEq beta]
+    (f : alpha -> beta) (xs : List alpha)
+    (hxs : xs.Nodup)
+    (hinj : ∀ x, x ∈ xs → ∀ y, y ∈ xs → f x = f y → x = y) :
+    (xs.map f).Nodup := by
+  induction xs with
+  | nil => simp
+  | cons a as ih =>
+      rw [List.nodup_cons] at hxs
+      simp only [List.map_cons]
+      rw [List.nodup_cons]
+      constructor
+      · intro hmem
+        rcases List.mem_map.mp hmem with ⟨y, hy, hay⟩
+        have hay' : a = y :=
+          hinj a (by simp) y (by simp [hy]) hay.symm
+        subst y
+        exact hxs.1 hy
+      · apply ih hxs.2
+        intro x hx y hy hxy
+        exact hinj x (by simp [hx]) y (by simp [hy]) hxy
+
+/-- Actual-game amortized prefix-loss bound.  A family of `k` old strict
+prefix values absent from the new strict prefix across a dip forces
+`2*k+3 <= q`. -/
+theorem game_adjacent_dip_forbidden_upper_half_bound
+    {q : Nat} {forbidden : List Nat}
+    (hdip : gameF (q + 1) (q + 1) < gameF q q)
+    (hforbidden : forbidden.Nodup)
+    (hsub : forbidden ⊆ StrictRowPrefixValues gameF q)
+    (hmissing : ∀ v, v ∈ forbidden →
+      v ∉ StrictRowPrefixValues gameF (q + 1)) :
+    2 * forbidden.length + 3 ≤ q := by
+  let backfills := PrefixBackfillValues
+    (StrictRowPrefixValues gameF q)
+    (StrictRowPrefixValues gameF (q + 1))
+  have hpackage := adjacent_dip_k_forbidden_force_k_succ_diagonal_backfills
+    gameRecurrenceModel hdip hforbidden hsub hmissing
+  change forbidden.length + 1 ≤ backfills.length ∧
+      backfills.Nodup ∧
+      ∀ v, v ∈ backfills → ∃ i, i < q ∧ gameF i i = v
+    at hpackage
+  rcases hpackage with ⟨hcount, hbackfillNodup, hownerExists⟩
+
+  let owner : Nat -> Nat := fun v =>
+    if hv : v ∈ backfills then Classical.choose (hownerExists v hv) else 0
+  have howner : ∀ v, v ∈ backfills →
+      owner v < q ∧ q < owner v + owner v ∧ gameF (owner v) (owner v) = v := by
+    intro v hv
+    have hchosen := Classical.choose_spec (hownerExists v hv)
+    have hownerEq : owner v = Classical.choose (hownerExists v hv) := by
+      dsimp [owner]
+      rw [dif_pos hv]
+    have hvFilter := List.mem_filter.mp hv
+    have hvNew : v ∈ StrictRowPrefixValues gameF (q + 1) := hvFilter.1
+    rcases mem_strictRowPrefixValues_iff_C.mp hvNew with
+      ⟨b, hb, hbValue⟩
+    have hdiagValue : gameF (owner v) (owner v) = v := by
+      rw [hownerEq]
+      exact hchosen.2
+    have hhigh := game_past_diagonal_reemission_is_high
+      (i := owner v) (t := q + 1) (b := b)
+      (Nat.le_of_lt hb) (hdiagValue.trans hbValue.symm)
+    have hcap := recurrence_diagonal_source_capacity
+      gameRecurrenceModel (owner v)
+    change gameF (owner v) (owner v) ≤ owner v + owner v + 1 at hcap
+    exact ⟨by rw [hownerEq]; exact hchosen.1, by omega, hdiagValue⟩
+  have hownerInj : ∀ v, v ∈ backfills → ∀ w, w ∈ backfills →
+      owner v = owner w → v = w := by
+    intro v hv w hw how
+    have hvEq := (howner v hv).2.2
+    have hwEq := (howner w hw).2.2
+    rw [how] at hvEq
+    exact hvEq.symm.trans hwEq
+  have hownersNodup : (backfills.map owner).Nodup :=
+    r48_nodup_map_of_injective_on owner backfills
+      hbackfillNodup hownerInj
+  have hownersHalf : ∀ i, i ∈ backfills.map owner →
+      i < q ∧ q < i + i := by
+    intro i hi
+    rcases List.mem_map.mp hi with ⟨v, hv, rfl⟩
+    exact ⟨(howner v hv).1, (howner v hv).2.1⟩
+  have hqPos : 0 < q := by
+    have hnextHigh := gameRecurrenceModel.diagonal_gt (q + 1)
+    have hcap := recurrence_diagonal_source_capacity gameRecurrenceModel q
+    change q + 1 < gameF (q + 1) (q + 1) at hnextHigh
+    change gameF q q ≤ q + q + 1 at hcap
+    omega
+  have hpack := nodup_strict_upper_half_length_bound
+    hqPos hownersNodup hownersHalf
+  simp only [List.length_map] at hpack
+  omega
+
+/-- The canonical local defect band: the last `delta+2` old-row columns,
+with the two high packet columns removed. -/
+def EventEDefectBandSlots
+    (s delta c b0 : Nat) : List Nat :=
+  ((List.range' (s - delta - 2) (delta + 2)).erase c).erase b0
+
+/-- The subfamily of canonical defect-band columns whose old values are
+absent from the new strict prefix. -/
+noncomputable def EventEMissingBandSlots
+    (s delta c b0 : Nat) : List Nat :=
+  (EventEDefectBandSlots s delta c b0).filter (fun g =>
+    !(decide (gameF s g ∈ StrictRowPrefixValues gameF (s + 1))))
+
+/-- The complete quantitative certificate carried by the canonical event-E
+defect band. -/
+def EventEMissingBandAmortizedCertificate
+    (s delta z c b0 : Nat) : Prop :=
+  c < s ∧ b0 < s ∧ c ≠ b0 ∧
+    gameF s c = z + 1 ∧ gameF s b0 = z ∧
+    (EventEDefectBandSlots s delta c b0).Nodup ∧
+    (EventEDefectBandSlots s delta c b0).length = delta ∧
+    (∀ g, g ∈ EventEDefectBandSlots s delta c b0 →
+      g < s ∧ g ≠ c ∧ g ≠ b0 ∧ EventELowerTransition s z g) ∧
+    2 * (EventEMissingBandSlots s delta c b0).length + 3 ≤ s
+
+/-- In a parametric event E, the canonical band contains exactly `delta`
+lower slots.  If `m` of their old values disappear from the new strict
+prefix, then the actual-game owner packing law gives `2*m+3 <= s`. -/
+theorem gameF_margin_eventE_missing_band_amortized_bound
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 ∨
+      ∃ j, s = j + 1 ∧
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    ∃ c b0, EventEMissingBandAmortizedCertificate s delta z c b0 := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  have hInv := gameF_margin_eventE_parametric_defect_invariant
+    hU hdip hmargin hnextDip
+  change EventEDefectPacketInvariant s d delta z at hInv
+  rcases hInv with
+    ⟨_hdeltaPos, hdeltaUpper, _hdeltaSum, _hzDiag,
+      c, b0, _b1, _dc, _d0, _d1,
+      hc, hb0, _hb1, hcNe, _hbNe, hSucc, hBase, _hHost1,
+      hcWindow, hb0Window, _hb1Window,
+      _hdc, _hd0, _hd1, _hcOffset, _hb0Offset, _hb1Offset,
+      hTransitions⟩
+  let band := List.range' (s - delta - 2) (delta + 2)
+  let slots := EventEDefectBandSlots s delta c b0
+  let missing := EventEMissingBandSlots s delta c b0
+  have hbandNodup : band.Nodup := by
+    dsimp [band]
+    exact List.nodup_range' 1
+  have hbandEnd : (s - delta - 2) + (delta + 2) = s := by
+    omega
+  have hcBand : c ∈ band := by
+    apply List.mem_range'_1.mpr
+    dsimp [band]
+    constructor <;> omega
+  have hb0Band : b0 ∈ band := by
+    apply List.mem_range'_1.mpr
+    dsimp [band]
+    constructor <;> omega
+  have hb0AfterC : b0 ∈ band.erase c := by
+    exact (List.mem_erase_of_ne hcNe.symm).mpr hb0Band
+  have hafterCNodup : (band.erase c).Nodup := hbandNodup.erase c
+  have hslotsNodup : slots.Nodup := by
+    change ((band.erase c).erase b0).Nodup
+    exact hafterCNodup.erase b0
+  have hslotsLen : slots.length = delta := by
+    have hcLen := List.length_erase_of_mem hcBand
+    have hbLen := List.length_erase_of_mem hb0AfterC
+    change ((band.erase c).erase b0).length = delta
+    rw [hbLen, hcLen]
+    dsimp [band]
+    simp only [List.length_range']
+    omega
+  have hslotsProps : ∀ g, g ∈ slots →
+      g < s ∧ g ≠ c ∧ g ≠ b0 ∧ EventELowerTransition s z g := by
+    intro g hg
+    have hg' : g ∈ (band.erase c).erase b0 := by
+      exact hg
+    have houter := (hafterCNodup.mem_erase_iff).mp hg'
+    have hinner := (hbandNodup.mem_erase_iff).mp houter.2
+    have hgBand := List.mem_range'_1.mp hinner.2
+    have hgs : g < s := by
+      omega
+    exact ⟨hgs, hinner.1, houter.1,
+      hTransitions g hgs hinner.1 houter.1⟩
+
+  have hmissingNodup : missing.Nodup := by
+    exact List.filter_sublist.nodup hslotsNodup
+  let forbidden := missing.map (fun g => gameF s g)
+  have hforbiddenNodup : forbidden.Nodup := by
+    apply r48_nodup_map_of_injective_on (fun g => gameF s g)
+      missing hmissingNodup
+    intro g hg k hk heq
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+    have hkSlots : k ∈ slots := (List.mem_filter.mp hk).1
+    have hgs := (hslotsProps g hgSlots).1
+    have hks := (hslotsProps k hkSlots).1
+    exact gameRecurrenceModel.fixed_q_injective
+      (Nat.le_of_lt hgs) (Nat.le_of_lt hks) heq
+  have hforbiddenSub : forbidden ⊆ StrictRowPrefixValues gameF s := by
+    intro v hv
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hgSlots : g ∈ slots := (List.mem_filter.mp hg).1
+    have hgs := (hslotsProps g hgSlots).1
+    exact List.mem_map.mpr ⟨g, List.mem_range.mpr hgs, rfl⟩
+  have hforbiddenMissing : ∀ v, v ∈ forbidden →
+      v ∉ StrictRowPrefixValues gameF (s + 1) := by
+    intro v hv
+    rcases List.mem_map.mp hv with ⟨g, hg, rfl⟩
+    have hfilter := (List.mem_filter.mp hg).2
+    simpa [missing, EventEMissingBandSlots] using hfilter
+  have hamortized := game_adjacent_dip_forbidden_upper_half_bound
+    hdip hforbiddenNodup hforbiddenSub hforbiddenMissing
+  have hmissingBound : 2 * missing.length + 3 ≤ s := by
+    simpa [forbidden] using hamortized
+  refine ⟨c, b0, ?_⟩
+  change EventEMissingBandAmortizedCertificate s delta z c b0
+  exact ⟨hc, hb0, hcNe, hSucc, hBase,
+    hslotsNodup, hslotsLen, hslotsProps, hmissingBound⟩
+
+/-- Large-defect corollary.  If the `delta` canonical lower slots do not fit
+under the loss bound (`s < 2*delta+3`), at least one of their values must be
+present in the new strict prefix.  Thus the whole large-defect/no-rehost
+subclass is impossible. -/
+theorem gameF_margin_eventE_large_defect_forces_band_rehost
+    (hU : UnitDip gameRecurrenceModel) {s : Nat}
+    (hdip : gameF (s + 1) (s + 1) < gameF s s)
+    (hmargin : s = 0 ∨
+      ∃ j, s = j + 1 ∧
+        RMax gameRecurrenceModel j < gameF (s + 1) (s + 1) - 1)
+    (hnextDip :
+      gameF (s + 2) (s + 2) < gameF (s + 1) (s + 1)) :
+    let d := gameF (s + 1) (s + 1)
+    let delta := 2 * s - d
+    let z := d - 1
+    s < 2 * delta + 3 →
+      ∃ c b0 g,
+        gameF s c = z + 1 ∧ gameF s b0 = z ∧
+        g ∈ EventEDefectBandSlots s delta c b0 ∧
+        g < s ∧ g ≠ c ∧ g ≠ b0 ∧
+        gameF s g < z ∧
+        C gameF (s + 1) (s + 1) (gameF s g) := by
+  dsimp only
+  let d := gameF (s + 1) (s + 1)
+  let delta := 2 * s - d
+  let z := d - 1
+  intro hlarge
+  have hcert := gameF_margin_eventE_missing_band_amortized_bound
+    hU hdip hmargin hnextDip
+  change ∃ c b0,
+    EventEMissingBandAmortizedCertificate s delta z c b0 at hcert
+  rcases hcert with ⟨c, b0, hcertificate⟩
+  rcases hcertificate with
+    ⟨_hc, _hb0, _hcNe, hSucc, hBase,
+      hslotsNodup, hslotsLen, hslotsProps, hmissingBound⟩
+  let slots := EventEDefectBandSlots s delta c b0
+  let missing := EventEMissingBandSlots s delta c b0
+  have hpresent : ∃ g, g ∈ slots ∧
+      gameF s g ∈ StrictRowPrefixValues gameF (s + 1) := by
+    apply Classical.byContradiction
+    intro hnone
+    have hallAbsent : ∀ g, g ∈ slots →
+        gameF s g ∉ StrictRowPrefixValues gameF (s + 1) := by
+      intro g hg hmem
+      apply hnone
+      exact ⟨g, hg, hmem⟩
+    have hslotsSub : slots ⊆ missing := by
+      intro g hg
+      change g ∈ slots.filter (fun x =>
+        !(decide (gameF s x ∈ StrictRowPrefixValues gameF (s + 1))))
+      apply List.mem_filter.mpr
+      refine ⟨hg, ?_⟩
+      simpa using hallAbsent g hg
+    have hlen := nodup_subset_length_le hslotsNodup hslotsSub
+    change slots.length ≤ missing.length at hlen
+    change slots.length = delta at hslotsLen
+    change 2 * missing.length + 3 ≤ s at hmissingBound
+    omega
+  rcases hpresent with ⟨g, hgSlots, hgNew⟩
+  have hgData := hslotsProps g hgSlots
+  have hLower : gameF s g < z := by
+    have htransition := hgData.2.2.2
+    simpa [EventELowerTransition] using htransition.2.1
+  have hgC : C gameF (s + 1) (s + 1) (gameF s g) :=
+    mem_strictRowPrefixValues_iff_C.mp hgNew
+  exact ⟨c, b0, g, hSucc, hBase, hgSlots,
+    hgData.1, hgData.2.1, hgData.2.2.1, hLower, hgC⟩
+
+#print axioms game_adjacent_dip_forbidden_upper_half_bound
+#print axioms gameF_margin_eventE_missing_band_amortized_bound
+#print axioms gameF_margin_eventE_large_defect_forces_band_rehost
+
+end ChompLean

@@ -1,0 +1,18 @@
+import R50EventETwoEdgeSurvivorLowerBound
+import R50EventETripleHostFreezeNormalForm
+import R50EventETripleHostGeometry
+import R50HighQSourceGapWellFoundedIteration
+
+set_option autoImplicit false
+
+namespace ChompLean
+
+#check gameF_margin_eventE_two_edge_survivor_lower_bound
+#check gameF_margin_eventE_maximal_defect_forces_completed_rowstart
+#check gameF_three_prefix_host_freeze_regime
+#check gameF_three_consecutive_prefix_host_geometry
+#check threeConsecutiveHostGeometry_distinct_column_count
+#check gameF_margin_eventE_maximal_defect_triple_host_geometry
+#check gameF_descent_to_high_q_internal_iteration_global_bound
+
+end ChompLean

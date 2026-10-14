@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The finite counting service budget and baseline bound · Three-Row Chomp</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="../../document.css"><link rel="stylesheet" href="../../math/katex.min.css"></head>
+<body>
+<aside class="wip-notice" role="note" style="display:block;width:auto;max-width:none;margin:0;padding:16px 24px;background:#fff3cd;color:#332600;border-bottom:2px solid #c99b25;font:600 15px/1.55 system-ui,sans-serif;text-align:center;box-sizing:border-box">Work in progress. This project is under active development and may contain errors. Results, proofs, and documentation may be revised.</aside>
+<header><a class="brand" href="../../index.html">Three-Row Chomp <span>Research Library</span></a>
+<nav aria-label="Library"><a href="../../index.html">Search</a><a href="../../browse.html">Browse all</a><a href="../../guide.html">Reading guide</a><a href="https://arxiv.org/abs/2605.23837">Uniqueness paper ↗</a></nav></header>
+<main><aside class="evidence">Selected reviewed edition. Each result retains its exact hypotheses and verification scope.</aside><h1 id="the-finite-counting-service-budget-and-baseline-bound">The finite counting service budget and baseline bound</h1><p>This proof supplies the service budget and baseline estimate used in the <a href="counting-extremizer-proof.html">counting extremizer theorem</a>. All counts exclude the label zero. The parameter alpha is fixed before any limit is taken.</p>
+<p>Let beta_star be the unique zero on [2/5,1/2] of</p>
+<pre><code>P(b) = 1+9b-2b^2-42b^3-19b^4+20b^5+7b^6-8b^7+2b^8.
+</code></pre>
+<p>The argument proves liminf A(n)/n &lt;= beta_star and liminf d(n)/n &lt;= 1/(1-beta_star). It does not assume an ordered diagonal inverse or prove convergence. In the proof below the same root is written beta_*.</p>
+<h2 id="1-definitions-and-established-game-core">1. Definitions and established game core</h2><p>For q&gt;=r&gt;=0, use the complete positive-mex/carry recurrence. Its history
+and same-row prefix at (q,r) are respectively</p>
+<pre><code>H(q,r)={d(a):a&lt;r} union {f(a,r):r&lt;=a&lt;q},
+C(q,r)={f(q,b):b&lt;r},      d(q)=f(q,q).
+</code></pre>
+<p>For q&gt;r, if f(q-1,r)&lt;q the value is carried; otherwise the value is the
+positive mex of H(q,r) union C(q,r). Write D=image(d), S=positive integers
+outside D, and R(x)=#(D intersect [1,x])=x-A(x).</p>
+<p>We use these established facts of the actual game:</p>
+<ol>
+<li>d is injective; each row consists of distinct positive values and has
+maximum d(q)&gt;q. A noncarry value is at least q.</li>
+<li>A column&#39;s pre-retirement awards are distinct and avoid its inherited
+diagonal labels. The mex envelope is f(q,r)&lt;=q+r+1.</li>
+<li>Each p in S has exactly one victim s(p)&lt;p with f(p,s(p))=p. That column
+carries permanently afterward. These victims are distinct for distinct p.</li>
+<li>Row-start propagation: if f(p,s)=p, then p occurs in a column below s
+in every row s&lt;q&lt;p.</li>
+</ol>
+<p>The <a href="../../audit/full/CANONICAL-FOUNDATIONS.html">canonical foundation</a> derives these inputs from the actual-game definitions and names their exact Lean bridges. In particular, row-start propagation, persistent COPY, positive MEX coverage and diagonal maximality are actual-game facts.</p>
+<p>For clarity, the two booker consequences used below follow directly.
+If p in S and q&lt;p, then p occurs in row q exactly when d(q)&gt;p, by the
+diagonal mex and row maximality. All R(p) owners of D-labels &lt;=p have
+index below p, since d(a)&gt;a. Therefore p has precisely p-R(p)=A(p)
+predeath occurrences. They occupy distinct columns. Every such column
+is below s(p): for q&lt;s this is automatic, at q=s the diagonal is in D,
+and for s&lt;q&lt;p use row-start propagation and row injectivity. Call this
+BOOKER-BELOW. Propagation in the p-s-1 intervening rows further gives
+p-s-1&lt;=s, hence s(p)&gt;=(p-1)/2.</p>
+<p>Enumerate S by p_1&lt;p_2&lt;... and write s_j=s(p_j). Diagonal injectivity
+and d(q)&lt;=2q+1 imply R(x)&gt;=ceil(x/2), so A(x)&lt;=floor(x/2) and p_j&gt;=2j.</p>
+<h2 id="2-the-upper-service-budget-retains-the-full-excess-area">2. The upper service budget retains the full excess area</h2><p>Let G(N) be the number of physical nonbirth D-service cells in rows q&lt;N.
+Every S-label below d(q) occurs in row q by diagonal mex, and no greater
+label occurs by maximality. Removing the single diagonal birth gives</p>
+<pre><code>G(N)=sum_(q&lt;N)[q-A(d(q))].                                (1)
+</code></pre>
+<p>Fix 0&lt;alpha&lt;1/2 and C&gt;=0 with A(x)&gt;=alpha<em>x-C for all nonnegative x.
+Put lambda=1-alpha and E(x)=A(x)-alpha</em>x+C&gt;=0. Constants in O(N) below
+may depend on this fixed alpha,C, but never on N.</p>
+<p>Let b_j be the jth smallest element of the SET D, indexed from j=1.
+The first N emitted diagonal labels form an N-element subset of D;
+sorting this subset and using monotonicity of A gives</p>
+<pre><code>sum_(q&lt;N) A(d(q)) &gt;= sum_(j=1)^N A(b_j)
+                 =sum_(j=1)^N (b_j-j).
+</code></pre>
+<p>Thus G(N)&lt;=N^2-sum b_j. The layer-cake identity is exact:</p>
+<pre><code>sum_(j=1)^N b_j=sum_(x&gt;=0)(N-R(x))_+.
+</code></pre>
+<p>For sufficiently large N put B=floor((N-C)/lambda). For 0&lt;=x&lt;=B,
+N-R(x)=N-C-lambda*x+E(x)&gt;=0. Keeping these terms yields</p>
+<pre><code>G(N)&lt;=U_N-sum_(x=0)^B E(x),                              (2)
+U_N=N^2-(B+1)(N-C)+lambda*B(B+1)/2
+   =[(1-2alpha)/(2(1-alpha))]N^2+O(N).
+</code></pre>
+<p>The coefficient of the area is exactly one. No order of emitted diagonals
+has been assumed.</p>
+<h2 id="3-current-live-histories-and-payment-for-static-and-birth-labels">3. Current live histories, and payment for static and birth labels</h2><p>Let F_N(a) count columns 0&lt;=r&lt;a live at the START of row N. A column
+retiring at N is included. Put</p>
+<pre><code>m=R(N-1),   u=F_N(m),
+W=sum_(r&lt;m, r live at N) r.
+</code></pre>
+<p>All m owners with d(a)&lt;N have a&lt;N. Each old live column r&lt;N has a history
+H(N,r) containing N distinct positive labels: r inherited labels and
+N-r awards. Its missing labels below N are exactly</p>
+<pre><code>{p in S:p&lt;N, s(p)&lt;=r}.                                   (3)
+</code></pre>
+<p>Indeed, a D-label below N cannot occur in the row-N prefix, where sub-N
+values are carried S-labels, and hence must lie in the history. An S-label
+with victim at most r was not booked by this live column, by BOOKER-BELOW.
+For a victim above r, inspect column r in row p: it was live then, and its
+current service exceeds p, since p occurs later in that row. The mex rule
+therefore forces p into its history.</p>
+<p>Consequently the future-label part Q_r=H(N,r) intersect [N,infinity) has
+size one plus the number of columns &lt;=r retired before N. If r_i is the
+ith live column (i=1,2,...), this size is r_i+2-i. The envelope on inherited,
+birth and later awards gives Q_r subset [N,N+r].</p>
+<p>Let FD_r count actual nonbirth D-awards represented in Q_r. Removing
+possible S-labels and all possible inherited/birth D-labels gives</p>
+<pre><code>FD_r&gt;=|Q_r|-[A(N+r)-A(N-1)]-#{a&lt;=r:d(a)&gt;=N}.             (4)
+</code></pre>
+<p>Completed D-labels force a separate count</p>
+<pre><code>C_N=sum_(a:d(a)&lt;N) F_N(a).
+</code></pre>
+<p>For each pair (a,r), r&lt;a live at N, mex forces d(a) into the column&#39;s
+history. It is neither inherited nor that column&#39;s birth. Distinct pairs
+give distinct physical nonbirth cells. Their labels are &lt;N, whereas the
+labels counted by FD_r are &gt;=N; the two counts are disjoint.</p>
+<p>On the prefix r&lt;m, the total static/birth subtraction in (4) is</p>
+<pre><code>T=sum_(a&lt;m,d(a)&gt;=N)[u-F_N(a)].
+</code></pre>
+<p>There are exactly as many missing completed owners below m as completed
+owners at or beyond m. Direct expansion gives the exact identity</p>
+<pre><code>C_N-T=sum_(a&lt;m)F_N(a)
+           +sum_(a&gt;=m,d(a)&lt;N)[F_N(a)-u]
+       &gt;=sum_(a&lt;m)F_N(a).                               (5)
+</code></pre>
+<p>This pays the entire subtraction without ordering the diagonal owners.</p>
+<p>Sum (4) over the u live columns r&lt;m and use (5). Since their ranks are
+1 through u, sum |Q_r|=W+3u/2-u^2/2. Also</p>
+<pre><code>sum_(a&lt;m)F_N(a)=(m-1)u-W,
+A(N+r)-A(N-1)=alpha(r+1)+E(N+r)-E(N-1).
+</code></pre>
+<p>Combine with (2). If N+m-1&lt;=B, the distinct samples E(N+r) are all terms
+of its area and cancel with coefficient one. The whole low area remains:</p>
+<pre><code>m*u-alpha*W-u^2/2+L_N&lt;=U_N,
+L_N=sum_(x=0)^(N-1)E(x).                                (6)
+</code></pre>
+<p>The terms dropped to obtain (6) are nonnegative: (1/2-alpha)u,
+u*E(N-1), the last surplus in (5), and unsampled high excess area.
+This is a finite statement about currently live columns, not a limit or
+an assumption of immortality.</p>
+<h2 id="4-chronologically-unusable-columns-sharpen-the-victim-bound">4. Chronologically unusable columns sharpen the victim bound</h2><p>First s_j&lt;=2j-1: in row p_j every live column before the victim must have
+booked p_j earlier. The prefix is covered by at most j prebookers and at
+most j-1 columns already retired.</p>
+<p>A column s_i retiring at p_i never awards above p_i+s_i. Before death
+this follows from the mex envelope; after death its value is p_i. If
+p_i+s_i&lt;p, it therefore never booked p. Moreover it is below s(p), since</p>
+<pre><code>2s_i+1&lt;=p_i+s_i&lt;p,    s(p)&gt;=(p-1)/2.
+</code></pre>
+<p>These unusable columns are distinct from the A(p) booker columns, and
+both sets lie strictly below the victim. Hence</p>
+<pre><code>s(p)&gt;=A(p)+#{i:p_i+s_i&lt;p}.                               (7)
+</code></pre>
+<p>Since i=A(p_i)&gt;=alpha*p_i-C and s_i&lt;=2i-1,
+p_i+s_i&lt;=(1/alpha+2)i+O(1). Thus (7) implies</p>
+<pre><code>s(p)&gt;=A(p)+[alpha/(1+2alpha)]p-O(1).                     (8)
+</code></pre>
+<p>Set h=1+2alpha and g=1+alpha. Using E(p_j)=j-alpha*p_j+C,
+(8) is equivalently the useful lower constraint</p>
+<pre><code>E(p_j)&gt;=2g*j-h*s_j-O(1).                                (9)
+</code></pre>
+<p>All constants here are uniform in the deadline rank.</p>
+<h2 id="5-past-retirements-force-low-excess-a-first-moment-and-a-backward-ramp">5. Past retirements force low excess: a first moment and a backward ramp</h2><p>There are K=m-u already-dead columns below m, with distinct deadline
+ranks and deadlines p&lt;N. The sum of their physical indices is
+m(m-1)/2-W. Summing (9), and using a rank sum at least K(K+1)/2, gives
+for the FULL low S-sample sum</p>
+<pre><code>S_N:=sum_(p in S,p&lt;N)E(p) &gt;= B_ret-O(N),
+B_ret=h*W+g*(m-u)^2-h*m^2/2.                            (10)
+</code></pre>
+<p>We may pass from the selected subset to the full sum because E&gt;=0.</p>
+<p>For a second estimate, suppose K&gt;0 and let J be the largest selected
+deadline rank. Then J&gt;=K, p_J&lt;N, and s_J&lt;m. Equation (9) gives</p>
+<pre><code>E(p_J)&gt;=2g*J-h*m-O(1)&gt;=H-O(1),
+H=m-2g*u.                                               (11)
+</code></pre>
+<p>For every j&lt;=J, distinct increasing deadlines obey p_J-p_j&gt;=J-j, so</p>
+<pre><code>E(p_J)-E(p_j)=(J-j)-alpha*(p_J-p_j)
+               &lt;=(1-alpha)(J-j).                        (12)
+</code></pre>
+<p>Thus a high excess at p_J forces a backward ramp through all preceding
+S-ranks, including ranks whose victims were not selected. Its width fits
+inside ranks 1 through J up to O(1), because p_J&gt;=J implies
+E(p_J)&lt;=(1-alpha)J+C. Summing the nonnegative ramp gives</p>
+<pre><code>S_N&gt;=B_peak-O(N),
+B_peak=(m-2g*u)_+^2/[2(1-alpha)].                        (13)
+</code></pre>
+<p>The discrete triangular-sum and initial-boundary errors are O(N), for
+fixed alpha,C; replacing E(p_J) by H-O(1) has the same error size. If K=0,
+then H&lt;=0, so (13) follows from S_N&gt;=0 without defining J.</p>
+<p>The two estimates concern the SAME mass. Therefore we take their maximum,
+not their sum. For t&gt;=1, Delta E(t)=1_S(t)-alpha. The exact square identity is</p>
+<pre><code>S_N=alpha*sum_(t=1)^(N-1)E(t)
+     +[E(N-1)^2-E(0)^2]/2
+     +sum_(t=1)^(N-1)(Delta E(t))^2/2.                  (14)
+</code></pre>
+<p>It follows by summing 2E(t)Delta E(t)=E(t)^2-E(t-1)^2+(Delta E(t))^2.
+The last sum is O(N). Combining (10),(13),(14) therefore yields</p>
+<pre><code>L_N&gt;=max(B_ret,B_peak)/alpha
+           -E(N-1)^2/(2alpha)-O(N).                    (15)
+</code></pre>
+<p>The endpoint square is retained. All these samples have p&lt;N and were
+not used in cancelling the high samples N+r in Section 3.</p>
+<h2 id="6-joint-optimization-of-the-finite-inequality">6. Joint optimization of the finite inequality</h2><p>For m&gt;0 put v=u/m and z=W/m^2. Apart from the endpoint cost in (15),
+the normalized left side of (6) is bounded below by</p>
+<pre><code>v-v^2/2-alpha*z
+  +max(h*z+g*(1-v)^2-h/2,
+        (1-2g*v)_+^2/[2(1-alpha)])/alpha.               (16)
+</code></pre>
+<p>Minimizing over every real z enlarges the physical feasible set and is
+a valid lower relaxation. The z-slope is -alpha below the crossing of
+the two branches and h/alpha-alpha&gt;0 above it. At the crossing (16) is</p>
+<pre><code>J_alpha(v)=alpha/(2h)+k*(v-v^2/2)
+                      +w*(1-2g*v)_+^2/2,
+k=(1-2alpha^2)/h,
+w=(h-alpha^2)/(alpha*h*(1-alpha)).                       (17)
+</code></pre>
+<p>For 2/5&lt;=alpha&lt;1/2, k,w&gt;0. On v&gt;=1/(2g), J is nondecreasing since its
+derivative is k(1-v). Below that breakpoint J is strictly convex, with
+vertex</p>
+<pre><code>v_*=(2g*w-k)/(4g^2*w-k).
+</code></pre>
+<p>This is positive, since 2g(h-alpha^2)&gt;alpha(1-alpha)(1-2alpha^2), and
+v_*&lt;1/(2g) follows from (2g-1)k&gt;0. The global minimum on 0&lt;=v&lt;=1 is</p>
+<pre><code>M(alpha)=[3+7alpha+alpha^2-5alpha^3-2alpha^4+2alpha^5]
+           /[2(4+15alpha+17alpha^2+2alpha^3-6alpha^4)]. (18)
+</code></pre>
+<p>The denominator is positive on [2/5,1/2]. Physical first-moment and
+rank-spacing constraints have been relaxed, not asserted to attain this
+minimum. Equations (6),(15)--(18) give the finite inequality</p>
+<pre><code>U_N &gt;= m^2*M(alpha)-E(N-1)^2/(2alpha)-O(N).               (19)
+</code></pre>
+<h2 id="7-fixed-parameter-limit-order-root-and-diagonal-transfer">7. Fixed-parameter limit order, root, and diagonal transfer</h2><p>Let beta=liminf A(N)/N&lt;=1/2. If beta&lt;=2/5, the baseline density conclusion is
+automatic. Otherwise fix 2/5&lt;alpha&lt;beta. A finite global C as used above
+exists by the definition of liminf. Choose a subsequence A(N)/N -&gt; beta.
+Then</p>
+<pre><code>m/N -&gt; 1-beta,   B/N -&gt; 1/(1-alpha),
+E(N-1)/N -&gt; beta-alpha.
+</code></pre>
+<p>The range condition N+m-1&lt;=B eventually holds: 2-beta&lt;8/5 while
+1/(1-alpha)&gt;5/3. Divide (19) by N^2 at this FIXED alpha and take the
+subsequence limit:</p>
+<pre><code>(1-2alpha)/(2(1-alpha))
+   &gt;=(1-beta)^2*M(alpha)-(beta-alpha)^2/(2alpha).         (20)
+</code></pre>
+<p>Only now let alpha increase to beta. The endpoint cost tends to zero;
+there is no exchange of limits requiring uniform error constants. With</p>
+<pre><code>V(b)=3+7b+b^2-5b^3-2b^4+2b^5,
+D0(b)=4+15b+17b^2+2b^3-6b^4,
+</code></pre>
+<p>the resulting necessary inequality is</p>
+<pre><code>(1-2beta)D0(beta)-(1-beta)^3 V(beta)=P(beta)&gt;=0.          (21)
+</code></pre>
+<p>On [2/5,1/2],</p>
+<pre><code>P&#39;(b)=9-4b-126b^2-76b^3+100b^4+42b^5-56b^6+16b^7
+      &lt;=9-4b-95b^2-76b^3-48b^6&lt;0.
+</code></pre>
+<p>Here use 100b^4&lt;=25b^2, 42b^5&lt;=6b^2 and 16b^7&lt;=8b^6.
+The endpoint signs are positive at 2/5 and negative at 1/2. Exact integer
+evaluation certifies</p>
+<pre><code>.46995152763789 &lt; beta_* &lt; .46995152763790,
+1.88661990769183 &lt; 1/(1-beta_*) &lt; 1.88661990769187.
+</code></pre>
+<p>The strict derivative estimate above proves uniqueness. The displayed decimal bracket is verified by substituting its two rational endpoints in P; it is not a floating-point assumption.
+Therefore (21) implies beta&lt;=beta_*.</p>
+<p>Finally, if liminf d(n)/n&gt;c, then d(n)&gt;=c<em>n-O(1), whence injectivity
+gives R(x)&lt;=x/c+O(1) and liminf A(x)/x&gt;=1-1/c. If the diagonal liminf
+exceeded 1/(1-beta_</em>), choose c strictly between them to contradict the
+density bound. This proves the baseline bound without assuming an inverse ordered sequence.</p>
+</main><footer>Three-Row Chomp research library · Statements retain their assumptions and recorded verification scope.</footer></body></html>

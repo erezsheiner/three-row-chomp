@@ -1,0 +1,64 @@
+{
+  "paperIndex": 24,
+  "id": "q-tight-fresh-permutations",
+  "original": {
+    "title": "Near-top fresh labels admit only disjoint adjacent swaps",
+    "status": "paper-reviewed",
+    "statement": "The row-h column order on [max(h+1,T(h−1)+1),r−2] is increasing up to disjoint adjacent-value swaps.",
+    "assumptions": [
+      "Record-tight E=F=0 branch and the explicit near-top fresh-label interval."
+    ],
+    "sourcePath": "projects/central-first-exit/work/DIRECT-Q-SOURCE-TIME-20261013-010/RESULTS.md",
+    "sourceLine": 53,
+    "sha256": "30e3f775c1a847d1fb2ea5b2364f4ee156c50d8a22f097306d64946c269a1c52"
+  },
+  "exactAuditedStatement": "In a record-tight E=F=0 birth h with r=sigma_h and m=T(h-1), the row-h subsequence of labels F=[max(h+1, m+1), r-2], ordered by physical source column, is the increasing list up to disjoint adjacent-value swaps.",
+  "hypotheses": [
+    "Record H(h)=0 and gap/tight context; F may be empty or singleton.",
+    "Claim concerns only F, allowing historical/outside-F labels to interleave. The main terminal-capacity argument uses h>=3; h=1,2 are checked separately below."
+  ],
+  "proofDependencyMap": [
+    "Shared canonical foundation: exact positive-MEX/COPY recurrence and P01-P12, independently reconstructed in ../CANONICAL-FOUNDATIONS.md with exact declaration mapping and game interpretation. DEPENDENCIES.json records the additional service lemmas. Final kernel receipts bind the source versions.",
+    "ROW-SHARP, tight survivor roster, terminal capacity proved above; full source-time proof support independently read."
+  ],
+  "independentDerivationAndChecks": [
+    "E0 implies every future d(j)>d(h): ROW-SHARP gives d(j)>=2j+1-A(j)>=d(h)+(j-h) using A one-Lipschitz. Record and r blocker give T(h)<=r-1. If h blocker, ROW-SHARP at h-1 gives d(h-1)>=r, impossible; thus h diagonal and d(h-1)=r-1, E(h-1)=0.",
+    "If y=v(h)<r, the r-y higher awards require r-y distinct earlier y sources by terminal capacity. Earlier diagonals lie<=r-1 and are distinct, allowing only r-1-y. Contradiction; v(h)=r. Since no old host dies at h, continuing hosts V=U minus{h-1} have full rosters[h, r-2] before and[h+1, r-1] after.",
+    "For y in F, every earlier row before h-1 has maximum<=m<y, so the only old journal containing y at h is its unique row h-1 service host k_y. It is not a seed: earlier diagonals<=m, birth diagonals r-1, r+1 are outside F, and future diagonals>r+1. All F labels are therefore blockers.",
+    "If a higher current award z precedes current y, MEX forces y into that host journal, so that host is k_y. Thus y has at most one larger F predecessor. One host cannot skip two F labels since its only new pre-row h award was one value, so each z has at most one smaller F successor.",
+    "Inversion graph of the F permutation has degree<=1 at both endpoints. An inversion between values with an intermediate value b would force a second inversion at one endpoint: b lies before the lower endpoint or after the higher endpoint. Therefore every inversion is between numerically adjacent F values and such pairs are disjoint. Empty/singleton intervals satisfy the statement vacuously. No hostwise+1 conclusion follows.",
+    "Small indices do not b or row the q>=3 terminal-capacity lemma. Column 0 is immortal by the exact rail. The literal first rows give h=1, r=2, d(1)=3 and an empty F interval, so the conclusion is vacuous. For h=2, E=F=0 would force r=3 from d(2)=4 and A(2)=1, contradicting the q=3 penultimate no-death theorem. Thus no omitted small tight case remains."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\central-first-exit\\work\\DIRECT-Q-SOURCE-TIME-20261013-010\\RESULTS.md",
+      "sha256": "30e3f775c1a847d1fb2ea5b2364f4ee156c50d8a22f097306d64946c269a1c52"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\8818af316fc11bf420dd.md",
+      "sha256": "8818af316fc11bf420dd9ee06cf9611346f9c183f11529e92638c76ed9f10750"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\central-first-exit\\work\\DIRECT-Q-SOURCE-TIME-20261013-010\\lanes\\proof\\PROOF.md",
+      "sha256": "802850822133e22761c534ff70e2e8a045c7a05ac0c176f3817ceff628cb1796"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\audit\\full\\CANONICAL-FOUNDATIONS.md",
+      "sha256": "88fb71f3229c40c29c5c909ce0f60734e171291e54a6c1b0634d7342d86f26fe"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#q-terminal-service-capacity",
+    "proofTextSha256": "30e3f775c1a847d1fb2ea5b2364f4ee156c50d8a22f097306d64946c269a1c52",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": true,
+  "sharedCanonicalFoundationReview": "../CANONICAL-FOUNDATIONS.md",
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish. If shared canonical bridge has an unresolved premise, this result remains conditional on that premise regardless of local derivation verdict."
+}

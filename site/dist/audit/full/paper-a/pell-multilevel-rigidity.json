@@ -1,0 +1,55 @@
+{
+  "paperIndex": 40,
+  "id": "pell-multilevel-rigidity",
+  "original": {
+    "title": "Exact multilevel Pell rigidity on every finite frontier",
+    "status": "paper-reviewed",
+    "statement": "Λ_(n,k)=Σ_{ℓ=k}^{n−1}q_(n−ℓ−1)S_ℓ.",
+    "assumptions": [
+      "The silver/Pell denominators and the exact three-child window recursion.",
+      "Selected maximizing root and its orientation; descendant gaps are nonnegative."
+    ],
+    "sourcePath": "projects/g1-canonical-macro/claude-workspace/work/CODEX-CFE-20260901-040/PELL-MULTILEVEL-RIGIDITY-TREE.md",
+    "sourceLine": 11,
+    "sha256": "84821d16f78c6e952429d56c527d9420f9ab2ec48dc55184c7d6b53da9d34562"
+  },
+  "exactAuditedStatement": "For an exact three-child Pell window recursion with finite globally attained maxima b_j, fixed orientationσ, and a maximizing root at n, the sum of oriented leaf gaps in a complete decomposition to scales k, k-1 equals Lambda_(n, k)=sum_{ell=k}^{n-1}q_(n-ell-1)S_ell. The stated finite frontier/ray corollaries hold with their positive-capacity guards.",
+  "hypotheses": [
+    "n>k>=1; q_-1=0, q_0=1; W_(j+1)(s)=W_j(s)+W_j(s+q_j)+W_(j-1)(s+2q_j).",
+    "b_j=max_s|W_j(s)|; for integer word discrepancies suprema are attained because range at fixed length finite.",
+    "Ray theorem requires b_(k-1),..., b_n>0and D=sum_{ell=k}^{n-1}S_ell/b_ell<1."
+  ],
+  "proofDependencyMap": [],
+  "independentDerivationAndChecks": [
+    "Define Gσ(m, s)=b_m-σW_m(s)>=0. Sum of child capacities is b_m+S_(m-1), while defects sum W_m; hence G(parent)+S=sum G(children). Each frontier expansion adds exactly its S, proving the general finite frontier identity by induction.",
+    "Complete silver-tree internal-node counts are q_(n-ell-1) at slack scale ell; check base n=k+1:(2leaves k,1leaf k-1,1internal). The 2,1 recursion propagates these and the leaf counts q_(n-k), q_(n-k-1). A maximizing aligned root has G0, proving the formula.",
+    "Every descendant subtree leaf set is a subset of the fixed root leaf set; nonnegativity gives G(v)+Lambda_(m, k)<=Lambda_(n, k). This is scoped to that tree. G=shortfall+2opposite-sign mass yields both unsigned identities; absolute-value telescope cancels internal defects.",
+    "Pell product bounds q_a q_c<=q_(a+c+1), proved by induction in the positive 2,1 recursion, yield Lambda<=D*C_(n, k), where the zero-slack capacity C=q_(n-k)b_k+q_(n-k-1)b_(k-1). Thus b_n=C-Lambda>=(1-D)C.",
+    "Normalized child gaps capacity-average to(g_parent+alpha)/(1+alpha), alpha=S_(m-1)/b_m. Choose a child with minimum ratio. Its1-g is at least(1-g_parent)/(1+alpha). D<1givesb_(ell+1)>b_ell and alpha_ell<=S_ell/b_ell. Products or1-product<=sum give every selected gap<=D and positive aligned defect.",
+    "For integer b, S with summable capped slack, eventually delta<1. Either b stays0, or once positive it stays positive and increases, and tail relative-slack sums tend0; this yields arbitrarily long finite near-rigid rays. No infinite ray in the original word follows: starts may drift. Counterframe/scalar stress claims are not premises for the identity or finite-ray theorem."
+  ],
+  "verdict": "accepted",
+  "defects": [],
+  "exactCorrection": null,
+  "sources": [
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\projects\\g1-canonical-macro\\claude-workspace\\work\\CODEX-CFE-20260901-040\\PELL-MULTILEVEL-RIGIDITY-TREE.md",
+      "sha256": "84821d16f78c6e952429d56c527d9420f9ab2ec48dc55184c7d6b53da9d34562"
+    },
+    {
+      "path": "C:\\Users\\user\\Documents\\ThreeRowChompAug\\publication\\three-row-chomp\\papers\\originals\\067452cec9a46c5ffca9.md",
+      "sha256": "067452cec9a46c5ffca9bd3cede36a0991a13d395ab44a82cf86d5415535f65a"
+    }
+  ],
+  "sourceHashMatchesCatalogue": true,
+  "englishPresentation": {
+    "anchor": "papers/ENGLISH-PROOFS.md#pell-multilevel-rigidity",
+    "proofTextSha256": "e5cae6edf41a872372c1e8e9b5f473bc86f3b256bc0d30eec72eb585c4900703",
+    "scope": "Original English primary argument independently read. Compendium/index statements must retain the exact audited hypotheses/corrections, not just source titles."
+  },
+  "verificationType": "Independent mathematical reconstruction; finite certificates only where explicitly identified. Not a Lean formalization of this derived result.",
+  "sharedCanonicalFoundationRequired": false,
+  "sharedCanonicalFoundationReview": null,
+  "missingLocalMathematicalDependencies": [],
+  "releaseGate": "Do not publish; parent integrates the independent audit and corrections."
+}
